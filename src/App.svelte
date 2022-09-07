@@ -1,28 +1,45 @@
 <script>
-	export let name;
+	import TopBar from "./TopBar/TopBar.svelte";
+	import Viewport from "./Viewport/Viewport.svelte";
+	import NodeEditor from "./NodeEditor/NodeEditor.svelte";
+	import Toolkit from "./Toolkit/Toolkit.svelte";
+
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<div class="mainLayout">
+		<TopBar />
+		<div class="centerRow">
+			<Toolkit />
+			<Viewport />
+		</div>
+		<NodeEditor />
+	</div>
 </main>
 
 <style>
 	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
+		width: 100vw;
+		height: 100vh;
+		background-color: var(--white);
 	}
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
+
+	/* MAIN APP LAYOUT */
+	.mainLayout {
+		position: absolute;
+		height: 100vh;
+		width: 100vw;
+
+		display: flex;
+		flex-direction: column;
+		
+		overflow: hidden;
 	}
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
+
+	.centerRow {
+		width: 100%;
+		flex: 2;
+
+		display: flex;
 	}
 </style>
