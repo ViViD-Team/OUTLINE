@@ -78,6 +78,10 @@ var app = (function () {
     function space() {
         return text(' ');
     }
+    function listen(node, event, handler, options) {
+        node.addEventListener(event, handler, options);
+        return () => node.removeEventListener(event, handler, options);
+    }
     function attr(node, attribute, value) {
         if (value == null)
             node.removeAttribute(attribute);
@@ -86,6 +90,9 @@ var app = (function () {
     }
     function children(element) {
         return Array.from(element.childNodes);
+    }
+    function set_style(node, key, value, important) {
+        node.style.setProperty(key, value, important ? 'important' : '');
     }
     function custom_event(type, detail) {
         const e = document.createEvent('CustomEvent');
@@ -314,12 +321,32 @@ var app = (function () {
         dispatch_dev("SvelteDOMRemove", { node });
         detach(node);
     }
+    function listen_dev(node, event, handler, options, has_prevent_default, has_stop_propagation) {
+        const modifiers = options === true ? ["capture"] : options ? Array.from(Object.keys(options)) : [];
+        if (has_prevent_default)
+            modifiers.push('preventDefault');
+        if (has_stop_propagation)
+            modifiers.push('stopPropagation');
+        dispatch_dev("SvelteDOMAddEventListener", { node, event, handler, modifiers });
+        const dispose = listen(node, event, handler, options);
+        return () => {
+            dispatch_dev("SvelteDOMRemoveEventListener", { node, event, handler, modifiers });
+            dispose();
+        };
+    }
     function attr_dev(node, attribute, value) {
         attr(node, attribute, value);
         if (value == null)
             dispatch_dev("SvelteDOMRemoveAttribute", { node, attribute });
         else
             dispatch_dev("SvelteDOMSetAttribute", { node, attribute, value });
+    }
+    function set_data_dev(text, data) {
+        data = '' + data;
+        if (text.data === data)
+            return;
+        dispatch_dev("SvelteDOMSetData", { node: text, data });
+        text.data = data;
     }
     class SvelteComponentDev extends SvelteComponent {
         constructor(options) {
@@ -458,18 +485,29 @@ var app = (function () {
     	let main;
     	let div1;
     	let div0;
+    	let t0;
+    	let h1;
+    	let t1;
+    	let dispose;
 
     	const block = {
     		c: function create() {
     			main = element("main");
     			div1 = element("div");
     			div0 = element("div");
-    			attr_dev(div0, "class", "dottedBackground svelte-pqtees");
-    			add_location(div0, file$1, 8, 8, 86);
-    			attr_dev(div1, "class", "frame neuIndentShadow svelte-pqtees");
-    			add_location(div1, file$1, 7, 4, 41);
-    			attr_dev(main, "class", "svelte-pqtees");
-    			add_location(main, file$1, 6, 0, 29);
+    			t0 = space();
+    			h1 = element("h1");
+    			t1 = text(/*viewZoom*/ ctx[2]);
+    			attr_dev(div0, "class", "dottedBackground svelte-je475u");
+    			set_style(div0, "background-position-x", /*viewX*/ ctx[0] + /*mouseDrag*/ ctx[3].delta.x + "px");
+    			set_style(div0, "background-position-y", /*viewY*/ ctx[1] + /*mouseDrag*/ ctx[3].delta.y + "px");
+    			set_style(div0, "background-size", 2 * /*viewZoom*/ ctx[2] + "vh");
+    			add_location(div0, file$1, 56, 8, 1341);
+    			add_location(h1, file$1, 62, 8, 1590);
+    			attr_dev(div1, "class", "frame neuIndentShadow svelte-je475u");
+    			add_location(div1, file$1, 48, 4, 1112);
+    			attr_dev(main, "class", "svelte-je475u");
+    			add_location(main, file$1, 47, 0, 1100);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -478,12 +516,38 @@ var app = (function () {
     			insert_dev(target, main, anchor);
     			append_dev(main, div1);
     			append_dev(div1, div0);
+    			append_dev(div1, t0);
+    			append_dev(div1, h1);
+    			append_dev(h1, t1);
+
+    			dispose = [
+    				listen_dev(div1, "mousedown", /*mouseDown*/ ctx[4], false, false, false),
+    				listen_dev(div1, "mousemove", /*mouseMove*/ ctx[5], false, false, false),
+    				listen_dev(div1, "mouseup", /*mouseUp*/ ctx[6], false, false, false),
+    				listen_dev(div1, "mouseleave", /*mouseUp*/ ctx[6], false, false, false),
+    				listen_dev(div1, "mousewheel", /*scroll*/ ctx[7], false, false, false)
+    			];
     		},
-    		p: noop,
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*viewX, mouseDrag*/ 9) {
+    				set_style(div0, "background-position-x", /*viewX*/ ctx[0] + /*mouseDrag*/ ctx[3].delta.x + "px");
+    			}
+
+    			if (dirty & /*viewY, mouseDrag*/ 10) {
+    				set_style(div0, "background-position-y", /*viewY*/ ctx[1] + /*mouseDrag*/ ctx[3].delta.y + "px");
+    			}
+
+    			if (dirty & /*viewZoom*/ 4) {
+    				set_style(div0, "background-size", 2 * /*viewZoom*/ ctx[2] + "vh");
+    			}
+
+    			if (dirty & /*viewZoom*/ 4) set_data_dev(t1, /*viewZoom*/ ctx[2]);
+    		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(main);
+    			run_all(dispose);
     		}
     	};
 
@@ -498,10 +562,72 @@ var app = (function () {
     	return block;
     }
 
+    function instance($$self, $$props, $$invalidate) {
+    	let viewX = 0, viewY = 0, viewZoom = 1;
+    	const zoomBounds = [0.2, 3];
+
+    	let mouseDrag = {
+    		"ongoing": false,
+    		"start": { "x": 0, "y": 0 },
+    		"delta": { "x": 0, "y": 0 }
+    	};
+
+    	function mouseDown(event) {
+    		$$invalidate(3, mouseDrag.ongoing = true, mouseDrag);
+    		$$invalidate(3, mouseDrag.start.x = event.clientX, mouseDrag);
+    		$$invalidate(3, mouseDrag.start.y = event.clientY, mouseDrag);
+    	}
+
+    	function mouseMove(event) {
+    		if (!mouseDrag.ongoing) return;
+    		$$invalidate(3, mouseDrag.delta.x = event.clientX - mouseDrag.start.x, mouseDrag);
+    		$$invalidate(3, mouseDrag.delta.y = event.clientY - mouseDrag.start.y, mouseDrag);
+    	}
+
+    	function mouseUp(event) {
+    		if (!mouseDrag.ongoing) return;
+    		$$invalidate(3, mouseDrag.ongoing = false, mouseDrag);
+    		$$invalidate(0, viewX += mouseDrag.delta.x);
+    		$$invalidate(1, viewY += mouseDrag.delta.y);
+    		$$invalidate(3, mouseDrag.delta = { "x": 0, "y": 0 }, mouseDrag);
+    	}
+
+    	function scroll(event) {
+    		$$invalidate(2, viewZoom -= event.deltaY / 1000);
+    		$$invalidate(2, viewZoom = Math.max(zoomBounds[0], Math.min(viewZoom, zoomBounds[1])));
+    	}
+
+    	$$self.$capture_state = () => ({
+    		viewX,
+    		viewY,
+    		viewZoom,
+    		zoomBounds,
+    		mouseDrag,
+    		mouseDown,
+    		mouseMove,
+    		mouseUp,
+    		scroll,
+    		Math
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ("viewX" in $$props) $$invalidate(0, viewX = $$props.viewX);
+    		if ("viewY" in $$props) $$invalidate(1, viewY = $$props.viewY);
+    		if ("viewZoom" in $$props) $$invalidate(2, viewZoom = $$props.viewZoom);
+    		if ("mouseDrag" in $$props) $$invalidate(3, mouseDrag = $$props.mouseDrag);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [viewX, viewY, viewZoom, mouseDrag, mouseDown, mouseMove, mouseUp, scroll];
+    }
+
     class Viewport extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, null, create_fragment$1, safe_not_equal, {});
+    		init(this, options, instance, create_fragment$1, safe_not_equal, {});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -634,7 +760,7 @@ var app = (function () {
     	return block;
     }
 
-    function instance($$self, $$props, $$invalidate) {
+    function instance$1($$self, $$props, $$invalidate) {
     	let { onClick } = $$props;
 
     	function handleClick() {
@@ -670,7 +796,7 @@ var app = (function () {
     class CategoryButton extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance, create_fragment$3, safe_not_equal, { onClick: 0 });
+    		init(this, options, instance$1, create_fragment$3, safe_not_equal, { onClick: 0 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -854,7 +980,7 @@ var app = (function () {
     	return block;
     }
 
-    function instance$1($$self, $$props, $$invalidate) {
+    function instance$2($$self, $$props, $$invalidate) {
     	let category = null;
     	$$self.$capture_state = () => ({ CategoryButton, category });
 
@@ -872,7 +998,7 @@ var app = (function () {
     class Toolkit extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$1, create_fragment$4, safe_not_equal, {});
+    		init(this, options, instance$2, create_fragment$4, safe_not_equal, {});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -970,7 +1096,7 @@ var app = (function () {
     	return block;
     }
 
-    function instance$2($$self, $$props, $$invalidate) {
+    function instance$3($$self, $$props, $$invalidate) {
     	$$self.$capture_state = () => ({ TopBar, Viewport, NodeEditor, Toolkit });
     	return [];
     }
@@ -978,7 +1104,7 @@ var app = (function () {
     class App extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$2, create_fragment$5, safe_not_equal, {});
+    		init(this, options, instance$3, create_fragment$5, safe_not_equal, {});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
