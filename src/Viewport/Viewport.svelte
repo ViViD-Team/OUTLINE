@@ -1,4 +1,6 @@
 <script>
+    import Header from "./Components/Header.svelte";
+
     let
         viewX = 0, viewY = 0,
         viewZoom = 1;
@@ -17,6 +19,7 @@ const   zoomBounds = [.2, 3]
     }
 
     function mouseDown(event) {
+        if (event.button != 1) return;
         mouseDrag.ongoing = true;
         mouseDrag.start.x = event.clientX;
         mouseDrag.start.y = event.clientY;
@@ -29,7 +32,7 @@ const   zoomBounds = [.2, 3]
     }
 
     function mouseUp(event) {
-        if (!mouseDrag.ongoing) return;
+        if (!mouseDrag.ongoing || event.button != 1) return;
         mouseDrag.ongoing = false
         viewX += mouseDrag.delta.x;
         viewY += mouseDrag.delta.y;
@@ -41,11 +44,13 @@ const   zoomBounds = [.2, 3]
         viewZoom = Math.max(zoomBounds[0], Math.min(viewZoom, zoomBounds[1]));
     }
 
+    let viewport;
+
 </script>
 
 
 
-<main>
+<main bind:this="{viewport}">
     <div
         class="frame neuIndentShadow"
         on:mousedown="{mouseDown}"
@@ -58,9 +63,18 @@ const   zoomBounds = [.2, 3]
             background-position-x: {viewX + mouseDrag.delta.x}px;
             background-position-y: {viewY + mouseDrag.delta.y}px;
             background-size: {2 * viewZoom}vh;
-        "></div>
-
-        <h1>{viewZoom}</h1>
+        ">
+            <Header
+                posX={5}
+                posY={0}
+                offX={(viewX + mouseDrag.delta.x) / window.innerHeight * 50}
+                offY={(viewY + mouseDrag.delta.y) / window.innerHeight * 50}
+                zoom={viewZoom}
+                sizeX={10}
+                sizeY={5}
+                positionSmoothing={mouseDrag.ongoing}
+            />
+        </div>
     </div>
 </main>
 
@@ -97,5 +111,7 @@ const   zoomBounds = [.2, 3]
         background-repeat: repeat;
 
         animation: test 10s linear infinite;
+
+        transition: background-size .2s cubic-bezier(0, 0, 0, .9);
     }
 </style>
