@@ -8,11 +8,17 @@
     export let offY = 0;
     export let zoom = 1;
     export let positionSmoothing = false;
+
+    export let onDrag;
+
+    function drag(event) {
+        onDrag(event);
+    }
 </script>
 
 
 
-<main style="
+<main draggable="true" on:dragstart="{drag}" style="
     left: {(posX * zoom + offX) * 2}vh;
     top: {(posY * zoom + offY) * 2}vh;
 
@@ -28,6 +34,7 @@
         top {positionSmoothing ? "0s" : ".2s"} cubic-bezier(0, 0, 0, .9),
         left {positionSmoothing ? "0s" : ".2s"} cubic-bezier(0, 0, 0, .9);
 ">
+
     <h1 contenteditable="true" bind:textContent="{text}" style="
         font-size: {3 * zoom}vh;
         min-height: {2 * zoom}vh;
