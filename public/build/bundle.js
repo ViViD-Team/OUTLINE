@@ -100,6 +100,35 @@ var app = (function () {
     function set_style(node, key, value, important) {
         node.style.setProperty(key, value, important ? 'important' : '');
     }
+    function add_resize_listener(element, fn) {
+        if (getComputedStyle(element).position === 'static') {
+            element.style.position = 'relative';
+        }
+        const object = document.createElement('object');
+        object.setAttribute('style', 'display: block; position: absolute; top: 0; left: 0; height: 100%; width: 100%; overflow: hidden; pointer-events: none; z-index: -1;');
+        object.setAttribute('aria-hidden', 'true');
+        object.type = 'text/html';
+        object.tabIndex = -1;
+        let win;
+        object.onload = () => {
+            win = object.contentDocument.defaultView;
+            win.addEventListener('resize', fn);
+        };
+        if (/Trident/.test(navigator.userAgent)) {
+            element.appendChild(object);
+            object.data = 'about:blank';
+        }
+        else {
+            object.data = 'about:blank';
+            element.appendChild(object);
+        }
+        return {
+            cancel: () => {
+                win && win.removeEventListener && win.removeEventListener('resize', fn);
+                element.removeChild(object);
+            }
+        };
+    }
     function custom_event(type, detail) {
         const e = document.createEvent('CustomEvent');
         e.initCustomEvent(type, false, false, detail);
@@ -838,39 +867,39 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[16] = list[i];
-    	child_ctx[17] = list;
-    	child_ctx[18] = i;
+    	child_ctx[19] = list[i];
+    	child_ctx[20] = list;
+    	child_ctx[21] = i;
     	return child_ctx;
     }
 
-    // (148:12) {#each projectData.objects.headers as object, index}
+    // (158:12) {#each projectData.objects.headers as object, index}
     function create_each_block(ctx) {
     	let updating_text;
     	let current;
 
     	function func(...args) {
-    		return /*func*/ ctx[14](/*index*/ ctx[18], ...args);
+    		return /*func*/ ctx[16](/*index*/ ctx[21], ...args);
     	}
 
     	function header_text_binding(value) {
-    		/*header_text_binding*/ ctx[15].call(null, value, /*object*/ ctx[16]);
+    		/*header_text_binding*/ ctx[17].call(null, value, /*object*/ ctx[19]);
     	}
 
     	let header_props = {
     		onDrag: func,
-    		posX: /*object*/ ctx[16].posX,
-    		posY: /*object*/ ctx[16].posY,
-    		offX: (/*viewX*/ ctx[0] + /*mouseDrag*/ ctx[4].delta.x) / window.innerHeight * 50,
-    		offY: (/*viewY*/ ctx[1] + /*mouseDrag*/ ctx[4].delta.y) / window.innerHeight * 50,
+    		posX: /*object*/ ctx[19].posX,
+    		posY: /*object*/ ctx[19].posY,
+    		offX: (/*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x) / window.innerHeight * 50,
+    		offY: (/*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y) / window.innerHeight * 50,
     		zoom: /*viewZoom*/ ctx[2],
-    		sizeX: /*object*/ ctx[16].sizeX,
-    		sizeY: /*object*/ ctx[16].sizeY,
-    		positionSmoothing: /*mouseDrag*/ ctx[4].ongoing
+    		sizeX: /*object*/ ctx[19].sizeX,
+    		sizeY: /*object*/ ctx[19].sizeY,
+    		positionSmoothing: /*mouseDrag*/ ctx[6].ongoing
     	};
 
-    	if (/*object*/ ctx[16].text !== void 0) {
-    		header_props.text = /*object*/ ctx[16].text;
+    	if (/*object*/ ctx[19].text !== void 0) {
+    		header_props.text = /*object*/ ctx[19].text;
     	}
 
     	const header = new Header({ props: header_props, $$inline: true });
@@ -887,18 +916,18 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
     			const header_changes = {};
-    			if (dirty & /*projectData*/ 8) header_changes.posX = /*object*/ ctx[16].posX;
-    			if (dirty & /*projectData*/ 8) header_changes.posY = /*object*/ ctx[16].posY;
-    			if (dirty & /*viewX, mouseDrag*/ 17) header_changes.offX = (/*viewX*/ ctx[0] + /*mouseDrag*/ ctx[4].delta.x) / window.innerHeight * 50;
-    			if (dirty & /*viewY, mouseDrag*/ 18) header_changes.offY = (/*viewY*/ ctx[1] + /*mouseDrag*/ ctx[4].delta.y) / window.innerHeight * 50;
+    			if (dirty & /*projectData*/ 32) header_changes.posX = /*object*/ ctx[19].posX;
+    			if (dirty & /*projectData*/ 32) header_changes.posY = /*object*/ ctx[19].posY;
+    			if (dirty & /*viewX, mouseDrag*/ 65) header_changes.offX = (/*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x) / window.innerHeight * 50;
+    			if (dirty & /*viewY, mouseDrag*/ 66) header_changes.offY = (/*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y) / window.innerHeight * 50;
     			if (dirty & /*viewZoom*/ 4) header_changes.zoom = /*viewZoom*/ ctx[2];
-    			if (dirty & /*projectData*/ 8) header_changes.sizeX = /*object*/ ctx[16].sizeX;
-    			if (dirty & /*projectData*/ 8) header_changes.sizeY = /*object*/ ctx[16].sizeY;
-    			if (dirty & /*mouseDrag*/ 16) header_changes.positionSmoothing = /*mouseDrag*/ ctx[4].ongoing;
+    			if (dirty & /*projectData*/ 32) header_changes.sizeX = /*object*/ ctx[19].sizeX;
+    			if (dirty & /*projectData*/ 32) header_changes.sizeY = /*object*/ ctx[19].sizeY;
+    			if (dirty & /*mouseDrag*/ 64) header_changes.positionSmoothing = /*mouseDrag*/ ctx[6].ongoing;
 
-    			if (!updating_text && dirty & /*projectData*/ 8) {
+    			if (!updating_text && dirty & /*projectData*/ 32) {
     				updating_text = true;
-    				header_changes.text = /*object*/ ctx[16].text;
+    				header_changes.text = /*object*/ ctx[19].text;
     				add_flush_callback(() => updating_text = false);
     			}
 
@@ -922,7 +951,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(148:12) {#each projectData.objects.headers as object, index}",
+    		source: "(158:12) {#each projectData.objects.headers as object, index}",
     		ctx
     	});
 
@@ -933,9 +962,10 @@ var app = (function () {
     	let main;
     	let div1;
     	let div0;
+    	let div1_resize_listener;
     	let current;
     	let dispose;
-    	let each_value = /*projectData*/ ctx[3].objects.headers;
+    	let each_value = /*projectData*/ ctx[5].objects.headers;
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -958,14 +988,15 @@ var app = (function () {
     			}
 
     			attr_dev(div0, "class", "dottedBackground svelte-zhtxql");
-    			set_style(div0, "background-position-x", /*viewX*/ ctx[0] + /*mouseDrag*/ ctx[4].delta.x + "px");
-    			set_style(div0, "background-position-y", /*viewY*/ ctx[1] + /*mouseDrag*/ ctx[4].delta.y + "px");
+    			set_style(div0, "background-position-x", /*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x + "px");
+    			set_style(div0, "background-position-y", /*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y + "px");
     			set_style(div0, "background-size", 2 * /*viewZoom*/ ctx[2] + "vh");
-    			add_location(div0, file$2, 136, 12, 3923);
+    			add_location(div0, file$2, 145, 12, 4264);
     			attr_dev(div1, "class", "frame neuIndentShadow svelte-zhtxql");
-    			add_location(div1, file$2, 129, 4, 3692);
+    			add_render_callback(() => /*div1_elementresize_handler*/ ctx[18].call(div1));
+    			add_location(div1, file$2, 134, 4, 3939);
     			attr_dev(main, "class", "svelte-zhtxql");
-    			add_location(main, file$2, 128, 0, 3680);
+    			add_location(main, file$2, 133, 0, 3927);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -979,21 +1010,22 @@ var app = (function () {
     				each_blocks[i].m(div0, null);
     			}
 
+    			div1_resize_listener = add_resize_listener(div1, /*div1_elementresize_handler*/ ctx[18].bind(div1));
     			current = true;
 
     			dispose = [
-    				listen_dev(div0, "dragover", /*dragOver*/ ctx[10], false, false, false),
-    				listen_dev(div0, "drop", /*drop*/ ctx[11], false, false, false),
-    				listen_dev(div1, "mousedown", /*mouseDown*/ ctx[5], false, false, false),
-    				listen_dev(div1, "mousemove", /*mouseMove*/ ctx[6], false, false, false),
-    				listen_dev(div1, "mouseup", /*mouseUp*/ ctx[7], false, false, false),
-    				listen_dev(div1, "mouseleave", /*mouseUp*/ ctx[7], false, false, false),
-    				listen_dev(div1, "mousewheel", /*scroll*/ ctx[8], false, false, false)
+    				listen_dev(div0, "dragover", /*dragOver*/ ctx[12], false, false, false),
+    				listen_dev(div0, "drop", /*drop*/ ctx[13], false, false, false),
+    				listen_dev(div1, "mousedown", /*mouseDown*/ ctx[7], false, false, false),
+    				listen_dev(div1, "mousemove", /*mouseMove*/ ctx[8], false, false, false),
+    				listen_dev(div1, "mouseup", /*mouseUp*/ ctx[9], false, false, false),
+    				listen_dev(div1, "mouseleave", /*mouseUp*/ ctx[9], false, false, false),
+    				listen_dev(div1, "mousewheel", /*scroll*/ ctx[10], false, false, false)
     			];
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*initObjectDrag, projectData, viewX, mouseDrag, window, viewY, viewZoom*/ 543) {
-    				each_value = /*projectData*/ ctx[3].objects.headers;
+    			if (dirty & /*initObjectDrag, projectData, viewX, mouseDrag, window, viewY, viewZoom*/ 2151) {
+    				each_value = /*projectData*/ ctx[5].objects.headers;
     				validate_each_argument(each_value);
     				let i;
 
@@ -1020,12 +1052,12 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (!current || dirty & /*viewX, mouseDrag*/ 17) {
-    				set_style(div0, "background-position-x", /*viewX*/ ctx[0] + /*mouseDrag*/ ctx[4].delta.x + "px");
+    			if (!current || dirty & /*viewX, mouseDrag*/ 65) {
+    				set_style(div0, "background-position-x", /*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x + "px");
     			}
 
-    			if (!current || dirty & /*viewY, mouseDrag*/ 18) {
-    				set_style(div0, "background-position-y", /*viewY*/ ctx[1] + /*mouseDrag*/ ctx[4].delta.y + "px");
+    			if (!current || dirty & /*viewY, mouseDrag*/ 66) {
+    				set_style(div0, "background-position-y", /*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y + "px");
     			}
 
     			if (!current || dirty & /*viewZoom*/ 4) {
@@ -1053,6 +1085,7 @@ var app = (function () {
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(main);
     			destroy_each(each_blocks, detaching);
+    			div1_resize_listener.cancel();
     			run_all(dispose);
     		}
     	};
@@ -1071,6 +1104,7 @@ var app = (function () {
     function instance$1($$self, $$props, $$invalidate) {
     	let viewX = 0, viewY = 0, viewZoom = 1;
     	const zoomBounds = [0.2, 3];
+    	let viewportHeight, viewportWidth;
 
     	// GLOBALS
     	let projectData = {
@@ -1096,28 +1130,31 @@ var app = (function () {
 
     	function mouseDown(event) {
     		if (event.button != 1) return;
-    		$$invalidate(4, mouseDrag.ongoing = true, mouseDrag);
-    		$$invalidate(4, mouseDrag.start.x = event.clientX, mouseDrag);
-    		$$invalidate(4, mouseDrag.start.y = event.clientY, mouseDrag);
+    		$$invalidate(6, mouseDrag.ongoing = true, mouseDrag);
+    		$$invalidate(6, mouseDrag.start.x = event.clientX, mouseDrag);
+    		$$invalidate(6, mouseDrag.start.y = event.clientY, mouseDrag);
     	}
 
     	function mouseMove(event) {
     		if (!mouseDrag.ongoing) return;
-    		$$invalidate(4, mouseDrag.delta.x = event.clientX - mouseDrag.start.x, mouseDrag);
-    		$$invalidate(4, mouseDrag.delta.y = event.clientY - mouseDrag.start.y, mouseDrag);
+    		$$invalidate(6, mouseDrag.delta.x = event.clientX - mouseDrag.start.x, mouseDrag);
+    		$$invalidate(6, mouseDrag.delta.y = event.clientY - mouseDrag.start.y, mouseDrag);
     	}
 
     	function mouseUp(event) {
     		if (!mouseDrag.ongoing || event.button != 1) return;
-    		$$invalidate(4, mouseDrag.ongoing = false, mouseDrag);
+    		$$invalidate(6, mouseDrag.ongoing = false, mouseDrag);
     		$$invalidate(0, viewX += mouseDrag.delta.x);
     		$$invalidate(1, viewY += mouseDrag.delta.y);
-    		$$invalidate(4, mouseDrag.delta = { "x": 0, "y": 0 }, mouseDrag);
+    		$$invalidate(6, mouseDrag.delta = { "x": 0, "y": 0 }, mouseDrag);
     	}
 
     	function scroll(event) {
+    		let oldZoom = viewZoom;
     		$$invalidate(2, viewZoom -= event.deltaY / 1000);
     		$$invalidate(2, viewZoom = Math.max(zoomBounds[0], Math.min(viewZoom, zoomBounds[1])));
+    		$$invalidate(0, viewX = (viewX - viewportWidth / 2) * viewZoom / oldZoom + viewportWidth / 2);
+    		$$invalidate(1, viewY = (viewY - viewportHeight / 2) * viewZoom / oldZoom + viewportHeight / 2);
     	}
 
     	// DRAG AND DROP
@@ -1161,8 +1198,8 @@ var app = (function () {
 
     		switch (event.dataTransfer.getData("command")) {
     			case "move":
-    				$$invalidate(3, projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].posX += Math.round((event.clientX - event.dataTransfer.getData("startX")) / (window.innerHeight / 100 * 2 * viewZoom)), projectData);
-    				$$invalidate(3, projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].posY += Math.round((event.clientY - event.dataTransfer.getData("startY")) / (window.innerHeight / 100 * 2 * viewZoom)), projectData);
+    				$$invalidate(5, projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].posX += Math.round((event.clientX - event.dataTransfer.getData("startX")) / (window.innerHeight / 100 * 2 * viewZoom)), projectData);
+    				$$invalidate(5, projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].posY += Math.round((event.clientY - event.dataTransfer.getData("startY")) / (window.innerHeight / 100 * 2 * viewZoom)), projectData);
     				objectDrag.ongoing = false;
     				break;
     		}
@@ -1174,7 +1211,14 @@ var app = (function () {
 
     	function header_text_binding(value, object) {
     		object.text = value;
-    		$$invalidate(3, projectData);
+    		$$invalidate(5, projectData);
+    	}
+
+    	function div1_elementresize_handler() {
+    		viewportHeight = this.offsetHeight;
+    		viewportWidth = this.offsetWidth;
+    		$$invalidate(3, viewportHeight);
+    		$$invalidate(4, viewportWidth);
     	}
 
     	$$self.$capture_state = () => ({
@@ -1183,6 +1227,8 @@ var app = (function () {
     		viewY,
     		viewZoom,
     		zoomBounds,
+    		viewportHeight,
+    		viewportWidth,
     		projectData,
     		mouseDrag,
     		mouseDown,
@@ -1201,8 +1247,10 @@ var app = (function () {
     		if ("viewX" in $$props) $$invalidate(0, viewX = $$props.viewX);
     		if ("viewY" in $$props) $$invalidate(1, viewY = $$props.viewY);
     		if ("viewZoom" in $$props) $$invalidate(2, viewZoom = $$props.viewZoom);
-    		if ("projectData" in $$props) $$invalidate(3, projectData = $$props.projectData);
-    		if ("mouseDrag" in $$props) $$invalidate(4, mouseDrag = $$props.mouseDrag);
+    		if ("viewportHeight" in $$props) $$invalidate(3, viewportHeight = $$props.viewportHeight);
+    		if ("viewportWidth" in $$props) $$invalidate(4, viewportWidth = $$props.viewportWidth);
+    		if ("projectData" in $$props) $$invalidate(5, projectData = $$props.projectData);
+    		if ("mouseDrag" in $$props) $$invalidate(6, mouseDrag = $$props.mouseDrag);
     		if ("objectDrag" in $$props) objectDrag = $$props.objectDrag;
     	};
 
@@ -1214,6 +1262,8 @@ var app = (function () {
     		viewX,
     		viewY,
     		viewZoom,
+    		viewportHeight,
+    		viewportWidth,
     		projectData,
     		mouseDrag,
     		mouseDown,
@@ -1226,7 +1276,8 @@ var app = (function () {
     		objectDrag,
     		zoomBounds,
     		func,
-    		header_text_binding
+    		header_text_binding,
+    		div1_elementresize_handler
     	];
     }
 
