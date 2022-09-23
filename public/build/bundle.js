@@ -970,6 +970,7 @@ var app = (function () {
     }
 
     // (231:12) {#each projectData.objects.header as object, index}
+
     function create_each_block(ctx) {
     	let updating_text;
     	let current;
@@ -1250,8 +1251,11 @@ var app = (function () {
     	}
 
     	function scroll(event) {
+    		let oldZoom = viewZoom;
     		$$invalidate(2, viewZoom -= event.deltaY / 1000);
     		$$invalidate(2, viewZoom = Math.max(zoomBounds[0], Math.min(viewZoom, zoomBounds[1])));
+    		$$invalidate(0, viewX = (viewX - viewportWidth / 2) * viewZoom / oldZoom + viewportWidth / 2);
+    		$$invalidate(1, viewY = (viewY - viewportHeight / 2) * viewZoom / oldZoom + viewportHeight / 2);
     	}
 
     	// DRAG AND DROP

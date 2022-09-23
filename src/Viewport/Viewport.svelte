@@ -66,8 +66,11 @@ const   zoomBounds = [.2, 3]
     }
 
     function scroll(event) {
+        let oldZoom = viewZoom
         viewZoom -= event.deltaY / 1000;
         viewZoom = Math.max(zoomBounds[0], Math.min(viewZoom, zoomBounds[1]));
+        viewX = (viewX - viewportWidth/2) * viewZoom / oldZoom + (viewportWidth / 2)
+        viewY = (viewY - viewportHeight/2) * viewZoom / oldZoom + (viewportHeight / 2)
     }
 
 
@@ -225,7 +228,8 @@ const   zoomBounds = [.2, 3]
                 background-position-x: {viewX + mouseDrag.delta.x}px;
                 background-position-y: {viewY + mouseDrag.delta.y}px;
                 background-size: {2 * viewZoom}vh;
-            ">
+            "
+            >
 
             <!-- INSTANTIATE PROJECT OBJECTS -->
             {#each projectData.objects.header as object, index}
