@@ -2,27 +2,30 @@
     import Header from "./Components/Header.svelte"
 
 
-    
-
     let
         viewX = 0, viewY = 0,
         viewZoom = 1;
 const   zoomBounds = [.2, 3]
 
+    let viewportHeight, viewportWidth;
+
     // GLOBALS
 
     let projectData = {
         "objects": {
-            "headers": [
-                {
-                    "text": "",
+            "header": [
 
-                    "posX": 3,
-                    "posY": 3,
-                    "sizeX": 10,
-                    "sizeY": 3,
-                }
             ]
+        }
+    }
+
+    const objectPrototypes = {
+        "header": {
+            "text": "Lorem",
+            "posX": 0,
+            "posY": 0,
+            "sizeX": 10,
+            "sizeY": 3,
         }
     }
 
@@ -80,9 +83,31 @@ const   zoomBounds = [.2, 3]
             "x": 0,
             "y": 0,
         },
+        "layer": {
+            "x": 0,
+            "y": 0,
+        },
+        "objectInfo": {
+            "type": "",
+            "ID": 0,
+            "width": 0,
+            "height": 0,
+        },
     }
 
-    function initObjectDrag(event, type, index) {
+    let objectResize = {
+        "ongoing": false,
+        "start": {
+            "x": 0,
+            "y": 0,
+        },
+        "delta": {
+            "x": 0,
+            "y": 0,
+        },
+    }
+
+    function initObjectDrag(event, type, index, width, height) {
         // Override default drag image
         /* let imageOverride = document.createElement("img");
         event.dataTransfer.setDragImage(imageOverride, 0, 0); */
@@ -98,15 +123,42 @@ const   zoomBounds = [.2, 3]
         objectDrag.ongoing = true;
         objectDrag.start.x = event.clientX;
         objectDrag.start.y = event.clientY;
+        objectDrag.objectInfo.type = type;
+        objectDrag.objectInfo.ID = index;
+        objectDrag.objectInfo.width = width;
+        objectDrag.objectInfo.height = height;
+    }
+
+    function initObjectResize(event, type, index) {
+        event.dataTransfer.setData("command", "resize");
+        event.dataTransfer.setData("objectType", type);
+        event.dataTransfer.setData("objectID", index);
+
+        objectResize.start.x = event.clientX;
+        objectResize.start.y = event.clientY;
+
+        objectResize.ongoing = true;
     }
 
     function dragOver(event) {
         event.preventDefault();
-        if (event.dataTransfer.getData("command") != "move") return;
 
-        // Update objectDrag
-        objectDrag.delta.x = Math.round((event.clientX - objectDrag.start.x) / (window.innerHeight / 100 * 2 * viewZoom));
-        objectDrag.delta.y = Math.round((event.clientY - objectDrag.start.y) / (window.innerHeight / 100 * 2 * viewZoom));
+        let vhConverter = (window.innerHeight / 100 * 2 * viewZoom);
+
+        if (objectDrag.ongoing) {
+            // Update objectDrag
+            objectDrag.delta.x = Math.round((event.clientX - objectDrag.start.x) / vhConverter);
+            objectDrag.delta.y = Math.round((event.clientY - objectDrag.start.y) / vhConverter);
+
+            objectDrag.layer.x = event.layerX;
+            objectDrag.layer.y = event.layerY;
+        }
+        if (objectResize.ongoing) {
+            // Update objectResize
+
+            objectResize.delta.x = Math.round((event.clientX - objectResize.start.x) / vhConverter);
+            objectResize.delta.y = Math.round((event.clientY - objectResize.start.y) / vhConverter);
+        }
     }
 
     function drop(event) {
@@ -117,7 +169,33 @@ const   zoomBounds = [.2, 3]
                 projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].posX += Math.round((event.clientX - event.dataTransfer.getData("startX")) / (window.innerHeight / 100 * 2 * viewZoom));
                 projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].posY += Math.round((event.clientY - event.dataTransfer.getData("startY")) / (window.innerHeight / 100 * 2 * viewZoom));
             
+                projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].dragSimX = 0;
+                projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].dragSimY = 0;
+
                 objectDrag.ongoing = false;
+                break;
+
+            case "resize":
+                objectResize.ongoing = false;
+
+                projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeX += objectResize.delta.x;
+                projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeY += objectResize.delta.y;
+                
+                break;
+
+            case "create":
+                let type = event.dataTransfer.getData("objectType");
+                let instanceIndex = projectData.objects[type].length;
+                
+                projectData.objects[type].push(
+                    Object.assign({}, objectPrototypes[type])
+                );
+
+                
+                
+                projectData.objects[type][instanceIndex].posX = Math.round((-viewX + event.layerX) / (window.innerHeight / 100 * 2 * viewZoom) - projectData.objects[type][instanceIndex].sizeX / 2);
+                projectData.objects[type][instanceIndex].posY = Math.round((-viewY + event.layerY) / (window.innerHeight / 100 * 2 * viewZoom) - projectData.objects[type][instanceIndex].sizeY / 2);
+                
                 break;
         }
     }
@@ -129,15 +207,20 @@ const   zoomBounds = [.2, 3]
 <main>
     <div
         class="frame neuIndentShadow"
+
+        bind:offsetHeight="{viewportHeight}"
+        bind:offsetWidth="{viewportWidth}"
+
         on:mousedown="{mouseDown}"
         on:mousemove="{mouseMove}"
         on:mouseup="{mouseUp}"
         on:mouseleave="{mouseUp}"
-        on:mousewheel="{scroll}">
+        on:mousewheel="{scroll}"
+        
+        on:dragover="{dragOver}"
+        on:drop="{drop}">
             <div
                 class="dottedBackground"
-                on:dragover="{dragOver}"
-                on:drop="{drop}"
                 style="
                 background-position-x: {viewX + mouseDrag.delta.x}px;
                 background-position-y: {viewY + mouseDrag.delta.y}px;
@@ -145,10 +228,11 @@ const   zoomBounds = [.2, 3]
             ">
 
             <!-- INSTANTIATE PROJECT OBJECTS -->
-            {#each projectData.objects.headers as object, index}
+            {#each projectData.objects.header as object, index}
                 <Header
                     bind:text={object.text}
-                    onDrag={(event) => {initObjectDrag(event, "headers", index)}}
+                    onDrag={(event) => {initObjectDrag(event, "header", index, object.sizeX, object.sizeY)}}
+                    onResize={(event) => {initObjectResize(event, "header", index)}}
 
                     posX={object.posX}
                     posY={object.posY}
