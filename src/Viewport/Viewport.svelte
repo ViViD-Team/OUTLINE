@@ -1,5 +1,6 @@
 <script>
     import Header from "./Components/Header.svelte"
+    import Paragraph from "./Components/Paragraph.svelte"
 
 
     let
@@ -15,7 +16,10 @@ const   zoomBounds = [.2, 3]
         "objects": {
             "header": [
 
-            ]
+            ],
+            "paragraph": [
+
+            ],
         }
     }
 
@@ -26,6 +30,18 @@ const   zoomBounds = [.2, 3]
             "posY": 0,
             "sizeX": 10,
             "sizeY": 3,
+            "simX": 0,
+            "simY": 0,
+            "simResizeX": 0,
+            "simResizeY": 0,
+            "sizeBounds": [],
+        },
+        "paragraph": {
+            "text": "Lorem ipsum",
+            "posX": 0,
+            "posY": 0,
+            "sizeX": 8,
+            "sizeY": 8,
             "simX": 0,
             "simY": 0,
             "simResizeX": 0,
@@ -161,6 +177,10 @@ const   zoomBounds = [.2, 3]
     }
 
     function initObjectResize(event, type, index) {
+        // Override default drag image
+        let imageOverride = document.createElement("img");
+        event.dataTransfer.setDragImage(imageOverride, 0, 0);
+
         event.dataTransfer.setData("command", "resize");
         event.dataTransfer.setData("objectType", type);
         event.dataTransfer.setData("objectID", index);
@@ -284,6 +304,29 @@ const   zoomBounds = [.2, 3]
 
                     onDrag={(event) => {initObjectDrag(event, "header", index, object.sizeX, object.sizeY)}}
                     onResize={(event) => {initObjectResize(event, "header", index)}}
+
+                    posX={object.posX}
+                    posY={object.posY}
+                    offX={(viewX + mouseDrag.delta.x) / window.innerHeight * 50}
+                    offY={(viewY + mouseDrag.delta.y) / window.innerHeight * 50}
+                    zoom={viewZoom}
+                    sizeX={object.sizeX}
+                    sizeY={object.sizeY}
+
+                    simX={object.simX}
+                    simY={object.simY}
+                    simResizeX={object.simResizeX}
+                    simResizeY={object.simResizeY}
+                />
+            {/each}
+
+            {#each projectData.objects.paragraph as object, index}
+                <Paragraph
+                    bind:text={object.text}
+                    bind:sizeBounds={object.sizeBounds}
+
+                    onDrag={(event) => {initObjectDrag(event, "paragraph", index, object.sizeX, object.sizeY)}}
+                    onResize={(event) => {initObjectResize(event, "paragraph", index)}}
 
                     posX={object.posX}
                     posY={object.posY}

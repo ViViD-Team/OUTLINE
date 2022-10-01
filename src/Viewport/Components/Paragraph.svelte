@@ -1,6 +1,6 @@
 <script>
     // OBJECT SPECIFIC
-    export const sizeBounds = [ /* X */ [5, 30], /* Y */ [3, 5]]
+    export const sizeBounds = [ /* X */ [5, 30], /* Y */ [5, 30]]
 
 
     export let text;
@@ -31,7 +31,7 @@
 
 
 
-<main style="
+<main class="neuIndentShadow" style="
     left: {((posX + simX) * zoom + offX) * 2}vh;
     top: {((posY + simY) * zoom + offY) * 2}vh;
 
@@ -44,11 +44,11 @@
         border-radius .2s cubic-bezier(0, 0, 0, .9),
 ">
 
-    <h1 contenteditable="true" bind:textContent="{text}" style="
-        font-size: {3 * zoom}vh;
+    <p contenteditable="true" bind:textContent="{text}" style="
+        font-size: {2 * zoom}vh;
         min-height: {2 * zoom}vh;
         min-width: {sizeX * zoom}vh;
-    ">Title</h1>
+    ">Title</p>
 
     <div 
         class="dragHandle"
@@ -81,14 +81,13 @@
 
 <style>
     main {
-        z-index: 10;
         position: absolute;
 
-        background-color: var(--red);
+        background-color: var(--white);
 
-        box-shadow: 
-            .2vh .2vh .2vh 0 var(--grey),
-            -.2vh -.2vh .2vh 0 var(--absolute-white);
+        /* box-shadow:
+            inset -.2vh -.2vh .2vh 0 var(--absolute-white),
+            inset .2vh .2vh .2vh 0 var(--grey); */
 
         display: grid;
         place-items: center;
@@ -101,8 +100,10 @@
             border-radius .2s cubic-bezier(0, 0, 0, .9), */
     }
 
-    h1 {
-        color: var(--white);
+    p {
+        color: var(--black);
+
+        font-weight: 600;
 
         white-space: nowrap;
 
@@ -132,7 +133,7 @@
     }
 
     .resizeHandle svg {
-        fill: var(--white);
+        fill: var(--black);
         width: 50%;
     }
 
@@ -157,7 +158,7 @@
     }
 
     .dragHandle svg {
-        fill: var(--white);
+        fill: var(--black);
         width: 50%;
     }
 </style>
