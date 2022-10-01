@@ -26,6 +26,11 @@ const   zoomBounds = [.2, 3]
             "posY": 0,
             "sizeX": 10,
             "sizeY": 3,
+            "simX": 0,
+            "simY": 0,
+            "simResizeX": 0,
+            "simResizeY": 0,
+            "sizeBounds": [],
         }
     }
 
@@ -58,6 +63,9 @@ const   zoomBounds = [.2, 3]
     }
 
     function mouseUp(event) {
+        clearObjectDrag();
+        clearObjectResize();
+
         if (!mouseDrag.ongoing || event.button != 1) return;
         mouseDrag.ongoing = false
         viewX += mouseDrag.delta.x;
@@ -98,6 +106,15 @@ const   zoomBounds = [.2, 3]
         },
     }
 
+    function clearObjectDrag() {
+        objectDrag.objectInfo = {
+            "type": "",
+            "ID": 0,
+            "width": 0,
+            "height": 0,
+        };
+    }
+
     let objectResize = {
         "ongoing": false,
         "start": {
@@ -108,12 +125,23 @@ const   zoomBounds = [.2, 3]
             "x": 0,
             "y": 0,
         },
+        "objectInfo": {
+            "type": "",
+            "ID": 0,
+        }
+    }
+
+    function clearObjectResize() {
+        objectResize.objectInfo = {
+            "type": "",
+            "ID": 0,
+        };
     }
 
     function initObjectDrag(event, type, index, width, height) {
         // Override default drag image
-        /* let imageOverride = document.createElement("img");
-        event.dataTransfer.setDragImage(imageOverride, 0, 0); */
+        let imageOverride = document.createElement("img");
+        event.dataTransfer.setDragImage(imageOverride, 0, 0);
 
         // Append necessary info
         event.dataTransfer.setData("command", "move");
@@ -139,6 +167,8 @@ const   zoomBounds = [.2, 3]
 
         objectResize.start.x = event.clientX;
         objectResize.start.y = event.clientY;
+        objectResize.objectInfo.type = type;
+        objectResize.objectInfo.ID = index;
 
         objectResize.ongoing = true;
     }
@@ -155,12 +185,19 @@ const   zoomBounds = [.2, 3]
 
             objectDrag.layer.x = event.layerX;
             objectDrag.layer.y = event.layerY;
+
+            projectData.objects[objectDrag.objectInfo.type][objectDrag.objectInfo.ID].simX = objectDrag.delta.x;
+            projectData.objects[objectDrag.objectInfo.type][objectDrag.objectInfo.ID].simY = objectDrag.delta.y;
+
         }
         if (objectResize.ongoing) {
             // Update objectResize
 
             objectResize.delta.x = Math.round((event.clientX - objectResize.start.x) / vhConverter);
             objectResize.delta.y = Math.round((event.clientY - objectResize.start.y) / vhConverter);
+
+            projectData.objects[objectResize.objectInfo.type][objectResize.objectInfo.ID].simResizeX = objectResize.delta.x;
+            projectData.objects[objectResize.objectInfo.type][objectResize.objectInfo.ID].simResizeY = objectResize.delta.y;
         }
     }
 
@@ -172,8 +209,8 @@ const   zoomBounds = [.2, 3]
                 projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].posX += Math.round((event.clientX - event.dataTransfer.getData("startX")) / (window.innerHeight / 100 * 2 * viewZoom));
                 projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].posY += Math.round((event.clientY - event.dataTransfer.getData("startY")) / (window.innerHeight / 100 * 2 * viewZoom));
             
-                projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].dragSimX = 0;
-                projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].dragSimY = 0;
+                projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].simX = 0;
+                projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].simY = 0;
 
                 objectDrag.ongoing = false;
                 break;
@@ -181,9 +218,17 @@ const   zoomBounds = [.2, 3]
             case "resize":
                 objectResize.ongoing = false;
 
-                projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeX += objectResize.delta.x;
-                projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeY += objectResize.delta.y;
+                let sizeX = projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeX;
+                let sizeY = projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeY;
+
+                let sizeBounds = projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeBounds
+
+                projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeX = Math.max(sizeBounds[0][0], Math.min(sizeX + objectResize.delta.x, sizeBounds[0][1]));
+                projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeY = Math.max(sizeBounds[1][0], Math.min(sizeY + objectResize.delta.y, sizeBounds[1][1]));
                 
+                projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].simResizeX = 0;
+                projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].simResizeY = 0;
+
                 break;
 
             case "create":
@@ -235,6 +280,8 @@ const   zoomBounds = [.2, 3]
             {#each projectData.objects.header as object, index}
                 <Header
                     bind:text={object.text}
+                    bind:sizeBounds={object.sizeBounds}
+
                     onDrag={(event) => {initObjectDrag(event, "header", index, object.sizeX, object.sizeY)}}
                     onResize={(event) => {initObjectResize(event, "header", index)}}
 
@@ -245,7 +292,11 @@ const   zoomBounds = [.2, 3]
                     zoom={viewZoom}
                     sizeX={object.sizeX}
                     sizeY={object.sizeY}
-                    positionSmoothing={mouseDrag.ongoing}
+
+                    simX={object.simX}
+                    simY={object.simY}
+                    simResizeX={object.simResizeX}
+                    simResizeY={object.simResizeY}
                 />
             {/each}
                 
@@ -287,6 +338,6 @@ const   zoomBounds = [.2, 3]
 
         animation: test 10s linear infinite;
 
-        transition: background-size .2s cubic-bezier(0, 0, 0, .9);
+        /* transition: background-size .2s cubic-bezier(0, 0, 0, .9); */
     }
 </style>

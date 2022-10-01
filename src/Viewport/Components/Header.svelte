@@ -1,4 +1,8 @@
 <script>
+    // OBJECT SPECIFIC
+    export const sizeBounds = [ /* X */ [5, 30], /* Y */ [3, 5]]
+
+
     export let text;
     export let sizeX = 5;
     export let sizeY = 2;
@@ -7,7 +11,11 @@
     export let offX = 0;
     export let offY = 0;
     export let zoom = 1;
-    export let positionSmoothing = false;
+
+    export let simX;
+    export let simY;
+    export let simResizeX;
+    export let simResizeY;
 
     export let onDrag;
     export let onResize;
@@ -23,21 +31,17 @@
 
 
 
-<main draggable="true" style="
-    left: {((posX) * zoom + offX) * 2}vh;
-    top: {((posY) * zoom + offY) * 2}vh;
+<main style="
+    left: {((posX + simX) * zoom + offX) * 2}vh;
+    top: {((posY + simY) * zoom + offY) * 2}vh;
 
-    width: {sizeX * 2 * zoom}vh;
-    height: {sizeY * 2 * zoom}vh;
+    width: {Math.max(sizeBounds[0][0], Math.min((sizeX + simResizeX), sizeBounds[0][1])) * 2 * zoom}vh;
+    height: {Math.max(sizeBounds[1][0], Math.min((sizeY + simResizeY), sizeBounds[1][1])) * 2 * zoom}vh;
 
     border-radius: {1.5 * zoom}vh;
 
     transition:
-        width .2s cubic-bezier(0, 0, 0, .9),
-        height .2s cubic-bezier(0, 0, 0, .9),
         border-radius .2s cubic-bezier(0, 0, 0, .9),
-        top {positionSmoothing ? "0s" : ".2s"} cubic-bezier(0, 0, 0, .9),
-        left {positionSmoothing ? "0s" : ".2s"} cubic-bezier(0, 0, 0, .9);
 ">
 
     <h1 contenteditable="true" bind:textContent="{text}" style="
@@ -99,8 +103,8 @@
 
         text-align: center;
 
-        transition: 
-            font-size .2s cubic-bezier(0, 0, 0, .9);
+        /* transition: 
+            font-size .2s cubic-bezier(0, 0, 0, .9); */
     }
 
     .resizeHandle {
