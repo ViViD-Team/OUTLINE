@@ -123,6 +123,7 @@ const   zoomBounds = [.2, 3]
     }
 
     function clearObjectDrag() {
+        objectDrag.ongoing = false;
         objectDrag.objectInfo = {
             "type": "",
             "ID": 0,
@@ -148,6 +149,7 @@ const   zoomBounds = [.2, 3]
     }
 
     function clearObjectResize() {
+        objectResize.ongoing = false;
         objectResize.objectInfo = {
             "type": "",
             "ID": 0,
@@ -155,6 +157,7 @@ const   zoomBounds = [.2, 3]
     }
 
     function initObjectDrag(event, type, index, width, height) {
+        clearObjectDrag();
         // Override default drag image
         let imageOverride = document.createElement("img");
         event.dataTransfer.setDragImage(imageOverride, 0, 0);
@@ -177,6 +180,7 @@ const   zoomBounds = [.2, 3]
     }
 
     function initObjectResize(event, type, index) {
+        clearObjectResize();
         // Override default drag image
         let imageOverride = document.createElement("img");
         event.dataTransfer.setDragImage(imageOverride, 0, 0);

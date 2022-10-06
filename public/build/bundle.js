@@ -1526,7 +1526,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (300:12) {#each projectData.objects.header as object, index}
+    // (304:12) {#each projectData.objects.header as object, index}
     function create_each_block_1(ctx) {
     	let updating_text;
     	let updating_sizeBounds;
@@ -1632,14 +1632,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(300:12) {#each projectData.objects.header as object, index}",
+    		source: "(304:12) {#each projectData.objects.header as object, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (323:12) {#each projectData.objects.paragraph as object, index}
+    // (327:12) {#each projectData.objects.paragraph as object, index}
     function create_each_block(ctx) {
     	let updating_text;
     	let updating_sizeBounds;
@@ -1745,7 +1745,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(323:12) {#each projectData.objects.paragraph as object, index}",
+    		source: "(327:12) {#each projectData.objects.paragraph as object, index}",
     		ctx
     	});
 
@@ -1804,12 +1804,12 @@ var app = (function () {
     			set_style(div0, "background-position-x", /*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x + "px");
     			set_style(div0, "background-position-y", /*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y + "px");
     			set_style(div0, "background-size", 2 * /*viewZoom*/ ctx[2] + "vh");
-    			add_location(div0, file$3, 289, 12, 9765);
+    			add_location(div0, file$3, 293, 12, 9899);
     			attr_dev(div1, "class", "frame neuIndentShadow svelte-2tl4i1");
     			add_render_callback(() => /*div1_elementresize_handler*/ ctx[29].call(div1));
-    			add_location(div1, file$3, 275, 4, 9370);
+    			add_location(div1, file$3, 279, 4, 9504);
     			attr_dev(main, "class", "svelte-2tl4i1");
-    			add_location(main, file$3, 274, 0, 9358);
+    			add_location(main, file$3, 278, 0, 9492);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2049,6 +2049,8 @@ var app = (function () {
     	};
 
     	function clearObjectDrag() {
+    		objectDrag.ongoing = false;
+
     		objectDrag.objectInfo = {
     			"type": "",
     			"ID": 0,
@@ -2065,10 +2067,13 @@ var app = (function () {
     	};
 
     	function clearObjectResize() {
+    		objectResize.ongoing = false;
     		objectResize.objectInfo = { "type": "", "ID": 0 };
     	}
 
     	function initObjectDrag(event, type, index, width, height) {
+    		clearObjectDrag();
+
     		// Override default drag image
     		let imageOverride = document.createElement("img");
 
@@ -2094,6 +2099,8 @@ var app = (function () {
     	}
 
     	function initObjectResize(event, type, index) {
+    		clearObjectResize();
+
     		// Override default drag image
     		let imageOverride = document.createElement("img");
 
