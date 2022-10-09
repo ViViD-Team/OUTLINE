@@ -158,6 +158,7 @@ const   zoomBounds = [.2, 3]
 
     function initObjectDrag(event, type, index, width, height) {
         clearObjectDrag();
+        clearObjectResize();
         // Override default drag image
         let imageOverride = document.createElement("img");
         event.dataTransfer.setDragImage(imageOverride, 0, 0);
@@ -180,6 +181,7 @@ const   zoomBounds = [.2, 3]
     }
 
     function initObjectResize(event, type, index) {
+        clearObjectDrag();
         clearObjectResize();
         // Override default drag image
         let imageOverride = document.createElement("img");
