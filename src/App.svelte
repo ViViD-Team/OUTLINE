@@ -3,7 +3,32 @@
 	import Viewport from "./Viewport/Viewport.svelte";
 	import NodeEditor from "./NodeEditor/NodeEditor.svelte";
 	import Toolkit from "./Toolkit/Toolkit.svelte";
+	import DebugConsole from "./DebugConsole.svelte";
 
+	let debugInfo = {
+		"objectDrag": [],
+		"objectResize": []
+	};
+
+	$: debugContents = [	"::Object Drag::",
+							"Ongoing:" + debugInfo.objectDrag[0], 
+							"StartX:" + debugInfo.objectDrag[1],
+							"StartY:" + debugInfo.objectDrag[2],
+							"DeltaX:" + debugInfo.objectDrag[3],
+							"DeltaY:" + debugInfo.objectDrag[4],
+							"LayerX:" + debugInfo.objectDrag[5],
+							"LayerY:" + debugInfo.objectDrag[6],
+							"ObjectID:" + debugInfo.objectDrag[7],
+							"ObjectType:" + debugInfo.objectDrag[8],
+							"---",
+							"::Object Resize::",
+							"Ongoing:" + debugInfo.objectResize[0], 
+							"StartX:" + debugInfo.objectResize[1],
+							"StartY:" + debugInfo.objectResize[2],
+							"DeltaX:" + debugInfo.objectResize[3],
+							"DeltaY:" + debugInfo.objectResize[4],
+							"ObjectID:" + debugInfo.objectResize[5],
+							"ObjectType:" + debugInfo.objectResize[6],]
 </script>
 
 <main>
@@ -11,7 +36,11 @@
 		<TopBar />
 		<div class="centerRow">
 			<Toolkit />
-			<Viewport />
+			<Viewport
+				bind:debObjectDrag={debugInfo.objectDrag}
+				bind:debObjectResize={debugInfo.objectResize}
+			/>
+			<DebugConsole info={debugContents} />
 		</div>
 		<NodeEditor />
 	</div>

@@ -2,8 +2,29 @@
     import Header from "./Components/Header.svelte"
     import Paragraph from "./Components/Paragraph.svelte"
 
+    // Exports
+    export let debObjectDrag, debObjectResize;
 
-    let
+    $: debObjectDrag = [objectDrag.ongoing, 
+                        objectDrag.start.x, 
+                        objectDrag.start.y, 
+                        objectDrag.delta.x, 
+                        objectDrag.delta.y, 
+                        objectDrag.layer.x, 
+                        objectDrag.layer.y, 
+                        objectDrag.objectInfo.ID, 
+                        objectDrag.objectInfo.type]
+    $: debObjectResize = [  objectResize.ongoing, 
+                            objectResize.start.x, 
+                            objectResize.start.y, 
+                            objectResize.delta.x, 
+                            objectResize.delta.y, 
+                            objectResize.objectInfo.ID, 
+                            objectResize.objectInfo.type]
+
+
+
+let
         viewX = 0, viewY = 0,
         viewZoom = 1;
 const   zoomBounds = [.2, 3]
