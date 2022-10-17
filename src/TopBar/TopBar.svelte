@@ -1,5 +1,56 @@
 <script>
+    import TopBarCommand from "./TopBarCommand.svelte";
+    import TopBarGroup from "./TopBarGroup.svelte";
 
+    export let toggleDebugConsole;
+
+    let selected = null;
+
+    const config = [
+        {
+            "label": "File",
+            "cmds": [
+                {
+                    "label": "New",
+                    "func": function () {}
+                },
+                {
+                    "label": "Open",
+                    "func": function () {}
+                },
+                {
+                    "label": "Save",
+                    "func": function () {}
+                },
+                {
+                    "label": "Save As",
+                    "func": function () {}
+                },
+            ]
+        },
+        {
+            "label": "Viewport",
+            "cmds": [
+                {
+                    "label": "Center",
+                    "func": function () {}
+                },
+                {
+                    "label": "Reset Zoom",
+                    "func": function () {}
+                },
+            ]
+        },
+        {
+            "label": "Debug",
+            "cmds": [
+                {
+                    "label": "Toggle Console",
+                    "func": toggleDebugConsole
+                },
+            ]
+        }
+    ]
 </script>
 
 
@@ -16,9 +67,26 @@
             </defs>
         </svg>
     </div>
-    <div class="frameContainer">
+    <div class="frameContainer" on:mouseleave={() => {selected = null}}>
         <div class="frame neuIndentShadow">
+            {#each config as group, i}
+                {#if selected == null || selected == i}
+                    <TopBarGroup 
+                        label={group.label}
+                        selected={selected == i}
 
+                        onClick={() => {selected = i}}
+                    />
+                    {#if selected == i}
+                        {#each group.cmds as cmd}
+                            <TopBarCommand
+                                label={cmd.label}
+                                onClick={() => {cmd.func()}}
+                            />
+                        {/each}
+                    {/if}
+                {/if}
+            {/each}
         </div>
     </div>
 </main>
@@ -27,7 +95,7 @@
 
 <style>
     main {
-        height: 5vh;
+        height: 6vh;
 
         display: flex;
         align-items: center;
@@ -66,5 +134,9 @@
         border-radius: 2vh;
 
         background-color: var(--white);
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
     }
 </style>

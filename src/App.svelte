@@ -5,6 +5,10 @@
 	import Toolkit from "./Toolkit/Toolkit.svelte";
 	import DebugConsole from "./DebugConsole.svelte";
 
+	// DEBUG CONSOLE
+
+	let debugConsoleOpen = false;
+
 	let debugInfo = {
 		"objectDrag": [],
 		"objectResize": []
@@ -33,14 +37,18 @@
 
 <main>
 	<div class="mainLayout">
-		<TopBar />
+		<TopBar
+			toggleDebugConsole={() => {debugConsoleOpen = !debugConsoleOpen}}
+		/>
 		<div class="centerRow">
 			<Toolkit />
 			<Viewport
 				bind:debObjectDrag={debugInfo.objectDrag}
 				bind:debObjectResize={debugInfo.objectResize}
 			/>
-			<DebugConsole info={debugContents} />
+			{#if debugConsoleOpen}
+				<DebugConsole info={debugContents} />
+			{/if}
 		</div>
 		<NodeEditor />
 	</div>
