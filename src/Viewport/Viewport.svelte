@@ -144,13 +144,27 @@ const   zoomBounds = [.2, 3]
     }
 
     function clearObjectDrag() {
-        objectDrag.ongoing = false;
-        objectDrag.objectInfo = {
+        objectDrag = {
+        "ongoing": false,
+        "start": {
+            "x": 0,
+            "y": 0,
+        },
+        "delta": {
+            "x": 0,
+            "y": 0,
+        },
+        "layer": {
+            "x": 0,
+            "y": 0,
+        },
+        "objectInfo": {
             "type": "",
             "ID": 0,
             "width": 0,
             "height": 0,
-        };
+        },
+    }
     }
 
     let objectResize = {
@@ -170,11 +184,21 @@ const   zoomBounds = [.2, 3]
     }
 
     function clearObjectResize() {
-        objectResize.ongoing = false;
-        objectResize.objectInfo = {
+        objectResize = {
+        "ongoing": false,
+        "start": {
+            "x": 0,
+            "y": 0,
+        },
+        "delta": {
+            "x": 0,
+            "y": 0,
+        },
+        "objectInfo": {
             "type": "",
             "ID": 0,
-        };
+        }
+    }
     }
 
     function initObjectDrag(event, type, index, width, height) {
@@ -293,6 +317,9 @@ const   zoomBounds = [.2, 3]
                 
                 break;
         }
+
+        clearObjectDrag();
+        clearObjectResize();
     }
 
 </script>

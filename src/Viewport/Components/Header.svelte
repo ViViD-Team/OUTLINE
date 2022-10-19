@@ -27,6 +27,7 @@
     function resize(event) {
         onResize(event);
     }
+    
 </script>
 
 

@@ -39,6 +39,10 @@
 
         text-transform: uppercase;
 
-        transition: color .5s cubic-bezier(0, .9, 0, 1);
+        transition: color .5s cubic-bezier(0, .9, 0, 1), transform .5s cubic-bezier(0, 0, 0, .9);
+    }
+
+    main:hover h1 {
+        transform: translateY(-.2vh);
     }
 </style>

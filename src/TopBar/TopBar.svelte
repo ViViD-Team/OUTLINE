@@ -75,7 +75,7 @@
                         label={group.label}
                         selected={selected == i}
 
-                        onClick={() => {selected = i}}
+                        onClick={() => {selected = selected == null ? i : null}}
                     />
                     {#if selected == i}
                         {#each group.cmds as cmd}

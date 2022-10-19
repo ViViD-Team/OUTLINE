@@ -41,11 +41,47 @@ html, body {
     ;
 }
 
+.neuIndentShadowLight {
+	box-shadow: 
+		.4vh .4vh .4vh 0 var(--absolute-white),
+		inset -.4vh -.4vh .4vh 0 var(--absolute-white),
+		-.4vh -.4vh .4vh 0 var(--grey),
+		inset .4vh .4vh .4vh 0 var(--grey)
+    ;
+}
+
+.neuIndentShadowLightOnHover:hover {
+	box-shadow: 
+		.4vh .4vh .4vh 0 var(--absolute-white),
+		inset -.4vh -.4vh .4vh 0 var(--absolute-white),
+		-.4vh -.4vh .4vh 0 var(--grey),
+		inset .4vh .4vh .4vh 0 var(--grey)
+    ;
+}
+
 .neuOutdentShadow {
 	box-shadow: 
 		.2vh .2vh .2vh 0 var(--grey),
 		inset -.2vh -.2vh .2vh 0 var(--grey),
 		-.2vh -.2vh .2vh 0 var(--absolute-white),
 		inset .2vh .2vh .2vh 0 var(--absolute-white)
+    ;
+}
+
+.neuOutdentShadowLight {
+	box-shadow: 
+		.4vh .4vh .4vh 0 var(--grey),
+		inset -.4vh -.4vh .4vh 0 var(--grey),
+		-.4vh -.4vh .4vh 0 var(--absolute-white),
+		inset .4vh .4vh .4vh 0 var(--absolute-white)
+    ;
+}
+
+.neuOutdentShadowLightOnHover:hover {
+	box-shadow: 
+		.4vh .4vh .4vh 0 var(--grey),
+		inset -.4vh -.4vh .4vh 0 var(--grey),
+		-.4vh -.4vh .4vh 0 var(--absolute-white),
+		inset .4vh .4vh .4vh 0 var(--absolute-white)
     ;
 }

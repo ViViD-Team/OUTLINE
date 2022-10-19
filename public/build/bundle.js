@@ -453,9 +453,9 @@ var app = (function () {
     			main = element("main");
     			h1 = element("h1");
     			t = text(/*label*/ ctx[0]);
-    			attr_dev(h1, "class", "svelte-bur47k");
+    			attr_dev(h1, "class", "svelte-1p5nqc0");
     			add_location(h1, file, 9, 8, 125);
-    			attr_dev(main, "class", "svelte-bur47k");
+    			attr_dev(main, "class", "svelte-1p5nqc0");
     			add_location(main, file, 8, 0, 87);
     		},
     		l: function claim(nodes) {
@@ -583,14 +583,14 @@ var app = (function () {
     			h1 = element("h1");
     			t = text(/*label*/ ctx[0]);
     			attr_dev(h1, "style", h1_style_value = /*selected*/ ctx[1] ? "color: var(--white);" : "");
-    			attr_dev(h1, "class", "svelte-1py4zxq");
+    			attr_dev(h1, "class", "svelte-6zmu1a");
     			add_location(h1, file$1, 12, 8, 232);
 
     			attr_dev(main, "style", main_style_value = "\r\n        " + (/*selected*/ ctx[1]
     			? "background-color: var(--red);"
     			: "") + "\r\n    ");
 
-    			attr_dev(main, "class", "svelte-1py4zxq");
+    			attr_dev(main, "class", "svelte-6zmu1a");
     			add_location(main, file$1, 9, 0, 121);
     		},
     		l: function claim(nodes) {
@@ -1274,7 +1274,7 @@ var app = (function () {
     	});
 
     	const func = i => {
-    		$$invalidate(0, selected = i);
+    		$$invalidate(0, selected = selected == null ? i : null);
     	};
 
     	const func_1 = cmd => {
@@ -1375,29 +1375,29 @@ var app = (function () {
     			set_style(h1, "min-width", /*sizeX*/ ctx[2] * /*zoom*/ ctx[8] + "vh");
     			attr_dev(h1, "class", "svelte-r2khy6");
     			if (/*text*/ ctx[0] === void 0) add_render_callback(() => /*h1_input_handler*/ ctx[17].call(h1));
-    			add_location(h1, file$3, 46, 4, 1055);
+    			add_location(h1, file$3, 47, 4, 1061);
     			attr_dev(path0, "d", "M278.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l9.4-9.4V224H109.3l9.4-9.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-9.4-9.4H224V402.7l-9.4-9.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-9.4 9.4V288H402.7l-9.4 9.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3l-64-64c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l9.4 9.4H288V109.3l9.4 9.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-64-64z");
-    			add_location(path0, file$3, 62, 238, 1680);
+    			add_location(path0, file$3, 63, 238, 1686);
     			attr_dev(svg0, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg0, "viewBox", "0 0 512 512");
     			attr_dev(svg0, "class", "svelte-r2khy6");
-    			add_location(svg0, file$3, 62, 8, 1450);
+    			add_location(svg0, file$3, 63, 8, 1456);
     			attr_dev(div0, "class", "dragHandle svelte-r2khy6");
     			attr_dev(div0, "draggable", "true");
     			set_style(div0, "width", 3 * /*zoom*/ ctx[8] + "vh");
     			set_style(div0, "height", 3 * /*zoom*/ ctx[8] + "vh");
-    			add_location(div0, file$3, 52, 4, 1248);
+    			add_location(div0, file$3, 53, 4, 1254);
     			attr_dev(path1, "d", "M32 288c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 288zm0-128c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 160z");
-    			add_location(path1, file$3, 75, 238, 2794);
+    			add_location(path1, file$3, 76, 238, 2800);
     			attr_dev(svg1, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg1, "viewBox", "0 0 448 512");
     			attr_dev(svg1, "class", "svelte-r2khy6");
-    			add_location(svg1, file$3, 75, 8, 2564);
+    			add_location(svg1, file$3, 76, 8, 2570);
     			attr_dev(div1, "class", "resizeHandle svelte-r2khy6");
     			attr_dev(div1, "draggable", "true");
     			set_style(div1, "width", 3 * /*zoom*/ ctx[8] + "vh");
     			set_style(div1, "height", 3 * /*zoom*/ ctx[8] + "vh");
-    			add_location(div1, file$3, 65, 4, 2359);
+    			add_location(div1, file$3, 66, 4, 2365);
     			set_style(main, "left", ((/*posX*/ ctx[4] + /*simX*/ ctx[9]) * /*zoom*/ ctx[8] + /*offX*/ ctx[6]) * 2 + "vh");
     			set_style(main, "top", ((/*posY*/ ctx[5] + /*simY*/ ctx[10]) * /*zoom*/ ctx[8] + /*offY*/ ctx[7]) * 2 + "vh");
     			set_style(main, "width", Math.max(/*sizeBounds*/ ctx[1][0][0], Math.min(/*sizeX*/ ctx[2] + /*simResizeX*/ ctx[11], /*sizeBounds*/ ctx[1][0][1])) * 2 * /*zoom*/ ctx[8] + "vh");
@@ -1405,7 +1405,7 @@ var app = (function () {
     			set_style(main, "border-radius", 1.5 * /*zoom*/ ctx[8] + "vh");
     			set_style(main, "transition", "border-radius .2s cubic-bezier(0, 0, 0, .9),\r\n");
     			attr_dev(main, "class", "svelte-r2khy6");
-    			add_location(main, file$3, 33, 0, 607);
+    			add_location(main, file$3, 34, 0, 613);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2321,7 +2321,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (327:12) {#each projectData.objects.header as object, index}
+    // (354:12) {#each projectData.objects.header as object, index}
     function create_each_block_1$1(ctx) {
     	let updating_text;
     	let updating_sizeBounds;
@@ -2427,14 +2427,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1$1.name,
     		type: "each",
-    		source: "(327:12) {#each projectData.objects.header as object, index}",
+    		source: "(354:12) {#each projectData.objects.header as object, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (350:12) {#each projectData.objects.paragraph as object, index}
+    // (377:12) {#each projectData.objects.paragraph as object, index}
     function create_each_block$1(ctx) {
     	let updating_text;
     	let updating_sizeBounds;
@@ -2540,7 +2540,7 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(350:12) {#each projectData.objects.paragraph as object, index}",
+    		source: "(377:12) {#each projectData.objects.paragraph as object, index}",
     		ctx
     	});
 
@@ -2599,12 +2599,12 @@ var app = (function () {
     			set_style(div0, "background-position-x", /*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x + "px");
     			set_style(div0, "background-position-y", /*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y + "px");
     			set_style(div0, "background-size", 2 * /*viewZoom*/ ctx[2] + "vh");
-    			add_location(div0, file$5, 316, 12, 10827);
+    			add_location(div0, file$5, 343, 12, 11276);
     			attr_dev(div1, "class", "frame neuIndentShadow svelte-2tl4i1");
     			add_render_callback(() => /*div1_elementresize_handler*/ ctx[31].call(div1));
-    			add_location(div1, file$5, 302, 4, 10432);
+    			add_location(div1, file$5, 329, 4, 10881);
     			attr_dev(main, "class", "svelte-2tl4i1");
-    			add_location(main, file$5, 301, 0, 10420);
+    			add_location(main, file$5, 328, 0, 10869);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2845,18 +2845,18 @@ var app = (function () {
     	};
 
     	function clearObjectDrag() {
-    		$$invalidate(17, objectDrag.ongoing = false, objectDrag);
-
-    		$$invalidate(
-    			17,
-    			objectDrag.objectInfo = {
+    		$$invalidate(17, objectDrag = {
+    			"ongoing": false,
+    			"start": { "x": 0, "y": 0 },
+    			"delta": { "x": 0, "y": 0 },
+    			"layer": { "x": 0, "y": 0 },
+    			"objectInfo": {
     				"type": "",
     				"ID": 0,
     				"width": 0,
     				"height": 0
-    			},
-    			objectDrag
-    		);
+    			}
+    		});
     	}
 
     	let objectResize = {
@@ -2867,8 +2867,12 @@ var app = (function () {
     	};
 
     	function clearObjectResize() {
-    		$$invalidate(18, objectResize.ongoing = false, objectResize);
-    		$$invalidate(18, objectResize.objectInfo = { "type": "", "ID": 0 }, objectResize);
+    		$$invalidate(18, objectResize = {
+    			"ongoing": false,
+    			"start": { "x": 0, "y": 0 },
+    			"delta": { "x": 0, "y": 0 },
+    			"objectInfo": { "type": "", "ID": 0 }
+    		});
     	}
 
     	function initObjectDrag(event, type, index, width, height) {
@@ -2971,6 +2975,9 @@ var app = (function () {
     				$$invalidate(5, projectData.objects[type][instanceIndex].posY = Math.round((-viewY + event.layerY) / (window.innerHeight / 100 * 2 * viewZoom) - projectData.objects[type][instanceIndex].sizeY / 2), projectData);
     				break;
     		}
+
+    		clearObjectDrag();
+    		clearObjectResize();
     	}
 
     	const writable_props = ["debObjectDrag", "debObjectResize"];
@@ -3245,8 +3252,12 @@ var app = (function () {
 
     function create_fragment$7(ctx) {
     	let main;
-    	let div1;
+    	let div2;
     	let div0;
+    	let t0;
+    	let div1;
+    	let h1;
+    	let t1;
     	let current;
     	let dispose;
     	const default_slot_template = /*$$slots*/ ctx[4].default;
@@ -3255,35 +3266,49 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			main = element("main");
-    			div1 = element("div");
+    			div2 = element("div");
     			div0 = element("div");
     			if (default_slot) default_slot.c();
-    			attr_dev(div0, "class", "slotContainer svelte-e8vn5g");
-    			add_location(div0, file$7, 13, 8, 214);
-    			attr_dev(div1, "class", "frame neuOutdentShadow svelte-e8vn5g");
-    			add_location(div1, file$7, 12, 4, 145);
-    			attr_dev(main, "class", "svelte-e8vn5g");
-    			add_location(main, file$7, 11, 0, 133);
+    			t0 = space();
+    			div1 = element("div");
+    			h1 = element("h1");
+    			t1 = text(/*label*/ ctx[0]);
+    			attr_dev(div0, "class", "slotContainer svelte-1d6r0p3");
+    			add_location(div0, file$7, 13, 8, 225);
+    			attr_dev(h1, "class", "svelte-1d6r0p3");
+    			add_location(h1, file$7, 17, 12, 342);
+    			attr_dev(div1, "class", "labelContainer svelte-1d6r0p3");
+    			add_location(div1, file$7, 16, 8, 300);
+    			attr_dev(div2, "class", "frame neuOutdentShadow svelte-1d6r0p3");
+    			add_location(div2, file$7, 12, 4, 156);
+    			attr_dev(main, "class", "svelte-1d6r0p3");
+    			add_location(main, file$7, 11, 0, 144);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, main, anchor);
-    			append_dev(main, div1);
-    			append_dev(div1, div0);
+    			append_dev(main, div2);
+    			append_dev(div2, div0);
 
     			if (default_slot) {
     				default_slot.m(div0, null);
     			}
 
+    			append_dev(div2, t0);
+    			append_dev(div2, div1);
+    			append_dev(div1, h1);
+    			append_dev(h1, t1);
     			current = true;
-    			dispose = listen_dev(div1, "click", /*handleClick*/ ctx[0], false, false, false);
+    			dispose = listen_dev(div2, "click", /*handleClick*/ ctx[1], false, false, false);
     		},
     		p: function update(ctx, [dirty]) {
     			if (default_slot && default_slot.p && dirty & /*$$scope*/ 8) {
     				default_slot.p(get_slot_context(default_slot_template, ctx, /*$$scope*/ ctx[3], null), get_slot_changes(default_slot_template, /*$$scope*/ ctx[3], dirty, null));
     			}
+
+    			if (!current || dirty & /*label*/ 1) set_data_dev(t1, /*label*/ ctx[0]);
     		},
     		i: function intro(local) {
     			if (current) return;
@@ -3319,8 +3344,8 @@ var app = (function () {
     		onClick();
     	}
 
-    	let { icon } = $$props;
-    	const writable_props = ["onClick", "icon"];
+    	let { label = "Label" } = $$props;
+    	const writable_props = ["onClick", "label"];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<CategoryButton> was created with unknown prop '${key}'`);
@@ -3329,29 +3354,29 @@ var app = (function () {
     	let { $$slots = {}, $$scope } = $$props;
 
     	$$self.$set = $$props => {
-    		if ("onClick" in $$props) $$invalidate(1, onClick = $$props.onClick);
-    		if ("icon" in $$props) $$invalidate(2, icon = $$props.icon);
+    		if ("onClick" in $$props) $$invalidate(2, onClick = $$props.onClick);
+    		if ("label" in $$props) $$invalidate(0, label = $$props.label);
     		if ("$$scope" in $$props) $$invalidate(3, $$scope = $$props.$$scope);
     	};
 
-    	$$self.$capture_state = () => ({ onClick, handleClick, icon });
+    	$$self.$capture_state = () => ({ onClick, handleClick, label });
 
     	$$self.$inject_state = $$props => {
-    		if ("onClick" in $$props) $$invalidate(1, onClick = $$props.onClick);
-    		if ("icon" in $$props) $$invalidate(2, icon = $$props.icon);
+    		if ("onClick" in $$props) $$invalidate(2, onClick = $$props.onClick);
+    		if ("label" in $$props) $$invalidate(0, label = $$props.label);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [handleClick, onClick, icon, $$scope, $$slots];
+    	return [label, handleClick, onClick, $$scope, $$slots];
     }
 
     class CategoryButton extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$6, create_fragment$7, safe_not_equal, { onClick: 1, icon: 2 });
+    		init(this, options, instance$6, create_fragment$7, safe_not_equal, { onClick: 2, label: 0 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -3363,12 +3388,8 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*onClick*/ ctx[1] === undefined && !("onClick" in props)) {
+    		if (/*onClick*/ ctx[2] === undefined && !("onClick" in props)) {
     			console.warn("<CategoryButton> was created without expected prop 'onClick'");
-    		}
-
-    		if (/*icon*/ ctx[2] === undefined && !("icon" in props)) {
-    			console.warn("<CategoryButton> was created without expected prop 'icon'");
     		}
     	}
 
@@ -3380,11 +3401,11 @@ var app = (function () {
     		throw new Error("<CategoryButton>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	get icon() {
+    	get label() {
     		throw new Error("<CategoryButton>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	set icon(value) {
+    	set label(value) {
     		throw new Error("<CategoryButton>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -3561,7 +3582,7 @@ var app = (function () {
     /* src\Toolkit\Toolkit.svelte generated by Svelte v3.19.1 */
     const file$9 = "src\\Toolkit\\Toolkit.svelte";
 
-    // (19:4) {:else}
+    // (22:4) {:else}
     function create_else_block(ctx) {
     	let div0;
     	let svg;
@@ -3570,6 +3591,7 @@ var app = (function () {
     	let div1;
     	let t1;
     	let current;
+    	let dispose;
 
     	const toolkitwidget0 = new ToolkitWidget({
     			props: {
@@ -3602,15 +3624,15 @@ var app = (function () {
     			t1 = space();
     			create_component(toolkitwidget1.$$.fragment);
     			attr_dev(path, "d", "M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z");
-    			add_location(path, file$9, 20, 242, 1123);
+    			add_location(path, file$9, 23, 242, 1222);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 320 512");
-    			attr_dev(svg, "class", "svelte-1e1v0hw");
-    			add_location(svg, file$9, 20, 12, 893);
-    			attr_dev(div0, "class", "backButtonContainer neuOutdentShadow svelte-1e1v0hw");
-    			add_location(div0, file$9, 19, 8, 829);
-    			attr_dev(div1, "class", "listFrame neuOutdentShadow svelte-1e1v0hw");
-    			add_location(div1, file$9, 22, 8, 1335);
+    			attr_dev(svg, "class", "svelte-mz5f0a");
+    			add_location(svg, file$9, 23, 12, 992);
+    			attr_dev(div0, "class", "backButtonContainer neuOutdentShadow svelte-mz5f0a");
+    			add_location(div0, file$9, 22, 8, 893);
+    			attr_dev(div1, "class", "listFrame neuOutdentShadow svelte-mz5f0a");
+    			add_location(div1, file$9, 25, 8, 1434);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
@@ -3622,18 +3644,19 @@ var app = (function () {
     			append_dev(div1, t1);
     			mount_component(toolkitwidget1, div1, null);
     			current = true;
+    			dispose = listen_dev(div0, "click", /*click_handler*/ ctx[2], false, false, false);
     		},
     		p: function update(ctx, dirty) {
     			const toolkitwidget0_changes = {};
 
-    			if (dirty & /*$$scope*/ 4) {
+    			if (dirty & /*$$scope*/ 8) {
     				toolkitwidget0_changes.$$scope = { dirty, ctx };
     			}
 
     			toolkitwidget0.$set(toolkitwidget0_changes);
     			const toolkitwidget1_changes = {};
 
-    			if (dirty & /*$$scope*/ 4) {
+    			if (dirty & /*$$scope*/ 8) {
     				toolkitwidget1_changes.$$scope = { dirty, ctx };
     			}
 
@@ -3656,6 +3679,7 @@ var app = (function () {
     			if (detaching) detach_dev(div1);
     			destroy_component(toolkitwidget0);
     			destroy_component(toolkitwidget1);
+    			dispose();
     		}
     	};
 
@@ -3663,7 +3687,7 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(19:4) {:else}",
+    		source: "(22:4) {:else}",
     		ctx
     	});
 
@@ -3678,6 +3702,7 @@ var app = (function () {
     	const categorybutton = new CategoryButton({
     			props: {
     				onClick: /*func*/ ctx[1],
+    				label: "Text",
     				$$slots: { default: [create_default_slot] },
     				$$scope: { ctx }
     			},
@@ -3688,8 +3713,8 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			create_component(categorybutton.$$.fragment);
-    			attr_dev(div, "class", "categoryButtonLayout svelte-1e1v0hw");
-    			add_location(div, file$9, 11, 8, 212);
+    			attr_dev(div, "class", "categoryButtonLayout svelte-mz5f0a");
+    			add_location(div, file$9, 11, 8, 215);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -3700,7 +3725,7 @@ var app = (function () {
     			const categorybutton_changes = {};
     			if (dirty & /*category*/ 1) categorybutton_changes.onClick = /*func*/ ctx[1];
 
-    			if (dirty & /*$$scope*/ 4) {
+    			if (dirty & /*$$scope*/ 8) {
     				categorybutton_changes.$$scope = { dirty, ctx };
     			}
 
@@ -3732,7 +3757,7 @@ var app = (function () {
     	return block;
     }
 
-    // (24:12) <ToolkitWidget                   label="Header"                  objectType="header"              >
+    // (27:12) <ToolkitWidget                   label="Header"                  objectType="header"              >
     function create_default_slot_2(ctx) {
     	let svg;
     	let path;
@@ -3742,11 +3767,11 @@ var app = (function () {
     			svg = svg_element("svg");
     			path = svg_element("path");
     			attr_dev(path, "d", "M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zM336 152V256 360c0 13.3-10.7 24-24 24s-24-10.7-24-24V280H160l0 80c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-208c0-13.3 10.7-24 24-24s24 10.7 24 24v80H288V152c0-13.3 10.7-24 24-24s24 10.7 24 24z");
-    			add_location(path, file$9, 28, 20, 1590);
+    			add_location(path, file$9, 31, 20, 1689);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 448 512");
-    			attr_dev(svg, "class", "svelte-1e1v0hw");
-    			add_location(svg, file$9, 27, 16, 1506);
+    			attr_dev(svg, "class", "svelte-mz5f0a");
+    			add_location(svg, file$9, 30, 16, 1605);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -3761,14 +3786,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_2.name,
     		type: "slot",
-    		source: "(24:12) <ToolkitWidget                   label=\\\"Header\\\"                  objectType=\\\"header\\\"              >",
+    		source: "(27:12) <ToolkitWidget                   label=\\\"Header\\\"                  objectType=\\\"header\\\"              >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (32:12) <ToolkitWidget                  label="Paragraph"                  objectType="paragraph"              >
+    // (35:12) <ToolkitWidget                  label="Paragraph"                  objectType="paragraph"              >
     function create_default_slot_1(ctx) {
     	let svg;
     	let path;
@@ -3778,11 +3803,11 @@ var app = (function () {
     			svg = svg_element("svg");
     			path = svg_element("path");
     			attr_dev(path, "d", "M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zM336 152V256 360c0 13.3-10.7 24-24 24s-24-10.7-24-24V280H160l0 80c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-208c0-13.3 10.7-24 24-24s24 10.7 24 24v80H288V152c0-13.3 10.7-24 24-24s24 10.7 24 24z");
-    			add_location(path, file$9, 36, 20, 2169);
+    			add_location(path, file$9, 39, 20, 2268);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 448 512");
-    			attr_dev(svg, "class", "svelte-1e1v0hw");
-    			add_location(svg, file$9, 35, 16, 2085);
+    			attr_dev(svg, "class", "svelte-mz5f0a");
+    			add_location(svg, file$9, 38, 16, 2184);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -3797,14 +3822,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1.name,
     		type: "slot",
-    		source: "(32:12) <ToolkitWidget                  label=\\\"Paragraph\\\"                  objectType=\\\"paragraph\\\"              >",
+    		source: "(35:12) <ToolkitWidget                  label=\\\"Paragraph\\\"                  objectType=\\\"paragraph\\\"              >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (13:12) <CategoryButton onClick={() => {category = 0}}>
+    // (13:12) <CategoryButton                  onClick={() => {category = 0}}                  label="Text"              >
     function create_default_slot(ctx) {
     	let svg;
     	let path;
@@ -3815,10 +3840,10 @@ var app = (function () {
     			path = svg_element("path");
     			attr_dev(path, "fill", "var(--red)");
     			attr_dev(path, "d", "M254 52.8C249.3 40.3 237.3 32 224 32s-25.3 8.3-30 20.8L57.8 416H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32h-1.8l18-48H303.8l18 48H320c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H390.2L254 52.8zM279.8 304H168.2L224 155.1 279.8 304z");
-    			add_location(path, file$9, 14, 20, 409);
+    			add_location(path, file$9, 17, 20, 473);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 448 512");
-    			add_location(svg, file$9, 13, 16, 325);
+    			add_location(svg, file$9, 16, 16, 389);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -3833,7 +3858,7 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(13:12) <CategoryButton onClick={() => {category = 0}}>",
+    		source: "(13:12) <CategoryButton                  onClick={() => {category = 0}}                  label=\\\"Text\\\"              >",
     		ctx
     	});
 
@@ -3860,8 +3885,8 @@ var app = (function () {
     		c: function create() {
     			main = element("main");
     			if_block.c();
-    			attr_dev(main, "class", "svelte-1e1v0hw");
-    			add_location(main, file$9, 9, 0, 168);
+    			attr_dev(main, "class", "svelte-mz5f0a");
+    			add_location(main, file$9, 9, 0, 171);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3923,10 +3948,14 @@ var app = (function () {
     }
 
     function instance$8($$self, $$props, $$invalidate) {
-    	let category = 0;
+    	let category = null;
 
     	const func = () => {
     		$$invalidate(0, category = 0);
+    	};
+
+    	const click_handler = () => {
+    		$$invalidate(0, category = null);
     	};
 
     	$$self.$capture_state = () => ({ CategoryButton, ToolkitWidget, category });
@@ -3939,7 +3968,7 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [category, func];
+    	return [category, func, click_handler];
     }
 
     class Toolkit extends SvelteComponentDev {
