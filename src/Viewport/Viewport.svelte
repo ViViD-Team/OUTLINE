@@ -322,6 +322,13 @@ const   zoomBounds = [.2, 3]
         clearObjectResize();
     }
 
+    // EXPORTED FUNCTIONS
+
+    export function centerView() {
+        viewX = 0;
+        viewY = 0;
+    }
+
 </script>
 
 

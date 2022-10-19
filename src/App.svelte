@@ -32,17 +32,28 @@
 							"DeltaX:" + debugInfo.objectResize[3],
 							"DeltaY:" + debugInfo.objectResize[4],
 							"ObjectID:" + debugInfo.objectResize[5],
-							"ObjectType:" + debugInfo.objectResize[6],]
+							"ObjectType:" + debugInfo.objectResize[6],];
+
+	
+	let viewportRef;
+	
+	function centerViewport() {
+		viewportRef.centerView();
+	}
+
 </script>
 
 <main>
 	<div class="mainLayout">
 		<TopBar
 			toggleDebugConsole={() => {debugConsoleOpen = !debugConsoleOpen}}
+			centerView={centerViewport}
 		/>
 		<div class="centerRow">
 			<Toolkit />
 			<Viewport
+				bind:this={viewportRef}
+
 				bind:debObjectDrag={debugInfo.objectDrag}
 				bind:debObjectResize={debugInfo.objectResize}
 			/>

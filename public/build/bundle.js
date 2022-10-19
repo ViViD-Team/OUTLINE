@@ -726,37 +726,37 @@ var app = (function () {
 
     function get_each_context_1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[9] = list[i];
+    	child_ctx[10] = list[i];
     	return child_ctx;
     }
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[6] = list[i];
-    	child_ctx[8] = i;
+    	child_ctx[7] = list[i];
+    	child_ctx[9] = i;
     	return child_ctx;
     }
 
-    // (73:16) {#if selected == null || selected == i}
+    // (75:16) {#if selected == null || selected == i}
     function create_if_block(ctx) {
     	let t;
     	let if_block_anchor;
     	let current;
 
     	function func(...args) {
-    		return /*func*/ ctx[3](/*i*/ ctx[8], ...args);
+    		return /*func*/ ctx[4](/*i*/ ctx[9], ...args);
     	}
 
     	const topbargroup = new TopBarGroup({
     			props: {
-    				label: /*group*/ ctx[6].label,
-    				selected: /*selected*/ ctx[0] == /*i*/ ctx[8],
+    				label: /*group*/ ctx[7].label,
+    				selected: /*selected*/ ctx[0] == /*i*/ ctx[9],
     				onClick: func
     			},
     			$$inline: true
     		});
 
-    	let if_block = /*selected*/ ctx[0] == /*i*/ ctx[8] && create_if_block_1(ctx);
+    	let if_block = /*selected*/ ctx[0] == /*i*/ ctx[9] && create_if_block_1(ctx);
 
     	const block = {
     		c: function create() {
@@ -775,11 +775,11 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
     			const topbargroup_changes = {};
-    			if (dirty & /*selected*/ 1) topbargroup_changes.selected = /*selected*/ ctx[0] == /*i*/ ctx[8];
+    			if (dirty & /*selected*/ 1) topbargroup_changes.selected = /*selected*/ ctx[0] == /*i*/ ctx[9];
     			if (dirty & /*selected*/ 1) topbargroup_changes.onClick = func;
     			topbargroup.$set(topbargroup_changes);
 
-    			if (/*selected*/ ctx[0] == /*i*/ ctx[8]) {
+    			if (/*selected*/ ctx[0] == /*i*/ ctx[9]) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     					transition_in(if_block, 1);
@@ -822,18 +822,18 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(73:16) {#if selected == null || selected == i}",
+    		source: "(75:16) {#if selected == null || selected == i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (80:20) {#if selected == i}
+    // (82:20) {#if selected == i}
     function create_if_block_1(ctx) {
     	let each_1_anchor;
     	let current;
-    	let each_value_1 = /*group*/ ctx[6].cmds;
+    	let each_value_1 = /*group*/ ctx[7].cmds;
     	validate_each_argument(each_value_1);
     	let each_blocks = [];
 
@@ -863,7 +863,7 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			if (dirty & /*config*/ 2) {
-    				each_value_1 = /*group*/ ctx[6].cmds;
+    				each_value_1 = /*group*/ ctx[7].cmds;
     				validate_each_argument(each_value_1);
     				let i;
 
@@ -918,24 +918,24 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(80:20) {#if selected == i}",
+    		source: "(82:20) {#if selected == i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (81:24) {#each group.cmds as cmd}
+    // (83:24) {#each group.cmds as cmd}
     function create_each_block_1(ctx) {
     	let current;
 
     	function func_1(...args) {
-    		return /*func_1*/ ctx[4](/*cmd*/ ctx[9], ...args);
+    		return /*func_1*/ ctx[5](/*cmd*/ ctx[10], ...args);
     	}
 
     	const topbarcommand = new TopBarCommand({
     			props: {
-    				label: /*cmd*/ ctx[9].label,
+    				label: /*cmd*/ ctx[10].label,
     				onClick: func_1
     			},
     			$$inline: true
@@ -970,18 +970,18 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(81:24) {#each group.cmds as cmd}",
+    		source: "(83:24) {#each group.cmds as cmd}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (72:12) {#each config as group, i}
+    // (74:12) {#each config as group, i}
     function create_each_block(ctx) {
     	let if_block_anchor;
     	let current;
-    	let if_block = (/*selected*/ ctx[0] == null || /*selected*/ ctx[0] == /*i*/ ctx[8]) && create_if_block(ctx);
+    	let if_block = (/*selected*/ ctx[0] == null || /*selected*/ ctx[0] == /*i*/ ctx[9]) && create_if_block(ctx);
 
     	const block = {
     		c: function create() {
@@ -994,7 +994,7 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (/*selected*/ ctx[0] == null || /*selected*/ ctx[0] == /*i*/ ctx[8]) {
+    			if (/*selected*/ ctx[0] == null || /*selected*/ ctx[0] == /*i*/ ctx[9]) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     					transition_in(if_block, 1);
@@ -1033,7 +1033,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(72:12) {#each config as group, i}",
+    		source: "(74:12) {#each config as group, i}",
     		ctx
     	});
 
@@ -1089,33 +1089,33 @@ var app = (function () {
     			attr_dev(path, "stroke-width", "10");
     			attr_dev(path, "stroke-linecap", "round");
     			attr_dev(path, "stroke-linejoin", "round");
-    			add_location(path, file$2, 60, 12, 1517);
+    			add_location(path, file$2, 62, 12, 1543);
     			attr_dev(stop0, "stop-color", "#EC2351");
-    			add_location(stop0, file$2, 63, 12, 1801);
+    			add_location(stop0, file$2, 65, 12, 1827);
     			attr_dev(stop1, "offset", "1");
     			attr_dev(stop1, "stop-color", "#DB6239");
-    			add_location(stop1, file$2, 64, 12, 1843);
+    			add_location(stop1, file$2, 66, 12, 1869);
     			attr_dev(linearGradient, "id", "paint0_linear_109_17");
     			attr_dev(linearGradient, "x1", "55");
     			attr_dev(linearGradient, "y1", "5");
     			attr_dev(linearGradient, "x2", "55");
     			attr_dev(linearGradient, "y2", "55");
     			attr_dev(linearGradient, "gradientUnits", "userSpaceOnUse");
-    			add_location(linearGradient, file$2, 62, 12, 1683);
-    			add_location(defs, file$2, 61, 12, 1663);
+    			add_location(linearGradient, file$2, 64, 12, 1709);
+    			add_location(defs, file$2, 63, 12, 1689);
     			attr_dev(svg, "viewBox", "0 0 85 60");
     			attr_dev(svg, "fill", "none");
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "class", "svelte-5pp07c");
-    			add_location(svg, file$2, 59, 8, 1431);
+    			add_location(svg, file$2, 61, 8, 1457);
     			attr_dev(div0, "class", "logoContainer svelte-5pp07c");
-    			add_location(div0, file$2, 58, 4, 1394);
+    			add_location(div0, file$2, 60, 4, 1420);
     			attr_dev(div1, "class", "frame neuIndentShadow svelte-5pp07c");
-    			add_location(div1, file$2, 70, 8, 2046);
+    			add_location(div1, file$2, 72, 8, 2072);
     			attr_dev(div2, "class", "frameContainer svelte-5pp07c");
-    			add_location(div2, file$2, 69, 4, 1968);
+    			add_location(div2, file$2, 71, 4, 1994);
     			attr_dev(main, "class", "svelte-5pp07c");
-    			add_location(main, file$2, 57, 0, 1382);
+    			add_location(main, file$2, 59, 0, 1408);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1138,7 +1138,7 @@ var app = (function () {
     			}
 
     			current = true;
-    			dispose = listen_dev(div2, "mouseleave", /*mouseleave_handler*/ ctx[5], false, false, false);
+    			dispose = listen_dev(div2, "mouseleave", /*mouseleave_handler*/ ctx[6], false, false, false);
     		},
     		p: function update(ctx, [dirty]) {
     			if (dirty & /*config, selected*/ 3) {
@@ -1208,6 +1208,7 @@ var app = (function () {
     function instance$2($$self, $$props, $$invalidate) {
     	let { toggleDebugConsole } = $$props;
     	let selected = null;
+    	let { centerView } = $$props;
 
     	const config = [
     		{
@@ -1242,12 +1243,7 @@ var app = (function () {
     		{
     			"label": "Viewport",
     			"cmds": [
-    				{
-    					"label": "Center",
-    					"func"() {
-    						
-    					}
-    				},
+    				{ "label": "Center", "func": centerView },
     				{
     					"label": "Reset Zoom",
     					"func"() {
@@ -1267,7 +1263,7 @@ var app = (function () {
     		}
     	];
 
-    	const writable_props = ["toggleDebugConsole"];
+    	const writable_props = ["toggleDebugConsole", "centerView"];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<TopBar> was created with unknown prop '${key}'`);
@@ -1287,6 +1283,7 @@ var app = (function () {
 
     	$$self.$set = $$props => {
     		if ("toggleDebugConsole" in $$props) $$invalidate(2, toggleDebugConsole = $$props.toggleDebugConsole);
+    		if ("centerView" in $$props) $$invalidate(3, centerView = $$props.centerView);
     	};
 
     	$$self.$capture_state = () => ({
@@ -1294,25 +1291,35 @@ var app = (function () {
     		TopBarGroup,
     		toggleDebugConsole,
     		selected,
+    		centerView,
     		config
     	});
 
     	$$self.$inject_state = $$props => {
     		if ("toggleDebugConsole" in $$props) $$invalidate(2, toggleDebugConsole = $$props.toggleDebugConsole);
     		if ("selected" in $$props) $$invalidate(0, selected = $$props.selected);
+    		if ("centerView" in $$props) $$invalidate(3, centerView = $$props.centerView);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [selected, config, toggleDebugConsole, func, func_1, mouseleave_handler];
+    	return [
+    		selected,
+    		config,
+    		toggleDebugConsole,
+    		centerView,
+    		func,
+    		func_1,
+    		mouseleave_handler
+    	];
     }
 
     class TopBar extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$2, create_fragment$2, safe_not_equal, { toggleDebugConsole: 2 });
+    		init(this, options, instance$2, create_fragment$2, safe_not_equal, { toggleDebugConsole: 2, centerView: 3 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -1327,6 +1334,10 @@ var app = (function () {
     		if (/*toggleDebugConsole*/ ctx[2] === undefined && !("toggleDebugConsole" in props)) {
     			console.warn("<TopBar> was created without expected prop 'toggleDebugConsole'");
     		}
+
+    		if (/*centerView*/ ctx[3] === undefined && !("centerView" in props)) {
+    			console.warn("<TopBar> was created without expected prop 'centerView'");
+    		}
     	}
 
     	get toggleDebugConsole() {
@@ -1334,6 +1345,14 @@ var app = (function () {
     	}
 
     	set toggleDebugConsole(value) {
+    		throw new Error("<TopBar>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get centerView() {
+    		throw new Error("<TopBar>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set centerView(value) {
     		throw new Error("<TopBar>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -2307,64 +2326,64 @@ var app = (function () {
 
     function get_each_context$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[32] = list[i];
-    	child_ctx[33] = list;
-    	child_ctx[34] = i;
+    	child_ctx[33] = list[i];
+    	child_ctx[34] = list;
+    	child_ctx[35] = i;
     	return child_ctx;
     }
 
     function get_each_context_1$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[32] = list[i];
-    	child_ctx[35] = list;
-    	child_ctx[34] = i;
+    	child_ctx[33] = list[i];
+    	child_ctx[36] = list;
+    	child_ctx[35] = i;
     	return child_ctx;
     }
 
-    // (354:12) {#each projectData.objects.header as object, index}
+    // (361:12) {#each projectData.objects.header as object, index}
     function create_each_block_1$1(ctx) {
     	let updating_text;
     	let updating_sizeBounds;
     	let current;
 
     	function func(...args) {
-    		return /*func*/ ctx[23](/*index*/ ctx[34], /*object*/ ctx[32], ...args);
+    		return /*func*/ ctx[24](/*index*/ ctx[35], /*object*/ ctx[33], ...args);
     	}
 
     	function func_1(...args) {
-    		return /*func_1*/ ctx[24](/*index*/ ctx[34], ...args);
+    		return /*func_1*/ ctx[25](/*index*/ ctx[35], ...args);
     	}
 
     	function header_text_binding(value) {
-    		/*header_text_binding*/ ctx[25].call(null, value, /*object*/ ctx[32]);
+    		/*header_text_binding*/ ctx[26].call(null, value, /*object*/ ctx[33]);
     	}
 
     	function header_sizeBounds_binding(value) {
-    		/*header_sizeBounds_binding*/ ctx[26].call(null, value, /*object*/ ctx[32]);
+    		/*header_sizeBounds_binding*/ ctx[27].call(null, value, /*object*/ ctx[33]);
     	}
 
     	let header_props = {
     		onDrag: func,
     		onResize: func_1,
-    		posX: /*object*/ ctx[32].posX,
-    		posY: /*object*/ ctx[32].posY,
+    		posX: /*object*/ ctx[33].posX,
+    		posY: /*object*/ ctx[33].posY,
     		offX: (/*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x) / window.innerHeight * 50,
     		offY: (/*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y) / window.innerHeight * 50,
     		zoom: /*viewZoom*/ ctx[2],
-    		sizeX: /*object*/ ctx[32].sizeX,
-    		sizeY: /*object*/ ctx[32].sizeY,
-    		simX: /*object*/ ctx[32].simX,
-    		simY: /*object*/ ctx[32].simY,
-    		simResizeX: /*object*/ ctx[32].simResizeX,
-    		simResizeY: /*object*/ ctx[32].simResizeY
+    		sizeX: /*object*/ ctx[33].sizeX,
+    		sizeY: /*object*/ ctx[33].sizeY,
+    		simX: /*object*/ ctx[33].simX,
+    		simY: /*object*/ ctx[33].simY,
+    		simResizeX: /*object*/ ctx[33].simResizeX,
+    		simResizeY: /*object*/ ctx[33].simResizeY
     	};
 
-    	if (/*object*/ ctx[32].text !== void 0) {
-    		header_props.text = /*object*/ ctx[32].text;
+    	if (/*object*/ ctx[33].text !== void 0) {
+    		header_props.text = /*object*/ ctx[33].text;
     	}
 
-    	if (/*object*/ ctx[32].sizeBounds !== void 0) {
-    		header_props.sizeBounds = /*object*/ ctx[32].sizeBounds;
+    	if (/*object*/ ctx[33].sizeBounds !== void 0) {
+    		header_props.sizeBounds = /*object*/ ctx[33].sizeBounds;
     	}
 
     	const header = new Header({ props: header_props, $$inline: true });
@@ -2383,27 +2402,27 @@ var app = (function () {
     			ctx = new_ctx;
     			const header_changes = {};
     			if (dirty[0] & /*projectData*/ 32) header_changes.onDrag = func;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.posX = /*object*/ ctx[32].posX;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.posY = /*object*/ ctx[32].posY;
+    			if (dirty[0] & /*projectData*/ 32) header_changes.posX = /*object*/ ctx[33].posX;
+    			if (dirty[0] & /*projectData*/ 32) header_changes.posY = /*object*/ ctx[33].posY;
     			if (dirty[0] & /*viewX, mouseDrag*/ 65) header_changes.offX = (/*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x) / window.innerHeight * 50;
     			if (dirty[0] & /*viewY, mouseDrag*/ 66) header_changes.offY = (/*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y) / window.innerHeight * 50;
     			if (dirty[0] & /*viewZoom*/ 4) header_changes.zoom = /*viewZoom*/ ctx[2];
-    			if (dirty[0] & /*projectData*/ 32) header_changes.sizeX = /*object*/ ctx[32].sizeX;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.sizeY = /*object*/ ctx[32].sizeY;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.simX = /*object*/ ctx[32].simX;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.simY = /*object*/ ctx[32].simY;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.simResizeX = /*object*/ ctx[32].simResizeX;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.simResizeY = /*object*/ ctx[32].simResizeY;
+    			if (dirty[0] & /*projectData*/ 32) header_changes.sizeX = /*object*/ ctx[33].sizeX;
+    			if (dirty[0] & /*projectData*/ 32) header_changes.sizeY = /*object*/ ctx[33].sizeY;
+    			if (dirty[0] & /*projectData*/ 32) header_changes.simX = /*object*/ ctx[33].simX;
+    			if (dirty[0] & /*projectData*/ 32) header_changes.simY = /*object*/ ctx[33].simY;
+    			if (dirty[0] & /*projectData*/ 32) header_changes.simResizeX = /*object*/ ctx[33].simResizeX;
+    			if (dirty[0] & /*projectData*/ 32) header_changes.simResizeY = /*object*/ ctx[33].simResizeY;
 
     			if (!updating_text && dirty[0] & /*projectData*/ 32) {
     				updating_text = true;
-    				header_changes.text = /*object*/ ctx[32].text;
+    				header_changes.text = /*object*/ ctx[33].text;
     				add_flush_callback(() => updating_text = false);
     			}
 
     			if (!updating_sizeBounds && dirty[0] & /*projectData*/ 32) {
     				updating_sizeBounds = true;
-    				header_changes.sizeBounds = /*object*/ ctx[32].sizeBounds;
+    				header_changes.sizeBounds = /*object*/ ctx[33].sizeBounds;
     				add_flush_callback(() => updating_sizeBounds = false);
     			}
 
@@ -2427,57 +2446,57 @@ var app = (function () {
     		block,
     		id: create_each_block_1$1.name,
     		type: "each",
-    		source: "(354:12) {#each projectData.objects.header as object, index}",
+    		source: "(361:12) {#each projectData.objects.header as object, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (377:12) {#each projectData.objects.paragraph as object, index}
+    // (384:12) {#each projectData.objects.paragraph as object, index}
     function create_each_block$1(ctx) {
     	let updating_text;
     	let updating_sizeBounds;
     	let current;
 
     	function func_2(...args) {
-    		return /*func_2*/ ctx[27](/*index*/ ctx[34], /*object*/ ctx[32], ...args);
+    		return /*func_2*/ ctx[28](/*index*/ ctx[35], /*object*/ ctx[33], ...args);
     	}
 
     	function func_3(...args) {
-    		return /*func_3*/ ctx[28](/*index*/ ctx[34], ...args);
+    		return /*func_3*/ ctx[29](/*index*/ ctx[35], ...args);
     	}
 
     	function paragraph_text_binding(value) {
-    		/*paragraph_text_binding*/ ctx[29].call(null, value, /*object*/ ctx[32]);
+    		/*paragraph_text_binding*/ ctx[30].call(null, value, /*object*/ ctx[33]);
     	}
 
     	function paragraph_sizeBounds_binding(value) {
-    		/*paragraph_sizeBounds_binding*/ ctx[30].call(null, value, /*object*/ ctx[32]);
+    		/*paragraph_sizeBounds_binding*/ ctx[31].call(null, value, /*object*/ ctx[33]);
     	}
 
     	let paragraph_props = {
     		onDrag: func_2,
     		onResize: func_3,
-    		posX: /*object*/ ctx[32].posX,
-    		posY: /*object*/ ctx[32].posY,
+    		posX: /*object*/ ctx[33].posX,
+    		posY: /*object*/ ctx[33].posY,
     		offX: (/*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x) / window.innerHeight * 50,
     		offY: (/*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y) / window.innerHeight * 50,
     		zoom: /*viewZoom*/ ctx[2],
-    		sizeX: /*object*/ ctx[32].sizeX,
-    		sizeY: /*object*/ ctx[32].sizeY,
-    		simX: /*object*/ ctx[32].simX,
-    		simY: /*object*/ ctx[32].simY,
-    		simResizeX: /*object*/ ctx[32].simResizeX,
-    		simResizeY: /*object*/ ctx[32].simResizeY
+    		sizeX: /*object*/ ctx[33].sizeX,
+    		sizeY: /*object*/ ctx[33].sizeY,
+    		simX: /*object*/ ctx[33].simX,
+    		simY: /*object*/ ctx[33].simY,
+    		simResizeX: /*object*/ ctx[33].simResizeX,
+    		simResizeY: /*object*/ ctx[33].simResizeY
     	};
 
-    	if (/*object*/ ctx[32].text !== void 0) {
-    		paragraph_props.text = /*object*/ ctx[32].text;
+    	if (/*object*/ ctx[33].text !== void 0) {
+    		paragraph_props.text = /*object*/ ctx[33].text;
     	}
 
-    	if (/*object*/ ctx[32].sizeBounds !== void 0) {
-    		paragraph_props.sizeBounds = /*object*/ ctx[32].sizeBounds;
+    	if (/*object*/ ctx[33].sizeBounds !== void 0) {
+    		paragraph_props.sizeBounds = /*object*/ ctx[33].sizeBounds;
     	}
 
     	const paragraph = new Paragraph({ props: paragraph_props, $$inline: true });
@@ -2496,27 +2515,27 @@ var app = (function () {
     			ctx = new_ctx;
     			const paragraph_changes = {};
     			if (dirty[0] & /*projectData*/ 32) paragraph_changes.onDrag = func_2;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.posX = /*object*/ ctx[32].posX;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.posY = /*object*/ ctx[32].posY;
+    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.posX = /*object*/ ctx[33].posX;
+    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.posY = /*object*/ ctx[33].posY;
     			if (dirty[0] & /*viewX, mouseDrag*/ 65) paragraph_changes.offX = (/*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x) / window.innerHeight * 50;
     			if (dirty[0] & /*viewY, mouseDrag*/ 66) paragraph_changes.offY = (/*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y) / window.innerHeight * 50;
     			if (dirty[0] & /*viewZoom*/ 4) paragraph_changes.zoom = /*viewZoom*/ ctx[2];
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.sizeX = /*object*/ ctx[32].sizeX;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.sizeY = /*object*/ ctx[32].sizeY;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simX = /*object*/ ctx[32].simX;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simY = /*object*/ ctx[32].simY;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simResizeX = /*object*/ ctx[32].simResizeX;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simResizeY = /*object*/ ctx[32].simResizeY;
+    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.sizeX = /*object*/ ctx[33].sizeX;
+    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.sizeY = /*object*/ ctx[33].sizeY;
+    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simX = /*object*/ ctx[33].simX;
+    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simY = /*object*/ ctx[33].simY;
+    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simResizeX = /*object*/ ctx[33].simResizeX;
+    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simResizeY = /*object*/ ctx[33].simResizeY;
 
     			if (!updating_text && dirty[0] & /*projectData*/ 32) {
     				updating_text = true;
-    				paragraph_changes.text = /*object*/ ctx[32].text;
+    				paragraph_changes.text = /*object*/ ctx[33].text;
     				add_flush_callback(() => updating_text = false);
     			}
 
     			if (!updating_sizeBounds && dirty[0] & /*projectData*/ 32) {
     				updating_sizeBounds = true;
-    				paragraph_changes.sizeBounds = /*object*/ ctx[32].sizeBounds;
+    				paragraph_changes.sizeBounds = /*object*/ ctx[33].sizeBounds;
     				add_flush_callback(() => updating_sizeBounds = false);
     			}
 
@@ -2540,7 +2559,7 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(377:12) {#each projectData.objects.paragraph as object, index}",
+    		source: "(384:12) {#each projectData.objects.paragraph as object, index}",
     		ctx
     	});
 
@@ -2599,12 +2618,12 @@ var app = (function () {
     			set_style(div0, "background-position-x", /*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x + "px");
     			set_style(div0, "background-position-y", /*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y + "px");
     			set_style(div0, "background-size", 2 * /*viewZoom*/ ctx[2] + "vh");
-    			add_location(div0, file$5, 343, 12, 11276);
+    			add_location(div0, file$5, 350, 12, 11390);
     			attr_dev(div1, "class", "frame neuIndentShadow svelte-2tl4i1");
-    			add_render_callback(() => /*div1_elementresize_handler*/ ctx[31].call(div1));
-    			add_location(div1, file$5, 329, 4, 10881);
+    			add_render_callback(() => /*div1_elementresize_handler*/ ctx[32].call(div1));
+    			add_location(div1, file$5, 336, 4, 10995);
     			attr_dev(main, "class", "svelte-2tl4i1");
-    			add_location(main, file$5, 328, 0, 10869);
+    			add_location(main, file$5, 335, 0, 10983);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2624,7 +2643,7 @@ var app = (function () {
     				each_blocks[i].m(div0, null);
     			}
 
-    			div1_resize_listener = add_resize_listener(div1, /*div1_elementresize_handler*/ ctx[31].bind(div1));
+    			div1_resize_listener = add_resize_listener(div1, /*div1_elementresize_handler*/ ctx[32].bind(div1));
     			current = true;
 
     			dispose = [
@@ -2845,7 +2864,7 @@ var app = (function () {
     	};
 
     	function clearObjectDrag() {
-    		$$invalidate(17, objectDrag = {
+    		$$invalidate(18, objectDrag = {
     			"ongoing": false,
     			"start": { "x": 0, "y": 0 },
     			"delta": { "x": 0, "y": 0 },
@@ -2867,7 +2886,7 @@ var app = (function () {
     	};
 
     	function clearObjectResize() {
-    		$$invalidate(18, objectResize = {
+    		$$invalidate(19, objectResize = {
     			"ongoing": false,
     			"start": { "x": 0, "y": 0 },
     			"delta": { "x": 0, "y": 0 },
@@ -2893,14 +2912,14 @@ var app = (function () {
     		event.dataTransfer.setData("startY", event.clientY);
 
     		// Update objectDrag
-    		$$invalidate(17, objectDrag.ongoing = true, objectDrag);
+    		$$invalidate(18, objectDrag.ongoing = true, objectDrag);
 
-    		$$invalidate(17, objectDrag.start.x = event.clientX, objectDrag);
-    		$$invalidate(17, objectDrag.start.y = event.clientY, objectDrag);
-    		$$invalidate(17, objectDrag.objectInfo.type = type, objectDrag);
-    		$$invalidate(17, objectDrag.objectInfo.ID = index, objectDrag);
-    		$$invalidate(17, objectDrag.objectInfo.width = width, objectDrag);
-    		$$invalidate(17, objectDrag.objectInfo.height = height, objectDrag);
+    		$$invalidate(18, objectDrag.start.x = event.clientX, objectDrag);
+    		$$invalidate(18, objectDrag.start.y = event.clientY, objectDrag);
+    		$$invalidate(18, objectDrag.objectInfo.type = type, objectDrag);
+    		$$invalidate(18, objectDrag.objectInfo.ID = index, objectDrag);
+    		$$invalidate(18, objectDrag.objectInfo.width = width, objectDrag);
+    		$$invalidate(18, objectDrag.objectInfo.height = height, objectDrag);
     	}
 
     	function initObjectResize(event, type, index) {
@@ -2914,11 +2933,11 @@ var app = (function () {
     		event.dataTransfer.setData("command", "resize");
     		event.dataTransfer.setData("objectType", type);
     		event.dataTransfer.setData("objectID", index);
-    		$$invalidate(18, objectResize.start.x = event.clientX, objectResize);
-    		$$invalidate(18, objectResize.start.y = event.clientY, objectResize);
-    		$$invalidate(18, objectResize.objectInfo.type = type, objectResize);
-    		$$invalidate(18, objectResize.objectInfo.ID = index, objectResize);
-    		$$invalidate(18, objectResize.ongoing = true, objectResize);
+    		$$invalidate(19, objectResize.start.x = event.clientX, objectResize);
+    		$$invalidate(19, objectResize.start.y = event.clientY, objectResize);
+    		$$invalidate(19, objectResize.objectInfo.type = type, objectResize);
+    		$$invalidate(19, objectResize.objectInfo.ID = index, objectResize);
+    		$$invalidate(19, objectResize.ongoing = true, objectResize);
     	}
 
     	function dragOver(event) {
@@ -2927,20 +2946,20 @@ var app = (function () {
 
     		if (objectDrag.ongoing) {
     			// Update objectDrag
-    			$$invalidate(17, objectDrag.delta.x = Math.round((event.clientX - objectDrag.start.x) / vhConverter), objectDrag);
+    			$$invalidate(18, objectDrag.delta.x = Math.round((event.clientX - objectDrag.start.x) / vhConverter), objectDrag);
 
-    			$$invalidate(17, objectDrag.delta.y = Math.round((event.clientY - objectDrag.start.y) / vhConverter), objectDrag);
-    			$$invalidate(17, objectDrag.layer.x = event.layerX, objectDrag);
-    			$$invalidate(17, objectDrag.layer.y = event.layerY, objectDrag);
+    			$$invalidate(18, objectDrag.delta.y = Math.round((event.clientY - objectDrag.start.y) / vhConverter), objectDrag);
+    			$$invalidate(18, objectDrag.layer.x = event.layerX, objectDrag);
+    			$$invalidate(18, objectDrag.layer.y = event.layerY, objectDrag);
     			$$invalidate(5, projectData.objects[objectDrag.objectInfo.type][objectDrag.objectInfo.ID].simX = objectDrag.delta.x, projectData);
     			$$invalidate(5, projectData.objects[objectDrag.objectInfo.type][objectDrag.objectInfo.ID].simY = objectDrag.delta.y, projectData);
     		}
 
     		if (objectResize.ongoing) {
     			// Update objectResize
-    			$$invalidate(18, objectResize.delta.x = Math.round((event.clientX - objectResize.start.x) / vhConverter), objectResize);
+    			$$invalidate(19, objectResize.delta.x = Math.round((event.clientX - objectResize.start.x) / vhConverter), objectResize);
 
-    			$$invalidate(18, objectResize.delta.y = Math.round((event.clientY - objectResize.start.y) / vhConverter), objectResize);
+    			$$invalidate(19, objectResize.delta.y = Math.round((event.clientY - objectResize.start.y) / vhConverter), objectResize);
     			$$invalidate(5, projectData.objects[objectResize.objectInfo.type][objectResize.objectInfo.ID].simResizeX = objectResize.delta.x, projectData);
     			$$invalidate(5, projectData.objects[objectResize.objectInfo.type][objectResize.objectInfo.ID].simResizeY = objectResize.delta.y, projectData);
     		}
@@ -2955,10 +2974,10 @@ var app = (function () {
     				$$invalidate(5, projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].posY += Math.round((event.clientY - event.dataTransfer.getData("startY")) / (window.innerHeight / 100 * 2 * viewZoom)), projectData);
     				$$invalidate(5, projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].simX = 0, projectData);
     				$$invalidate(5, projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].simY = 0, projectData);
-    				$$invalidate(17, objectDrag.ongoing = false, objectDrag);
+    				$$invalidate(18, objectDrag.ongoing = false, objectDrag);
     				break;
     			case "resize":
-    				$$invalidate(18, objectResize.ongoing = false, objectResize);
+    				$$invalidate(19, objectResize.ongoing = false, objectResize);
     				let sizeX = projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeX;
     				let sizeY = projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeY;
     				let sizeBounds = projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeBounds;
@@ -2978,6 +2997,11 @@ var app = (function () {
 
     		clearObjectDrag();
     		clearObjectResize();
+    	}
+
+    	function centerView() {
+    		$$invalidate(0, viewX = 0);
+    		$$invalidate(1, viewY = 0);
     	}
 
     	const writable_props = ["debObjectDrag", "debObjectResize"];
@@ -3060,6 +3084,7 @@ var app = (function () {
     		initObjectResize,
     		dragOver,
     		drop,
+    		centerView,
     		Math,
     		document,
     		window,
@@ -3076,8 +3101,8 @@ var app = (function () {
     		if ("viewportWidth" in $$props) $$invalidate(4, viewportWidth = $$props.viewportWidth);
     		if ("projectData" in $$props) $$invalidate(5, projectData = $$props.projectData);
     		if ("mouseDrag" in $$props) $$invalidate(6, mouseDrag = $$props.mouseDrag);
-    		if ("objectDrag" in $$props) $$invalidate(17, objectDrag = $$props.objectDrag);
-    		if ("objectResize" in $$props) $$invalidate(18, objectResize = $$props.objectResize);
+    		if ("objectDrag" in $$props) $$invalidate(18, objectDrag = $$props.objectDrag);
+    		if ("objectResize" in $$props) $$invalidate(19, objectResize = $$props.objectResize);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -3085,7 +3110,7 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty[0] & /*objectDrag*/ 131072) {
+    		if ($$self.$$.dirty[0] & /*objectDrag*/ 262144) {
     			 $$invalidate(15, debObjectDrag = [
     				objectDrag.ongoing,
     				objectDrag.start.x,
@@ -3099,7 +3124,7 @@ var app = (function () {
     			]);
     		}
 
-    		if ($$self.$$.dirty[0] & /*objectResize*/ 262144) {
+    		if ($$self.$$.dirty[0] & /*objectResize*/ 524288) {
     			 $$invalidate(16, debObjectResize = [
     				objectResize.ongoing,
     				objectResize.start.x,
@@ -3130,6 +3155,7 @@ var app = (function () {
     		drop,
     		debObjectDrag,
     		debObjectResize,
+    		centerView,
     		objectDrag,
     		objectResize,
     		zoomBounds,
@@ -3151,7 +3177,20 @@ var app = (function () {
     class Viewport extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$5, create_fragment$5, safe_not_equal, { debObjectDrag: 15, debObjectResize: 16 }, [-1, -1]);
+
+    		init(
+    			this,
+    			options,
+    			instance$5,
+    			create_fragment$5,
+    			safe_not_equal,
+    			{
+    				debObjectDrag: 15,
+    				debObjectResize: 16,
+    				centerView: 17
+    			},
+    			[-1, -1]
+    		);
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -3185,6 +3224,14 @@ var app = (function () {
     	}
 
     	set debObjectResize(value) {
+    		throw new Error("<Viewport>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get centerView() {
+    		return this.$$.ctx[17];
+    	}
+
+    	set centerView(value) {
     		throw new Error("<Viewport>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -4161,12 +4208,12 @@ var app = (function () {
     /* src\App.svelte generated by Svelte v3.19.1 */
     const file$b = "src\\App.svelte";
 
-    // (49:3) {#if debugConsoleOpen}
+    // (60:3) {#if debugConsoleOpen}
     function create_if_block$2(ctx) {
     	let current;
 
     	const debugconsole = new DebugConsole({
-    			props: { info: /*debugContents*/ ctx[2] },
+    			props: { info: /*debugContents*/ ctx[3] },
     			$$inline: true
     		});
 
@@ -4180,7 +4227,7 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const debugconsole_changes = {};
-    			if (dirty & /*debugContents*/ 4) debugconsole_changes.info = /*debugContents*/ ctx[2];
+    			if (dirty & /*debugContents*/ 8) debugconsole_changes.info = /*debugContents*/ ctx[3];
     			debugconsole.$set(debugconsole_changes);
     		},
     		i: function intro(local) {
@@ -4201,7 +4248,7 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(49:3) {#if debugConsoleOpen}",
+    		source: "(60:3) {#if debugConsoleOpen}",
     		ctx
     	});
 
@@ -4221,18 +4268,21 @@ var app = (function () {
     	let current;
 
     	const topbar = new TopBar({
-    			props: { toggleDebugConsole: /*func*/ ctx[3] },
+    			props: {
+    				toggleDebugConsole: /*func*/ ctx[5],
+    				centerView: /*centerViewport*/ ctx[4]
+    			},
     			$$inline: true
     		});
 
     	const toolkit = new Toolkit({ $$inline: true });
 
     	function viewport_debObjectDrag_binding(value) {
-    		/*viewport_debObjectDrag_binding*/ ctx[4].call(null, value);
+    		/*viewport_debObjectDrag_binding*/ ctx[7].call(null, value);
     	}
 
     	function viewport_debObjectResize_binding(value) {
-    		/*viewport_debObjectResize_binding*/ ctx[5].call(null, value);
+    		/*viewport_debObjectResize_binding*/ ctx[8].call(null, value);
     	}
 
     	let viewport_props = {};
@@ -4246,6 +4296,7 @@ var app = (function () {
     	}
 
     	const viewport = new Viewport({ props: viewport_props, $$inline: true });
+    	/*viewport_binding*/ ctx[6](viewport);
     	binding_callbacks.push(() => bind(viewport, "debObjectDrag", viewport_debObjectDrag_binding));
     	binding_callbacks.push(() => bind(viewport, "debObjectResize", viewport_debObjectResize_binding));
     	let if_block = /*debugConsoleOpen*/ ctx[0] && create_if_block$2(ctx);
@@ -4266,11 +4317,11 @@ var app = (function () {
     			t3 = space();
     			create_component(nodeeditor.$$.fragment);
     			attr_dev(div0, "class", "centerRow svelte-7vtnx9");
-    			add_location(div0, file$b, 42, 2, 1372);
+    			add_location(div0, file$b, 51, 2, 1497);
     			attr_dev(div1, "class", "mainLayout svelte-7vtnx9");
-    			add_location(div1, file$b, 38, 1, 1257);
+    			add_location(div1, file$b, 46, 1, 1350);
     			attr_dev(main, "class", "svelte-7vtnx9");
-    			add_location(main, file$b, 37, 0, 1248);
+    			add_location(main, file$b, 45, 0, 1341);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4292,7 +4343,7 @@ var app = (function () {
     		},
     		p: function update(ctx, [dirty]) {
     			const topbar_changes = {};
-    			if (dirty & /*debugConsoleOpen*/ 1) topbar_changes.toggleDebugConsole = /*func*/ ctx[3];
+    			if (dirty & /*debugConsoleOpen*/ 1) topbar_changes.toggleDebugConsole = /*func*/ ctx[5];
     			topbar.$set(topbar_changes);
     			const viewport_changes = {};
 
@@ -4351,6 +4402,7 @@ var app = (function () {
     			if (detaching) detach_dev(main);
     			destroy_component(topbar);
     			destroy_component(toolkit);
+    			/*viewport_binding*/ ctx[6](null);
     			destroy_component(viewport);
     			if (if_block) if_block.d();
     			destroy_component(nodeeditor);
@@ -4371,10 +4423,21 @@ var app = (function () {
     function instance$a($$self, $$props, $$invalidate) {
     	let debugConsoleOpen = false;
     	let debugInfo = { "objectDrag": [], "objectResize": [] };
+    	let viewportRef;
+
+    	function centerViewport() {
+    		viewportRef.centerView();
+    	}
 
     	const func = () => {
     		$$invalidate(0, debugConsoleOpen = !debugConsoleOpen);
     	};
+
+    	function viewport_binding($$value) {
+    		binding_callbacks[$$value ? "unshift" : "push"](() => {
+    			$$invalidate(2, viewportRef = $$value);
+    		});
+    	}
 
     	function viewport_debObjectDrag_binding(value) {
     		debugInfo.objectDrag = value;
@@ -4394,13 +4457,16 @@ var app = (function () {
     		DebugConsole,
     		debugConsoleOpen,
     		debugInfo,
+    		viewportRef,
+    		centerViewport,
     		debugContents
     	});
 
     	$$self.$inject_state = $$props => {
     		if ("debugConsoleOpen" in $$props) $$invalidate(0, debugConsoleOpen = $$props.debugConsoleOpen);
     		if ("debugInfo" in $$props) $$invalidate(1, debugInfo = $$props.debugInfo);
-    		if ("debugContents" in $$props) $$invalidate(2, debugContents = $$props.debugContents);
+    		if ("viewportRef" in $$props) $$invalidate(2, viewportRef = $$props.viewportRef);
+    		if ("debugContents" in $$props) $$invalidate(3, debugContents = $$props.debugContents);
     	};
 
     	let debugContents;
@@ -4411,7 +4477,7 @@ var app = (function () {
 
     	$$self.$$.update = () => {
     		if ($$self.$$.dirty & /*debugInfo*/ 2) {
-    			 $$invalidate(2, debugContents = [
+    			 $$invalidate(3, debugContents = [
     				"::Object Drag::",
     				"Ongoing:" + debugInfo.objectDrag[0],
     				"StartX:" + debugInfo.objectDrag[1],
@@ -4438,8 +4504,11 @@ var app = (function () {
     	return [
     		debugConsoleOpen,
     		debugInfo,
+    		viewportRef,
     		debugContents,
+    		centerViewport,
     		func,
+    		viewport_binding,
     		viewport_debObjectDrag_binding,
     		viewport_debObjectResize_binding
     	];

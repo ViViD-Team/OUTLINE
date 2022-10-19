@@ -6,6 +6,8 @@
 
     let selected = null;
 
+    export let centerView;
+
     const config = [
         {
             "label": "File",
@@ -33,7 +35,7 @@
             "cmds": [
                 {
                     "label": "Center",
-                    "func": function () {}
+                    "func": centerView
                 },
                 {
                     "label": "Reset Zoom",
