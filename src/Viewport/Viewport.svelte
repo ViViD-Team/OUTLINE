@@ -2,6 +2,8 @@
     import Header from "./Components/Header.svelte"
     import Paragraph from "./Components/Paragraph.svelte"
 
+    import Table from "./Components/Table.svelte"
+
     // Exports
     export let debObjectDrag, debObjectResize;
 
@@ -41,6 +43,10 @@ const   zoomBounds = [.2, 3]
             "paragraph": [
 
             ],
+
+            "table": [
+
+            ],
         }
     }
 
@@ -63,6 +69,19 @@ const   zoomBounds = [.2, 3]
             "posY": 0,
             "sizeX": 8,
             "sizeY": 8,
+            "simX": 0,
+            "simY": 0,
+            "simResizeX": 0,
+            "simResizeY": 0,
+            "sizeBounds": [],
+        },
+
+        "table": {
+            "title": "New Table",
+            "posX": 0,
+            "posY": 0,
+            "sizeX": 25,
+            "sizeY": 20,
             "simX": 0,
             "simY": 0,
             "simResizeX": 0,
@@ -334,6 +353,9 @@ const   zoomBounds = [.2, 3]
 
 
 <main>
+
+    <!-- Ellens requested a waypoint system kek -->
+
     <div
         class="frame neuIndentShadow"
 
@@ -388,6 +410,29 @@ const   zoomBounds = [.2, 3]
 
                     onDrag={(event) => {initObjectDrag(event, "paragraph", index, object.sizeX, object.sizeY)}}
                     onResize={(event) => {initObjectResize(event, "paragraph", index)}}
+
+                    posX={object.posX}
+                    posY={object.posY}
+                    offX={(viewX + mouseDrag.delta.x) / window.innerHeight * 50}
+                    offY={(viewY + mouseDrag.delta.y) / window.innerHeight * 50}
+                    zoom={viewZoom}
+                    sizeX={object.sizeX}
+                    sizeY={object.sizeY}
+
+                    simX={object.simX}
+                    simY={object.simY}
+                    simResizeX={object.simResizeX}
+                    simResizeY={object.simResizeY}
+                />
+            {/each}
+
+            {#each projectData.objects.table as object, index}
+                <Table
+                    bind:title={object.title}
+                    bind:sizeBounds={object.sizeBounds}
+
+                    onDrag={(event) => {initObjectDrag(event, "table", index, object.sizeX, object.sizeY)}}
+                    onResize={(event) => {initObjectResize(event, "table", index)}}
 
                     posX={object.posX}
                     posY={object.posY}

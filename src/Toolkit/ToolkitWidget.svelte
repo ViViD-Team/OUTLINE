@@ -1,6 +1,8 @@
 <script>
     export let label = "unknown";
 
+    export let animationDelay = 0;
+
     export let objectType;
 
     function initDrag(event) {
@@ -34,6 +36,8 @@
 
         display: flex;
         flex-direction: column;
+
+        animation: flyInFromLeft .5s cubic-bezier(0, 0, 0, .9) both;
     }
 
     .svgContainer {

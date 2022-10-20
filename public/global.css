@@ -85,3 +85,11 @@ html, body {
 		inset .4vh .4vh .4vh 0 var(--absolute-white)
     ;
 }
+
+
+@keyframes flyInFromLeft {
+	from {
+		transform: translateX(-2vh);
+		opacity: 0;
+	}
+}

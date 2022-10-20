@@ -38,9 +38,6 @@
 
     main:hover h1 {
         transform: translateY(-.2vh);
-    }
-
-    h1:hover {
         color: var(--orange);
     }
 </style>

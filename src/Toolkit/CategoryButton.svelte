@@ -35,6 +35,8 @@
         overflow: hidden;
 
         cursor: pointer;
+        
+        margin: 2vh 0 2vh 0;
     }
 
     main:hover {
