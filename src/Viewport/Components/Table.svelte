@@ -1,8 +1,13 @@
 <script>
+    import { each } from "svelte/internal";
+
+
     // OBJECT SPECIFIC
     export const sizeBounds = [ /* X */ [10, 50], /* Y */ [10, 50]]
 
     export let title;
+
+    export let numCols = 4, numRows = 9;
 
 
     export let sizeX = 5;
@@ -55,9 +60,50 @@
         ">Title</h1>
     </div>
 
-    <div class="contents">
 
+    <div class="contents">
+        <div class="tableGrid">
+            <!-- TODO: Refactor -->
+            <div class="rowIndicatorContainer">
+                {#each Array(numRows) as y}
+                    <div class="rowIndicator" style="
+                        height: {3*zoom}vh;
+
+                        border-top-left-radius: {.5*zoom}vh;
+                        border-bottom-left-radius: {.5*zoom}vh;
+                    ">
+                        
+                    </div>
+                {/each}
+            </div>
+
+            {#each Array(numCols) as x}
+                <div class="tableGridColumn" style="
+                    width: {10*zoom}vh;
+                ">
+                <div class="columnIndicator" style="
+                    border-top-left-radius: {.5*zoom}vh;
+                    border-top-right-radius: {.5*zoom}vh;
+                ">
+
+                </div>
+
+                    {#each Array(numRows) as y}
+                        <div class="tableCell neuIndentShadowNarrow" style="
+                            height: {3*zoom}vh;
+
+                            border-radius: {.5*zoom}vh;
+                        ">
+
+                        </div>
+                    {/each}
+                </div>
+            {/each}
+        </div>
     </div>
+
+
+
 
     <div 
         class="dragHandle"
@@ -117,11 +163,81 @@
         display: flex;
         align-items: center;
         justify-items: flex-start;
+
+        flex-shrink: 0;
     }
 
     .contents {
         width: 100%;
         height: 100%;
+
+        display: grid;
+        place-items: center;
+    }
+
+    .tableGrid {
+        width: calc(100% - 2vh);
+        height: calc(100% - 2vh);
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        overflow: hidden;
+    }
+
+    .tableGridColumn {
+
+        margin: 0 .2vh 0 .2vh;
+
+        flex-shrink: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .columnIndicator {
+        height: 2vh;
+        width: 100%;
+
+        margin-bottom: .5vh;
+
+        background-color: var(--red);
+    }
+
+    .rowIndicatorContainer {
+        width: 2vh;
+        height: 100%;
+        margin-top: 2vh;
+        margin-right: .5vh;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .rowIndicator {
+        width: 100%;
+
+        background-color: var(--red);
+        
+        margin: .2vh 0 .2vh 0;
+    }
+
+    .tableCell {
+        cursor: pointer;
+
+        width: 100%;
+
+        margin: .2vh 0 .2vh 0;
+
+        flex-shrink: 0;
+
+        background-color: var(--white);
     }
 
     h1 {
@@ -182,7 +298,7 @@
     }
 
     .dragHandle svg {
-        fill: var(--black);
+        fill: var(--white);
         width: 50%;
     }
 </style>

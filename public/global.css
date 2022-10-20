@@ -41,6 +41,15 @@ html, body {
     ;
 }
 
+.neuIndentShadowNarrow {
+	box-shadow: 
+		.1vh .1vh .1vh 0 var(--absolute-white),
+		inset -.1vh -.1vh .1vh 0 var(--absolute-white),
+		-.1vh -.1vh .1vh 0 var(--grey),
+		inset .1vh .1vh .1vh 0 var(--grey)
+    ;
+}
+
 .neuIndentShadowLight {
 	box-shadow: 
 		.4vh .4vh .4vh 0 var(--absolute-white),
