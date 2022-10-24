@@ -341,6 +341,12 @@ const   zoomBounds = [.2, 3]
         clearObjectResize();
     }
 
+    function deleteObject(type, index) {
+        projectData.objects[type].splice(index, 1);
+
+        projectData.objects[type] = Object.assign([], projectData.objects[type]);
+    }
+
     // EXPORTED FUNCTIONS
 
     export function centerView() {
@@ -387,6 +393,7 @@ const   zoomBounds = [.2, 3]
 
                     onDrag={(event) => {initObjectDrag(event, "header", index, object.sizeX, object.sizeY)}}
                     onResize={(event) => {initObjectResize(event, "header", index)}}
+                    onDelete={() => {deleteObject("header", index)}}
 
                     posX={object.posX}
                     posY={object.posY}
@@ -410,6 +417,7 @@ const   zoomBounds = [.2, 3]
 
                     onDrag={(event) => {initObjectDrag(event, "paragraph", index, object.sizeX, object.sizeY)}}
                     onResize={(event) => {initObjectResize(event, "paragraph", index)}}
+                    onDelete={() => {deleteObject("paragraph", index)}}
 
                     posX={object.posX}
                     posY={object.posY}
@@ -433,6 +441,7 @@ const   zoomBounds = [.2, 3]
 
                     onDrag={(event) => {initObjectDrag(event, "table", index, object.sizeX, object.sizeY)}}
                     onResize={(event) => {initObjectResize(event, "table", index)}}
+                    onDelete={() => {deleteObject("table", index)}}
 
                     posX={object.posX}
                     posY={object.posY}

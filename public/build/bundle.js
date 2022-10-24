@@ -247,13 +247,6 @@ var app = (function () {
     }
 
     const globals = (typeof window !== 'undefined' ? window : global);
-    function each(items, fn) {
-        let str = '';
-        for (let i = 0; i < items.length; i += 1) {
-            str += fn(items[i], i);
-        }
-        return str;
-    }
 
     function bind(component, name, callback) {
         const index = component.$$.props[name];
@@ -1380,6 +1373,10 @@ var app = (function () {
     	let div1;
     	let svg1;
     	let path1;
+    	let t3;
+    	let div2;
+    	let svg2;
+    	let path2;
     	let dispose;
 
     	const block = {
@@ -1395,43 +1392,57 @@ var app = (function () {
     			div1 = element("div");
     			svg1 = svg_element("svg");
     			path1 = svg_element("path");
+    			t3 = space();
+    			div2 = element("div");
+    			svg2 = svg_element("svg");
+    			path2 = svg_element("path");
     			attr_dev(h1, "contenteditable", "true");
     			set_style(h1, "font-size", 3 * /*zoom*/ ctx[8] + "vh");
     			set_style(h1, "min-height", 2 * /*zoom*/ ctx[8] + "vh");
     			set_style(h1, "min-width", /*sizeX*/ ctx[2] * /*zoom*/ ctx[8] + "vh");
-    			attr_dev(h1, "class", "svelte-r2khy6");
-    			if (/*text*/ ctx[0] === void 0) add_render_callback(() => /*h1_input_handler*/ ctx[17].call(h1));
-    			add_location(h1, file$3, 47, 4, 1061);
+    			attr_dev(h1, "class", "svelte-1dxmul8");
+    			if (/*text*/ ctx[0] === void 0) add_render_callback(() => /*h1_input_handler*/ ctx[19].call(h1));
+    			add_location(h1, file$3, 52, 4, 1148);
     			attr_dev(path0, "d", "M278.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l9.4-9.4V224H109.3l9.4-9.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-9.4-9.4H224V402.7l-9.4-9.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-9.4 9.4V288H402.7l-9.4 9.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3l-64-64c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l9.4 9.4H288V109.3l9.4 9.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-64-64z");
-    			add_location(path0, file$3, 63, 238, 1686);
+    			add_location(path0, file$3, 68, 238, 1773);
     			attr_dev(svg0, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg0, "viewBox", "0 0 512 512");
-    			attr_dev(svg0, "class", "svelte-r2khy6");
-    			add_location(svg0, file$3, 63, 8, 1456);
-    			attr_dev(div0, "class", "dragHandle svelte-r2khy6");
+    			attr_dev(svg0, "class", "svelte-1dxmul8");
+    			add_location(svg0, file$3, 68, 8, 1543);
+    			attr_dev(div0, "class", "dragHandle svelte-1dxmul8");
     			attr_dev(div0, "draggable", "true");
     			set_style(div0, "width", 3 * /*zoom*/ ctx[8] + "vh");
     			set_style(div0, "height", 3 * /*zoom*/ ctx[8] + "vh");
-    			add_location(div0, file$3, 53, 4, 1254);
-    			attr_dev(path1, "d", "M32 288c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 288zm0-128c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 160z");
-    			add_location(path1, file$3, 76, 238, 2800);
+    			add_location(div0, file$3, 58, 4, 1341);
+    			attr_dev(path1, "d", "M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z");
+    			add_location(path1, file$3, 80, 238, 2869);
     			attr_dev(svg1, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg1, "viewBox", "0 0 448 512");
-    			attr_dev(svg1, "class", "svelte-r2khy6");
-    			add_location(svg1, file$3, 76, 8, 2570);
-    			attr_dev(div1, "class", "resizeHandle svelte-r2khy6");
-    			attr_dev(div1, "draggable", "true");
+    			attr_dev(svg1, "class", "svelte-1dxmul8");
+    			add_location(svg1, file$3, 80, 8, 2639);
+    			attr_dev(div1, "class", "deleteAction svelte-1dxmul8");
     			set_style(div1, "width", 3 * /*zoom*/ ctx[8] + "vh");
     			set_style(div1, "height", 3 * /*zoom*/ ctx[8] + "vh");
-    			add_location(div1, file$3, 66, 4, 2365);
+    			add_location(div1, file$3, 71, 4, 2452);
+    			attr_dev(path2, "d", "M32 288c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 288zm0-128c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 160z");
+    			add_location(path2, file$3, 93, 238, 3596);
+    			attr_dev(svg2, "xmlns", "http://www.w3.org/2000/svg");
+    			attr_dev(svg2, "viewBox", "0 0 448 512");
+    			attr_dev(svg2, "class", "svelte-1dxmul8");
+    			add_location(svg2, file$3, 93, 8, 3366);
+    			attr_dev(div2, "class", "resizeHandle svelte-1dxmul8");
+    			attr_dev(div2, "draggable", "true");
+    			set_style(div2, "width", 3 * /*zoom*/ ctx[8] + "vh");
+    			set_style(div2, "height", 3 * /*zoom*/ ctx[8] + "vh");
+    			add_location(div2, file$3, 83, 4, 3161);
     			set_style(main, "left", ((/*posX*/ ctx[4] + /*simX*/ ctx[9]) * /*zoom*/ ctx[8] + /*offX*/ ctx[6]) * 2 + "vh");
     			set_style(main, "top", ((/*posY*/ ctx[5] + /*simY*/ ctx[10]) * /*zoom*/ ctx[8] + /*offY*/ ctx[7]) * 2 + "vh");
     			set_style(main, "width", Math.max(/*sizeBounds*/ ctx[1][0][0], Math.min(/*sizeX*/ ctx[2] + /*simResizeX*/ ctx[11], /*sizeBounds*/ ctx[1][0][1])) * 2 * /*zoom*/ ctx[8] + "vh");
     			set_style(main, "height", Math.max(/*sizeBounds*/ ctx[1][1][0], Math.min(/*sizeY*/ ctx[3] + /*simResizeY*/ ctx[12], /*sizeBounds*/ ctx[1][1][1])) * 2 * /*zoom*/ ctx[8] + "vh");
     			set_style(main, "border-radius", 1.5 * /*zoom*/ ctx[8] + "vh");
     			set_style(main, "transition", "border-radius .2s cubic-bezier(0, 0, 0, .9),\r\n");
-    			attr_dev(main, "class", "svelte-r2khy6");
-    			add_location(main, file$3, 34, 0, 613);
+    			attr_dev(main, "class", "svelte-1dxmul8");
+    			add_location(main, file$3, 39, 0, 700);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1453,11 +1464,16 @@ var app = (function () {
     			append_dev(main, div1);
     			append_dev(div1, svg1);
     			append_dev(svg1, path1);
+    			append_dev(main, t3);
+    			append_dev(main, div2);
+    			append_dev(div2, svg2);
+    			append_dev(svg2, path2);
 
     			dispose = [
-    				listen_dev(h1, "input", /*h1_input_handler*/ ctx[17]),
+    				listen_dev(h1, "input", /*h1_input_handler*/ ctx[19]),
     				listen_dev(div0, "dragstart", /*drag*/ ctx[13], false, false, false),
-    				listen_dev(div1, "dragstart", /*resize*/ ctx[14], false, false, false)
+    				listen_dev(div1, "click", /*handleDelete*/ ctx[15], false, false, false),
+    				listen_dev(div2, "dragstart", /*resize*/ ctx[14], false, false, false)
     			];
     		},
     		p: function update(ctx, [dirty]) {
@@ -1491,6 +1507,14 @@ var app = (function () {
 
     			if (dirty & /*zoom*/ 256) {
     				set_style(div1, "height", 3 * /*zoom*/ ctx[8] + "vh");
+    			}
+
+    			if (dirty & /*zoom*/ 256) {
+    				set_style(div2, "width", 3 * /*zoom*/ ctx[8] + "vh");
+    			}
+
+    			if (dirty & /*zoom*/ 256) {
+    				set_style(div2, "height", 3 * /*zoom*/ ctx[8] + "vh");
     			}
 
     			if (dirty & /*posX, simX, zoom, offX*/ 848) {
@@ -1548,6 +1572,7 @@ var app = (function () {
     	let { simResizeY } = $$props;
     	let { onDrag } = $$props;
     	let { onResize } = $$props;
+    	let { onDelete } = $$props;
 
     	function drag(event) {
     		onDrag(event);
@@ -1555,6 +1580,10 @@ var app = (function () {
 
     	function resize(event) {
     		onResize(event);
+    	}
+
+    	function handleDelete() {
+    		onDelete();
     	}
 
     	const writable_props = [
@@ -1571,7 +1600,8 @@ var app = (function () {
     		"simResizeX",
     		"simResizeY",
     		"onDrag",
-    		"onResize"
+    		"onResize",
+    		"onDelete"
     	];
 
     	Object.keys($$props).forEach(key => {
@@ -1596,8 +1626,9 @@ var app = (function () {
     		if ("simY" in $$props) $$invalidate(10, simY = $$props.simY);
     		if ("simResizeX" in $$props) $$invalidate(11, simResizeX = $$props.simResizeX);
     		if ("simResizeY" in $$props) $$invalidate(12, simResizeY = $$props.simResizeY);
-    		if ("onDrag" in $$props) $$invalidate(15, onDrag = $$props.onDrag);
-    		if ("onResize" in $$props) $$invalidate(16, onResize = $$props.onResize);
+    		if ("onDrag" in $$props) $$invalidate(16, onDrag = $$props.onDrag);
+    		if ("onResize" in $$props) $$invalidate(17, onResize = $$props.onResize);
+    		if ("onDelete" in $$props) $$invalidate(18, onDelete = $$props.onDelete);
     	};
 
     	$$self.$capture_state = () => ({
@@ -1616,8 +1647,10 @@ var app = (function () {
     		simResizeY,
     		onDrag,
     		onResize,
+    		onDelete,
     		drag,
-    		resize
+    		resize,
+    		handleDelete
     	});
 
     	$$self.$inject_state = $$props => {
@@ -1633,8 +1666,9 @@ var app = (function () {
     		if ("simY" in $$props) $$invalidate(10, simY = $$props.simY);
     		if ("simResizeX" in $$props) $$invalidate(11, simResizeX = $$props.simResizeX);
     		if ("simResizeY" in $$props) $$invalidate(12, simResizeY = $$props.simResizeY);
-    		if ("onDrag" in $$props) $$invalidate(15, onDrag = $$props.onDrag);
-    		if ("onResize" in $$props) $$invalidate(16, onResize = $$props.onResize);
+    		if ("onDrag" in $$props) $$invalidate(16, onDrag = $$props.onDrag);
+    		if ("onResize" in $$props) $$invalidate(17, onResize = $$props.onResize);
+    		if ("onDelete" in $$props) $$invalidate(18, onDelete = $$props.onDelete);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -1657,8 +1691,10 @@ var app = (function () {
     		simResizeY,
     		drag,
     		resize,
+    		handleDelete,
     		onDrag,
     		onResize,
+    		onDelete,
     		h1_input_handler
     	];
     }
@@ -1681,8 +1717,9 @@ var app = (function () {
     			simY: 10,
     			simResizeX: 11,
     			simResizeY: 12,
-    			onDrag: 15,
-    			onResize: 16
+    			onDrag: 16,
+    			onResize: 17,
+    			onDelete: 18
     		});
 
     		dispatch_dev("SvelteRegisterComponent", {
@@ -1715,12 +1752,16 @@ var app = (function () {
     			console.warn("<Header> was created without expected prop 'simResizeY'");
     		}
 
-    		if (/*onDrag*/ ctx[15] === undefined && !("onDrag" in props)) {
+    		if (/*onDrag*/ ctx[16] === undefined && !("onDrag" in props)) {
     			console.warn("<Header> was created without expected prop 'onDrag'");
     		}
 
-    		if (/*onResize*/ ctx[16] === undefined && !("onResize" in props)) {
+    		if (/*onResize*/ ctx[17] === undefined && !("onResize" in props)) {
     			console.warn("<Header> was created without expected prop 'onResize'");
+    		}
+
+    		if (/*onDelete*/ ctx[18] === undefined && !("onDelete" in props)) {
+    			console.warn("<Header> was created without expected prop 'onDelete'");
     		}
     	}
 
@@ -1843,6 +1884,14 @@ var app = (function () {
     	set onResize(value) {
     		throw new Error("<Header>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
+
+    	get onDelete() {
+    		throw new Error("<Header>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set onDelete(value) {
+    		throw new Error("<Header>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
     }
 
     /* src\Viewport\Components\Paragraph.svelte generated by Svelte v3.19.1 */
@@ -1861,6 +1910,10 @@ var app = (function () {
     	let div1;
     	let svg1;
     	let path1;
+    	let t3;
+    	let div2;
+    	let svg2;
+    	let path2;
     	let dispose;
 
     	const block = {
@@ -1876,43 +1929,57 @@ var app = (function () {
     			div1 = element("div");
     			svg1 = svg_element("svg");
     			path1 = svg_element("path");
+    			t3 = space();
+    			div2 = element("div");
+    			svg2 = svg_element("svg");
+    			path2 = svg_element("path");
     			attr_dev(p, "contenteditable", "true");
     			set_style(p, "font-size", 2 * /*zoom*/ ctx[8] + "vh");
     			set_style(p, "min-height", 2 * /*zoom*/ ctx[8] + "vh");
     			set_style(p, "min-width", /*sizeX*/ ctx[2] * /*zoom*/ ctx[8] + "vh");
-    			attr_dev(p, "class", "svelte-19u1qtq");
-    			if (/*text*/ ctx[0] === void 0) add_render_callback(() => /*p_input_handler*/ ctx[17].call(p));
-    			add_location(p, file$4, 46, 4, 1080);
+    			attr_dev(p, "class", "svelte-rj3s81");
+    			if (/*text*/ ctx[0] === void 0) add_render_callback(() => /*p_input_handler*/ ctx[19].call(p));
+    			add_location(p, file$4, 52, 4, 1173);
     			attr_dev(path0, "d", "M278.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l9.4-9.4V224H109.3l9.4-9.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-9.4-9.4H224V402.7l-9.4-9.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-9.4 9.4V288H402.7l-9.4 9.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3l-64-64c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l9.4 9.4H288V109.3l9.4 9.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-64-64z");
-    			add_location(path0, file$4, 62, 238, 1703);
+    			add_location(path0, file$4, 68, 238, 1796);
     			attr_dev(svg0, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg0, "viewBox", "0 0 512 512");
-    			attr_dev(svg0, "class", "svelte-19u1qtq");
-    			add_location(svg0, file$4, 62, 8, 1473);
-    			attr_dev(div0, "class", "dragHandle svelte-19u1qtq");
+    			attr_dev(svg0, "class", "svelte-rj3s81");
+    			add_location(svg0, file$4, 68, 8, 1566);
+    			attr_dev(div0, "class", "dragHandle svelte-rj3s81");
     			attr_dev(div0, "draggable", "true");
     			set_style(div0, "width", 3 * /*zoom*/ ctx[8] + "vh");
     			set_style(div0, "height", 3 * /*zoom*/ ctx[8] + "vh");
-    			add_location(div0, file$4, 52, 4, 1271);
-    			attr_dev(path1, "d", "M32 288c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 288zm0-128c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 160z");
-    			add_location(path1, file$4, 75, 238, 2817);
+    			add_location(div0, file$4, 58, 4, 1364);
+    			attr_dev(path1, "d", "M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z");
+    			add_location(path1, file$4, 80, 238, 2892);
     			attr_dev(svg1, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg1, "viewBox", "0 0 448 512");
-    			attr_dev(svg1, "class", "svelte-19u1qtq");
-    			add_location(svg1, file$4, 75, 8, 2587);
-    			attr_dev(div1, "class", "resizeHandle svelte-19u1qtq");
-    			attr_dev(div1, "draggable", "true");
+    			attr_dev(svg1, "class", "svelte-rj3s81");
+    			add_location(svg1, file$4, 80, 8, 2662);
+    			attr_dev(div1, "class", "deleteAction svelte-rj3s81");
     			set_style(div1, "width", 3 * /*zoom*/ ctx[8] + "vh");
     			set_style(div1, "height", 3 * /*zoom*/ ctx[8] + "vh");
-    			add_location(div1, file$4, 65, 4, 2382);
-    			attr_dev(main, "class", "neuIndentShadow svelte-19u1qtq");
+    			add_location(div1, file$4, 71, 4, 2475);
+    			attr_dev(path2, "d", "M32 288c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 288zm0-128c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 160z");
+    			add_location(path2, file$4, 93, 238, 3619);
+    			attr_dev(svg2, "xmlns", "http://www.w3.org/2000/svg");
+    			attr_dev(svg2, "viewBox", "0 0 448 512");
+    			attr_dev(svg2, "class", "svelte-rj3s81");
+    			add_location(svg2, file$4, 93, 8, 3389);
+    			attr_dev(div2, "class", "resizeHandle svelte-rj3s81");
+    			attr_dev(div2, "draggable", "true");
+    			set_style(div2, "width", 3 * /*zoom*/ ctx[8] + "vh");
+    			set_style(div2, "height", 3 * /*zoom*/ ctx[8] + "vh");
+    			add_location(div2, file$4, 83, 4, 3184);
+    			attr_dev(main, "class", "neuIndentShadow svelte-rj3s81");
     			set_style(main, "left", ((/*posX*/ ctx[4] + /*simX*/ ctx[9]) * /*zoom*/ ctx[8] + /*offX*/ ctx[6]) * 2 + "vh");
     			set_style(main, "top", ((/*posY*/ ctx[5] + /*simY*/ ctx[10]) * /*zoom*/ ctx[8] + /*offY*/ ctx[7]) * 2 + "vh");
     			set_style(main, "width", Math.max(/*sizeBounds*/ ctx[1][0][0], Math.min(/*sizeX*/ ctx[2] + /*simResizeX*/ ctx[11], /*sizeBounds*/ ctx[1][0][1])) * 2 * /*zoom*/ ctx[8] + "vh");
     			set_style(main, "height", Math.max(/*sizeBounds*/ ctx[1][1][0], Math.min(/*sizeY*/ ctx[3] + /*simResizeY*/ ctx[12], /*sizeBounds*/ ctx[1][1][1])) * 2 * /*zoom*/ ctx[8] + "vh");
     			set_style(main, "border-radius", 1.5 * /*zoom*/ ctx[8] + "vh");
     			set_style(main, "transition", "border-radius .2s cubic-bezier(0, 0, 0, .9),\r\n");
-    			add_location(main, file$4, 33, 0, 608);
+    			add_location(main, file$4, 39, 0, 701);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1934,11 +2001,16 @@ var app = (function () {
     			append_dev(main, div1);
     			append_dev(div1, svg1);
     			append_dev(svg1, path1);
+    			append_dev(main, t3);
+    			append_dev(main, div2);
+    			append_dev(div2, svg2);
+    			append_dev(svg2, path2);
 
     			dispose = [
-    				listen_dev(p, "input", /*p_input_handler*/ ctx[17]),
+    				listen_dev(p, "input", /*p_input_handler*/ ctx[19]),
     				listen_dev(div0, "dragstart", /*drag*/ ctx[13], false, false, false),
-    				listen_dev(div1, "dragstart", /*resize*/ ctx[14], false, false, false)
+    				listen_dev(div1, "click", /*handleDelete*/ ctx[15], false, false, false),
+    				listen_dev(div2, "dragstart", /*resize*/ ctx[14], false, false, false)
     			];
     		},
     		p: function update(ctx, [dirty]) {
@@ -1972,6 +2044,14 @@ var app = (function () {
 
     			if (dirty & /*zoom*/ 256) {
     				set_style(div1, "height", 3 * /*zoom*/ ctx[8] + "vh");
+    			}
+
+    			if (dirty & /*zoom*/ 256) {
+    				set_style(div2, "width", 3 * /*zoom*/ ctx[8] + "vh");
+    			}
+
+    			if (dirty & /*zoom*/ 256) {
+    				set_style(div2, "height", 3 * /*zoom*/ ctx[8] + "vh");
     			}
 
     			if (dirty & /*posX, simX, zoom, offX*/ 848) {
@@ -2029,6 +2109,7 @@ var app = (function () {
     	let { simResizeY } = $$props;
     	let { onDrag } = $$props;
     	let { onResize } = $$props;
+    	let { onDelete } = $$props;
 
     	function drag(event) {
     		onDrag(event);
@@ -2036,6 +2117,10 @@ var app = (function () {
 
     	function resize(event) {
     		onResize(event);
+    	}
+
+    	function handleDelete() {
+    		onDelete();
     	}
 
     	const writable_props = [
@@ -2052,7 +2137,8 @@ var app = (function () {
     		"simResizeX",
     		"simResizeY",
     		"onDrag",
-    		"onResize"
+    		"onResize",
+    		"onDelete"
     	];
 
     	Object.keys($$props).forEach(key => {
@@ -2077,8 +2163,9 @@ var app = (function () {
     		if ("simY" in $$props) $$invalidate(10, simY = $$props.simY);
     		if ("simResizeX" in $$props) $$invalidate(11, simResizeX = $$props.simResizeX);
     		if ("simResizeY" in $$props) $$invalidate(12, simResizeY = $$props.simResizeY);
-    		if ("onDrag" in $$props) $$invalidate(15, onDrag = $$props.onDrag);
-    		if ("onResize" in $$props) $$invalidate(16, onResize = $$props.onResize);
+    		if ("onDrag" in $$props) $$invalidate(16, onDrag = $$props.onDrag);
+    		if ("onResize" in $$props) $$invalidate(17, onResize = $$props.onResize);
+    		if ("onDelete" in $$props) $$invalidate(18, onDelete = $$props.onDelete);
     	};
 
     	$$self.$capture_state = () => ({
@@ -2097,8 +2184,10 @@ var app = (function () {
     		simResizeY,
     		onDrag,
     		onResize,
+    		onDelete,
     		drag,
-    		resize
+    		resize,
+    		handleDelete
     	});
 
     	$$self.$inject_state = $$props => {
@@ -2114,8 +2203,9 @@ var app = (function () {
     		if ("simY" in $$props) $$invalidate(10, simY = $$props.simY);
     		if ("simResizeX" in $$props) $$invalidate(11, simResizeX = $$props.simResizeX);
     		if ("simResizeY" in $$props) $$invalidate(12, simResizeY = $$props.simResizeY);
-    		if ("onDrag" in $$props) $$invalidate(15, onDrag = $$props.onDrag);
-    		if ("onResize" in $$props) $$invalidate(16, onResize = $$props.onResize);
+    		if ("onDrag" in $$props) $$invalidate(16, onDrag = $$props.onDrag);
+    		if ("onResize" in $$props) $$invalidate(17, onResize = $$props.onResize);
+    		if ("onDelete" in $$props) $$invalidate(18, onDelete = $$props.onDelete);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -2138,8 +2228,10 @@ var app = (function () {
     		simResizeY,
     		drag,
     		resize,
+    		handleDelete,
     		onDrag,
     		onResize,
+    		onDelete,
     		p_input_handler
     	];
     }
@@ -2162,8 +2254,9 @@ var app = (function () {
     			simY: 10,
     			simResizeX: 11,
     			simResizeY: 12,
-    			onDrag: 15,
-    			onResize: 16
+    			onDrag: 16,
+    			onResize: 17,
+    			onDelete: 18
     		});
 
     		dispatch_dev("SvelteRegisterComponent", {
@@ -2196,12 +2289,16 @@ var app = (function () {
     			console.warn("<Paragraph> was created without expected prop 'simResizeY'");
     		}
 
-    		if (/*onDrag*/ ctx[15] === undefined && !("onDrag" in props)) {
+    		if (/*onDrag*/ ctx[16] === undefined && !("onDrag" in props)) {
     			console.warn("<Paragraph> was created without expected prop 'onDrag'");
     		}
 
-    		if (/*onResize*/ ctx[16] === undefined && !("onResize" in props)) {
+    		if (/*onResize*/ ctx[17] === undefined && !("onResize" in props)) {
     			console.warn("<Paragraph> was created without expected prop 'onResize'");
+    		}
+
+    		if (/*onDelete*/ ctx[18] === undefined && !("onDelete" in props)) {
+    			console.warn("<Paragraph> was created without expected prop 'onDelete'");
     		}
     	}
 
@@ -2324,56 +2421,89 @@ var app = (function () {
     	set onResize(value) {
     		throw new Error("<Paragraph>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
+
+    	get onDelete() {
+    		throw new Error("<Paragraph>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set onDelete(value) {
+    		throw new Error("<Paragraph>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
     }
 
     /* src\Viewport\Components\Table.svelte generated by Svelte v3.19.1 */
+
     const file$5 = "src\\Viewport\\Components\\Table.svelte";
 
     function get_each_context_1$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[23] = list[i];
+    	child_ctx[27] = list[i];
     	return child_ctx;
     }
 
     function get_each_context$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[20] = list[i];
+    	child_ctx[24] = list[i];
+    	child_ctx[26] = i;
     	return child_ctx;
     }
 
     function get_each_context_2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[23] = list[i];
+    	child_ctx[27] = list[i];
+    	child_ctx[26] = i;
     	return child_ctx;
     }
 
-    // (68:16) {#each Array(numRows) as y}
+    // (74:16) {#each Array(numRows) as y, index}
     function create_each_block_2(ctx) {
     	let div;
+    	let p;
+    	let t0_value = /*index*/ ctx[26] + 1 + "";
+    	let t0;
+    	let t1;
 
     	const block = {
     		c: function create() {
     			div = element("div");
-    			attr_dev(div, "class", "rowIndicator svelte-zhent5");
-    			set_style(div, "height", 3 * /*zoom*/ ctx[10] + "vh");
-    			set_style(div, "border-top-left-radius", 0.5 * /*zoom*/ ctx[10] + "vh");
-    			set_style(div, "border-bottom-left-radius", 0.5 * /*zoom*/ ctx[10] + "vh");
-    			add_location(div, file$5, 68, 20, 1688);
+    			p = element("p");
+    			t0 = text(t0_value);
+    			t1 = space();
+    			set_style(p, "font-size", 1.5 * /*zoom*/ ctx[11] + "vh");
+    			set_style(p, "height", 1.5 * /*zoom*/ ctx[11] + "vh");
+    			attr_dev(p, "class", "svelte-1uwjnxa");
+    			add_location(p, file$5, 80, 24, 2121);
+    			attr_dev(div, "class", "rowIndicator svelte-1uwjnxa");
+    			set_style(div, "height", 3 * /*zoom*/ ctx[11] + "vh");
+    			set_style(div, "border-top-left-radius", 0.5 * /*zoom*/ ctx[11] + "vh");
+    			set_style(div, "border-bottom-left-radius", 0.5 * /*zoom*/ ctx[11] + "vh");
+    			add_location(div, file$5, 74, 20, 1864);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
+    			append_dev(div, p);
+    			append_dev(p, t0);
+    			append_dev(div, t1);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*zoom*/ 1024) {
-    				set_style(div, "height", 3 * /*zoom*/ ctx[10] + "vh");
+    			if (dirty & /*zoom*/ 2048) {
+    				set_style(p, "font-size", 1.5 * /*zoom*/ ctx[11] + "vh");
     			}
 
-    			if (dirty & /*zoom*/ 1024) {
-    				set_style(div, "border-top-left-radius", 0.5 * /*zoom*/ ctx[10] + "vh");
+    			if (dirty & /*zoom*/ 2048) {
+    				set_style(p, "height", 1.5 * /*zoom*/ ctx[11] + "vh");
     			}
 
-    			if (dirty & /*zoom*/ 1024) {
-    				set_style(div, "border-bottom-left-radius", 0.5 * /*zoom*/ ctx[10] + "vh");
+    			if (dirty & /*zoom*/ 2048) {
+    				set_style(div, "height", 3 * /*zoom*/ ctx[11] + "vh");
+    			}
+
+    			if (dirty & /*zoom*/ 2048) {
+    				set_style(div, "border-top-left-radius", 0.5 * /*zoom*/ ctx[11] + "vh");
+    			}
+
+    			if (dirty & /*zoom*/ 2048) {
+    				set_style(div, "border-bottom-left-radius", 0.5 * /*zoom*/ ctx[11] + "vh");
     			}
     		},
     		d: function destroy(detaching) {
@@ -2385,35 +2515,35 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(68:16) {#each Array(numRows) as y}",
+    		source: "(74:16) {#each Array(numRows) as y, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (91:20) {#each Array(numRows) as y}
+    // (111:20) {#each Array(numRows) as y}
     function create_each_block_1$1(ctx) {
     	let div;
 
     	const block = {
     		c: function create() {
     			div = element("div");
-    			attr_dev(div, "class", "tableCell neuIndentShadowNarrow svelte-zhent5");
-    			set_style(div, "height", 3 * /*zoom*/ ctx[10] + "vh");
-    			set_style(div, "border-radius", 0.5 * /*zoom*/ ctx[10] + "vh");
-    			add_location(div, file$5, 91, 24, 2470);
+    			attr_dev(div, "class", "tableCell neuIndentShadowNarrow svelte-1uwjnxa");
+    			set_style(div, "height", 3 * /*zoom*/ ctx[11] + "vh");
+    			set_style(div, "border-radius", 0.5 * /*zoom*/ ctx[11] + "vh");
+    			add_location(div, file$5, 111, 24, 3232);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*zoom*/ 1024) {
-    				set_style(div, "height", 3 * /*zoom*/ ctx[10] + "vh");
+    			if (dirty & /*zoom*/ 2048) {
+    				set_style(div, "height", 3 * /*zoom*/ ctx[11] + "vh");
     			}
 
-    			if (dirty & /*zoom*/ 1024) {
-    				set_style(div, "border-radius", 0.5 * /*zoom*/ ctx[10] + "vh");
+    			if (dirty & /*zoom*/ 2048) {
+    				set_style(div, "border-radius", 0.5 * /*zoom*/ ctx[11] + "vh");
     			}
     		},
     		d: function destroy(detaching) {
@@ -2425,20 +2555,27 @@ var app = (function () {
     		block,
     		id: create_each_block_1$1.name,
     		type: "each",
-    		source: "(91:20) {#each Array(numRows) as y}",
+    		source: "(111:20) {#each Array(numRows) as y}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (80:12) {#each Array(numCols) as x}
+    // (91:12) {#each Array(numCols) as x, index}
     function create_each_block$1(ctx) {
     	let div1;
     	let div0;
+    	let p;
     	let t0;
     	let t1;
-    	let each_value_1 = Array(/*numRows*/ ctx[3]);
+    	let dispose;
+
+    	function p_input_handler() {
+    		/*p_input_handler*/ ctx[23].call(p, /*index*/ ctx[26]);
+    	}
+
+    	let each_value_1 = Array(/*numRows*/ ctx[4]);
     	validate_each_argument(each_value_1);
     	let each_blocks = [];
 
@@ -2450,6 +2587,7 @@ var app = (function () {
     		c: function create() {
     			div1 = element("div");
     			div0 = element("div");
+    			p = element("p");
     			t0 = space();
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -2457,17 +2595,30 @@ var app = (function () {
     			}
 
     			t1 = space();
-    			attr_dev(div0, "class", "columnIndicator svelte-zhent5");
-    			set_style(div0, "border-top-left-radius", 0.5 * /*zoom*/ ctx[10] + "vh");
-    			set_style(div0, "border-top-right-radius", 0.5 * /*zoom*/ ctx[10] + "vh");
-    			add_location(div0, file$5, 83, 16, 2194);
-    			attr_dev(div1, "class", "tableGridColumn svelte-zhent5");
-    			set_style(div1, "width", 10 * /*zoom*/ ctx[10] + "vh");
-    			add_location(div1, file$5, 80, 16, 2079);
+    			attr_dev(p, "contenteditable", "true");
+    			set_style(p, "font-size", 1.5 * /*zoom*/ ctx[11] + "vh");
+    			set_style(p, "height", 1.5 * /*zoom*/ ctx[11] + "vh");
+    			attr_dev(p, "class", "svelte-1uwjnxa");
+    			if (/*colNames*/ ctx[1][/*index*/ ctx[26]] === void 0) add_render_callback(p_input_handler);
+    			add_location(p, file$5, 100, 20, 2829);
+    			attr_dev(div0, "class", "columnIndicator svelte-1uwjnxa");
+    			set_style(div0, "border-top-left-radius", 0.5 * /*zoom*/ ctx[11] + "vh");
+    			set_style(div0, "border-top-right-radius", 0.5 * /*zoom*/ ctx[11] + "vh");
+    			set_style(div0, "height", 2 * /*zoom*/ ctx[11] + "vh");
+    			add_location(div0, file$5, 94, 16, 2591);
+    			attr_dev(div1, "class", "tableGridColumn svelte-1uwjnxa");
+    			set_style(div1, "width", 10 * /*zoom*/ ctx[11] + "vh");
+    			add_location(div1, file$5, 91, 16, 2476);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
     			append_dev(div1, div0);
+    			append_dev(div0, p);
+
+    			if (/*colNames*/ ctx[1][/*index*/ ctx[26]] !== void 0) {
+    				p.textContent = /*colNames*/ ctx[1][/*index*/ ctx[26]];
+    			}
+
     			append_dev(div1, t0);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -2475,18 +2626,37 @@ var app = (function () {
     			}
 
     			append_dev(div1, t1);
+    			dispose = listen_dev(p, "input", p_input_handler);
     		},
-    		p: function update(ctx, dirty) {
-    			if (dirty & /*zoom*/ 1024) {
-    				set_style(div0, "border-top-left-radius", 0.5 * /*zoom*/ ctx[10] + "vh");
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+
+    			if (dirty & /*zoom*/ 2048) {
+    				set_style(p, "font-size", 1.5 * /*zoom*/ ctx[11] + "vh");
     			}
 
-    			if (dirty & /*zoom*/ 1024) {
-    				set_style(div0, "border-top-right-radius", 0.5 * /*zoom*/ ctx[10] + "vh");
+    			if (dirty & /*zoom*/ 2048) {
+    				set_style(p, "height", 1.5 * /*zoom*/ ctx[11] + "vh");
     			}
 
-    			if (dirty & /*zoom, numRows*/ 1032) {
-    				each_value_1 = Array(/*numRows*/ ctx[3]);
+    			if (dirty & /*colNames*/ 2 && /*colNames*/ ctx[1][/*index*/ ctx[26]] !== p.textContent) {
+    				p.textContent = /*colNames*/ ctx[1][/*index*/ ctx[26]];
+    			}
+
+    			if (dirty & /*zoom*/ 2048) {
+    				set_style(div0, "border-top-left-radius", 0.5 * /*zoom*/ ctx[11] + "vh");
+    			}
+
+    			if (dirty & /*zoom*/ 2048) {
+    				set_style(div0, "border-top-right-radius", 0.5 * /*zoom*/ ctx[11] + "vh");
+    			}
+
+    			if (dirty & /*zoom*/ 2048) {
+    				set_style(div0, "height", 2 * /*zoom*/ ctx[11] + "vh");
+    			}
+
+    			if (dirty & /*zoom, numRows*/ 2064) {
+    				each_value_1 = Array(/*numRows*/ ctx[4]);
     				validate_each_argument(each_value_1);
     				let i;
 
@@ -2509,13 +2679,14 @@ var app = (function () {
     				each_blocks.length = each_value_1.length;
     			}
 
-    			if (dirty & /*zoom*/ 1024) {
-    				set_style(div1, "width", 10 * /*zoom*/ ctx[10] + "vh");
+    			if (dirty & /*zoom*/ 2048) {
+    				set_style(div1, "width", 10 * /*zoom*/ ctx[11] + "vh");
     			}
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div1);
     			destroy_each(each_blocks, detaching);
+    			dispose();
     		}
     	};
 
@@ -2523,7 +2694,7 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(80:12) {#each Array(numCols) as x}",
+    		source: "(91:12) {#each Array(numCols) as x, index}",
     		ctx
     	});
 
@@ -2548,8 +2719,12 @@ var app = (function () {
     	let div5;
     	let svg1;
     	let path1;
+    	let t5;
+    	let div6;
+    	let svg2;
+    	let path2;
     	let dispose;
-    	let each_value_2 = Array(/*numRows*/ ctx[3]);
+    	let each_value_2 = Array(/*numRows*/ ctx[4]);
     	validate_each_argument(each_value_2);
     	let each_blocks_1 = [];
 
@@ -2557,7 +2732,7 @@ var app = (function () {
     		each_blocks_1[i] = create_each_block_2(get_each_context_2(ctx, each_value_2, i));
     	}
 
-    	let each_value = Array(/*numCols*/ ctx[2]);
+    	let each_value = Array(/*numCols*/ ctx[3]);
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -2594,52 +2769,68 @@ var app = (function () {
     			div5 = element("div");
     			svg1 = svg_element("svg");
     			path1 = svg_element("path");
+    			t5 = space();
+    			div6 = element("div");
+    			svg2 = svg_element("svg");
+    			path2 = svg_element("path");
     			attr_dev(h1, "contenteditable", "true");
-    			set_style(h1, "font-size", 2 * /*zoom*/ ctx[10] + "vh");
-    			set_style(h1, "min-height", 2 * /*zoom*/ ctx[10] + "vh");
-    			set_style(h1, "min-width", /*sizeX*/ ctx[4] * /*zoom*/ ctx[10] + "vh");
-    			attr_dev(h1, "class", "svelte-zhent5");
-    			if (/*title*/ ctx[0] === void 0) add_render_callback(() => /*h1_input_handler*/ ctx[19].call(h1));
-    			add_location(h1, file$5, 55, 8, 1258);
-    			attr_dev(div0, "class", "titleStrip svelte-zhent5");
-    			set_style(div0, "height", 4 * /*zoom*/ ctx[10] + "vh");
-    			add_location(div0, file$5, 52, 4, 1178);
-    			attr_dev(div1, "class", "rowIndicatorContainer svelte-zhent5");
-    			add_location(div1, file$5, 66, 12, 1586);
-    			attr_dev(div2, "class", "tableGrid svelte-zhent5");
-    			add_location(div2, file$5, 64, 8, 1512);
-    			attr_dev(div3, "class", "contents svelte-zhent5");
-    			add_location(div3, file$5, 63, 4, 1480);
+    			set_style(h1, "font-size", 2 * /*zoom*/ ctx[11] + "vh");
+    			set_style(h1, "min-height", 2 * /*zoom*/ ctx[11] + "vh");
+    			set_style(h1, "min-width", /*sizeX*/ ctx[5] * /*zoom*/ ctx[11] + "vh");
+    			attr_dev(h1, "class", "svelte-1uwjnxa");
+    			if (/*title*/ ctx[0] === void 0) add_render_callback(() => /*h1_input_handler*/ ctx[22].call(h1));
+    			add_location(h1, file$5, 58, 8, 1327);
+    			attr_dev(div0, "class", "titleStrip svelte-1uwjnxa");
+    			set_style(div0, "height", 4 * /*zoom*/ ctx[11] + "vh");
+    			add_location(div0, file$5, 55, 4, 1247);
+    			attr_dev(div1, "class", "rowIndicatorContainer svelte-1uwjnxa");
+    			set_style(div1, "width", 2 * /*zoom*/ ctx[11] + "vh");
+    			set_style(div1, "margin-top", 2 * /*zoom*/ ctx[11] + "vh");
+    			add_location(div1, file$5, 69, 12, 1655);
+    			attr_dev(div2, "class", "tableGrid svelte-1uwjnxa");
+    			add_location(div2, file$5, 67, 8, 1581);
+    			attr_dev(div3, "class", "contents svelte-1uwjnxa");
+    			add_location(div3, file$5, 66, 4, 1549);
     			attr_dev(path0, "d", "M278.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l9.4-9.4V224H109.3l9.4-9.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-9.4-9.4H224V402.7l-9.4-9.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-9.4 9.4V288H402.7l-9.4 9.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3l-64-64c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l9.4 9.4H288V109.3l9.4 9.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-64-64z");
-    			add_location(path0, file$5, 117, 238, 3240);
+    			add_location(path0, file$5, 137, 238, 4030);
     			attr_dev(svg0, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg0, "viewBox", "0 0 512 512");
-    			attr_dev(svg0, "class", "svelte-zhent5");
-    			add_location(svg0, file$5, 117, 8, 3010);
-    			attr_dev(div4, "class", "dragHandle svelte-zhent5");
+    			attr_dev(svg0, "class", "svelte-1uwjnxa");
+    			add_location(svg0, file$5, 137, 8, 3800);
+    			attr_dev(div4, "class", "dragHandle svelte-1uwjnxa");
     			attr_dev(div4, "draggable", "true");
-    			set_style(div4, "width", 3 * /*zoom*/ ctx[10] + "vh");
-    			set_style(div4, "height", 3 * /*zoom*/ ctx[10] + "vh");
-    			add_location(div4, file$5, 107, 4, 2808);
-    			attr_dev(path1, "d", "M32 288c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 288zm0-128c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 160z");
-    			add_location(path1, file$5, 130, 238, 4354);
+    			set_style(div4, "width", 3 * /*zoom*/ ctx[11] + "vh");
+    			set_style(div4, "height", 3 * /*zoom*/ ctx[11] + "vh");
+    			add_location(div4, file$5, 127, 4, 3598);
+    			attr_dev(path1, "d", "M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z");
+    			add_location(path1, file$5, 149, 238, 5126);
     			attr_dev(svg1, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg1, "viewBox", "0 0 448 512");
-    			attr_dev(svg1, "class", "svelte-zhent5");
-    			add_location(svg1, file$5, 130, 8, 4124);
-    			attr_dev(div5, "class", "resizeHandle svelte-zhent5");
-    			attr_dev(div5, "draggable", "true");
-    			set_style(div5, "width", 3 * /*zoom*/ ctx[10] + "vh");
-    			set_style(div5, "height", 3 * /*zoom*/ ctx[10] + "vh");
-    			add_location(div5, file$5, 120, 4, 3919);
-    			attr_dev(main, "class", "neuIndentShadow svelte-zhent5");
-    			set_style(main, "left", ((/*posX*/ ctx[6] + /*simX*/ ctx[11]) * /*zoom*/ ctx[10] + /*offX*/ ctx[8]) * 2 + "vh");
-    			set_style(main, "top", ((/*posY*/ ctx[7] + /*simY*/ ctx[12]) * /*zoom*/ ctx[10] + /*offY*/ ctx[9]) * 2 + "vh");
-    			set_style(main, "width", Math.max(/*sizeBounds*/ ctx[1][0][0], Math.min(/*sizeX*/ ctx[4] + /*simResizeX*/ ctx[13], /*sizeBounds*/ ctx[1][0][1])) * 2 * /*zoom*/ ctx[10] + "vh");
-    			set_style(main, "height", Math.max(/*sizeBounds*/ ctx[1][1][0], Math.min(/*sizeY*/ ctx[5] + /*simResizeY*/ ctx[14], /*sizeBounds*/ ctx[1][1][1])) * 2 * /*zoom*/ ctx[10] + "vh");
-    			set_style(main, "border-radius", 1.5 * /*zoom*/ ctx[10] + "vh");
+    			attr_dev(svg1, "class", "svelte-1uwjnxa");
+    			add_location(svg1, file$5, 149, 8, 4896);
+    			attr_dev(div5, "class", "deleteAction svelte-1uwjnxa");
+    			set_style(div5, "width", 3 * /*zoom*/ ctx[11] + "vh");
+    			set_style(div5, "height", 3 * /*zoom*/ ctx[11] + "vh");
+    			add_location(div5, file$5, 140, 4, 4709);
+    			attr_dev(path2, "d", "M32 288c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 288zm0-128c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 160z");
+    			add_location(path2, file$5, 162, 238, 5853);
+    			attr_dev(svg2, "xmlns", "http://www.w3.org/2000/svg");
+    			attr_dev(svg2, "viewBox", "0 0 448 512");
+    			attr_dev(svg2, "class", "svelte-1uwjnxa");
+    			add_location(svg2, file$5, 162, 8, 5623);
+    			attr_dev(div6, "class", "resizeHandle svelte-1uwjnxa");
+    			attr_dev(div6, "draggable", "true");
+    			set_style(div6, "width", 3 * /*zoom*/ ctx[11] + "vh");
+    			set_style(div6, "height", 3 * /*zoom*/ ctx[11] + "vh");
+    			add_location(div6, file$5, 152, 4, 5418);
+    			attr_dev(main, "class", "neuIndentShadow svelte-1uwjnxa");
+    			set_style(main, "left", ((/*posX*/ ctx[7] + /*simX*/ ctx[12]) * /*zoom*/ ctx[11] + /*offX*/ ctx[9]) * 2 + "vh");
+    			set_style(main, "top", ((/*posY*/ ctx[8] + /*simY*/ ctx[13]) * /*zoom*/ ctx[11] + /*offY*/ ctx[10]) * 2 + "vh");
+    			set_style(main, "width", Math.max(/*sizeBounds*/ ctx[2][0][0], Math.min(/*sizeX*/ ctx[5] + /*simResizeX*/ ctx[14], /*sizeBounds*/ ctx[2][0][1])) * 2 * /*zoom*/ ctx[11] + "vh");
+    			set_style(main, "height", Math.max(/*sizeBounds*/ ctx[2][1][0], Math.min(/*sizeY*/ ctx[6] + /*simResizeY*/ ctx[15], /*sizeBounds*/ ctx[2][1][1])) * 2 * /*zoom*/ ctx[11] + "vh");
+    			set_style(main, "border-radius", 1.5 * /*zoom*/ ctx[11] + "vh");
     			set_style(main, "transition", "border-radius .2s cubic-bezier(0, 0, 0, .9),\r\n");
-    			add_location(main, file$5, 39, 0, 706);
+    			add_location(main, file$5, 42, 0, 775);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2677,36 +2868,41 @@ var app = (function () {
     			append_dev(main, div5);
     			append_dev(div5, svg1);
     			append_dev(svg1, path1);
+    			append_dev(main, t5);
+    			append_dev(main, div6);
+    			append_dev(div6, svg2);
+    			append_dev(svg2, path2);
 
     			dispose = [
-    				listen_dev(h1, "input", /*h1_input_handler*/ ctx[19]),
-    				listen_dev(div4, "dragstart", /*drag*/ ctx[15], false, false, false),
-    				listen_dev(div5, "dragstart", /*resize*/ ctx[16], false, false, false)
+    				listen_dev(h1, "input", /*h1_input_handler*/ ctx[22]),
+    				listen_dev(div4, "dragstart", /*drag*/ ctx[16], false, false, false),
+    				listen_dev(div5, "click", /*handleDelete*/ ctx[18], false, false, false),
+    				listen_dev(div6, "dragstart", /*resize*/ ctx[17], false, false, false)
     			];
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*zoom*/ 1024) {
-    				set_style(h1, "font-size", 2 * /*zoom*/ ctx[10] + "vh");
+    			if (dirty & /*zoom*/ 2048) {
+    				set_style(h1, "font-size", 2 * /*zoom*/ ctx[11] + "vh");
     			}
 
-    			if (dirty & /*zoom*/ 1024) {
-    				set_style(h1, "min-height", 2 * /*zoom*/ ctx[10] + "vh");
+    			if (dirty & /*zoom*/ 2048) {
+    				set_style(h1, "min-height", 2 * /*zoom*/ ctx[11] + "vh");
     			}
 
-    			if (dirty & /*sizeX, zoom*/ 1040) {
-    				set_style(h1, "min-width", /*sizeX*/ ctx[4] * /*zoom*/ ctx[10] + "vh");
+    			if (dirty & /*sizeX, zoom*/ 2080) {
+    				set_style(h1, "min-width", /*sizeX*/ ctx[5] * /*zoom*/ ctx[11] + "vh");
     			}
 
     			if (dirty & /*title*/ 1 && /*title*/ ctx[0] !== h1.textContent) {
     				h1.textContent = /*title*/ ctx[0];
     			}
 
-    			if (dirty & /*zoom*/ 1024) {
-    				set_style(div0, "height", 4 * /*zoom*/ ctx[10] + "vh");
+    			if (dirty & /*zoom*/ 2048) {
+    				set_style(div0, "height", 4 * /*zoom*/ ctx[11] + "vh");
     			}
 
-    			if (dirty & /*zoom, numRows*/ 1032) {
-    				each_value_2 = Array(/*numRows*/ ctx[3]);
+    			if (dirty & /*zoom, numRows*/ 2064) {
+    				each_value_2 = Array(/*numRows*/ ctx[4]);
     				validate_each_argument(each_value_2);
     				let i;
 
@@ -2729,8 +2925,16 @@ var app = (function () {
     				each_blocks_1.length = each_value_2.length;
     			}
 
-    			if (dirty & /*zoom, Array, numRows, numCols*/ 1036) {
-    				each_value = Array(/*numCols*/ ctx[2]);
+    			if (dirty & /*zoom*/ 2048) {
+    				set_style(div1, "width", 2 * /*zoom*/ ctx[11] + "vh");
+    			}
+
+    			if (dirty & /*zoom*/ 2048) {
+    				set_style(div1, "margin-top", 2 * /*zoom*/ ctx[11] + "vh");
+    			}
+
+    			if (dirty & /*zoom, Array, numRows, colNames, numCols*/ 2074) {
+    				each_value = Array(/*numCols*/ ctx[3]);
     				validate_each_argument(each_value);
     				let i;
 
@@ -2753,40 +2957,48 @@ var app = (function () {
     				each_blocks.length = each_value.length;
     			}
 
-    			if (dirty & /*zoom*/ 1024) {
-    				set_style(div4, "width", 3 * /*zoom*/ ctx[10] + "vh");
+    			if (dirty & /*zoom*/ 2048) {
+    				set_style(div4, "width", 3 * /*zoom*/ ctx[11] + "vh");
     			}
 
-    			if (dirty & /*zoom*/ 1024) {
-    				set_style(div4, "height", 3 * /*zoom*/ ctx[10] + "vh");
+    			if (dirty & /*zoom*/ 2048) {
+    				set_style(div4, "height", 3 * /*zoom*/ ctx[11] + "vh");
     			}
 
-    			if (dirty & /*zoom*/ 1024) {
-    				set_style(div5, "width", 3 * /*zoom*/ ctx[10] + "vh");
+    			if (dirty & /*zoom*/ 2048) {
+    				set_style(div5, "width", 3 * /*zoom*/ ctx[11] + "vh");
     			}
 
-    			if (dirty & /*zoom*/ 1024) {
-    				set_style(div5, "height", 3 * /*zoom*/ ctx[10] + "vh");
+    			if (dirty & /*zoom*/ 2048) {
+    				set_style(div5, "height", 3 * /*zoom*/ ctx[11] + "vh");
     			}
 
-    			if (dirty & /*posX, simX, zoom, offX*/ 3392) {
-    				set_style(main, "left", ((/*posX*/ ctx[6] + /*simX*/ ctx[11]) * /*zoom*/ ctx[10] + /*offX*/ ctx[8]) * 2 + "vh");
+    			if (dirty & /*zoom*/ 2048) {
+    				set_style(div6, "width", 3 * /*zoom*/ ctx[11] + "vh");
     			}
 
-    			if (dirty & /*posY, simY, zoom, offY*/ 5760) {
-    				set_style(main, "top", ((/*posY*/ ctx[7] + /*simY*/ ctx[12]) * /*zoom*/ ctx[10] + /*offY*/ ctx[9]) * 2 + "vh");
+    			if (dirty & /*zoom*/ 2048) {
+    				set_style(div6, "height", 3 * /*zoom*/ ctx[11] + "vh");
     			}
 
-    			if (dirty & /*sizeX, simResizeX, zoom*/ 9232) {
-    				set_style(main, "width", Math.max(/*sizeBounds*/ ctx[1][0][0], Math.min(/*sizeX*/ ctx[4] + /*simResizeX*/ ctx[13], /*sizeBounds*/ ctx[1][0][1])) * 2 * /*zoom*/ ctx[10] + "vh");
+    			if (dirty & /*posX, simX, zoom, offX*/ 6784) {
+    				set_style(main, "left", ((/*posX*/ ctx[7] + /*simX*/ ctx[12]) * /*zoom*/ ctx[11] + /*offX*/ ctx[9]) * 2 + "vh");
     			}
 
-    			if (dirty & /*sizeY, simResizeY, zoom*/ 17440) {
-    				set_style(main, "height", Math.max(/*sizeBounds*/ ctx[1][1][0], Math.min(/*sizeY*/ ctx[5] + /*simResizeY*/ ctx[14], /*sizeBounds*/ ctx[1][1][1])) * 2 * /*zoom*/ ctx[10] + "vh");
+    			if (dirty & /*posY, simY, zoom, offY*/ 11520) {
+    				set_style(main, "top", ((/*posY*/ ctx[8] + /*simY*/ ctx[13]) * /*zoom*/ ctx[11] + /*offY*/ ctx[10]) * 2 + "vh");
     			}
 
-    			if (dirty & /*zoom*/ 1024) {
-    				set_style(main, "border-radius", 1.5 * /*zoom*/ ctx[10] + "vh");
+    			if (dirty & /*sizeX, simResizeX, zoom*/ 18464) {
+    				set_style(main, "width", Math.max(/*sizeBounds*/ ctx[2][0][0], Math.min(/*sizeX*/ ctx[5] + /*simResizeX*/ ctx[14], /*sizeBounds*/ ctx[2][0][1])) * 2 * /*zoom*/ ctx[11] + "vh");
+    			}
+
+    			if (dirty & /*sizeY, simResizeY, zoom*/ 34880) {
+    				set_style(main, "height", Math.max(/*sizeBounds*/ ctx[2][1][0], Math.min(/*sizeY*/ ctx[6] + /*simResizeY*/ ctx[15], /*sizeBounds*/ ctx[2][1][1])) * 2 * /*zoom*/ ctx[11] + "vh");
+    			}
+
+    			if (dirty & /*zoom*/ 2048) {
+    				set_style(main, "border-radius", 1.5 * /*zoom*/ ctx[11] + "vh");
     			}
     		},
     		i: noop,
@@ -2814,6 +3026,7 @@ var app = (function () {
     	const sizeBounds = [/* X */ [10, 50], [10, 50]]; /* Y */
     	let { title } = $$props;
     	let { numCols = 4 } = $$props, { numRows = 9 } = $$props;
+    	let { colNames = [] } = $$props;
     	let { sizeX = 5 } = $$props;
     	let { sizeY = 2 } = $$props;
     	let { posX = 0 } = $$props;
@@ -2827,6 +3040,7 @@ var app = (function () {
     	let { simResizeY } = $$props;
     	let { onDrag } = $$props;
     	let { onResize } = $$props;
+    	let { onDelete } = $$props;
 
     	function drag(event) {
     		onDrag(event);
@@ -2836,10 +3050,15 @@ var app = (function () {
     		onResize(event);
     	}
 
+    	function handleDelete() {
+    		onDelete();
+    	}
+
     	const writable_props = [
     		"title",
     		"numCols",
     		"numRows",
+    		"colNames",
     		"sizeX",
     		"sizeY",
     		"posX",
@@ -2852,7 +3071,8 @@ var app = (function () {
     		"simResizeX",
     		"simResizeY",
     		"onDrag",
-    		"onResize"
+    		"onResize",
+    		"onDelete"
     	];
 
     	Object.keys($$props).forEach(key => {
@@ -2864,31 +3084,38 @@ var app = (function () {
     		$$invalidate(0, title);
     	}
 
+    	function p_input_handler(index) {
+    		colNames[index] = this.textContent;
+    		$$invalidate(1, colNames);
+    	}
+
     	$$self.$set = $$props => {
     		if ("title" in $$props) $$invalidate(0, title = $$props.title);
-    		if ("numCols" in $$props) $$invalidate(2, numCols = $$props.numCols);
-    		if ("numRows" in $$props) $$invalidate(3, numRows = $$props.numRows);
-    		if ("sizeX" in $$props) $$invalidate(4, sizeX = $$props.sizeX);
-    		if ("sizeY" in $$props) $$invalidate(5, sizeY = $$props.sizeY);
-    		if ("posX" in $$props) $$invalidate(6, posX = $$props.posX);
-    		if ("posY" in $$props) $$invalidate(7, posY = $$props.posY);
-    		if ("offX" in $$props) $$invalidate(8, offX = $$props.offX);
-    		if ("offY" in $$props) $$invalidate(9, offY = $$props.offY);
-    		if ("zoom" in $$props) $$invalidate(10, zoom = $$props.zoom);
-    		if ("simX" in $$props) $$invalidate(11, simX = $$props.simX);
-    		if ("simY" in $$props) $$invalidate(12, simY = $$props.simY);
-    		if ("simResizeX" in $$props) $$invalidate(13, simResizeX = $$props.simResizeX);
-    		if ("simResizeY" in $$props) $$invalidate(14, simResizeY = $$props.simResizeY);
-    		if ("onDrag" in $$props) $$invalidate(17, onDrag = $$props.onDrag);
-    		if ("onResize" in $$props) $$invalidate(18, onResize = $$props.onResize);
+    		if ("numCols" in $$props) $$invalidate(3, numCols = $$props.numCols);
+    		if ("numRows" in $$props) $$invalidate(4, numRows = $$props.numRows);
+    		if ("colNames" in $$props) $$invalidate(1, colNames = $$props.colNames);
+    		if ("sizeX" in $$props) $$invalidate(5, sizeX = $$props.sizeX);
+    		if ("sizeY" in $$props) $$invalidate(6, sizeY = $$props.sizeY);
+    		if ("posX" in $$props) $$invalidate(7, posX = $$props.posX);
+    		if ("posY" in $$props) $$invalidate(8, posY = $$props.posY);
+    		if ("offX" in $$props) $$invalidate(9, offX = $$props.offX);
+    		if ("offY" in $$props) $$invalidate(10, offY = $$props.offY);
+    		if ("zoom" in $$props) $$invalidate(11, zoom = $$props.zoom);
+    		if ("simX" in $$props) $$invalidate(12, simX = $$props.simX);
+    		if ("simY" in $$props) $$invalidate(13, simY = $$props.simY);
+    		if ("simResizeX" in $$props) $$invalidate(14, simResizeX = $$props.simResizeX);
+    		if ("simResizeY" in $$props) $$invalidate(15, simResizeY = $$props.simResizeY);
+    		if ("onDrag" in $$props) $$invalidate(19, onDrag = $$props.onDrag);
+    		if ("onResize" in $$props) $$invalidate(20, onResize = $$props.onResize);
+    		if ("onDelete" in $$props) $$invalidate(21, onDelete = $$props.onDelete);
     	};
 
     	$$self.$capture_state = () => ({
-    		each,
     		sizeBounds,
     		title,
     		numCols,
     		numRows,
+    		colNames,
     		sizeX,
     		sizeY,
     		posX,
@@ -2902,27 +3129,31 @@ var app = (function () {
     		simResizeY,
     		onDrag,
     		onResize,
+    		onDelete,
     		drag,
-    		resize
+    		resize,
+    		handleDelete
     	});
 
     	$$self.$inject_state = $$props => {
     		if ("title" in $$props) $$invalidate(0, title = $$props.title);
-    		if ("numCols" in $$props) $$invalidate(2, numCols = $$props.numCols);
-    		if ("numRows" in $$props) $$invalidate(3, numRows = $$props.numRows);
-    		if ("sizeX" in $$props) $$invalidate(4, sizeX = $$props.sizeX);
-    		if ("sizeY" in $$props) $$invalidate(5, sizeY = $$props.sizeY);
-    		if ("posX" in $$props) $$invalidate(6, posX = $$props.posX);
-    		if ("posY" in $$props) $$invalidate(7, posY = $$props.posY);
-    		if ("offX" in $$props) $$invalidate(8, offX = $$props.offX);
-    		if ("offY" in $$props) $$invalidate(9, offY = $$props.offY);
-    		if ("zoom" in $$props) $$invalidate(10, zoom = $$props.zoom);
-    		if ("simX" in $$props) $$invalidate(11, simX = $$props.simX);
-    		if ("simY" in $$props) $$invalidate(12, simY = $$props.simY);
-    		if ("simResizeX" in $$props) $$invalidate(13, simResizeX = $$props.simResizeX);
-    		if ("simResizeY" in $$props) $$invalidate(14, simResizeY = $$props.simResizeY);
-    		if ("onDrag" in $$props) $$invalidate(17, onDrag = $$props.onDrag);
-    		if ("onResize" in $$props) $$invalidate(18, onResize = $$props.onResize);
+    		if ("numCols" in $$props) $$invalidate(3, numCols = $$props.numCols);
+    		if ("numRows" in $$props) $$invalidate(4, numRows = $$props.numRows);
+    		if ("colNames" in $$props) $$invalidate(1, colNames = $$props.colNames);
+    		if ("sizeX" in $$props) $$invalidate(5, sizeX = $$props.sizeX);
+    		if ("sizeY" in $$props) $$invalidate(6, sizeY = $$props.sizeY);
+    		if ("posX" in $$props) $$invalidate(7, posX = $$props.posX);
+    		if ("posY" in $$props) $$invalidate(8, posY = $$props.posY);
+    		if ("offX" in $$props) $$invalidate(9, offX = $$props.offX);
+    		if ("offY" in $$props) $$invalidate(10, offY = $$props.offY);
+    		if ("zoom" in $$props) $$invalidate(11, zoom = $$props.zoom);
+    		if ("simX" in $$props) $$invalidate(12, simX = $$props.simX);
+    		if ("simY" in $$props) $$invalidate(13, simY = $$props.simY);
+    		if ("simResizeX" in $$props) $$invalidate(14, simResizeX = $$props.simResizeX);
+    		if ("simResizeY" in $$props) $$invalidate(15, simResizeY = $$props.simResizeY);
+    		if ("onDrag" in $$props) $$invalidate(19, onDrag = $$props.onDrag);
+    		if ("onResize" in $$props) $$invalidate(20, onResize = $$props.onResize);
+    		if ("onDelete" in $$props) $$invalidate(21, onDelete = $$props.onDelete);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -2931,6 +3162,7 @@ var app = (function () {
 
     	return [
     		title,
+    		colNames,
     		sizeBounds,
     		numCols,
     		numRows,
@@ -2947,9 +3179,12 @@ var app = (function () {
     		simResizeY,
     		drag,
     		resize,
+    		handleDelete,
     		onDrag,
     		onResize,
-    		h1_input_handler
+    		onDelete,
+    		h1_input_handler,
+    		p_input_handler
     	];
     }
 
@@ -2958,23 +3193,25 @@ var app = (function () {
     		super(options);
 
     		init(this, options, instance$5, create_fragment$5, safe_not_equal, {
-    			sizeBounds: 1,
+    			sizeBounds: 2,
     			title: 0,
-    			numCols: 2,
-    			numRows: 3,
-    			sizeX: 4,
-    			sizeY: 5,
-    			posX: 6,
-    			posY: 7,
-    			offX: 8,
-    			offY: 9,
-    			zoom: 10,
-    			simX: 11,
-    			simY: 12,
-    			simResizeX: 13,
-    			simResizeY: 14,
-    			onDrag: 17,
-    			onResize: 18
+    			numCols: 3,
+    			numRows: 4,
+    			colNames: 1,
+    			sizeX: 5,
+    			sizeY: 6,
+    			posX: 7,
+    			posY: 8,
+    			offX: 9,
+    			offY: 10,
+    			zoom: 11,
+    			simX: 12,
+    			simY: 13,
+    			simResizeX: 14,
+    			simResizeY: 15,
+    			onDrag: 19,
+    			onResize: 20,
+    			onDelete: 21
     		});
 
     		dispatch_dev("SvelteRegisterComponent", {
@@ -2991,33 +3228,37 @@ var app = (function () {
     			console.warn("<Table> was created without expected prop 'title'");
     		}
 
-    		if (/*simX*/ ctx[11] === undefined && !("simX" in props)) {
+    		if (/*simX*/ ctx[12] === undefined && !("simX" in props)) {
     			console.warn("<Table> was created without expected prop 'simX'");
     		}
 
-    		if (/*simY*/ ctx[12] === undefined && !("simY" in props)) {
+    		if (/*simY*/ ctx[13] === undefined && !("simY" in props)) {
     			console.warn("<Table> was created without expected prop 'simY'");
     		}
 
-    		if (/*simResizeX*/ ctx[13] === undefined && !("simResizeX" in props)) {
+    		if (/*simResizeX*/ ctx[14] === undefined && !("simResizeX" in props)) {
     			console.warn("<Table> was created without expected prop 'simResizeX'");
     		}
 
-    		if (/*simResizeY*/ ctx[14] === undefined && !("simResizeY" in props)) {
+    		if (/*simResizeY*/ ctx[15] === undefined && !("simResizeY" in props)) {
     			console.warn("<Table> was created without expected prop 'simResizeY'");
     		}
 
-    		if (/*onDrag*/ ctx[17] === undefined && !("onDrag" in props)) {
+    		if (/*onDrag*/ ctx[19] === undefined && !("onDrag" in props)) {
     			console.warn("<Table> was created without expected prop 'onDrag'");
     		}
 
-    		if (/*onResize*/ ctx[18] === undefined && !("onResize" in props)) {
+    		if (/*onResize*/ ctx[20] === undefined && !("onResize" in props)) {
     			console.warn("<Table> was created without expected prop 'onResize'");
+    		}
+
+    		if (/*onDelete*/ ctx[21] === undefined && !("onDelete" in props)) {
+    			console.warn("<Table> was created without expected prop 'onDelete'");
     		}
     	}
 
     	get sizeBounds() {
-    		return this.$$.ctx[1];
+    		return this.$$.ctx[2];
     	}
 
     	set sizeBounds(value) {
@@ -3045,6 +3286,14 @@ var app = (function () {
     	}
 
     	set numRows(value) {
+    		throw new Error("<Table>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get colNames() {
+    		throw new Error("<Table>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set colNames(value) {
     		throw new Error("<Table>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
@@ -3151,6 +3400,14 @@ var app = (function () {
     	set onResize(value) {
     		throw new Error("<Table>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
+
+    	get onDelete() {
+    		throw new Error("<Table>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set onDelete(value) {
+    		throw new Error("<Table>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
     }
 
     /* src\Viewport\Viewport.svelte generated by Svelte v3.19.1 */
@@ -3160,72 +3417,77 @@ var app = (function () {
 
     function get_each_context$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[37] = list[i];
-    	child_ctx[38] = list;
-    	child_ctx[39] = i;
+    	child_ctx[41] = list[i];
+    	child_ctx[42] = list;
+    	child_ctx[43] = i;
     	return child_ctx;
     }
 
     function get_each_context_1$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[37] = list[i];
-    	child_ctx[40] = list;
-    	child_ctx[39] = i;
+    	child_ctx[41] = list[i];
+    	child_ctx[44] = list;
+    	child_ctx[43] = i;
     	return child_ctx;
     }
 
     function get_each_context_2$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[37] = list[i];
-    	child_ctx[41] = list;
-    	child_ctx[39] = i;
+    	child_ctx[41] = list[i];
+    	child_ctx[45] = list;
+    	child_ctx[43] = i;
     	return child_ctx;
     }
 
-    // (383:12) {#each projectData.objects.header as object, index}
+    // (389:12) {#each projectData.objects.header as object, index}
     function create_each_block_2$1(ctx) {
     	let updating_text;
     	let updating_sizeBounds;
     	let current;
 
     	function func(...args) {
-    		return /*func*/ ctx[24](/*index*/ ctx[39], /*object*/ ctx[37], ...args);
+    		return /*func*/ ctx[25](/*index*/ ctx[43], /*object*/ ctx[41], ...args);
     	}
 
     	function func_1(...args) {
-    		return /*func_1*/ ctx[25](/*index*/ ctx[39], ...args);
+    		return /*func_1*/ ctx[26](/*index*/ ctx[43], ...args);
+    	}
+
+    	function func_2(...args) {
+    		return /*func_2*/ ctx[27](/*index*/ ctx[43], ...args);
     	}
 
     	function header_text_binding(value) {
-    		/*header_text_binding*/ ctx[26].call(null, value, /*object*/ ctx[37]);
+    		/*header_text_binding*/ ctx[28].call(null, value, /*object*/ ctx[41]);
     	}
 
     	function header_sizeBounds_binding(value) {
-    		/*header_sizeBounds_binding*/ ctx[27].call(null, value, /*object*/ ctx[37]);
+    		/*header_sizeBounds_binding*/ ctx[29].call(null, value, /*object*/ ctx[41]);
     	}
 
     	let header_props = {
     		onDrag: func,
     		onResize: func_1,
-    		posX: /*object*/ ctx[37].posX,
-    		posY: /*object*/ ctx[37].posY,
+    		onDelete: func_2,
+    		posX: /*object*/ ctx[41].posX,
+    		posY: /*object*/ ctx[41].posY,
     		offX: (/*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x) / window.innerHeight * 50,
     		offY: (/*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y) / window.innerHeight * 50,
     		zoom: /*viewZoom*/ ctx[2],
-    		sizeX: /*object*/ ctx[37].sizeX,
-    		sizeY: /*object*/ ctx[37].sizeY,
-    		simX: /*object*/ ctx[37].simX,
-    		simY: /*object*/ ctx[37].simY,
-    		simResizeX: /*object*/ ctx[37].simResizeX,
-    		simResizeY: /*object*/ ctx[37].simResizeY
+    		sizeX: /*object*/ ctx[41].sizeX,
+    		sizeY: /*object*/ ctx[41].sizeY,
+    		simX: /*object*/ ctx[41].simX,
+    		simY: /*object*/ ctx[41].simY,
+    		simResizeX: /*object*/ ctx[41].simResizeX,
+    		simResizeY: /*object*/ ctx[41].simResizeY
     	};
 
-    	if (/*object*/ ctx[37].text !== void 0) {
-    		header_props.text = /*object*/ ctx[37].text;
+    	if (/*object*/ ctx[41].text !== void 0) {
+    		header_props.text = /*object*/ ctx[41].text;
     	}
 
-    	if (/*object*/ ctx[37].sizeBounds !== void 0) {
-    		header_props.sizeBounds = /*object*/ ctx[37].sizeBounds;
+    	if (/*object*/ ctx[41].sizeBounds !== void 0) {
+    		header_props.sizeBounds = /*object*/ ctx[41].sizeBounds;
     	}
 
     	const header = new Header({ props: header_props, $$inline: true });
@@ -3244,27 +3506,27 @@ var app = (function () {
     			ctx = new_ctx;
     			const header_changes = {};
     			if (dirty[0] & /*projectData*/ 32) header_changes.onDrag = func;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.posX = /*object*/ ctx[37].posX;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.posY = /*object*/ ctx[37].posY;
+    			if (dirty[0] & /*projectData*/ 32) header_changes.posX = /*object*/ ctx[41].posX;
+    			if (dirty[0] & /*projectData*/ 32) header_changes.posY = /*object*/ ctx[41].posY;
     			if (dirty[0] & /*viewX, mouseDrag*/ 65) header_changes.offX = (/*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x) / window.innerHeight * 50;
     			if (dirty[0] & /*viewY, mouseDrag*/ 66) header_changes.offY = (/*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y) / window.innerHeight * 50;
     			if (dirty[0] & /*viewZoom*/ 4) header_changes.zoom = /*viewZoom*/ ctx[2];
-    			if (dirty[0] & /*projectData*/ 32) header_changes.sizeX = /*object*/ ctx[37].sizeX;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.sizeY = /*object*/ ctx[37].sizeY;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.simX = /*object*/ ctx[37].simX;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.simY = /*object*/ ctx[37].simY;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.simResizeX = /*object*/ ctx[37].simResizeX;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.simResizeY = /*object*/ ctx[37].simResizeY;
+    			if (dirty[0] & /*projectData*/ 32) header_changes.sizeX = /*object*/ ctx[41].sizeX;
+    			if (dirty[0] & /*projectData*/ 32) header_changes.sizeY = /*object*/ ctx[41].sizeY;
+    			if (dirty[0] & /*projectData*/ 32) header_changes.simX = /*object*/ ctx[41].simX;
+    			if (dirty[0] & /*projectData*/ 32) header_changes.simY = /*object*/ ctx[41].simY;
+    			if (dirty[0] & /*projectData*/ 32) header_changes.simResizeX = /*object*/ ctx[41].simResizeX;
+    			if (dirty[0] & /*projectData*/ 32) header_changes.simResizeY = /*object*/ ctx[41].simResizeY;
 
     			if (!updating_text && dirty[0] & /*projectData*/ 32) {
     				updating_text = true;
-    				header_changes.text = /*object*/ ctx[37].text;
+    				header_changes.text = /*object*/ ctx[41].text;
     				add_flush_callback(() => updating_text = false);
     			}
 
     			if (!updating_sizeBounds && dirty[0] & /*projectData*/ 32) {
     				updating_sizeBounds = true;
-    				header_changes.sizeBounds = /*object*/ ctx[37].sizeBounds;
+    				header_changes.sizeBounds = /*object*/ ctx[41].sizeBounds;
     				add_flush_callback(() => updating_sizeBounds = false);
     			}
 
@@ -3288,57 +3550,62 @@ var app = (function () {
     		block,
     		id: create_each_block_2$1.name,
     		type: "each",
-    		source: "(383:12) {#each projectData.objects.header as object, index}",
+    		source: "(389:12) {#each projectData.objects.header as object, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (406:12) {#each projectData.objects.paragraph as object, index}
+    // (413:12) {#each projectData.objects.paragraph as object, index}
     function create_each_block_1$2(ctx) {
     	let updating_text;
     	let updating_sizeBounds;
     	let current;
 
-    	function func_2(...args) {
-    		return /*func_2*/ ctx[28](/*index*/ ctx[39], /*object*/ ctx[37], ...args);
+    	function func_3(...args) {
+    		return /*func_3*/ ctx[30](/*index*/ ctx[43], /*object*/ ctx[41], ...args);
     	}
 
-    	function func_3(...args) {
-    		return /*func_3*/ ctx[29](/*index*/ ctx[39], ...args);
+    	function func_4(...args) {
+    		return /*func_4*/ ctx[31](/*index*/ ctx[43], ...args);
+    	}
+
+    	function func_5(...args) {
+    		return /*func_5*/ ctx[32](/*index*/ ctx[43], ...args);
     	}
 
     	function paragraph_text_binding(value) {
-    		/*paragraph_text_binding*/ ctx[30].call(null, value, /*object*/ ctx[37]);
+    		/*paragraph_text_binding*/ ctx[33].call(null, value, /*object*/ ctx[41]);
     	}
 
     	function paragraph_sizeBounds_binding(value) {
-    		/*paragraph_sizeBounds_binding*/ ctx[31].call(null, value, /*object*/ ctx[37]);
+    		/*paragraph_sizeBounds_binding*/ ctx[34].call(null, value, /*object*/ ctx[41]);
     	}
 
     	let paragraph_props = {
-    		onDrag: func_2,
-    		onResize: func_3,
-    		posX: /*object*/ ctx[37].posX,
-    		posY: /*object*/ ctx[37].posY,
+    		onDrag: func_3,
+    		onResize: func_4,
+    		onDelete: func_5,
+    		posX: /*object*/ ctx[41].posX,
+    		posY: /*object*/ ctx[41].posY,
     		offX: (/*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x) / window.innerHeight * 50,
     		offY: (/*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y) / window.innerHeight * 50,
     		zoom: /*viewZoom*/ ctx[2],
-    		sizeX: /*object*/ ctx[37].sizeX,
-    		sizeY: /*object*/ ctx[37].sizeY,
-    		simX: /*object*/ ctx[37].simX,
-    		simY: /*object*/ ctx[37].simY,
-    		simResizeX: /*object*/ ctx[37].simResizeX,
-    		simResizeY: /*object*/ ctx[37].simResizeY
+    		sizeX: /*object*/ ctx[41].sizeX,
+    		sizeY: /*object*/ ctx[41].sizeY,
+    		simX: /*object*/ ctx[41].simX,
+    		simY: /*object*/ ctx[41].simY,
+    		simResizeX: /*object*/ ctx[41].simResizeX,
+    		simResizeY: /*object*/ ctx[41].simResizeY
     	};
 
-    	if (/*object*/ ctx[37].text !== void 0) {
-    		paragraph_props.text = /*object*/ ctx[37].text;
+    	if (/*object*/ ctx[41].text !== void 0) {
+    		paragraph_props.text = /*object*/ ctx[41].text;
     	}
 
-    	if (/*object*/ ctx[37].sizeBounds !== void 0) {
-    		paragraph_props.sizeBounds = /*object*/ ctx[37].sizeBounds;
+    	if (/*object*/ ctx[41].sizeBounds !== void 0) {
+    		paragraph_props.sizeBounds = /*object*/ ctx[41].sizeBounds;
     	}
 
     	const paragraph = new Paragraph({ props: paragraph_props, $$inline: true });
@@ -3356,28 +3623,28 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
     			const paragraph_changes = {};
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.onDrag = func_2;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.posX = /*object*/ ctx[37].posX;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.posY = /*object*/ ctx[37].posY;
+    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.onDrag = func_3;
+    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.posX = /*object*/ ctx[41].posX;
+    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.posY = /*object*/ ctx[41].posY;
     			if (dirty[0] & /*viewX, mouseDrag*/ 65) paragraph_changes.offX = (/*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x) / window.innerHeight * 50;
     			if (dirty[0] & /*viewY, mouseDrag*/ 66) paragraph_changes.offY = (/*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y) / window.innerHeight * 50;
     			if (dirty[0] & /*viewZoom*/ 4) paragraph_changes.zoom = /*viewZoom*/ ctx[2];
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.sizeX = /*object*/ ctx[37].sizeX;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.sizeY = /*object*/ ctx[37].sizeY;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simX = /*object*/ ctx[37].simX;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simY = /*object*/ ctx[37].simY;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simResizeX = /*object*/ ctx[37].simResizeX;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simResizeY = /*object*/ ctx[37].simResizeY;
+    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.sizeX = /*object*/ ctx[41].sizeX;
+    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.sizeY = /*object*/ ctx[41].sizeY;
+    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simX = /*object*/ ctx[41].simX;
+    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simY = /*object*/ ctx[41].simY;
+    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simResizeX = /*object*/ ctx[41].simResizeX;
+    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simResizeY = /*object*/ ctx[41].simResizeY;
 
     			if (!updating_text && dirty[0] & /*projectData*/ 32) {
     				updating_text = true;
-    				paragraph_changes.text = /*object*/ ctx[37].text;
+    				paragraph_changes.text = /*object*/ ctx[41].text;
     				add_flush_callback(() => updating_text = false);
     			}
 
     			if (!updating_sizeBounds && dirty[0] & /*projectData*/ 32) {
     				updating_sizeBounds = true;
-    				paragraph_changes.sizeBounds = /*object*/ ctx[37].sizeBounds;
+    				paragraph_changes.sizeBounds = /*object*/ ctx[41].sizeBounds;
     				add_flush_callback(() => updating_sizeBounds = false);
     			}
 
@@ -3401,57 +3668,62 @@ var app = (function () {
     		block,
     		id: create_each_block_1$2.name,
     		type: "each",
-    		source: "(406:12) {#each projectData.objects.paragraph as object, index}",
+    		source: "(413:12) {#each projectData.objects.paragraph as object, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (429:12) {#each projectData.objects.table as object, index}
+    // (437:12) {#each projectData.objects.table as object, index}
     function create_each_block$2(ctx) {
     	let updating_title;
     	let updating_sizeBounds;
     	let current;
 
-    	function func_4(...args) {
-    		return /*func_4*/ ctx[32](/*index*/ ctx[39], /*object*/ ctx[37], ...args);
+    	function func_6(...args) {
+    		return /*func_6*/ ctx[35](/*index*/ ctx[43], /*object*/ ctx[41], ...args);
     	}
 
-    	function func_5(...args) {
-    		return /*func_5*/ ctx[33](/*index*/ ctx[39], ...args);
+    	function func_7(...args) {
+    		return /*func_7*/ ctx[36](/*index*/ ctx[43], ...args);
+    	}
+
+    	function func_8(...args) {
+    		return /*func_8*/ ctx[37](/*index*/ ctx[43], ...args);
     	}
 
     	function table_title_binding(value) {
-    		/*table_title_binding*/ ctx[34].call(null, value, /*object*/ ctx[37]);
+    		/*table_title_binding*/ ctx[38].call(null, value, /*object*/ ctx[41]);
     	}
 
     	function table_sizeBounds_binding(value) {
-    		/*table_sizeBounds_binding*/ ctx[35].call(null, value, /*object*/ ctx[37]);
+    		/*table_sizeBounds_binding*/ ctx[39].call(null, value, /*object*/ ctx[41]);
     	}
 
     	let table_props = {
-    		onDrag: func_4,
-    		onResize: func_5,
-    		posX: /*object*/ ctx[37].posX,
-    		posY: /*object*/ ctx[37].posY,
+    		onDrag: func_6,
+    		onResize: func_7,
+    		onDelete: func_8,
+    		posX: /*object*/ ctx[41].posX,
+    		posY: /*object*/ ctx[41].posY,
     		offX: (/*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x) / window.innerHeight * 50,
     		offY: (/*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y) / window.innerHeight * 50,
     		zoom: /*viewZoom*/ ctx[2],
-    		sizeX: /*object*/ ctx[37].sizeX,
-    		sizeY: /*object*/ ctx[37].sizeY,
-    		simX: /*object*/ ctx[37].simX,
-    		simY: /*object*/ ctx[37].simY,
-    		simResizeX: /*object*/ ctx[37].simResizeX,
-    		simResizeY: /*object*/ ctx[37].simResizeY
+    		sizeX: /*object*/ ctx[41].sizeX,
+    		sizeY: /*object*/ ctx[41].sizeY,
+    		simX: /*object*/ ctx[41].simX,
+    		simY: /*object*/ ctx[41].simY,
+    		simResizeX: /*object*/ ctx[41].simResizeX,
+    		simResizeY: /*object*/ ctx[41].simResizeY
     	};
 
-    	if (/*object*/ ctx[37].title !== void 0) {
-    		table_props.title = /*object*/ ctx[37].title;
+    	if (/*object*/ ctx[41].title !== void 0) {
+    		table_props.title = /*object*/ ctx[41].title;
     	}
 
-    	if (/*object*/ ctx[37].sizeBounds !== void 0) {
-    		table_props.sizeBounds = /*object*/ ctx[37].sizeBounds;
+    	if (/*object*/ ctx[41].sizeBounds !== void 0) {
+    		table_props.sizeBounds = /*object*/ ctx[41].sizeBounds;
     	}
 
     	const table = new Table({ props: table_props, $$inline: true });
@@ -3469,28 +3741,28 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
     			const table_changes = {};
-    			if (dirty[0] & /*projectData*/ 32) table_changes.onDrag = func_4;
-    			if (dirty[0] & /*projectData*/ 32) table_changes.posX = /*object*/ ctx[37].posX;
-    			if (dirty[0] & /*projectData*/ 32) table_changes.posY = /*object*/ ctx[37].posY;
+    			if (dirty[0] & /*projectData*/ 32) table_changes.onDrag = func_6;
+    			if (dirty[0] & /*projectData*/ 32) table_changes.posX = /*object*/ ctx[41].posX;
+    			if (dirty[0] & /*projectData*/ 32) table_changes.posY = /*object*/ ctx[41].posY;
     			if (dirty[0] & /*viewX, mouseDrag*/ 65) table_changes.offX = (/*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x) / window.innerHeight * 50;
     			if (dirty[0] & /*viewY, mouseDrag*/ 66) table_changes.offY = (/*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y) / window.innerHeight * 50;
     			if (dirty[0] & /*viewZoom*/ 4) table_changes.zoom = /*viewZoom*/ ctx[2];
-    			if (dirty[0] & /*projectData*/ 32) table_changes.sizeX = /*object*/ ctx[37].sizeX;
-    			if (dirty[0] & /*projectData*/ 32) table_changes.sizeY = /*object*/ ctx[37].sizeY;
-    			if (dirty[0] & /*projectData*/ 32) table_changes.simX = /*object*/ ctx[37].simX;
-    			if (dirty[0] & /*projectData*/ 32) table_changes.simY = /*object*/ ctx[37].simY;
-    			if (dirty[0] & /*projectData*/ 32) table_changes.simResizeX = /*object*/ ctx[37].simResizeX;
-    			if (dirty[0] & /*projectData*/ 32) table_changes.simResizeY = /*object*/ ctx[37].simResizeY;
+    			if (dirty[0] & /*projectData*/ 32) table_changes.sizeX = /*object*/ ctx[41].sizeX;
+    			if (dirty[0] & /*projectData*/ 32) table_changes.sizeY = /*object*/ ctx[41].sizeY;
+    			if (dirty[0] & /*projectData*/ 32) table_changes.simX = /*object*/ ctx[41].simX;
+    			if (dirty[0] & /*projectData*/ 32) table_changes.simY = /*object*/ ctx[41].simY;
+    			if (dirty[0] & /*projectData*/ 32) table_changes.simResizeX = /*object*/ ctx[41].simResizeX;
+    			if (dirty[0] & /*projectData*/ 32) table_changes.simResizeY = /*object*/ ctx[41].simResizeY;
 
     			if (!updating_title && dirty[0] & /*projectData*/ 32) {
     				updating_title = true;
-    				table_changes.title = /*object*/ ctx[37].title;
+    				table_changes.title = /*object*/ ctx[41].title;
     				add_flush_callback(() => updating_title = false);
     			}
 
     			if (!updating_sizeBounds && dirty[0] & /*projectData*/ 32) {
     				updating_sizeBounds = true;
-    				table_changes.sizeBounds = /*object*/ ctx[37].sizeBounds;
+    				table_changes.sizeBounds = /*object*/ ctx[41].sizeBounds;
     				add_flush_callback(() => updating_sizeBounds = false);
     			}
 
@@ -3514,7 +3786,7 @@ var app = (function () {
     		block,
     		id: create_each_block$2.name,
     		type: "each",
-    		source: "(429:12) {#each projectData.objects.table as object, index}",
+    		source: "(437:12) {#each projectData.objects.table as object, index}",
     		ctx
     	});
 
@@ -3592,12 +3864,12 @@ var app = (function () {
     			set_style(div0, "background-position-x", /*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x + "px");
     			set_style(div0, "background-position-y", /*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y + "px");
     			set_style(div0, "background-size", 2 * /*viewZoom*/ ctx[2] + "vh");
-    			add_location(div0, file$6, 372, 12, 11852);
+    			add_location(div0, file$6, 378, 12, 12041);
     			attr_dev(div1, "class", "frame neuIndentShadow svelte-2tl4i1");
-    			add_render_callback(() => /*div1_elementresize_handler*/ ctx[36].call(div1));
-    			add_location(div1, file$6, 358, 4, 11457);
+    			add_render_callback(() => /*div1_elementresize_handler*/ ctx[40].call(div1));
+    			add_location(div1, file$6, 364, 4, 11646);
     			attr_dev(main, "class", "svelte-2tl4i1");
-    			add_location(main, file$6, 354, 0, 11388);
+    			add_location(main, file$6, 360, 0, 11577);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3623,7 +3895,7 @@ var app = (function () {
     				each_blocks[i].m(div0, null);
     			}
 
-    			div1_resize_listener = add_resize_listener(div1, /*div1_elementresize_handler*/ ctx[36].bind(div1));
+    			div1_resize_listener = add_resize_listener(div1, /*div1_elementresize_handler*/ ctx[40].bind(div1));
     			current = true;
 
     			dispose = [
@@ -3637,7 +3909,7 @@ var app = (function () {
     			];
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*initObjectDrag, projectData, initObjectResize, viewX, mouseDrag, viewY, viewZoom*/ 6247) {
+    			if (dirty[0] & /*initObjectDrag, projectData, initObjectResize, deleteObject, viewX, mouseDrag, viewY, viewZoom*/ 39015) {
     				each_value_2 = /*projectData*/ ctx[5].objects.header;
     				validate_each_argument(each_value_2);
     				let i;
@@ -3665,7 +3937,7 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (dirty[0] & /*initObjectDrag, projectData, initObjectResize, viewX, mouseDrag, viewY, viewZoom*/ 6247) {
+    			if (dirty[0] & /*initObjectDrag, projectData, initObjectResize, deleteObject, viewX, mouseDrag, viewY, viewZoom*/ 39015) {
     				each_value_1 = /*projectData*/ ctx[5].objects.paragraph;
     				validate_each_argument(each_value_1);
     				let i;
@@ -3693,7 +3965,7 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (dirty[0] & /*initObjectDrag, projectData, initObjectResize, viewX, mouseDrag, viewY, viewZoom*/ 6247) {
+    			if (dirty[0] & /*initObjectDrag, projectData, initObjectResize, deleteObject, viewX, mouseDrag, viewY, viewZoom*/ 39015) {
     				each_value = /*projectData*/ ctx[5].objects.table;
     				validate_each_argument(each_value);
     				let i;
@@ -3899,7 +4171,7 @@ var app = (function () {
     	};
 
     	function clearObjectDrag() {
-    		$$invalidate(18, objectDrag = {
+    		$$invalidate(19, objectDrag = {
     			"ongoing": false,
     			"start": { "x": 0, "y": 0 },
     			"delta": { "x": 0, "y": 0 },
@@ -3921,7 +4193,7 @@ var app = (function () {
     	};
 
     	function clearObjectResize() {
-    		$$invalidate(19, objectResize = {
+    		$$invalidate(20, objectResize = {
     			"ongoing": false,
     			"start": { "x": 0, "y": 0 },
     			"delta": { "x": 0, "y": 0 },
@@ -3947,14 +4219,14 @@ var app = (function () {
     		event.dataTransfer.setData("startY", event.clientY);
 
     		// Update objectDrag
-    		$$invalidate(18, objectDrag.ongoing = true, objectDrag);
+    		$$invalidate(19, objectDrag.ongoing = true, objectDrag);
 
-    		$$invalidate(18, objectDrag.start.x = event.clientX, objectDrag);
-    		$$invalidate(18, objectDrag.start.y = event.clientY, objectDrag);
-    		$$invalidate(18, objectDrag.objectInfo.type = type, objectDrag);
-    		$$invalidate(18, objectDrag.objectInfo.ID = index, objectDrag);
-    		$$invalidate(18, objectDrag.objectInfo.width = width, objectDrag);
-    		$$invalidate(18, objectDrag.objectInfo.height = height, objectDrag);
+    		$$invalidate(19, objectDrag.start.x = event.clientX, objectDrag);
+    		$$invalidate(19, objectDrag.start.y = event.clientY, objectDrag);
+    		$$invalidate(19, objectDrag.objectInfo.type = type, objectDrag);
+    		$$invalidate(19, objectDrag.objectInfo.ID = index, objectDrag);
+    		$$invalidate(19, objectDrag.objectInfo.width = width, objectDrag);
+    		$$invalidate(19, objectDrag.objectInfo.height = height, objectDrag);
     	}
 
     	function initObjectResize(event, type, index) {
@@ -3968,11 +4240,11 @@ var app = (function () {
     		event.dataTransfer.setData("command", "resize");
     		event.dataTransfer.setData("objectType", type);
     		event.dataTransfer.setData("objectID", index);
-    		$$invalidate(19, objectResize.start.x = event.clientX, objectResize);
-    		$$invalidate(19, objectResize.start.y = event.clientY, objectResize);
-    		$$invalidate(19, objectResize.objectInfo.type = type, objectResize);
-    		$$invalidate(19, objectResize.objectInfo.ID = index, objectResize);
-    		$$invalidate(19, objectResize.ongoing = true, objectResize);
+    		$$invalidate(20, objectResize.start.x = event.clientX, objectResize);
+    		$$invalidate(20, objectResize.start.y = event.clientY, objectResize);
+    		$$invalidate(20, objectResize.objectInfo.type = type, objectResize);
+    		$$invalidate(20, objectResize.objectInfo.ID = index, objectResize);
+    		$$invalidate(20, objectResize.ongoing = true, objectResize);
     	}
 
     	function dragOver(event) {
@@ -3981,20 +4253,20 @@ var app = (function () {
 
     		if (objectDrag.ongoing) {
     			// Update objectDrag
-    			$$invalidate(18, objectDrag.delta.x = Math.round((event.clientX - objectDrag.start.x) / vhConverter), objectDrag);
+    			$$invalidate(19, objectDrag.delta.x = Math.round((event.clientX - objectDrag.start.x) / vhConverter), objectDrag);
 
-    			$$invalidate(18, objectDrag.delta.y = Math.round((event.clientY - objectDrag.start.y) / vhConverter), objectDrag);
-    			$$invalidate(18, objectDrag.layer.x = event.layerX, objectDrag);
-    			$$invalidate(18, objectDrag.layer.y = event.layerY, objectDrag);
+    			$$invalidate(19, objectDrag.delta.y = Math.round((event.clientY - objectDrag.start.y) / vhConverter), objectDrag);
+    			$$invalidate(19, objectDrag.layer.x = event.layerX, objectDrag);
+    			$$invalidate(19, objectDrag.layer.y = event.layerY, objectDrag);
     			$$invalidate(5, projectData.objects[objectDrag.objectInfo.type][objectDrag.objectInfo.ID].simX = objectDrag.delta.x, projectData);
     			$$invalidate(5, projectData.objects[objectDrag.objectInfo.type][objectDrag.objectInfo.ID].simY = objectDrag.delta.y, projectData);
     		}
 
     		if (objectResize.ongoing) {
     			// Update objectResize
-    			$$invalidate(19, objectResize.delta.x = Math.round((event.clientX - objectResize.start.x) / vhConverter), objectResize);
+    			$$invalidate(20, objectResize.delta.x = Math.round((event.clientX - objectResize.start.x) / vhConverter), objectResize);
 
-    			$$invalidate(19, objectResize.delta.y = Math.round((event.clientY - objectResize.start.y) / vhConverter), objectResize);
+    			$$invalidate(20, objectResize.delta.y = Math.round((event.clientY - objectResize.start.y) / vhConverter), objectResize);
     			$$invalidate(5, projectData.objects[objectResize.objectInfo.type][objectResize.objectInfo.ID].simResizeX = objectResize.delta.x, projectData);
     			$$invalidate(5, projectData.objects[objectResize.objectInfo.type][objectResize.objectInfo.ID].simResizeY = objectResize.delta.y, projectData);
     		}
@@ -4009,10 +4281,10 @@ var app = (function () {
     				$$invalidate(5, projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].posY += Math.round((event.clientY - event.dataTransfer.getData("startY")) / (window.innerHeight / 100 * 2 * viewZoom)), projectData);
     				$$invalidate(5, projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].simX = 0, projectData);
     				$$invalidate(5, projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].simY = 0, projectData);
-    				$$invalidate(18, objectDrag.ongoing = false, objectDrag);
+    				$$invalidate(19, objectDrag.ongoing = false, objectDrag);
     				break;
     			case "resize":
-    				$$invalidate(19, objectResize.ongoing = false, objectResize);
+    				$$invalidate(20, objectResize.ongoing = false, objectResize);
     				let sizeX = projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeX;
     				let sizeY = projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeY;
     				let sizeBounds = projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeBounds;
@@ -4034,6 +4306,11 @@ var app = (function () {
     		clearObjectResize();
     	}
 
+    	function deleteObject(type, index) {
+    		projectData.objects[type].splice(index, 1);
+    		$$invalidate(5, projectData.objects[type] = Object.assign([], projectData.objects[type]), projectData);
+    	}
+
     	function centerView() {
     		$$invalidate(0, viewX = 0);
     		$$invalidate(1, viewY = 0);
@@ -4053,6 +4330,10 @@ var app = (function () {
     		initObjectResize(event, "header", index);
     	};
 
+    	const func_2 = index => {
+    		deleteObject("header", index);
+    	};
+
     	function header_text_binding(value, object) {
     		object.text = value;
     		$$invalidate(5, projectData);
@@ -4063,12 +4344,16 @@ var app = (function () {
     		$$invalidate(5, projectData);
     	}
 
-    	const func_2 = (index, object, event) => {
+    	const func_3 = (index, object, event) => {
     		initObjectDrag(event, "paragraph", index, object.sizeX, object.sizeY);
     	};
 
-    	const func_3 = (index, event) => {
+    	const func_4 = (index, event) => {
     		initObjectResize(event, "paragraph", index);
+    	};
+
+    	const func_5 = index => {
+    		deleteObject("paragraph", index);
     	};
 
     	function paragraph_text_binding(value, object) {
@@ -4081,12 +4366,16 @@ var app = (function () {
     		$$invalidate(5, projectData);
     	}
 
-    	const func_4 = (index, object, event) => {
+    	const func_6 = (index, object, event) => {
     		initObjectDrag(event, "table", index, object.sizeX, object.sizeY);
     	};
 
-    	const func_5 = (index, event) => {
+    	const func_7 = (index, event) => {
     		initObjectResize(event, "table", index);
+    	};
+
+    	const func_8 = index => {
+    		deleteObject("table", index);
     	};
 
     	function table_title_binding(value, object) {
@@ -4107,8 +4396,8 @@ var app = (function () {
     	}
 
     	$$self.$set = $$props => {
-    		if ("debObjectDrag" in $$props) $$invalidate(15, debObjectDrag = $$props.debObjectDrag);
-    		if ("debObjectResize" in $$props) $$invalidate(16, debObjectResize = $$props.debObjectResize);
+    		if ("debObjectDrag" in $$props) $$invalidate(16, debObjectDrag = $$props.debObjectDrag);
+    		if ("debObjectResize" in $$props) $$invalidate(17, debObjectResize = $$props.debObjectResize);
     	};
 
     	$$self.$capture_state = () => ({
@@ -4138,6 +4427,7 @@ var app = (function () {
     		initObjectResize,
     		dragOver,
     		drop,
+    		deleteObject,
     		centerView,
     		Math,
     		document,
@@ -4146,8 +4436,8 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ("debObjectDrag" in $$props) $$invalidate(15, debObjectDrag = $$props.debObjectDrag);
-    		if ("debObjectResize" in $$props) $$invalidate(16, debObjectResize = $$props.debObjectResize);
+    		if ("debObjectDrag" in $$props) $$invalidate(16, debObjectDrag = $$props.debObjectDrag);
+    		if ("debObjectResize" in $$props) $$invalidate(17, debObjectResize = $$props.debObjectResize);
     		if ("viewX" in $$props) $$invalidate(0, viewX = $$props.viewX);
     		if ("viewY" in $$props) $$invalidate(1, viewY = $$props.viewY);
     		if ("viewZoom" in $$props) $$invalidate(2, viewZoom = $$props.viewZoom);
@@ -4155,8 +4445,8 @@ var app = (function () {
     		if ("viewportWidth" in $$props) $$invalidate(4, viewportWidth = $$props.viewportWidth);
     		if ("projectData" in $$props) $$invalidate(5, projectData = $$props.projectData);
     		if ("mouseDrag" in $$props) $$invalidate(6, mouseDrag = $$props.mouseDrag);
-    		if ("objectDrag" in $$props) $$invalidate(18, objectDrag = $$props.objectDrag);
-    		if ("objectResize" in $$props) $$invalidate(19, objectResize = $$props.objectResize);
+    		if ("objectDrag" in $$props) $$invalidate(19, objectDrag = $$props.objectDrag);
+    		if ("objectResize" in $$props) $$invalidate(20, objectResize = $$props.objectResize);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -4164,8 +4454,8 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty[0] & /*objectDrag*/ 262144) {
-    			 $$invalidate(15, debObjectDrag = [
+    		if ($$self.$$.dirty[0] & /*objectDrag*/ 524288) {
+    			 $$invalidate(16, debObjectDrag = [
     				objectDrag.ongoing,
     				objectDrag.start.x,
     				objectDrag.start.y,
@@ -4178,8 +4468,8 @@ var app = (function () {
     			]);
     		}
 
-    		if ($$self.$$.dirty[0] & /*objectResize*/ 524288) {
-    			 $$invalidate(16, debObjectResize = [
+    		if ($$self.$$.dirty[0] & /*objectResize*/ 1048576) {
+    			 $$invalidate(17, debObjectResize = [
     				objectResize.ongoing,
     				objectResize.start.x,
     				objectResize.start.y,
@@ -4207,6 +4497,7 @@ var app = (function () {
     		initObjectResize,
     		dragOver,
     		drop,
+    		deleteObject,
     		debObjectDrag,
     		debObjectResize,
     		centerView,
@@ -4218,14 +4509,17 @@ var app = (function () {
     		clearObjectResize,
     		func,
     		func_1,
+    		func_2,
     		header_text_binding,
     		header_sizeBounds_binding,
-    		func_2,
     		func_3,
-    		paragraph_text_binding,
-    		paragraph_sizeBounds_binding,
     		func_4,
     		func_5,
+    		paragraph_text_binding,
+    		paragraph_sizeBounds_binding,
+    		func_6,
+    		func_7,
+    		func_8,
     		table_title_binding,
     		table_sizeBounds_binding,
     		div1_elementresize_handler
@@ -4243,9 +4537,9 @@ var app = (function () {
     			create_fragment$6,
     			safe_not_equal,
     			{
-    				debObjectDrag: 15,
-    				debObjectResize: 16,
-    				centerView: 17
+    				debObjectDrag: 16,
+    				debObjectResize: 17,
+    				centerView: 18
     			},
     			[-1, -1]
     		);
@@ -4260,11 +4554,11 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*debObjectDrag*/ ctx[15] === undefined && !("debObjectDrag" in props)) {
+    		if (/*debObjectDrag*/ ctx[16] === undefined && !("debObjectDrag" in props)) {
     			console.warn("<Viewport> was created without expected prop 'debObjectDrag'");
     		}
 
-    		if (/*debObjectResize*/ ctx[16] === undefined && !("debObjectResize" in props)) {
+    		if (/*debObjectResize*/ ctx[17] === undefined && !("debObjectResize" in props)) {
     			console.warn("<Viewport> was created without expected prop 'debObjectResize'");
     		}
     	}
@@ -4286,7 +4580,7 @@ var app = (function () {
     	}
 
     	get centerView() {
-    		return this.$$.ctx[17];
+    		return this.$$.ctx[18];
     	}
 
     	set centerView(value) {
