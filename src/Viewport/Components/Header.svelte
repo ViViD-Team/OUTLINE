@@ -1,6 +1,6 @@
 <script>
     // OBJECT SPECIFIC
-    export const sizeBounds = [ /* X */ [5, 30], /* Y */ [3, 5]]
+    export const sizeBounds = [ /* X */ [5, 50], /* Y */ [3, 5]]
 
 
     export let text;

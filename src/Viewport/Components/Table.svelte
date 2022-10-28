@@ -40,7 +40,7 @@
 
 
 
-<main class="neuIndentShadow" style="
+<main class="neuOutdentShadow" style="
     left: {((posX + simX) * zoom + offX) * 2}vh;
     top: {((posY + simY) * zoom + offY) * 2}vh;
 
@@ -60,6 +60,7 @@
             font-size: {2 * zoom}vh;
             min-height: {2 * zoom}vh;
             min-width: {sizeX * zoom}vh;
+            margin-left: {4 * zoom}vh;
         ">Title</h1>
     </div>
 
@@ -102,7 +103,7 @@
                         contenteditable="true"
                         bind:textContent={colNames[index]}
                         style="
-                            font-size: {1.5*zoom}vh;
+                            font-size: {1.2*zoom}vh;
                             height: {1.5*zoom}vh;
                         ">
                     </p>
@@ -196,6 +197,8 @@
         align-items: center;
         justify-items: flex-start;
 
+        overflow: hidden;
+
         flex-shrink: 0;
     }
 
@@ -284,7 +287,7 @@
 
         white-space: nowrap;
 
-        margin-left: 4vh;
+        text-overflow: ellipsis;
 
         /* transition: 
             font-size .2s cubic-bezier(0, 0, 0, .9); */
@@ -332,7 +335,7 @@
     }
 
     .resizeHandle svg {
-        fill: var(--black);
+        fill: var(--red);
         width: 50%;
     }
 

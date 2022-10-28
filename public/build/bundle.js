@@ -1557,7 +1557,7 @@ var app = (function () {
     }
 
     function instance$3($$self, $$props, $$invalidate) {
-    	const sizeBounds = [/* X */ [5, 30], [3, 5]]; /* Y */
+    	const sizeBounds = [/* X */ [5, 50], [3, 5]]; /* Y */
     	let { text } = $$props;
     	let { sizeX = 5 } = $$props;
     	let { sizeY = 2 } = $$props;
@@ -1937,16 +1937,16 @@ var app = (function () {
     			set_style(p, "font-size", 2 * /*zoom*/ ctx[8] + "vh");
     			set_style(p, "min-height", 2 * /*zoom*/ ctx[8] + "vh");
     			set_style(p, "min-width", /*sizeX*/ ctx[2] * /*zoom*/ ctx[8] + "vh");
-    			attr_dev(p, "class", "svelte-rj3s81");
+    			attr_dev(p, "class", "svelte-2qiggl");
     			if (/*text*/ ctx[0] === void 0) add_render_callback(() => /*p_input_handler*/ ctx[19].call(p));
     			add_location(p, file$4, 52, 4, 1173);
     			attr_dev(path0, "d", "M278.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l9.4-9.4V224H109.3l9.4-9.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-9.4-9.4H224V402.7l-9.4-9.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-9.4 9.4V288H402.7l-9.4 9.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3l-64-64c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l9.4 9.4H288V109.3l9.4 9.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-64-64z");
     			add_location(path0, file$4, 68, 238, 1796);
     			attr_dev(svg0, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg0, "viewBox", "0 0 512 512");
-    			attr_dev(svg0, "class", "svelte-rj3s81");
+    			attr_dev(svg0, "class", "svelte-2qiggl");
     			add_location(svg0, file$4, 68, 8, 1566);
-    			attr_dev(div0, "class", "dragHandle svelte-rj3s81");
+    			attr_dev(div0, "class", "dragHandle svelte-2qiggl");
     			attr_dev(div0, "draggable", "true");
     			set_style(div0, "width", 3 * /*zoom*/ ctx[8] + "vh");
     			set_style(div0, "height", 3 * /*zoom*/ ctx[8] + "vh");
@@ -1955,9 +1955,9 @@ var app = (function () {
     			add_location(path1, file$4, 80, 238, 2892);
     			attr_dev(svg1, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg1, "viewBox", "0 0 448 512");
-    			attr_dev(svg1, "class", "svelte-rj3s81");
+    			attr_dev(svg1, "class", "svelte-2qiggl");
     			add_location(svg1, file$4, 80, 8, 2662);
-    			attr_dev(div1, "class", "deleteAction svelte-rj3s81");
+    			attr_dev(div1, "class", "deleteAction svelte-2qiggl");
     			set_style(div1, "width", 3 * /*zoom*/ ctx[8] + "vh");
     			set_style(div1, "height", 3 * /*zoom*/ ctx[8] + "vh");
     			add_location(div1, file$4, 71, 4, 2475);
@@ -1965,14 +1965,14 @@ var app = (function () {
     			add_location(path2, file$4, 93, 238, 3619);
     			attr_dev(svg2, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg2, "viewBox", "0 0 448 512");
-    			attr_dev(svg2, "class", "svelte-rj3s81");
+    			attr_dev(svg2, "class", "svelte-2qiggl");
     			add_location(svg2, file$4, 93, 8, 3389);
-    			attr_dev(div2, "class", "resizeHandle svelte-rj3s81");
+    			attr_dev(div2, "class", "resizeHandle svelte-2qiggl");
     			attr_dev(div2, "draggable", "true");
     			set_style(div2, "width", 3 * /*zoom*/ ctx[8] + "vh");
     			set_style(div2, "height", 3 * /*zoom*/ ctx[8] + "vh");
     			add_location(div2, file$4, 83, 4, 3184);
-    			attr_dev(main, "class", "neuIndentShadow svelte-rj3s81");
+    			attr_dev(main, "class", "neuIndentShadow svelte-2qiggl");
     			set_style(main, "left", ((/*posX*/ ctx[4] + /*simX*/ ctx[9]) * /*zoom*/ ctx[8] + /*offX*/ ctx[6]) * 2 + "vh");
     			set_style(main, "top", ((/*posY*/ ctx[5] + /*simY*/ ctx[10]) * /*zoom*/ ctx[8] + /*offY*/ ctx[7]) * 2 + "vh");
     			set_style(main, "width", Math.max(/*sizeBounds*/ ctx[1][0][0], Math.min(/*sizeX*/ ctx[2] + /*simResizeX*/ ctx[11], /*sizeBounds*/ ctx[1][0][1])) * 2 * /*zoom*/ ctx[8] + "vh");
@@ -2455,7 +2455,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (74:16) {#each Array(numRows) as y, index}
+    // (75:16) {#each Array(numRows) as y, index}
     function create_each_block_2(ctx) {
     	let div;
     	let p;
@@ -2471,13 +2471,13 @@ var app = (function () {
     			t1 = space();
     			set_style(p, "font-size", 1.5 * /*zoom*/ ctx[11] + "vh");
     			set_style(p, "height", 1.5 * /*zoom*/ ctx[11] + "vh");
-    			attr_dev(p, "class", "svelte-1uwjnxa");
-    			add_location(p, file$5, 80, 24, 2121);
-    			attr_dev(div, "class", "rowIndicator svelte-1uwjnxa");
+    			attr_dev(p, "class", "svelte-wjfkde");
+    			add_location(p, file$5, 81, 24, 2162);
+    			attr_dev(div, "class", "rowIndicator svelte-wjfkde");
     			set_style(div, "height", 3 * /*zoom*/ ctx[11] + "vh");
     			set_style(div, "border-top-left-radius", 0.5 * /*zoom*/ ctx[11] + "vh");
     			set_style(div, "border-bottom-left-radius", 0.5 * /*zoom*/ ctx[11] + "vh");
-    			add_location(div, file$5, 74, 20, 1864);
+    			add_location(div, file$5, 75, 20, 1905);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2515,24 +2515,24 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(74:16) {#each Array(numRows) as y, index}",
+    		source: "(75:16) {#each Array(numRows) as y, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (111:20) {#each Array(numRows) as y}
+    // (112:20) {#each Array(numRows) as y}
     function create_each_block_1$1(ctx) {
     	let div;
 
     	const block = {
     		c: function create() {
     			div = element("div");
-    			attr_dev(div, "class", "tableCell neuIndentShadowNarrow svelte-1uwjnxa");
+    			attr_dev(div, "class", "tableCell neuIndentShadowNarrow svelte-wjfkde");
     			set_style(div, "height", 3 * /*zoom*/ ctx[11] + "vh");
     			set_style(div, "border-radius", 0.5 * /*zoom*/ ctx[11] + "vh");
-    			add_location(div, file$5, 111, 24, 3232);
+    			add_location(div, file$5, 112, 24, 3273);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2555,14 +2555,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1$1.name,
     		type: "each",
-    		source: "(111:20) {#each Array(numRows) as y}",
+    		source: "(112:20) {#each Array(numRows) as y}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (91:12) {#each Array(numCols) as x, index}
+    // (92:12) {#each Array(numCols) as x, index}
     function create_each_block$1(ctx) {
     	let div1;
     	let div0;
@@ -2596,19 +2596,19 @@ var app = (function () {
 
     			t1 = space();
     			attr_dev(p, "contenteditable", "true");
-    			set_style(p, "font-size", 1.5 * /*zoom*/ ctx[11] + "vh");
+    			set_style(p, "font-size", 1.2 * /*zoom*/ ctx[11] + "vh");
     			set_style(p, "height", 1.5 * /*zoom*/ ctx[11] + "vh");
-    			attr_dev(p, "class", "svelte-1uwjnxa");
+    			attr_dev(p, "class", "svelte-wjfkde");
     			if (/*colNames*/ ctx[1][/*index*/ ctx[26]] === void 0) add_render_callback(p_input_handler);
-    			add_location(p, file$5, 100, 20, 2829);
-    			attr_dev(div0, "class", "columnIndicator svelte-1uwjnxa");
+    			add_location(p, file$5, 101, 20, 2870);
+    			attr_dev(div0, "class", "columnIndicator svelte-wjfkde");
     			set_style(div0, "border-top-left-radius", 0.5 * /*zoom*/ ctx[11] + "vh");
     			set_style(div0, "border-top-right-radius", 0.5 * /*zoom*/ ctx[11] + "vh");
     			set_style(div0, "height", 2 * /*zoom*/ ctx[11] + "vh");
-    			add_location(div0, file$5, 94, 16, 2591);
-    			attr_dev(div1, "class", "tableGridColumn svelte-1uwjnxa");
+    			add_location(div0, file$5, 95, 16, 2632);
+    			attr_dev(div1, "class", "tableGridColumn svelte-wjfkde");
     			set_style(div1, "width", 10 * /*zoom*/ ctx[11] + "vh");
-    			add_location(div1, file$5, 91, 16, 2476);
+    			add_location(div1, file$5, 92, 16, 2517);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
@@ -2632,7 +2632,7 @@ var app = (function () {
     			ctx = new_ctx;
 
     			if (dirty & /*zoom*/ 2048) {
-    				set_style(p, "font-size", 1.5 * /*zoom*/ ctx[11] + "vh");
+    				set_style(p, "font-size", 1.2 * /*zoom*/ ctx[11] + "vh");
     			}
 
     			if (dirty & /*zoom*/ 2048) {
@@ -2694,7 +2694,7 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(91:12) {#each Array(numCols) as x, index}",
+    		source: "(92:12) {#each Array(numCols) as x, index}",
     		ctx
     	});
 
@@ -2777,53 +2777,54 @@ var app = (function () {
     			set_style(h1, "font-size", 2 * /*zoom*/ ctx[11] + "vh");
     			set_style(h1, "min-height", 2 * /*zoom*/ ctx[11] + "vh");
     			set_style(h1, "min-width", /*sizeX*/ ctx[5] * /*zoom*/ ctx[11] + "vh");
-    			attr_dev(h1, "class", "svelte-1uwjnxa");
+    			set_style(h1, "margin-left", 4 * /*zoom*/ ctx[11] + "vh");
+    			attr_dev(h1, "class", "svelte-wjfkde");
     			if (/*title*/ ctx[0] === void 0) add_render_callback(() => /*h1_input_handler*/ ctx[22].call(h1));
-    			add_location(h1, file$5, 58, 8, 1327);
-    			attr_dev(div0, "class", "titleStrip svelte-1uwjnxa");
+    			add_location(h1, file$5, 58, 8, 1328);
+    			attr_dev(div0, "class", "titleStrip svelte-wjfkde");
     			set_style(div0, "height", 4 * /*zoom*/ ctx[11] + "vh");
-    			add_location(div0, file$5, 55, 4, 1247);
-    			attr_dev(div1, "class", "rowIndicatorContainer svelte-1uwjnxa");
+    			add_location(div0, file$5, 55, 4, 1248);
+    			attr_dev(div1, "class", "rowIndicatorContainer svelte-wjfkde");
     			set_style(div1, "width", 2 * /*zoom*/ ctx[11] + "vh");
     			set_style(div1, "margin-top", 2 * /*zoom*/ ctx[11] + "vh");
-    			add_location(div1, file$5, 69, 12, 1655);
-    			attr_dev(div2, "class", "tableGrid svelte-1uwjnxa");
-    			add_location(div2, file$5, 67, 8, 1581);
-    			attr_dev(div3, "class", "contents svelte-1uwjnxa");
-    			add_location(div3, file$5, 66, 4, 1549);
+    			add_location(div1, file$5, 70, 12, 1696);
+    			attr_dev(div2, "class", "tableGrid svelte-wjfkde");
+    			add_location(div2, file$5, 68, 8, 1622);
+    			attr_dev(div3, "class", "contents svelte-wjfkde");
+    			add_location(div3, file$5, 67, 4, 1590);
     			attr_dev(path0, "d", "M278.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l9.4-9.4V224H109.3l9.4-9.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-9.4-9.4H224V402.7l-9.4-9.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-9.4 9.4V288H402.7l-9.4 9.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3l-64-64c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l9.4 9.4H288V109.3l9.4 9.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-64-64z");
-    			add_location(path0, file$5, 137, 238, 4030);
+    			add_location(path0, file$5, 138, 238, 4071);
     			attr_dev(svg0, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg0, "viewBox", "0 0 512 512");
-    			attr_dev(svg0, "class", "svelte-1uwjnxa");
-    			add_location(svg0, file$5, 137, 8, 3800);
-    			attr_dev(div4, "class", "dragHandle svelte-1uwjnxa");
+    			attr_dev(svg0, "class", "svelte-wjfkde");
+    			add_location(svg0, file$5, 138, 8, 3841);
+    			attr_dev(div4, "class", "dragHandle svelte-wjfkde");
     			attr_dev(div4, "draggable", "true");
     			set_style(div4, "width", 3 * /*zoom*/ ctx[11] + "vh");
     			set_style(div4, "height", 3 * /*zoom*/ ctx[11] + "vh");
-    			add_location(div4, file$5, 127, 4, 3598);
+    			add_location(div4, file$5, 128, 4, 3639);
     			attr_dev(path1, "d", "M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z");
-    			add_location(path1, file$5, 149, 238, 5126);
+    			add_location(path1, file$5, 150, 238, 5167);
     			attr_dev(svg1, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg1, "viewBox", "0 0 448 512");
-    			attr_dev(svg1, "class", "svelte-1uwjnxa");
-    			add_location(svg1, file$5, 149, 8, 4896);
-    			attr_dev(div5, "class", "deleteAction svelte-1uwjnxa");
+    			attr_dev(svg1, "class", "svelte-wjfkde");
+    			add_location(svg1, file$5, 150, 8, 4937);
+    			attr_dev(div5, "class", "deleteAction svelte-wjfkde");
     			set_style(div5, "width", 3 * /*zoom*/ ctx[11] + "vh");
     			set_style(div5, "height", 3 * /*zoom*/ ctx[11] + "vh");
-    			add_location(div5, file$5, 140, 4, 4709);
+    			add_location(div5, file$5, 141, 4, 4750);
     			attr_dev(path2, "d", "M32 288c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 288zm0-128c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 160z");
-    			add_location(path2, file$5, 162, 238, 5853);
+    			add_location(path2, file$5, 163, 238, 5894);
     			attr_dev(svg2, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg2, "viewBox", "0 0 448 512");
-    			attr_dev(svg2, "class", "svelte-1uwjnxa");
-    			add_location(svg2, file$5, 162, 8, 5623);
-    			attr_dev(div6, "class", "resizeHandle svelte-1uwjnxa");
+    			attr_dev(svg2, "class", "svelte-wjfkde");
+    			add_location(svg2, file$5, 163, 8, 5664);
+    			attr_dev(div6, "class", "resizeHandle svelte-wjfkde");
     			attr_dev(div6, "draggable", "true");
     			set_style(div6, "width", 3 * /*zoom*/ ctx[11] + "vh");
     			set_style(div6, "height", 3 * /*zoom*/ ctx[11] + "vh");
-    			add_location(div6, file$5, 152, 4, 5418);
-    			attr_dev(main, "class", "neuIndentShadow svelte-1uwjnxa");
+    			add_location(div6, file$5, 153, 4, 5459);
+    			attr_dev(main, "class", "neuOutdentShadow svelte-wjfkde");
     			set_style(main, "left", ((/*posX*/ ctx[7] + /*simX*/ ctx[12]) * /*zoom*/ ctx[11] + /*offX*/ ctx[9]) * 2 + "vh");
     			set_style(main, "top", ((/*posY*/ ctx[8] + /*simY*/ ctx[13]) * /*zoom*/ ctx[11] + /*offY*/ ctx[10]) * 2 + "vh");
     			set_style(main, "width", Math.max(/*sizeBounds*/ ctx[2][0][0], Math.min(/*sizeX*/ ctx[5] + /*simResizeX*/ ctx[14], /*sizeBounds*/ ctx[2][0][1])) * 2 * /*zoom*/ ctx[11] + "vh");
@@ -2891,6 +2892,10 @@ var app = (function () {
 
     			if (dirty & /*sizeX, zoom*/ 2080) {
     				set_style(h1, "min-width", /*sizeX*/ ctx[5] * /*zoom*/ ctx[11] + "vh");
+    			}
+
+    			if (dirty & /*zoom*/ 2048) {
+    				set_style(h1, "margin-left", 4 * /*zoom*/ ctx[11] + "vh");
     			}
 
     			if (dirty & /*title*/ 1 && /*title*/ ctx[0] !== h1.textContent) {
@@ -5029,11 +5034,11 @@ var app = (function () {
     			add_location(path, file$a, 32, 242, 1714);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 320 512");
-    			attr_dev(svg, "class", "svelte-x856o");
+    			attr_dev(svg, "class", "svelte-1qmj3si");
     			add_location(svg, file$a, 32, 12, 1484);
-    			attr_dev(div0, "class", "backButtonContainer neuOutdentShadow svelte-x856o");
+    			attr_dev(div0, "class", "backButtonContainer neuOutdentShadow svelte-1qmj3si");
     			add_location(div0, file$a, 31, 8, 1385);
-    			attr_dev(div1, "class", "listFrame neuOutdentShadow svelte-x856o");
+    			attr_dev(div1, "class", "listFrame neuOutdentShadow svelte-1qmj3si");
     			add_location(div1, file$a, 34, 8, 1926);
     		},
     		m: function mount(target, anchor) {
@@ -5151,7 +5156,7 @@ var app = (function () {
     			create_component(categorybutton0.$$.fragment);
     			t = space();
     			create_component(categorybutton1.$$.fragment);
-    			attr_dev(div, "class", "categoryButtonLayout svelte-x856o");
+    			attr_dev(div, "class", "categoryButtonLayout svelte-1qmj3si");
     			add_location(div, file$a, 11, 8, 215);
     		},
     		m: function mount(target, anchor) {
@@ -5287,7 +5292,7 @@ var app = (function () {
     			add_location(path, file$a, 42, 24, 2240);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 448 512");
-    			attr_dev(svg, "class", "svelte-x856o");
+    			attr_dev(svg, "class", "svelte-1qmj3si");
     			add_location(svg, file$a, 41, 20, 2152);
     		},
     		m: function mount(target, anchor) {
@@ -5323,7 +5328,7 @@ var app = (function () {
     			add_location(path, file$a, 50, 24, 2851);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 448 512");
-    			attr_dev(svg, "class", "svelte-x856o");
+    			attr_dev(svg, "class", "svelte-1qmj3si");
     			add_location(svg, file$a, 49, 20, 2763);
     		},
     		m: function mount(target, anchor) {
@@ -5406,7 +5411,7 @@ var app = (function () {
     			add_location(path, file$a, 60, 246, 3652);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 512 512");
-    			attr_dev(svg, "class", "svelte-x856o");
+    			attr_dev(svg, "class", "svelte-1qmj3si");
     			add_location(svg, file$a, 60, 16, 3422);
     		},
     		m: function mount(target, anchor) {
@@ -5521,7 +5526,7 @@ var app = (function () {
     		c: function create() {
     			main = element("main");
     			if_block.c();
-    			attr_dev(main, "class", "svelte-x856o");
+    			attr_dev(main, "class", "svelte-1qmj3si");
     			add_location(main, file$a, 9, 0, 171);
     		},
     		l: function claim(nodes) {

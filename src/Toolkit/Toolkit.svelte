@@ -88,6 +88,9 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+
+        animation: flyInFromLeft .5s cubic-bezier(0, 0, 0, .9) .1s both;
+
     }
 
     .listFrame {

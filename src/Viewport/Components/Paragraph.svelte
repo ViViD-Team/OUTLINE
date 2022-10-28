@@ -176,7 +176,7 @@
     }
 
     .dragHandle svg {
-        fill: var(--black);
+        fill: var(--red);
         width: 50%;
     }
 
@@ -201,7 +201,7 @@
     }
 
     .deleteAction svg {
-        fill: var(--black);
+        fill: var(--red);
         width: 50%;
     }
 </style>
