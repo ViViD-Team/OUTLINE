@@ -80,8 +80,8 @@ const   zoomBounds = [.2, 3]
             "title": "New Table",
             "posX": 0,
             "posY": 0,
-            "sizeX": 25,
-            "sizeY": 20,
+            "sizeX": 28,
+            "sizeY": 25,
             "simX": 0,
             "simY": 0,
             "simResizeX": 0,
@@ -92,6 +92,8 @@ const   zoomBounds = [.2, 3]
 
 
     // MOUSE
+
+    //#region mouse
 
     let mouseDrag = {
         "ongoing": false,
@@ -137,8 +139,12 @@ const   zoomBounds = [.2, 3]
         viewY = (viewY - viewportHeight/2) * viewZoom / oldZoom + (viewportHeight / 2)
     }
 
+    //#endregion
+
 
     // DRAG AND DROP
+
+    //#region dragAndDrop
     
     let objectDrag = {
         "ongoing": false,
@@ -347,6 +353,16 @@ const   zoomBounds = [.2, 3]
         projectData.objects[type] = Object.assign([], projectData.objects[type]);
     }
 
+    //#endregion
+
+
+    // Table Editing
+
+    let edited = null;  // null when outside of editmode,
+                        // index of edited table when inside of editmode.
+
+    
+
     // EXPORTED FUNCTIONS
 
     export function centerView() {
@@ -439,9 +455,12 @@ const   zoomBounds = [.2, 3]
                     bind:title={object.title}
                     bind:sizeBounds={object.sizeBounds}
 
+                    editmode={edited == index}
+
                     onDrag={(event) => {initObjectDrag(event, "table", index, object.sizeX, object.sizeY)}}
                     onResize={(event) => {initObjectResize(event, "table", index)}}
-                    onDelete={() => {deleteObject("table", index)}}
+                    onDelete={() => {deleteObject("table", index); if (edited == index) edited = null}}
+                    onEdit={() => {edited = edited == null ? index : edited != index ? index : null}}
 
                     posX={object.posX}
                     posY={object.posY}
