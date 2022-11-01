@@ -8,7 +8,32 @@
     export let numCols = 4, numRows = 9;
     export let colNames = [];
 
+    /*  "cellImport": {
+            "col"
+            "row"
+            "content"
+        }
+     */
+
+    export let lockedCells = [];
+
+    function scanLocked(x, y) {
+        let out = false;
+        lockedCells.forEach((element) => {
+            if (element[0] == x && element[1] == y) out = true;
+        })
+        return out;
+    }
+
+    export let cellContents = Array.from(Array(numCols), () => new Array(numRows));
+
     export let editmode = false;
+
+    function deleteColumn(index) {
+        if (numCols <= 1) return;
+        cellContents.splice(index, 1);
+        numCols--;
+    }
 
 
     // PPROTOTYPE
@@ -113,11 +138,11 @@
                 {/each}
             </div>
 
-            {#each Array(numCols) as x, index}
+            {#each Array(numCols) as x, indexX}
                 <div class="tableGridColumn" style="
                     width: {10*zoom}vh;
                 ">
-                <div class="columnIndicator" style="
+                <div on:click={() => {deleteColumn(indexX)}} class="columnIndicator" style="
                     border-top-left-radius: {.5*zoom}vh;
                     border-top-right-radius: {.5*zoom}vh;
 
@@ -128,7 +153,7 @@
                     {#if !editmode}
                         <p
                             contenteditable="true"
-                            bind:textContent={colNames[index]}
+                            bind:textContent={colNames[indexX]}
                             style="
                                 font-size: {1.2*zoom}vh;
                                 height: {1.5*zoom}vh;
@@ -141,16 +166,32 @@
                     {/if}
                 </div>
 
-                    {#each Array(numRows) as y}
-                        <div class="tableCell neuIndentShadowNarrow" style="
-                            height: {3*zoom}vh;
+                    {#each Array(numRows) as y, indexY}
+                        {#if scanLocked(indexX, indexY)}
+                            <div class="tableCell neuIndentShadowNarrow" style="
+                                height: {3*zoom}vh;
 
-                            margin: {.2*zoom}vh 0 {.2*zoom}vh 0;
+                                margin: {.2*zoom}vh 0 {.2*zoom}vh 0;
 
-                            border-radius: {.5*zoom}vh;
-                        ">
-                            
-                        </div>
+                                border-radius: {.5*zoom}vh;
+                            ">
+                                <p>{cellContents[indexX][indexY]}</p>
+                            </div>
+                        {:else}
+                            <div class="tableCell neuIndentShadowNarrow" style="
+                                height: {3*zoom}vh;
+
+                                margin: {.2*zoom}vh 0 {.2*zoom}vh 0;
+
+                                border-radius: {.5*zoom}vh;
+                            ">
+                                <p
+                                    contenteditable="true"
+                                    bind:textContent={cellContents[indexX][indexY]}>
+                                    {cellContents[indexX][indexY]}
+                                </p>
+                            </div>
+                        {/if}
                     {/each}
                 </div>
             {/each}
@@ -329,6 +370,19 @@
         flex-shrink: 0;
 
         background-color: var(--white);
+
+        overflow: hidden;
+
+        display: grid;
+        place-items: center;
+    }
+
+    .tableCell p {
+        width: 100%;
+        text-align: center;
+
+        color: var(--black);
+        font-weight: 500;
     }
 
     h1 {

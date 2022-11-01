@@ -457,6 +457,8 @@ const   zoomBounds = [.2, 3]
 
                     editmode={edited == index}
 
+                    lockedCells={[[0, 0]]}
+
                     onDrag={(event) => {initObjectDrag(event, "table", index, object.sizeX, object.sizeY)}}
                     onResize={(event) => {initObjectResize(event, "table", index)}}
                     onDelete={() => {deleteObject("table", index); if (edited == index) edited = null}}
