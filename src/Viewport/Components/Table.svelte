@@ -35,6 +35,13 @@
         numCols--;
     }
 
+    function deleteRow(index) {
+        if (numRows <= 1) return;
+        cellContents.forEach((col) => {
+            console.log(col.splice(index, 1));
+        })
+    }
+
 
     // PPROTOTYPE
     export let sizeX = 5;
@@ -98,7 +105,7 @@
         ">Title</h1>
 
         {#if editmode}
-            <h1>EDITMODE</h1>
+            <h1 style="font-size: {4 * zoom}vh">EDITMODE</h1>
         {/if}
     </div>
 
@@ -114,7 +121,7 @@
                 margin-top: {2*zoom}vh;
             ">
                 {#each Array(numRows) as y, index}
-                    <div class="rowIndicator" style="
+                    <div on:click={() => {if (editmode) {deleteRow(index)}}} class="rowIndicator" style="
                         height: {3*zoom}vh;
 
                         margin: {.2*zoom}vh 0 {.2*zoom}vh 0;
@@ -142,7 +149,8 @@
                 <div class="tableGridColumn" style="
                     width: {10*zoom}vh;
                 ">
-                <div on:click={() => {deleteColumn(indexX)}} class="columnIndicator" style="
+                <div on:click={() => {if (editmode) {deleteColumn(indexX)}}
+                    } class="columnIndicator" style="
                     border-top-left-radius: {.5*zoom}vh;
                     border-top-right-radius: {.5*zoom}vh;
 
@@ -175,7 +183,7 @@
 
                                 border-radius: {.5*zoom}vh;
                             ">
-                                <p>{cellContents[indexX][indexY]}</p>
+                                <p style="font-size: {1.3 * zoom}vh">{cellContents[indexX][indexY]}</p>
                             </div>
                         {:else}
                             <div class="tableCell neuIndentShadowNarrow" style="
@@ -187,8 +195,10 @@
                             ">
                                 <p
                                     contenteditable="true"
-                                    bind:textContent={cellContents[indexX][indexY]}>
+                                    bind:textContent={cellContents[indexX][indexY]} 
+                                    style="font-size: {1.3*zoom}vh">
                                     {cellContents[indexX][indexY]}
+                                    
                                 </p>
                             </div>
                         {/if}
