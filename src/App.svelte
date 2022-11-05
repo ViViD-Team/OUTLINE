@@ -41,6 +41,10 @@
 		viewportRef.centerView();
 	}
 
+	function resetZoom() {
+		viewportRef.resetZoom();
+	}
+
 </script>
 
 <main>
@@ -48,6 +52,7 @@
 		<TopBar
 			toggleDebugConsole={() => {debugConsoleOpen = !debugConsoleOpen}}
 			centerView={centerViewport}
+			resetZoom={resetZoom}
 		/>
 		<div class="centerRow">
 			<Toolkit />

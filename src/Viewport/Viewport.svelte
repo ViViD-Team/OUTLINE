@@ -370,6 +370,10 @@ const   zoomBounds = [.2, 3]
         viewY = 0;
     }
 
+    export function resetZoom() {
+        viewZoom = 1;
+    }
+
 </script>
 
 

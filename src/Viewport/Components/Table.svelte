@@ -8,12 +8,6 @@
     export let numCols = 4, numRows = 9;
     export let colNames = [];
 
-    /*  "cellImport": {
-            "col"
-            "row"
-            "content"
-        }
-     */
 
     export let lockedCells = [];
 
@@ -33,13 +27,18 @@
         if (numCols <= 1) return;
         cellContents.splice(index, 1);
         numCols--;
+        console.log(cellContents);
+        cellContents = Object.assign([], cellContents);
     }
 
     function deleteRow(index) {
         if (numRows <= 1) return;
         cellContents.forEach((col) => {
-            console.log(col.splice(index, 1));
+            col.splice(index, 1);
         })
+        numRows--;
+        console.log(cellContents);
+        cellContents = Object.assign([], cellContents);
     }
 
 
@@ -145,7 +144,7 @@
                 {/each}
             </div>
 
-            {#each Array(numCols) as x, indexX}
+            {#each cellContents as x, indexX}
                 <div class="tableGridColumn" style="
                     width: {10*zoom}vh;
                 ">
@@ -174,7 +173,7 @@
                     {/if}
                 </div>
 
-                    {#each Array(numRows) as y, indexY}
+                    {#each x as y, indexY}
                         {#if scanLocked(indexX, indexY)}
                             <div class="tableCell neuIndentShadowNarrow" style="
                                 height: {3*zoom}vh;

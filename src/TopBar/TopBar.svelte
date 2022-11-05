@@ -7,6 +7,7 @@
     let selected = null;
 
     export let centerView;
+    export let resetZoom;
 
     const config = [
         {
@@ -39,7 +40,7 @@
                 },
                 {
                     "label": "Reset Zoom",
-                    "func": function () {}
+                    "func": resetZoom
                 },
             ]
         },
@@ -69,7 +70,7 @@
             </defs>
         </svg>
     </div>
-    <div class="frameContainer" on:mouseleave={() => {selected = null}}>
+    <div class="frameContainer">
         <div class="frame neuIndentShadow">
             {#each config as group, i}
                 {#if selected == null || selected == i}
