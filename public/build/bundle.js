@@ -2468,8 +2468,8 @@ var app = (function () {
     			h1 = element("h1");
     			t = text("EDITMODE");
     			set_style(h1, "font-size", 4 * /*zoom*/ ctx[12] + "vh");
-    			attr_dev(h1, "class", "svelte-jo4ww");
-    			add_location(h1, file$5, 120, 12, 3061);
+    			attr_dev(h1, "class", "svelte-2a7iw4");
+    			add_location(h1, file$5, 120, 12, 3083);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -2506,12 +2506,12 @@ var app = (function () {
     			svg = svg_element("svg");
     			path = svg_element("path");
     			attr_dev(path, "d", "M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM184 232H328c13.3 0 24 10.7 24 24s-10.7 24-24 24H184c-13.3 0-24-10.7-24-24s10.7-24 24-24z");
-    			add_location(path, file$5, 156, 255, 4670);
+    			add_location(path, file$5, 156, 255, 4692);
     			set_style(svg, "width", /*zoom*/ ctx[12] + "vh");
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 512 512");
-    			attr_dev(svg, "class", "svelte-jo4ww");
-    			add_location(svg, file$5, 154, 28, 4351);
+    			attr_dev(svg, "class", "svelte-2a7iw4");
+    			add_location(svg, file$5, 154, 28, 4373);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -2550,8 +2550,8 @@ var app = (function () {
     			t = text(t_value);
     			set_style(p, "font-size", 1.5 * /*zoom*/ ctx[12] + "vh");
     			set_style(p, "height", 1.5 * /*zoom*/ ctx[12] + "vh");
-    			attr_dev(p, "class", "svelte-jo4ww");
-    			add_location(p, file$5, 147, 28, 4054);
+    			attr_dev(p, "class", "svelte-2a7iw4");
+    			add_location(p, file$5, 147, 28, 4076);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -2606,9 +2606,9 @@ var app = (function () {
     			div = element("div");
     			if_block.c();
     			t = space();
-    			attr_dev(div, "class", "rowIndicator svelte-jo4ww");
+    			attr_dev(div, "class", "rowIndicator svelte-2a7iw4");
     			attr_dev(div, "style", div_style_value = "\r\n                        height: " + 3 * /*zoom*/ ctx[12] + "vh;\r\n\r\n                        margin: " + 0.2 * /*zoom*/ ctx[12] + "vh 0 " + 0.2 * /*zoom*/ ctx[12] + "vh 0;\r\n\r\n                        " + (/*editmode*/ ctx[5] ? "cursor: pointer;" : "") + "\r\n\r\n                        border-top-left-radius: " + 0.5 * /*zoom*/ ctx[12] + "vh;\r\n                        border-bottom-left-radius: " + 0.5 * /*zoom*/ ctx[12] + "vh;\r\n                    ");
-    			add_location(div, file$5, 136, 20, 3572);
+    			add_location(div, file$5, 136, 20, 3594);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2663,12 +2663,12 @@ var app = (function () {
     			svg = svg_element("svg");
     			path = svg_element("path");
     			attr_dev(path, "d", "M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM184 232H328c13.3 0 24 10.7 24 24s-10.7 24-24 24H184c-13.3 0-24-10.7-24-24s10.7-24 24-24z");
-    			add_location(path, file$5, 197, 251, 6719);
+    			add_location(path, file$5, 197, 251, 6741);
     			set_style(svg, "height", /*zoom*/ ctx[12] + "vh");
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 512 512");
-    			attr_dev(svg, "class", "svelte-jo4ww");
-    			add_location(svg, file$5, 195, 24, 6407);
+    			attr_dev(svg, "class", "svelte-2a7iw4");
+    			add_location(svg, file$5, 195, 24, 6429);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -2717,9 +2717,9 @@ var app = (function () {
     			attr_dev(p, "contenteditable", "true");
     			set_style(p, "font-size", 1.2 * /*zoom*/ ctx[12] + "vh");
     			set_style(p, "height", 1.5 * /*zoom*/ ctx[12] + "vh");
-    			attr_dev(p, "class", "svelte-jo4ww");
+    			attr_dev(p, "class", "svelte-2a7iw4");
     			if (/*colNames*/ ctx[2][/*indexX*/ ctx[39]] === void 0) add_render_callback(p_input_handler);
-    			add_location(p, file$5, 178, 24, 5612);
+    			add_location(p, file$5, 178, 24, 5634);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -2791,10 +2791,10 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			attr_dev(p, "class", "columnIndicatorPlaceholder svelte-jo4ww");
+    			attr_dev(p, "class", "columnIndicatorPlaceholder svelte-2a7iw4");
     			set_style(p, "font-size", 1.2 * /*zoom*/ ctx[12] + "vh");
     			set_style(p, "height", 1.5 * /*zoom*/ ctx[12] + "vh");
-    			add_location(p, file$5, 187, 28, 6022);
+    			add_location(p, file$5, 187, 28, 6044);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -2844,14 +2844,14 @@ var app = (function () {
     			t = text(t_value);
     			attr_dev(p, "contenteditable", "true");
     			set_style(p, "font-size", 1.3 * /*zoom*/ ctx[12] + "vh");
-    			attr_dev(p, "class", "svelte-jo4ww");
+    			attr_dev(p, "class", "svelte-2a7iw4");
     			if (/*cellContents*/ ctx[3][/*indexX*/ ctx[39]][/*indexY*/ ctx[42]] === void 0) add_render_callback(p_input_handler_1);
-    			add_location(p, file$5, 220, 32, 7874);
-    			attr_dev(div, "class", "tableCell neuIndentShadowNarrow svelte-jo4ww");
+    			add_location(p, file$5, 220, 32, 7896);
+    			attr_dev(div, "class", "tableCell neuIndentShadowNarrow svelte-2a7iw4");
     			set_style(div, "height", 3 * /*zoom*/ ctx[12] + "vh");
     			set_style(div, "margin", 0.2 * /*zoom*/ ctx[12] + "vh 0 " + 0.2 * /*zoom*/ ctx[12] + "vh 0");
     			set_style(div, "border-radius", 0.5 * /*zoom*/ ctx[12] + "vh");
-    			add_location(div, file$5, 213, 28, 7568);
+    			add_location(div, file$5, 213, 28, 7590);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2918,13 +2918,13 @@ var app = (function () {
     			p = element("p");
     			t = text(t_value);
     			set_style(p, "font-size", 1.3 * /*zoom*/ ctx[12] + "vh");
-    			attr_dev(p, "class", "svelte-jo4ww");
-    			add_location(p, file$5, 210, 32, 7398);
-    			attr_dev(div, "class", "tableCell neuIndentShadowNarrow svelte-jo4ww");
+    			attr_dev(p, "class", "svelte-2a7iw4");
+    			add_location(p, file$5, 210, 32, 7420);
+    			attr_dev(div, "class", "tableCell neuIndentShadowNarrow svelte-2a7iw4");
     			set_style(div, "height", 3 * /*zoom*/ ctx[12] + "vh");
     			set_style(div, "margin", 0.2 * /*zoom*/ ctx[12] + "vh 0 " + 0.2 * /*zoom*/ ctx[12] + "vh 0");
     			set_style(div, "border-radius", 0.5 * /*zoom*/ ctx[12] + "vh");
-    			add_location(div, file$5, 203, 28, 7092);
+    			add_location(div, file$5, 203, 28, 7114);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -3048,12 +3048,12 @@ var app = (function () {
     			}
 
     			t1 = space();
-    			attr_dev(div0, "class", "columnIndicator svelte-jo4ww");
+    			attr_dev(div0, "class", "columnIndicator svelte-2a7iw4");
     			attr_dev(div0, "style", div0_style_value = "\r\n                    border-top-left-radius: " + 0.5 * /*zoom*/ ctx[12] + "vh;\r\n                    border-top-right-radius: " + 0.5 * /*zoom*/ ctx[12] + "vh;\r\n\r\n                    " + (/*editmode*/ ctx[5] ? "cursor: pointer;" : "") + "\r\n\r\n                    margin-bottom: " + 0.5 * /*zoom*/ ctx[12] + "vh;\r\n\r\n                    height: " + 2 * /*zoom*/ ctx[12] + "vh;\r\n                ");
-    			add_location(div0, file$5, 166, 16, 5144);
-    			attr_dev(div1, "class", "tableGridColumn svelte-jo4ww");
+    			add_location(div0, file$5, 166, 16, 5166);
+    			attr_dev(div1, "class", "tableGridColumn svelte-2a7iw4");
     			set_style(div1, "width", 10 * /*zoom*/ ctx[12] + "vh");
-    			add_location(div1, file$5, 163, 16, 5029);
+    			add_location(div1, file$5, 163, 16, 5051);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
@@ -3223,72 +3223,72 @@ var app = (function () {
     			set_style(h1, "min-height", 2 * /*zoom*/ ctx[12] + "vh");
     			set_style(h1, "min-width", /*sizeX*/ ctx[6] * /*zoom*/ ctx[12] + "vh");
     			set_style(h1, "margin-left", 4 * /*zoom*/ ctx[12] + "vh");
-    			attr_dev(h1, "class", "svelte-jo4ww");
+    			attr_dev(h1, "class", "svelte-2a7iw4");
     			if (/*title*/ ctx[0] === void 0) add_render_callback(() => /*h1_input_handler*/ ctx[32].call(h1));
-    			add_location(h1, file$5, 112, 8, 2781);
-    			attr_dev(div0, "class", "titleStrip svelte-jo4ww");
+    			add_location(h1, file$5, 112, 8, 2803);
+    			attr_dev(div0, "class", "titleStrip svelte-2a7iw4");
     			set_style(div0, "height", 4 * /*zoom*/ ctx[12] + "vh");
-    			add_location(div0, file$5, 109, 4, 2701);
-    			attr_dev(div1, "class", "rowIndicatorContainer svelte-jo4ww");
+    			add_location(div0, file$5, 109, 4, 2723);
+    			attr_dev(div1, "class", "rowIndicatorContainer svelte-2a7iw4");
     			set_style(div1, "width", 2 * /*zoom*/ ctx[12] + "vh");
     			set_style(div1, "margin-top", 2 * /*zoom*/ ctx[12] + "vh");
-    			add_location(div1, file$5, 131, 12, 3363);
-    			attr_dev(div2, "class", "tableGrid svelte-jo4ww");
+    			add_location(div1, file$5, 131, 12, 3385);
+    			attr_dev(div2, "class", "tableGrid svelte-2a7iw4");
     			set_style(div2, "width", "calc(100% - " + 4 * /*zoom*/ ctx[12] + "vh)");
     			set_style(div2, "height", "calc(100% - " + 4 * /*zoom*/ ctx[12] + "vh)");
-    			add_location(div2, file$5, 126, 8, 3179);
-    			attr_dev(div3, "class", "contents svelte-jo4ww");
-    			add_location(div3, file$5, 125, 4, 3147);
+    			add_location(div2, file$5, 126, 8, 3201);
+    			attr_dev(div3, "class", "contents svelte-2a7iw4");
+    			add_location(div3, file$5, 125, 4, 3169);
     			attr_dev(path0, "d", "M278.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l9.4-9.4V224H109.3l9.4-9.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-9.4-9.4H224V402.7l-9.4-9.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-9.4 9.4V288H402.7l-9.4 9.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3l-64-64c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l9.4 9.4H288V109.3l9.4 9.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-64-64z");
-    			add_location(path0, file$5, 248, 238, 8851);
+    			add_location(path0, file$5, 248, 238, 8873);
     			attr_dev(svg0, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg0, "viewBox", "0 0 512 512");
-    			attr_dev(svg0, "class", "svelte-jo4ww");
-    			add_location(svg0, file$5, 248, 8, 8621);
-    			attr_dev(div4, "class", "dragHandle svelte-jo4ww");
+    			attr_dev(svg0, "class", "svelte-2a7iw4");
+    			add_location(svg0, file$5, 248, 8, 8643);
+    			attr_dev(div4, "class", "dragHandle svelte-2a7iw4");
     			attr_dev(div4, "draggable", "true");
     			set_style(div4, "width", 3 * /*zoom*/ ctx[12] + "vh");
     			set_style(div4, "height", 3 * /*zoom*/ ctx[12] + "vh");
-    			add_location(div4, file$5, 238, 4, 8419);
+    			add_location(div4, file$5, 238, 4, 8441);
     			attr_dev(path1, "d", "M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z");
-    			add_location(path1, file$5, 260, 238, 9947);
+    			add_location(path1, file$5, 260, 238, 9969);
     			attr_dev(svg1, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg1, "viewBox", "0 0 448 512");
-    			attr_dev(svg1, "class", "svelte-jo4ww");
-    			add_location(svg1, file$5, 260, 8, 9717);
-    			attr_dev(div5, "class", "deleteAction svelte-jo4ww");
+    			attr_dev(svg1, "class", "svelte-2a7iw4");
+    			add_location(svg1, file$5, 260, 8, 9739);
+    			attr_dev(div5, "class", "deleteAction svelte-2a7iw4");
     			set_style(div5, "width", 3 * /*zoom*/ ctx[12] + "vh");
     			set_style(div5, "height", 3 * /*zoom*/ ctx[12] + "vh");
-    			add_location(div5, file$5, 251, 4, 9530);
+    			add_location(div5, file$5, 251, 4, 9552);
     			attr_dev(path2, "d", "M32 288c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 288zm0-128c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 160z");
-    			add_location(path2, file$5, 273, 238, 10674);
+    			add_location(path2, file$5, 273, 238, 10696);
     			attr_dev(svg2, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg2, "viewBox", "0 0 448 512");
-    			attr_dev(svg2, "class", "svelte-jo4ww");
-    			add_location(svg2, file$5, 273, 8, 10444);
-    			attr_dev(div6, "class", "resizeHandle svelte-jo4ww");
+    			attr_dev(svg2, "class", "svelte-2a7iw4");
+    			add_location(svg2, file$5, 273, 8, 10466);
+    			attr_dev(div6, "class", "resizeHandle svelte-2a7iw4");
     			attr_dev(div6, "draggable", "true");
     			set_style(div6, "width", 3 * /*zoom*/ ctx[12] + "vh");
     			set_style(div6, "height", 3 * /*zoom*/ ctx[12] + "vh");
-    			add_location(div6, file$5, 263, 4, 10239);
+    			add_location(div6, file$5, 263, 4, 10261);
     			attr_dev(path3, "d", "M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.8 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z");
-    			add_location(path3, file$5, 285, 238, 11296);
+    			add_location(path3, file$5, 285, 238, 11318);
     			attr_dev(svg3, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg3, "viewBox", "0 0 512 512");
-    			attr_dev(svg3, "class", "svelte-jo4ww");
-    			add_location(svg3, file$5, 285, 8, 11066);
-    			attr_dev(div7, "class", "editHandle svelte-jo4ww");
+    			attr_dev(svg3, "class", "svelte-2a7iw4");
+    			add_location(svg3, file$5, 285, 8, 11088);
+    			attr_dev(div7, "class", "editHandle svelte-2a7iw4");
     			set_style(div7, "width", 3 * /*zoom*/ ctx[12] + "vh");
     			set_style(div7, "height", 3 * /*zoom*/ ctx[12] + "vh");
-    			add_location(div7, file$5, 276, 4, 10897);
-    			attr_dev(main, "class", "neuOutdentShadowRim svelte-jo4ww");
+    			add_location(div7, file$5, 276, 4, 10919);
+    			attr_dev(main, "class", "neuOutdentShadowRim svelte-2a7iw4");
     			set_style(main, "left", ((/*posX*/ ctx[8] + /*simX*/ ctx[13]) * /*zoom*/ ctx[12] + /*offX*/ ctx[10]) * 2 + "vh");
     			set_style(main, "top", ((/*posY*/ ctx[9] + /*simY*/ ctx[14]) * /*zoom*/ ctx[12] + /*offY*/ ctx[11]) * 2 + "vh");
     			set_style(main, "width", Math.max(/*sizeBounds*/ ctx[4][0][0], Math.min(/*sizeX*/ ctx[6] + /*simResizeX*/ ctx[15], /*sizeBounds*/ ctx[4][0][1])) * 2 * /*zoom*/ ctx[12] + "vh");
     			set_style(main, "height", Math.max(/*sizeBounds*/ ctx[4][1][0], Math.min(/*sizeY*/ ctx[7] + /*simResizeY*/ ctx[16], /*sizeBounds*/ ctx[4][1][1])) * 2 * /*zoom*/ ctx[12] + "vh");
     			set_style(main, "border-radius", 1.5 * /*zoom*/ ctx[12] + "vh");
     			set_style(main, "transition", "border-radius .2s cubic-bezier(0, 0, 0, .9),\r\n");
-    			add_location(main, file$5, 96, 0, 2225);
+    			add_location(main, file$5, 96, 0, 2247);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3572,7 +3572,7 @@ var app = (function () {
     		return out;
     	}
 
-    	let { cellContents = Array.from(Array(numCols), () => new Array(numRows)) } = $$props;
+    	let { cellContents = Array.from(Array(numCols), () => Array.from(new Array(numRows), () => "")) } = $$props;
     	let { editmode = false } = $$props;
 
     	function deleteColumn(index) {
@@ -4864,7 +4864,7 @@ var app = (function () {
     			"posX": 0,
     			"posY": 0,
     			"sizeX": 28,
-    			"sizeY": 25,
+    			"sizeY": 21,
     			"simX": 0,
     			"simY": 0,
     			"simResizeX": 0,

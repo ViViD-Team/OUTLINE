@@ -86,7 +86,7 @@ const   zoomBounds = [.2, 3]
             "posX": 0,
             "posY": 0,
             "sizeX": 28,
-            "sizeY": 25,
+            "sizeY": 21,
             "simX": 0,
             "simY": 0,
             "simResizeX": 0,

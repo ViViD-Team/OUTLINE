@@ -33,7 +33,7 @@
     }
     
 
-    export let cellContents = Array.from(Array(numCols), () => new Array(numRows));
+    export let cellContents = Array.from(Array(numCols), () => Array.from(new Array(numRows), () => ""));
 
     export let editmode = false;
 
@@ -413,6 +413,8 @@
     }
 
     .tableCell p {
+        cursor: text;
+
         width: 100%;
         text-align: center;
 
