@@ -1,5 +1,4 @@
 <script>
-
     // OBJECT SPECIFIC
     export const sizeBounds = [ /* X */ [10, 50], /* Y */ [10, 50]]
 
@@ -8,16 +7,31 @@
     export let numCols = 4, numRows = 9;
     export let colNames = [];
 
+    const alphabet = [  "a", "b", "c",
+                        "d", "e", "f",
+                        "g", "h", "i",
+                        "j", "k", "l",
+                        "m", "n", "o",
+                        "p", "q", "r",
+                        "s", "t", "u",
+                        "v", "w", "x",
+                        "y", "z"
+                    ]
+    function alphabeticColName(index) {
+        return alphabet[index % 26];
+    }
+
 
     export let lockedCells = [];
 
     function scanLocked(x, y) {
         let out = false;
         lockedCells.forEach((element) => {
-            if (element[0] == x && element[1] == y) out = true;
-        })
+            if (element[0] === x && element[1] === y) out = true;
+        });
         return out;
     }
+    
 
     export let cellContents = Array.from(Array(numCols), () => new Array(numRows));
 
@@ -80,7 +94,7 @@
 
 
 
-<main class="neuOutdentShadow" style="
+<main class="neuOutdentShadowRim" style="
     left: {((posX + simX) * zoom + offX) * 2}vh;
     top: {((posY + simY) * zoom + offY) * 2}vh;
 
@@ -125,6 +139,8 @@
 
                         margin: {.2*zoom}vh 0 {.2*zoom}vh 0;
 
+                        {editmode ? "cursor: pointer;" : ""}
+
                         border-top-left-radius: {.5*zoom}vh;
                         border-bottom-left-radius: {.5*zoom}vh;
                     ">
@@ -153,6 +169,8 @@
                     border-top-left-radius: {.5*zoom}vh;
                     border-top-right-radius: {.5*zoom}vh;
 
+                    {editmode ? "cursor: pointer;" : ""}
+
                     margin-bottom: {.5*zoom}vh;
 
                     height: {2*zoom}vh;
@@ -166,6 +184,14 @@
                                 height: {1.5*zoom}vh;
                             ">
                         </p>
+                        {#if !colNames[indexX]}
+                            <p
+                                class="columnIndicatorPlaceholder"
+                                style="
+                                    font-size: {1.2*zoom}vh;
+                                    height: {1.5*zoom}vh;
+                                ">{alphabeticColName(indexX)}</p>
+                        {/if}
                     {:else}
                         <svg style="
                             height: {zoom}vh;
@@ -419,6 +445,12 @@
         overflow: hidden;
 
         animation: flyInFromLeft .5s cubic-bezier(0, 0, 0, .9) both;
+    }
+
+    .columnIndicatorPlaceholder {
+        position: absolute;
+
+        opacity: .5;
     }
 
     .rowIndicator p {

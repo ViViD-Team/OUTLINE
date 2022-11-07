@@ -78,6 +78,11 @@ const   zoomBounds = [.2, 3]
 
         "table": {
             "title": "New Table",
+            "numCols": undefined,
+            "numRows": undefined,
+            "colNames": undefined,
+            "lockedCells": undefined,
+            "cellContents": undefined,
             "posX": 0,
             "posY": 0,
             "sizeX": 28,
@@ -461,7 +466,12 @@ const   zoomBounds = [.2, 3]
 
                     editmode={edited == index}
 
-                    lockedCells={[[0, 0]]}
+                    bind:numCols={object.numCols}
+                    bind:numRows={object.numRows}
+                    bind:colNames={object.colNames}
+                    bind:cellContents={object.cellContents}
+
+                    lockedCells={[]}
 
                     onDrag={(event) => {initObjectDrag(event, "table", index, object.sizeX, object.sizeY)}}
                     onResize={(event) => {initObjectResize(event, "table", index)}}

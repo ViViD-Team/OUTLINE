@@ -77,6 +77,13 @@ html, body {
     ;
 }
 
+.neuOutdentShadowRim {
+	box-shadow: 
+		.2vh .2vh .2vh 0 var(--grey),
+		-.2vh -.2vh .2vh 0 var(--absolute-white)
+    ;
+}
+
 .neuOutdentShadowLight {
 	box-shadow: 
 		.4vh .4vh .4vh 0 var(--grey),
