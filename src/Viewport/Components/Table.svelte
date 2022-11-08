@@ -1,3 +1,5 @@
+<svelte:options accessors />
+
 <script>
     // OBJECT SPECIFIC
     export const sizeBounds = [ /* X */ [10, 50], /* Y */ [10, 50]]

@@ -2458,7 +2458,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (120:8) {#if editmode}
+    // (122:8) {#if editmode}
     function create_if_block_4(ctx) {
     	let h1;
     	let t;
@@ -2469,7 +2469,7 @@ var app = (function () {
     			t = text("EDITMODE");
     			set_style(h1, "font-size", 4 * /*zoom*/ ctx[12] + "vh");
     			attr_dev(h1, "class", "svelte-2a7iw4");
-    			add_location(h1, file$5, 120, 12, 3083);
+    			add_location(h1, file$5, 122, 12, 3115);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -2489,14 +2489,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(120:8) {#if editmode}",
+    		source: "(122:8) {#if editmode}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (154:24) {:else}
+    // (156:24) {:else}
     function create_else_block_2(ctx) {
     	let svg;
     	let path;
@@ -2506,12 +2506,12 @@ var app = (function () {
     			svg = svg_element("svg");
     			path = svg_element("path");
     			attr_dev(path, "d", "M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM184 232H328c13.3 0 24 10.7 24 24s-10.7 24-24 24H184c-13.3 0-24-10.7-24-24s10.7-24 24-24z");
-    			add_location(path, file$5, 156, 255, 4692);
+    			add_location(path, file$5, 158, 255, 4724);
     			set_style(svg, "width", /*zoom*/ ctx[12] + "vh");
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 512 512");
     			attr_dev(svg, "class", "svelte-2a7iw4");
-    			add_location(svg, file$5, 154, 28, 4373);
+    			add_location(svg, file$5, 156, 28, 4405);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -2531,14 +2531,14 @@ var app = (function () {
     		block,
     		id: create_else_block_2.name,
     		type: "else",
-    		source: "(154:24) {:else}",
+    		source: "(156:24) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (147:24) {#if !editmode}
+    // (149:24) {#if !editmode}
     function create_if_block_3(ctx) {
     	let p;
     	let t_value = /*index*/ ctx[44] + 1 + "";
@@ -2551,7 +2551,7 @@ var app = (function () {
     			set_style(p, "font-size", 1.5 * /*zoom*/ ctx[12] + "vh");
     			set_style(p, "height", 1.5 * /*zoom*/ ctx[12] + "vh");
     			attr_dev(p, "class", "svelte-2a7iw4");
-    			add_location(p, file$5, 147, 28, 4076);
+    			add_location(p, file$5, 149, 28, 4108);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -2575,14 +2575,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(147:24) {#if !editmode}",
+    		source: "(149:24) {#if !editmode}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (136:16) {#each Array(numRows) as y, index}
+    // (138:16) {#each Array(numRows) as y, index}
     function create_each_block_2(ctx) {
     	let div;
     	let t;
@@ -2608,7 +2608,7 @@ var app = (function () {
     			t = space();
     			attr_dev(div, "class", "rowIndicator svelte-2a7iw4");
     			attr_dev(div, "style", div_style_value = "\r\n                        height: " + 3 * /*zoom*/ ctx[12] + "vh;\r\n\r\n                        margin: " + 0.2 * /*zoom*/ ctx[12] + "vh 0 " + 0.2 * /*zoom*/ ctx[12] + "vh 0;\r\n\r\n                        " + (/*editmode*/ ctx[5] ? "cursor: pointer;" : "") + "\r\n\r\n                        border-top-left-radius: " + 0.5 * /*zoom*/ ctx[12] + "vh;\r\n                        border-bottom-left-radius: " + 0.5 * /*zoom*/ ctx[12] + "vh;\r\n                    ");
-    			add_location(div, file$5, 136, 20, 3594);
+    			add_location(div, file$5, 138, 20, 3626);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2646,14 +2646,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(136:16) {#each Array(numRows) as y, index}",
+    		source: "(138:16) {#each Array(numRows) as y, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (195:20) {:else}
+    // (197:20) {:else}
     function create_else_block_1(ctx) {
     	let svg;
     	let path;
@@ -2663,12 +2663,12 @@ var app = (function () {
     			svg = svg_element("svg");
     			path = svg_element("path");
     			attr_dev(path, "d", "M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM184 232H328c13.3 0 24 10.7 24 24s-10.7 24-24 24H184c-13.3 0-24-10.7-24-24s10.7-24 24-24z");
-    			add_location(path, file$5, 197, 251, 6741);
+    			add_location(path, file$5, 199, 251, 6773);
     			set_style(svg, "height", /*zoom*/ ctx[12] + "vh");
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 512 512");
     			attr_dev(svg, "class", "svelte-2a7iw4");
-    			add_location(svg, file$5, 195, 24, 6429);
+    			add_location(svg, file$5, 197, 24, 6461);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -2688,14 +2688,14 @@ var app = (function () {
     		block,
     		id: create_else_block_1.name,
     		type: "else",
-    		source: "(195:20) {:else}",
+    		source: "(197:20) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (178:20) {#if !editmode}
+    // (180:20) {#if !editmode}
     function create_if_block_1$1(ctx) {
     	let p;
     	let t;
@@ -2719,7 +2719,7 @@ var app = (function () {
     			set_style(p, "height", 1.5 * /*zoom*/ ctx[12] + "vh");
     			attr_dev(p, "class", "svelte-2a7iw4");
     			if (/*colNames*/ ctx[2][/*indexX*/ ctx[39]] === void 0) add_render_callback(p_input_handler);
-    			add_location(p, file$5, 178, 24, 5634);
+    			add_location(p, file$5, 180, 24, 5666);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -2774,14 +2774,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$1.name,
     		type: "if",
-    		source: "(178:20) {#if !editmode}",
+    		source: "(180:20) {#if !editmode}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (187:24) {#if !colNames[indexX]}
+    // (189:24) {#if !colNames[indexX]}
     function create_if_block_2(ctx) {
     	let p;
     	let t_value = /*alphabeticColName*/ ctx[17](/*indexX*/ ctx[39]) + "";
@@ -2794,7 +2794,7 @@ var app = (function () {
     			attr_dev(p, "class", "columnIndicatorPlaceholder svelte-2a7iw4");
     			set_style(p, "font-size", 1.2 * /*zoom*/ ctx[12] + "vh");
     			set_style(p, "height", 1.5 * /*zoom*/ ctx[12] + "vh");
-    			add_location(p, file$5, 187, 28, 6044);
+    			add_location(p, file$5, 189, 28, 6076);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -2818,14 +2818,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(187:24) {#if !colNames[indexX]}",
+    		source: "(189:24) {#if !colNames[indexX]}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (213:24) {:else}
+    // (215:24) {:else}
     function create_else_block(ctx) {
     	let div;
     	let p;
@@ -2846,12 +2846,12 @@ var app = (function () {
     			set_style(p, "font-size", 1.3 * /*zoom*/ ctx[12] + "vh");
     			attr_dev(p, "class", "svelte-2a7iw4");
     			if (/*cellContents*/ ctx[3][/*indexX*/ ctx[39]][/*indexY*/ ctx[42]] === void 0) add_render_callback(p_input_handler_1);
-    			add_location(p, file$5, 220, 32, 7896);
+    			add_location(p, file$5, 222, 32, 7928);
     			attr_dev(div, "class", "tableCell neuIndentShadowNarrow svelte-2a7iw4");
     			set_style(div, "height", 3 * /*zoom*/ ctx[12] + "vh");
     			set_style(div, "margin", 0.2 * /*zoom*/ ctx[12] + "vh 0 " + 0.2 * /*zoom*/ ctx[12] + "vh 0");
     			set_style(div, "border-radius", 0.5 * /*zoom*/ ctx[12] + "vh");
-    			add_location(div, file$5, 213, 28, 7590);
+    			add_location(div, file$5, 215, 28, 7622);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2898,14 +2898,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(213:24) {:else}",
+    		source: "(215:24) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (203:24) {#if scanLocked(indexX, indexY)}
+    // (205:24) {#if scanLocked(indexX, indexY)}
     function create_if_block$1(ctx) {
     	let div;
     	let p;
@@ -2919,12 +2919,12 @@ var app = (function () {
     			t = text(t_value);
     			set_style(p, "font-size", 1.3 * /*zoom*/ ctx[12] + "vh");
     			attr_dev(p, "class", "svelte-2a7iw4");
-    			add_location(p, file$5, 210, 32, 7420);
+    			add_location(p, file$5, 212, 32, 7452);
     			attr_dev(div, "class", "tableCell neuIndentShadowNarrow svelte-2a7iw4");
     			set_style(div, "height", 3 * /*zoom*/ ctx[12] + "vh");
     			set_style(div, "margin", 0.2 * /*zoom*/ ctx[12] + "vh 0 " + 0.2 * /*zoom*/ ctx[12] + "vh 0");
     			set_style(div, "border-radius", 0.5 * /*zoom*/ ctx[12] + "vh");
-    			add_location(div, file$5, 203, 28, 7114);
+    			add_location(div, file$5, 205, 28, 7146);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2959,14 +2959,14 @@ var app = (function () {
     		block,
     		id: create_if_block$1.name,
     		type: "if",
-    		source: "(203:24) {#if scanLocked(indexX, indexY)}",
+    		source: "(205:24) {#if scanLocked(indexX, indexY)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (202:20) {#each x as y, indexY}
+    // (204:20) {#each x as y, indexY}
     function create_each_block_1$1(ctx) {
     	let if_block_anchor;
 
@@ -3000,14 +3000,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1$1.name,
     		type: "each",
-    		source: "(202:20) {#each x as y, indexY}",
+    		source: "(204:20) {#each x as y, indexY}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (163:12) {#each cellContents as x, indexX}
+    // (165:12) {#each cellContents as x, indexX}
     function create_each_block$1(ctx) {
     	let div1;
     	let div0;
@@ -3050,10 +3050,10 @@ var app = (function () {
     			t1 = space();
     			attr_dev(div0, "class", "columnIndicator svelte-2a7iw4");
     			attr_dev(div0, "style", div0_style_value = "\r\n                    border-top-left-radius: " + 0.5 * /*zoom*/ ctx[12] + "vh;\r\n                    border-top-right-radius: " + 0.5 * /*zoom*/ ctx[12] + "vh;\r\n\r\n                    " + (/*editmode*/ ctx[5] ? "cursor: pointer;" : "") + "\r\n\r\n                    margin-bottom: " + 0.5 * /*zoom*/ ctx[12] + "vh;\r\n\r\n                    height: " + 2 * /*zoom*/ ctx[12] + "vh;\r\n                ");
-    			add_location(div0, file$5, 166, 16, 5166);
+    			add_location(div0, file$5, 168, 16, 5198);
     			attr_dev(div1, "class", "tableGridColumn svelte-2a7iw4");
     			set_style(div1, "width", 10 * /*zoom*/ ctx[12] + "vh");
-    			add_location(div1, file$5, 163, 16, 5051);
+    			add_location(div1, file$5, 165, 16, 5083);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
@@ -3127,7 +3127,7 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(163:12) {#each cellContents as x, indexX}",
+    		source: "(165:12) {#each cellContents as x, indexX}",
     		ctx
     	});
 
@@ -3225,62 +3225,62 @@ var app = (function () {
     			set_style(h1, "margin-left", 4 * /*zoom*/ ctx[12] + "vh");
     			attr_dev(h1, "class", "svelte-2a7iw4");
     			if (/*title*/ ctx[0] === void 0) add_render_callback(() => /*h1_input_handler*/ ctx[32].call(h1));
-    			add_location(h1, file$5, 112, 8, 2803);
+    			add_location(h1, file$5, 114, 8, 2835);
     			attr_dev(div0, "class", "titleStrip svelte-2a7iw4");
     			set_style(div0, "height", 4 * /*zoom*/ ctx[12] + "vh");
-    			add_location(div0, file$5, 109, 4, 2723);
+    			add_location(div0, file$5, 111, 4, 2755);
     			attr_dev(div1, "class", "rowIndicatorContainer svelte-2a7iw4");
     			set_style(div1, "width", 2 * /*zoom*/ ctx[12] + "vh");
     			set_style(div1, "margin-top", 2 * /*zoom*/ ctx[12] + "vh");
-    			add_location(div1, file$5, 131, 12, 3385);
+    			add_location(div1, file$5, 133, 12, 3417);
     			attr_dev(div2, "class", "tableGrid svelte-2a7iw4");
     			set_style(div2, "width", "calc(100% - " + 4 * /*zoom*/ ctx[12] + "vh)");
     			set_style(div2, "height", "calc(100% - " + 4 * /*zoom*/ ctx[12] + "vh)");
-    			add_location(div2, file$5, 126, 8, 3201);
+    			add_location(div2, file$5, 128, 8, 3233);
     			attr_dev(div3, "class", "contents svelte-2a7iw4");
-    			add_location(div3, file$5, 125, 4, 3169);
+    			add_location(div3, file$5, 127, 4, 3201);
     			attr_dev(path0, "d", "M278.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l9.4-9.4V224H109.3l9.4-9.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-9.4-9.4H224V402.7l-9.4-9.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-9.4 9.4V288H402.7l-9.4 9.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3l-64-64c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l9.4 9.4H288V109.3l9.4 9.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-64-64z");
-    			add_location(path0, file$5, 248, 238, 8873);
+    			add_location(path0, file$5, 250, 238, 8905);
     			attr_dev(svg0, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg0, "viewBox", "0 0 512 512");
     			attr_dev(svg0, "class", "svelte-2a7iw4");
-    			add_location(svg0, file$5, 248, 8, 8643);
+    			add_location(svg0, file$5, 250, 8, 8675);
     			attr_dev(div4, "class", "dragHandle svelte-2a7iw4");
     			attr_dev(div4, "draggable", "true");
     			set_style(div4, "width", 3 * /*zoom*/ ctx[12] + "vh");
     			set_style(div4, "height", 3 * /*zoom*/ ctx[12] + "vh");
-    			add_location(div4, file$5, 238, 4, 8441);
+    			add_location(div4, file$5, 240, 4, 8473);
     			attr_dev(path1, "d", "M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z");
-    			add_location(path1, file$5, 260, 238, 9969);
+    			add_location(path1, file$5, 262, 238, 10001);
     			attr_dev(svg1, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg1, "viewBox", "0 0 448 512");
     			attr_dev(svg1, "class", "svelte-2a7iw4");
-    			add_location(svg1, file$5, 260, 8, 9739);
+    			add_location(svg1, file$5, 262, 8, 9771);
     			attr_dev(div5, "class", "deleteAction svelte-2a7iw4");
     			set_style(div5, "width", 3 * /*zoom*/ ctx[12] + "vh");
     			set_style(div5, "height", 3 * /*zoom*/ ctx[12] + "vh");
-    			add_location(div5, file$5, 251, 4, 9552);
+    			add_location(div5, file$5, 253, 4, 9584);
     			attr_dev(path2, "d", "M32 288c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 288zm0-128c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 160z");
-    			add_location(path2, file$5, 273, 238, 10696);
+    			add_location(path2, file$5, 275, 238, 10728);
     			attr_dev(svg2, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg2, "viewBox", "0 0 448 512");
     			attr_dev(svg2, "class", "svelte-2a7iw4");
-    			add_location(svg2, file$5, 273, 8, 10466);
+    			add_location(svg2, file$5, 275, 8, 10498);
     			attr_dev(div6, "class", "resizeHandle svelte-2a7iw4");
     			attr_dev(div6, "draggable", "true");
     			set_style(div6, "width", 3 * /*zoom*/ ctx[12] + "vh");
     			set_style(div6, "height", 3 * /*zoom*/ ctx[12] + "vh");
-    			add_location(div6, file$5, 263, 4, 10261);
+    			add_location(div6, file$5, 265, 4, 10293);
     			attr_dev(path3, "d", "M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.8 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z");
-    			add_location(path3, file$5, 285, 238, 11318);
+    			add_location(path3, file$5, 287, 238, 11350);
     			attr_dev(svg3, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg3, "viewBox", "0 0 512 512");
     			attr_dev(svg3, "class", "svelte-2a7iw4");
-    			add_location(svg3, file$5, 285, 8, 11088);
+    			add_location(svg3, file$5, 287, 8, 11120);
     			attr_dev(div7, "class", "editHandle svelte-2a7iw4");
     			set_style(div7, "width", 3 * /*zoom*/ ctx[12] + "vh");
     			set_style(div7, "height", 3 * /*zoom*/ ctx[12] + "vh");
-    			add_location(div7, file$5, 276, 4, 10919);
+    			add_location(div7, file$5, 278, 4, 10951);
     			attr_dev(main, "class", "neuOutdentShadowRim svelte-2a7iw4");
     			set_style(main, "left", ((/*posX*/ ctx[8] + /*simX*/ ctx[13]) * /*zoom*/ ctx[12] + /*offX*/ ctx[10]) * 2 + "vh");
     			set_style(main, "top", ((/*posY*/ ctx[9] + /*simY*/ ctx[14]) * /*zoom*/ ctx[12] + /*offY*/ ctx[11]) * 2 + "vh");
@@ -3288,7 +3288,7 @@ var app = (function () {
     			set_style(main, "height", Math.max(/*sizeBounds*/ ctx[4][1][0], Math.min(/*sizeY*/ ctx[7] + /*simResizeY*/ ctx[16], /*sizeBounds*/ ctx[4][1][1])) * 2 * /*zoom*/ ctx[12] + "vh");
     			set_style(main, "border-radius", 1.5 * /*zoom*/ ctx[12] + "vh");
     			set_style(main, "transition", "border-radius .2s cubic-bezier(0, 0, 0, .9),\r\n");
-    			add_location(main, file$5, 96, 0, 2247);
+    			add_location(main, file$5, 98, 0, 2279);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3906,183 +3906,205 @@ var app = (function () {
     	}
 
     	set sizeBounds(value) {
-    		throw new Error("<Table>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		throw new Error("<Table>: Cannot set read-only property 'sizeBounds'");
     	}
 
     	get title() {
-    		throw new Error("<Table>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		return this.$$.ctx[0];
     	}
 
-    	set title(value) {
-    		throw new Error("<Table>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	set title(title) {
+    		this.$set({ title });
+    		flush();
     	}
 
     	get numCols() {
-    		throw new Error("<Table>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		return this.$$.ctx[25];
     	}
 
-    	set numCols(value) {
-    		throw new Error("<Table>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	set numCols(numCols) {
+    		this.$set({ numCols });
+    		flush();
     	}
 
     	get numRows() {
-    		throw new Error("<Table>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		return this.$$.ctx[1];
     	}
 
-    	set numRows(value) {
-    		throw new Error("<Table>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	set numRows(numRows) {
+    		this.$set({ numRows });
+    		flush();
     	}
 
     	get colNames() {
-    		throw new Error("<Table>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		return this.$$.ctx[2];
     	}
 
-    	set colNames(value) {
-    		throw new Error("<Table>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	set colNames(colNames) {
+    		this.$set({ colNames });
+    		flush();
     	}
 
     	get lockedCells() {
-    		throw new Error("<Table>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		return this.$$.ctx[26];
     	}
 
-    	set lockedCells(value) {
-    		throw new Error("<Table>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	set lockedCells(lockedCells) {
+    		this.$set({ lockedCells });
+    		flush();
     	}
 
     	get cellContents() {
-    		throw new Error("<Table>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		return this.$$.ctx[3];
     	}
 
-    	set cellContents(value) {
-    		throw new Error("<Table>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	set cellContents(cellContents) {
+    		this.$set({ cellContents });
+    		flush();
     	}
 
     	get editmode() {
-    		throw new Error("<Table>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		return this.$$.ctx[5];
     	}
 
-    	set editmode(value) {
-    		throw new Error("<Table>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	set editmode(editmode) {
+    		this.$set({ editmode });
+    		flush();
     	}
 
     	get sizeX() {
-    		throw new Error("<Table>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		return this.$$.ctx[6];
     	}
 
-    	set sizeX(value) {
-    		throw new Error("<Table>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	set sizeX(sizeX) {
+    		this.$set({ sizeX });
+    		flush();
     	}
 
     	get sizeY() {
-    		throw new Error("<Table>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		return this.$$.ctx[7];
     	}
 
-    	set sizeY(value) {
-    		throw new Error("<Table>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	set sizeY(sizeY) {
+    		this.$set({ sizeY });
+    		flush();
     	}
 
     	get posX() {
-    		throw new Error("<Table>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		return this.$$.ctx[8];
     	}
 
-    	set posX(value) {
-    		throw new Error("<Table>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	set posX(posX) {
+    		this.$set({ posX });
+    		flush();
     	}
 
     	get posY() {
-    		throw new Error("<Table>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		return this.$$.ctx[9];
     	}
 
-    	set posY(value) {
-    		throw new Error("<Table>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	set posY(posY) {
+    		this.$set({ posY });
+    		flush();
     	}
 
     	get offX() {
-    		throw new Error("<Table>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		return this.$$.ctx[10];
     	}
 
-    	set offX(value) {
-    		throw new Error("<Table>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	set offX(offX) {
+    		this.$set({ offX });
+    		flush();
     	}
 
     	get offY() {
-    		throw new Error("<Table>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		return this.$$.ctx[11];
     	}
 
-    	set offY(value) {
-    		throw new Error("<Table>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	set offY(offY) {
+    		this.$set({ offY });
+    		flush();
     	}
 
     	get zoom() {
-    		throw new Error("<Table>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		return this.$$.ctx[12];
     	}
 
-    	set zoom(value) {
-    		throw new Error("<Table>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	set zoom(zoom) {
+    		this.$set({ zoom });
+    		flush();
     	}
 
     	get simX() {
-    		throw new Error("<Table>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		return this.$$.ctx[13];
     	}
 
-    	set simX(value) {
-    		throw new Error("<Table>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	set simX(simX) {
+    		this.$set({ simX });
+    		flush();
     	}
 
     	get simY() {
-    		throw new Error("<Table>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		return this.$$.ctx[14];
     	}
 
-    	set simY(value) {
-    		throw new Error("<Table>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	set simY(simY) {
+    		this.$set({ simY });
+    		flush();
     	}
 
     	get simResizeX() {
-    		throw new Error("<Table>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		return this.$$.ctx[15];
     	}
 
-    	set simResizeX(value) {
-    		throw new Error("<Table>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	set simResizeX(simResizeX) {
+    		this.$set({ simResizeX });
+    		flush();
     	}
 
     	get simResizeY() {
-    		throw new Error("<Table>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		return this.$$.ctx[16];
     	}
 
-    	set simResizeY(value) {
-    		throw new Error("<Table>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	set simResizeY(simResizeY) {
+    		this.$set({ simResizeY });
+    		flush();
     	}
 
     	get onDrag() {
-    		throw new Error("<Table>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		return this.$$.ctx[27];
     	}
 
-    	set onDrag(value) {
-    		throw new Error("<Table>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	set onDrag(onDrag) {
+    		this.$set({ onDrag });
+    		flush();
     	}
 
     	get onResize() {
-    		throw new Error("<Table>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		return this.$$.ctx[28];
     	}
 
-    	set onResize(value) {
-    		throw new Error("<Table>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	set onResize(onResize) {
+    		this.$set({ onResize });
+    		flush();
     	}
 
     	get onDelete() {
-    		throw new Error("<Table>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		return this.$$.ctx[29];
     	}
 
-    	set onDelete(value) {
-    		throw new Error("<Table>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	set onDelete(onDelete) {
+    		this.$set({ onDelete });
+    		flush();
     	}
 
     	get onEdit() {
-    		throw new Error("<Table>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    		return this.$$.ctx[30];
     	}
 
-    	set onEdit(value) {
-    		throw new Error("<Table>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	set onEdit(onEdit) {
+    		this.$set({ onEdit });
+    		flush();
     	}
     }
 
@@ -4093,77 +4115,77 @@ var app = (function () {
 
     function get_each_context$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[48] = list[i];
-    	child_ctx[49] = list;
-    	child_ctx[50] = i;
+    	child_ctx[45] = list[i];
+    	child_ctx[46] = list;
+    	child_ctx[47] = i;
     	return child_ctx;
     }
 
     function get_each_context_1$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[48] = list[i];
-    	child_ctx[51] = list;
-    	child_ctx[50] = i;
+    	child_ctx[45] = list[i];
+    	child_ctx[48] = list;
+    	child_ctx[47] = i;
     	return child_ctx;
     }
 
     function get_each_context_2$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[48] = list[i];
-    	child_ctx[52] = list;
-    	child_ctx[50] = i;
+    	child_ctx[45] = list[i];
+    	child_ctx[49] = list;
+    	child_ctx[47] = i;
     	return child_ctx;
     }
 
-    // (414:12) {#each projectData.objects.header as object, index}
+    // (410:12) {#each projectData.objects.header as object, index}
     function create_each_block_2$1(ctx) {
     	let updating_text;
     	let updating_sizeBounds;
     	let current;
 
     	function func(...args) {
-    		return /*func*/ ctx[27](/*index*/ ctx[50], /*object*/ ctx[48], ...args);
+    		return /*func*/ ctx[27](/*index*/ ctx[47], /*object*/ ctx[45], ...args);
     	}
 
     	function func_1(...args) {
-    		return /*func_1*/ ctx[28](/*index*/ ctx[50], ...args);
+    		return /*func_1*/ ctx[28](/*index*/ ctx[47], ...args);
     	}
 
     	function func_2(...args) {
-    		return /*func_2*/ ctx[29](/*index*/ ctx[50], ...args);
+    		return /*func_2*/ ctx[29](/*index*/ ctx[47], ...args);
     	}
 
     	function header_text_binding(value) {
-    		/*header_text_binding*/ ctx[30].call(null, value, /*object*/ ctx[48]);
+    		/*header_text_binding*/ ctx[30].call(null, value, /*object*/ ctx[45]);
     	}
 
     	function header_sizeBounds_binding(value) {
-    		/*header_sizeBounds_binding*/ ctx[31].call(null, value, /*object*/ ctx[48]);
+    		/*header_sizeBounds_binding*/ ctx[31].call(null, value, /*object*/ ctx[45]);
     	}
 
     	let header_props = {
     		onDrag: func,
     		onResize: func_1,
     		onDelete: func_2,
-    		posX: /*object*/ ctx[48].posX,
-    		posY: /*object*/ ctx[48].posY,
+    		posX: /*object*/ ctx[45].posX,
+    		posY: /*object*/ ctx[45].posY,
     		offX: (/*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x) / window.innerHeight * 50,
     		offY: (/*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y) / window.innerHeight * 50,
     		zoom: /*viewZoom*/ ctx[2],
-    		sizeX: /*object*/ ctx[48].sizeX,
-    		sizeY: /*object*/ ctx[48].sizeY,
-    		simX: /*object*/ ctx[48].simX,
-    		simY: /*object*/ ctx[48].simY,
-    		simResizeX: /*object*/ ctx[48].simResizeX,
-    		simResizeY: /*object*/ ctx[48].simResizeY
+    		sizeX: /*object*/ ctx[45].sizeX,
+    		sizeY: /*object*/ ctx[45].sizeY,
+    		simX: /*object*/ ctx[45].simX,
+    		simY: /*object*/ ctx[45].simY,
+    		simResizeX: /*object*/ ctx[45].simResizeX,
+    		simResizeY: /*object*/ ctx[45].simResizeY
     	};
 
-    	if (/*object*/ ctx[48].text !== void 0) {
-    		header_props.text = /*object*/ ctx[48].text;
+    	if (/*object*/ ctx[45].text !== void 0) {
+    		header_props.text = /*object*/ ctx[45].text;
     	}
 
-    	if (/*object*/ ctx[48].sizeBounds !== void 0) {
-    		header_props.sizeBounds = /*object*/ ctx[48].sizeBounds;
+    	if (/*object*/ ctx[45].sizeBounds !== void 0) {
+    		header_props.sizeBounds = /*object*/ ctx[45].sizeBounds;
     	}
 
     	const header = new Header({ props: header_props, $$inline: true });
@@ -4182,27 +4204,27 @@ var app = (function () {
     			ctx = new_ctx;
     			const header_changes = {};
     			if (dirty[0] & /*projectData*/ 32) header_changes.onDrag = func;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.posX = /*object*/ ctx[48].posX;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.posY = /*object*/ ctx[48].posY;
+    			if (dirty[0] & /*projectData*/ 32) header_changes.posX = /*object*/ ctx[45].posX;
+    			if (dirty[0] & /*projectData*/ 32) header_changes.posY = /*object*/ ctx[45].posY;
     			if (dirty[0] & /*viewX, mouseDrag*/ 65) header_changes.offX = (/*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x) / window.innerHeight * 50;
     			if (dirty[0] & /*viewY, mouseDrag*/ 66) header_changes.offY = (/*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y) / window.innerHeight * 50;
     			if (dirty[0] & /*viewZoom*/ 4) header_changes.zoom = /*viewZoom*/ ctx[2];
-    			if (dirty[0] & /*projectData*/ 32) header_changes.sizeX = /*object*/ ctx[48].sizeX;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.sizeY = /*object*/ ctx[48].sizeY;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.simX = /*object*/ ctx[48].simX;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.simY = /*object*/ ctx[48].simY;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.simResizeX = /*object*/ ctx[48].simResizeX;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.simResizeY = /*object*/ ctx[48].simResizeY;
+    			if (dirty[0] & /*projectData*/ 32) header_changes.sizeX = /*object*/ ctx[45].sizeX;
+    			if (dirty[0] & /*projectData*/ 32) header_changes.sizeY = /*object*/ ctx[45].sizeY;
+    			if (dirty[0] & /*projectData*/ 32) header_changes.simX = /*object*/ ctx[45].simX;
+    			if (dirty[0] & /*projectData*/ 32) header_changes.simY = /*object*/ ctx[45].simY;
+    			if (dirty[0] & /*projectData*/ 32) header_changes.simResizeX = /*object*/ ctx[45].simResizeX;
+    			if (dirty[0] & /*projectData*/ 32) header_changes.simResizeY = /*object*/ ctx[45].simResizeY;
 
     			if (!updating_text && dirty[0] & /*projectData*/ 32) {
     				updating_text = true;
-    				header_changes.text = /*object*/ ctx[48].text;
+    				header_changes.text = /*object*/ ctx[45].text;
     				add_flush_callback(() => updating_text = false);
     			}
 
     			if (!updating_sizeBounds && dirty[0] & /*projectData*/ 32) {
     				updating_sizeBounds = true;
-    				header_changes.sizeBounds = /*object*/ ctx[48].sizeBounds;
+    				header_changes.sizeBounds = /*object*/ ctx[45].sizeBounds;
     				add_flush_callback(() => updating_sizeBounds = false);
     			}
 
@@ -4226,62 +4248,62 @@ var app = (function () {
     		block,
     		id: create_each_block_2$1.name,
     		type: "each",
-    		source: "(414:12) {#each projectData.objects.header as object, index}",
+    		source: "(410:12) {#each projectData.objects.header as object, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (438:12) {#each projectData.objects.paragraph as object, index}
+    // (434:12) {#each projectData.objects.paragraph as object, index}
     function create_each_block_1$2(ctx) {
     	let updating_text;
     	let updating_sizeBounds;
     	let current;
 
     	function func_3(...args) {
-    		return /*func_3*/ ctx[32](/*index*/ ctx[50], /*object*/ ctx[48], ...args);
+    		return /*func_3*/ ctx[32](/*index*/ ctx[47], /*object*/ ctx[45], ...args);
     	}
 
     	function func_4(...args) {
-    		return /*func_4*/ ctx[33](/*index*/ ctx[50], ...args);
+    		return /*func_4*/ ctx[33](/*index*/ ctx[47], ...args);
     	}
 
     	function func_5(...args) {
-    		return /*func_5*/ ctx[34](/*index*/ ctx[50], ...args);
+    		return /*func_5*/ ctx[34](/*index*/ ctx[47], ...args);
     	}
 
     	function paragraph_text_binding(value) {
-    		/*paragraph_text_binding*/ ctx[35].call(null, value, /*object*/ ctx[48]);
+    		/*paragraph_text_binding*/ ctx[35].call(null, value, /*object*/ ctx[45]);
     	}
 
     	function paragraph_sizeBounds_binding(value) {
-    		/*paragraph_sizeBounds_binding*/ ctx[36].call(null, value, /*object*/ ctx[48]);
+    		/*paragraph_sizeBounds_binding*/ ctx[36].call(null, value, /*object*/ ctx[45]);
     	}
 
     	let paragraph_props = {
     		onDrag: func_3,
     		onResize: func_4,
     		onDelete: func_5,
-    		posX: /*object*/ ctx[48].posX,
-    		posY: /*object*/ ctx[48].posY,
+    		posX: /*object*/ ctx[45].posX,
+    		posY: /*object*/ ctx[45].posY,
     		offX: (/*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x) / window.innerHeight * 50,
     		offY: (/*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y) / window.innerHeight * 50,
     		zoom: /*viewZoom*/ ctx[2],
-    		sizeX: /*object*/ ctx[48].sizeX,
-    		sizeY: /*object*/ ctx[48].sizeY,
-    		simX: /*object*/ ctx[48].simX,
-    		simY: /*object*/ ctx[48].simY,
-    		simResizeX: /*object*/ ctx[48].simResizeX,
-    		simResizeY: /*object*/ ctx[48].simResizeY
+    		sizeX: /*object*/ ctx[45].sizeX,
+    		sizeY: /*object*/ ctx[45].sizeY,
+    		simX: /*object*/ ctx[45].simX,
+    		simY: /*object*/ ctx[45].simY,
+    		simResizeX: /*object*/ ctx[45].simResizeX,
+    		simResizeY: /*object*/ ctx[45].simResizeY
     	};
 
-    	if (/*object*/ ctx[48].text !== void 0) {
-    		paragraph_props.text = /*object*/ ctx[48].text;
+    	if (/*object*/ ctx[45].text !== void 0) {
+    		paragraph_props.text = /*object*/ ctx[45].text;
     	}
 
-    	if (/*object*/ ctx[48].sizeBounds !== void 0) {
-    		paragraph_props.sizeBounds = /*object*/ ctx[48].sizeBounds;
+    	if (/*object*/ ctx[45].sizeBounds !== void 0) {
+    		paragraph_props.sizeBounds = /*object*/ ctx[45].sizeBounds;
     	}
 
     	const paragraph = new Paragraph({ props: paragraph_props, $$inline: true });
@@ -4300,27 +4322,27 @@ var app = (function () {
     			ctx = new_ctx;
     			const paragraph_changes = {};
     			if (dirty[0] & /*projectData*/ 32) paragraph_changes.onDrag = func_3;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.posX = /*object*/ ctx[48].posX;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.posY = /*object*/ ctx[48].posY;
+    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.posX = /*object*/ ctx[45].posX;
+    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.posY = /*object*/ ctx[45].posY;
     			if (dirty[0] & /*viewX, mouseDrag*/ 65) paragraph_changes.offX = (/*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x) / window.innerHeight * 50;
     			if (dirty[0] & /*viewY, mouseDrag*/ 66) paragraph_changes.offY = (/*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y) / window.innerHeight * 50;
     			if (dirty[0] & /*viewZoom*/ 4) paragraph_changes.zoom = /*viewZoom*/ ctx[2];
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.sizeX = /*object*/ ctx[48].sizeX;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.sizeY = /*object*/ ctx[48].sizeY;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simX = /*object*/ ctx[48].simX;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simY = /*object*/ ctx[48].simY;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simResizeX = /*object*/ ctx[48].simResizeX;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simResizeY = /*object*/ ctx[48].simResizeY;
+    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.sizeX = /*object*/ ctx[45].sizeX;
+    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.sizeY = /*object*/ ctx[45].sizeY;
+    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simX = /*object*/ ctx[45].simX;
+    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simY = /*object*/ ctx[45].simY;
+    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simResizeX = /*object*/ ctx[45].simResizeX;
+    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simResizeY = /*object*/ ctx[45].simResizeY;
 
     			if (!updating_text && dirty[0] & /*projectData*/ 32) {
     				updating_text = true;
-    				paragraph_changes.text = /*object*/ ctx[48].text;
+    				paragraph_changes.text = /*object*/ ctx[45].text;
     				add_flush_callback(() => updating_text = false);
     			}
 
     			if (!updating_sizeBounds && dirty[0] & /*projectData*/ 32) {
     				updating_sizeBounds = true;
-    				paragraph_changes.sizeBounds = /*object*/ ctx[48].sizeBounds;
+    				paragraph_changes.sizeBounds = /*object*/ ctx[45].sizeBounds;
     				add_flush_callback(() => updating_sizeBounds = false);
     			}
 
@@ -4344,114 +4366,79 @@ var app = (function () {
     		block,
     		id: create_each_block_1$2.name,
     		type: "each",
-    		source: "(438:12) {#each projectData.objects.paragraph as object, index}",
+    		source: "(434:12) {#each projectData.objects.paragraph as object, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (462:12) {#each projectData.objects.table as object, index}
+    // (458:12) {#each projectData.objects.table as object, index}
     function create_each_block$2(ctx) {
     	let updating_title;
     	let updating_sizeBounds;
-    	let updating_numCols;
-    	let updating_numRows;
-    	let updating_colNames;
-    	let updating_cellContents;
+    	let object = /*object*/ ctx[45];
     	let current;
 
     	function func_6(...args) {
-    		return /*func_6*/ ctx[37](/*index*/ ctx[50], /*object*/ ctx[48], ...args);
+    		return /*func_6*/ ctx[37](/*index*/ ctx[47], /*object*/ ctx[45], ...args);
     	}
 
     	function func_7(...args) {
-    		return /*func_7*/ ctx[38](/*index*/ ctx[50], ...args);
+    		return /*func_7*/ ctx[38](/*index*/ ctx[47], ...args);
     	}
 
     	function func_8(...args) {
-    		return /*func_8*/ ctx[39](/*index*/ ctx[50], ...args);
+    		return /*func_8*/ ctx[39](/*index*/ ctx[47], ...args);
     	}
 
     	function func_9(...args) {
-    		return /*func_9*/ ctx[40](/*index*/ ctx[50], ...args);
+    		return /*func_9*/ ctx[40](/*index*/ ctx[47], ...args);
     	}
 
     	function table_title_binding(value) {
-    		/*table_title_binding*/ ctx[41].call(null, value, /*object*/ ctx[48]);
+    		/*table_title_binding*/ ctx[41].call(null, value, /*object*/ ctx[45]);
     	}
 
     	function table_sizeBounds_binding(value) {
-    		/*table_sizeBounds_binding*/ ctx[42].call(null, value, /*object*/ ctx[48]);
+    		/*table_sizeBounds_binding*/ ctx[42].call(null, value, /*object*/ ctx[45]);
     	}
 
-    	function table_numCols_binding(value) {
-    		/*table_numCols_binding*/ ctx[43].call(null, value, /*object*/ ctx[48]);
-    	}
-
-    	function table_numRows_binding(value) {
-    		/*table_numRows_binding*/ ctx[44].call(null, value, /*object*/ ctx[48]);
-    	}
-
-    	function table_colNames_binding(value) {
-    		/*table_colNames_binding*/ ctx[45].call(null, value, /*object*/ ctx[48]);
-    	}
-
-    	function table_cellContents_binding(value) {
-    		/*table_cellContents_binding*/ ctx[46].call(null, value, /*object*/ ctx[48]);
-    	}
+    	const assign_table = () => /*table_binding*/ ctx[43](table, object);
+    	const unassign_table = () => /*table_binding*/ ctx[43](null, object);
 
     	let table_props = {
-    		editmode: /*edited*/ ctx[7] == /*index*/ ctx[50],
+    		editmode: /*edited*/ ctx[7] == /*index*/ ctx[47],
     		lockedCells: [],
     		onDrag: func_6,
     		onResize: func_7,
     		onDelete: func_8,
     		onEdit: func_9,
-    		posX: /*object*/ ctx[48].posX,
-    		posY: /*object*/ ctx[48].posY,
+    		posX: /*object*/ ctx[45].posX,
+    		posY: /*object*/ ctx[45].posY,
     		offX: (/*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x) / window.innerHeight * 50,
     		offY: (/*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y) / window.innerHeight * 50,
     		zoom: /*viewZoom*/ ctx[2],
-    		sizeX: /*object*/ ctx[48].sizeX,
-    		sizeY: /*object*/ ctx[48].sizeY,
-    		simX: /*object*/ ctx[48].simX,
-    		simY: /*object*/ ctx[48].simY,
-    		simResizeX: /*object*/ ctx[48].simResizeX,
-    		simResizeY: /*object*/ ctx[48].simResizeY
+    		sizeX: /*object*/ ctx[45].sizeX,
+    		sizeY: /*object*/ ctx[45].sizeY,
+    		simX: /*object*/ ctx[45].simX,
+    		simY: /*object*/ ctx[45].simY,
+    		simResizeX: /*object*/ ctx[45].simResizeX,
+    		simResizeY: /*object*/ ctx[45].simResizeY
     	};
 
-    	if (/*object*/ ctx[48].title !== void 0) {
-    		table_props.title = /*object*/ ctx[48].title;
+    	if (/*object*/ ctx[45].title !== void 0) {
+    		table_props.title = /*object*/ ctx[45].title;
     	}
 
-    	if (/*object*/ ctx[48].sizeBounds !== void 0) {
-    		table_props.sizeBounds = /*object*/ ctx[48].sizeBounds;
-    	}
-
-    	if (/*object*/ ctx[48].numCols !== void 0) {
-    		table_props.numCols = /*object*/ ctx[48].numCols;
-    	}
-
-    	if (/*object*/ ctx[48].numRows !== void 0) {
-    		table_props.numRows = /*object*/ ctx[48].numRows;
-    	}
-
-    	if (/*object*/ ctx[48].colNames !== void 0) {
-    		table_props.colNames = /*object*/ ctx[48].colNames;
-    	}
-
-    	if (/*object*/ ctx[48].cellContents !== void 0) {
-    		table_props.cellContents = /*object*/ ctx[48].cellContents;
+    	if (/*object*/ ctx[45].sizeBounds !== void 0) {
+    		table_props.sizeBounds = /*object*/ ctx[45].sizeBounds;
     	}
 
     	const table = new Table({ props: table_props, $$inline: true });
     	binding_callbacks.push(() => bind(table, "title", table_title_binding));
     	binding_callbacks.push(() => bind(table, "sizeBounds", table_sizeBounds_binding));
-    	binding_callbacks.push(() => bind(table, "numCols", table_numCols_binding));
-    	binding_callbacks.push(() => bind(table, "numRows", table_numRows_binding));
-    	binding_callbacks.push(() => bind(table, "colNames", table_colNames_binding));
-    	binding_callbacks.push(() => bind(table, "cellContents", table_cellContents_binding));
+    	assign_table();
 
     	const block = {
     		c: function create() {
@@ -4463,57 +4450,40 @@ var app = (function () {
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
+
+    			if (object !== /*object*/ ctx[45]) {
+    				unassign_table();
+    				object = /*object*/ ctx[45];
+    				assign_table();
+    			}
+
     			const table_changes = {};
-    			if (dirty[0] & /*edited*/ 128) table_changes.editmode = /*edited*/ ctx[7] == /*index*/ ctx[50];
+    			if (dirty[0] & /*edited*/ 128) table_changes.editmode = /*edited*/ ctx[7] == /*index*/ ctx[47];
     			if (dirty[0] & /*projectData*/ 32) table_changes.onDrag = func_6;
     			if (dirty[0] & /*edited*/ 128) table_changes.onDelete = func_8;
     			if (dirty[0] & /*edited*/ 128) table_changes.onEdit = func_9;
-    			if (dirty[0] & /*projectData*/ 32) table_changes.posX = /*object*/ ctx[48].posX;
-    			if (dirty[0] & /*projectData*/ 32) table_changes.posY = /*object*/ ctx[48].posY;
+    			if (dirty[0] & /*projectData*/ 32) table_changes.posX = /*object*/ ctx[45].posX;
+    			if (dirty[0] & /*projectData*/ 32) table_changes.posY = /*object*/ ctx[45].posY;
     			if (dirty[0] & /*viewX, mouseDrag*/ 65) table_changes.offX = (/*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x) / window.innerHeight * 50;
     			if (dirty[0] & /*viewY, mouseDrag*/ 66) table_changes.offY = (/*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y) / window.innerHeight * 50;
     			if (dirty[0] & /*viewZoom*/ 4) table_changes.zoom = /*viewZoom*/ ctx[2];
-    			if (dirty[0] & /*projectData*/ 32) table_changes.sizeX = /*object*/ ctx[48].sizeX;
-    			if (dirty[0] & /*projectData*/ 32) table_changes.sizeY = /*object*/ ctx[48].sizeY;
-    			if (dirty[0] & /*projectData*/ 32) table_changes.simX = /*object*/ ctx[48].simX;
-    			if (dirty[0] & /*projectData*/ 32) table_changes.simY = /*object*/ ctx[48].simY;
-    			if (dirty[0] & /*projectData*/ 32) table_changes.simResizeX = /*object*/ ctx[48].simResizeX;
-    			if (dirty[0] & /*projectData*/ 32) table_changes.simResizeY = /*object*/ ctx[48].simResizeY;
+    			if (dirty[0] & /*projectData*/ 32) table_changes.sizeX = /*object*/ ctx[45].sizeX;
+    			if (dirty[0] & /*projectData*/ 32) table_changes.sizeY = /*object*/ ctx[45].sizeY;
+    			if (dirty[0] & /*projectData*/ 32) table_changes.simX = /*object*/ ctx[45].simX;
+    			if (dirty[0] & /*projectData*/ 32) table_changes.simY = /*object*/ ctx[45].simY;
+    			if (dirty[0] & /*projectData*/ 32) table_changes.simResizeX = /*object*/ ctx[45].simResizeX;
+    			if (dirty[0] & /*projectData*/ 32) table_changes.simResizeY = /*object*/ ctx[45].simResizeY;
 
     			if (!updating_title && dirty[0] & /*projectData*/ 32) {
     				updating_title = true;
-    				table_changes.title = /*object*/ ctx[48].title;
+    				table_changes.title = /*object*/ ctx[45].title;
     				add_flush_callback(() => updating_title = false);
     			}
 
     			if (!updating_sizeBounds && dirty[0] & /*projectData*/ 32) {
     				updating_sizeBounds = true;
-    				table_changes.sizeBounds = /*object*/ ctx[48].sizeBounds;
+    				table_changes.sizeBounds = /*object*/ ctx[45].sizeBounds;
     				add_flush_callback(() => updating_sizeBounds = false);
-    			}
-
-    			if (!updating_numCols && dirty[0] & /*projectData*/ 32) {
-    				updating_numCols = true;
-    				table_changes.numCols = /*object*/ ctx[48].numCols;
-    				add_flush_callback(() => updating_numCols = false);
-    			}
-
-    			if (!updating_numRows && dirty[0] & /*projectData*/ 32) {
-    				updating_numRows = true;
-    				table_changes.numRows = /*object*/ ctx[48].numRows;
-    				add_flush_callback(() => updating_numRows = false);
-    			}
-
-    			if (!updating_colNames && dirty[0] & /*projectData*/ 32) {
-    				updating_colNames = true;
-    				table_changes.colNames = /*object*/ ctx[48].colNames;
-    				add_flush_callback(() => updating_colNames = false);
-    			}
-
-    			if (!updating_cellContents && dirty[0] & /*projectData*/ 32) {
-    				updating_cellContents = true;
-    				table_changes.cellContents = /*object*/ ctx[48].cellContents;
-    				add_flush_callback(() => updating_cellContents = false);
     			}
 
     			table.$set(table_changes);
@@ -4528,6 +4498,7 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
+    			unassign_table();
     			destroy_component(table, detaching);
     		}
     	};
@@ -4536,7 +4507,7 @@ var app = (function () {
     		block,
     		id: create_each_block$2.name,
     		type: "each",
-    		source: "(462:12) {#each projectData.objects.table as object, index}",
+    		source: "(458:12) {#each projectData.objects.table as object, index}",
     		ctx
     	});
 
@@ -4614,12 +4585,12 @@ var app = (function () {
     			set_style(div0, "background-position-x", /*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x + "px");
     			set_style(div0, "background-position-y", /*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y + "px");
     			set_style(div0, "background-size", 2 * /*viewZoom*/ ctx[2] + "vh");
-    			add_location(div0, file$6, 403, 12, 12555);
+    			add_location(div0, file$6, 399, 12, 12407);
     			attr_dev(div1, "class", "frame neuIndentShadow svelte-2tl4i1");
-    			add_render_callback(() => /*div1_elementresize_handler*/ ctx[47].call(div1));
-    			add_location(div1, file$6, 389, 4, 12160);
+    			add_render_callback(() => /*div1_elementresize_handler*/ ctx[44].call(div1));
+    			add_location(div1, file$6, 385, 4, 12012);
     			attr_dev(main, "class", "svelte-2tl4i1");
-    			add_location(main, file$6, 385, 0, 12091);
+    			add_location(main, file$6, 381, 0, 11943);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4645,7 +4616,7 @@ var app = (function () {
     				each_blocks[i].m(div0, null);
     			}
 
-    			div1_resize_listener = add_resize_listener(div1, /*div1_elementresize_handler*/ ctx[47].bind(div1));
+    			div1_resize_listener = add_resize_listener(div1, /*div1_elementresize_handler*/ ctx[44].bind(div1));
     			current = true;
 
     			dispose = [
@@ -4856,11 +4827,7 @@ var app = (function () {
     		},
     		"table": {
     			"title": "New Table",
-    			"numCols": undefined,
-    			"numRows": undefined,
-    			"colNames": undefined,
-    			"lockedCells": undefined,
-    			"cellContents": undefined,
+    			"reference": undefined,
     			"posX": 0,
     			"posY": 0,
     			"sizeX": 28,
@@ -5159,24 +5126,13 @@ var app = (function () {
     		$$invalidate(5, projectData);
     	}
 
-    	function table_numCols_binding(value, object) {
-    		object.numCols = value;
-    		$$invalidate(5, projectData);
-    	}
+    	function table_binding($$value, object) {
+    		if (object.reference === $$value) return;
 
-    	function table_numRows_binding(value, object) {
-    		object.numRows = value;
-    		$$invalidate(5, projectData);
-    	}
-
-    	function table_colNames_binding(value, object) {
-    		object.colNames = value;
-    		$$invalidate(5, projectData);
-    	}
-
-    	function table_cellContents_binding(value, object) {
-    		object.cellContents = value;
-    		$$invalidate(5, projectData);
+    		binding_callbacks[$$value ? "unshift" : "push"](() => {
+    			object.reference = $$value;
+    			$$invalidate(45, object);
+    		});
     	}
 
     	function div1_elementresize_handler() {
@@ -5320,10 +5276,7 @@ var app = (function () {
     		func_9,
     		table_title_binding,
     		table_sizeBounds_binding,
-    		table_numCols_binding,
-    		table_numRows_binding,
-    		table_colNames_binding,
-    		table_cellContents_binding,
+    		table_binding,
     		div1_elementresize_handler
     	];
     }

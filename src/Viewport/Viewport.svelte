@@ -78,11 +78,7 @@ const   zoomBounds = [.2, 3]
 
         "table": {
             "title": "New Table",
-            "numCols": undefined,
-            "numRows": undefined,
-            "colNames": undefined,
-            "lockedCells": undefined,
-            "cellContents": undefined,
+            "reference": undefined,
             "posX": 0,
             "posY": 0,
             "sizeX": 28,
@@ -466,10 +462,7 @@ const   zoomBounds = [.2, 3]
 
                     editmode={edited == index}
 
-                    bind:numCols={object.numCols}
-                    bind:numRows={object.numRows}
-                    bind:colNames={object.colNames}
-                    bind:cellContents={object.cellContents}
+                    bind:this={object.reference}
 
                     lockedCells={[]}
 
