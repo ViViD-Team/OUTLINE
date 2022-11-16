@@ -151,7 +151,7 @@
     }
 
     .resizeHandle svg {
-        fill: var(--black);
+        fill: var(--red);
         width: 50%;
     }
 
