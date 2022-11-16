@@ -43,7 +43,26 @@
         if (numCols <= 1) return;
         cellContents.splice(index, 1);
         numCols--;
-        console.log(cellContents);
+        cellContents = Object.assign([], cellContents);
+    }
+
+    function insertColumn(index) {
+        cellContents.splice(index + 1, 0, Array.from(new Array(numRows), () => ""))
+        numCols++;
+        cellContents = Object.assign([], cellContents);
+    }
+
+    function moveColumnRight(index) {
+        const buffer = cellContents[index + 1];
+        cellContents[index + 1] = cellContents[index];
+        cellContents[index] = buffer;
+        cellContents = Object.assign([], cellContents);
+    }
+
+    function moveColumnLeft(index) {
+        const buffer = cellContents[index - 1];
+        cellContents[index - 1] = cellContents[index];
+        cellContents[index] = buffer;
         cellContents = Object.assign([], cellContents);
     }
 
@@ -53,7 +72,32 @@
             col.splice(index, 1);
         })
         numRows--;
-        console.log(cellContents);
+        cellContents = Object.assign([], cellContents);
+    }
+
+    function insertRow(index) {
+        cellContents.forEach((col) => {
+            col.splice(index + 1, 0, "");
+        })
+        numRows++;
+        cellContents = Object.assign([], cellContents);
+    }
+
+    function moveRowUp(index) {
+        cellContents.forEach((col) => {
+            const buffer = col[index - 1];
+            col[index - 1] = col[index];
+            col[index] = buffer;
+        })
+        cellContents = Object.assign([], cellContents);
+    }
+
+    function moveRowDown(index) {
+        cellContents.forEach((col) => {
+            const buffer = col[index + 1];
+            col[index + 1] = col[index];
+            col[index] = buffer;
+        })
         cellContents = Object.assign([], cellContents);
     }
 
@@ -118,10 +162,6 @@
             min-width: {sizeX * zoom}vh;
             margin-left: {4 * zoom}vh;
         ">Title</h1>
-
-        {#if editmode}
-            <h1 style="font-size: {4 * zoom}vh">EDITMODE</h1>
-        {/if}
     </div>
 
 
@@ -130,13 +170,13 @@
             width: calc(100% - {4*zoom}vh);
             height: calc(100% - {4*zoom}vh);
         ">
-            <!-- TODO: Refactor -->
+
             <div class="rowIndicatorContainer" style="
-                width: {2*zoom}vh;
+                width: {(editmode ? 10 : 2)*zoom}vh;
                 margin-top: {2*zoom}vh;
             ">
                 {#each Array(numRows) as y, index}
-                    <div on:click={() => {if (editmode) {deleteRow(index)}}} class="rowIndicator" style="
+                    <div class="rowIndicator" style="
                         height: {3*zoom}vh;
 
                         margin: {.2*zoom}vh 0 {.2*zoom}vh 0;
@@ -154,9 +194,22 @@
                                 {index + 1}
                             </p>
                         {:else}
-                            <svg style="
-                                width: {zoom}vh;
-                            " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM184 232H328c13.3 0 24 10.7 24 24s-10.7 24-24 24H184c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg>
+                            <div class="editmodeRowIndicatorButtonContainer">
+                                <div on:click={() => {if (editmode && index > 0) {moveRowUp(index)}}} class="editmodeRowIndicatorButton">
+                                    {#if index > 0}
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M201.4 137.4c12.5-12.5 32.8-12.5 45.3 0l160 160c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L224 205.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l160-160z"/></svg>                                
+                                    {/if}
+                                </div>
+                                <div on:click={() => {if (editmode) {insertRow(index)}}} class="editmodeRowIndicatorButton">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>                                </div>
+                                <div on:click={() => {if (editmode) {deleteRow(index)}}} class="editmodeRowIndicatorButton">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"/></svg>                                </div>
+                                <div on:click={() => {if (editmode && index < numRows - 1) {moveRowDown(index)}}} class="editmodeRowIndicatorButton">
+                                    {#if index < numRows - 1}
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>                                
+                                    {/if}
+                                </div>
+                            </div>
                         {/if}
                     </div>
                 {/each}
@@ -166,8 +219,8 @@
                 <div class="tableGridColumn" style="
                     width: {10*zoom}vh;
                 ">
-                <div on:click={() => {if (editmode) {deleteColumn(indexX)}}
-                    } class="columnIndicator" style="
+                <div
+                    class="columnIndicator" style="
                     border-top-left-radius: {.5*zoom}vh;
                     border-top-right-radius: {.5*zoom}vh;
 
@@ -195,9 +248,23 @@
                                 ">{alphabeticColName(indexX)}</p>
                         {/if}
                     {:else}
-                        <svg style="
-                            height: {zoom}vh;
-                        " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM184 232H328c13.3 0 24 10.7 24 24s-10.7 24-24 24H184c-13.3 0-24-10.7-24-24s10.7-24 24-24z"/></svg>
+                        <div style="height: {2*zoom}vh;" class="editmodeColumnIndicatorButtonContainer">
+                            <div on:click={() => {if (editmode && indexX > 0) {moveColumnLeft(indexX)}}} class="editmodeColumnIndicatorButton">
+                                {#if indexX > 0}
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>                                
+                                {/if}
+                            </div>
+                            <div on:click={() => {if (editmode) {insertColumn(indexX)}}} class="editmodeColumnIndicatorButton">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>                                
+                            </div>
+                            <div on:click={() => {if (editmode) {deleteColumn(indexX)}}} class="editmodeColumnIndicatorButton">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"/></svg>                                </div>
+                            <div on:click={() => {if (editmode && indexX < numCols - 1) {moveColumnRight(indexX)}}} class="editmodeColumnIndicatorButton">
+                                {#if indexX < numCols - 1}
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>                                
+                                {/if}
+                            </div>
+                        </div>                    
                     {/if}
                 </div>
 
@@ -368,10 +435,42 @@
         overflow: hidden;
     }
 
+    .editmodeColumnIndicatorButtonContainer {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+    }
+
+    .editmodeColumnIndicatorButton {
+        height: 100%;
+        flex: 1;
+
+        display: grid;
+        place-items: center;
+    }
+
     .columnIndicator svg {
         fill: var(--white);
 
-        animation: flyInFromLeft .5s cubic-bezier(0, 0, 0, .9) both;
+        animation: flyInFromLeft .5s cubic-bezier(0, 0, 0, .9) backwards;
+    }
+
+    .editmodeColumnIndicatorButton svg {
+        width: 50%;
+        max-height: 75%;
+
+        opacity: .5;
+
+        transition: transform .5s cubic-bezier(0, 0, 0, .9), opacity .2s cubic-bezier(0, 0, 0, .9);
+    }
+
+    .columnIndicator:hover .editmodeColumnIndicatorButton svg {
+        opacity: 1;
+    }
+
+    .editmodeColumnIndicatorButton:hover svg {
+        transform: translateY(-.5vh);
     }
 
     .rowIndicatorContainer {
@@ -396,7 +495,38 @@
     .rowIndicator svg {
         fill: var(--white);
 
-        animation: flyInFromLeft .5s cubic-bezier(0, 0, 0, .9) both;
+        animation: flyInFromLeft .5s cubic-bezier(0, 0, 0, .9) backwards;
+    }
+
+    .editmodeRowIndicatorButtonContainer {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+    }
+
+    .editmodeRowIndicatorButton {
+        height: 100%;
+        flex: 1;
+
+        display: grid;
+        place-items: center;
+    }
+
+    .editmodeRowIndicatorButton svg {
+        width: 50%;
+
+        opacity: .5;
+
+        transition: transform .5s cubic-bezier(0, 0, 0, .9), opacity .2s cubic-bezier(0, 0, 0, .9);
+    }
+
+    .rowIndicator:hover .editmodeRowIndicatorButton svg {
+        opacity: 1;
+    }
+
+    .editmodeRowIndicatorButton:hover svg {
+        transform: translateY(-.5vh);
     }
 
     .tableCell {
