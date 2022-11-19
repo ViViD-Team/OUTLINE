@@ -4485,7 +4485,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (410:12) {#each projectData.objects.header as object, index}
+    // (409:12) {#each projectData.objects.header as object, index}
     function create_each_block_2$1(ctx) {
     	let updating_text;
     	let updating_sizeBounds;
@@ -4517,9 +4517,9 @@ var app = (function () {
     		onDelete: func_2,
     		posX: /*object*/ ctx[45].posX,
     		posY: /*object*/ ctx[45].posY,
-    		offX: (/*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x) / window.innerHeight * 50,
-    		offY: (/*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y) / window.innerHeight * 50,
-    		zoom: /*viewZoom*/ ctx[2],
+    		offX: (/*viewX*/ ctx[2] + /*mouseDrag*/ ctx[7].delta.x) / window.innerHeight * 50,
+    		offY: (/*viewY*/ ctx[3] + /*mouseDrag*/ ctx[7].delta.y) / window.innerHeight * 50,
+    		zoom: /*viewZoom*/ ctx[4],
     		sizeX: /*object*/ ctx[45].sizeX,
     		sizeY: /*object*/ ctx[45].sizeY,
     		simX: /*object*/ ctx[45].simX,
@@ -4551,26 +4551,26 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
     			const header_changes = {};
-    			if (dirty[0] & /*projectData*/ 32) header_changes.onDrag = func;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.posX = /*object*/ ctx[45].posX;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.posY = /*object*/ ctx[45].posY;
-    			if (dirty[0] & /*viewX, mouseDrag*/ 65) header_changes.offX = (/*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x) / window.innerHeight * 50;
-    			if (dirty[0] & /*viewY, mouseDrag*/ 66) header_changes.offY = (/*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y) / window.innerHeight * 50;
-    			if (dirty[0] & /*viewZoom*/ 4) header_changes.zoom = /*viewZoom*/ ctx[2];
-    			if (dirty[0] & /*projectData*/ 32) header_changes.sizeX = /*object*/ ctx[45].sizeX;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.sizeY = /*object*/ ctx[45].sizeY;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.simX = /*object*/ ctx[45].simX;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.simY = /*object*/ ctx[45].simY;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.simResizeX = /*object*/ ctx[45].simResizeX;
-    			if (dirty[0] & /*projectData*/ 32) header_changes.simResizeY = /*object*/ ctx[45].simResizeY;
+    			if (dirty[0] & /*projectData*/ 1) header_changes.onDrag = func;
+    			if (dirty[0] & /*projectData*/ 1) header_changes.posX = /*object*/ ctx[45].posX;
+    			if (dirty[0] & /*projectData*/ 1) header_changes.posY = /*object*/ ctx[45].posY;
+    			if (dirty[0] & /*viewX, mouseDrag*/ 132) header_changes.offX = (/*viewX*/ ctx[2] + /*mouseDrag*/ ctx[7].delta.x) / window.innerHeight * 50;
+    			if (dirty[0] & /*viewY, mouseDrag*/ 136) header_changes.offY = (/*viewY*/ ctx[3] + /*mouseDrag*/ ctx[7].delta.y) / window.innerHeight * 50;
+    			if (dirty[0] & /*viewZoom*/ 16) header_changes.zoom = /*viewZoom*/ ctx[4];
+    			if (dirty[0] & /*projectData*/ 1) header_changes.sizeX = /*object*/ ctx[45].sizeX;
+    			if (dirty[0] & /*projectData*/ 1) header_changes.sizeY = /*object*/ ctx[45].sizeY;
+    			if (dirty[0] & /*projectData*/ 1) header_changes.simX = /*object*/ ctx[45].simX;
+    			if (dirty[0] & /*projectData*/ 1) header_changes.simY = /*object*/ ctx[45].simY;
+    			if (dirty[0] & /*projectData*/ 1) header_changes.simResizeX = /*object*/ ctx[45].simResizeX;
+    			if (dirty[0] & /*projectData*/ 1) header_changes.simResizeY = /*object*/ ctx[45].simResizeY;
 
-    			if (!updating_text && dirty[0] & /*projectData*/ 32) {
+    			if (!updating_text && dirty[0] & /*projectData*/ 1) {
     				updating_text = true;
     				header_changes.text = /*object*/ ctx[45].text;
     				add_flush_callback(() => updating_text = false);
     			}
 
-    			if (!updating_sizeBounds && dirty[0] & /*projectData*/ 32) {
+    			if (!updating_sizeBounds && dirty[0] & /*projectData*/ 1) {
     				updating_sizeBounds = true;
     				header_changes.sizeBounds = /*object*/ ctx[45].sizeBounds;
     				add_flush_callback(() => updating_sizeBounds = false);
@@ -4596,14 +4596,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2$1.name,
     		type: "each",
-    		source: "(410:12) {#each projectData.objects.header as object, index}",
+    		source: "(409:12) {#each projectData.objects.header as object, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (434:12) {#each projectData.objects.paragraph as object, index}
+    // (433:12) {#each projectData.objects.paragraph as object, index}
     function create_each_block_1$2(ctx) {
     	let updating_text;
     	let updating_sizeBounds;
@@ -4635,9 +4635,9 @@ var app = (function () {
     		onDelete: func_5,
     		posX: /*object*/ ctx[45].posX,
     		posY: /*object*/ ctx[45].posY,
-    		offX: (/*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x) / window.innerHeight * 50,
-    		offY: (/*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y) / window.innerHeight * 50,
-    		zoom: /*viewZoom*/ ctx[2],
+    		offX: (/*viewX*/ ctx[2] + /*mouseDrag*/ ctx[7].delta.x) / window.innerHeight * 50,
+    		offY: (/*viewY*/ ctx[3] + /*mouseDrag*/ ctx[7].delta.y) / window.innerHeight * 50,
+    		zoom: /*viewZoom*/ ctx[4],
     		sizeX: /*object*/ ctx[45].sizeX,
     		sizeY: /*object*/ ctx[45].sizeY,
     		simX: /*object*/ ctx[45].simX,
@@ -4669,26 +4669,26 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
     			const paragraph_changes = {};
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.onDrag = func_3;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.posX = /*object*/ ctx[45].posX;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.posY = /*object*/ ctx[45].posY;
-    			if (dirty[0] & /*viewX, mouseDrag*/ 65) paragraph_changes.offX = (/*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x) / window.innerHeight * 50;
-    			if (dirty[0] & /*viewY, mouseDrag*/ 66) paragraph_changes.offY = (/*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y) / window.innerHeight * 50;
-    			if (dirty[0] & /*viewZoom*/ 4) paragraph_changes.zoom = /*viewZoom*/ ctx[2];
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.sizeX = /*object*/ ctx[45].sizeX;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.sizeY = /*object*/ ctx[45].sizeY;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simX = /*object*/ ctx[45].simX;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simY = /*object*/ ctx[45].simY;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simResizeX = /*object*/ ctx[45].simResizeX;
-    			if (dirty[0] & /*projectData*/ 32) paragraph_changes.simResizeY = /*object*/ ctx[45].simResizeY;
+    			if (dirty[0] & /*projectData*/ 1) paragraph_changes.onDrag = func_3;
+    			if (dirty[0] & /*projectData*/ 1) paragraph_changes.posX = /*object*/ ctx[45].posX;
+    			if (dirty[0] & /*projectData*/ 1) paragraph_changes.posY = /*object*/ ctx[45].posY;
+    			if (dirty[0] & /*viewX, mouseDrag*/ 132) paragraph_changes.offX = (/*viewX*/ ctx[2] + /*mouseDrag*/ ctx[7].delta.x) / window.innerHeight * 50;
+    			if (dirty[0] & /*viewY, mouseDrag*/ 136) paragraph_changes.offY = (/*viewY*/ ctx[3] + /*mouseDrag*/ ctx[7].delta.y) / window.innerHeight * 50;
+    			if (dirty[0] & /*viewZoom*/ 16) paragraph_changes.zoom = /*viewZoom*/ ctx[4];
+    			if (dirty[0] & /*projectData*/ 1) paragraph_changes.sizeX = /*object*/ ctx[45].sizeX;
+    			if (dirty[0] & /*projectData*/ 1) paragraph_changes.sizeY = /*object*/ ctx[45].sizeY;
+    			if (dirty[0] & /*projectData*/ 1) paragraph_changes.simX = /*object*/ ctx[45].simX;
+    			if (dirty[0] & /*projectData*/ 1) paragraph_changes.simY = /*object*/ ctx[45].simY;
+    			if (dirty[0] & /*projectData*/ 1) paragraph_changes.simResizeX = /*object*/ ctx[45].simResizeX;
+    			if (dirty[0] & /*projectData*/ 1) paragraph_changes.simResizeY = /*object*/ ctx[45].simResizeY;
 
-    			if (!updating_text && dirty[0] & /*projectData*/ 32) {
+    			if (!updating_text && dirty[0] & /*projectData*/ 1) {
     				updating_text = true;
     				paragraph_changes.text = /*object*/ ctx[45].text;
     				add_flush_callback(() => updating_text = false);
     			}
 
-    			if (!updating_sizeBounds && dirty[0] & /*projectData*/ 32) {
+    			if (!updating_sizeBounds && dirty[0] & /*projectData*/ 1) {
     				updating_sizeBounds = true;
     				paragraph_changes.sizeBounds = /*object*/ ctx[45].sizeBounds;
     				add_flush_callback(() => updating_sizeBounds = false);
@@ -4714,14 +4714,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1$2.name,
     		type: "each",
-    		source: "(434:12) {#each projectData.objects.paragraph as object, index}",
+    		source: "(433:12) {#each projectData.objects.paragraph as object, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (458:12) {#each projectData.objects.table as object, index}
+    // (457:12) {#each projectData.objects.table as object, index}
     function create_each_block$2(ctx) {
     	let updating_title;
     	let updating_sizeBounds;
@@ -4756,7 +4756,7 @@ var app = (function () {
     	const unassign_table = () => /*table_binding*/ ctx[43](null, object);
 
     	let table_props = {
-    		editmode: /*edited*/ ctx[7] == /*index*/ ctx[47],
+    		editmode: /*edited*/ ctx[1] == /*index*/ ctx[47],
     		lockedCells: [],
     		onDrag: func_6,
     		onResize: func_7,
@@ -4764,9 +4764,9 @@ var app = (function () {
     		onEdit: func_9,
     		posX: /*object*/ ctx[45].posX,
     		posY: /*object*/ ctx[45].posY,
-    		offX: (/*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x) / window.innerHeight * 50,
-    		offY: (/*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y) / window.innerHeight * 50,
-    		zoom: /*viewZoom*/ ctx[2],
+    		offX: (/*viewX*/ ctx[2] + /*mouseDrag*/ ctx[7].delta.x) / window.innerHeight * 50,
+    		offY: (/*viewY*/ ctx[3] + /*mouseDrag*/ ctx[7].delta.y) / window.innerHeight * 50,
+    		zoom: /*viewZoom*/ ctx[4],
     		sizeX: /*object*/ ctx[45].sizeX,
     		sizeY: /*object*/ ctx[45].sizeY,
     		simX: /*object*/ ctx[45].simX,
@@ -4806,29 +4806,29 @@ var app = (function () {
     			}
 
     			const table_changes = {};
-    			if (dirty[0] & /*edited*/ 128) table_changes.editmode = /*edited*/ ctx[7] == /*index*/ ctx[47];
-    			if (dirty[0] & /*projectData*/ 32) table_changes.onDrag = func_6;
-    			if (dirty[0] & /*edited*/ 128) table_changes.onDelete = func_8;
-    			if (dirty[0] & /*edited*/ 128) table_changes.onEdit = func_9;
-    			if (dirty[0] & /*projectData*/ 32) table_changes.posX = /*object*/ ctx[45].posX;
-    			if (dirty[0] & /*projectData*/ 32) table_changes.posY = /*object*/ ctx[45].posY;
-    			if (dirty[0] & /*viewX, mouseDrag*/ 65) table_changes.offX = (/*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x) / window.innerHeight * 50;
-    			if (dirty[0] & /*viewY, mouseDrag*/ 66) table_changes.offY = (/*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y) / window.innerHeight * 50;
-    			if (dirty[0] & /*viewZoom*/ 4) table_changes.zoom = /*viewZoom*/ ctx[2];
-    			if (dirty[0] & /*projectData*/ 32) table_changes.sizeX = /*object*/ ctx[45].sizeX;
-    			if (dirty[0] & /*projectData*/ 32) table_changes.sizeY = /*object*/ ctx[45].sizeY;
-    			if (dirty[0] & /*projectData*/ 32) table_changes.simX = /*object*/ ctx[45].simX;
-    			if (dirty[0] & /*projectData*/ 32) table_changes.simY = /*object*/ ctx[45].simY;
-    			if (dirty[0] & /*projectData*/ 32) table_changes.simResizeX = /*object*/ ctx[45].simResizeX;
-    			if (dirty[0] & /*projectData*/ 32) table_changes.simResizeY = /*object*/ ctx[45].simResizeY;
+    			if (dirty[0] & /*edited*/ 2) table_changes.editmode = /*edited*/ ctx[1] == /*index*/ ctx[47];
+    			if (dirty[0] & /*projectData*/ 1) table_changes.onDrag = func_6;
+    			if (dirty[0] & /*edited*/ 2) table_changes.onDelete = func_8;
+    			if (dirty[0] & /*edited*/ 2) table_changes.onEdit = func_9;
+    			if (dirty[0] & /*projectData*/ 1) table_changes.posX = /*object*/ ctx[45].posX;
+    			if (dirty[0] & /*projectData*/ 1) table_changes.posY = /*object*/ ctx[45].posY;
+    			if (dirty[0] & /*viewX, mouseDrag*/ 132) table_changes.offX = (/*viewX*/ ctx[2] + /*mouseDrag*/ ctx[7].delta.x) / window.innerHeight * 50;
+    			if (dirty[0] & /*viewY, mouseDrag*/ 136) table_changes.offY = (/*viewY*/ ctx[3] + /*mouseDrag*/ ctx[7].delta.y) / window.innerHeight * 50;
+    			if (dirty[0] & /*viewZoom*/ 16) table_changes.zoom = /*viewZoom*/ ctx[4];
+    			if (dirty[0] & /*projectData*/ 1) table_changes.sizeX = /*object*/ ctx[45].sizeX;
+    			if (dirty[0] & /*projectData*/ 1) table_changes.sizeY = /*object*/ ctx[45].sizeY;
+    			if (dirty[0] & /*projectData*/ 1) table_changes.simX = /*object*/ ctx[45].simX;
+    			if (dirty[0] & /*projectData*/ 1) table_changes.simY = /*object*/ ctx[45].simY;
+    			if (dirty[0] & /*projectData*/ 1) table_changes.simResizeX = /*object*/ ctx[45].simResizeX;
+    			if (dirty[0] & /*projectData*/ 1) table_changes.simResizeY = /*object*/ ctx[45].simResizeY;
 
-    			if (!updating_title && dirty[0] & /*projectData*/ 32) {
+    			if (!updating_title && dirty[0] & /*projectData*/ 1) {
     				updating_title = true;
     				table_changes.title = /*object*/ ctx[45].title;
     				add_flush_callback(() => updating_title = false);
     			}
 
-    			if (!updating_sizeBounds && dirty[0] & /*projectData*/ 32) {
+    			if (!updating_sizeBounds && dirty[0] & /*projectData*/ 1) {
     				updating_sizeBounds = true;
     				table_changes.sizeBounds = /*object*/ ctx[45].sizeBounds;
     				add_flush_callback(() => updating_sizeBounds = false);
@@ -4855,7 +4855,7 @@ var app = (function () {
     		block,
     		id: create_each_block$2.name,
     		type: "each",
-    		source: "(458:12) {#each projectData.objects.table as object, index}",
+    		source: "(457:12) {#each projectData.objects.table as object, index}",
     		ctx
     	});
 
@@ -4871,7 +4871,7 @@ var app = (function () {
     	let div1_resize_listener;
     	let current;
     	let dispose;
-    	let each_value_2 = /*projectData*/ ctx[5].objects.header;
+    	let each_value_2 = /*projectData*/ ctx[0].objects.header;
     	validate_each_argument(each_value_2);
     	let each_blocks_2 = [];
 
@@ -4883,7 +4883,7 @@ var app = (function () {
     		each_blocks_2[i] = null;
     	});
 
-    	let each_value_1 = /*projectData*/ ctx[5].objects.paragraph;
+    	let each_value_1 = /*projectData*/ ctx[0].objects.paragraph;
     	validate_each_argument(each_value_1);
     	let each_blocks_1 = [];
 
@@ -4895,7 +4895,7 @@ var app = (function () {
     		each_blocks_1[i] = null;
     	});
 
-    	let each_value = /*projectData*/ ctx[5].objects.table;
+    	let each_value = /*projectData*/ ctx[0].objects.table;
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -4930,15 +4930,15 @@ var app = (function () {
     			}
 
     			attr_dev(div0, "class", "dottedBackground svelte-2tl4i1");
-    			set_style(div0, "background-position-x", /*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x + "px");
-    			set_style(div0, "background-position-y", /*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y + "px");
-    			set_style(div0, "background-size", 2 * /*viewZoom*/ ctx[2] + "vh");
-    			add_location(div0, file$6, 399, 12, 12407);
+    			set_style(div0, "background-position-x", /*viewX*/ ctx[2] + /*mouseDrag*/ ctx[7].delta.x + "px");
+    			set_style(div0, "background-position-y", /*viewY*/ ctx[3] + /*mouseDrag*/ ctx[7].delta.y + "px");
+    			set_style(div0, "background-size", 2 * /*viewZoom*/ ctx[4] + "vh");
+    			add_location(div0, file$6, 398, 12, 12419);
     			attr_dev(div1, "class", "frame neuIndentShadow svelte-2tl4i1");
     			add_render_callback(() => /*div1_elementresize_handler*/ ctx[44].call(div1));
-    			add_location(div1, file$6, 385, 4, 12012);
+    			add_location(div1, file$6, 384, 4, 12024);
     			attr_dev(main, "class", "svelte-2tl4i1");
-    			add_location(main, file$6, 381, 0, 11943);
+    			add_location(main, file$6, 380, 0, 11955);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4978,8 +4978,8 @@ var app = (function () {
     			];
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*initObjectDrag, projectData, initObjectResize, deleteObject, viewX, mouseDrag, viewY, viewZoom*/ 77927) {
-    				each_value_2 = /*projectData*/ ctx[5].objects.header;
+    			if (dirty[0] & /*initObjectDrag, projectData, initObjectResize, deleteObject, viewX, mouseDrag, viewY, viewZoom*/ 77981) {
+    				each_value_2 = /*projectData*/ ctx[0].objects.header;
     				validate_each_argument(each_value_2);
     				let i;
 
@@ -5006,8 +5006,8 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (dirty[0] & /*initObjectDrag, projectData, initObjectResize, deleteObject, viewX, mouseDrag, viewY, viewZoom*/ 77927) {
-    				each_value_1 = /*projectData*/ ctx[5].objects.paragraph;
+    			if (dirty[0] & /*initObjectDrag, projectData, initObjectResize, deleteObject, viewX, mouseDrag, viewY, viewZoom*/ 77981) {
+    				each_value_1 = /*projectData*/ ctx[0].objects.paragraph;
     				validate_each_argument(each_value_1);
     				let i;
 
@@ -5034,8 +5034,8 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (dirty[0] & /*edited, initObjectDrag, projectData, initObjectResize, deleteObject, viewX, mouseDrag, viewY, viewZoom*/ 78055) {
-    				each_value = /*projectData*/ ctx[5].objects.table;
+    			if (dirty[0] & /*edited, initObjectDrag, projectData, initObjectResize, deleteObject, viewX, mouseDrag, viewY, viewZoom*/ 77983) {
+    				each_value = /*projectData*/ ctx[0].objects.table;
     				validate_each_argument(each_value);
     				let i;
 
@@ -5062,16 +5062,16 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (!current || dirty[0] & /*viewX, mouseDrag*/ 65) {
-    				set_style(div0, "background-position-x", /*viewX*/ ctx[0] + /*mouseDrag*/ ctx[6].delta.x + "px");
+    			if (!current || dirty[0] & /*viewX, mouseDrag*/ 132) {
+    				set_style(div0, "background-position-x", /*viewX*/ ctx[2] + /*mouseDrag*/ ctx[7].delta.x + "px");
     			}
 
-    			if (!current || dirty[0] & /*viewY, mouseDrag*/ 66) {
-    				set_style(div0, "background-position-y", /*viewY*/ ctx[1] + /*mouseDrag*/ ctx[6].delta.y + "px");
+    			if (!current || dirty[0] & /*viewY, mouseDrag*/ 136) {
+    				set_style(div0, "background-position-y", /*viewY*/ ctx[3] + /*mouseDrag*/ ctx[7].delta.y + "px");
     			}
 
-    			if (!current || dirty[0] & /*viewZoom*/ 4) {
-    				set_style(div0, "background-size", 2 * /*viewZoom*/ ctx[2] + "vh");
+    			if (!current || dirty[0] & /*viewZoom*/ 16) {
+    				set_style(div0, "background-size", 2 * /*viewZoom*/ ctx[4] + "vh");
     			}
     		},
     		i: function intro(local) {
@@ -5139,14 +5139,13 @@ var app = (function () {
     	const zoomBounds = [0.2, 3];
     	let viewportHeight, viewportWidth;
 
-    	// GLOBALS
-    	let projectData = {
+    	let { projectData = {
     		"objects": {
     			"header": [],
     			"paragraph": [],
     			"table": []
     		}
-    	};
+    	} } = $$props;
 
     	const objectPrototypes = {
     		"header": {
@@ -5198,33 +5197,33 @@ var app = (function () {
 
     	function mouseDown(event) {
     		if (event.button != 1) return;
-    		$$invalidate(6, mouseDrag.ongoing = true, mouseDrag);
-    		$$invalidate(6, mouseDrag.start.x = event.clientX, mouseDrag);
-    		$$invalidate(6, mouseDrag.start.y = event.clientY, mouseDrag);
+    		$$invalidate(7, mouseDrag.ongoing = true, mouseDrag);
+    		$$invalidate(7, mouseDrag.start.x = event.clientX, mouseDrag);
+    		$$invalidate(7, mouseDrag.start.y = event.clientY, mouseDrag);
     	}
 
     	function mouseMove(event) {
     		if (!mouseDrag.ongoing) return;
-    		$$invalidate(6, mouseDrag.delta.x = event.clientX - mouseDrag.start.x, mouseDrag);
-    		$$invalidate(6, mouseDrag.delta.y = event.clientY - mouseDrag.start.y, mouseDrag);
+    		$$invalidate(7, mouseDrag.delta.x = event.clientX - mouseDrag.start.x, mouseDrag);
+    		$$invalidate(7, mouseDrag.delta.y = event.clientY - mouseDrag.start.y, mouseDrag);
     	}
 
     	function mouseUp(event) {
     		clearObjectDrag();
     		clearObjectResize();
     		if (!mouseDrag.ongoing || event.button != 1) return;
-    		$$invalidate(6, mouseDrag.ongoing = false, mouseDrag);
-    		$$invalidate(0, viewX += mouseDrag.delta.x);
-    		$$invalidate(1, viewY += mouseDrag.delta.y);
-    		$$invalidate(6, mouseDrag.delta = { "x": 0, "y": 0 }, mouseDrag);
+    		$$invalidate(7, mouseDrag.ongoing = false, mouseDrag);
+    		$$invalidate(2, viewX += mouseDrag.delta.x);
+    		$$invalidate(3, viewY += mouseDrag.delta.y);
+    		$$invalidate(7, mouseDrag.delta = { "x": 0, "y": 0 }, mouseDrag);
     	}
 
     	function scroll(event) {
     		let oldZoom = viewZoom;
-    		$$invalidate(2, viewZoom -= event.deltaY / 1000);
-    		$$invalidate(2, viewZoom = Math.max(zoomBounds[0], Math.min(viewZoom, zoomBounds[1])));
-    		$$invalidate(0, viewX = (viewX - viewportWidth / 2) * viewZoom / oldZoom + viewportWidth / 2);
-    		$$invalidate(1, viewY = (viewY - viewportHeight / 2) * viewZoom / oldZoom + viewportHeight / 2);
+    		$$invalidate(4, viewZoom -= event.deltaY / 1000);
+    		$$invalidate(4, viewZoom = Math.max(zoomBounds[0], Math.min(viewZoom, zoomBounds[1])));
+    		$$invalidate(2, viewX = (viewX - viewportWidth / 2) * viewZoom / oldZoom + viewportWidth / 2);
+    		$$invalidate(3, viewY = (viewY - viewportHeight / 2) * viewZoom / oldZoom + viewportHeight / 2);
     	}
 
     	//#endregion
@@ -5331,8 +5330,8 @@ var app = (function () {
     			$$invalidate(21, objectDrag.delta.y = Math.round((event.clientY - objectDrag.start.y) / vhConverter), objectDrag);
     			$$invalidate(21, objectDrag.layer.x = event.layerX, objectDrag);
     			$$invalidate(21, objectDrag.layer.y = event.layerY, objectDrag);
-    			$$invalidate(5, projectData.objects[objectDrag.objectInfo.type][objectDrag.objectInfo.ID].simX = objectDrag.delta.x, projectData);
-    			$$invalidate(5, projectData.objects[objectDrag.objectInfo.type][objectDrag.objectInfo.ID].simY = objectDrag.delta.y, projectData);
+    			$$invalidate(0, projectData.objects[objectDrag.objectInfo.type][objectDrag.objectInfo.ID].simX = objectDrag.delta.x, projectData);
+    			$$invalidate(0, projectData.objects[objectDrag.objectInfo.type][objectDrag.objectInfo.ID].simY = objectDrag.delta.y, projectData);
     		}
 
     		if (objectResize.ongoing) {
@@ -5340,8 +5339,8 @@ var app = (function () {
     			$$invalidate(22, objectResize.delta.x = Math.round((event.clientX - objectResize.start.x) / vhConverter), objectResize);
 
     			$$invalidate(22, objectResize.delta.y = Math.round((event.clientY - objectResize.start.y) / vhConverter), objectResize);
-    			$$invalidate(5, projectData.objects[objectResize.objectInfo.type][objectResize.objectInfo.ID].simResizeX = objectResize.delta.x, projectData);
-    			$$invalidate(5, projectData.objects[objectResize.objectInfo.type][objectResize.objectInfo.ID].simResizeY = objectResize.delta.y, projectData);
+    			$$invalidate(0, projectData.objects[objectResize.objectInfo.type][objectResize.objectInfo.ID].simResizeX = objectResize.delta.x, projectData);
+    			$$invalidate(0, projectData.objects[objectResize.objectInfo.type][objectResize.objectInfo.ID].simResizeY = objectResize.delta.y, projectData);
     		}
     	}
 
@@ -5350,10 +5349,10 @@ var app = (function () {
 
     		switch (event.dataTransfer.getData("command")) {
     			case "move":
-    				$$invalidate(5, projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].posX += Math.round((event.clientX - event.dataTransfer.getData("startX")) / (window.innerHeight / 100 * 2 * viewZoom)), projectData);
-    				$$invalidate(5, projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].posY += Math.round((event.clientY - event.dataTransfer.getData("startY")) / (window.innerHeight / 100 * 2 * viewZoom)), projectData);
-    				$$invalidate(5, projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].simX = 0, projectData);
-    				$$invalidate(5, projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].simY = 0, projectData);
+    				$$invalidate(0, projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].posX += Math.round((event.clientX - event.dataTransfer.getData("startX")) / (window.innerHeight / 100 * 2 * viewZoom)), projectData);
+    				$$invalidate(0, projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].posY += Math.round((event.clientY - event.dataTransfer.getData("startY")) / (window.innerHeight / 100 * 2 * viewZoom)), projectData);
+    				$$invalidate(0, projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].simX = 0, projectData);
+    				$$invalidate(0, projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].simY = 0, projectData);
     				$$invalidate(21, objectDrag.ongoing = false, objectDrag);
     				break;
     			case "resize":
@@ -5361,17 +5360,17 @@ var app = (function () {
     				let sizeX = projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeX;
     				let sizeY = projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeY;
     				let sizeBounds = projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeBounds;
-    				$$invalidate(5, projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeX = Math.max(sizeBounds[0][0], Math.min(sizeX + objectResize.delta.x, sizeBounds[0][1])), projectData);
-    				$$invalidate(5, projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeY = Math.max(sizeBounds[1][0], Math.min(sizeY + objectResize.delta.y, sizeBounds[1][1])), projectData);
-    				$$invalidate(5, projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].simResizeX = 0, projectData);
-    				$$invalidate(5, projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].simResizeY = 0, projectData);
+    				$$invalidate(0, projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeX = Math.max(sizeBounds[0][0], Math.min(sizeX + objectResize.delta.x, sizeBounds[0][1])), projectData);
+    				$$invalidate(0, projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeY = Math.max(sizeBounds[1][0], Math.min(sizeY + objectResize.delta.y, sizeBounds[1][1])), projectData);
+    				$$invalidate(0, projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].simResizeX = 0, projectData);
+    				$$invalidate(0, projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].simResizeY = 0, projectData);
     				break;
     			case "create":
     				let type = event.dataTransfer.getData("objectType");
     				let instanceIndex = projectData.objects[type].length;
     				projectData.objects[type].push(Object.assign({}, objectPrototypes[type]));
-    				$$invalidate(5, projectData.objects[type][instanceIndex].posX = Math.round((-viewX + event.layerX) / (window.innerHeight / 100 * 2 * viewZoom) - projectData.objects[type][instanceIndex].sizeX / 2), projectData);
-    				$$invalidate(5, projectData.objects[type][instanceIndex].posY = Math.round((-viewY + event.layerY) / (window.innerHeight / 100 * 2 * viewZoom) - projectData.objects[type][instanceIndex].sizeY / 2), projectData);
+    				$$invalidate(0, projectData.objects[type][instanceIndex].posX = Math.round((-viewX + event.layerX) / (window.innerHeight / 100 * 2 * viewZoom) - projectData.objects[type][instanceIndex].sizeX / 2), projectData);
+    				$$invalidate(0, projectData.objects[type][instanceIndex].posY = Math.round((-viewY + event.layerY) / (window.innerHeight / 100 * 2 * viewZoom) - projectData.objects[type][instanceIndex].sizeY / 2), projectData);
     				break;
     		}
 
@@ -5381,23 +5380,21 @@ var app = (function () {
 
     	function deleteObject(type, index) {
     		projectData.objects[type].splice(index, 1);
-    		$$invalidate(5, projectData.objects[type] = Object.assign([], projectData.objects[type]), projectData);
+    		$$invalidate(0, projectData.objects[type] = Object.assign([], projectData.objects[type]), projectData);
     	}
 
-    	//#endregion
-    	// Table Editing
-    	let edited = null; // null when outside of editmode,
+    	let { edited = null } = $$props; // null when outside of editmode,
 
     	function centerView() {
-    		$$invalidate(0, viewX = 0);
-    		$$invalidate(1, viewY = 0);
+    		$$invalidate(2, viewX = 0);
+    		$$invalidate(3, viewY = 0);
     	}
 
     	function resetZoom() {
-    		$$invalidate(2, viewZoom = 1);
+    		$$invalidate(4, viewZoom = 1);
     	}
 
-    	const writable_props = ["debObjectDrag", "debObjectResize"];
+    	const writable_props = ["debObjectDrag", "debObjectResize", "projectData", "edited"];
 
     	Object_1$1.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Viewport> was created with unknown prop '${key}'`);
@@ -5417,12 +5414,12 @@ var app = (function () {
 
     	function header_text_binding(value, object) {
     		object.text = value;
-    		$$invalidate(5, projectData);
+    		$$invalidate(0, projectData);
     	}
 
     	function header_sizeBounds_binding(value, object) {
     		object.sizeBounds = value;
-    		$$invalidate(5, projectData);
+    		$$invalidate(0, projectData);
     	}
 
     	const func_3 = (index, object, event) => {
@@ -5439,12 +5436,12 @@ var app = (function () {
 
     	function paragraph_text_binding(value, object) {
     		object.text = value;
-    		$$invalidate(5, projectData);
+    		$$invalidate(0, projectData);
     	}
 
     	function paragraph_sizeBounds_binding(value, object) {
     		object.sizeBounds = value;
-    		$$invalidate(5, projectData);
+    		$$invalidate(0, projectData);
     	}
 
     	const func_6 = (index, object, event) => {
@@ -5457,21 +5454,21 @@ var app = (function () {
 
     	const func_8 = index => {
     		deleteObject("table", index);
-    		if (edited == index) $$invalidate(7, edited = null);
+    		if (edited == index) $$invalidate(1, edited = null);
     	};
 
     	const func_9 = index => {
-    		$$invalidate(7, edited = edited == null ? index : edited != index ? index : null);
+    		$$invalidate(1, edited = edited == null ? index : edited != index ? index : null);
     	};
 
     	function table_title_binding(value, object) {
     		object.title = value;
-    		$$invalidate(5, projectData);
+    		$$invalidate(0, projectData);
     	}
 
     	function table_sizeBounds_binding(value, object) {
     		object.sizeBounds = value;
-    		$$invalidate(5, projectData);
+    		$$invalidate(0, projectData);
     	}
 
     	function table_binding($$value, object) {
@@ -5486,13 +5483,15 @@ var app = (function () {
     	function div1_elementresize_handler() {
     		viewportHeight = this.offsetHeight;
     		viewportWidth = this.offsetWidth;
-    		$$invalidate(3, viewportHeight);
-    		$$invalidate(4, viewportWidth);
+    		$$invalidate(5, viewportHeight);
+    		$$invalidate(6, viewportWidth);
     	}
 
     	$$self.$set = $$props => {
     		if ("debObjectDrag" in $$props) $$invalidate(17, debObjectDrag = $$props.debObjectDrag);
     		if ("debObjectResize" in $$props) $$invalidate(18, debObjectResize = $$props.debObjectResize);
+    		if ("projectData" in $$props) $$invalidate(0, projectData = $$props.projectData);
+    		if ("edited" in $$props) $$invalidate(1, edited = $$props.edited);
     	};
 
     	$$self.$capture_state = () => ({
@@ -5536,16 +5535,16 @@ var app = (function () {
     	$$self.$inject_state = $$props => {
     		if ("debObjectDrag" in $$props) $$invalidate(17, debObjectDrag = $$props.debObjectDrag);
     		if ("debObjectResize" in $$props) $$invalidate(18, debObjectResize = $$props.debObjectResize);
-    		if ("viewX" in $$props) $$invalidate(0, viewX = $$props.viewX);
-    		if ("viewY" in $$props) $$invalidate(1, viewY = $$props.viewY);
-    		if ("viewZoom" in $$props) $$invalidate(2, viewZoom = $$props.viewZoom);
-    		if ("viewportHeight" in $$props) $$invalidate(3, viewportHeight = $$props.viewportHeight);
-    		if ("viewportWidth" in $$props) $$invalidate(4, viewportWidth = $$props.viewportWidth);
-    		if ("projectData" in $$props) $$invalidate(5, projectData = $$props.projectData);
-    		if ("mouseDrag" in $$props) $$invalidate(6, mouseDrag = $$props.mouseDrag);
+    		if ("viewX" in $$props) $$invalidate(2, viewX = $$props.viewX);
+    		if ("viewY" in $$props) $$invalidate(3, viewY = $$props.viewY);
+    		if ("viewZoom" in $$props) $$invalidate(4, viewZoom = $$props.viewZoom);
+    		if ("viewportHeight" in $$props) $$invalidate(5, viewportHeight = $$props.viewportHeight);
+    		if ("viewportWidth" in $$props) $$invalidate(6, viewportWidth = $$props.viewportWidth);
+    		if ("projectData" in $$props) $$invalidate(0, projectData = $$props.projectData);
+    		if ("mouseDrag" in $$props) $$invalidate(7, mouseDrag = $$props.mouseDrag);
     		if ("objectDrag" in $$props) $$invalidate(21, objectDrag = $$props.objectDrag);
     		if ("objectResize" in $$props) $$invalidate(22, objectResize = $$props.objectResize);
-    		if ("edited" in $$props) $$invalidate(7, edited = $$props.edited);
+    		if ("edited" in $$props) $$invalidate(1, edited = $$props.edited);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -5581,14 +5580,14 @@ var app = (function () {
     	};
 
     	return [
+    		projectData,
+    		edited,
     		viewX,
     		viewY,
     		viewZoom,
     		viewportHeight,
     		viewportWidth,
-    		projectData,
     		mouseDrag,
-    		edited,
     		mouseDown,
     		mouseMove,
     		mouseUp,
@@ -5642,6 +5641,8 @@ var app = (function () {
     			{
     				debObjectDrag: 17,
     				debObjectResize: 18,
+    				projectData: 0,
+    				edited: 1,
     				centerView: 19,
     				resetZoom: 20
     			},
@@ -5683,6 +5684,22 @@ var app = (function () {
     		throw new Error("<Viewport>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
+    	get projectData() {
+    		throw new Error("<Viewport>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set projectData(value) {
+    		throw new Error("<Viewport>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get edited() {
+    		throw new Error("<Viewport>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set edited(value) {
+    		throw new Error("<Viewport>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
     	get centerView() {
     		return this.$$.ctx[19];
     	}
@@ -5712,9 +5729,9 @@ var app = (function () {
     		c: function create() {
     			main = element("main");
     			div = element("div");
-    			attr_dev(div, "class", "frame neuIndentShadow svelte-18io9co");
+    			attr_dev(div, "class", "frame neuIndentShadow svelte-12vkr3m");
     			add_location(div, file$7, 7, 4, 41);
-    			attr_dev(main, "class", "svelte-18io9co");
+    			attr_dev(main, "class", "svelte-12vkr3m");
     			add_location(main, file$7, 6, 0, 29);
     		},
     		l: function claim(nodes) {
@@ -6913,12 +6930,12 @@ var app = (function () {
     /* src\App.svelte generated by Svelte v3.19.1 */
     const file$c = "src\\App.svelte";
 
-    // (65:3) {#if debugConsoleOpen}
-    function create_if_block$3(ctx) {
+    // (74:3) {#if debugConsoleOpen}
+    function create_if_block_1$3(ctx) {
     	let current;
 
     	const debugconsole = new DebugConsole({
-    			props: { info: /*debugContents*/ ctx[3] },
+    			props: { info: /*debugContents*/ ctx[5] },
     			$$inline: true
     		});
 
@@ -6932,7 +6949,7 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const debugconsole_changes = {};
-    			if (dirty & /*debugContents*/ 8) debugconsole_changes.info = /*debugContents*/ ctx[3];
+    			if (dirty & /*debugContents*/ 32) debugconsole_changes.info = /*debugContents*/ ctx[5];
     			debugconsole.$set(debugconsole_changes);
     		},
     		i: function intro(local) {
@@ -6951,9 +6968,47 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
+    		id: create_if_block_1$3.name,
+    		type: "if",
+    		source: "(74:3) {#if debugConsoleOpen}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (78:2) {#if edited != null}
+    function create_if_block$3(ctx) {
+    	let current;
+    	const nodeeditor = new NodeEditor({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			create_component(nodeeditor.$$.fragment);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(nodeeditor, target, anchor);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(nodeeditor.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(nodeeditor.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(nodeeditor, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
     		id: create_if_block$3.name,
     		type: "if",
-    		source: "(65:3) {#if debugConsoleOpen}",
+    		source: "(78:2) {#if edited != null}",
     		ctx
     	});
 
@@ -6966,6 +7021,8 @@ var app = (function () {
     	let t0;
     	let div0;
     	let t1;
+    	let updating_projectData;
+    	let updating_edited;
     	let updating_debObjectDrag;
     	let updating_debObjectResize;
     	let t2;
@@ -6974,24 +7031,40 @@ var app = (function () {
 
     	const topbar = new TopBar({
     			props: {
-    				toggleDebugConsole: /*func*/ ctx[6],
-    				centerView: /*centerViewport*/ ctx[4],
-    				resetZoom: /*resetZoom*/ ctx[5]
+    				toggleDebugConsole: /*func*/ ctx[8],
+    				centerView: /*centerViewport*/ ctx[6],
+    				resetZoom: /*resetZoom*/ ctx[7]
     			},
     			$$inline: true
     		});
 
     	const toolkit = new Toolkit({ $$inline: true });
 
+    	function viewport_projectData_binding(value) {
+    		/*viewport_projectData_binding*/ ctx[10].call(null, value);
+    	}
+
+    	function viewport_edited_binding(value) {
+    		/*viewport_edited_binding*/ ctx[11].call(null, value);
+    	}
+
     	function viewport_debObjectDrag_binding(value) {
-    		/*viewport_debObjectDrag_binding*/ ctx[8].call(null, value);
+    		/*viewport_debObjectDrag_binding*/ ctx[12].call(null, value);
     	}
 
     	function viewport_debObjectResize_binding(value) {
-    		/*viewport_debObjectResize_binding*/ ctx[9].call(null, value);
+    		/*viewport_debObjectResize_binding*/ ctx[13].call(null, value);
     	}
 
     	let viewport_props = {};
+
+    	if (/*projectData*/ ctx[3] !== void 0) {
+    		viewport_props.projectData = /*projectData*/ ctx[3];
+    	}
+
+    	if (/*edited*/ ctx[4] !== void 0) {
+    		viewport_props.edited = /*edited*/ ctx[4];
+    	}
 
     	if (/*debugInfo*/ ctx[1].objectDrag !== void 0) {
     		viewport_props.debObjectDrag = /*debugInfo*/ ctx[1].objectDrag;
@@ -7002,11 +7075,13 @@ var app = (function () {
     	}
 
     	const viewport = new Viewport({ props: viewport_props, $$inline: true });
-    	/*viewport_binding*/ ctx[7](viewport);
+    	/*viewport_binding*/ ctx[9](viewport);
+    	binding_callbacks.push(() => bind(viewport, "projectData", viewport_projectData_binding));
+    	binding_callbacks.push(() => bind(viewport, "edited", viewport_edited_binding));
     	binding_callbacks.push(() => bind(viewport, "debObjectDrag", viewport_debObjectDrag_binding));
     	binding_callbacks.push(() => bind(viewport, "debObjectResize", viewport_debObjectResize_binding));
-    	let if_block = /*debugConsoleOpen*/ ctx[0] && create_if_block$3(ctx);
-    	const nodeeditor = new NodeEditor({ $$inline: true });
+    	let if_block0 = /*debugConsoleOpen*/ ctx[0] && create_if_block_1$3(ctx);
+    	let if_block1 = /*edited*/ ctx[4] != null && create_if_block$3(ctx);
 
     	const block = {
     		c: function create() {
@@ -7019,15 +7094,15 @@ var app = (function () {
     			t1 = space();
     			create_component(viewport.$$.fragment);
     			t2 = space();
-    			if (if_block) if_block.c();
+    			if (if_block0) if_block0.c();
     			t3 = space();
-    			create_component(nodeeditor.$$.fragment);
+    			if (if_block1) if_block1.c();
     			attr_dev(div0, "class", "centerRow svelte-7vtnx9");
-    			add_location(div0, file$c, 56, 2, 1582);
+    			add_location(div0, file$c, 62, 2, 1652);
     			attr_dev(div1, "class", "mainLayout svelte-7vtnx9");
-    			add_location(div1, file$c, 50, 1, 1409);
+    			add_location(div1, file$c, 56, 1, 1479);
     			attr_dev(main, "class", "svelte-7vtnx9");
-    			add_location(main, file$c, 49, 0, 1400);
+    			add_location(main, file$c, 55, 0, 1470);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -7042,16 +7117,28 @@ var app = (function () {
     			append_dev(div0, t1);
     			mount_component(viewport, div0, null);
     			append_dev(div0, t2);
-    			if (if_block) if_block.m(div0, null);
+    			if (if_block0) if_block0.m(div0, null);
     			append_dev(div1, t3);
-    			mount_component(nodeeditor, div1, null);
+    			if (if_block1) if_block1.m(div1, null);
     			current = true;
     		},
     		p: function update(ctx, [dirty]) {
     			const topbar_changes = {};
-    			if (dirty & /*debugConsoleOpen*/ 1) topbar_changes.toggleDebugConsole = /*func*/ ctx[6];
+    			if (dirty & /*debugConsoleOpen*/ 1) topbar_changes.toggleDebugConsole = /*func*/ ctx[8];
     			topbar.$set(topbar_changes);
     			const viewport_changes = {};
+
+    			if (!updating_projectData && dirty & /*projectData*/ 8) {
+    				updating_projectData = true;
+    				viewport_changes.projectData = /*projectData*/ ctx[3];
+    				add_flush_callback(() => updating_projectData = false);
+    			}
+
+    			if (!updating_edited && dirty & /*edited*/ 16) {
+    				updating_edited = true;
+    				viewport_changes.edited = /*edited*/ ctx[4];
+    				add_flush_callback(() => updating_edited = false);
+    			}
 
     			if (!updating_debObjectDrag && dirty & /*debugInfo*/ 2) {
     				updating_debObjectDrag = true;
@@ -7068,20 +7155,39 @@ var app = (function () {
     			viewport.$set(viewport_changes);
 
     			if (/*debugConsoleOpen*/ ctx[0]) {
-    				if (if_block) {
-    					if_block.p(ctx, dirty);
-    					transition_in(if_block, 1);
+    				if (if_block0) {
+    					if_block0.p(ctx, dirty);
+    					transition_in(if_block0, 1);
     				} else {
-    					if_block = create_if_block$3(ctx);
-    					if_block.c();
-    					transition_in(if_block, 1);
-    					if_block.m(div0, null);
+    					if_block0 = create_if_block_1$3(ctx);
+    					if_block0.c();
+    					transition_in(if_block0, 1);
+    					if_block0.m(div0, null);
     				}
-    			} else if (if_block) {
+    			} else if (if_block0) {
     				group_outros();
 
-    				transition_out(if_block, 1, 1, () => {
-    					if_block = null;
+    				transition_out(if_block0, 1, 1, () => {
+    					if_block0 = null;
+    				});
+
+    				check_outros();
+    			}
+
+    			if (/*edited*/ ctx[4] != null) {
+    				if (!if_block1) {
+    					if_block1 = create_if_block$3(ctx);
+    					if_block1.c();
+    					transition_in(if_block1, 1);
+    					if_block1.m(div1, null);
+    				} else {
+    					transition_in(if_block1, 1);
+    				}
+    			} else if (if_block1) {
+    				group_outros();
+
+    				transition_out(if_block1, 1, 1, () => {
+    					if_block1 = null;
     				});
 
     				check_outros();
@@ -7092,26 +7198,26 @@ var app = (function () {
     			transition_in(topbar.$$.fragment, local);
     			transition_in(toolkit.$$.fragment, local);
     			transition_in(viewport.$$.fragment, local);
-    			transition_in(if_block);
-    			transition_in(nodeeditor.$$.fragment, local);
+    			transition_in(if_block0);
+    			transition_in(if_block1);
     			current = true;
     		},
     		o: function outro(local) {
     			transition_out(topbar.$$.fragment, local);
     			transition_out(toolkit.$$.fragment, local);
     			transition_out(viewport.$$.fragment, local);
-    			transition_out(if_block);
-    			transition_out(nodeeditor.$$.fragment, local);
+    			transition_out(if_block0);
+    			transition_out(if_block1);
     			current = false;
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(main);
     			destroy_component(topbar);
     			destroy_component(toolkit);
-    			/*viewport_binding*/ ctx[7](null);
+    			/*viewport_binding*/ ctx[9](null);
     			destroy_component(viewport);
-    			if (if_block) if_block.d();
-    			destroy_component(nodeeditor);
+    			if (if_block0) if_block0.d();
+    			if (if_block1) if_block1.d();
     		}
     	};
 
@@ -7129,6 +7235,8 @@ var app = (function () {
     function instance$b($$self, $$props, $$invalidate) {
     	let debugConsoleOpen = false;
     	let debugInfo = { "objectDrag": [], "objectResize": [] };
+
+    	// Top Bar
     	let viewportRef;
 
     	function centerViewport() {
@@ -7139,6 +7247,11 @@ var app = (function () {
     		viewportRef.resetZoom();
     	}
 
+    	// Project Data
+    	let projectData;
+
+    	let edited;
+
     	const func = () => {
     		$$invalidate(0, debugConsoleOpen = !debugConsoleOpen);
     	};
@@ -7147,6 +7260,16 @@ var app = (function () {
     		binding_callbacks[$$value ? "unshift" : "push"](() => {
     			$$invalidate(2, viewportRef = $$value);
     		});
+    	}
+
+    	function viewport_projectData_binding(value) {
+    		projectData = value;
+    		$$invalidate(3, projectData);
+    	}
+
+    	function viewport_edited_binding(value) {
+    		edited = value;
+    		$$invalidate(4, edited);
     	}
 
     	function viewport_debObjectDrag_binding(value) {
@@ -7170,6 +7293,8 @@ var app = (function () {
     		viewportRef,
     		centerViewport,
     		resetZoom,
+    		projectData,
+    		edited,
     		debugContents
     	});
 
@@ -7177,7 +7302,9 @@ var app = (function () {
     		if ("debugConsoleOpen" in $$props) $$invalidate(0, debugConsoleOpen = $$props.debugConsoleOpen);
     		if ("debugInfo" in $$props) $$invalidate(1, debugInfo = $$props.debugInfo);
     		if ("viewportRef" in $$props) $$invalidate(2, viewportRef = $$props.viewportRef);
-    		if ("debugContents" in $$props) $$invalidate(3, debugContents = $$props.debugContents);
+    		if ("projectData" in $$props) $$invalidate(3, projectData = $$props.projectData);
+    		if ("edited" in $$props) $$invalidate(4, edited = $$props.edited);
+    		if ("debugContents" in $$props) $$invalidate(5, debugContents = $$props.debugContents);
     	};
 
     	let debugContents;
@@ -7188,7 +7315,7 @@ var app = (function () {
 
     	$$self.$$.update = () => {
     		if ($$self.$$.dirty & /*debugInfo*/ 2) {
-    			 $$invalidate(3, debugContents = [
+    			 $$invalidate(5, debugContents = [
     				"::Object Drag::",
     				"Ongoing:" + debugInfo.objectDrag[0],
     				"StartX:" + debugInfo.objectDrag[1],
@@ -7216,11 +7343,15 @@ var app = (function () {
     		debugConsoleOpen,
     		debugInfo,
     		viewportRef,
+    		projectData,
+    		edited,
     		debugContents,
     		centerViewport,
     		resetZoom,
     		func,
     		viewport_binding,
+    		viewport_projectData_binding,
+    		viewport_edited_binding,
     		viewport_debObjectDrag_binding,
     		viewport_debObjectResize_binding
     	];

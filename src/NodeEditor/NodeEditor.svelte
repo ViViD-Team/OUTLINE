@@ -19,6 +19,14 @@
 
         display: grid;
         place-items: center;
+
+        animation: mainScale .5s cubic-bezier(0, 0, 0, .9) backwards;
+    }
+
+    @keyframes mainScale {
+        from {
+            flex: 0;
+        }
     }
 
     .frame {

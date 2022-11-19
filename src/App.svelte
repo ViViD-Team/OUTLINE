@@ -35,6 +35,7 @@
 							"ObjectType:" + debugInfo.objectResize[6],];
 
 	
+	// Top Bar
 	let viewportRef;
 	
 	function centerViewport() {
@@ -44,7 +45,12 @@
 	function resetZoom() {
 		viewportRef.resetZoom();
 	}
+	
+	// Project Data
+	
+	let projectData;
 
+	let edited;
 </script>
 
 <main>
@@ -59,6 +65,9 @@
 			<Viewport
 				bind:this={viewportRef}
 
+				bind:projectData={projectData}
+				bind:edited={edited}
+
 				bind:debObjectDrag={debugInfo.objectDrag}
 				bind:debObjectResize={debugInfo.objectResize}
 			/>
@@ -66,7 +75,9 @@
 				<DebugConsole info={debugContents} />
 			{/if}
 		</div>
-		<NodeEditor />
+		{#if edited != null}
+			<NodeEditor />
+		{/if}
 	</div>
 </main>
 

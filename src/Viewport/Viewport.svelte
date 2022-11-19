@@ -34,8 +34,7 @@ const   zoomBounds = [.2, 3]
     let viewportHeight, viewportWidth;
 
     // GLOBALS
-
-    let projectData = {
+    export let projectData = {
         "objects": {
             "header": [
 
@@ -359,7 +358,7 @@ const   zoomBounds = [.2, 3]
 
     // Table Editing
 
-    let edited = null;  // null when outside of editmode,
+    export let edited = null;  // null when outside of editmode,
                         // index of edited table when inside of editmode.
 
     
