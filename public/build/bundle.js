@@ -2509,27 +2509,27 @@ var app = (function () {
     			t2 = space();
     			div3 = element("div");
     			if (if_block1) if_block1.c();
-    			attr_dev(div0, "class", "editmodeRowIndicatorButton svelte-1jup7gh");
+    			attr_dev(div0, "class", "editmodeRowIndicatorButton svelte-645jd5");
     			add_location(div0, file$5, 197, 32, 5708);
     			attr_dev(path0, "d", "M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z");
     			add_location(path0, file$5, 203, 266, 6833);
     			attr_dev(svg0, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg0, "viewBox", "0 0 448 512");
-    			attr_dev(svg0, "class", "svelte-1jup7gh");
+    			attr_dev(svg0, "class", "svelte-645jd5");
     			add_location(svg0, file$5, 203, 36, 6603);
-    			attr_dev(div1, "class", "editmodeRowIndicatorButton svelte-1jup7gh");
+    			attr_dev(div1, "class", "editmodeRowIndicatorButton svelte-645jd5");
     			add_location(div1, file$5, 202, 32, 6473);
     			attr_dev(path1, "d", "M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z");
     			add_location(path1, file$5, 205, 266, 7464);
     			attr_dev(svg1, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg1, "viewBox", "0 0 448 512");
-    			attr_dev(svg1, "class", "svelte-1jup7gh");
+    			attr_dev(svg1, "class", "svelte-645jd5");
     			add_location(svg1, file$5, 205, 36, 7234);
-    			attr_dev(div2, "class", "editmodeRowIndicatorButton svelte-1jup7gh");
+    			attr_dev(div2, "class", "editmodeRowIndicatorButton svelte-645jd5");
     			add_location(div2, file$5, 204, 32, 7104);
-    			attr_dev(div3, "class", "editmodeRowIndicatorButton svelte-1jup7gh");
+    			attr_dev(div3, "class", "editmodeRowIndicatorButton svelte-645jd5");
     			add_location(div3, file$5, 206, 32, 7654);
-    			attr_dev(div4, "class", "editmodeRowIndicatorButtonContainer svelte-1jup7gh");
+    			attr_dev(div4, "class", "editmodeRowIndicatorButtonContainer svelte-645jd5");
     			add_location(div4, file$5, 196, 28, 5625);
     		},
     		m: function mount(target, anchor) {
@@ -2600,7 +2600,7 @@ var app = (function () {
     			t = text(t_value);
     			set_style(p, "font-size", 1.5 * /*zoom*/ ctx[13] + "vh");
     			set_style(p, "height", 1.5 * /*zoom*/ ctx[13] + "vh");
-    			attr_dev(p, "class", "svelte-1jup7gh");
+    			attr_dev(p, "class", "svelte-645jd5");
     			add_location(p, file$5, 189, 28, 5328);
     		},
     		m: function mount(target, anchor) {
@@ -2645,7 +2645,7 @@ var app = (function () {
     			add_location(path, file$5, 199, 270, 6138);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 448 512");
-    			attr_dev(svg, "class", "svelte-1jup7gh");
+    			attr_dev(svg, "class", "svelte-645jd5");
     			add_location(svg, file$5, 199, 40, 5908);
     		},
     		m: function mount(target, anchor) {
@@ -2681,7 +2681,7 @@ var app = (function () {
     			add_location(path, file$5, 208, 270, 8106);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 448 512");
-    			attr_dev(svg, "class", "svelte-1jup7gh");
+    			attr_dev(svg, "class", "svelte-645jd5");
     			add_location(svg, file$5, 208, 40, 7876);
     		},
     		m: function mount(target, anchor) {
@@ -2723,7 +2723,7 @@ var app = (function () {
     			div = element("div");
     			if_block.c();
     			t = space();
-    			attr_dev(div, "class", "rowIndicator svelte-1jup7gh");
+    			attr_dev(div, "class", "rowIndicator svelte-645jd5");
     			attr_dev(div, "style", div_style_value = "\r\n                        height: " + 3 * /*zoom*/ ctx[13] + "vh;\r\n\r\n                        margin: " + 0.2 * /*zoom*/ ctx[13] + "vh 0 " + 0.2 * /*zoom*/ ctx[13] + "vh 0;\r\n\r\n                        " + (/*editmode*/ ctx[6] ? "cursor: pointer;" : "") + "\r\n\r\n                        border-top-left-radius: " + 0.5 * /*zoom*/ ctx[13] + "vh;\r\n                        border-bottom-left-radius: " + 0.5 * /*zoom*/ ctx[13] + "vh;\r\n                    ");
     			add_location(div, file$5, 178, 20, 4898);
     		},
@@ -2817,28 +2817,28 @@ var app = (function () {
     			t2 = space();
     			div3 = element("div");
     			if (if_block1) if_block1.c();
-    			attr_dev(div0, "class", "editmodeColumnIndicatorButton svelte-1jup7gh");
+    			attr_dev(div0, "class", "editmodeColumnIndicatorButton svelte-645jd5");
     			add_location(div0, file$5, 251, 28, 10045);
     			attr_dev(path0, "d", "M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z");
     			add_location(path0, file$5, 257, 262, 11164);
     			attr_dev(svg0, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg0, "viewBox", "0 0 448 512");
-    			attr_dev(svg0, "class", "svelte-1jup7gh");
+    			attr_dev(svg0, "class", "svelte-645jd5");
     			add_location(svg0, file$5, 257, 32, 10934);
-    			attr_dev(div1, "class", "editmodeColumnIndicatorButton svelte-1jup7gh");
+    			attr_dev(div1, "class", "editmodeColumnIndicatorButton svelte-645jd5");
     			add_location(div1, file$5, 256, 28, 10801);
     			attr_dev(path1, "d", "M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z");
     			add_location(path1, file$5, 260, 262, 11824);
     			attr_dev(svg1, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg1, "viewBox", "0 0 448 512");
-    			attr_dev(svg1, "class", "svelte-1jup7gh");
+    			attr_dev(svg1, "class", "svelte-645jd5");
     			add_location(svg1, file$5, 260, 32, 11594);
-    			attr_dev(div2, "class", "editmodeColumnIndicatorButton svelte-1jup7gh");
+    			attr_dev(div2, "class", "editmodeColumnIndicatorButton svelte-645jd5");
     			add_location(div2, file$5, 259, 28, 11461);
-    			attr_dev(div3, "class", "editmodeColumnIndicatorButton svelte-1jup7gh");
+    			attr_dev(div3, "class", "editmodeColumnIndicatorButton svelte-645jd5");
     			add_location(div3, file$5, 261, 28, 12010);
     			set_style(div4, "height", 2 * /*zoom*/ ctx[13] + "vh");
-    			attr_dev(div4, "class", "editmodeColumnIndicatorButtonContainer svelte-1jup7gh");
+    			attr_dev(div4, "class", "editmodeColumnIndicatorButtonContainer svelte-645jd5");
     			add_location(div4, file$5, 250, 24, 9935);
     		},
     		m: function mount(target, anchor) {
@@ -2923,7 +2923,7 @@ var app = (function () {
     			attr_dev(p, "contenteditable", "true");
     			set_style(p, "font-size", 1.2 * /*zoom*/ ctx[13] + "vh");
     			set_style(p, "height", 1.5 * /*zoom*/ ctx[13] + "vh");
-    			attr_dev(p, "class", "svelte-1jup7gh");
+    			attr_dev(p, "class", "svelte-645jd5");
     			if (/*colNames*/ ctx[3][/*indexX*/ ctx[51]] === void 0) add_render_callback(p_input_handler);
     			add_location(p, file$5, 233, 24, 9140);
     		},
@@ -3000,7 +3000,7 @@ var app = (function () {
     			add_location(path, file$5, 253, 266, 10478);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 320 512");
-    			attr_dev(svg, "class", "svelte-1jup7gh");
+    			attr_dev(svg, "class", "svelte-645jd5");
     			add_location(svg, file$5, 253, 36, 10248);
     		},
     		m: function mount(target, anchor) {
@@ -3036,7 +3036,7 @@ var app = (function () {
     			add_location(path, file$5, 263, 266, 12464);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 320 512");
-    			attr_dev(svg, "class", "svelte-1jup7gh");
+    			attr_dev(svg, "class", "svelte-645jd5");
     			add_location(svg, file$5, 263, 36, 12234);
     		},
     		m: function mount(target, anchor) {
@@ -3069,7 +3069,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			attr_dev(p, "class", "columnIndicatorPlaceholder svelte-1jup7gh");
+    			attr_dev(p, "class", "columnIndicatorPlaceholder svelte-645jd5");
     			set_style(p, "font-size", 1.2 * /*zoom*/ ctx[13] + "vh");
     			set_style(p, "height", 1.5 * /*zoom*/ ctx[13] + "vh");
     			add_location(p, file$5, 242, 28, 9550);
@@ -3103,7 +3103,7 @@ var app = (function () {
     	return block;
     }
 
-    // (282:24) {:else}
+    // (290:24) {:else}
     function create_else_block(ctx) {
     	let div;
     	let p;
@@ -3122,14 +3122,14 @@ var app = (function () {
     			t = text(t_value);
     			attr_dev(p, "contenteditable", "true");
     			set_style(p, "font-size", 1.3 * /*zoom*/ ctx[13] + "vh");
-    			attr_dev(p, "class", "svelte-1jup7gh");
+    			attr_dev(p, "class", "svelte-645jd5");
     			if (/*cellContents*/ ctx[4][/*indexX*/ ctx[51]][/*indexY*/ ctx[54]] === void 0) add_render_callback(p_input_handler_1);
-    			add_location(p, file$5, 289, 32, 13777);
-    			attr_dev(div, "class", "tableCell neuIndentShadowNarrow svelte-1jup7gh");
+    			add_location(p, file$5, 297, 32, 14263);
+    			attr_dev(div, "class", "tableCell neuIndentShadowNarrow svelte-645jd5");
     			set_style(div, "height", 3 * /*zoom*/ ctx[13] + "vh");
     			set_style(div, "margin", 0.2 * /*zoom*/ ctx[13] + "vh 0 " + 0.2 * /*zoom*/ ctx[13] + "vh 0");
     			set_style(div, "border-radius", 0.5 * /*zoom*/ ctx[13] + "vh");
-    			add_location(div, file$5, 282, 28, 13471);
+    			add_location(div, file$5, 290, 28, 13957);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -3176,7 +3176,7 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(282:24) {:else}",
+    		source: "(290:24) {:else}",
     		ctx
     	});
 
@@ -3185,51 +3185,82 @@ var app = (function () {
 
     // (272:24) {#if scanLocked(indexX, indexY)}
     function create_if_block$1(ctx) {
-    	let div;
+    	let div1;
     	let p;
-    	let t_value = /*cellContents*/ ctx[4][/*indexX*/ ctx[51]][/*indexY*/ ctx[54]] + "";
-    	let t;
+    	let t0_value = /*cellContents*/ ctx[4][/*indexX*/ ctx[51]][/*indexY*/ ctx[54]] + "";
+    	let t0;
+    	let t1;
+    	let div0;
+    	let svg;
+    	let path;
 
     	const block = {
     		c: function create() {
-    			div = element("div");
+    			div1 = element("div");
     			p = element("p");
-    			t = text(t_value);
+    			t0 = text(t0_value);
+    			t1 = space();
+    			div0 = element("div");
+    			svg = svg_element("svg");
+    			path = svg_element("path");
     			set_style(p, "font-size", 1.3 * /*zoom*/ ctx[13] + "vh");
-    			attr_dev(p, "class", "svelte-1jup7gh");
+    			attr_dev(p, "class", "svelte-645jd5");
     			add_location(p, file$5, 279, 32, 13301);
-    			attr_dev(div, "class", "tableCell neuIndentShadowNarrow svelte-1jup7gh");
-    			set_style(div, "height", 3 * /*zoom*/ ctx[13] + "vh");
-    			set_style(div, "margin", 0.2 * /*zoom*/ ctx[13] + "vh 0 " + 0.2 * /*zoom*/ ctx[13] + "vh 0");
-    			set_style(div, "border-radius", 0.5 * /*zoom*/ ctx[13] + "vh");
-    			add_location(div, file$5, 272, 28, 12995);
+    			attr_dev(path, "d", "M1 1H0L1 0V1Z");
+    			add_location(path, file$5, 285, 40, 13748);
+    			attr_dev(svg, "viewBox", "0 0 1 1");
+    			attr_dev(svg, "fill", "none");
+    			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
+    			attr_dev(svg, "class", "svelte-645jd5");
+    			add_location(svg, file$5, 284, 36, 13636);
+    			attr_dev(div0, "class", "cellLabelContainer svelte-645jd5");
+    			set_style(div0, "width", 1.2 * /*zoom*/ ctx[13] + "vh");
+    			set_style(div0, "height", 1.2 * /*zoom*/ ctx[13] + "vh");
+    			add_location(div0, file$5, 280, 32, 13406);
+    			attr_dev(div1, "class", "tableCell neuIndentShadowNarrow svelte-645jd5");
+    			set_style(div1, "height", 3 * /*zoom*/ ctx[13] + "vh");
+    			set_style(div1, "margin", 0.2 * /*zoom*/ ctx[13] + "vh 0 " + 0.2 * /*zoom*/ ctx[13] + "vh 0");
+    			set_style(div1, "border-radius", 0.5 * /*zoom*/ ctx[13] + "vh");
+    			add_location(div1, file$5, 272, 28, 12995);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
-    			append_dev(div, p);
-    			append_dev(p, t);
+    			insert_dev(target, div1, anchor);
+    			append_dev(div1, p);
+    			append_dev(p, t0);
+    			append_dev(div1, t1);
+    			append_dev(div1, div0);
+    			append_dev(div0, svg);
+    			append_dev(svg, path);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*cellContents*/ 16 && t_value !== (t_value = /*cellContents*/ ctx[4][/*indexX*/ ctx[51]][/*indexY*/ ctx[54]] + "")) set_data_dev(t, t_value);
+    			if (dirty[0] & /*cellContents*/ 16 && t0_value !== (t0_value = /*cellContents*/ ctx[4][/*indexX*/ ctx[51]][/*indexY*/ ctx[54]] + "")) set_data_dev(t0, t0_value);
 
     			if (dirty[0] & /*zoom*/ 8192) {
     				set_style(p, "font-size", 1.3 * /*zoom*/ ctx[13] + "vh");
     			}
 
     			if (dirty[0] & /*zoom*/ 8192) {
-    				set_style(div, "height", 3 * /*zoom*/ ctx[13] + "vh");
+    				set_style(div0, "width", 1.2 * /*zoom*/ ctx[13] + "vh");
     			}
 
     			if (dirty[0] & /*zoom*/ 8192) {
-    				set_style(div, "margin", 0.2 * /*zoom*/ ctx[13] + "vh 0 " + 0.2 * /*zoom*/ ctx[13] + "vh 0");
+    				set_style(div0, "height", 1.2 * /*zoom*/ ctx[13] + "vh");
     			}
 
     			if (dirty[0] & /*zoom*/ 8192) {
-    				set_style(div, "border-radius", 0.5 * /*zoom*/ ctx[13] + "vh");
+    				set_style(div1, "height", 3 * /*zoom*/ ctx[13] + "vh");
+    			}
+
+    			if (dirty[0] & /*zoom*/ 8192) {
+    				set_style(div1, "margin", 0.2 * /*zoom*/ ctx[13] + "vh 0 " + 0.2 * /*zoom*/ ctx[13] + "vh 0");
+    			}
+
+    			if (dirty[0] & /*zoom*/ 8192) {
+    				set_style(div1, "border-radius", 0.5 * /*zoom*/ ctx[13] + "vh");
     			}
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
+    			if (detaching) detach_dev(div1);
     		}
     	};
 
@@ -3320,10 +3351,10 @@ var app = (function () {
     			}
 
     			t1 = space();
-    			attr_dev(div0, "class", "columnIndicator svelte-1jup7gh");
+    			attr_dev(div0, "class", "columnIndicator svelte-645jd5");
     			attr_dev(div0, "style", div0_style_value = "\r\n                    border-top-left-radius: " + 0.5 * /*zoom*/ ctx[13] + "vh;\r\n                    border-top-right-radius: " + 0.5 * /*zoom*/ ctx[13] + "vh;\r\n\r\n                    " + (/*editmode*/ ctx[6] ? "cursor: pointer;" : "") + "\r\n\r\n                    margin-bottom: " + 0.5 * /*zoom*/ ctx[13] + "vh;\r\n\r\n                    height: " + 2 * /*zoom*/ ctx[13] + "vh;\r\n                ");
     			add_location(div0, file$5, 221, 16, 8729);
-    			attr_dev(div1, "class", "tableGridColumn svelte-1jup7gh");
+    			attr_dev(div1, "class", "tableGridColumn svelte-645jd5");
     			set_style(div1, "width", 10 * /*zoom*/ ctx[13] + "vh");
     			add_location(div1, file$5, 218, 16, 8614);
     		},
@@ -3487,65 +3518,65 @@ var app = (function () {
     			set_style(h1, "min-height", 2 * /*zoom*/ ctx[13] + "vh");
     			set_style(h1, "min-width", /*sizeX*/ ctx[7] * /*zoom*/ ctx[13] + "vh");
     			set_style(h1, "margin-left", 4 * /*zoom*/ ctx[13] + "vh");
-    			attr_dev(h1, "class", "svelte-1jup7gh");
+    			attr_dev(h1, "class", "svelte-645jd5");
     			if (/*title*/ ctx[0] === void 0) add_render_callback(() => /*h1_input_handler*/ ctx[38].call(h1));
     			add_location(h1, file$5, 158, 8, 4228);
-    			attr_dev(div0, "class", "titleStrip svelte-1jup7gh");
+    			attr_dev(div0, "class", "titleStrip svelte-645jd5");
     			set_style(div0, "height", 4 * /*zoom*/ ctx[13] + "vh");
     			add_location(div0, file$5, 155, 4, 4148);
-    			attr_dev(div1, "class", "rowIndicatorContainer svelte-1jup7gh");
+    			attr_dev(div1, "class", "rowIndicatorContainer svelte-645jd5");
     			set_style(div1, "width", (/*editmode*/ ctx[6] ? 10 : 2) * /*zoom*/ ctx[13] + "vh");
     			set_style(div1, "margin-top", 2 * /*zoom*/ ctx[13] + "vh");
     			add_location(div1, file$5, 173, 12, 4671);
-    			attr_dev(div2, "class", "tableGrid svelte-1jup7gh");
+    			attr_dev(div2, "class", "tableGrid svelte-645jd5");
     			set_style(div2, "width", "calc(100% - " + 4 * /*zoom*/ ctx[13] + "vh)");
     			set_style(div2, "height", "calc(100% - " + 4 * /*zoom*/ ctx[13] + "vh)");
     			add_location(div2, file$5, 168, 8, 4522);
-    			attr_dev(div3, "class", "contents svelte-1jup7gh");
+    			attr_dev(div3, "class", "contents svelte-645jd5");
     			add_location(div3, file$5, 167, 4, 4490);
     			attr_dev(path0, "d", "M278.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l9.4-9.4V224H109.3l9.4-9.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-9.4-9.4H224V402.7l-9.4-9.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-9.4 9.4V288H402.7l-9.4 9.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3l-64-64c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l9.4 9.4H288V109.3l9.4 9.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-64-64z");
-    			add_location(path0, file$5, 317, 238, 14754);
+    			add_location(path0, file$5, 325, 238, 15240);
     			attr_dev(svg0, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg0, "viewBox", "0 0 512 512");
-    			attr_dev(svg0, "class", "svelte-1jup7gh");
-    			add_location(svg0, file$5, 317, 8, 14524);
-    			attr_dev(div4, "class", "dragHandle svelte-1jup7gh");
+    			attr_dev(svg0, "class", "svelte-645jd5");
+    			add_location(svg0, file$5, 325, 8, 15010);
+    			attr_dev(div4, "class", "dragHandle svelte-645jd5");
     			attr_dev(div4, "draggable", "true");
     			set_style(div4, "width", 3 * /*zoom*/ ctx[13] + "vh");
     			set_style(div4, "height", 3 * /*zoom*/ ctx[13] + "vh");
-    			add_location(div4, file$5, 307, 4, 14322);
+    			add_location(div4, file$5, 315, 4, 14808);
     			attr_dev(path1, "d", "M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z");
-    			add_location(path1, file$5, 329, 238, 15850);
+    			add_location(path1, file$5, 337, 238, 16336);
     			attr_dev(svg1, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg1, "viewBox", "0 0 448 512");
-    			attr_dev(svg1, "class", "svelte-1jup7gh");
-    			add_location(svg1, file$5, 329, 8, 15620);
-    			attr_dev(div5, "class", "deleteAction svelte-1jup7gh");
+    			attr_dev(svg1, "class", "svelte-645jd5");
+    			add_location(svg1, file$5, 337, 8, 16106);
+    			attr_dev(div5, "class", "deleteAction svelte-645jd5");
     			set_style(div5, "width", 3 * /*zoom*/ ctx[13] + "vh");
     			set_style(div5, "height", 3 * /*zoom*/ ctx[13] + "vh");
-    			add_location(div5, file$5, 320, 4, 15433);
+    			add_location(div5, file$5, 328, 4, 15919);
     			attr_dev(path2, "d", "M32 288c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 288zm0-128c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 160z");
-    			add_location(path2, file$5, 342, 238, 16577);
+    			add_location(path2, file$5, 350, 238, 17063);
     			attr_dev(svg2, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg2, "viewBox", "0 0 448 512");
-    			attr_dev(svg2, "class", "svelte-1jup7gh");
-    			add_location(svg2, file$5, 342, 8, 16347);
-    			attr_dev(div6, "class", "resizeHandle svelte-1jup7gh");
+    			attr_dev(svg2, "class", "svelte-645jd5");
+    			add_location(svg2, file$5, 350, 8, 16833);
+    			attr_dev(div6, "class", "resizeHandle svelte-645jd5");
     			attr_dev(div6, "draggable", "true");
     			set_style(div6, "width", 3 * /*zoom*/ ctx[13] + "vh");
     			set_style(div6, "height", 3 * /*zoom*/ ctx[13] + "vh");
-    			add_location(div6, file$5, 332, 4, 16142);
+    			add_location(div6, file$5, 340, 4, 16628);
     			attr_dev(path3, "d", "M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.8 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z");
-    			add_location(path3, file$5, 354, 238, 17199);
+    			add_location(path3, file$5, 362, 238, 17685);
     			attr_dev(svg3, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg3, "viewBox", "0 0 512 512");
-    			attr_dev(svg3, "class", "svelte-1jup7gh");
-    			add_location(svg3, file$5, 354, 8, 16969);
-    			attr_dev(div7, "class", "editHandle svelte-1jup7gh");
+    			attr_dev(svg3, "class", "svelte-645jd5");
+    			add_location(svg3, file$5, 362, 8, 17455);
+    			attr_dev(div7, "class", "editHandle svelte-645jd5");
     			set_style(div7, "width", 3 * /*zoom*/ ctx[13] + "vh");
     			set_style(div7, "height", 3 * /*zoom*/ ctx[13] + "vh");
-    			add_location(div7, file$5, 345, 4, 16800);
-    			attr_dev(main, "class", "neuOutdentShadowRim svelte-1jup7gh");
+    			add_location(div7, file$5, 353, 4, 17286);
+    			attr_dev(main, "class", "neuOutdentShadowRim svelte-645jd5");
     			set_style(main, "left", ((/*posX*/ ctx[9] + /*simX*/ ctx[14]) * /*zoom*/ ctx[13] + /*offX*/ ctx[11]) * 2 + "vh");
     			set_style(main, "top", ((/*posY*/ ctx[10] + /*simY*/ ctx[15]) * /*zoom*/ ctx[13] + /*offY*/ ctx[12]) * 2 + "vh");
     			set_style(main, "width", Math.max(/*sizeBounds*/ ctx[5][0][0], Math.min(/*sizeX*/ ctx[7] + /*simResizeX*/ ctx[16], /*sizeBounds*/ ctx[5][0][1])) * 2 * /*zoom*/ ctx[13] + "vh");
@@ -4485,7 +4516,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (409:12) {#each projectData.objects.header as object, index}
+    // (403:12) {#each projectData.objects.header as object, index}
     function create_each_block_2$1(ctx) {
     	let updating_text;
     	let updating_sizeBounds;
@@ -4596,14 +4627,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2$1.name,
     		type: "each",
-    		source: "(409:12) {#each projectData.objects.header as object, index}",
+    		source: "(403:12) {#each projectData.objects.header as object, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (433:12) {#each projectData.objects.paragraph as object, index}
+    // (427:12) {#each projectData.objects.paragraph as object, index}
     function create_each_block_1$2(ctx) {
     	let updating_text;
     	let updating_sizeBounds;
@@ -4714,14 +4745,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1$2.name,
     		type: "each",
-    		source: "(433:12) {#each projectData.objects.paragraph as object, index}",
+    		source: "(427:12) {#each projectData.objects.paragraph as object, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (457:12) {#each projectData.objects.table as object, index}
+    // (451:12) {#each projectData.objects.table as object, index}
     function create_each_block$2(ctx) {
     	let updating_title;
     	let updating_sizeBounds;
@@ -4855,7 +4886,7 @@ var app = (function () {
     		block,
     		id: create_each_block$2.name,
     		type: "each",
-    		source: "(457:12) {#each projectData.objects.table as object, index}",
+    		source: "(451:12) {#each projectData.objects.table as object, index}",
     		ctx
     	});
 
@@ -4929,16 +4960,16 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(div0, "class", "dottedBackground svelte-2tl4i1");
+    			attr_dev(div0, "class", "dottedBackground svelte-1f6heyz");
     			set_style(div0, "background-position-x", /*viewX*/ ctx[2] + /*mouseDrag*/ ctx[7].delta.x + "px");
     			set_style(div0, "background-position-y", /*viewY*/ ctx[3] + /*mouseDrag*/ ctx[7].delta.y + "px");
     			set_style(div0, "background-size", 2 * /*viewZoom*/ ctx[4] + "vh");
-    			add_location(div0, file$6, 398, 12, 12419);
-    			attr_dev(div1, "class", "frame neuIndentShadow svelte-2tl4i1");
+    			add_location(div0, file$6, 392, 12, 12380);
+    			attr_dev(div1, "class", "frame neuIndentShadow svelte-1f6heyz");
     			add_render_callback(() => /*div1_elementresize_handler*/ ctx[44].call(div1));
-    			add_location(div1, file$6, 384, 4, 12024);
-    			attr_dev(main, "class", "svelte-2tl4i1");
-    			add_location(main, file$6, 380, 0, 11955);
+    			add_location(div1, file$6, 378, 4, 11985);
+    			attr_dev(main, "class", "svelte-1f6heyz");
+    			add_location(main, file$6, 374, 0, 11916);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -5138,14 +5169,7 @@ var app = (function () {
     	let viewX = 0, viewY = 0, viewZoom = 1;
     	const zoomBounds = [0.2, 3];
     	let viewportHeight, viewportWidth;
-
-    	let { projectData = {
-    		"objects": {
-    			"header": [],
-    			"paragraph": [],
-    			"table": []
-    		}
-    	} } = $$props;
+    	let { projectData } = $$props;
 
     	const objectPrototypes = {
     		"header": {
@@ -5174,6 +5198,11 @@ var app = (function () {
     		},
     		"table": {
     			"title": "New Table",
+    			"nodes": {
+    				"input": [],
+    				"output": [],
+    				"operator": []
+    			},
     			"reference": undefined,
     			"posX": 0,
     			"posY": 0,
@@ -5666,6 +5695,10 @@ var app = (function () {
     		if (/*debObjectResize*/ ctx[18] === undefined && !("debObjectResize" in props)) {
     			console.warn("<Viewport> was created without expected prop 'debObjectResize'");
     		}
+
+    		if (/*projectData*/ ctx[0] === undefined && !("projectData" in props)) {
+    			console.warn("<Viewport> was created without expected prop 'projectData'");
+    		}
     	}
 
     	get debObjectDrag() {
@@ -5723,29 +5756,111 @@ var app = (function () {
 
     function create_fragment$7(ctx) {
     	let main;
-    	let div;
+    	let div6;
+    	let div0;
+    	let t0;
+    	let div5;
+    	let div3;
+    	let div1;
+    	let svg;
+    	let path;
+    	let t1;
+    	let div2;
+    	let h2;
+    	let t3;
+    	let div4;
+    	let dispose;
 
     	const block = {
     		c: function create() {
     			main = element("main");
-    			div = element("div");
-    			attr_dev(div, "class", "frame neuIndentShadow svelte-12vkr3m");
-    			add_location(div, file$7, 7, 4, 41);
-    			attr_dev(main, "class", "svelte-12vkr3m");
-    			add_location(main, file$7, 6, 0, 29);
+    			div6 = element("div");
+    			div0 = element("div");
+    			t0 = space();
+    			div5 = element("div");
+    			div3 = element("div");
+    			div1 = element("div");
+    			svg = svg_element("svg");
+    			path = svg_element("path");
+    			t1 = space();
+    			div2 = element("div");
+    			h2 = element("h2");
+    			h2.textContent = "Node Picker";
+    			t3 = space();
+    			div4 = element("div");
+    			attr_dev(div0, "class", "crossBackground svelte-ydtvc2");
+    			set_style(div0, "background-position-x", /*viewX*/ ctx[0] + /*mouseDrag*/ ctx[3].delta.x + "px");
+    			set_style(div0, "background-position-y", /*viewY*/ ctx[1] + /*mouseDrag*/ ctx[3].delta.y + "px");
+    			set_style(div0, "background-size", 2 * /*viewZoom*/ ctx[2] + "vh");
+    			add_location(div0, file$7, 64, 8, 1668);
+    			attr_dev(path, "d", "M7.724 65.49C13.36 55.11 21.79 46.47 32 40.56C39.63 36.15 48.25 33.26 57.46 32.33C59.61 32.11 61.79 32 64 32H448C483.3 32 512 60.65 512 96V416C512 451.3 483.3 480 448 480H64C28.65 480 0 451.3 0 416V96C0 93.79 .112 91.61 .3306 89.46C1.204 80.85 3.784 72.75 7.724 65.49V65.49zM48 416C48 424.8 55.16 432 64 432H448C456.8 432 464 424.8 464 416V224H48V416z");
+    			add_location(path, file$7, 75, 250, 2316);
+    			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
+    			attr_dev(svg, "viewBox", "0 0 512 512");
+    			attr_dev(svg, "class", "svelte-ydtvc2");
+    			add_location(svg, file$7, 75, 20, 2086);
+    			attr_dev(div1, "class", "nodePickerIcon svelte-ydtvc2");
+    			add_location(div1, file$7, 74, 16, 2036);
+    			attr_dev(h2, "class", "svelte-ydtvc2");
+    			add_location(h2, file$7, 78, 20, 2790);
+    			attr_dev(div2, "class", "nodePickerTitle svelte-ydtvc2");
+    			add_location(div2, file$7, 77, 16, 2739);
+    			attr_dev(div3, "class", "nodePickerHeader svelte-ydtvc2");
+    			add_location(div3, file$7, 73, 12, 1988);
+    			attr_dev(div4, "class", "nodePickerContents svelte-ydtvc2");
+    			add_location(div4, file$7, 81, 12, 2868);
+    			attr_dev(div5, "class", "nodePickerFrame neuOutdentShadow svelte-ydtvc2");
+    			add_location(div5, file$7, 72, 8, 1928);
+    			attr_dev(div6, "class", "frame neuIndentShadow svelte-ydtvc2");
+    			add_location(div6, file$7, 57, 4, 1444);
+    			attr_dev(main, "class", "svelte-ydtvc2");
+    			add_location(main, file$7, 56, 0, 1432);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, main, anchor);
-    			append_dev(main, div);
+    			append_dev(main, div6);
+    			append_dev(div6, div0);
+    			append_dev(div6, t0);
+    			append_dev(div6, div5);
+    			append_dev(div5, div3);
+    			append_dev(div3, div1);
+    			append_dev(div1, svg);
+    			append_dev(svg, path);
+    			append_dev(div3, t1);
+    			append_dev(div3, div2);
+    			append_dev(div2, h2);
+    			append_dev(div5, t3);
+    			append_dev(div5, div4);
+
+    			dispose = [
+    				listen_dev(div6, "mousedown", /*mouseDown*/ ctx[4], false, false, false),
+    				listen_dev(div6, "mousemove", /*mouseMove*/ ctx[5], false, false, false),
+    				listen_dev(div6, "mouseup", /*mouseUp*/ ctx[6], false, false, false),
+    				listen_dev(div6, "mouseleave", /*mouseUp*/ ctx[6], false, false, false),
+    				listen_dev(div6, "mousewheel", /*scroll*/ ctx[7], false, false, false)
+    			];
     		},
-    		p: noop,
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*viewX, mouseDrag*/ 9) {
+    				set_style(div0, "background-position-x", /*viewX*/ ctx[0] + /*mouseDrag*/ ctx[3].delta.x + "px");
+    			}
+
+    			if (dirty & /*viewY, mouseDrag*/ 10) {
+    				set_style(div0, "background-position-y", /*viewY*/ ctx[1] + /*mouseDrag*/ ctx[3].delta.y + "px");
+    			}
+
+    			if (dirty & /*viewZoom*/ 4) {
+    				set_style(div0, "background-size", 2 * /*viewZoom*/ ctx[2] + "vh");
+    			}
+    		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(main);
+    			run_all(dispose);
     		}
     	};
 
@@ -5760,10 +5875,102 @@ var app = (function () {
     	return block;
     }
 
+    function instance$7($$self, $$props, $$invalidate) {
+    	let viewX = 0, viewY = 0, viewZoom = 1;
+    	const zoomBounds = [0.2, 3];
+    	let { projectData } = $$props;
+
+    	//#region mouse
+    	let mouseDrag = {
+    		"ongoing": false,
+    		"start": { "x": 0, "y": 0 },
+    		"delta": { "x": 0, "y": 0 }
+    	};
+
+    	function mouseDown(event) {
+    		if (event.button != 1) return;
+    		$$invalidate(3, mouseDrag.ongoing = true, mouseDrag);
+    		$$invalidate(3, mouseDrag.start.x = event.clientX, mouseDrag);
+    		$$invalidate(3, mouseDrag.start.y = event.clientY, mouseDrag);
+    	}
+
+    	function mouseMove(event) {
+    		if (!mouseDrag.ongoing) return;
+    		$$invalidate(3, mouseDrag.delta.x = event.clientX - mouseDrag.start.x, mouseDrag);
+    		$$invalidate(3, mouseDrag.delta.y = event.clientY - mouseDrag.start.y, mouseDrag);
+    	}
+
+    	function mouseUp(event) {
+    		if (!mouseDrag.ongoing || event.button != 1) return;
+    		$$invalidate(3, mouseDrag.ongoing = false, mouseDrag);
+    		$$invalidate(0, viewX += mouseDrag.delta.x);
+    		$$invalidate(1, viewY += mouseDrag.delta.y);
+    		$$invalidate(3, mouseDrag.delta = { "x": 0, "y": 0 }, mouseDrag);
+    	}
+
+    	function scroll(event) {
+    		let oldZoom = viewZoom;
+    		$$invalidate(2, viewZoom -= event.deltaY / 1000);
+    		$$invalidate(2, viewZoom = Math.max(zoomBounds[0], Math.min(viewZoom, zoomBounds[1])));
+    		$$invalidate(0, viewX = (viewX - viewportWidth / 2) * viewZoom / oldZoom + viewportWidth / 2);
+    		$$invalidate(1, viewY = (viewY - viewportHeight / 2) * viewZoom / oldZoom + viewportHeight / 2);
+    	}
+
+    	const writable_props = ["projectData"];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<NodeEditor> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$set = $$props => {
+    		if ("projectData" in $$props) $$invalidate(8, projectData = $$props.projectData);
+    	};
+
+    	$$self.$capture_state = () => ({
+    		viewX,
+    		viewY,
+    		viewZoom,
+    		zoomBounds,
+    		projectData,
+    		mouseDrag,
+    		mouseDown,
+    		mouseMove,
+    		mouseUp,
+    		scroll,
+    		Math,
+    		viewportWidth,
+    		viewportHeight
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ("viewX" in $$props) $$invalidate(0, viewX = $$props.viewX);
+    		if ("viewY" in $$props) $$invalidate(1, viewY = $$props.viewY);
+    		if ("viewZoom" in $$props) $$invalidate(2, viewZoom = $$props.viewZoom);
+    		if ("projectData" in $$props) $$invalidate(8, projectData = $$props.projectData);
+    		if ("mouseDrag" in $$props) $$invalidate(3, mouseDrag = $$props.mouseDrag);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [
+    		viewX,
+    		viewY,
+    		viewZoom,
+    		mouseDrag,
+    		mouseDown,
+    		mouseMove,
+    		mouseUp,
+    		scroll,
+    		projectData
+    	];
+    }
+
     class NodeEditor extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, null, create_fragment$7, safe_not_equal, {});
+    		init(this, options, instance$7, create_fragment$7, safe_not_equal, { projectData: 8 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -5771,6 +5978,21 @@ var app = (function () {
     			options,
     			id: create_fragment$7.name
     		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*projectData*/ ctx[8] === undefined && !("projectData" in props)) {
+    			console.warn("<NodeEditor> was created without expected prop 'projectData'");
+    		}
+    	}
+
+    	get projectData() {
+    		throw new Error("<NodeEditor>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set projectData(value) {
+    		throw new Error("<NodeEditor>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
 
@@ -5865,7 +6087,7 @@ var app = (function () {
     	return block;
     }
 
-    function instance$7($$self, $$props, $$invalidate) {
+    function instance$8($$self, $$props, $$invalidate) {
     	let { onClick } = $$props;
 
     	function handleClick() {
@@ -5904,7 +6126,7 @@ var app = (function () {
     class CategoryButton extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$7, create_fragment$8, safe_not_equal, { onClick: 2, label: 0 });
+    		init(this, options, instance$8, create_fragment$8, safe_not_equal, { onClick: 2, label: 0 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -6033,7 +6255,7 @@ var app = (function () {
     	return block;
     }
 
-    function instance$8($$self, $$props, $$invalidate) {
+    function instance$9($$self, $$props, $$invalidate) {
     	let { label = "unknown" } = $$props;
     	let { animationDelay = 0 } = $$props;
     	let { objectType } = $$props;
@@ -6082,7 +6304,7 @@ var app = (function () {
     	constructor(options) {
     		super(options);
 
-    		init(this, options, instance$8, create_fragment$9, safe_not_equal, {
+    		init(this, options, instance$9, create_fragment$9, safe_not_equal, {
     			label: 0,
     			animationDelay: 2,
     			objectType: 3
@@ -6712,7 +6934,7 @@ var app = (function () {
     	return block;
     }
 
-    function instance$9($$self, $$props, $$invalidate) {
+    function instance$a($$self, $$props, $$invalidate) {
     	let category = null;
 
     	const func = () => {
@@ -6743,7 +6965,7 @@ var app = (function () {
     class Toolkit extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$9, create_fragment$a, safe_not_equal, {});
+    		init(this, options, instance$a, create_fragment$a, safe_not_equal, {});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -6880,7 +7102,7 @@ var app = (function () {
     	return block;
     }
 
-    function instance$a($$self, $$props, $$invalidate) {
+    function instance$b($$self, $$props, $$invalidate) {
     	let { info = [] } = $$props;
     	const writable_props = ["info"];
 
@@ -6908,7 +7130,7 @@ var app = (function () {
     class DebugConsole extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$a, create_fragment$b, safe_not_equal, { info: 0 });
+    		init(this, options, instance$b, create_fragment$b, safe_not_equal, { info: 0 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -6930,12 +7152,12 @@ var app = (function () {
     /* src\App.svelte generated by Svelte v3.19.1 */
     const file$c = "src\\App.svelte";
 
-    // (74:3) {#if debugConsoleOpen}
+    // (109:3) {#if debugConsoleOpen}
     function create_if_block_1$3(ctx) {
     	let current;
 
     	const debugconsole = new DebugConsole({
-    			props: { info: /*debugContents*/ ctx[5] },
+    			props: { info: /*debugContents*/ ctx[4] },
     			$$inline: true
     		});
 
@@ -6949,7 +7171,7 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const debugconsole_changes = {};
-    			if (dirty & /*debugContents*/ 32) debugconsole_changes.info = /*debugContents*/ ctx[5];
+    			if (dirty & /*debugContents*/ 16) debugconsole_changes.info = /*debugContents*/ ctx[4];
     			debugconsole.$set(debugconsole_changes);
     		},
     		i: function intro(local) {
@@ -6970,17 +7192,21 @@ var app = (function () {
     		block,
     		id: create_if_block_1$3.name,
     		type: "if",
-    		source: "(74:3) {#if debugConsoleOpen}",
+    		source: "(109:3) {#if debugConsoleOpen}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (78:2) {#if edited != null}
+    // (113:2) {#if edited != null}
     function create_if_block$3(ctx) {
     	let current;
-    	const nodeeditor = new NodeEditor({ $$inline: true });
+
+    	const nodeeditor = new NodeEditor({
+    			props: { projectData: /*projectData*/ ctx[7] },
+    			$$inline: true
+    		});
 
     	const block = {
     		c: function create() {
@@ -6990,6 +7216,7 @@ var app = (function () {
     			mount_component(nodeeditor, target, anchor);
     			current = true;
     		},
+    		p: noop,
     		i: function intro(local) {
     			if (current) return;
     			transition_in(nodeeditor.$$.fragment, local);
@@ -7008,7 +7235,7 @@ var app = (function () {
     		block,
     		id: create_if_block$3.name,
     		type: "if",
-    		source: "(78:2) {#if edited != null}",
+    		source: "(113:2) {#if edited != null}",
     		ctx
     	});
 
@@ -7021,7 +7248,6 @@ var app = (function () {
     	let t0;
     	let div0;
     	let t1;
-    	let updating_projectData;
     	let updating_edited;
     	let updating_debObjectDrag;
     	let updating_debObjectResize;
@@ -7032,38 +7258,30 @@ var app = (function () {
     	const topbar = new TopBar({
     			props: {
     				toggleDebugConsole: /*func*/ ctx[8],
-    				centerView: /*centerViewport*/ ctx[6],
-    				resetZoom: /*resetZoom*/ ctx[7]
+    				centerView: /*centerViewport*/ ctx[5],
+    				resetZoom: /*resetZoom*/ ctx[6]
     			},
     			$$inline: true
     		});
 
     	const toolkit = new Toolkit({ $$inline: true });
 
-    	function viewport_projectData_binding(value) {
-    		/*viewport_projectData_binding*/ ctx[10].call(null, value);
-    	}
-
     	function viewport_edited_binding(value) {
-    		/*viewport_edited_binding*/ ctx[11].call(null, value);
+    		/*viewport_edited_binding*/ ctx[10].call(null, value);
     	}
 
     	function viewport_debObjectDrag_binding(value) {
-    		/*viewport_debObjectDrag_binding*/ ctx[12].call(null, value);
+    		/*viewport_debObjectDrag_binding*/ ctx[11].call(null, value);
     	}
 
     	function viewport_debObjectResize_binding(value) {
-    		/*viewport_debObjectResize_binding*/ ctx[13].call(null, value);
+    		/*viewport_debObjectResize_binding*/ ctx[12].call(null, value);
     	}
 
-    	let viewport_props = {};
+    	let viewport_props = { projectData: /*projectData*/ ctx[7] };
 
-    	if (/*projectData*/ ctx[3] !== void 0) {
-    		viewport_props.projectData = /*projectData*/ ctx[3];
-    	}
-
-    	if (/*edited*/ ctx[4] !== void 0) {
-    		viewport_props.edited = /*edited*/ ctx[4];
+    	if (/*edited*/ ctx[3] !== void 0) {
+    		viewport_props.edited = /*edited*/ ctx[3];
     	}
 
     	if (/*debugInfo*/ ctx[1].objectDrag !== void 0) {
@@ -7076,12 +7294,11 @@ var app = (function () {
 
     	const viewport = new Viewport({ props: viewport_props, $$inline: true });
     	/*viewport_binding*/ ctx[9](viewport);
-    	binding_callbacks.push(() => bind(viewport, "projectData", viewport_projectData_binding));
     	binding_callbacks.push(() => bind(viewport, "edited", viewport_edited_binding));
     	binding_callbacks.push(() => bind(viewport, "debObjectDrag", viewport_debObjectDrag_binding));
     	binding_callbacks.push(() => bind(viewport, "debObjectResize", viewport_debObjectResize_binding));
     	let if_block0 = /*debugConsoleOpen*/ ctx[0] && create_if_block_1$3(ctx);
-    	let if_block1 = /*edited*/ ctx[4] != null && create_if_block$3(ctx);
+    	let if_block1 = /*edited*/ ctx[3] != null && create_if_block$3(ctx);
 
     	const block = {
     		c: function create() {
@@ -7098,11 +7315,11 @@ var app = (function () {
     			t3 = space();
     			if (if_block1) if_block1.c();
     			attr_dev(div0, "class", "centerRow svelte-7vtnx9");
-    			add_location(div0, file$c, 62, 2, 1652);
+    			add_location(div0, file$c, 97, 2, 2289);
     			attr_dev(div1, "class", "mainLayout svelte-7vtnx9");
-    			add_location(div1, file$c, 56, 1, 1479);
+    			add_location(div1, file$c, 91, 1, 2116);
     			attr_dev(main, "class", "svelte-7vtnx9");
-    			add_location(main, file$c, 55, 0, 1470);
+    			add_location(main, file$c, 90, 0, 2107);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -7128,15 +7345,9 @@ var app = (function () {
     			topbar.$set(topbar_changes);
     			const viewport_changes = {};
 
-    			if (!updating_projectData && dirty & /*projectData*/ 8) {
-    				updating_projectData = true;
-    				viewport_changes.projectData = /*projectData*/ ctx[3];
-    				add_flush_callback(() => updating_projectData = false);
-    			}
-
-    			if (!updating_edited && dirty & /*edited*/ 16) {
+    			if (!updating_edited && dirty & /*edited*/ 8) {
     				updating_edited = true;
-    				viewport_changes.edited = /*edited*/ ctx[4];
+    				viewport_changes.edited = /*edited*/ ctx[3];
     				add_flush_callback(() => updating_edited = false);
     			}
 
@@ -7174,14 +7385,15 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (/*edited*/ ctx[4] != null) {
-    				if (!if_block1) {
+    			if (/*edited*/ ctx[3] != null) {
+    				if (if_block1) {
+    					if_block1.p(ctx, dirty);
+    					transition_in(if_block1, 1);
+    				} else {
     					if_block1 = create_if_block$3(ctx);
     					if_block1.c();
     					transition_in(if_block1, 1);
     					if_block1.m(div1, null);
-    				} else {
-    					transition_in(if_block1, 1);
     				}
     			} else if (if_block1) {
     				group_outros();
@@ -7232,7 +7444,7 @@ var app = (function () {
     	return block;
     }
 
-    function instance$b($$self, $$props, $$invalidate) {
+    function instance$c($$self, $$props, $$invalidate) {
     	let debugConsoleOpen = false;
     	let debugInfo = { "objectDrag": [], "objectResize": [] };
 
@@ -7248,9 +7460,36 @@ var app = (function () {
     	}
 
     	// Project Data
-    	let projectData;
+    	// !!! NOTICE !!! THIS CONSTELLATION IS FOR DEV PURPOSES ONLY!!!
+    	let projectData = {
+    		"objects": {
+    			"header": [],
+    			"paragraph": [],
+    			"table": [
+    				{
+    					"title": "New Table",
+    					"nodes": {
+    						"input": [],
+    						"output": [],
+    						"operator": []
+    					},
+    					"reference": undefined,
+    					"posX": 25,
+    					"posY": 5,
+    					"sizeX": 28,
+    					"sizeY": 21,
+    					"simX": 0,
+    					"simY": 0,
+    					"simResizeX": 0,
+    					"simResizeY": 0,
+    					"sizeBounds": []
+    				}
+    			]
+    		}
+    	};
 
-    	let edited;
+    	// TODO: Delete the "= 0" part when I'm done! 
+    	let edited = 0;
 
     	const func = () => {
     		$$invalidate(0, debugConsoleOpen = !debugConsoleOpen);
@@ -7262,14 +7501,9 @@ var app = (function () {
     		});
     	}
 
-    	function viewport_projectData_binding(value) {
-    		projectData = value;
-    		$$invalidate(3, projectData);
-    	}
-
     	function viewport_edited_binding(value) {
     		edited = value;
-    		$$invalidate(4, edited);
+    		$$invalidate(3, edited);
     	}
 
     	function viewport_debObjectDrag_binding(value) {
@@ -7295,16 +7529,17 @@ var app = (function () {
     		resetZoom,
     		projectData,
     		edited,
-    		debugContents
+    		debugContents,
+    		undefined
     	});
 
     	$$self.$inject_state = $$props => {
     		if ("debugConsoleOpen" in $$props) $$invalidate(0, debugConsoleOpen = $$props.debugConsoleOpen);
     		if ("debugInfo" in $$props) $$invalidate(1, debugInfo = $$props.debugInfo);
     		if ("viewportRef" in $$props) $$invalidate(2, viewportRef = $$props.viewportRef);
-    		if ("projectData" in $$props) $$invalidate(3, projectData = $$props.projectData);
-    		if ("edited" in $$props) $$invalidate(4, edited = $$props.edited);
-    		if ("debugContents" in $$props) $$invalidate(5, debugContents = $$props.debugContents);
+    		if ("projectData" in $$props) $$invalidate(7, projectData = $$props.projectData);
+    		if ("edited" in $$props) $$invalidate(3, edited = $$props.edited);
+    		if ("debugContents" in $$props) $$invalidate(4, debugContents = $$props.debugContents);
     	};
 
     	let debugContents;
@@ -7315,7 +7550,7 @@ var app = (function () {
 
     	$$self.$$.update = () => {
     		if ($$self.$$.dirty & /*debugInfo*/ 2) {
-    			 $$invalidate(5, debugContents = [
+    			 $$invalidate(4, debugContents = [
     				"::Object Drag::",
     				"Ongoing:" + debugInfo.objectDrag[0],
     				"StartX:" + debugInfo.objectDrag[1],
@@ -7343,14 +7578,13 @@ var app = (function () {
     		debugConsoleOpen,
     		debugInfo,
     		viewportRef,
-    		projectData,
     		edited,
     		debugContents,
     		centerViewport,
     		resetZoom,
+    		projectData,
     		func,
     		viewport_binding,
-    		viewport_projectData_binding,
     		viewport_edited_binding,
     		viewport_debObjectDrag_binding,
     		viewport_debObjectResize_binding
@@ -7360,7 +7594,7 @@ var app = (function () {
     class App extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$b, create_fragment$c, safe_not_equal, {});
+    		init(this, options, instance$c, create_fragment$c, safe_not_equal, {});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,

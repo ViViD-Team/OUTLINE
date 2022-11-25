@@ -47,10 +47,45 @@
 	}
 	
 	// Project Data
-	
-	let projectData;
 
-	let edited;
+	// !!! NOTICE !!! THIS CONSTELLATION IS FOR DEV PURPOSES ONLY!!!
+
+	let projectData = {
+        "objects": {
+            "header": [
+
+            ],
+            "paragraph": [
+
+            ],
+
+            "table": [
+				{
+					"title": "New Table",
+					"nodes": {
+						"input": [],
+						"output": [],
+						"operator": []
+					},
+
+					"reference": undefined,
+
+					"posX": 25,
+					"posY": 5,
+					"sizeX": 28,
+					"sizeY": 21,
+					"simX": 0,
+					"simY": 0,
+					"simResizeX": 0,
+					"simResizeY": 0,
+					"sizeBounds": [],
+				}
+            ],
+        }
+    }
+
+	// TODO: Delete the "= 0" part when I'm done! 
+	let edited = 0;
 </script>
 
 <main>
@@ -65,7 +100,7 @@
 			<Viewport
 				bind:this={viewportRef}
 
-				bind:projectData={projectData}
+				projectData={projectData}
 				bind:edited={edited}
 
 				bind:debObjectDrag={debugInfo.objectDrag}
@@ -76,7 +111,9 @@
 			{/if}
 		</div>
 		{#if edited != null}
-			<NodeEditor />
+			<NodeEditor
+				projectData={projectData}
+			/>
 		{/if}
 	</div>
 </main>

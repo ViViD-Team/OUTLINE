@@ -34,20 +34,7 @@ const   zoomBounds = [.2, 3]
     let viewportHeight, viewportWidth;
 
     // GLOBALS
-    export let projectData = {
-        "objects": {
-            "header": [
-
-            ],
-            "paragraph": [
-
-            ],
-
-            "table": [
-
-            ],
-        }
-    }
+    export let projectData;
 
     const objectPrototypes = {
         "header": {
@@ -77,7 +64,14 @@ const   zoomBounds = [.2, 3]
 
         "table": {
             "title": "New Table",
+            "nodes": {
+                "input": [],
+                "output": [],
+                "operator": []
+            },
+
             "reference": undefined,
+
             "posX": 0,
             "posY": 0,
             "sizeX": 28,
@@ -520,8 +514,6 @@ const   zoomBounds = [.2, 3]
 
         background-image: url("../svg/Background_Dot.svg");
         background-repeat: repeat;
-
-        animation: test 10s linear infinite;
 
         /* transition: background-size .2s cubic-bezier(0, 0, 0, .9); */
     }

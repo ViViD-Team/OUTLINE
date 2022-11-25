@@ -278,6 +278,14 @@
                                 border-radius: {.5*zoom}vh;
                             ">
                                 <p style="font-size: {1.3 * zoom}vh">{cellContents[indexX][indexY]}</p>
+                                <div class="cellLabelContainer" style="
+                                    width: {1.2*zoom}vh;
+                                    height: {1.2*zoom}vh;
+                                ">
+                                    <svg viewBox="0 0 1 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 1H0L1 0V1Z"/>
+                                    </svg> 
+                                </div>
                             </div>
                         {:else}
                             <div class="tableCell neuIndentShadowNarrow" style="
@@ -532,6 +540,8 @@
     .tableCell {
         cursor: pointer;
 
+        position: relative;
+
         width: 100%;
 
         flex-shrink: 0;
@@ -552,6 +562,17 @@
 
         color: var(--black);
         font-weight: 500;
+    }
+
+    .tableCell .cellLabelContainer {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+
+    .tableCell .cellLabelContainer svg {
+        width: 100%;
+        fill: var(--blue);
     }
 
     h1 {
