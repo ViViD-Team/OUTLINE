@@ -3,7 +3,9 @@
     let viewX = 0, viewY = 0, viewZoom = 1;
     const zoomBounds = [.2, 3];
 
-    export let projectData;
+    let viewportHeight, viewportWidth;
+
+    //export let projectData;
     
     //#region mouse
 
@@ -56,6 +58,9 @@
 
 <main>
     <div class="frame neuIndentShadow"
+        bind:offsetHeight="{viewportHeight}"
+        bind:offsetWidth="{viewportWidth}"
+
         on:mousedown="{mouseDown}"
         on:mousemove="{mouseMove}"
         on:mouseup="{mouseUp}"

@@ -5769,6 +5769,7 @@ var app = (function () {
     	let h2;
     	let t3;
     	let div4;
+    	let div6_resize_listener;
     	let dispose;
 
     	const block = {
@@ -5789,32 +5790,33 @@ var app = (function () {
     			t3 = space();
     			div4 = element("div");
     			attr_dev(div0, "class", "crossBackground svelte-ydtvc2");
-    			set_style(div0, "background-position-x", /*viewX*/ ctx[0] + /*mouseDrag*/ ctx[3].delta.x + "px");
-    			set_style(div0, "background-position-y", /*viewY*/ ctx[1] + /*mouseDrag*/ ctx[3].delta.y + "px");
+    			set_style(div0, "background-position-x", /*viewX*/ ctx[0] + /*mouseDrag*/ ctx[5].delta.x + "px");
+    			set_style(div0, "background-position-y", /*viewY*/ ctx[1] + /*mouseDrag*/ ctx[5].delta.y + "px");
     			set_style(div0, "background-size", 2 * /*viewZoom*/ ctx[2] + "vh");
-    			add_location(div0, file$7, 64, 8, 1668);
+    			add_location(div0, file$7, 69, 8, 1804);
     			attr_dev(path, "d", "M7.724 65.49C13.36 55.11 21.79 46.47 32 40.56C39.63 36.15 48.25 33.26 57.46 32.33C59.61 32.11 61.79 32 64 32H448C483.3 32 512 60.65 512 96V416C512 451.3 483.3 480 448 480H64C28.65 480 0 451.3 0 416V96C0 93.79 .112 91.61 .3306 89.46C1.204 80.85 3.784 72.75 7.724 65.49V65.49zM48 416C48 424.8 55.16 432 64 432H448C456.8 432 464 424.8 464 416V224H48V416z");
-    			add_location(path, file$7, 75, 250, 2316);
+    			add_location(path, file$7, 80, 250, 2452);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 512 512");
     			attr_dev(svg, "class", "svelte-ydtvc2");
-    			add_location(svg, file$7, 75, 20, 2086);
+    			add_location(svg, file$7, 80, 20, 2222);
     			attr_dev(div1, "class", "nodePickerIcon svelte-ydtvc2");
-    			add_location(div1, file$7, 74, 16, 2036);
+    			add_location(div1, file$7, 79, 16, 2172);
     			attr_dev(h2, "class", "svelte-ydtvc2");
-    			add_location(h2, file$7, 78, 20, 2790);
+    			add_location(h2, file$7, 83, 20, 2926);
     			attr_dev(div2, "class", "nodePickerTitle svelte-ydtvc2");
-    			add_location(div2, file$7, 77, 16, 2739);
+    			add_location(div2, file$7, 82, 16, 2875);
     			attr_dev(div3, "class", "nodePickerHeader svelte-ydtvc2");
-    			add_location(div3, file$7, 73, 12, 1988);
+    			add_location(div3, file$7, 78, 12, 2124);
     			attr_dev(div4, "class", "nodePickerContents svelte-ydtvc2");
-    			add_location(div4, file$7, 81, 12, 2868);
+    			add_location(div4, file$7, 86, 12, 3004);
     			attr_dev(div5, "class", "nodePickerFrame neuOutdentShadow svelte-ydtvc2");
-    			add_location(div5, file$7, 72, 8, 1928);
+    			add_location(div5, file$7, 77, 8, 2064);
     			attr_dev(div6, "class", "frame neuIndentShadow svelte-ydtvc2");
-    			add_location(div6, file$7, 57, 4, 1444);
+    			add_render_callback(() => /*div6_elementresize_handler*/ ctx[11].call(div6));
+    			add_location(div6, file$7, 59, 4, 1488);
     			attr_dev(main, "class", "svelte-ydtvc2");
-    			add_location(main, file$7, 56, 0, 1432);
+    			add_location(main, file$7, 58, 0, 1476);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -5834,22 +5836,23 @@ var app = (function () {
     			append_dev(div2, h2);
     			append_dev(div5, t3);
     			append_dev(div5, div4);
+    			div6_resize_listener = add_resize_listener(div6, /*div6_elementresize_handler*/ ctx[11].bind(div6));
 
     			dispose = [
-    				listen_dev(div6, "mousedown", /*mouseDown*/ ctx[4], false, false, false),
-    				listen_dev(div6, "mousemove", /*mouseMove*/ ctx[5], false, false, false),
-    				listen_dev(div6, "mouseup", /*mouseUp*/ ctx[6], false, false, false),
-    				listen_dev(div6, "mouseleave", /*mouseUp*/ ctx[6], false, false, false),
-    				listen_dev(div6, "mousewheel", /*scroll*/ ctx[7], false, false, false)
+    				listen_dev(div6, "mousedown", /*mouseDown*/ ctx[6], false, false, false),
+    				listen_dev(div6, "mousemove", /*mouseMove*/ ctx[7], false, false, false),
+    				listen_dev(div6, "mouseup", /*mouseUp*/ ctx[8], false, false, false),
+    				listen_dev(div6, "mouseleave", /*mouseUp*/ ctx[8], false, false, false),
+    				listen_dev(div6, "mousewheel", /*scroll*/ ctx[9], false, false, false)
     			];
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*viewX, mouseDrag*/ 9) {
-    				set_style(div0, "background-position-x", /*viewX*/ ctx[0] + /*mouseDrag*/ ctx[3].delta.x + "px");
+    			if (dirty & /*viewX, mouseDrag*/ 33) {
+    				set_style(div0, "background-position-x", /*viewX*/ ctx[0] + /*mouseDrag*/ ctx[5].delta.x + "px");
     			}
 
-    			if (dirty & /*viewY, mouseDrag*/ 10) {
-    				set_style(div0, "background-position-y", /*viewY*/ ctx[1] + /*mouseDrag*/ ctx[3].delta.y + "px");
+    			if (dirty & /*viewY, mouseDrag*/ 34) {
+    				set_style(div0, "background-position-y", /*viewY*/ ctx[1] + /*mouseDrag*/ ctx[5].delta.y + "px");
     			}
 
     			if (dirty & /*viewZoom*/ 4) {
@@ -5860,6 +5863,7 @@ var app = (function () {
     		o: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(main);
+    			div6_resize_listener.cancel();
     			run_all(dispose);
     		}
     	};
@@ -5878,8 +5882,9 @@ var app = (function () {
     function instance$7($$self, $$props, $$invalidate) {
     	let viewX = 0, viewY = 0, viewZoom = 1;
     	const zoomBounds = [0.2, 3];
-    	let { projectData } = $$props;
+    	let viewportHeight, viewportWidth;
 
+    	//export let projectData;
     	//#region mouse
     	let mouseDrag = {
     		"ongoing": false,
@@ -5889,23 +5894,23 @@ var app = (function () {
 
     	function mouseDown(event) {
     		if (event.button != 1) return;
-    		$$invalidate(3, mouseDrag.ongoing = true, mouseDrag);
-    		$$invalidate(3, mouseDrag.start.x = event.clientX, mouseDrag);
-    		$$invalidate(3, mouseDrag.start.y = event.clientY, mouseDrag);
+    		$$invalidate(5, mouseDrag.ongoing = true, mouseDrag);
+    		$$invalidate(5, mouseDrag.start.x = event.clientX, mouseDrag);
+    		$$invalidate(5, mouseDrag.start.y = event.clientY, mouseDrag);
     	}
 
     	function mouseMove(event) {
     		if (!mouseDrag.ongoing) return;
-    		$$invalidate(3, mouseDrag.delta.x = event.clientX - mouseDrag.start.x, mouseDrag);
-    		$$invalidate(3, mouseDrag.delta.y = event.clientY - mouseDrag.start.y, mouseDrag);
+    		$$invalidate(5, mouseDrag.delta.x = event.clientX - mouseDrag.start.x, mouseDrag);
+    		$$invalidate(5, mouseDrag.delta.y = event.clientY - mouseDrag.start.y, mouseDrag);
     	}
 
     	function mouseUp(event) {
     		if (!mouseDrag.ongoing || event.button != 1) return;
-    		$$invalidate(3, mouseDrag.ongoing = false, mouseDrag);
+    		$$invalidate(5, mouseDrag.ongoing = false, mouseDrag);
     		$$invalidate(0, viewX += mouseDrag.delta.x);
     		$$invalidate(1, viewY += mouseDrag.delta.y);
-    		$$invalidate(3, mouseDrag.delta = { "x": 0, "y": 0 }, mouseDrag);
+    		$$invalidate(5, mouseDrag.delta = { "x": 0, "y": 0 }, mouseDrag);
     	}
 
     	function scroll(event) {
@@ -5916,38 +5921,35 @@ var app = (function () {
     		$$invalidate(1, viewY = (viewY - viewportHeight / 2) * viewZoom / oldZoom + viewportHeight / 2);
     	}
 
-    	const writable_props = ["projectData"];
-
-    	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<NodeEditor> was created with unknown prop '${key}'`);
-    	});
-
-    	$$self.$set = $$props => {
-    		if ("projectData" in $$props) $$invalidate(8, projectData = $$props.projectData);
-    	};
+    	function div6_elementresize_handler() {
+    		viewportHeight = this.offsetHeight;
+    		viewportWidth = this.offsetWidth;
+    		$$invalidate(3, viewportHeight);
+    		$$invalidate(4, viewportWidth);
+    	}
 
     	$$self.$capture_state = () => ({
     		viewX,
     		viewY,
     		viewZoom,
     		zoomBounds,
-    		projectData,
+    		viewportHeight,
+    		viewportWidth,
     		mouseDrag,
     		mouseDown,
     		mouseMove,
     		mouseUp,
     		scroll,
-    		Math,
-    		viewportWidth,
-    		viewportHeight
+    		Math
     	});
 
     	$$self.$inject_state = $$props => {
     		if ("viewX" in $$props) $$invalidate(0, viewX = $$props.viewX);
     		if ("viewY" in $$props) $$invalidate(1, viewY = $$props.viewY);
     		if ("viewZoom" in $$props) $$invalidate(2, viewZoom = $$props.viewZoom);
-    		if ("projectData" in $$props) $$invalidate(8, projectData = $$props.projectData);
-    		if ("mouseDrag" in $$props) $$invalidate(3, mouseDrag = $$props.mouseDrag);
+    		if ("viewportHeight" in $$props) $$invalidate(3, viewportHeight = $$props.viewportHeight);
+    		if ("viewportWidth" in $$props) $$invalidate(4, viewportWidth = $$props.viewportWidth);
+    		if ("mouseDrag" in $$props) $$invalidate(5, mouseDrag = $$props.mouseDrag);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -5958,19 +5960,22 @@ var app = (function () {
     		viewX,
     		viewY,
     		viewZoom,
+    		viewportHeight,
+    		viewportWidth,
     		mouseDrag,
     		mouseDown,
     		mouseMove,
     		mouseUp,
     		scroll,
-    		projectData
+    		zoomBounds,
+    		div6_elementresize_handler
     	];
     }
 
     class NodeEditor extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$7, create_fragment$7, safe_not_equal, { projectData: 8 });
+    		init(this, options, instance$7, create_fragment$7, safe_not_equal, {});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -5978,21 +5983,6 @@ var app = (function () {
     			options,
     			id: create_fragment$7.name
     		});
-
-    		const { ctx } = this.$$;
-    		const props = options.props || {};
-
-    		if (/*projectData*/ ctx[8] === undefined && !("projectData" in props)) {
-    			console.warn("<NodeEditor> was created without expected prop 'projectData'");
-    		}
-    	}
-
-    	get projectData() {
-    		throw new Error("<NodeEditor>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set projectData(value) {
-    		throw new Error("<NodeEditor>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
 
