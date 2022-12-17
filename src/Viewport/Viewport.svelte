@@ -29,7 +29,7 @@
 let
         viewX = 0, viewY = 0,
         viewZoom = 1;
-const   zoomBounds = [.2, 3]
+const   zoomBounds = [.75, 3]
 
     let viewportHeight, viewportWidth;
 

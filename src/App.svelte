@@ -112,7 +112,8 @@
 		</div>
 		{#if edited != null}
 			<NodeEditor
-				projectData={projectData}
+				nodeData={projectData.objects["table"][edited].nodes}
+				tableRef={projectData.objects["table"][edited].reference}
 			/>
 		{/if}
 	</div>
