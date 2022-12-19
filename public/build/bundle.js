@@ -5760,14 +5760,28 @@ var app = (function () {
     	let h1;
     	let t0;
     	let t1;
-    	let div7;
-    	let div5;
+    	let div9;
     	let div4;
     	let div3;
-    	let div2;
     	let div1;
+    	let svg0;
+    	let rect0;
+    	let rect1;
     	let t2;
+    	let div2;
+    	let p0;
+    	let t3;
+    	let t4;
+    	let div8;
+    	let div7;
+    	let div5;
+    	let svg1;
+    	let rect2;
+    	let rect3;
+    	let t5;
     	let div6;
+    	let p1;
+    	let t6;
 
     	const block = {
     		c: function create() {
@@ -5776,46 +5790,109 @@ var app = (function () {
     			h1 = element("h1");
     			t0 = text("Node Title");
     			t1 = space();
-    			div7 = element("div");
-    			div5 = element("div");
+    			div9 = element("div");
     			div4 = element("div");
     			div3 = element("div");
-    			div2 = element("div");
     			div1 = element("div");
+    			svg0 = svg_element("svg");
+    			rect0 = svg_element("rect");
+    			rect1 = svg_element("rect");
     			t2 = space();
+    			div2 = element("div");
+    			p0 = element("p");
+    			t3 = text("Input Label");
+    			t4 = space();
+    			div8 = element("div");
+    			div7 = element("div");
+    			div5 = element("div");
+    			svg1 = svg_element("svg");
+    			rect2 = svg_element("rect");
+    			rect3 = svg_element("rect");
+    			t5 = space();
     			div6 = element("div");
+    			p1 = element("p");
+    			t6 = text("Output Label");
     			set_style(h1, "font-size", 1.5 * /*zoom*/ ctx[4] + "vh");
     			set_style(h1, "margin-left", /*zoom*/ ctx[4] + "vh");
-    			attr_dev(h1, "class", "svelte-6oq0au");
-    			add_location(h1, file$7, 22, 8, 460);
-    			attr_dev(div0, "class", "titleBar svelte-6oq0au");
+    			attr_dev(h1, "class", "svelte-p2o2su");
+    			add_location(h1, file$7, 22, 8, 461);
+    			attr_dev(div0, "class", "titleBar svelte-p2o2su");
     			set_style(div0, "height", 3 * /*zoom*/ ctx[4] + "vh");
-    			add_location(div0, file$7, 19, 4, 384);
-    			set_style(div1, "width", 0.75 * /*zoom*/ ctx[4] + "vh");
-    			set_style(div1, "height", 0.75 * /*zoom*/ ctx[4] + "vh");
-    			attr_dev(div1, "class", "inputTetherCircle svelte-6oq0au");
-    			add_location(div1, file$7, 38, 24, 1090);
-    			set_style(div2, "border-width", 0.2 * /*zoom*/ ctx[4] + "vh");
-    			set_style(div2, "width", 1.5 * /*zoom*/ ctx[4] + "vh");
-    			set_style(div2, "height", 1.5 * /*zoom*/ ctx[4] + "vh");
-    			attr_dev(div2, "class", "inputTetherCircleOutline svelte-6oq0au");
-    			add_location(div2, file$7, 33, 20, 848);
-    			set_style(div3, "width", 2 * /*zoom*/ ctx[4] + "vh");
-    			attr_dev(div3, "class", "inputTetherCircleContainer svelte-6oq0au");
-    			add_location(div3, file$7, 32, 16, 759);
-    			set_style(div4, "height", 2 * /*zoom*/ ctx[4] + "vh");
-    			attr_dev(div4, "class", "inputTether svelte-6oq0au");
-    			add_location(div4, file$7, 29, 12, 656);
-    			attr_dev(div5, "class", "inputs svelte-6oq0au");
-    			add_location(div5, file$7, 28, 8, 622);
-    			attr_dev(div6, "class", "outputs svelte-6oq0au");
-    			add_location(div6, file$7, 46, 8, 1361);
-    			attr_dev(div7, "class", "contents svelte-6oq0au");
-    			add_location(div7, file$7, 27, 4, 590);
-    			attr_dev(main, "class", "neuOutdentShadowRim svelte-6oq0au");
+    			add_location(div0, file$7, 19, 4, 385);
+    			attr_dev(rect0, "x", "2.5");
+    			attr_dev(rect0, "y", "2.5");
+    			attr_dev(rect0, "width", "10");
+    			attr_dev(rect0, "height", "10");
+    			attr_dev(rect0, "rx", "5");
+    			attr_dev(rect0, "stroke", "#999999");
+    			attr_dev(rect0, "stroke-dasharray", "2 2");
+    			add_location(rect0, file$7, 34, 24, 994);
+    			attr_dev(rect1, "x", "5");
+    			attr_dev(rect1, "y", "5");
+    			attr_dev(rect1, "width", "5");
+    			attr_dev(rect1, "height", "5");
+    			attr_dev(rect1, "rx", "2.5");
+    			attr_dev(rect1, "fill", "#DB6239");
+    			add_location(rect1, file$7, 35, 24, 1113);
+    			set_style(svg0, "width", 2 * /*zoom*/ ctx[4] + "vh");
+    			set_style(svg0, "height", 2 * /*zoom*/ ctx[4] + "vh");
+    			attr_dev(svg0, "viewBox", "0 0 15 15");
+    			attr_dev(svg0, "fill", "none");
+    			attr_dev(svg0, "xmlns", "http://www.w3.org/2000/svg");
+    			add_location(svg0, file$7, 33, 20, 849);
+    			set_style(div1, "width", 3 * /*zoom*/ ctx[4] + "vh");
+    			attr_dev(div1, "class", "inputTetherCircleContainer svelte-p2o2su");
+    			add_location(div1, file$7, 32, 16, 760);
+    			set_style(p0, "font-size", /*zoom*/ ctx[4] + "vh");
+    			attr_dev(p0, "class", "svelte-p2o2su");
+    			add_location(p0, file$7, 39, 20, 1308);
+    			attr_dev(div2, "class", "inputTetherLabelContainer svelte-p2o2su");
+    			add_location(div2, file$7, 38, 16, 1247);
+    			set_style(div3, "height", 3 * /*zoom*/ ctx[4] + "vh");
+    			attr_dev(div3, "class", "inputTether svelte-p2o2su");
+    			add_location(div3, file$7, 29, 12, 657);
+    			attr_dev(div4, "class", "inputs svelte-p2o2su");
+    			add_location(div4, file$7, 28, 8, 623);
+    			attr_dev(rect2, "x", "2.5");
+    			attr_dev(rect2, "y", "2.5");
+    			attr_dev(rect2, "width", "10");
+    			attr_dev(rect2, "height", "10");
+    			attr_dev(rect2, "rx", "5");
+    			attr_dev(rect2, "stroke", "#999999");
+    			attr_dev(rect2, "stroke-dasharray", "2 2");
+    			add_location(rect2, file$7, 53, 24, 1851);
+    			attr_dev(rect3, "x", "5");
+    			attr_dev(rect3, "y", "5");
+    			attr_dev(rect3, "width", "5");
+    			attr_dev(rect3, "height", "5");
+    			attr_dev(rect3, "rx", "2.5");
+    			attr_dev(rect3, "fill", "#DB6239");
+    			add_location(rect3, file$7, 54, 24, 1970);
+    			set_style(svg1, "width", 2 * /*zoom*/ ctx[4] + "vh");
+    			set_style(svg1, "height", 2 * /*zoom*/ ctx[4] + "vh");
+    			attr_dev(svg1, "viewBox", "0 0 15 15");
+    			attr_dev(svg1, "fill", "none");
+    			attr_dev(svg1, "xmlns", "http://www.w3.org/2000/svg");
+    			add_location(svg1, file$7, 52, 20, 1706);
+    			set_style(div5, "width", 3 * /*zoom*/ ctx[4] + "vh");
+    			attr_dev(div5, "class", "outputTetherCircleContainer svelte-p2o2su");
+    			add_location(div5, file$7, 51, 16, 1616);
+    			set_style(p1, "font-size", /*zoom*/ ctx[4] + "vh");
+    			attr_dev(p1, "class", "svelte-p2o2su");
+    			add_location(p1, file$7, 58, 20, 2166);
+    			attr_dev(div6, "class", "outputTetherLabelContainer svelte-p2o2su");
+    			add_location(div6, file$7, 57, 16, 2104);
+    			set_style(div7, "height", 3 * /*zoom*/ ctx[4] + "vh");
+    			attr_dev(div7, "class", "outputTether svelte-p2o2su");
+    			add_location(div7, file$7, 48, 12, 1512);
+    			attr_dev(div8, "class", "outputs svelte-p2o2su");
+    			add_location(div8, file$7, 47, 8, 1477);
+    			attr_dev(div9, "class", "contents svelte-p2o2su");
+    			add_location(div9, file$7, 27, 4, 591);
+    			attr_dev(main, "class", "neuOutdentShadowRim svelte-p2o2su");
     			set_style(main, "left", (/*posX*/ ctx[0] * /*zoom*/ ctx[4] + /*offX*/ ctx[2]) * 2 + "vh");
     			set_style(main, "top", (/*posY*/ ctx[1] * /*zoom*/ ctx[4] + /*offY*/ ctx[3]) * 2 + "vh");
-    			set_style(main, "width", 8 * /*zoom*/ ctx[4] * 2 + "vh");
+    			set_style(main, "width", 10 * /*zoom*/ ctx[4] * 2 + "vh");
     			set_style(main, "height", 5 * /*zoom*/ ctx[4] * 2 + "vh");
     			set_style(main, "border-radius", /*zoom*/ ctx[4] + "vh");
     			add_location(main, file$7, 10, 0, 157);
@@ -5829,14 +5906,28 @@ var app = (function () {
     			append_dev(div0, h1);
     			append_dev(h1, t0);
     			append_dev(main, t1);
-    			append_dev(main, div7);
-    			append_dev(div7, div5);
-    			append_dev(div5, div4);
+    			append_dev(main, div9);
+    			append_dev(div9, div4);
     			append_dev(div4, div3);
+    			append_dev(div3, div1);
+    			append_dev(div1, svg0);
+    			append_dev(svg0, rect0);
+    			append_dev(svg0, rect1);
+    			append_dev(div3, t2);
     			append_dev(div3, div2);
-    			append_dev(div2, div1);
-    			append_dev(div7, t2);
+    			append_dev(div2, p0);
+    			append_dev(p0, t3);
+    			append_dev(div9, t4);
+    			append_dev(div9, div8);
+    			append_dev(div8, div7);
+    			append_dev(div7, div5);
+    			append_dev(div5, svg1);
+    			append_dev(svg1, rect2);
+    			append_dev(svg1, rect3);
+    			append_dev(div7, t5);
     			append_dev(div7, div6);
+    			append_dev(div6, p1);
+    			append_dev(p1, t6);
     		},
     		p: function update(ctx, [dirty]) {
     			if (dirty & /*zoom*/ 16) {
@@ -5852,31 +5943,43 @@ var app = (function () {
     			}
 
     			if (dirty & /*zoom*/ 16) {
-    				set_style(div1, "width", 0.75 * /*zoom*/ ctx[4] + "vh");
+    				set_style(svg0, "width", 2 * /*zoom*/ ctx[4] + "vh");
     			}
 
     			if (dirty & /*zoom*/ 16) {
-    				set_style(div1, "height", 0.75 * /*zoom*/ ctx[4] + "vh");
+    				set_style(svg0, "height", 2 * /*zoom*/ ctx[4] + "vh");
     			}
 
     			if (dirty & /*zoom*/ 16) {
-    				set_style(div2, "border-width", 0.2 * /*zoom*/ ctx[4] + "vh");
+    				set_style(div1, "width", 3 * /*zoom*/ ctx[4] + "vh");
     			}
 
     			if (dirty & /*zoom*/ 16) {
-    				set_style(div2, "width", 1.5 * /*zoom*/ ctx[4] + "vh");
+    				set_style(p0, "font-size", /*zoom*/ ctx[4] + "vh");
     			}
 
     			if (dirty & /*zoom*/ 16) {
-    				set_style(div2, "height", 1.5 * /*zoom*/ ctx[4] + "vh");
+    				set_style(div3, "height", 3 * /*zoom*/ ctx[4] + "vh");
     			}
 
     			if (dirty & /*zoom*/ 16) {
-    				set_style(div3, "width", 2 * /*zoom*/ ctx[4] + "vh");
+    				set_style(svg1, "width", 2 * /*zoom*/ ctx[4] + "vh");
     			}
 
     			if (dirty & /*zoom*/ 16) {
-    				set_style(div4, "height", 2 * /*zoom*/ ctx[4] + "vh");
+    				set_style(svg1, "height", 2 * /*zoom*/ ctx[4] + "vh");
+    			}
+
+    			if (dirty & /*zoom*/ 16) {
+    				set_style(div5, "width", 3 * /*zoom*/ ctx[4] + "vh");
+    			}
+
+    			if (dirty & /*zoom*/ 16) {
+    				set_style(p1, "font-size", /*zoom*/ ctx[4] + "vh");
+    			}
+
+    			if (dirty & /*zoom*/ 16) {
+    				set_style(div7, "height", 3 * /*zoom*/ ctx[4] + "vh");
     			}
 
     			if (dirty & /*posX, zoom, offX*/ 21) {
@@ -5888,7 +5991,7 @@ var app = (function () {
     			}
 
     			if (dirty & /*zoom*/ 16) {
-    				set_style(main, "width", 8 * /*zoom*/ ctx[4] * 2 + "vh");
+    				set_style(main, "width", 10 * /*zoom*/ ctx[4] * 2 + "vh");
     			}
 
     			if (dirty & /*zoom*/ 16) {

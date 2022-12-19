@@ -12,7 +12,7 @@
     left: {(posX * zoom + offX) * 2}vh;
     top: {(posY * zoom + offY) * 2}vh;
 
-    width: {8 * zoom * 2}vh;
+    width: {10 * zoom * 2}vh;
     height: {5 * zoom * 2}vh;
 
     border-radius: {zoom}vh;
@@ -28,24 +28,39 @@
     <div class="contents">
         <div class="inputs">
             <div style="
-                height: {2*zoom}vh;
+                height: {3*zoom}vh;
             " class="inputTether">
-                <div style="width: {2*zoom}vh;" class="inputTetherCircleContainer">
-                    <div style="
-                        border-width: {.2*zoom}vh;
-                        width: {1.50*zoom}vh;
-                        height: {1.50*zoom}vh;
-                    " class="inputTetherCircleOutline">
-                        <div style="
-                            width: {.75*zoom}vh;
-                            height: {.75*zoom}vh;
-                        " class="inputTetherCircle"></div>
-                    </div>
+                <div style="width: {3*zoom}vh;" class="inputTetherCircleContainer">
+                    <svg style="width: {2*zoom}vh; height: {2*zoom}vh;" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2.5" y="2.5" width="10" height="10" rx="5" stroke="#999999" stroke-dasharray="2 2"/>
+                        <rect x="5" y="5" width="5" height="5" rx="2.5" fill="#DB6239"/>
+                    </svg>
+                </div>
+                <div class="inputTetherLabelContainer">
+                    <p style="
+                        font-size: {zoom}vh;
+                    ">Input Label</p>
                 </div>
             </div>
         </div>
-        <div class="outputs">
 
+
+        <div class="outputs">
+            <div style="
+                height: {3*zoom}vh;
+            " class="outputTether">
+                <div style="width: {3*zoom}vh;" class="outputTetherCircleContainer">
+                    <svg style="width: {2*zoom}vh; height: {2*zoom}vh;" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2.5" y="2.5" width="10" height="10" rx="5" stroke="#999999" stroke-dasharray="2 2"/>
+                        <rect x="5" y="5" width="5" height="5" rx="2.5" fill="#DB6239"/>
+                    </svg>
+                </div>
+                <div class="outputTetherLabelContainer">
+                    <p style="
+                        font-size: {zoom}vh;
+                    ">Output Label</p>
+                </div>
+            </div>
         </div>
     </div>
 </main>
@@ -111,21 +126,21 @@
         place-items: center;
     }
 
-    .inputTetherCircleOutline {
-        border-radius: 50%;
+    .inputTetherLabelContainer {
+        height: 100%;
+        flex: 1;
 
-        border-color: var(--grey);
-        border-style: dashed;
-
-        display: grid;
-        place-items: center;
+        display: flex;
+        align-items: center;
     }
 
-    .inputTetherCircle {
-        border-radius: 50%;
+    .inputTetherLabelContainer p {
+        color: var(--orange);
 
-        background-color: var(--orange);
+        white-space: nowrap;
+        font-weight: 800;
     }
+
 
 
     .outputs {
@@ -135,5 +150,35 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+    }
+
+    .outputTether {
+        width: 100%;
+        
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .outputTetherCircleContainer {
+        height: 100%;
+
+        display: grid;
+        place-items: center;
+    }
+
+    .outputTetherLabelContainer {
+        height: 100%;
+        flex: 1;
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .outputTetherLabelContainer p {
+        color: var(--orange);
+
+        white-space: nowrap;
+        font-weight: 800;
     }
 </style>
