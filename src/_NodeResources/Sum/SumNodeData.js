@@ -1,40 +1,35 @@
-const NodeData = require("@nodeResources/NodeData");
-const NodeInputTether = require("@nodeResources/NodeInputTether");
-const NodeOutputTether = require("@nodeResources/NodeOutputTether");
-const NodeDataRoute = require("@nodeResources/NodeDataRoute");
+const NodeData = require("../NodeData");
+const NodeInputTether = require("../NodeInputTether");
+const NodeOutputTether = require("../NodeOutputTether");
 
 class SumNodeData extends NodeData {
 
-    constructor() {
+    constructor(posX, posY) {
         let inputs = [
             new NodeInputTether("A"),
             new NodeInputTether("B"),
         ];
         let outputs = [
-            new NodeOutputTether("Sum"),
+            new SumNodeDataOutput("Sum", inputs),
         ];
 
-        super("Sum", inputs, outputs, [
-            new SumNodeDataRoute(inputs, outputs[0])
-        ]);
+        super("Sum", inputs, outputs, posX, posY);
     }
 }
 
 
-class SumNodeDataRoute extends NodeDataRoute {
+class SumNodeDataOutput extends NodeOutputTether {
 
     constructor(reqInputs, puts) {
         super(reqInputs, puts);
     }
 
-    processData() {
-        return new Promise((resolve, reject) => {       
-            this.getInputs().then((inputs) => {
-                resolve(inputs[0] + inputs[1]);
-            })
-            .catch((reason) => {
-                reject("Data Process Failed... (" + reason + ")");
-            });
+    process() {
+        return new Promise(async (resolve, reject) => {
+            let a = await this.inputs[0].getValue();
+            let b = await this.inputs[1].getValue();
+
+            resolve(a + b);
         });
     }
 }

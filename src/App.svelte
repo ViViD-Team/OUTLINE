@@ -4,6 +4,7 @@
 	import NodeEditor from "./NodeEditor/NodeEditor.svelte";
 	import Toolkit from "./Toolkit/Toolkit.svelte";
 	import DebugConsole from "./DebugConsole.svelte";
+    import SumNodeData from"./_NodeResources/Sum/SumNodeData";
 
 	// DEBUG CONSOLE
 
@@ -65,7 +66,7 @@
 					"nodes": {
 						"input": [],
 						"output": [],
-						"operator": []
+						"operator": [new SumNodeData(40, 5)]
 					},
 
 					"reference": undefined,

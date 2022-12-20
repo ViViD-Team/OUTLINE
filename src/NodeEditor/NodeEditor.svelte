@@ -76,14 +76,18 @@
             background-size: {2 * viewZoom}vh;
         ">
 
+        {#each nodeData.operator as node}
+            <Node
+                posX={node.posX}
+                posY={node.posY}
+                offX={(viewX + mouseDrag.delta.x) / window.innerHeight * 50}
+                offY={(viewY + mouseDrag.delta.y) / window.innerHeight * 50}
+                zoom={viewZoom}
 
-        <Node
-            posX={40}
-            posY={5}
-            offX={(viewX + mouseDrag.delta.x) / window.innerHeight * 50}
-            offY={(viewY + mouseDrag.delta.y) / window.innerHeight * 50}
-            zoom={viewZoom}
-        />
+                nodeData={node}
+            />
+        {/each}
+        
 
     </div>
 

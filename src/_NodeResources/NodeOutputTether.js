@@ -1,16 +1,14 @@
 class NodeOutputTether {
 
-    constructor(label) {
+    constructor(label, inputs) {
         this.label = label;
-        this.processCall = null;
+        this.inputs = inputs;
     }
 
-    fetchValue() {
-        return new Promise((resolve, reject) => {
-            if (this.processCall === null) reject((this.label || "Unknown") + ": Unassigned output");
-            this.processCall
-                .then((value) => resolve(value))
-                .catch((err) => reject(err));
+    process() {
+        return new Promise(async (resolve, reject) => {
+            // Logic here
+            reject((this.label || "Unknown Tether") + ": Prototype Logic");
         });
     }
 }

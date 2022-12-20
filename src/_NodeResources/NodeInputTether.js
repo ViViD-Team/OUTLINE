@@ -6,10 +6,10 @@ class NodeInputTether {
     }
 
     getValue() {
-        return new Promise((resolve, reject) => {
+        return new Promise(async (resolve, reject) => {
             if (this.connection === null) reject((this.label || "Unknown Tether") + " not connected");
 
-            this.connection.fetchValue
+            await this.connection.process()
                 .then((value) => {resolve(value)})
                 .catch((err) => (reject(err)));
         });

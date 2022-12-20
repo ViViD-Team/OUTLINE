@@ -4,6 +4,8 @@
     export let offX = 0;
     export let offY = 0;
     export let zoom = 1;
+
+    export let nodeData;
 </script>
 
 
@@ -12,8 +14,8 @@
     left: {(posX * zoom + offX) * 2}vh;
     top: {(posY * zoom + offY) * 2}vh;
 
-    width: {10 * zoom * 2}vh;
-    height: {5 * zoom * 2}vh;
+    width: {12 * zoom}vh;
+    height: {zoom * 4 + 3 * zoom * Math.max(nodeData.inputs.length, nodeData.outputs.length)}vh;
 
     border-radius: {zoom}vh;
 ">
@@ -23,44 +25,48 @@
         <h1 style="
             font-size: {1.5*zoom}vh;
             margin-left: {zoom}vh;
-        ">Node Title</h1>
+        ">{nodeData.title}</h1>
     </div>
     <div class="contents">
         <div class="inputs">
-            <div style="
-                height: {3*zoom}vh;
-            " class="inputTether">
-                <div style="width: {3*zoom}vh;" class="inputTetherCircleContainer">
-                    <svg style="width: {2*zoom}vh; height: {2*zoom}vh;" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="2.5" y="2.5" width="10" height="10" rx="5" stroke="#999999" stroke-dasharray="2 2"/>
-                        <rect x="5" y="5" width="5" height="5" rx="2.5" fill="#DB6239"/>
-                    </svg>
+            {#each nodeData.inputs as input}
+                <div style="
+                    height: {3*zoom}vh;
+                " class="inputTether">
+                    <div style="width: {3*zoom}vh;" class="inputTetherCircleContainer">
+                        <svg style="width: {2*zoom}vh; height: {2*zoom}vh;" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2.5" y="2.5" width="10" height="10" rx="5" stroke="#999999" stroke-dasharray="2 2"/>
+                            <rect x="5" y="5" width="5" height="5" rx="2.5" fill="#DB6239"/>
+                        </svg>
+                    </div>
+                    <div class="inputTetherLabelContainer">
+                        <p style="
+                            font-size: {zoom}vh;
+                        ">{input.label}</p>
+                    </div>
                 </div>
-                <div class="inputTetherLabelContainer">
-                    <p style="
-                        font-size: {zoom}vh;
-                    ">Input Label</p>
-                </div>
-            </div>
+            {/each}
         </div>
 
 
         <div class="outputs">
-            <div style="
-                height: {3*zoom}vh;
-            " class="outputTether">
-                <div style="width: {3*zoom}vh;" class="outputTetherCircleContainer">
-                    <svg style="width: {2*zoom}vh; height: {2*zoom}vh;" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="2.5" y="2.5" width="10" height="10" rx="5" stroke="#999999" stroke-dasharray="2 2"/>
-                        <rect x="5" y="5" width="5" height="5" rx="2.5" fill="#DB6239"/>
-                    </svg>
+            {#each nodeData.outputs as output}
+                <div style="
+                    height: {3*zoom}vh;
+                " class="outputTether">
+                    <div style="width: {3*zoom}vh;" class="outputTetherCircleContainer">
+                        <svg style="width: {2*zoom}vh; height: {2*zoom}vh;" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2.5" y="2.5" width="10" height="10" rx="5" stroke="#999999" stroke-dasharray="2 2"/>
+                            <rect x="5" y="5" width="5" height="5" rx="2.5" fill="#DB6239"/>
+                        </svg>
+                    </div>
+                    <div class="outputTetherLabelContainer">
+                        <p style="
+                            font-size: {zoom}vh;
+                        ">{output.label}</p>
+                    </div>
                 </div>
-                <div class="outputTetherLabelContainer">
-                    <p style="
-                        font-size: {zoom}vh;
-                    ">Output Label</p>
-                </div>
-            </div>
+            {/each}
         </div>
     </div>
 </main>

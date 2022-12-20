@@ -1,15 +1,13 @@
 class NodeData {
 
-    constructor(title, inputs, outputs, routes) {
+    constructor(title, inputs, outputs, posX, posY) {
         this.title = title;
 
         this.inputs = inputs;
         this.outputs = outputs;
-        this.routes = routes;
 
-        this.routes.forEach(route => {
-            route.puts.processCall = route.processData;
-        });
+        this.posX = posX;
+        this.posY = posY;
     }
 }
 
