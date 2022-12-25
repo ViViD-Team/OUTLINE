@@ -1,5 +1,9 @@
 <script>
+    import { onMount } from "svelte";
     import Node from "./Node.svelte"
+    import NodeEditorSlot from "./NodeEditorSlot.svelte";
+
+    const path = require("path")
 
 
     let viewX = 0, viewY = 0, viewZoom = 1;
@@ -9,6 +13,8 @@
 
     export let nodeData;
     export let tableRef;
+
+    let context = {};
     
     //#region mouse
 
@@ -55,6 +61,54 @@
     }
 
     //#endregion
+
+    function makeid(length) {
+        var result           = '';
+        var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charactersLength = characters.length;
+        for ( var i = 0; i < length; i++ ) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    }
+
+    function getNewId() {
+        let newId;
+        do {
+            newId = makeid(4);
+        } while (context[newId] != undefined);
+        context[newId] = "Pending...";
+        return newId;
+    }
+
+    function drop(event) {
+        switch (event.dataTransfer.getData("command")) {
+            case "createNode":
+                try { 
+                    const classRef = require(path.join(__dirname, "../src/_NodeResources/NodeTypes/") + event.dataTransfer.getData("nodeID"));
+                    let nodeObject = new classRef([""], {});
+
+                    let inputs = nodeObject.inputs.map(x => null);
+                    let outputs = nodeObject.outputs.map(x => getNewId());
+
+                    let newObj = {
+                        "id": event.dataTransfer.getData("nodeID"),
+                        "posX": 0,
+                        "posY": 0,
+                        "reference": null,
+                        "inputs": inputs,
+                        "outputs": outputs
+                    };
+
+                    nodeData[event.dataTransfer.getData("nodeType")].push(newObj);
+                }
+                catch (err) {
+                    console.error(err);
+                }
+                
+        }
+    }
+
 </script>
 
 
@@ -69,6 +123,9 @@
         on:mouseup="{mouseUp}"
         on:mouseleave="{mouseUp}"
         on:mousewheel="{scroll}"
+
+        on:drop={drop}
+        on:dragover={(event) => {event.preventDefault();}}
     >
         <div class="crossBackground" style="
             background-position-x: {viewX + mouseDrag.delta.x}px;
@@ -78,6 +135,8 @@
 
         {#each nodeData.operator as node}
             <Node
+                bind:nodeObject={node.reference}
+
                 posX={node.posX}
                 posY={node.posY}
                 offX={(viewX + mouseDrag.delta.x) / window.innerHeight * 50}
@@ -85,6 +144,7 @@
                 zoom={viewZoom}
 
                 nodeData={node}
+                context={context}
             />
         {/each}
         
@@ -101,7 +161,14 @@
             </div>
         </div>
         <div class="nodePickerContents">
-            
+            <div class="nodePickerGroupTitle">
+                <h2>Math - Basic</h2>
+            </div>
+
+            <NodeEditorSlot
+                id="Sum"
+                type="operator"
+            />
         </div>
     </div>
 </main>
@@ -167,6 +234,8 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+
+        overflow: none;
 
         transition: width .5s cubic-bezier(0, 0, 0, .9),
                     height .5s cubic-bezier(0, 0, 0, .9);
@@ -251,11 +320,43 @@
         width: 100%;
         flex: 0;
 
-        transition: flex .5s cubic-bezier(0, 0, 0, .9);
+        opacity: 0;
+
+        display: flex;
+        flex-direction: column;
+
+        overflow: hidden;
+        overflow-y: scroll;
+
+        transition: flex .5s cubic-bezier(0, 0, 0, .9), opacity .1s;
+    }
+
+    .nodePickerContents::-webkit-scrollbar {
+        display: none;
     }
 
     .nodePickerFrame:hover .nodePickerContents {
-        display: flex;
         flex: 5;
+
+        opacity: 1;
+
+        transition: flex .5s cubic-bezier(0, 0, 0, .9), opacity .5s .5s;
     }
+
+
+    .nodePickerGroupTitle {
+        width: 100%;
+        height: 2vh;
+
+        display: grid;
+        place-items: center;
+    }
+
+    .nodePickerGroupTitle h2 {
+        font-size: 1.2vh;
+        color: var(--orange);
+        font-weight: 500;
+    }
+
+
 </style>

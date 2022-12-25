@@ -1,6 +1,6 @@
 class NodeInputTether {
     
-    constructor(label) {
+    constructor(label, context) {
         this.label = label;
         this.connection = null;
     }
@@ -9,9 +9,11 @@ class NodeInputTether {
         return new Promise(async (resolve, reject) => {
             if (this.connection === null) reject((this.label || "Unknown Tether") + " not connected");
 
-            await this.connection.process()
+            let output = context.get(this.connection);
+
+            await output.process()
                 .then((value) => {resolve(value)})
-                .catch((err) => (reject(err)));
+                .catch((err) => {reject(err)});
         });
     }
 

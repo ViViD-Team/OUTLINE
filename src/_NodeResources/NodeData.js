@@ -1,13 +1,10 @@
 class NodeData {
 
-    constructor(title, inputs, outputs, posX, posY) {
+    constructor(title, inputs, outputs) {
         this.title = title;
 
         this.inputs = inputs;
         this.outputs = outputs;
-
-        this.posX = posX;
-        this.posY = posY;
     }
 }
 

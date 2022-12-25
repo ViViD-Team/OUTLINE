@@ -1,4 +1,8 @@
 <script>
+    import { onMount } from "svelte";
+    const path = require("path");
+
+
     export let posX = 0;
     export let posY = 0;
     export let offX = 0;
@@ -6,71 +10,93 @@
     export let zoom = 1;
 
     export let nodeData;
+    export let context;
+
+    export let nodeObject;
+
+
+    onMount(() => {
+        try {
+            console.log(context)
+            const classRef = require(path.join(__dirname, "../src/_NodeResources/NodeTypes/") + nodeData.id);
+            nodeObject = new classRef(nodeData.outputs, context);
+
+            // Restore Input Connections
+            for (let i = 0; i < nodeData.inputs.length; i++) {
+                nodeObject.inputs[i].connect(nodeData.inputs[i]);
+            }
+
+            console.log("Node " +  nodeData.id + " subscribed outputs " + nodeObject.outputs, context);
+        }
+        catch (err) {
+            console.error(err);
+        }
+    });
 </script>
 
 
+{#if nodeObject !== null && nodeObject !== undefined}
+    <main class="neuOutdentShadowRim" style="
+        left: {(posX * zoom + offX) * 2}vh;
+        top: {(posY * zoom + offY) * 2}vh;
 
-<main class="neuOutdentShadowRim" style="
-    left: {(posX * zoom + offX) * 2}vh;
-    top: {(posY * zoom + offY) * 2}vh;
+        width: {12 * zoom}vh;
+        height: {zoom * 4 + 3 * zoom * Math.max(nodeObject.inputs.length, nodeObject.outputs.length)}vh;
 
-    width: {12 * zoom}vh;
-    height: {zoom * 4 + 3 * zoom * Math.max(nodeData.inputs.length, nodeData.outputs.length)}vh;
-
-    border-radius: {zoom}vh;
-">
-    <div class="titleBar" style="
-        height: {3*zoom}vh;
+        border-radius: {zoom}vh;
     ">
-        <h1 style="
-            font-size: {1.5*zoom}vh;
-            margin-left: {zoom}vh;
-        ">{nodeData.title}</h1>
-    </div>
-    <div class="contents">
-        <div class="inputs">
-            {#each nodeData.inputs as input}
-                <div style="
-                    height: {3*zoom}vh;
-                " class="inputTether">
-                    <div style="width: {3*zoom}vh;" class="inputTetherCircleContainer">
-                        <svg style="width: {2*zoom}vh; height: {2*zoom}vh;" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="2.5" y="2.5" width="10" height="10" rx="5" stroke="#999999" stroke-dasharray="2 2"/>
-                            <rect x="5" y="5" width="5" height="5" rx="2.5" fill="#DB6239"/>
-                        </svg>
-                    </div>
-                    <div class="inputTetherLabelContainer">
-                        <p style="
-                            font-size: {zoom}vh;
-                        ">{input.label}</p>
-                    </div>
-                </div>
-            {/each}
+        <div class="titleBar" style="
+            height: {3*zoom}vh;
+        ">
+            <h1 style="
+                font-size: {1.5*zoom}vh;
+                margin-left: {zoom}vh;
+            ">{nodeObject.title}</h1>
         </div>
+        <div class="contents">
+            <div class="inputs">
+                {#each nodeObject.inputs as input}
+                    <div style="
+                        height: {3*zoom}vh;
+                    " class="inputTether">
+                        <div style="width: {3*zoom}vh;" class="inputTetherCircleContainer">
+                            <svg style="width: {2*zoom}vh; height: {2*zoom}vh;" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="2.5" y="2.5" width="10" height="10" rx="5" stroke="#999999" stroke-dasharray="2 2"/>
+                                <rect x="5" y="5" width="5" height="5" rx="2.5" fill="#DB6239"/>
+                            </svg>
+                        </div>
+                        <div class="inputTetherLabelContainer">
+                            <p style="
+                                font-size: {zoom}vh;
+                            ">{input.label}</p>
+                        </div>
+                    </div>
+                {/each}
+            </div>
 
 
-        <div class="outputs">
-            {#each nodeData.outputs as output}
-                <div style="
-                    height: {3*zoom}vh;
-                " class="outputTether">
-                    <div style="width: {3*zoom}vh;" class="outputTetherCircleContainer">
-                        <svg style="width: {2*zoom}vh; height: {2*zoom}vh;" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="2.5" y="2.5" width="10" height="10" rx="5" stroke="#999999" stroke-dasharray="2 2"/>
-                            <rect x="5" y="5" width="5" height="5" rx="2.5" fill="#DB6239"/>
-                        </svg>
+            <div class="outputs">
+                {#each nodeObject.outputs as output}
+                    <div style="
+                        height: {3*zoom}vh;
+                    " class="outputTether">
+                        <div style="width: {3*zoom}vh;" class="outputTetherCircleContainer">
+                            <svg style="width: {2*zoom}vh; height: {2*zoom}vh;" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="2.5" y="2.5" width="10" height="10" rx="5" stroke="#999999" stroke-dasharray="2 2"/>
+                                <rect x="5" y="5" width="5" height="5" rx="2.5" fill="#DB6239"/>
+                            </svg>
+                        </div>
+                        <div class="outputTetherLabelContainer">
+                            <p style="
+                                font-size: {zoom}vh;
+                            ">{output.label}</p>
+                        </div>
                     </div>
-                    <div class="outputTetherLabelContainer">
-                        <p style="
-                            font-size: {zoom}vh;
-                        ">{output.label}</p>
-                    </div>
-                </div>
-            {/each}
+                {/each}
+            </div>
         </div>
-    </div>
-</main>
-
+    </main>
+{/if}
 
 
 <style>

@@ -1,3 +1,2 @@
-const NodeOutputTether = require("./NodeOutputTether");
-const SumNodeData = require("./Sum/SumNodeData");
-
+const NodeData = require("@nodeResources/NodeData");
+const SumNodeData = require("@nodeResources/NodeTypes/Sum");
