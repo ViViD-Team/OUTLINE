@@ -68,8 +68,10 @@
 						"output": [],
 						"operator": [{
 							"id": "Sum",
-							"posX": 42,
-							"posY": 5,
+							"posX": 40,
+							"posY": 4,
+							"width": 6,
+							"color": "var(--orange)",
 							"reference": null,
 							"inputs": [
 								null, null
@@ -82,10 +84,12 @@
 							"id": "Sum",
 							"posX": 50,
 							"posY": 5,
+							"width": 6,
+							"color": "var(--orange)",
 							"reference": null,
 							"inputs": [
-								"a4g7",
-								null
+								null,
+								"a4g7"
 							],
 							"outputs": [
 								"ef87"

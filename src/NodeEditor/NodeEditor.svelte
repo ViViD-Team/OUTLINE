@@ -109,6 +109,30 @@
         }
     }
 
+    // Generate Connection Display Objects
+    let connections = [];
+    onMount(() => {
+        nodeData.operator.forEach((n) => {
+            n.inputs.forEach((i) => {
+                if (i != null) {
+                    addConnection(n, i);
+                }
+            });
+        });
+    });
+
+    function addConnection(node, input) {
+        let destData = context[input].superNode.rawNodeData;
+        connections.push({
+            "posX": node.posX + .75,
+            "posY": node.posY + (1 + (node.inputs.indexOf(input) + 1)*1.5),
+            "destX": destData.posX + destData.width - .75,
+            "destY": destData.posY + (1 + (destData.outputs.indexOf(input) + 1) * 1.5),
+            "originColor": node.color,
+            "destColor": destData.color
+        });
+    }
+
 </script>
 
 
@@ -146,6 +170,30 @@
                 nodeData={node}
                 context={context}
             />
+
+            {#each connections as c}
+                    <div style="
+                        left: {2 * (c.posX * viewZoom + (viewX + mouseDrag.delta.x) / window.innerHeight * 50)}vh;
+                        top: {2 * (c.posY * viewZoom + (viewY + mouseDrag.delta.y) / window.innerHeight * 50)}vh;
+                    
+                        width: {Math.abs(c.posX - c.destX) * viewZoom * 2}vh;
+                        height: {Math.abs(c.posY - c.destY) * viewZoom * 2}vh;
+
+                        transform:  {c.posY > c.destY ? "translateY(-100%)" : ""}
+                                    {c.posX > c.destX ? "translateX(-100%)" : ""};
+
+                    " class="inputFlowContainer">
+                        <svg style="width: 100%; height: calc(100% + {viewZoom}px); transform: translateY(-{.5 * viewZoom}px);" preserveAspectRatio="none" viewBox="0 0 100 102" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 1C47.3934 1 52.6066 101 100 101" stroke="url(#paint0_linear_102_1243)" stroke-width="{2*viewZoom}"/>
+                            <defs>
+                                <linearGradient id="paint0_linear_102_1243" x1="0" y1="1" x2="103.056" y2="4.25514" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="{c.originColor}"/>
+                                <stop offset="1" stop-color="{c.destColor}"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+            {/each}
         {/each}
         
 
@@ -358,5 +406,15 @@
         font-weight: 500;
     }
 
+
+    .inputFlowContainer {
+        position: absolute;
+
+        overflow: visible;
+    }
+
+    .inputFlowContainer svg {
+        overflow: visible;
+    }
 
 </style>

@@ -4,7 +4,7 @@ const NodeOutputTether = require("../NodeOutputTether");
 
 class SumNodeData extends NodeData {
 
-    constructor(outputRefs, context) {
+    constructor(outputRefs, context, rawNodeData) {
         let inputs = [
             new NodeInputTether("A", context),
             new NodeInputTether("B", context),
@@ -13,7 +13,7 @@ class SumNodeData extends NodeData {
             new SumNodeDataOutput("Sum", inputs, outputRefs[0], context),
         ];
 
-        super("Sum", inputs, outputs);
+        super("Sum", inputs, outputs, rawNodeData);
     }
 }
 

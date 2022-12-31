@@ -14,12 +14,11 @@
 
     export let nodeObject;
 
-
     onMount(() => {
         try {
             console.log(context)
             const classRef = require(path.join(__dirname, "../src/_NodeResources/NodeTypes/") + nodeData.id);
-            nodeObject = new classRef(nodeData.outputs, context);
+            nodeObject = new classRef(nodeData.outputs, context, nodeData);
 
             // Restore Input Connections
             for (let i = 0; i < nodeData.inputs.length; i++) {
@@ -40,7 +39,7 @@
         left: {(posX * zoom + offX) * 2}vh;
         top: {(posY * zoom + offY) * 2}vh;
 
-        width: {12 * zoom}vh;
+        width: {2 * nodeData.width * zoom}vh;
         height: {zoom * 4 + 3 * zoom * Math.max(nodeObject.inputs.length, nodeObject.outputs.length)}vh;
 
         border-radius: {zoom}vh;
@@ -54,7 +53,7 @@
             ">{nodeObject.title}</h1>
         </div>
         <div class="contents">
-            <div class="inputs">
+            <div style="padding-top: {.5*zoom}vh;" class="inputs">
                 {#each nodeObject.inputs as input}
                     <div style="
                         height: {3*zoom}vh;
@@ -75,7 +74,7 @@
             </div>
 
 
-            <div class="outputs">
+            <div style="padding-top: {.5*zoom}vh;" class="outputs">
                 {#each nodeObject.outputs as output}
                     <div style="
                         height: {3*zoom}vh;
@@ -142,7 +141,6 @@
 
         display: flex;
         flex-direction: column;
-        justify-content: center;
     }
 
     .inputTether {
@@ -181,7 +179,6 @@
 
         display: flex;
         flex-direction: column;
-        justify-content: center;
     }
 
     .outputTether {

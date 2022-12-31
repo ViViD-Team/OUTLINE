@@ -7,6 +7,8 @@ class NodeOutputTether {
         // Subscribe to context
         context[id] = this;
 
+        this.superNode = null;
+
         this.process = function() {
             return new Promise(async (resolve, reject) => {
                 // Logic here
