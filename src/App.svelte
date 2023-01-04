@@ -89,7 +89,7 @@
 							"reference": null,
 							"inputs": [
 								null,
-								"a4g7"
+								null
 							],
 							"outputs": [
 								"ef87"

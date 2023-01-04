@@ -82,6 +82,8 @@
     }
 
     function drop(event) {
+        event.stopPropagation();
+
         switch (event.dataTransfer.getData("command")) {
             case "createNode":
                 try { 
@@ -113,24 +115,28 @@
     let connections = [];
     onMount(() => {
         nodeData.operator.forEach((n) => {
-            n.inputs.forEach((i) => {
-                if (i != null) {
-                    addConnection(n, i);
+            for (let i = 0; i < n.inputs.length; i++) {
+                if (n.inputs[i] != null) {
+                    addConnection(n, n.inputs[i], i);
                 }
-            });
+            }
         });
+
+        connections = Object.assign([], connections);
     });
 
-    function addConnection(node, input) {
+    function addConnection(node, input, index) {
         let destData = context[input].superNode.rawNodeData;
         connections.push({
             "posX": node.posX + .75,
-            "posY": node.posY + (1 + (node.inputs.indexOf(input) + 1)*1.5),
+            "posY": node.posY + (1 + (index + 1)*1.5),
             "destX": destData.posX + destData.width - .75,
             "destY": destData.posY + (1 + (destData.outputs.indexOf(input) + 1) * 1.5),
             "originColor": node.color,
             "destColor": destData.color
         });
+
+        connections = Object.assign([], connections);
     }
 
 </script>
@@ -149,7 +155,7 @@
         on:mousewheel="{scroll}"
 
         on:drop={drop}
-        on:dragover={(event) => {event.preventDefault();}}
+        on:dragover={(event) => {event.preventDefault(); event.stopPropagation();}}
     >
         <div class="crossBackground" style="
             background-position-x: {viewX + mouseDrag.delta.x}px;
@@ -169,6 +175,8 @@
 
                 nodeData={node}
                 context={context}
+
+                connectionCallback={addConnection}
             />
 
             {#each connections as c}

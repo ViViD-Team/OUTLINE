@@ -4,6 +4,8 @@ class NodeOutputTether {
         this.label = label;
         this.inputs = inputs;
 
+        this.id = id;
+
         // Subscribe to context
         context[id] = this;
 

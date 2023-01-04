@@ -15,6 +15,7 @@
     export let nodeObject;
 
     onMount(() => {
+        // Load Node on the fly and subscribe to outputs
         try {
             console.log(context)
             const classRef = require(path.join(__dirname, "../src/_NodeResources/NodeTypes/") + nodeData.id);
@@ -31,6 +32,48 @@
             console.error(err);
         }
     });
+
+    let dragState = null;
+
+    function initConnectionDrag(event, id, index) {
+        // Clear default drag image
+        let imageOverride = document.createElement("img");
+        event.dataTransfer.setDragImage(imageOverride, 0, 0);
+
+        event.dataTransfer.setData("command", "connectNode");
+        event.dataTransfer.setData("outputID", id);
+
+        dragState = index;
+    }
+
+    function clearDrag() {
+        dragState = null;
+    }
+
+    function dragOver(event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+
+    export let connectionCallback;
+
+    function handleConnect(event, index) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        console.log("connected");
+        switch (event.dataTransfer.getData("command")) {
+            case "connectNode":
+                let outputId = event.dataTransfer.getData("outputID");
+
+                nodeObject.inputs[index].connect(outputId);
+
+                nodeData.inputs[index] = outputId;
+                connectionCallback(nodeData, outputId, index);
+
+                break;
+        }
+    }
 </script>
 
 
@@ -54,10 +97,14 @@
         </div>
         <div class="contents">
             <div style="padding-top: {.5*zoom}vh;" class="inputs">
-                {#each nodeObject.inputs as input}
+                {#each nodeObject.inputs as input, index}
                     <div style="
                         height: {3*zoom}vh;
-                    " class="inputTether">
+                    " 
+                        class="inputTether"
+                        on:dragover="{dragOver}"
+                        on:drop="{(event) => {handleConnect(event, index)}}"
+                    >
                         <div style="width: {3*zoom}vh;" class="inputTetherCircleContainer">
                             <svg style="width: {2*zoom}vh; height: {2*zoom}vh;" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="2.5" y="2.5" width="10" height="10" rx="5" stroke="#999999" stroke-dasharray="2 2"/>
@@ -75,12 +122,23 @@
 
 
             <div style="padding-top: {.5*zoom}vh;" class="outputs">
-                {#each nodeObject.outputs as output}
+                {#each nodeObject.outputs as output, index}
                     <div style="
                         height: {3*zoom}vh;
-                    " class="outputTether">
+                    "
+                        class="outputTether"
+
+                        draggable="true"
+                        on:dragstart={(event) => initConnectionDrag(event, output.id, index)}
+                        on:dragend={clearDrag}
+                    >
                         <div style="width: {3*zoom}vh;" class="outputTetherCircleContainer">
-                            <svg style="width: {2*zoom}vh; height: {2*zoom}vh;" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg style="
+                                width: {2*zoom}vh;
+                                height: {2*zoom}vh;
+                                {dragState === index ? "transform: scale(1.5) rotate(360deg);" : ""}
+                                transition: transform .5s cubic-bezier(0, 0, 0, .9);
+                            " viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="2.5" y="2.5" width="10" height="10" rx="5" stroke="#999999" stroke-dasharray="2 2"/>
                                 <rect x="5" y="5" width="5" height="5" rx="2.5" fill="#DB6239"/>
                             </svg>
@@ -147,6 +205,8 @@
         width: 100%;
         
         display: flex;
+
+        background-color: var(--white);
     }
 
     .inputTetherCircleContainer {
@@ -183,6 +243,8 @@
 
     .outputTether {
         width: 100%;
+
+        cursor: pointer;
         
         display: flex;
         flex-direction: row-reverse;
