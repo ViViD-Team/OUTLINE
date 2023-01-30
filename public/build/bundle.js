@@ -6696,7 +6696,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (182:12) {#each connections as c}
+    // (183:12) {#each connections as c}
     function create_each_block_1$4(ctx) {
     	let div;
     	let svg;
@@ -6723,20 +6723,20 @@ var app = (function () {
     			attr_dev(path_1, "d", "M0 1C47.3934 1 52.6066 101 100 101");
     			attr_dev(path_1, "stroke", "url(#paint0_linear_102_1243)");
     			attr_dev(path_1, "stroke-width", path_1_stroke_width_value = 2 * /*viewZoom*/ ctx[3]);
-    			add_location(path_1, file$9, 194, 28, 6499);
+    			add_location(path_1, file$9, 195, 28, 6532);
     			attr_dev(stop0, "stop-color", stop0_stop_color_value = /*c*/ ctx[24].originColor);
-    			add_location(stop0, file$9, 197, 32, 6830);
+    			add_location(stop0, file$9, 198, 32, 6863);
     			attr_dev(stop1, "offset", "1");
     			attr_dev(stop1, "stop-color", stop1_stop_color_value = /*c*/ ctx[24].destColor);
-    			add_location(stop1, file$9, 198, 32, 6900);
+    			add_location(stop1, file$9, 199, 32, 6933);
     			attr_dev(linearGradient, "id", "paint0_linear_102_1243");
     			attr_dev(linearGradient, "x1", "0");
     			attr_dev(linearGradient, "y1", "1");
     			attr_dev(linearGradient, "x2", "103.056");
     			attr_dev(linearGradient, "y2", "4.25514");
     			attr_dev(linearGradient, "gradientUnits", "userSpaceOnUse");
-    			add_location(linearGradient, file$9, 196, 32, 6681);
-    			add_location(defs, file$9, 195, 28, 6641);
+    			add_location(linearGradient, file$9, 197, 32, 6714);
+    			add_location(defs, file$9, 196, 28, 6674);
     			set_style(svg, "width", "100%");
     			set_style(svg, "height", "calc(100% + " + /*viewZoom*/ ctx[3] + "px)");
     			set_style(svg, "transform", "translateY(-" + 0.5 * /*viewZoom*/ ctx[3] + "px)");
@@ -6745,20 +6745,14 @@ var app = (function () {
     			attr_dev(svg, "fill", "none");
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "class", "svelte-nn6fcz");
-    			add_location(svg, file$9, 193, 24, 6269);
+    			add_location(svg, file$9, 194, 24, 6302);
     			set_style(div, "left", 2 * (/*c*/ ctx[24].posX * /*viewZoom*/ ctx[3] + (/*viewX*/ ctx[1] + /*mouseDrag*/ ctx[7].delta.x) / window.innerHeight * 50) + "vh");
     			set_style(div, "top", 2 * (/*c*/ ctx[24].posY * /*viewZoom*/ ctx[3] + (/*viewY*/ ctx[2] + /*mouseDrag*/ ctx[7].delta.y) / window.innerHeight * 50) + "vh");
     			set_style(div, "width", Math.abs(/*c*/ ctx[24].posX - /*c*/ ctx[24].destX) * /*viewZoom*/ ctx[3] * 2 + "vh");
     			set_style(div, "height", Math.abs(/*c*/ ctx[24].posY - /*c*/ ctx[24].destY) * /*viewZoom*/ ctx[3] * 2 + "vh");
-
-    			set_style(div, "transform", (/*c*/ ctx[24].posY > /*c*/ ctx[24].destY
-    			? "translateY(-100%)"
-    			: "") + "\r\n                                    " + (/*c*/ ctx[24].posX > /*c*/ ctx[24].destX
-    			? "translateX(-100%)"
-    			: ""));
-
+    			set_style(div, "transform", "translate(" + (/*c*/ ctx[24].posX > /*c*/ ctx[24].destX ? "-100%" : "0") + ",\r\n                            " + (/*c*/ ctx[24].posY > /*c*/ ctx[24].destY ? "-100%" : "0") + ")");
     			attr_dev(div, "class", "inputFlowContainer svelte-nn6fcz");
-    			add_location(div, file$9, 182, 20, 5597);
+    			add_location(div, file$9, 183, 20, 5648);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -6808,11 +6802,7 @@ var app = (function () {
     			}
 
     			if (dirty & /*connections*/ 256) {
-    				set_style(div, "transform", (/*c*/ ctx[24].posY > /*c*/ ctx[24].destY
-    				? "translateY(-100%)"
-    				: "") + "\r\n                                    " + (/*c*/ ctx[24].posX > /*c*/ ctx[24].destX
-    				? "translateX(-100%)"
-    				: ""));
+    				set_style(div, "transform", "translate(" + (/*c*/ ctx[24].posX > /*c*/ ctx[24].destX ? "-100%" : "0") + ",\r\n                            " + (/*c*/ ctx[24].posY > /*c*/ ctx[24].destY ? "-100%" : "0") + ")");
     			}
     		},
     		d: function destroy(detaching) {
@@ -6824,14 +6814,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1$4.name,
     		type: "each",
-    		source: "(182:12) {#each connections as c}",
+    		source: "(183:12) {#each connections as c}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (166:8) {#each nodeData.operator as node}
+    // (167:8) {#each nodeData.operator as node}
     function create_each_block$4(ctx) {
     	let updating_nodeObject;
     	let t;
@@ -6953,7 +6943,7 @@ var app = (function () {
     		block,
     		id: create_each_block$4.name,
     		type: "each",
-    		source: "(166:8) {#each nodeData.operator as node}",
+    		source: "(167:8) {#each nodeData.operator as node}",
     		ctx
     	});
 
@@ -7029,34 +7019,34 @@ var app = (function () {
     			set_style(div0, "background-position-x", /*viewX*/ ctx[1] + /*mouseDrag*/ ctx[7].delta.x + "px");
     			set_style(div0, "background-position-y", /*viewY*/ ctx[2] + /*mouseDrag*/ ctx[7].delta.y + "px");
     			set_style(div0, "background-size", 2 * /*viewZoom*/ ctx[3] + "vh");
-    			add_location(div0, file$9, 159, 8, 4792);
+    			add_location(div0, file$9, 160, 8, 4843);
     			attr_dev(path_1, "d", "M7.724 65.49C13.36 55.11 21.79 46.47 32 40.56C39.63 36.15 48.25 33.26 57.46 32.33C59.61 32.11 61.79 32 64 32H448C483.3 32 512 60.65 512 96V416C512 451.3 483.3 480 448 480H64C28.65 480 0 451.3 0 416V96C0 93.79 .112 91.61 .3306 89.46C1.204 80.85 3.784 72.75 7.724 65.49V65.49zM48 416C48 424.8 55.16 432 64 432H448C456.8 432 464 424.8 464 416V224H48V416z");
-    			add_location(path_1, file$9, 212, 246, 7539);
+    			add_location(path_1, file$9, 213, 246, 7572);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 512 512");
     			attr_dev(svg, "class", "svelte-nn6fcz");
-    			add_location(svg, file$9, 212, 16, 7309);
+    			add_location(svg, file$9, 213, 16, 7342);
     			attr_dev(div1, "class", "nodePickerIcon svelte-nn6fcz");
-    			add_location(div1, file$9, 211, 12, 7263);
+    			add_location(div1, file$9, 212, 12, 7296);
     			attr_dev(h20, "class", "svelte-nn6fcz");
-    			add_location(h20, file$9, 215, 16, 8001);
+    			add_location(h20, file$9, 216, 16, 8034);
     			attr_dev(div2, "class", "nodePickerTitle svelte-nn6fcz");
-    			add_location(div2, file$9, 214, 12, 7954);
+    			add_location(div2, file$9, 215, 12, 7987);
     			attr_dev(div3, "class", "nodePickerHeader svelte-nn6fcz");
-    			add_location(div3, file$9, 210, 8, 7219);
+    			add_location(div3, file$9, 211, 8, 7252);
     			attr_dev(h21, "class", "svelte-nn6fcz");
-    			add_location(h21, file$9, 220, 16, 8165);
+    			add_location(h21, file$9, 221, 16, 8198);
     			attr_dev(div4, "class", "nodePickerGroupTitle svelte-nn6fcz");
-    			add_location(div4, file$9, 219, 12, 8113);
+    			add_location(div4, file$9, 220, 12, 8146);
     			attr_dev(div5, "class", "nodePickerContents svelte-nn6fcz");
-    			add_location(div5, file$9, 218, 8, 8067);
+    			add_location(div5, file$9, 219, 8, 8100);
     			attr_dev(div6, "class", "nodePickerFrame neuOutdentShadow svelte-nn6fcz");
-    			add_location(div6, file$9, 209, 4, 7163);
+    			add_location(div6, file$9, 210, 4, 7196);
     			attr_dev(div7, "class", "frame neuIndentShadow svelte-nn6fcz");
     			add_render_callback(() => /*div7_elementresize_handler*/ ctx[20].call(div7));
-    			add_location(div7, file$9, 146, 4, 4365);
+    			add_location(div7, file$9, 147, 4, 4416);
     			attr_dev(main, "class", "svelte-nn6fcz");
-    			add_location(main, file$9, 145, 0, 4353);
+    			add_location(main, file$9, 146, 0, 4404);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -7269,7 +7259,8 @@ var app = (function () {
     						"posY": 0,
     						"reference": null,
     						inputs,
-    						outputs
+    						outputs,
+    						"color": "var(--orange)"
     					};
 
     					nodeData[event.dataTransfer.getData("nodeType")].push(newObj);

@@ -99,7 +99,8 @@
                         "posY": 0,
                         "reference": null,
                         "inputs": inputs,
-                        "outputs": outputs
+                        "outputs": outputs,
+                        "color": "var(--orange)"
                     };
 
                     nodeData[event.dataTransfer.getData("nodeType")].push(newObj);
@@ -187,8 +188,8 @@
                         width: {Math.abs(c.posX - c.destX) * viewZoom * 2}vh;
                         height: {Math.abs(c.posY - c.destY) * viewZoom * 2}vh;
 
-                        transform:  {c.posY > c.destY ? "translateY(-100%)" : ""}
-                                    {c.posX > c.destX ? "translateX(-100%)" : ""};
+                        transform:  translate({c.posX > c.destX ? "-100%" : "0"},
+                            {c.posY > c.destY ? "-100%" : "0"});
 
                     " class="inputFlowContainer">
                         <svg style="width: 100%; height: calc(100% + {viewZoom}px); transform: translateY(-{.5 * viewZoom}px);" preserveAspectRatio="none" viewBox="0 0 100 102" fill="none" xmlns="http://www.w3.org/2000/svg">
