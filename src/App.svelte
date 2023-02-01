@@ -71,6 +71,8 @@
 							"posX": 40,
 							"posY": 4,
 							"width": 6,
+							"simX": 0,
+							"simY": 0,
 							"color": "var(--orange)",
 							"reference": null,
 							"inputs": [
@@ -85,6 +87,8 @@
 							"posX": 50,
 							"posY": 5,
 							"width": 6,
+							"simX": 0,
+							"simY": 0,
 							"color": "var(--orange)",
 							"reference": null,
 							"inputs": [

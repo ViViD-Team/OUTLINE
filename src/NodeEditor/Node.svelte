@@ -7,6 +7,8 @@
     export let posY = 0;
     export let offX = 0;
     export let offY = 0;
+    export let simX = 0;
+    export let simY = 0;
     export let zoom = 1;
 
     export let nodeData;
@@ -74,21 +76,39 @@
                 break;
         }
     }
+
+
+    export let onDrag;
+    export let onDelete;
+
+    function drag(event) {
+        onDrag(event);
+    }
+
+    function handleDelete() {
+        onDelete();
+    }
 </script>
 
 
 {#if nodeObject !== null && nodeObject !== undefined}
     <main class="neuOutdentShadowRim" style="
-        left: {(posX * zoom + offX) * 2}vh;
-        top: {(posY * zoom + offY) * 2}vh;
+        left: {((posX + simX) * zoom + offX) * 2}vh;
+        top: {((posY + simY) * zoom + offY) * 2}vh;
 
         width: {2 * nodeData.width * zoom}vh;
         height: {zoom * 4 + 3 * zoom * Math.max(nodeObject.inputs.length, nodeObject.outputs.length)}vh;
 
         border-radius: {zoom}vh;
     ">
-        <div class="titleBar" style="
-            height: {3*zoom}vh;
+        <div
+            class="titleBar"
+        
+            draggable="true"
+            on:dragstart="{drag}"
+
+            style="
+                height: {3*zoom}vh;
         ">
             <h1 style="
                 font-size: {1.5*zoom}vh;
@@ -152,6 +172,20 @@
                 {/each}
             </div>
         </div>
+    
+
+        <div
+            class="deleteAction"
+            
+            on:click={handleDelete}
+            
+            style="
+                width: {3*zoom}vh;
+                height: {3*zoom}vh;"
+        >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>
+        </div>
+    
     </main>
 {/if}
 
@@ -271,5 +305,31 @@
 
         white-space: nowrap;
         font-weight: 800;
+    }
+
+
+
+    .deleteAction {
+        cursor: pointer;
+
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        transform: translate(100%, -100%);
+
+        transition: transform .25s cubic-bezier(0, 0, 0, .9);
+
+        display: grid;
+        place-items: center;
+    }
+
+    main:hover .deleteAction {
+        transform: translate(0, 0);
+    }
+
+    .deleteAction svg {
+        fill: var(--white);
+        width: 50%;
     }
 </style>

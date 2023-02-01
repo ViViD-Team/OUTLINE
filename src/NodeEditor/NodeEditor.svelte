@@ -81,6 +81,90 @@
         return newId;
     }
 
+
+    let nodeDrag = {
+        "ongoing": false,
+        "start": {
+            "x": 0,
+            "y": 0,
+        },
+        "delta": {
+            "x": 0,
+            "y": 0,
+        },
+        "layer": {
+            "x": 0,
+            "y": 0,
+        },
+        "objectInfo": {
+            "type": "",
+            "ID": 0,
+            "width": 0,
+            "height": 0,
+        },
+    }
+    function clearNodeDrag() {
+        nodeDrag = {
+        "ongoing": false,
+        "start": {
+            "x": 0,
+            "y": 0,
+        },
+        "delta": {
+            "x": 0,
+            "y": 0,
+        },
+        "layer": {
+            "x": 0,
+            "y": 0,
+        },
+        "objectInfo": {
+            "type": "",
+            "ID": 0,
+        },
+    }
+    }
+    function initNodeDrag(event, type, index) {
+        clearNodeDrag();
+        
+        // Override default drag image
+        let imageOverride = document.createElement("img");
+        event.dataTransfer.setDragImage(imageOverride, 0, 0);
+
+        // Append necessary info
+        event.dataTransfer.setData("command", "moveNode");
+        event.dataTransfer.setData("nodeID", index);
+        event.dataTransfer.setData("nodeType", type);
+        event.dataTransfer.setData("startX", event.clientX);
+        event.dataTransfer.setData("startY", event.clientY);
+
+        // Update nodeDrag
+        nodeDrag.ongoing = true;
+        nodeDrag.start.x = event.clientX;
+        nodeDrag.start.y = event.clientY;
+        nodeDrag.objectInfo.type = type;
+        nodeDrag.objectInfo.ID = index;
+    }
+    function dragOver(event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        let vhConverter = (window.innerHeight / 100 * 2 * viewZoom);
+
+        if (nodeDrag.ongoing) {
+            // Update objectDrag
+            nodeDrag.delta.x = Math.round((event.clientX - nodeDrag.start.x) / vhConverter);
+            nodeDrag.delta.y = Math.round((event.clientY - nodeDrag.start.y) / vhConverter);
+
+            nodeDrag.layer.x = event.layerX;
+            nodeDrag.layer.y = event.layerY;
+
+            nodeData[nodeDrag.objectInfo.type][nodeDrag.objectInfo.ID].simX = nodeDrag.delta.x;
+            nodeData[nodeDrag.objectInfo.type][nodeDrag.objectInfo.ID].simY = nodeDrag.delta.y;
+
+        }
+    }
+
     function drop(event) {
         event.stopPropagation();
 
@@ -109,7 +193,19 @@
                 catch (err) {
                     console.error(err);
                 }
-                
+                break;
+            
+            case "moveNode":
+
+                nodeData[event.dataTransfer.getData("nodeType")][event.dataTransfer.getData("nodeID")].posX += Math.round((event.clientX - event.dataTransfer.getData("startX")) / (window.innerHeight / 100 * 2 * viewZoom));
+                nodeData[event.dataTransfer.getData("nodeType")][event.dataTransfer.getData("nodeID")].posY += Math.round((event.clientY - event.dataTransfer.getData("startY")) / (window.innerHeight / 100 * 2 * viewZoom));
+            
+                nodeData[event.dataTransfer.getData("nodeType")][event.dataTransfer.getData("nodeID")].simX = 0;
+                nodeData[event.dataTransfer.getData("nodeType")][event.dataTransfer.getData("nodeID")].simY = 0;
+
+                clearNodeDrag();
+
+                break;
         }
     }
 
@@ -163,7 +259,7 @@
         on:mousewheel="{scroll}"
 
         on:drop={drop}
-        on:dragover={(event) => {event.preventDefault(); event.stopPropagation();}}
+        on:dragover={dragOver}
     >
         <div class="crossBackground" style="
             background-position-x: {viewX + mouseDrag.delta.x}px;
@@ -171,14 +267,18 @@
             background-size: {2 * viewZoom}vh;
         ">
 
-        {#each nodeData.operator as node}
+        {#each nodeData.operator as node, index}
             <Node
                 bind:nodeObject={node.reference}
+
+                onDrag={(event) => initNodeDrag(event, "operator", index)}
 
                 posX={node.posX}
                 posY={node.posY}
                 offX={(viewX + mouseDrag.delta.x) / window.innerHeight * 50}
                 offY={(viewY + mouseDrag.delta.y) / window.innerHeight * 50}
+                simX={node.simX}
+                simY={node.simY}
                 zoom={viewZoom}
 
                 nodeData={node}
@@ -196,10 +296,14 @@
                         height: {Math.abs(c.height) * viewZoom * 2}vh;
 
                         transform:  translate({c.posX > c.destX ? "-100%" : "0"},
-                            {c.posY > c.destY ? "-100%" : "0"});
+                            {c.posY > c.destY ? "-100%" : "0"}) scaleY({c.destY < c.posY ? "-" : ""}100%);
+
 
                     " class="inputFlowContainer">
-                        <svg style="width: 100%; height: calc(100% + {viewZoom}px); transform: translateY(-{.5 * viewZoom}px);" preserveAspectRatio="none" viewBox="0 0 100 102" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg style="
+                            width: 100%; height: calc(100% + {viewZoom}px);
+                            transform: translateY(-{.5 * viewZoom}px);
+                        " preserveAspectRatio="none" viewBox="0 0 100 102" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0 1C47.3934 1 52.6066 101 100 101" stroke="url(#paint0_linear_102_1243)" stroke-width="{2*viewZoom}"/>
                             <defs>
                                 <linearGradient id="paint0_linear_102_1243" x1="0" y1="1" x2="103.056" y2="4.25514" gradientUnits="userSpaceOnUse">
