@@ -11,6 +11,10 @@ class NodeData {
         this.outputs.forEach((o) => {
             o.superNode = this;
         });
+
+        this.inputs.forEach((i) => {
+            i.superNode = this;
+        });
     }
 }
 

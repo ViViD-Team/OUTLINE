@@ -103,6 +103,7 @@
 					"posY": 5,
 					"sizeX": 28,
 					"sizeY": 21,
+					"width": 6,
 					"simX": 0,
 					"simY": 0,
 					"simResizeX": 0,

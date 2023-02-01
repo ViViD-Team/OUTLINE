@@ -97,6 +97,7 @@
                         "id": event.dataTransfer.getData("nodeID"),
                         "posX": 0,
                         "posY": 0,
+                        "width": 6,
                         "reference": null,
                         "inputs": inputs,
                         "outputs": outputs,
@@ -128,14 +129,20 @@
 
     function addConnection(node, input, index) {
         let destData = context[input].superNode.rawNodeData;
-        connections.push({
+        let newConnection = {
             "posX": node.posX + .75,
             "posY": node.posY + (1 + (index + 1)*1.5),
             "destX": destData.posX + destData.width - .75,
             "destY": destData.posY + (1 + (destData.outputs.indexOf(input) + 1) * 1.5),
+            "width": (destData.posX + destData.width - .75) - (node.posX + .75),
+            "height": (destData.posY + (1 + (destData.outputs.indexOf(input) + 1) * 1.5)) - (node.posY + (1 + (index + 1)*1.5)),
             "originColor": node.color,
             "destColor": destData.color
-        });
+        };
+
+        connections.push(newConnection);
+
+        console.log(newConnection, destData);
 
         connections = Object.assign([], connections);
     }
@@ -185,8 +192,8 @@
                         left: {2 * (c.posX * viewZoom + (viewX + mouseDrag.delta.x) / window.innerHeight * 50)}vh;
                         top: {2 * (c.posY * viewZoom + (viewY + mouseDrag.delta.y) / window.innerHeight * 50)}vh;
                     
-                        width: {Math.abs(c.posX - c.destX) * viewZoom * 2}vh;
-                        height: {Math.abs(c.posY - c.destY) * viewZoom * 2}vh;
+                        width: {Math.abs(c.width) * viewZoom * 2}vh;
+                        height: {Math.abs(c.height) * viewZoom * 2}vh;
 
                         transform:  translate({c.posX > c.destX ? "-100%" : "0"},
                             {c.posY > c.destY ? "-100%" : "0"});

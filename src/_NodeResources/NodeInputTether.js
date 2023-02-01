@@ -3,6 +3,8 @@ class NodeInputTether {
     constructor(label, context) {
         this.label = label;
         this.connection = null;
+
+        this.superNode = null;
     }
 
     getValue() {
