@@ -6804,19 +6804,19 @@ var app = (function () {
 
     function get_each_context_1$4(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[29] = list[i];
+    	child_ctx[31] = list[i];
     	return child_ctx;
     }
 
     function get_each_context$4(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[26] = list[i];
-    	child_ctx[27] = list;
-    	child_ctx[28] = i;
+    	child_ctx[28] = list[i];
+    	child_ctx[29] = list;
+    	child_ctx[30] = i;
     	return child_ctx;
     }
 
-    // (290:12) {#each connections as c}
+    // (345:12) {#each connections as c}
     function create_each_block_1$4(ctx) {
     	let div;
     	let svg;
@@ -6843,20 +6843,20 @@ var app = (function () {
     			attr_dev(path_1, "d", "M0 1C47.3934 1 52.6066 101 100 101");
     			attr_dev(path_1, "stroke", "url(#paint0_linear_102_1243)");
     			attr_dev(path_1, "stroke-width", path_1_stroke_width_value = 2 * /*viewZoom*/ ctx[3]);
-    			add_location(path_1, file$9, 306, 28, 10265);
-    			attr_dev(stop0, "stop-color", stop0_stop_color_value = /*c*/ ctx[29].originColor);
-    			add_location(stop0, file$9, 309, 32, 10596);
+    			add_location(path_1, file$9, 361, 28, 12576);
+    			attr_dev(stop0, "stop-color", stop0_stop_color_value = /*c*/ ctx[31].originColor);
+    			add_location(stop0, file$9, 364, 32, 12907);
     			attr_dev(stop1, "offset", "1");
-    			attr_dev(stop1, "stop-color", stop1_stop_color_value = /*c*/ ctx[29].destColor);
-    			add_location(stop1, file$9, 310, 32, 10666);
+    			attr_dev(stop1, "stop-color", stop1_stop_color_value = /*c*/ ctx[31].destColor);
+    			add_location(stop1, file$9, 365, 32, 12977);
     			attr_dev(linearGradient, "id", "paint0_linear_102_1243");
     			attr_dev(linearGradient, "x1", "0");
     			attr_dev(linearGradient, "y1", "1");
     			attr_dev(linearGradient, "x2", "103.056");
     			attr_dev(linearGradient, "y2", "4.25514");
     			attr_dev(linearGradient, "gradientUnits", "userSpaceOnUse");
-    			add_location(linearGradient, file$9, 308, 32, 10447);
-    			add_location(defs, file$9, 307, 28, 10407);
+    			add_location(linearGradient, file$9, 363, 32, 12758);
+    			add_location(defs, file$9, 362, 28, 12718);
     			set_style(svg, "width", "100%");
     			set_style(svg, "height", "calc(100% + " + /*viewZoom*/ ctx[3] + "px)");
     			set_style(svg, "transform", "translateY(-" + 0.5 * /*viewZoom*/ ctx[3] + "px)");
@@ -6865,14 +6865,14 @@ var app = (function () {
     			attr_dev(svg, "fill", "none");
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "class", "svelte-nn6fcz");
-    			add_location(svg, file$9, 302, 24, 9950);
-    			set_style(div, "left", 2 * (/*c*/ ctx[29].posX * /*viewZoom*/ ctx[3] + (/*viewX*/ ctx[1] + /*mouseDrag*/ ctx[7].delta.x) / window.innerHeight * 50) + "vh");
-    			set_style(div, "top", 2 * (/*c*/ ctx[29].posY * /*viewZoom*/ ctx[3] + (/*viewY*/ ctx[2] + /*mouseDrag*/ ctx[7].delta.y) / window.innerHeight * 50) + "vh");
-    			set_style(div, "width", Math.abs(/*c*/ ctx[29].width) * /*viewZoom*/ ctx[3] * 2 + "vh");
-    			set_style(div, "height", Math.abs(/*c*/ ctx[29].height) * /*viewZoom*/ ctx[3] * 2 + "vh");
-    			set_style(div, "transform", "translate(" + (/*c*/ ctx[29].posX > /*c*/ ctx[29].destX ? "-100%" : "0") + ",\r\n                            " + (/*c*/ ctx[29].posY > /*c*/ ctx[29].destY ? "-100%" : "0") + ") scaleY(" + (/*c*/ ctx[29].destY < /*c*/ ctx[29].posY ? "-" : "") + "100%)");
+    			add_location(svg, file$9, 357, 24, 12261);
+    			set_style(div, "left", 2 * (/*c*/ ctx[31].posX * /*viewZoom*/ ctx[3] + (/*viewX*/ ctx[1] + /*mouseDrag*/ ctx[7].delta.x) / window.innerHeight * 50) + "vh");
+    			set_style(div, "top", 2 * (/*c*/ ctx[31].posY * /*viewZoom*/ ctx[3] + (/*viewY*/ ctx[2] + /*mouseDrag*/ ctx[7].delta.y) / window.innerHeight * 50) + "vh");
+    			set_style(div, "width", Math.abs(/*c*/ ctx[31].width) * /*viewZoom*/ ctx[3] * 2 + "vh");
+    			set_style(div, "height", Math.abs(/*c*/ ctx[31].height) * /*viewZoom*/ ctx[3] * 2 + "vh");
+    			set_style(div, "transform", "translate(" + (/*c*/ ctx[31].posX > /*c*/ ctx[31].destX ? "-100%" : "0") + ",\r\n                            " + (/*c*/ ctx[31].posY > /*c*/ ctx[31].destY ? "-100%" : "0") + ") scale(1,  " + (/*c*/ ctx[31].destY > /*c*/ ctx[31].posY ? "-" : "") + "1)");
     			attr_dev(div, "class", "inputFlowContainer svelte-nn6fcz");
-    			add_location(div, file$9, 290, 20, 9269);
+    			add_location(div, file$9, 345, 20, 11580);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -6889,11 +6889,11 @@ var app = (function () {
     				attr_dev(path_1, "stroke-width", path_1_stroke_width_value);
     			}
 
-    			if (dirty[0] & /*connections*/ 256 && stop0_stop_color_value !== (stop0_stop_color_value = /*c*/ ctx[29].originColor)) {
+    			if (dirty[0] & /*connections*/ 256 && stop0_stop_color_value !== (stop0_stop_color_value = /*c*/ ctx[31].originColor)) {
     				attr_dev(stop0, "stop-color", stop0_stop_color_value);
     			}
 
-    			if (dirty[0] & /*connections*/ 256 && stop1_stop_color_value !== (stop1_stop_color_value = /*c*/ ctx[29].destColor)) {
+    			if (dirty[0] & /*connections*/ 256 && stop1_stop_color_value !== (stop1_stop_color_value = /*c*/ ctx[31].destColor)) {
     				attr_dev(stop1, "stop-color", stop1_stop_color_value);
     			}
 
@@ -6906,23 +6906,23 @@ var app = (function () {
     			}
 
     			if (dirty[0] & /*connections, viewZoom, viewX, mouseDrag*/ 394) {
-    				set_style(div, "left", 2 * (/*c*/ ctx[29].posX * /*viewZoom*/ ctx[3] + (/*viewX*/ ctx[1] + /*mouseDrag*/ ctx[7].delta.x) / window.innerHeight * 50) + "vh");
+    				set_style(div, "left", 2 * (/*c*/ ctx[31].posX * /*viewZoom*/ ctx[3] + (/*viewX*/ ctx[1] + /*mouseDrag*/ ctx[7].delta.x) / window.innerHeight * 50) + "vh");
     			}
 
     			if (dirty[0] & /*connections, viewZoom, viewY, mouseDrag*/ 396) {
-    				set_style(div, "top", 2 * (/*c*/ ctx[29].posY * /*viewZoom*/ ctx[3] + (/*viewY*/ ctx[2] + /*mouseDrag*/ ctx[7].delta.y) / window.innerHeight * 50) + "vh");
+    				set_style(div, "top", 2 * (/*c*/ ctx[31].posY * /*viewZoom*/ ctx[3] + (/*viewY*/ ctx[2] + /*mouseDrag*/ ctx[7].delta.y) / window.innerHeight * 50) + "vh");
     			}
 
     			if (dirty[0] & /*connections, viewZoom*/ 264) {
-    				set_style(div, "width", Math.abs(/*c*/ ctx[29].width) * /*viewZoom*/ ctx[3] * 2 + "vh");
+    				set_style(div, "width", Math.abs(/*c*/ ctx[31].width) * /*viewZoom*/ ctx[3] * 2 + "vh");
     			}
 
     			if (dirty[0] & /*connections, viewZoom*/ 264) {
-    				set_style(div, "height", Math.abs(/*c*/ ctx[29].height) * /*viewZoom*/ ctx[3] * 2 + "vh");
+    				set_style(div, "height", Math.abs(/*c*/ ctx[31].height) * /*viewZoom*/ ctx[3] * 2 + "vh");
     			}
 
     			if (dirty[0] & /*connections*/ 256) {
-    				set_style(div, "transform", "translate(" + (/*c*/ ctx[29].posX > /*c*/ ctx[29].destX ? "-100%" : "0") + ",\r\n                            " + (/*c*/ ctx[29].posY > /*c*/ ctx[29].destY ? "-100%" : "0") + ") scaleY(" + (/*c*/ ctx[29].destY < /*c*/ ctx[29].posY ? "-" : "") + "100%)");
+    				set_style(div, "transform", "translate(" + (/*c*/ ctx[31].posX > /*c*/ ctx[31].destX ? "-100%" : "0") + ",\r\n                            " + (/*c*/ ctx[31].posY > /*c*/ ctx[31].destY ? "-100%" : "0") + ") scale(1,  " + (/*c*/ ctx[31].destY > /*c*/ ctx[31].posY ? "-" : "") + "1)");
     			}
     		},
     		d: function destroy(detaching) {
@@ -6934,14 +6934,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1$4.name,
     		type: "each",
-    		source: "(290:12) {#each connections as c}",
+    		source: "(345:12) {#each connections as c}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (270:8) {#each nodeData.operator as node, index}
+    // (325:8) {#each nodeData.operator as node, index}
     function create_each_block$4(ctx) {
     	let updating_nodeObject;
     	let t;
@@ -6949,29 +6949,29 @@ var app = (function () {
     	let current;
 
     	function func(...args) {
-    		return /*func*/ ctx[23](/*index*/ ctx[28], ...args);
+    		return /*func*/ ctx[25](/*index*/ ctx[30], ...args);
     	}
 
     	function node_nodeObject_binding(value) {
-    		/*node_nodeObject_binding*/ ctx[24].call(null, value, /*node*/ ctx[26]);
+    		/*node_nodeObject_binding*/ ctx[26].call(null, value, /*node*/ ctx[28]);
     	}
 
     	let node_props = {
     		onDrag: func,
-    		posX: /*node*/ ctx[26].posX,
-    		posY: /*node*/ ctx[26].posY,
+    		posX: /*node*/ ctx[28].posX,
+    		posY: /*node*/ ctx[28].posY,
     		offX: (/*viewX*/ ctx[1] + /*mouseDrag*/ ctx[7].delta.x) / window.innerHeight * 50,
     		offY: (/*viewY*/ ctx[2] + /*mouseDrag*/ ctx[7].delta.y) / window.innerHeight * 50,
-    		simX: /*node*/ ctx[26].simX,
-    		simY: /*node*/ ctx[26].simY,
+    		simX: /*node*/ ctx[28].simX,
+    		simY: /*node*/ ctx[28].simY,
     		zoom: /*viewZoom*/ ctx[3],
-    		nodeData: /*node*/ ctx[26],
+    		nodeData: /*node*/ ctx[28],
     		context: /*context*/ ctx[6],
     		connectionCallback: /*addConnection*/ ctx[16]
     	};
 
-    	if (/*node*/ ctx[26].reference !== void 0) {
-    		node_props.nodeObject = /*node*/ ctx[26].reference;
+    	if (/*node*/ ctx[28].reference !== void 0) {
+    		node_props.nodeObject = /*node*/ ctx[28].reference;
     	}
 
     	const node = new Node({ props: node_props, $$inline: true });
@@ -7009,19 +7009,19 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
     			const node_changes = {};
-    			if (dirty[0] & /*nodeData*/ 1) node_changes.posX = /*node*/ ctx[26].posX;
-    			if (dirty[0] & /*nodeData*/ 1) node_changes.posY = /*node*/ ctx[26].posY;
+    			if (dirty[0] & /*nodeData*/ 1) node_changes.posX = /*node*/ ctx[28].posX;
+    			if (dirty[0] & /*nodeData*/ 1) node_changes.posY = /*node*/ ctx[28].posY;
     			if (dirty[0] & /*viewX, mouseDrag*/ 130) node_changes.offX = (/*viewX*/ ctx[1] + /*mouseDrag*/ ctx[7].delta.x) / window.innerHeight * 50;
     			if (dirty[0] & /*viewY, mouseDrag*/ 132) node_changes.offY = (/*viewY*/ ctx[2] + /*mouseDrag*/ ctx[7].delta.y) / window.innerHeight * 50;
-    			if (dirty[0] & /*nodeData*/ 1) node_changes.simX = /*node*/ ctx[26].simX;
-    			if (dirty[0] & /*nodeData*/ 1) node_changes.simY = /*node*/ ctx[26].simY;
+    			if (dirty[0] & /*nodeData*/ 1) node_changes.simX = /*node*/ ctx[28].simX;
+    			if (dirty[0] & /*nodeData*/ 1) node_changes.simY = /*node*/ ctx[28].simY;
     			if (dirty[0] & /*viewZoom*/ 8) node_changes.zoom = /*viewZoom*/ ctx[3];
-    			if (dirty[0] & /*nodeData*/ 1) node_changes.nodeData = /*node*/ ctx[26];
+    			if (dirty[0] & /*nodeData*/ 1) node_changes.nodeData = /*node*/ ctx[28];
     			if (dirty[0] & /*context*/ 64) node_changes.context = /*context*/ ctx[6];
 
     			if (!updating_nodeObject && dirty[0] & /*nodeData*/ 1) {
     				updating_nodeObject = true;
-    				node_changes.nodeObject = /*node*/ ctx[26].reference;
+    				node_changes.nodeObject = /*node*/ ctx[28].reference;
     				add_flush_callback(() => updating_nodeObject = false);
     			}
 
@@ -7072,7 +7072,7 @@ var app = (function () {
     		block,
     		id: create_each_block$4.name,
     		type: "each",
-    		source: "(270:8) {#each nodeData.operator as node, index}",
+    		source: "(325:8) {#each nodeData.operator as node, index}",
     		ctx
     	});
 
@@ -7148,34 +7148,34 @@ var app = (function () {
     			set_style(div0, "background-position-x", /*viewX*/ ctx[1] + /*mouseDrag*/ ctx[7].delta.x + "px");
     			set_style(div0, "background-position-y", /*viewY*/ ctx[2] + /*mouseDrag*/ ctx[7].delta.y + "px");
     			set_style(div0, "background-size", 2 * /*viewZoom*/ ctx[3] + "vh");
-    			add_location(div0, file$9, 263, 8, 8311);
+    			add_location(div0, file$9, 318, 8, 10622);
     			attr_dev(path_1, "d", "M7.724 65.49C13.36 55.11 21.79 46.47 32 40.56C39.63 36.15 48.25 33.26 57.46 32.33C59.61 32.11 61.79 32 64 32H448C483.3 32 512 60.65 512 96V416C512 451.3 483.3 480 448 480H64C28.65 480 0 451.3 0 416V96C0 93.79 .112 91.61 .3306 89.46C1.204 80.85 3.784 72.75 7.724 65.49V65.49zM48 416C48 424.8 55.16 432 64 432H448C456.8 432 464 424.8 464 416V224H48V416z");
-    			add_location(path_1, file$9, 324, 246, 11305);
+    			add_location(path_1, file$9, 379, 246, 13616);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 512 512");
     			attr_dev(svg, "class", "svelte-nn6fcz");
-    			add_location(svg, file$9, 324, 16, 11075);
+    			add_location(svg, file$9, 379, 16, 13386);
     			attr_dev(div1, "class", "nodePickerIcon svelte-nn6fcz");
-    			add_location(div1, file$9, 323, 12, 11029);
+    			add_location(div1, file$9, 378, 12, 13340);
     			attr_dev(h20, "class", "svelte-nn6fcz");
-    			add_location(h20, file$9, 327, 16, 11767);
+    			add_location(h20, file$9, 382, 16, 14078);
     			attr_dev(div2, "class", "nodePickerTitle svelte-nn6fcz");
-    			add_location(div2, file$9, 326, 12, 11720);
+    			add_location(div2, file$9, 381, 12, 14031);
     			attr_dev(div3, "class", "nodePickerHeader svelte-nn6fcz");
-    			add_location(div3, file$9, 322, 8, 10985);
+    			add_location(div3, file$9, 377, 8, 13296);
     			attr_dev(h21, "class", "svelte-nn6fcz");
-    			add_location(h21, file$9, 332, 16, 11931);
+    			add_location(h21, file$9, 387, 16, 14242);
     			attr_dev(div4, "class", "nodePickerGroupTitle svelte-nn6fcz");
-    			add_location(div4, file$9, 331, 12, 11879);
+    			add_location(div4, file$9, 386, 12, 14190);
     			attr_dev(div5, "class", "nodePickerContents svelte-nn6fcz");
-    			add_location(div5, file$9, 330, 8, 11833);
+    			add_location(div5, file$9, 385, 8, 14144);
     			attr_dev(div6, "class", "nodePickerFrame neuOutdentShadow svelte-nn6fcz");
-    			add_location(div6, file$9, 321, 4, 10929);
+    			add_location(div6, file$9, 376, 4, 13240);
     			attr_dev(div7, "class", "frame neuIndentShadow svelte-nn6fcz");
-    			add_render_callback(() => /*div7_elementresize_handler*/ ctx[25].call(div7));
-    			add_location(div7, file$9, 250, 4, 7937);
+    			add_render_callback(() => /*div7_elementresize_handler*/ ctx[27].call(div7));
+    			add_location(div7, file$9, 305, 4, 10248);
     			attr_dev(main, "class", "svelte-nn6fcz");
-    			add_location(main, file$9, 249, 0, 7925);
+    			add_location(main, file$9, 304, 0, 10236);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -7204,7 +7204,7 @@ var app = (function () {
     			append_dev(div4, h21);
     			append_dev(div5, t5);
     			mount_component(nodeeditorslot, div5, null);
-    			div7_resize_listener = add_resize_listener(div7, /*div7_elementresize_handler*/ ctx[25].bind(div7));
+    			div7_resize_listener = add_resize_listener(div7, /*div7_elementresize_handler*/ ctx[27].bind(div7));
     			current = true;
 
     			dispose = [
@@ -7444,8 +7444,10 @@ var app = (function () {
 
     					let newObj = {
     						"id": event.dataTransfer.getData("nodeID"),
-    						"posX": 0,
-    						"posY": 0,
+    						"posX": Math.round((-viewX + event.layerX) / (window.innerHeight / 100 * 2 * viewZoom)),
+    						"posY": Math.round((-viewY + event.layerY) / (window.innerHeight / 100 * 2 * viewZoom)),
+    						"simX": 0,
+    						"simY": 0,
     						"width": 6,
     						"reference": null,
     						inputs,
@@ -7464,6 +7466,7 @@ var app = (function () {
     				$$invalidate(0, nodeData[event.dataTransfer.getData("nodeType")][event.dataTransfer.getData("nodeID")].simX = 0, nodeData);
     				$$invalidate(0, nodeData[event.dataTransfer.getData("nodeType")][event.dataTransfer.getData("nodeID")].simY = 0, nodeData);
     				clearNodeDrag();
+    				recalculateConnections();
     				break;
     		}
     	}
@@ -7483,22 +7486,68 @@ var app = (function () {
     		$$invalidate(8, connections = Object.assign([], connections));
     	});
 
-    	function addConnection(node, input, index) {
-    		let destData = context[input].superNode.rawNodeData;
+    	function recalculateConnections() {
+    		$$invalidate(8, connections = []);
+
+    		nodeData.operator.forEach(n => {
+    			for (let i = 0; i < n.inputs.length; i++) {
+    				if (n.inputs[i] != null) {
+    					addConnection(n, n.inputs[i], i);
+    				}
+    			}
+    		});
+
+    		$$invalidate(8, connections = Object.assign([], connections));
+    	}
+
+    	function addConnection(node, output, index) {
+    		let destData = context[output].superNode.rawNodeData;
 
     		let newConnection = {
-    			"posX": node.posX + 0.75,
-    			"posY": node.posY + (1 + (index + 1) * 1.5),
-    			"destX": destData.posX + destData.width - 0.75,
-    			"destY": destData.posY + (1 + (destData.outputs.indexOf(input) + 1) * 1.5),
+    			"posX": node.posX + node.simX + 0.75,
+    			"posY": node.posY + node.simY + (1 + (index + 1) * 1.5),
+    			"destX": destData.posX + destData.simX + destData.width - 0.75,
+    			"destY": destData.posY + destData.simY + (1 + (destData.outputs.indexOf(output) + 1) * 1.5),
     			"width": destData.posX + destData.width - 0.75 - (node.posX + 0.75),
-    			"height": destData.posY + (1 + (destData.outputs.indexOf(input) + 1) * 1.5) - (node.posY + (1 + (index + 1) * 1.5)),
+    			"height": destData.posY + (1 + (destData.outputs.indexOf(output) + 1) * 1.5) - (node.posY + (1 + (index + 1) * 1.5)),
     			"originColor": node.color,
     			"destColor": destData.color
     		};
 
     		connections.push(newConnection);
     		console.log(newConnection, destData);
+    		$$invalidate(8, connections = Object.assign([], connections));
+    	}
+
+    	function mutateConnection(connection, io, index, newX, newY, nodeWidth) {
+    		if (!io) {
+    			let oldPosX = connection.posX;
+    			let oldPosY = connection.posY;
+    			connection.posX = newX + 0.75;
+    			connection.posY = newY + (1 + (index + 1) * 1.5);
+    			connection.width = connection.width - (oldPosX - connection.posX);
+    			connection.height = connection.height - (oldPosY - connection.posY);
+    		} else {
+    			let oldDestX = connection.destX;
+    			let oldDestY = connection.destY;
+    			connection.destX = newX + nodeWidth - 0.75;
+    			connection.destY = newY + (1 + (index + 1) * 1.5);
+    			connection.width = connection.width - (oldDestX - connection.destX);
+    			connection.height = connection.height - (oldDestY - connection.destY);
+    		}
+
+    		/* let newConnection = {
+        "posX": node.posX + .75,
+        "posY": node.posY + (1 + (index + 1)*1.5),
+        "destX": destData.posX + destData.width - .75,
+        "destY": destData.posY + (1 + (destData.outputs.indexOf(input) + 1) * 1.5),
+        "width": (destData.posX + destData.width - .75) - (node.posX + .75),
+        "height": (destData.posY + (1 + (destData.outputs.indexOf(input) + 1) * 1.5)) - (node.posY + (1 + (index + 1)*1.5)),
+        "originColor": node.color,
+        "destColor": destData.color
+    }; */
+    		console.log(newConnection, destData);
+
     		$$invalidate(8, connections = Object.assign([], connections));
     	}
 
@@ -7554,7 +7603,9 @@ var app = (function () {
     		dragOver,
     		drop,
     		connections,
+    		recalculateConnections,
     		addConnection,
+    		mutateConnection,
     		require,
     		Math,
     		undefined,
@@ -7562,7 +7613,9 @@ var app = (function () {
     		window,
     		__dirname,
     		console,
-    		Object
+    		Object,
+    		newConnection,
+    		destData
     	});
 
     	$$self.$inject_state = $$props => {
@@ -7607,6 +7660,8 @@ var app = (function () {
     		zoomBounds,
     		getNewId,
     		clearNodeDrag,
+    		recalculateConnections,
+    		mutateConnection,
     		func,
     		node_nodeObject_binding,
     		div7_elementresize_handler

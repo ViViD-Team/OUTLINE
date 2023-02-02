@@ -161,7 +161,6 @@
 
             nodeData[nodeDrag.objectInfo.type][nodeDrag.objectInfo.ID].simX = nodeDrag.delta.x;
             nodeData[nodeDrag.objectInfo.type][nodeDrag.objectInfo.ID].simY = nodeDrag.delta.y;
-
         }
     }
 
@@ -179,8 +178,10 @@
 
                     let newObj = {
                         "id": event.dataTransfer.getData("nodeID"),
-                        "posX": 0,
-                        "posY": 0,
+                        "posX": Math.round((-viewX + event.layerX) / (window.innerHeight / 100 * 2 * viewZoom)),
+                        "posY": Math.round((-viewY + event.layerY) / (window.innerHeight / 100 * 2 * viewZoom)),
+                        "simX": 0,
+                        "simY": 0,
                         "width": 6,
                         "reference": null,
                         "inputs": inputs,
@@ -205,6 +206,8 @@
 
                 clearNodeDrag();
 
+                recalculateConnections();
+
                 break;
         }
     }
@@ -223,9 +226,63 @@
         connections = Object.assign([], connections);
     });
 
-    function addConnection(node, input, index) {
-        let destData = context[input].superNode.rawNodeData;
+    function recalculateConnections() {
+        connections = [];
+
+        nodeData.operator.forEach((n) => {
+            for (let i = 0; i < n.inputs.length; i++) {
+                if (n.inputs[i] != null) {
+                    addConnection(n, n.inputs[i], i);
+                }
+            }
+        });
+
+        connections = Object.assign([], connections);
+    }
+
+    function addConnection(node, output, index) {
+        let destData = context[output].superNode.rawNodeData;
         let newConnection = {
+            "posX": (node.posX + node.simX) + .75,
+            "posY": (node.posY + node.simY) + (1 + (index + 1)*1.5),
+            "destX": (destData.posX + destData.simX) + destData.width - .75,
+            "destY": (destData.posY + destData.simY) + (1 + (destData.outputs.indexOf(output) + 1) * 1.5),
+            "width": (destData.posX + destData.width - .75) - (node.posX + .75),
+            "height": (destData.posY + (1 + (destData.outputs.indexOf(output) + 1) * 1.5)) - (node.posY + (1 + (index + 1)*1.5)),
+            "originColor": node.color,
+            "destColor": destData.color
+        };
+
+        connections.push(newConnection);
+
+        console.log(newConnection, destData);
+
+        connections = Object.assign([], connections);
+    }
+
+    function mutateConnection(connection, io, index, newX, newY, nodeWidth) {
+        if (!io) {
+            let oldPosX = connection.posX;
+            let oldPosY = connection.posY;
+
+            connection.posX = newX + .75;
+            connection.posY = newY + (1 + (index + 1) * 1.5);
+
+            connection.width = (connection.width - (oldPosX - connection.posX));
+            connection.height = (connection.height - (oldPosY - connection.posY));
+        }
+        else {
+            let oldDestX = connection.destX;
+            let oldDestY = connection.destY;
+
+            connection.destX = newX + nodeWidth - .75;
+            connection.destY = newY + (1 + (index + 1) * 1.5);
+
+            connection.width = (connection.width - (oldDestX - connection.destX));
+            connection.height = (connection.height - (oldDestY - connection.destY));
+        }
+
+        /* let newConnection = {
             "posX": node.posX + .75,
             "posY": node.posY + (1 + (index + 1)*1.5),
             "destX": destData.posX + destData.width - .75,
@@ -234,9 +291,7 @@
             "height": (destData.posY + (1 + (destData.outputs.indexOf(input) + 1) * 1.5)) - (node.posY + (1 + (index + 1)*1.5)),
             "originColor": node.color,
             "destColor": destData.color
-        };
-
-        connections.push(newConnection);
+        }; */
 
         console.log(newConnection, destData);
 
@@ -296,7 +351,7 @@
                         height: {Math.abs(c.height) * viewZoom * 2}vh;
 
                         transform:  translate({c.posX > c.destX ? "-100%" : "0"},
-                            {c.posY > c.destY ? "-100%" : "0"}) scaleY({c.destY < c.posY ? "-" : ""}100%);
+                            {c.posY > c.destY ? "-100%" : "0"}) scale(1,  {c.destY > c.posY ? "-" : ""}1);
 
 
                     " class="inputFlowContainer">
