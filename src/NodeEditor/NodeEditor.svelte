@@ -298,6 +298,13 @@
         connections = Object.assign([], connections);
     }
 
+    function deleteNode(type, index) {
+        nodeData[type].splice(index, 1);
+        nodeData[type] = Object.assign([], nodeData[type]);
+
+        recalculateConnections();
+    }
+
 </script>
 
 
@@ -327,6 +334,7 @@
                 bind:nodeObject={node.reference}
 
                 onDrag={(event) => initNodeDrag(event, "operator", index)}
+                onDelete={() => {deleteNode("operator", index)}}
 
                 posX={node.posX}
                 posY={node.posY}

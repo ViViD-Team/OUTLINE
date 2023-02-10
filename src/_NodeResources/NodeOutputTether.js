@@ -7,6 +7,7 @@ class NodeOutputTether {
         this.id = id;
 
         // Subscribe to context
+        this.ctx = context;
         context[id] = this;
 
         this.superNode = null;
@@ -17,6 +18,10 @@ class NodeOutputTether {
                 reject((this.label || "Unknown Tether") + ": Prototype Logic");
             });
         }
+    }
+
+    dismount() {
+        delete this.ctx[this.id];
     }
 }
 

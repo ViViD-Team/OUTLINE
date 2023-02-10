@@ -86,6 +86,9 @@
     }
 
     function handleDelete() {
+        for (let i = 0; i < nodeData.outputs.length; i++) {
+            nodeObject.outputs[i].dismount();
+        }
         onDelete();
     }
 </script>
