@@ -12,7 +12,7 @@
 
 
 <main draggable="true" on:dragstart="{initDrag}">
-    <p>Sum</p>
+    <p>{id}</p>
 </main>
 
 

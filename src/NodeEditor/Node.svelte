@@ -112,6 +112,7 @@
 
             style="
                 height: {3*zoom}vh;
+                background-color: {nodeData.color};
         ">
             <h1 style="
                 font-size: {1.5*zoom}vh;
@@ -131,12 +132,13 @@
                         <div style="width: {3*zoom}vh;" class="inputTetherCircleContainer">
                             <svg style="width: {2*zoom}vh; height: {2*zoom}vh;" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="2.5" y="2.5" width="10" height="10" rx="5" stroke="#999999" stroke-dasharray="2 2"/>
-                                <rect x="5" y="5" width="5" height="5" rx="2.5" fill="#DB6239"/>
+                                <rect x="5" y="5" width="5" height="5" rx="2.5" fill="{nodeData.color}"/>
                             </svg>
                         </div>
                         <div class="inputTetherLabelContainer">
                             <p style="
                                 font-size: {zoom}vh;
+                                color: {nodeData.color};
                             ">{input.label}</p>
                         </div>
                     </div>
@@ -163,12 +165,13 @@
                                 transition: transform .5s cubic-bezier(0, 0, 0, .9);
                             " viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="2.5" y="2.5" width="10" height="10" rx="5" stroke="#999999" stroke-dasharray="2 2"/>
-                                <rect x="5" y="5" width="5" height="5" rx="2.5" fill="#DB6239"/>
+                                <rect x="5" y="5" width="5" height="5" rx="2.5" fill="{nodeData.color}"/>
                             </svg>
                         </div>
                         <div class="outputTetherLabelContainer">
                             <p style="
                                 font-size: {zoom}vh;
+                                color: {nodeData.color};
                             ">{output.label}</p>
                         </div>
                     </div>
@@ -208,7 +211,7 @@
     .titleBar {
         width: 100%;
 
-        background-color: var(--orange);
+        /* background-color: var(--orange); */
 
         display: flex;
         align-items: center;
@@ -262,7 +265,7 @@
     }
 
     .inputTetherLabelContainer p {
-        color: var(--orange);
+        /* color: var(--orange); */
 
         white-space: nowrap;
         font-weight: 800;
@@ -304,7 +307,7 @@
     }
 
     .outputTetherLabelContainer p {
-        color: var(--orange);
+        /* color: var(--orange); */
 
         white-space: nowrap;
         font-weight: 800;
@@ -328,6 +331,10 @@
     }
 
     main:hover .deleteAction {
+        transform: translate(0, 0);
+    }
+
+    .deleteAction:hover .deleteAction {
         transform: translate(0, 0);
     }
 

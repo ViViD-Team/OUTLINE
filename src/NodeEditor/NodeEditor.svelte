@@ -1,7 +1,10 @@
 <script>
     import { onMount } from "svelte";
+
     import Node from "./Node.svelte"
-    import NodeEditorSlot from "./NodeEditorSlot.svelte";
+    import InputNode from "./InputNode.svelte";
+
+    import NodePickerSlot from "./NodePickerSlot.svelte";
 
     const path = require("path")
 
@@ -169,6 +172,23 @@
 
         switch (event.dataTransfer.getData("command")) {
             case "createNode":
+                if (event.dataTransfer.getData("nodeType") == "input") {
+                    let newObj = {
+                        "posX": Math.round((-viewX + event.layerX) / (window.innerHeight / 100 * 2 * viewZoom)),
+                        "posY": Math.round((-viewY + event.layerY) / (window.innerHeight / 100 * 2 * viewZoom)),
+                        "simX": 0,
+                        "simY": 0,
+                        "width": 6,
+                        "outputID": getNewId(),
+                        "color": "var(--red)",
+                        "selectedCol": 0,
+                        "selectedRow": 0,
+                    };
+
+                    nodeData[event.dataTransfer.getData("nodeType")].push(newObj);
+                    break;
+                }
+
                 try { 
                     const classRef = require(path.join(__dirname, "../src/_NodeResources/NodeTypes/") + event.dataTransfer.getData("nodeID"));
                     let nodeObject = new classRef([""], {});
@@ -215,6 +235,8 @@
     // Generate Connection Display Objects
     let connections = [];
     onMount(() => {
+        console.log(nodeData);
+
         nodeData.operator.forEach((n) => {
             for (let i = 0; i < n.inputs.length; i++) {
                 if (n.inputs[i] != null) {
@@ -238,26 +260,33 @@
         });
 
         connections = Object.assign([], connections);
+
+        console.log(connections);
     }
 
     function addConnection(node, output, index) {
-        let destData = context[output].superNode.rawNodeData;
-        let newConnection = {
-            "posX": (node.posX + node.simX) + .75,
-            "posY": (node.posY + node.simY) + (1 + (index + 1)*1.5),
-            "destX": (destData.posX + destData.simX) + destData.width - .75,
-            "destY": (destData.posY + destData.simY) + (1 + (destData.outputs.indexOf(output) + 1) * 1.5),
-            "width": (destData.posX + destData.width - .75) - (node.posX + .75),
-            "height": (destData.posY + (1 + (destData.outputs.indexOf(output) + 1) * 1.5)) - (node.posY + (1 + (index + 1)*1.5)),
-            "originColor": node.color,
-            "destColor": destData.color
-        };
+        try {
+            let destData = context[output].superNode.rawNodeData;
+            let newConnection = {
+                "posX": (node.posX + node.simX) + .75,
+                "posY": (node.posY + node.simY) + (1 + (index + 1)*1.5),
+                "destX": (destData.posX + destData.simX) + destData.width - .75,
+                "destY": (destData.posY + destData.simY) + (1 + (destData.outputs.indexOf(output) + 1) * 1.5),
+                "width": (destData.posX + destData.width - .75) - (node.posX + .75),
+                "height": (destData.posY + (1 + (destData.outputs.indexOf(output) + 1) * 1.5)) - (node.posY + (1 + (index + 1)*1.5)),
+                "originColor": node.color,
+                "destColor": destData.color
+            };
 
-        connections.push(newConnection);
+            connections.push(newConnection);
 
-        console.log(newConnection, destData);
+            console.log(newConnection, destData);
 
-        connections = Object.assign([], connections);
+            connections = Object.assign([], connections);
+        }
+        catch (err) {
+            console.error(err);
+        }
     }
 
     function mutateConnection(connection, io, index, newX, newY, nodeWidth) {
@@ -349,36 +378,57 @@
 
                 connectionCallback={addConnection}
             />
-
-            {#each connections as c}
-                    <div style="
-                        left: {2 * (c.posX * viewZoom + (viewX + mouseDrag.delta.x) / window.innerHeight * 50)}vh;
-                        top: {2 * (c.posY * viewZoom + (viewY + mouseDrag.delta.y) / window.innerHeight * 50)}vh;
-                    
-                        width: {Math.abs(c.width) * viewZoom * 2}vh;
-                        height: {Math.abs(c.height) * viewZoom * 2}vh;
-
-                        transform:  translate({c.posX > c.destX ? "-100%" : "0"},
-                            {c.posY > c.destY ? "-100%" : "0"}) scale(1,  {c.destY > c.posY ? "-" : ""}1);
-
-
-                    " class="inputFlowContainer">
-                        <svg style="
-                            width: 100%; height: calc(100% + {viewZoom}px);
-                            transform: translateY(-{.5 * viewZoom}px);
-                        " preserveAspectRatio="none" viewBox="0 0 100 102" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0 1C47.3934 1 52.6066 101 100 101" stroke="url(#paint0_linear_102_1243)" stroke-width="{2*viewZoom}"/>
-                            <defs>
-                                <linearGradient id="paint0_linear_102_1243" x1="0" y1="1" x2="103.056" y2="4.25514" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="{c.originColor}"/>
-                                <stop offset="1" stop-color="{c.destColor}"/>
-                                </linearGradient>
-                            </defs>
-                        </svg>
-                    </div>
-            {/each}
         {/each}
         
+        {#each nodeData.input as node, index}
+            <InputNode
+                onDrag={(event) => initNodeDrag(event, "input", index)}
+                onDelete={() => {deleteNode("input", index)}}
+
+                posX={node.posX}
+                posY={node.posY}
+                offX={(viewX + mouseDrag.delta.x) / window.innerHeight * 50}
+                offY={(viewY + mouseDrag.delta.y) / window.innerHeight * 50}
+                simX={node.simX}
+                simY={node.simY}
+                zoom={viewZoom}
+
+                outputID={node.outputID}
+
+                nodeData={node}
+                context={context}
+
+                connectionCallback={addConnection}
+            />
+        {/each}
+
+        {#each connections as c, index}
+                <div style="
+                    left: {2 * (c.posX * viewZoom + (viewX + mouseDrag.delta.x) / window.innerHeight * 50)}vh;
+                    top: {2 * (c.posY * viewZoom + (viewY + mouseDrag.delta.y) / window.innerHeight * 50)}vh;
+                
+                    width: {Math.abs(c.width) * viewZoom * 2}vh;
+                    height: {Math.abs(c.height) * viewZoom * 2}vh;
+
+                    transform:  translate({c.posX > c.destX ? "-100%" : "0"},
+                        {c.posY > c.destY ? "-100%" : "0"}) scale(1,  {c.destY > c.posY ? "-" : ""}1);
+
+
+                " class="inputFlowContainer">
+                    <svg style="
+                        width: 100%; height: calc(100% + {viewZoom}px);
+                        transform: translateY(-{.5 * viewZoom}px);
+                    " preserveAspectRatio="none" viewBox="0 0 100 102" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 1C47.3934 1 52.6066 101 100 101" stroke="url(#paint0_linear_102_1243_{index})" stroke-width="{2*viewZoom}"/>
+                        <defs>
+                            <linearGradient id="paint0_linear_102_1243_{index}" x1="0" y1="1" x2="103.056" y2="4.25514" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="{c.destColor}"/>
+                            <stop offset="1" stop-color="{c.originColor}"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+            {/each}
 
     </div>
 
@@ -392,11 +442,16 @@
             </div>
         </div>
         <div class="nodePickerContents">
+            <NodePickerSlot
+                id="Input"
+                type="input"
+            />
+
             <div class="nodePickerGroupTitle">
                 <h2>Math - Basic</h2>
             </div>
 
-            <NodeEditorSlot
+            <NodePickerSlot
                 id="Sum"
                 type="operator"
             />
@@ -594,10 +649,18 @@
         position: absolute;
 
         overflow: visible;
+        pointer-events: none;
     }
 
     .inputFlowContainer svg {
         overflow: visible;
+
+        pointer-events: none;
     }
+
+    .inputFlowContainer svg path {
+        pointer-events: visibleStroke;
+    }
+
 
 </style>
