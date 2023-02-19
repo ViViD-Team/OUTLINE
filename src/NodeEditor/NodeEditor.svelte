@@ -3,6 +3,7 @@
 
     import Node from "./Node.svelte"
     import InputNode from "./InputNode.svelte";
+    import OutputNode from "./OutputNode.svelte";
 
     import NodePickerSlot from "./NodePickerSlot.svelte";
 
@@ -172,49 +173,70 @@
 
         switch (event.dataTransfer.getData("command")) {
             case "createNode":
-                if (event.dataTransfer.getData("nodeType") == "input") {
-                    let newObj = {
-                        "posX": Math.round((-viewX + event.layerX) / (window.innerHeight / 100 * 2 * viewZoom)),
-                        "posY": Math.round((-viewY + event.layerY) / (window.innerHeight / 100 * 2 * viewZoom)),
-                        "simX": 0,
-                        "simY": 0,
-                        "width": 6,
-                        "outputID": getNewId(),
-                        "color": "var(--red)",
-                        "selectedCol": 0,
-                        "selectedRow": 0,
-                    };
+                switch (event.dataTransfer.getData("nodeType")) {
+                    case "input": {
+                        let newObj = {
+                            "posX": Math.round((-viewX + event.layerX) / (window.innerHeight / 100 * 2 * viewZoom)),
+                            "posY": Math.round((-viewY + event.layerY) / (window.innerHeight / 100 * 2 * viewZoom)),
+                            "simX": 0,
+                            "simY": 0,
+                            "width": 6,
+                            "outputID": getNewId(),
+                            "color": "var(--red)",
+                            "selectedCol": 0,
+                            "selectedRow": 0,
+                        };
 
-                    nodeData[event.dataTransfer.getData("nodeType")].push(newObj);
-                    break;
+                        nodeData[event.dataTransfer.getData("nodeType")].push(newObj);
+                        return;
+                    }
+
+                    case "output": {
+                        let newObj = {
+                            "posX": Math.round((-viewX + event.layerX) / (window.innerHeight / 100 * 2 * viewZoom)),
+                            "posY": Math.round((-viewY + event.layerY) / (window.innerHeight / 100 * 2 * viewZoom)),
+                            "simX": 0,
+                            "simY": 0,
+                            "width": 6,
+                            "input": null,
+                            "color": "var(--blue)",
+                            "selectedCol": 0,
+                            "selectedRow": 0,
+                        };
+
+                        nodeData[event.dataTransfer.getData("nodeType")].push(newObj);
+                        nodeData[event.dataTransfer.getData("nodeType")] = Object.assign([], nodeData[event.dataTransfer.getData("nodeType")]);
+                        return;
+                    }
+
+                    default:
+                        try { 
+                            const classRef = require(path.join(__dirname, "../src/_NodeResources/NodeTypes/") + event.dataTransfer.getData("nodeID"));
+                            let nodeObject = new classRef([""], {});
+
+                            let inputs = nodeObject.inputs.map(x => null);
+                            let outputs = nodeObject.outputs.map(x => getNewId());
+
+                            let newObj = {
+                                "id": event.dataTransfer.getData("nodeID"),
+                                "posX": Math.round((-viewX + event.layerX) / (window.innerHeight / 100 * 2 * viewZoom)),
+                                "posY": Math.round((-viewY + event.layerY) / (window.innerHeight / 100 * 2 * viewZoom)),
+                                "simX": 0,
+                                "simY": 0,
+                                "width": 6,
+                                "reference": null,
+                                "inputs": inputs,
+                                "outputs": outputs,
+                                "color": "var(--orange)"
+                            };
+
+                            nodeData[event.dataTransfer.getData("nodeType")].push(newObj);
+                        }
+                        catch (err) {
+                            console.error(err);
+                        }
+                        return;
                 }
-
-                try { 
-                    const classRef = require(path.join(__dirname, "../src/_NodeResources/NodeTypes/") + event.dataTransfer.getData("nodeID"));
-                    let nodeObject = new classRef([""], {});
-
-                    let inputs = nodeObject.inputs.map(x => null);
-                    let outputs = nodeObject.outputs.map(x => getNewId());
-
-                    let newObj = {
-                        "id": event.dataTransfer.getData("nodeID"),
-                        "posX": Math.round((-viewX + event.layerX) / (window.innerHeight / 100 * 2 * viewZoom)),
-                        "posY": Math.round((-viewY + event.layerY) / (window.innerHeight / 100 * 2 * viewZoom)),
-                        "simX": 0,
-                        "simY": 0,
-                        "width": 6,
-                        "reference": null,
-                        "inputs": inputs,
-                        "outputs": outputs,
-                        "color": "var(--orange)"
-                    };
-
-                    nodeData[event.dataTransfer.getData("nodeType")].push(newObj);
-                }
-                catch (err) {
-                    console.error(err);
-                }
-                break;
             
             case "moveNode":
 
@@ -256,6 +278,12 @@
                 if (n.inputs[i] != null) {
                     addConnection(n, n.inputs[i], i);
                 }
+            }
+        });
+
+        nodeData.output.forEach((n) => {
+            if (n.input != null) {
+                addConnection(n, n.input, 0);
             }
         });
 
@@ -402,6 +430,26 @@
             />
         {/each}
 
+        {#each nodeData.output as node, index}
+            <OutputNode
+                onDrag={(event) => initNodeDrag(event, "output", index)}
+                onDelete={() => {deleteNode("output", index)}}
+
+                posX={node.posX}
+                posY={node.posY}
+                offX={(viewX + mouseDrag.delta.x) / window.innerHeight * 50}
+                offY={(viewY + mouseDrag.delta.y) / window.innerHeight * 50}
+                simX={node.simX}
+                simY={node.simY}
+                zoom={viewZoom}
+
+                nodeData={node}
+                context={context}
+
+                connectionCallback={addConnection}
+            />
+        {/each}
+
         {#each connections as c, index}
                 <div style="
                     left: {2 * (c.posX * viewZoom + (viewX + mouseDrag.delta.x) / window.innerHeight * 50)}vh;
@@ -445,6 +493,13 @@
             <NodePickerSlot
                 id="Input"
                 type="input"
+                color="var(--red)"
+            />
+
+            <NodePickerSlot
+                id="Output"
+                type="output"
+                color="var(--blue)"
             />
 
             <div class="nodePickerGroupTitle">
@@ -454,6 +509,7 @@
             <NodePickerSlot
                 id="Sum"
                 type="operator"
+                color="var(--orange)"
             />
         </div>
     </div>

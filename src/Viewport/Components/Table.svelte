@@ -37,6 +37,14 @@
 
     export let cellContents = Array.from(Array(numCols), () => Array.from(new Array(numRows), () => ""));
 
+    export function getCellContents() {
+        return cellContents;
+    }
+
+    export function setCell(col, row, val) {
+        cellContents[col][row] = val;
+    }
+
     export let editmode = false;
 
     function deleteColumn(index) {

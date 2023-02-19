@@ -2,6 +2,8 @@
     export let id;
     export let type;
 
+    export let color;
+
     function initDrag(event) {
         event.dataTransfer.setData("command", "createNode");
         event.dataTransfer.setData("nodeID", id);
@@ -11,7 +13,9 @@
 
 
 
-<main draggable="true" on:dragstart="{initDrag}">
+<main draggable="true" on:dragstart="{initDrag}" style="
+    background-color: {color};
+">
     <p>{id}</p>
 </main>
 
@@ -26,8 +30,6 @@
         margin: 2.5vh;
         margin-top: .5vh;
         margin-bottom: .5vh;
-
-        background-color: var(--orange);
 
         border-radius: 1vh;
 
