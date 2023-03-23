@@ -28,7 +28,7 @@ class SumNodeDataOutput extends NodeOutputTether {
                 let a = await this.inputs[0].getValue();
                 let b = await this.inputs[1].getValue();
     
-                resolve(a + b);
+                resolve(parseFloat(a) + parseFloat(b));
             });
         }
     }

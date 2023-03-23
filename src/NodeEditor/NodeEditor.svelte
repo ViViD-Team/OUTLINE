@@ -17,6 +17,7 @@
 
     export let nodeData;
     export let tableRef;
+    export let tableData;
 
     let context = {};
     
@@ -259,13 +260,7 @@
     onMount(() => {
         console.log(nodeData);
 
-        nodeData.operator.forEach((n) => {
-            for (let i = 0; i < n.inputs.length; i++) {
-                if (n.inputs[i] != null) {
-                    addConnection(n, n.inputs[i], i);
-                }
-            }
-        });
+        recalculateConnections();
 
         connections = Object.assign([], connections);
     });
@@ -426,6 +421,9 @@
                 nodeData={node}
                 context={context}
 
+                tableRef={tableRef}
+                tableData={tableData}
+
                 connectionCallback={addConnection}
             />
         {/each}
@@ -445,6 +443,8 @@
 
                 nodeData={node}
                 context={context}
+
+                tableData={tableData}
 
                 connectionCallback={addConnection}
             />

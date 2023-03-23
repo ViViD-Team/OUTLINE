@@ -102,6 +102,7 @@
 					},
 
 					"reference": undefined,
+					"cellContents": undefined,
 
 					"posX": 25,
 					"posY": 5,
@@ -148,6 +149,7 @@
 			<NodeEditor
 				nodeData={projectData.objects["table"][edited].nodes}
 				tableRef={projectData.objects["table"][edited].reference}
+				tableData={projectData.objects["table"][edited]}
 			/>
 		{/if}
 	</div>

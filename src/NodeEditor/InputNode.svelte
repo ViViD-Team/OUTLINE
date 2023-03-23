@@ -15,7 +15,7 @@
     export let nodeData;
     export let context;
 
-    export let tableRef;
+    export let tableData;
 
     let dragState = null;
 
@@ -97,7 +97,7 @@
     function process() {
         return new Promise(async (resolve, reject) => {
             // Logic here
-            resolve(tableRef.getCellContents[nodeData.selectedCol][nodeData.selectedRow])
+            resolve(tableData.cellContents[nodeData.selectedCol][nodeData.selectedRow]);
         });
     }
 

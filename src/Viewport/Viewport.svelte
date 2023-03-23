@@ -71,6 +71,7 @@ const   zoomBounds = [.75, 3]
             },
 
             "reference": undefined,
+            "cellContents": undefined,
 
             "posX": 0,
             "posY": 0,
@@ -456,6 +457,7 @@ const   zoomBounds = [.75, 3]
                     editmode={edited == index}
 
                     bind:this={object.reference}
+                    bind:cellContents={object.cellContents}
 
                     lockedCells={[]}
 

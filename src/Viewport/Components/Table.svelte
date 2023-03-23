@@ -1,6 +1,11 @@
 <svelte:options accessors />
 
 <script>
+    import { onMount } from "svelte";
+
+
+
+
     // OBJECT SPECIFIC
     export const sizeBounds = [ /* X */ [10, 50], /* Y */ [10, 50]]
 
@@ -35,7 +40,11 @@
     }
     
 
-    export let cellContents = Array.from(Array(numCols), () => Array.from(new Array(numRows), () => ""));
+    export let cellContents;
+
+    onMount(() => {
+        cellContents = Array.from(Array(numCols), () => Array.from(new Array(numRows), () => ""));
+    });
 
     export function getCellContents() {
         return cellContents;
@@ -106,6 +115,10 @@
             col[index + 1] = col[index];
             col[index] = buffer;
         })
+        cellContents = Object.assign([], cellContents);
+    }
+
+    export function rerender() {
         cellContents = Object.assign([], cellContents);
     }
 
@@ -223,98 +236,100 @@
                 {/each}
             </div>
 
-            {#each cellContents as x, indexX}
-                <div class="tableGridColumn" style="
-                    width: {10*zoom}vh;
-                ">
-                <div
-                    class="columnIndicator" style="
-                    border-top-left-radius: {.5*zoom}vh;
-                    border-top-right-radius: {.5*zoom}vh;
+            {#if cellContents}
+                {#each cellContents as x, indexX}
+                    <div class="tableGridColumn" style="
+                        width: {10*zoom}vh;
+                    ">
+                    <div
+                        class="columnIndicator" style="
+                        border-top-left-radius: {.5*zoom}vh;
+                        border-top-right-radius: {.5*zoom}vh;
 
-                    {editmode ? "cursor: pointer;" : ""}
+                        {editmode ? "cursor: pointer;" : ""}
 
-                    margin-bottom: {.5*zoom}vh;
+                        margin-bottom: {.5*zoom}vh;
 
-                    height: {2*zoom}vh;
-                ">
-                    {#if !editmode}
-                        <p
-                            contenteditable="true"
-                            bind:textContent={colNames[indexX]}
-                            style="
-                                font-size: {1.2*zoom}vh;
-                                height: {1.5*zoom}vh;
-                            ">
-                        </p>
-                        {#if !colNames[indexX]}
+                        height: {2*zoom}vh;
+                    ">
+                        {#if !editmode}
                             <p
-                                class="columnIndicatorPlaceholder"
+                                contenteditable="true"
+                                bind:textContent={colNames[indexX]}
                                 style="
                                     font-size: {1.2*zoom}vh;
                                     height: {1.5*zoom}vh;
-                                ">{alphabeticColName(indexX)}</p>
-                        {/if}
-                    {:else}
-                        <div style="height: {2*zoom}vh;" class="editmodeColumnIndicatorButtonContainer">
-                            <div on:click={() => {if (editmode && indexX > 0) {moveColumnLeft(indexX)}}} class="editmodeColumnIndicatorButton">
-                                {#if indexX > 0}
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>                                
-                                {/if}
-                            </div>
-                            <div on:click={() => {if (editmode) {insertColumn(indexX)}}} class="editmodeColumnIndicatorButton">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>                                
-                            </div>
-                            <div on:click={() => {if (editmode) {deleteColumn(indexX)}}} class="editmodeColumnIndicatorButton">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"/></svg>                                </div>
-                            <div on:click={() => {if (editmode && indexX < numCols - 1) {moveColumnRight(indexX)}}} class="editmodeColumnIndicatorButton">
-                                {#if indexX < numCols - 1}
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>                                
-                                {/if}
-                            </div>
-                        </div>                    
-                    {/if}
-                </div>
-
-                    {#each x as y, indexY}
-                        {#if scanLocked(indexX, indexY)}
-                            <div class="tableCell neuIndentShadowNarrow" style="
-                                height: {3*zoom}vh;
-
-                                margin: {.2*zoom}vh 0 {.2*zoom}vh 0;
-
-                                border-radius: {.5*zoom}vh;
-                            ">
-                                <p style="font-size: {1.3 * zoom}vh">{cellContents[indexX][indexY]}</p>
-                                <div class="cellLabelContainer" style="
-                                    width: {1.2*zoom}vh;
-                                    height: {1.2*zoom}vh;
                                 ">
-                                    <svg viewBox="0 0 1 1" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 1H0L1 0V1Z"/>
-                                    </svg> 
-                                </div>
-                            </div>
-                        {:else}
-                            <div class="tableCell neuIndentShadowNarrow" style="
-                                height: {3*zoom}vh;
-
-                                margin: {.2*zoom}vh 0 {.2*zoom}vh 0;
-
-                                border-radius: {.5*zoom}vh;
-                            ">
+                            </p>
+                            {#if !colNames[indexX]}
                                 <p
-                                    contenteditable="true"
-                                    bind:textContent={cellContents[indexX][indexY]} 
-                                    style="font-size: {1.3*zoom}vh">
-                                    {cellContents[indexX][indexY]}
-                                    
-                                </p>
-                            </div>
+                                    class="columnIndicatorPlaceholder"
+                                    style="
+                                        font-size: {1.2*zoom}vh;
+                                        height: {1.5*zoom}vh;
+                                    ">{alphabeticColName(indexX)}</p>
+                            {/if}
+                        {:else}
+                            <div style="height: {2*zoom}vh;" class="editmodeColumnIndicatorButtonContainer">
+                                <div on:click={() => {if (editmode && indexX > 0) {moveColumnLeft(indexX)}}} class="editmodeColumnIndicatorButton">
+                                    {#if indexX > 0}
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>                                
+                                    {/if}
+                                </div>
+                                <div on:click={() => {if (editmode) {insertColumn(indexX)}}} class="editmodeColumnIndicatorButton">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>                                
+                                </div>
+                                <div on:click={() => {if (editmode) {deleteColumn(indexX)}}} class="editmodeColumnIndicatorButton">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"/></svg>                                </div>
+                                <div on:click={() => {if (editmode && indexX < numCols - 1) {moveColumnRight(indexX)}}} class="editmodeColumnIndicatorButton">
+                                    {#if indexX < numCols - 1}
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>                                
+                                    {/if}
+                                </div>
+                            </div>                    
                         {/if}
-                    {/each}
-                </div>
-            {/each}
+                    </div>
+
+                        {#each x as y, indexY}
+                            {#if scanLocked(indexX, indexY)}
+                                <div class="tableCell neuIndentShadowNarrow" style="
+                                    height: {3*zoom}vh;
+
+                                    margin: {.2*zoom}vh 0 {.2*zoom}vh 0;
+
+                                    border-radius: {.5*zoom}vh;
+                                ">
+                                    <p style="font-size: {1.3 * zoom}vh">{cellContents[indexX][indexY]}</p>
+                                    <div class="cellLabelContainer" style="
+                                        width: {1.2*zoom}vh;
+                                        height: {1.2*zoom}vh;
+                                    ">
+                                        <svg viewBox="0 0 1 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1 1H0L1 0V1Z"/>
+                                        </svg> 
+                                    </div>
+                                </div>
+                            {:else}
+                                <div class="tableCell neuIndentShadowNarrow" style="
+                                    height: {3*zoom}vh;
+
+                                    margin: {.2*zoom}vh 0 {.2*zoom}vh 0;
+
+                                    border-radius: {.5*zoom}vh;
+                                ">
+                                    <p
+                                        contenteditable="true"
+                                        bind:textContent={cellContents[indexX][indexY]} 
+                                        style="font-size: {1.3*zoom}vh">
+                                        {cellContents[indexX][indexY]}
+                                        
+                                    </p>
+                                </div>
+                            {/if}
+                        {/each}
+                    </div>
+                {/each}
+            {/if}
         </div>
     </div>
 

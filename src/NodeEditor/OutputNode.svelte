@@ -15,6 +15,7 @@
     export let context;
 
     export let tableRef;
+    export let tableData;
 
     let dragState = null;
 
@@ -98,7 +99,8 @@
     async function process() {
         context[nodeData.input].process()
             .then((value) => {
-                tableRef.setCellContents(nodeData.selectedCol, nodeData.selectedRow, value);
+                tableData.cellContents[nodeData.selectedCol][nodeData.selectedRow] = value;
+                tableData.reference.rerender();
             })
             .catch((err) => {console.error(err)});
     }
