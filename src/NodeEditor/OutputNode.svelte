@@ -71,7 +71,10 @@
     }
 
     function handleDelete() {
-        delete context[outputID];
+        try {
+            delete context[outputID];
+        }
+        catch (err) {console.log(err)}
         onDelete();
     }
 

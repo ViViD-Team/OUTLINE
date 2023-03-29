@@ -261,8 +261,6 @@
         console.log(nodeData);
 
         recalculateConnections();
-
-        connections = Object.assign([], connections);
     });
 
     function recalculateConnections() {
@@ -507,7 +505,13 @@
             </div>
 
             <NodePickerSlot
-                id="Sum"
+                id="Add"
+                type="operator"
+                color="var(--orange)"
+            />
+
+            <NodePickerSlot
+                id="Subtract"
                 type="operator"
                 color="var(--orange)"
             />
@@ -579,8 +583,8 @@
 
         overflow: none;
 
-        transition: width .5s cubic-bezier(0, 0, 0, .9),
-                    height .5s cubic-bezier(0, 0, 0, .9);
+        transition: width .2s cubic-bezier(0, 0, 0, .9),
+                    height .2s cubic-bezier(0, 0, 0, .9);
     }
 
     @keyframes nodePickerAppear {
@@ -608,7 +612,7 @@
         height: 100%;
         flex: 1;
 
-        transition: margin-left .5s cubic-bezier(0, 0, 0, .9);
+        transition: margin-left .2s cubic-bezier(0, 0, 0, .9);
 
         display: grid;
         place-items: center;
@@ -630,7 +634,7 @@
 
         overflow: hidden;
 
-        transition: flex .5s cubic-bezier(0, 0, 0, .9);
+        transition: flex .2s cubic-bezier(0, 0, 0, .9);
 
         display: flex;
         align-items: center;
@@ -647,7 +651,7 @@
 
         color: var(--blue);
 
-        transition: opacity .5s cubic-bezier(0, 0, 0, .9);
+        transition: opacity .2s cubic-bezier(0, 0, 0, .9);
     }
 
     .nodePickerFrame:hover .nodePickerTitle h2 {
@@ -670,7 +674,7 @@
         overflow: hidden;
         overflow-y: scroll;
 
-        transition: flex .5s cubic-bezier(0, 0, 0, .9), opacity .1s;
+        transition: flex .2s cubic-bezier(0, 0, 0, .9), opacity .1s;
     }
 
     .nodePickerContents::-webkit-scrollbar {
@@ -682,7 +686,7 @@
 
         opacity: 1;
 
-        transition: flex .5s cubic-bezier(0, 0, 0, .9), opacity .5s .5s;
+        transition: flex .2s cubic-bezier(0, 0, 0, .9), opacity .2s .2s;
     }
 
 

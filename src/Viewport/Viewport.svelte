@@ -327,7 +327,8 @@ const   zoomBounds = [.75, 3]
                 let instanceIndex = projectData.objects[type].length;
                 
                 projectData.objects[type].push(
-                    Object.assign({}, objectPrototypes[type])
+                    //Object.assign({}, objectPrototypes[type])
+                    JSON.parse(JSON.stringify(objectPrototypes[type]))
                 );
 
                 
@@ -464,7 +465,7 @@ const   zoomBounds = [.75, 3]
                     onDrag={(event) => {initObjectDrag(event, "table", index, object.sizeX, object.sizeY)}}
                     onResize={(event) => {initObjectResize(event, "table", index)}}
                     onDelete={() => {deleteObject("table", index); if (edited == index) edited = null}}
-                    onEdit={() => {edited = edited == null ? index : edited != index ? index : null}}
+                    onEdit={() => {edited = edited == null ? index : null; console.log(projectData.objects.table[0].nodes == projectData.objects.table[1].nodes)}}
 
                     posX={object.posX}
                     posY={object.posY}

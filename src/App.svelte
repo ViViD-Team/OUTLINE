@@ -4,7 +4,6 @@
 	import NodeEditor from "./NodeEditor/NodeEditor.svelte";
 	import Toolkit from "./Toolkit/Toolkit.svelte";
 	import DebugConsole from "./DebugConsole.svelte";
-    import SumNodeData from"./_NodeResources/NodeTypes/Sum";
 
 	// DEBUG CONSOLE
 
@@ -61,66 +60,13 @@
             ],
 
             "table": [
-				{
-					"title": "New Table",
-					"nodes": {
-						"input": [],
-						"output": [],
-						"operator": [{
-							"id": "Sum",
-							"posX": 40,
-							"posY": 4,
-							"width": 6,
-							"simX": 0,
-							"simY": 0,
-							"color": "var(--orange)",
-							"reference": null,
-							"inputs": [
-								null, null
-							],
-							"outputs": [
-								"a4g7"
-							]
-						},
-						{
-							"id": "Sum",
-							"posX": 50,
-							"posY": 5,
-							"width": 6,
-							"simX": 0,
-							"simY": 0,
-							"color": "var(--orange)",
-							"reference": null,
-							"inputs": [
-								null,
-								null
-							],
-							"outputs": [
-								"ef87"
-							]
-						}]
-					},
-
-					"reference": undefined,
-					"cellContents": undefined,
-
-					"posX": 25,
-					"posY": 5,
-					"sizeX": 28,
-					"sizeY": 21,
-					"width": 6,
-					"simX": 0,
-					"simY": 0,
-					"simResizeX": 0,
-					"simResizeY": 0,
-					"sizeBounds": [],
-				}
+				
             ],
         }
     }
 
-	// TODO: Delete the "= 0" part when I'm done! 
-	let edited = 0;
+
+	let edited = null;
 </script>
 
 <main>

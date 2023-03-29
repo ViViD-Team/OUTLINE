@@ -2,7 +2,7 @@ const NodeData = require("../NodeData");
 const NodeInputTether = require("../NodeInputTether");
 const NodeOutputTether = require("../NodeOutputTether");
 
-class SumNodeData extends NodeData {
+class SubtractNodeData extends NodeData {
 
     constructor(outputRefs, context, rawNodeData) {
         let inputs = [
@@ -10,15 +10,15 @@ class SumNodeData extends NodeData {
             new NodeInputTether("B", context),
         ];
         let outputs = [
-            new SumNodeDataOutput("Sum", inputs, outputRefs[0], context),
+            new SubtractNodeDataOutput("Diff.", inputs, outputRefs[0], context),
         ];
 
-        super("Sum", inputs, outputs, rawNodeData);
+        super("Subtract", inputs, outputs, rawNodeData);
     }
 }
 
 
-class SumNodeDataOutput extends NodeOutputTether {
+class SubtractNodeDataOutput extends NodeOutputTether {
 
     constructor(reqInputs, puts, id, context) {
         super(reqInputs, puts, id, context);
@@ -28,10 +28,10 @@ class SumNodeDataOutput extends NodeOutputTether {
                 let a = await this.inputs[0].getValue();
                 let b = await this.inputs[1].getValue();
     
-                resolve(parseFloat(a) + parseFloat(b));
+                resolve(parseFloat(a) - parseFloat(b));
             });
         }
     }
 }
 
-module.exports = SumNodeData;
+module.exports = SubtractNodeData;

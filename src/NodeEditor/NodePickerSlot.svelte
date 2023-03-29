@@ -14,9 +14,9 @@
 
 
 <main draggable="true" on:dragstart="{initDrag}" style="
-    background-color: {color};
+    border-color: {color};
 ">
-    <p>{id}</p>
+    <p style="color: {color};">{id}</p>
 </main>
 
 
@@ -32,6 +32,8 @@
         margin-bottom: .5vh;
 
         border-radius: 1vh;
+        border-width: .25vh;
+        border-style: solid;
 
         display: flex;
         align-items: center;
@@ -39,7 +41,6 @@
     }
 
     main p {
-        color: var(--white);
         font-weight: 600;
 
         text-transform: uppercase;
