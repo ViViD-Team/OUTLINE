@@ -31,6 +31,8 @@
         margin-top: .5vh;
         margin-bottom: .5vh;
 
+        flex-shrink: 0;
+
         border-radius: 1vh;
         border-width: .25vh;
         border-style: solid;

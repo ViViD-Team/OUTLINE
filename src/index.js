@@ -21,7 +21,8 @@ const createWindow = () => {
     minHeight: 150,
     minWidth: 200,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      nodeIntegrationInWorker: true,
     }
   });
 

@@ -370,6 +370,8 @@ const   zoomBounds = [.75, 3]
         viewZoom = 1;
     }
 
+    export let invokeTableProcess;
+
 </script>
 
 
@@ -465,7 +467,7 @@ const   zoomBounds = [.75, 3]
                     onDrag={(event) => {initObjectDrag(event, "table", index, object.sizeX, object.sizeY)}}
                     onResize={(event) => {initObjectResize(event, "table", index)}}
                     onDelete={() => {deleteObject("table", index); if (edited == index) edited = null}}
-                    onEdit={() => {edited = edited == null ? index : null; console.log(projectData.objects.table[0].nodes == projectData.objects.table[1].nodes)}}
+                    onEdit={() => {edited = edited == null ? index : null}}
 
                     posX={object.posX}
                     posY={object.posY}
@@ -479,6 +481,8 @@ const   zoomBounds = [.75, 3]
                     simY={object.simY}
                     simResizeX={object.simResizeX}
                     simResizeY={object.simResizeY}
+
+                    onInput={invokeTableProcess}
                 />
             {/each}
                 

@@ -99,7 +99,7 @@
     }); */
 
 
-    async function process() {
+    export async function process() {
         context[nodeData.input].process()
             .then((value) => {
                 tableData.cellContents[nodeData.selectedCol][nodeData.selectedRow] = value;

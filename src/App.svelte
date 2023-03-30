@@ -45,6 +45,15 @@
 	function resetZoom() {
 		viewportRef.resetZoom();
 	}
+
+
+
+	// Table and Nodes
+
+	let processCallback;
+	function invokeProcessCallback() {
+		if (processCallback) processCallback();
+	}
 	
 	// Project Data
 
@@ -86,6 +95,8 @@
 
 				bind:debObjectDrag={debugInfo.objectDrag}
 				bind:debObjectResize={debugInfo.objectResize}
+
+				invokeTableProcess={invokeProcessCallback}
 			/>
 			{#if debugConsoleOpen}
 				<DebugConsole info={debugContents} />
@@ -96,6 +107,8 @@
 				nodeData={projectData.objects["table"][edited].nodes}
 				tableRef={projectData.objects["table"][edited].reference}
 				tableData={projectData.objects["table"][edited]}
+
+				bind:invokeOutputs={invokeProcessCallback}
 			/>
 		{/if}
 	</div>

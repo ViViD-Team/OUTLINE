@@ -142,6 +142,8 @@
     export let onDelete;
     export let onEdit;
 
+    export let onInput;
+
     function drag(event) {
         onDrag(event);
     }
@@ -317,13 +319,23 @@
 
                                     border-radius: {.5*zoom}vh;
                                 ">
-                                    <p
-                                        contenteditable="true"
-                                        bind:textContent={cellContents[indexX][indexY]} 
-                                        style="font-size: {1.3*zoom}vh">
-                                        {cellContents[indexX][indexY]}
-                                        
-                                    </p>
+                                    {#if editmode}
+                                        <p
+                                            contenteditable="true"
+                                            bind:textContent={cellContents[indexX][indexY]}
+
+                                            on:blur={() => {onInput(); console.log("asd")}}
+
+                                            style="font-size: {1.3*zoom}vh">
+                                            {cellContents[indexX][indexY]}
+                                            
+                                        </p>
+                                    {:else}
+                                        <p
+                                            style="font-size: {1.3*zoom}vh">
+                                            {cellContents[indexX][indexY]}
+                                        </p>
+                                    {/if}
                                 </div>
                             {/if}
                         {/each}

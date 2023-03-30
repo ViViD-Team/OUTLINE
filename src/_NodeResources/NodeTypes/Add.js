@@ -13,7 +13,7 @@ class AddNodeData extends NodeData {
             new AddNodeDataOutput("Sum", inputs, outputRefs[0], context),
         ];
 
-        super("Sum", inputs, outputs, rawNodeData);
+        super("Add", inputs, outputs, rawNodeData);
     }
 }
 
