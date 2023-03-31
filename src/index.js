@@ -1,5 +1,6 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const path = require('path');
+const fs = require("fs");
 
 // Live Reload
 require('electron-reload')(__dirname, {
@@ -57,3 +58,13 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
+
+ipcMain.on("getSaveFilePath", (event, data) => {
+  let path = dialog.showSaveDialogSync({filters: [{name: "Outline Files", extensions: ["ols"]}]});
+  event.returnValue = path;
+});
+
+ipcMain.on("getOpenFilePath", (event, data) => {
+  let path = dialog.showOpenDialogSync({properties: ['openFile'], filters: [{name: "Outline Files", extensions: ["ols"]}]});
+  event.returnValue = path;
+});

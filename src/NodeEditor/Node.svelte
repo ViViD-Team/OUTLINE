@@ -16,6 +16,8 @@
 
     export let nodeObject;
 
+    let renderReady = false;
+
     onMount(() => {
         // Load Node on the fly and subscribe to outputs
         try {
@@ -29,6 +31,7 @@
             }
 
             console.log("Node " +  nodeData.id + " subscribed outputs " + nodeObject.outputs, context);
+            renderReady = true;
         }
         catch (err) {
             console.error(err);
@@ -94,7 +97,7 @@
 </script>
 
 
-{#if nodeObject !== null && nodeObject !== undefined}
+{#if nodeObject !== null && nodeObject !== undefined && renderReady}
     <main class="neuOutdentShadowRim" style="
         left: {((posX + simX) * zoom + offX) * 2}vh;
         top: {((posY + simY) * zoom + offY) * 2}vh;

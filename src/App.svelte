@@ -5,6 +5,10 @@
 	import Toolkit from "./Toolkit/Toolkit.svelte";
 	import DebugConsole from "./DebugConsole.svelte";
 
+	const fs = require("fs");
+	const path = require("path");
+	const { ipcRenderer } = require("electron");
+
 	// DEBUG CONSOLE
 
 	let debugConsoleOpen = false;
@@ -60,6 +64,7 @@
 	// !!! NOTICE !!! THIS CONSTELLATION IS FOR DEV PURPOSES ONLY!!!
 
 	let projectData = {
+		"targetFilePath": "",
         "objects": {
             "header": [
 
@@ -74,6 +79,49 @@
         }
     }
 
+	function newFile() {
+		projectData = JSON.parse(fs.readFileSync(path.join(__dirname, "../src/config/basicTemplate.json")));
+	}
+
+	function open() {
+		let path = ipcRenderer.sendSync("getOpenFilePath");
+		if (!path) return;
+
+		projectData = JSON.parse(fs.readFileSync(path[0]));
+
+		console.log(projectData);
+	}
+
+	function save() {
+		if (projectData.targetFilePath) {
+			let fileContents = JSON.stringify(projectData);
+			fs.writeFileSync(projectData.targetFilePath, fileContents);
+		}
+		else saveAs();
+	}
+
+	function saveAs() {
+		let path = ipcRenderer.sendSync("getSaveFilePath");
+		if (!path) return;
+
+		projectData.targetFilePath = path;
+
+		let fileContents = stringifyCircularJSON(projectData);
+		fs.writeFileSync(path, fileContents);
+	}
+
+	// Removes circular references resulting from trying to serialize classes
+	const stringifyCircularJSON = obj => {
+		const seen = new WeakSet();
+		return JSON.stringify(obj, (k, v) => {
+			if (v !== null && typeof v === 'object') {
+			if (seen.has(v)) return;
+			seen.add(v);
+			}
+			return v;
+		});
+	};
+
 
 	let edited = null;
 </script>
@@ -84,6 +132,11 @@
 			toggleDebugConsole={() => {debugConsoleOpen = !debugConsoleOpen}}
 			centerView={centerViewport}
 			resetZoom={resetZoom}
+
+			newFile={newFile}
+			open={open}
+			save={save}
+			saveAs={saveAs}
 		/>
 		<div class="centerRow">
 			<Toolkit />

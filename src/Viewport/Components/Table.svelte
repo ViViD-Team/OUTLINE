@@ -12,7 +12,7 @@
     export let title;
 
     export let numCols = 4, numRows = 9;
-    export let colNames = [];
+    export let colNames;
 
     const alphabet = [  "a", "b", "c",
                         "d", "e", "f",
@@ -43,7 +43,11 @@
     export let cellContents;
 
     onMount(() => {
+        if (!cellContents)
         cellContents = Array.from(Array(numCols), () => Array.from(new Array(numRows), () => ""));
+
+        if (!colNames)
+        colNames = [];
     });
 
     export function getCellContents() {
@@ -254,7 +258,7 @@
 
                         height: {2*zoom}vh;
                     ">
-                        {#if !editmode}
+                        {#if !editmode && colNames}
                             <p
                                 contenteditable="true"
                                 bind:textContent={colNames[indexX]}

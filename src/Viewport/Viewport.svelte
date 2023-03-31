@@ -72,6 +72,7 @@ const   zoomBounds = [.75, 3]
 
             "reference": undefined,
             "cellContents": undefined,
+            "colNames": undefined,
 
             "posX": 0,
             "posY": 0,
@@ -461,6 +462,7 @@ const   zoomBounds = [.75, 3]
 
                     bind:this={object.reference}
                     bind:cellContents={object.cellContents}
+                    bind:colNames={object.colNames}
 
                     lockedCells={[]}
 

@@ -9,25 +9,30 @@
     export let centerView;
     export let resetZoom;
 
+    export let newFile;
+    export let open;
+    export let save;
+    export let saveAs;
+
     const config = [
         {
             "label": "File",
             "cmds": [
                 {
                     "label": "New",
-                    "func": function () {}
+                    "func": newFile,
                 },
                 {
                     "label": "Open",
-                    "func": function () {}
+                    "func": open,
                 },
                 {
                     "label": "Save",
-                    "func": function () {}
+                    "func": save,
                 },
                 {
                     "label": "Save As",
-                    "func": function () {}
+                    "func": saveAs,
                 },
             ]
         },
