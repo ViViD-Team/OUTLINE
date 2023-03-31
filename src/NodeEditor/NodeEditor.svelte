@@ -7,14 +7,14 @@
 
     import NodePickerSlot from "./NodePickerSlot.svelte";
 
-    const path = require("path");
-    const fs = require("fs");
+    const path = require("path")
 
 
     let viewX = 0, viewY = 0, viewZoom = 1;
     const zoomBounds = [.6, 3];
 
     let viewportHeight, viewportWidth;
+    let viewportRef;
 
     export let nodeData;
     export let tableRef;
@@ -50,7 +50,6 @@
     }
 
     function mouseUp(event) {
-
         if (!mouseDrag.ongoing || event.button != 1) return;
         mouseDrag.ongoing = false
         viewX += mouseDrag.delta.x;
@@ -62,8 +61,9 @@
         let oldZoom = viewZoom
         viewZoom -= event.deltaY / 1000;
         viewZoom = Math.max(zoomBounds[0], Math.min(viewZoom, zoomBounds[1]));
-        viewX = (viewX - viewportWidth/2) * viewZoom / oldZoom + (viewportWidth / 2)
-        viewY = (viewY - viewportHeight/2) * viewZoom / oldZoom + (viewportHeight / 2)
+        if (viewZoom == oldZoom) {return}
+        viewX = (viewX - viewportWidth/2) * viewZoom / oldZoom + (viewportWidth / 2) + (((event.clientX - viewportRef.offsetLeft) - (viewportWidth / 2)) * Math.sign(event.deltaY)) / oldZoom / 10
+        viewY = (viewY - viewportHeight/2) * viewZoom / oldZoom + (viewportHeight / 2) + (((event.clientY - viewportRef.offsetTop) - (viewportHeight / 2)) * Math.sign(event.deltaY)) / oldZoom / 10
     }
 
     //#endregion
@@ -263,19 +263,8 @@
 
         recalculateConnections();
 
-        constructNodePicker();
+        connections = Object.assign([], connections);
     });
-
-    let nodeConfig = {};
-    let nodeCategories = [];
-    async function constructNodePicker() {
-        fs.readFile(path.join(__dirname, "../src/config/nodesConfig.json"), (err, file) => {
-            if (err) return;
-
-            nodeConfig = JSON.parse(file);
-            nodeCategories = Object.keys(nodeConfig);
-        });
-    }
 
     function recalculateConnections() {
         connections = [];
@@ -295,6 +284,8 @@
         });
 
         connections = Object.assign([], connections);
+
+        console.log(connections);
     }
 
     function addConnection(node, output, index) {
@@ -367,23 +358,13 @@
         recalculateConnections();
     }
 
-
-    let outputProcessCallbacks = [];
-    export function invokeOutputs() {
-        outputProcessCallbacks.forEach((callback) => {
-            try {
-                callback();
-            }
-            catch (err) {console.error(err);}
-        });
-    }
-
 </script>
 
 
 
 <main>
     <div class="frame neuIndentShadow"
+        bind:this="{viewportRef}"
         bind:offsetHeight="{viewportHeight}"
         bind:offsetWidth="{viewportWidth}"
 
@@ -465,8 +446,6 @@
                 nodeData={node}
                 context={context}
 
-                bind:process={outputProcessCallbacks[index]}
-
                 tableData={tableData}
 
                 connectionCallback={addConnection}
@@ -503,11 +482,7 @@
 
     </div>
 
-    <div class="nodePickerFrame neuOutdentShadow"
-        on:mousewheel={/* Disable Node Editor Scroll on Hover*/
-            (event) => {event.stopPropagation();}
-        }
-    >
+    <div class="nodePickerFrame neuOutdentShadow">
         <div class="nodePickerHeader">
             <div class="nodePickerIcon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M7.724 65.49C13.36 55.11 21.79 46.47 32 40.56C39.63 36.15 48.25 33.26 57.46 32.33C59.61 32.11 61.79 32 64 32H448C483.3 32 512 60.65 512 96V416C512 451.3 483.3 480 448 480H64C28.65 480 0 451.3 0 416V96C0 93.79 .112 91.61 .3306 89.46C1.204 80.85 3.784 72.75 7.724 65.49V65.49zM48 416C48 424.8 55.16 432 64 432H448C456.8 432 464 424.8 464 416V224H48V416z"/></svg>            
@@ -529,19 +504,15 @@
                 color="var(--blue)"
             />
 
-            {#each nodeCategories as category}
-                <div class="nodePickerGroupTitle">
-                    <h2>{category}</h2>
-                </div>
+            <div class="nodePickerGroupTitle">
+                <h2>Math - Basic</h2>
+            </div>
 
-                {#each nodeConfig[category] as id}
-                    <NodePickerSlot
-                        id="{id}"
-                        type="operator"
-                        color="var(--orange)"
-                    />
-                {/each}
-            {/each}
+            <NodePickerSlot
+                id="Sum"
+                type="operator"
+                color="var(--orange)"
+            />
         </div>
     </div>
 </main>
@@ -610,8 +581,8 @@
 
         overflow: none;
 
-        transition: width .2s cubic-bezier(0, 0, 0, .9),
-                    height .2s cubic-bezier(0, 0, 0, .9);
+        transition: width .5s cubic-bezier(0, 0, 0, .9),
+                    height .5s cubic-bezier(0, 0, 0, .9);
     }
 
     @keyframes nodePickerAppear {
@@ -639,7 +610,7 @@
         height: 100%;
         flex: 1;
 
-        transition: margin-left .2s cubic-bezier(0, 0, 0, .9);
+        transition: margin-left .5s cubic-bezier(0, 0, 0, .9);
 
         display: grid;
         place-items: center;
@@ -661,7 +632,7 @@
 
         overflow: hidden;
 
-        transition: flex .2s cubic-bezier(0, 0, 0, .9);
+        transition: flex .5s cubic-bezier(0, 0, 0, .9);
 
         display: flex;
         align-items: center;
@@ -678,7 +649,7 @@
 
         color: var(--blue);
 
-        transition: opacity .2s cubic-bezier(0, 0, 0, .9);
+        transition: opacity .5s cubic-bezier(0, 0, 0, .9);
     }
 
     .nodePickerFrame:hover .nodePickerTitle h2 {
@@ -701,7 +672,7 @@
         overflow: hidden;
         overflow-y: scroll;
 
-        transition: flex .2s cubic-bezier(0, 0, 0, .9), opacity .1s;
+        transition: flex .5s cubic-bezier(0, 0, 0, .9), opacity .1s;
     }
 
     .nodePickerContents::-webkit-scrollbar {
@@ -713,7 +684,7 @@
 
         opacity: 1;
 
-        transition: flex .2s cubic-bezier(0, 0, 0, .9), opacity .2s .2s;
+        transition: flex .5s cubic-bezier(0, 0, 0, .9), opacity .5s .5s;
     }
 
 
