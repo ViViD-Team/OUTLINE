@@ -50,7 +50,7 @@
         border-radius .2s cubic-bezier(0, 0, 0, .9),
 ">
 
-    <p contenteditable="true" bind:textContent="{text}" style="
+    <p contenteditable="true" bind:innerHTML="{text}" style="
         font-size: {2 * zoom}vh;
         min-height: {2 * zoom}vh;
         min-width: {sizeX * zoom}vh;

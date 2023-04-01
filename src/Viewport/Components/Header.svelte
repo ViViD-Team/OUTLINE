@@ -50,7 +50,15 @@
         border-radius .2s cubic-bezier(0, 0, 0, .9),
 ">
 
-    <h1 contenteditable="true" bind:textContent="{text}" style="
+    <h1 
+        contenteditable="true" 
+        bind:textContent="{text}"
+        on:keypress={(event) => {
+            // Prevent Multiline
+            if (event.key == "Enter") event.preventDefault();
+        }}
+
+    style="
         font-size: {3 * zoom}vh;
         min-height: {2 * zoom}vh;
         min-width: {sizeX * zoom}vh;

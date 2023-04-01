@@ -183,7 +183,14 @@
     <div class="titleStrip" style="
         height: {4 * zoom}vh;
     ">
-        <h1 contenteditable="true" bind:textContent={title} style="
+        <h1 
+            contenteditable="true" 
+            bind:textContent={title}
+            on:keypress={(event) => {
+                // Prevent Multiline
+                if (event.key == "Enter") event.preventDefault();
+            }}
+        style="
             font-size: {2 * zoom}vh;
             min-height: {2 * zoom}vh;
             min-width: {sizeX * zoom}vh;
@@ -262,6 +269,10 @@
                             <p
                                 contenteditable="true"
                                 bind:textContent={colNames[indexX]}
+                                on:keypress={(event) => {
+                                    // Prevent Multiline
+                                    if (event.key == "Enter") event.preventDefault();
+                                }}
                                 style="
                                     font-size: {1.2*zoom}vh;
                                     height: {1.5*zoom}vh;
@@ -327,8 +338,12 @@
                                         <p
                                             contenteditable="true"
                                             bind:textContent={cellContents[indexX][indexY]}
+                                            on:keypress={(event) => {
+                                                // Prevent Multiline
+                                                if (event.key == "Enter") event.preventDefault();
+                                            }}
 
-                                            on:blur={() => {onInput(); console.log("asd")}}
+                                            on:blur={() => {onInput()}}
 
                                             style="font-size: {1.3*zoom}vh">
                                             {cellContents[indexX][indexY]}

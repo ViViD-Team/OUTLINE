@@ -7,7 +7,8 @@
 
     import NodePickerSlot from "./NodePickerSlot.svelte";
 
-    const path = require("path")
+    const path = require("path");
+    const fs = require("fs");
 
 
     let viewX = 0, viewY = 0, viewZoom = 1;
@@ -263,8 +264,18 @@
 
         recalculateConnections();
 
-        connections = Object.assign([], connections);
+        constructNodePicker();
     });
+
+    let nodeConfig = {};
+    let nodeCategories = [];
+    async function constructNodePicker() {
+        fs.readFile(path.join(__dirname, "../src/config/nodesConfig.json"), (err, file) => {
+            if (err) return;
+            nodeConfig = JSON.parse(file);
+            nodeCategories = Object.keys(nodeConfig);
+        });
+    }
 
     function recalculateConnections() {
         connections = [];
@@ -504,15 +515,18 @@
                 color="var(--blue)"
             />
 
-            <div class="nodePickerGroupTitle">
-                <h2>Math - Basic</h2>
-            </div>
-
-            <NodePickerSlot
-                id="Sum"
-                type="operator"
-                color="var(--orange)"
-            />
+            {#each nodeCategories as category}
+                <div class="nodePickerGroupTitle">
+                    <h2>{category}</h2>
+                </div>
+                {#each nodeConfig[category] as id}
+                    <NodePickerSlot
+                        id="{id}"
+                        type="operator"
+                        color="var(--orange)"
+                    />
+                {/each}
+            {/each}
         </div>
     </div>
 </main>

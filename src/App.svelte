@@ -87,7 +87,13 @@
 		let path = ipcRenderer.sendSync("getOpenFilePath");
 		if (!path) return;
 
-		projectData = JSON.parse(fs.readFileSync(path[0]));
+
+		// Nice try hecker :)
+		let rawData = fs.readFileSync(path[0]).toString();
+		rawData = rawData.replace("<script>", "");
+		rawData = rawData.replace("<\/script>", "");
+
+		projectData = JSON.parse(rawData);
 
 		console.log(projectData);
 	}
