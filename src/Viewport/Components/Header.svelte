@@ -113,8 +113,8 @@
         background-color: var(--red);
 
         box-shadow: 
-            .2vh .2vh .2vh 0 var(--bg3),
-            -.2vh -.2vh .2vh 0 var(--bg1);
+            .2vh .2vh .2vh 0 var(--shadow2),
+            -.2vh -.2vh .2vh 0 var(--shadow1);
 
         display: grid;
         place-items: center;
@@ -128,7 +128,7 @@
     }
 
     h1 {
-        color: var(--bg2);
+        color: var(--mainbg);
 
         white-space: nowrap;
 
@@ -158,7 +158,7 @@
     }
 
     .resizeHandle svg {
-        fill: var(--bg2);
+        fill: var(--mainbg);
         width: 50%;
     }
 
@@ -183,7 +183,7 @@
     }
 
     .dragHandle svg {
-        fill: var(--bg2);
+        fill: var(--mainbg);
         width: 50%;
     }
 
@@ -207,7 +207,7 @@
     }
 
     .deleteAction svg {
-        fill: var(--bg2);
+        fill: var(--mainbg);
         width: 50%;
     }
 </style>

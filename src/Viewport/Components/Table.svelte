@@ -424,11 +424,11 @@
     main {
         position: absolute;
 
-        background-color: var(--bg2);
+        background-color: var(--mainbg);
 
         /* box-shadow:
-            inset -.2vh -.2vh .2vh 0 var(--bg1),
-            inset .2vh .2vh .2vh 0 var(--bg3); */
+            inset -.2vh -.2vh .2vh 0 var(--shadow1),
+            inset .2vh .2vh .2vh 0 var(--shadow2); */
 
         display: flex;
         flex-direction: column;
@@ -513,7 +513,7 @@
     }
 
     .columnIndicator svg {
-        fill: var(--bg2);
+        fill: var(--mainbg);
 
         animation: flyInFromLeft .5s cubic-bezier(0, 0, 0, .9) backwards;
     }
@@ -555,7 +555,7 @@
     }
 
     .rowIndicator svg {
-        fill: var(--bg2);
+        fill: var(--mainbg);
 
         animation: flyInFromLeft .5s cubic-bezier(0, 0, 0, .9) backwards;
     }
@@ -600,7 +600,7 @@
 
         flex-shrink: 0;
 
-        background-color: var(--bg2);
+        background-color: var(--mainbg);
 
         overflow: hidden;
 
@@ -614,7 +614,7 @@
         width: 100%;
         text-align: center;
 
-        color: var(--bg4);
+        color: var(--text1);
         font-weight: 500;
     }
 
@@ -630,7 +630,7 @@
     }
 
     h1 {
-        color: var(--bg2);
+        color: var(--mainbg);
 
         font-weight: 600;
 
@@ -643,7 +643,7 @@
     }
 
     .columnIndicator p {
-        color: var(--bg2);
+        color: var(--mainbg);
 
         min-width: 4vh;
 
@@ -663,7 +663,7 @@
     }
 
     .rowIndicator p {
-        color: var(--bg2);
+        color: var(--mainbg);
 
         font-weight: 800;
 
@@ -719,7 +719,7 @@
     }
 
     .dragHandle svg {
-        fill: var(--bg2);
+        fill: var(--mainbg);
         width: 50%;
     }
 
@@ -743,7 +743,7 @@
     }
 
     .deleteAction svg {
-        fill: var(--bg2);
+        fill: var(--mainbg);
         width: 50%;
     }
 

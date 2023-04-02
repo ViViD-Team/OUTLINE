@@ -141,7 +141,7 @@
                         <div class="inputTetherLabelContainer">
                             <p style="
                                 font-size: {zoom}vh;
-                                color: {nodeData.color};
+                                color: {nodeData.textcolor};
                             ">{input.label}</p>
                         </div>
                     </div>
@@ -203,7 +203,7 @@
     main {
         position: absolute;
 
-        background-color: var(--bg2);
+        background-color: var(--mainbg);
 
         overflow: hidden;
 
@@ -222,7 +222,7 @@
     }
 
     .titleBar h1 {
-        color: var(--bg2);
+        color: var(--mainbg);
         font-weight: 600;
     }
 
@@ -249,7 +249,7 @@
         
         display: flex;
 
-        background-color: var(--bg2);
+        background-color: var(--mainbg);
     }
 
     .inputTetherCircleContainer {
@@ -342,7 +342,7 @@
     }
 
     .deleteAction svg {
-        fill: var(--bg2);
+        fill: var(--mainbg);
         width: 50%;
     }
 </style>

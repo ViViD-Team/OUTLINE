@@ -186,6 +186,7 @@
                             "width": 6,
                             "outputID": getNewId(),
                             "color": "var(--red)",
+                            "textcolor": "var(--text1)",
                             "selectedCol": 0,
                             "selectedRow": 0,
                         };
@@ -202,7 +203,8 @@
                             "simY": 0,
                             "width": 6,
                             "input": null,
-                            "color": "var(--blue)",
+                            "color": "var(--purple)",
+                            "textcolor": "var(--text1)",
                             "selectedCol": 0,
                             "selectedRow": 0,
                         };
@@ -512,7 +514,7 @@
             <NodePickerSlot
                 id="Output"
                 type="output"
-                color="var(--blue)"
+                color="var(--node_ed_main_color)"
             />
 
             {#each nodeCategories as category}
@@ -558,7 +560,7 @@
 
         border-radius: 2vh;
 
-        background-color: var(--bg2);
+        background-color: var(--mainbg);
 
         overflow: hidden;
     }
@@ -582,7 +584,7 @@
         width: 6vh;
         height: 6vh;
 
-        background-color: var(--bg2);
+        background-color: var(--mainbg);
 
         border-radius: 3vh;
 
@@ -637,7 +639,7 @@
     .nodePickerIcon svg {
         height: 40%;
 
-        fill: var(--blue);
+        fill: var(--node_ed_main_color);
     }
 
     .nodePickerTitle {
@@ -661,7 +663,7 @@
 
         font-size: 1.5vh;
 
-        color: var(--blue);
+        color: var(--node_ed_main_color);
 
         transition: opacity .5s cubic-bezier(0, 0, 0, .9);
     }

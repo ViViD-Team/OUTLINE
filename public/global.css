@@ -10,10 +10,13 @@
 }
 
 :root {
-	--bg1: #2813e6;
-	--bg2: #000000;
-	--bg3: #08741a;
-	--bg4: #0cf747;
+	--mainbg: #0f0f0f;
+	--textbg1: #1a1a1a;
+	--shadow1: #292929;
+	--shadow2: #636363;
+	--text1: #adadad;
+
+	--node_ed_main_color: #9131fd;
 
 	--red: #EC2351;
 	--orange: #DB6239;
@@ -34,71 +37,71 @@ html, body {
 
 .neuIndentShadow {
 	box-shadow: 
-		.2vh .2vh .2vh 0 var(--bg1),
-		inset -.2vh -.2vh .2vh 0 var(--bg1),
-		-.2vh -.2vh .2vh 0 var(--bg3),
-		inset .2vh .2vh .2vh 0 var(--bg3)
+		.2vh .2vh .2vh 0 var(--shadow1),
+		inset -.2vh -.2vh .2vh 0 var(--shadow1),
+		-.2vh -.2vh .2vh 0 var(--shadow2),
+		inset .2vh .2vh .2vh 0 var(--shadow2)
     ;
 }
 
 .neuIndentShadowNarrow {
 	box-shadow: 
-		.1vh .1vh .1vh 0 var(--bg1),
-		inset -.1vh -.1vh .1vh 0 var(--bg1),
-		-.1vh -.1vh .1vh 0 var(--bg3),
-		inset .1vh .1vh .1vh 0 var(--bg3)
+		.1vh .1vh .1vh 0 var(--shadow1),
+		inset -.1vh -.1vh .1vh 0 var(--shadow1),
+		-.1vh -.1vh .1vh 0 var(--shadow2),
+		inset .1vh .1vh .1vh 0 var(--shadow2)
     ;
 }
 
 .neuIndentShadowLight {
 	box-shadow: 
-		.4vh .4vh .4vh 0 var(--bg1),
-		inset -.4vh -.4vh .4vh 0 var(--bg1),
-		-.4vh -.4vh .4vh 0 var(--bg3),
-		inset .4vh .4vh .4vh 0 var(--bg3)
+		.4vh .4vh .4vh 0 var(--shadow1),
+		inset -.4vh -.4vh .4vh 0 var(--shadow1),
+		-.4vh -.4vh .4vh 0 var(--shadow2),
+		inset .4vh .4vh .4vh 0 var(--shadow2)
     ;
 }
 
 .neuIndentShadowLightOnHover:hover {
 	box-shadow: 
-		.4vh .4vh .4vh 0 var(--bg1),
-		inset -.4vh -.4vh .4vh 0 var(--bg1),
-		-.4vh -.4vh .4vh 0 var(--bg3),
-		inset .4vh .4vh .4vh 0 var(--bg3)
+		.4vh .4vh .4vh 0 var(--shadow1),
+		inset -.4vh -.4vh .4vh 0 var(--shadow1),
+		-.4vh -.4vh .4vh 0 var(--shadow2),
+		inset .4vh .4vh .4vh 0 var(--shadow2)
     ;
 }
 
 .neuOutdentShadow {
 	box-shadow: 
-		.2vh .2vh .2vh 0 var(--bg3),
-		inset -.2vh -.2vh .2vh 0 var(--bg3),
-		-.2vh -.2vh .2vh 0 var(--bg1),
-		inset .2vh .2vh .2vh 0 var(--bg1)
+		.2vh .2vh .2vh 0 var(--shadow2),
+		inset -.2vh -.2vh .2vh 0 var(--shadow2),
+		-.2vh -.2vh .2vh 0 var(--shadow1),
+		inset .2vh .2vh .2vh 0 var(--shadow1)
     ;
 }
 
 .neuOutdentShadowRim {
 	box-shadow: 
-		.2vh .2vh .2vh 0 var(--bg3),
-		-.2vh -.2vh .2vh 0 var(--bg1)
+		.2vh .2vh .2vh 0 var(--shadow2),
+		-.2vh -.2vh .2vh 0 var(--shadow1)
     ;
 }
 
 .neuOutdentShadowLight {
 	box-shadow: 
-		.4vh .4vh .4vh 0 var(--bg3),
-		inset -.4vh -.4vh .4vh 0 var(--bg3),
-		-.4vh -.4vh .4vh 0 var(--bg1),
-		inset .4vh .4vh .4vh 0 var(--bg1)
+		.4vh .4vh .4vh 0 var(--shadow2),
+		inset -.4vh -.4vh .4vh 0 var(--shadow2),
+		-.4vh -.4vh .4vh 0 var(--shadow1),
+		inset .4vh .4vh .4vh 0 var(--shadow1)
     ;
 }
 
 .neuOutdentShadowLightOnHover:hover {
 	box-shadow: 
-		.4vh .4vh .4vh 0 var(--bg3),
-		inset -.4vh -.4vh .4vh 0 var(--bg3),
-		-.4vh -.4vh .4vh 0 var(--bg1),
-		inset .4vh .4vh .4vh 0 var(--bg1)
+		.4vh .4vh .4vh 0 var(--shadow2),
+		inset -.4vh -.4vh .4vh 0 var(--shadow2),
+		-.4vh -.4vh .4vh 0 var(--shadow1),
+		inset .4vh .4vh .4vh 0 var(--shadow1)
     ;
 }
 

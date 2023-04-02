@@ -10,7 +10,7 @@
 <main on:click={onClick()} style="
         {selected ? "background-color: var(--red);" : ""}
     ">
-        <h1 style="{selected ? "color: var(--bg2);" : ""}">{label}</h1>
+        <h1 style="{selected ? "color: var(--mainbg);" : ""}">{label}</h1>
 </main>
 
 

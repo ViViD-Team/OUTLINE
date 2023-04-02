@@ -141,7 +141,7 @@
 
         border-radius: 2vh;
 
-        background-color: var(--bg2);
+        background-color: var(--mainbg);
 
         display: flex;
         align-items: center;
