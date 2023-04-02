@@ -101,11 +101,11 @@
     main {
         position: absolute;
 
-        background-color: var(--white);
+        background-color: var(--bg2);
 
         /* box-shadow:
-            inset -.2vh -.2vh .2vh 0 var(--absolute-white),
-            inset .2vh .2vh .2vh 0 var(--grey); */
+            inset -.2vh -.2vh .2vh 0 var(--bg1),
+            inset .2vh .2vh .2vh 0 var(--bg3); */
 
         display: grid;
         place-items: center;
@@ -119,7 +119,7 @@
     }
 
     p {
-        color: var(--black);
+        color: var(--bg4);
 
         font-weight: 600;
 

@@ -514,7 +514,7 @@ const   zoomBounds = [.75, 3]
 
         border-radius: 2vh;
 
-        background-color: var(--white);
+        background-color: var(--bg2);
 
         overflow: hidden;
     }

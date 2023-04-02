@@ -177,7 +177,7 @@
 	main {
 		width: 100vw;
 		height: 100vh;
-		background-color: var(--white);
+		background-color: var(--bg2);
 	}
 
 	/* MAIN APP LAYOUT */

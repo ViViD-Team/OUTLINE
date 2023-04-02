@@ -79,7 +79,7 @@
 
         border-radius: 3vh;
 
-        background-color: var(--white);
+        background-color: var(--bg2);
 
         display: flex;
         justify-content: center;

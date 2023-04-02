@@ -229,7 +229,7 @@
     main {
         position: absolute;
 
-        background-color: var(--white);
+        background-color: var(--bg2);
 
         overflow: hidden;
 
@@ -248,7 +248,7 @@
     }
 
     .titleBar h1 {
-        color: var(--white);
+        color: var(--bg2);
         font-weight: 600;
     }
 
@@ -288,7 +288,7 @@
 
     .setting input {
         border: none;
-        background-color: var(--absolute-white);
+        background-color: var(--bg1);
     }
 
 
@@ -305,7 +305,7 @@
         
         display: flex;
 
-        background-color: var(--white);
+        background-color: var(--bg2);
     }
 
     .inputTetherCircleContainer {
@@ -398,7 +398,7 @@
     }
 
     .deleteAction svg {
-        fill: var(--white);
+        fill: var(--bg2);
         width: 50%;
     }
 </style>

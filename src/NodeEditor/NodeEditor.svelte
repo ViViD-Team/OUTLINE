@@ -558,7 +558,7 @@
 
         border-radius: 2vh;
 
-        background-color: var(--white);
+        background-color: var(--bg2);
 
         overflow: hidden;
     }
@@ -582,7 +582,7 @@
         width: 6vh;
         height: 6vh;
 
-        background-color: var(--white);
+        background-color: var(--bg2);
 
         border-radius: 3vh;
 
