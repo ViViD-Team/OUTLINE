@@ -141,7 +141,7 @@
                         <div class="inputTetherLabelContainer">
                             <p style="
                                 font-size: {zoom}vh;
-                                color: {nodeData.textcolor};
+                                color: {nodeData.color};
                             ">{input.label}</p>
                         </div>
                     </div>

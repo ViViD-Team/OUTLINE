@@ -527,7 +527,7 @@ const   zoomBounds = [.75, 3]
         width: 100%;
         height: 100%;
 
-        background-image: url("../svg/Background_Dot.svg");
+        background-image: var(--dotted-background);
         background-repeat: repeat;
 
         /* transition: background-size .2s cubic-bezier(0, 0, 0, .9); */

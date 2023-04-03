@@ -27,7 +27,7 @@
         font-size: 1.5vh;
         font-weight: 500;
 
-        color: var(--black);
+        color: var(--text1);
 
         padding: 0 1vh 0 1vh;
 

@@ -56,6 +56,7 @@
 
 	let processCallback;
 	function invokeProcessCallback() {
+		console.log("coom")
 		if (processCallback) processCallback();
 	}
 	

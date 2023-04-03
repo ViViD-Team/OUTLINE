@@ -10,11 +10,13 @@
 }
 
 :root {
-	--mainbg: #0f0f0f;
-	--textbg1: #1a1a1a;
-	--shadow1: #292929;
-	--shadow2: #636363;
-	--text1: #adadad;
+
+
+	/* --mainbg: #e6e6e6;
+	--textbg1: #ffffff;
+	--shadow1: #ffffff;
+	--shadow2: #999999;
+	--text1: #080708;
 
 	--node_ed_main_color: #9131fd;
 
@@ -23,6 +25,27 @@
 	--velvet: #8F3659;
 	--purple: #602656;
 	--blue: #2E1A4F;
+	
+	--dotted-background: url("../svg/Background_Dot.svg");
+	--cross-background: url("../svg/Background_Cross.svg");*/
+	
+
+	--mainbg: #232525;
+	--textbg1: #101010;
+	--shadow1: #2e3334;
+	--shadow2: #181919;
+	--text1: #e6e6e6;
+
+	--node_ed_main_color: #9131fd;
+
+	--red: #EF436B;
+	--orange: #DF7653;
+	--velvet: #C15C85;
+	--purple: #BF5FAF;
+	--blue: #8D66CC;
+
+	--dotted-background: url("../svg/Background_Dot_Darkmode.svg");
+	--cross-background: url("../svg/Background_Cross_Darkmode.svg");
 }
 
 html, body {

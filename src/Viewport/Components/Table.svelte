@@ -599,6 +599,7 @@
         width: 100%;
 
         flex-shrink: 0;
+        flex-grow: 0;
 
         background-color: var(--mainbg);
 
