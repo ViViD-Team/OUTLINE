@@ -88,7 +88,7 @@
         width: 100%;
         height: 100%;
 
-        backdrop-filter: blur(.5vh);
+        backdrop-filter: blur(1vh) saturate(.5);
 
         animation: backgroundBlur .5s backwards;
     }
@@ -122,19 +122,19 @@
 
     @keyframes backgroundBlur {
         from {
-            backdrop-filter: blur(0);
+            backdrop-filter: blur(0) saturate(1);
         }
         to {
-            backdrop-filter: blur(.5vh);
+            backdrop-filter: blur(1vh) saturate(.5);
         }
     }
 
     @keyframes backgroundDeblur {
         from {
-            backdrop-filter: blur(.5vh);
+            backdrop-filter: blur(1vh) saturate(.5);
         }
         to {
-            backdrop-filter: blur(0);
+            backdrop-filter: blur(0) saturate(1);
         }
     }
 

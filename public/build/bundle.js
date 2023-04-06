@@ -12569,29 +12569,29 @@ var app = (function () {
     			div8 = element("div");
     			button = element("button");
     			button.textContent = "Close Settings";
-    			attr_dev(div0, "class", div0_class_value = "blurAgent " + (/*opened*/ ctx[1] ? "" : "deblur") + " svelte-6183ih");
+    			attr_dev(div0, "class", div0_class_value = "blurAgent " + (/*opened*/ ctx[1] ? "" : "deblur") + " svelte-yitgx2");
     			add_location(div0, file$i, 21, 4, 390);
-    			attr_dev(div1, "class", "top svelte-6183ih");
+    			attr_dev(div1, "class", "top svelte-yitgx2");
     			add_location(div1, file$i, 23, 8, 493);
-    			attr_dev(div2, "class", "leftWing mainLayoutWing svelte-6183ih");
+    			attr_dev(div2, "class", "leftWing mainLayoutWing svelte-yitgx2");
     			add_location(div2, file$i, 27, 12, 576);
-    			attr_dev(div3, "class", "dashLeft dash svelte-6183ih");
+    			attr_dev(div3, "class", "dashLeft dash svelte-yitgx2");
     			add_location(div3, file$i, 50, 16, 2624);
-    			attr_dev(div4, "class", "dashRight dash svelte-6183ih");
+    			attr_dev(div4, "class", "dashRight dash svelte-yitgx2");
     			add_location(div4, file$i, 51, 16, 2675);
-    			attr_dev(div5, "class", "center svelte-6183ih");
+    			attr_dev(div5, "class", "center svelte-yitgx2");
     			add_location(div5, file$i, 49, 12, 2586);
-    			attr_dev(div6, "class", "rightWing mainLayoutWing svelte-6183ih");
+    			attr_dev(div6, "class", "rightWing mainLayoutWing svelte-yitgx2");
     			add_location(div6, file$i, 62, 12, 3034);
-    			attr_dev(div7, "class", "mainLayout svelte-6183ih");
+    			attr_dev(div7, "class", "mainLayout svelte-yitgx2");
     			add_location(div7, file$i, 26, 8, 538);
-    			attr_dev(button, "class", "close svelte-6183ih");
+    			attr_dev(button, "class", "close svelte-yitgx2");
     			add_location(button, file$i, 67, 12, 3154);
-    			attr_dev(div8, "class", "bottom svelte-6183ih");
+    			attr_dev(div8, "class", "bottom svelte-yitgx2");
     			add_location(div8, file$i, 66, 8, 3120);
-    			attr_dev(div9, "class", "mainLayoutContainer svelte-6183ih");
+    			attr_dev(div9, "class", "mainLayoutContainer svelte-yitgx2");
     			add_location(div9, file$i, 22, 4, 450);
-    			attr_dev(main, "class", main_class_value = "" + (null_to_empty(/*opened*/ ctx[1] ? "" : "deblur") + " svelte-6183ih"));
+    			attr_dev(main, "class", main_class_value = "" + (null_to_empty(/*opened*/ ctx[1] ? "" : "deblur") + " svelte-yitgx2"));
     			add_location(main, file$i, 20, 0, 345);
     		},
     		l: function claim(nodes) {
@@ -12625,7 +12625,7 @@ var app = (function () {
     			dispose = listen_dev(button, "click", /*closeRoutine*/ ctx[3], false, false, false);
     		},
     		p: function update(ctx, [dirty]) {
-    			if (!current || dirty & /*opened*/ 2 && div0_class_value !== (div0_class_value = "blurAgent " + (/*opened*/ ctx[1] ? "" : "deblur") + " svelte-6183ih")) {
+    			if (!current || dirty & /*opened*/ 2 && div0_class_value !== (div0_class_value = "blurAgent " + (/*opened*/ ctx[1] ? "" : "deblur") + " svelte-yitgx2")) {
     				attr_dev(div0, "class", div0_class_value);
     			}
 
@@ -12668,7 +12668,7 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (!current || dirty & /*opened*/ 2 && main_class_value !== (main_class_value = "" + (null_to_empty(/*opened*/ ctx[1] ? "" : "deblur") + " svelte-6183ih"))) {
+    			if (!current || dirty & /*opened*/ 2 && main_class_value !== (main_class_value = "" + (null_to_empty(/*opened*/ ctx[1] ? "" : "deblur") + " svelte-yitgx2"))) {
     				attr_dev(main, "class", main_class_value);
     			}
     		},
