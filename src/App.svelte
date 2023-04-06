@@ -4,10 +4,32 @@
 	import NodeEditor from "./NodeEditor/NodeEditor.svelte";
 	import Toolkit from "./Toolkit/Toolkit.svelte";
 	import DebugConsole from "./DebugConsole.svelte";
+    import Settings from "./Settings/Settings.svelte";
+    import { onDestroy, onMount } from "svelte";
+    
 
 	const fs = require("fs");
 	const path = require("path");
 	const { ipcRenderer } = require("electron");
+
+
+	let userSettings = getUserData();
+
+	function getUserData() {
+		const dir = ipcRenderer.sendSync("getSaveLocation");
+		const location = path.join(dir, "userSettings.json");
+
+		if (!fs.existsSync(dir)) fs.mkdirSync(dir);
+		if (fs.existsSync(location)) return JSON.parse(fs.readFileSync(location));
+
+		return JSON.parse(fs.readFileSync(path.join(__dirname, "../src/config/defaultUserSettings.json")));
+	}
+
+	async function saveUserSettings() {
+		const location = path.join(ipcRenderer.sendSync("getSaveLocation"), "userSettings.json");
+
+		fs.writeFileSync(location, JSON.stringify(userSettings));
+	}
 
 	// DEBUG CONSOLE
 
@@ -56,7 +78,6 @@
 
 	let processCallback;
 	function invokeProcessCallback() {
-		console.log("coom")
 		if (processCallback) processCallback();
 	}
 	
@@ -129,11 +150,27 @@
 		});
 	};
 
-
+	// States
 	let edited = null;
+	let settingsShown = false;
 </script>
 
-<main>
+<main class="
+	{	userSettings.theme == 1 || 
+		(userSettings.theme == 2 && ipcRenderer.sendSync("sysDarkmode")) ?
+			"darkmode" : ""
+	}
+">
+	{#if settingsShown}
+		<Settings
+			closeAction={() => {
+				setTimeout(() => {settingsShown = false}, 500);
+				saveUserSettings();
+			}}
+			bind:userSettings={userSettings}
+		/>
+	{/if}
+
 	<div class="mainLayout">
 		<TopBar
 			toggleDebugConsole={() => {debugConsoleOpen = !debugConsoleOpen}}
@@ -144,6 +181,8 @@
 			open={open}
 			save={save}
 			saveAs={saveAs}
+
+			settingsAction={() => {settingsShown = true}}
 		/>
 		<div class="centerRow">
 			<Toolkit />
@@ -179,6 +218,8 @@
 		width: 100vw;
 		height: 100vh;
 		background-color: var(--mainbg);
+
+		position: relative;
 	}
 
 	/* MAIN APP LAYOUT */

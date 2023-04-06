@@ -12,7 +12,7 @@
 :root {
 
 
-	/* --mainbg: #e6e6e6;
+	--mainbg: #e6e6e6;
 	--textbg1: #ffffff;
 	--shadow1: #ffffff;
 	--shadow2: #999999;
@@ -27,9 +27,28 @@
 	--blue: #2E1A4F;
 	
 	--dotted-background: url("../svg/Background_Dot.svg");
-	--cross-background: url("../svg/Background_Cross.svg");*/
+	--cross-background: url("../svg/Background_Cross.svg");
 	
 
+	/* --mainbg: #232525;
+	--textbg1: #101010;
+	--shadow1: #2e3334;
+	--shadow2: #181919;
+	--text1: #e6e6e6;
+
+	--node_ed_main_color: #9131fd;
+
+	--red: #EF436B;
+	--orange: #DF7653;
+	--velvet: #C15C85;
+	--purple: #BF5FAF;
+	--blue: #8D66CC;
+
+	--dotted-background: url("../svg/Background_Dot_Darkmode.svg");
+	--cross-background: url("../svg/Background_Cross_Darkmode.svg"); */
+}
+
+.darkmode {
 	--mainbg: #232525;
 	--textbg1: #101010;
 	--shadow1: #2e3334;
@@ -52,6 +71,8 @@ html, body {
 	position: relative;
 	width: 100%;
 	height: 100%;
+
+	background-color: var(--mainbg);
 
 	overflow: hidden;
 }

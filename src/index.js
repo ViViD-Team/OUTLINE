@@ -1,6 +1,7 @@
-const { app, BrowserWindow, ipcMain, dialog } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog, nativeTheme} = require('electron');
 const path = require('path');
 const fs = require("fs");
+
 
 // Live Reload
 require('electron-reload')(__dirname, {
@@ -67,4 +68,12 @@ ipcMain.on("getSaveFilePath", (event, data) => {
 ipcMain.on("getOpenFilePath", (event, data) => {
   let path = dialog.showOpenDialogSync({properties: ['openFile'], filters: [{name: "Outline Files", extensions: ["ols"]}]});
   event.returnValue = path;
+});
+
+ipcMain.on("sysDarkmode", (event, data) => {
+  event.returnValue = nativeTheme.shouldUseDarkColors;
+});
+
+ipcMain.on("getSaveLocation", (event, data) => {
+  event.returnValue = path.join(process.env.APPDATA || (process.platform == 'darwin' ? process.env.HOME + '/Library/Preferences' : process.env.HOME + "/.local/share"), "OUTLINE");
 });
