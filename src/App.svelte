@@ -122,7 +122,7 @@
 
 	function save() {
 		if (projectData.targetFilePath) {
-			let fileContents = JSON.stringify(projectData);
+			let fileContents = stringifyCircularJSON(projectData);
 			fs.writeFileSync(projectData.targetFilePath, fileContents);
 		}
 		else saveAs();

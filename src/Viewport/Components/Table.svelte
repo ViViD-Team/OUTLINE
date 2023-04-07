@@ -48,6 +48,9 @@
 
         if (!colNames)
         colNames = [];
+
+        numCols = cellContents.length;
+        numRows = cellContents[0].length;
     });
 
     export function getCellContents() {
