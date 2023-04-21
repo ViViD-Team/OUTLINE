@@ -19,7 +19,11 @@
 
 
 <main class="{opened ? "" : "deblur"}">
+    {#if userSettings.settings_theme == 1}
+    <div class="plainBackgroundAgent {opened ? "" : "disappear"}"></div>
+    {:else}
     <div class="blurAgent {opened ? "" : "deblur"}"></div>
+    {/if}
     <div class="mainLayoutContainer">
         <div class="top">
 
@@ -52,10 +56,16 @@
                 <div class="dashRight dash"></div>
 
                 {#if selected === 0}
+
                     <Radio 
                         label="Interface Theme"
                         choices={["Light", "Dark", "Use System"]}
                         bind:value={userSettings.theme}
+                    />
+                    <Radio
+                        label="Settings Background"
+                        choices={["Background Blur", "Basic"]}
+                        bind:value={userSettings.settings_theme}
                     />
                 {/if}
             </div>
@@ -95,6 +105,20 @@
 
     .blurAgent.deblur {
         animation: backgroundDeblur .5s forwards;
+    }
+
+    .plainBackgroundAgent {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        background-color: var(--mainbg);
+
+        animation: appear .5s backwards;
+    }
+
+    .plainBackgroundAgent.disappear {
+        animation: disappear .5s forwards;
     }
 
     main .mainLayoutContainer {

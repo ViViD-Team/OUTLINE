@@ -50,10 +50,13 @@
         border-radius .2s cubic-bezier(0, 0, 0, .9),
 ">
 
-    <p contenteditable="true" bind:innerHTML="{text}" style="
-        font-size: {2 * zoom}vh;
-        min-height: {2 * zoom}vh;
-        min-width: {sizeX * zoom}vh;
+    <p  
+        contenteditable="plaintext-only" 
+        bind:innerHTML="{text}"
+        style="
+            font-size: {2 * zoom}vh;
+            min-height: {2 * zoom}vh;
+            min-width: {sizeX * zoom}vh;
     ">Title</p>
 
     <div 
@@ -123,9 +126,14 @@
 
         font-weight: 600;
 
-        white-space: nowrap;
+        text-overflow: ellipsis;
 
         text-align: center;
+
+        max-width: 90%;
+        max-height: 90%;
+
+        overflow: hidden;
 
         /* transition: 
             font-size .2s cubic-bezier(0, 0, 0, .9); */

@@ -51,12 +51,8 @@
 ">
 
     <h1 
-        contenteditable="true" 
+        contenteditable="plaintext-only" 
         bind:textContent="{text}"
-        on:keypress={(event) => {
-            // Prevent Multiline
-            if (event.key == "Enter") event.preventDefault();
-        }}
 
     style="
         font-size: {3 * zoom}vh;

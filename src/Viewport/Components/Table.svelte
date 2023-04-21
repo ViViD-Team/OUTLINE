@@ -270,7 +270,7 @@
                     ">
                         {#if !editmode && colNames}
                             <p
-                                contenteditable="true"
+                                contenteditable="plaintext-only"
                                 bind:textContent={colNames[indexX]}
                                 on:keypress={(event) => {
                                     // Prevent Multiline
@@ -339,7 +339,7 @@
                                 ">
                                     {#if editmode}
                                         <p
-                                            contenteditable="true"
+                                            contenteditable="plaintext-only"
                                             bind:textContent={cellContents[indexX][indexY]}
                                             on:keypress={(event) => {
                                                 // Prevent Multiline
