@@ -109,7 +109,6 @@
 		let path = ipcRenderer.sendSync("getOpenFilePath");
 		if (!path) return;
 
-
 		// Nice try hecker :)
 		let rawData = fs.readFileSync(path[0]).toString();
 		rawData = rawData.replace("<script>", "");
@@ -139,11 +138,13 @@
 	}
 
 	// Removes circular references resulting from trying to serialize classes
+	// ADDED:	Objects with key "reference" are no longer serialized
+	//			This cuts down file size and fixed nodes being parsed as null
 	const stringifyCircularJSON = obj => {
 		const seen = new WeakSet();
 		return JSON.stringify(obj, (k, v) => {
 			if (v !== null && typeof v === 'object') {
-			if (seen.has(v)) return;
+			if (seen.has(v) || k == "reference") return;
 			seen.add(v);
 			}
 			return v;

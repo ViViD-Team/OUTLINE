@@ -1,7 +1,7 @@
 <svelte:options accessors />
 
 <script>
-    import { onMount } from "svelte";
+    import { beforeUpdate, onMount } from "svelte";
 
 
 
@@ -52,6 +52,12 @@
         numCols = cellContents.length;
         numRows = cellContents[0].length;
     });
+
+    beforeUpdate(() => {
+        if (!cellContents) return;
+        numCols = cellContents.length;
+        numRows = cellContents[0].length;
+    })
 
     export function getCellContents() {
         return cellContents;
@@ -343,7 +349,11 @@
                                             bind:textContent={cellContents[indexX][indexY]}
                                             on:keypress={(event) => {
                                                 // Prevent Multiline
-                                                if (event.key == "Enter") event.preventDefault();
+                                                if (event.key == "Enter") {
+                                                    event.preventDefault();
+                                                    let active = document.activeElement;
+                                                    if (active) active.blur();
+                                                }
                                             }}
 
                                             on:blur={() => {onInput()}}

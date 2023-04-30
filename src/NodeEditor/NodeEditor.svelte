@@ -381,6 +381,17 @@
         });
     }
 
+    // Node Picker Navigator
+    let categoryLabels = [];
+
+    function navJump(index) {
+        console.log(categoryLabels[index]);
+        if (!categoryLabels[index]) return;
+        categoryLabels[index].scrollIntoView({
+            behavior: "smooth"
+        });
+    }
+
 </script>
 
 
@@ -407,74 +418,80 @@
         ">
 
         {#each nodeData.operator as node, index}
-            <Node
-                bind:nodeObject={node.reference}
+            {#if node}
+                <Node
+                    bind:nodeObject={node.reference}
 
-                onDrag={(event) => initNodeDrag(event, "operator", index)}
-                onDelete={() => {deleteNode("operator", index)}}
+                    onDrag={(event) => initNodeDrag(event, "operator", index)}
+                    onDelete={() => {deleteNode("operator", index)}}
 
-                posX={node.posX}
-                posY={node.posY}
-                offX={(viewX + mouseDrag.delta.x) / window.innerHeight * 50}
-                offY={(viewY + mouseDrag.delta.y) / window.innerHeight * 50}
-                simX={node.simX}
-                simY={node.simY}
-                zoom={viewZoom}
+                    posX={node.posX}
+                    posY={node.posY}
+                    offX={(viewX + mouseDrag.delta.x) / window.innerHeight * 50}
+                    offY={(viewY + mouseDrag.delta.y) / window.innerHeight * 50}
+                    simX={node.simX}
+                    simY={node.simY}
+                    zoom={viewZoom}
 
-                nodeData={node}
-                context={context}
+                    nodeData={node}
+                    context={context}
 
-                connectionCallback={addConnection}
-            />
+                    connectionCallback={addConnection}
+                />
+            {/if}
         {/each}
         
         {#each nodeData.input as node, index}
-            <InputNode
-                onDrag={(event) => initNodeDrag(event, "input", index)}
-                onDelete={() => {deleteNode("input", index)}}
+            {#if node}
+                <InputNode
+                    onDrag={(event) => initNodeDrag(event, "input", index)}
+                    onDelete={() => {deleteNode("input", index)}}
 
-                posX={node.posX}
-                posY={node.posY}
-                offX={(viewX + mouseDrag.delta.x) / window.innerHeight * 50}
-                offY={(viewY + mouseDrag.delta.y) / window.innerHeight * 50}
-                simX={node.simX}
-                simY={node.simY}
-                zoom={viewZoom}
+                    posX={node.posX}
+                    posY={node.posY}
+                    offX={(viewX + mouseDrag.delta.x) / window.innerHeight * 50}
+                    offY={(viewY + mouseDrag.delta.y) / window.innerHeight * 50}
+                    simX={node.simX}
+                    simY={node.simY}
+                    zoom={viewZoom}
 
-                outputID={node.outputID}
+                    outputID={node.outputID}
 
-                nodeData={node}
-                context={context}
+                    nodeData={node}
+                    context={context}
 
-                tableRef={tableRef}
-                tableData={tableData}
+                    tableRef={tableRef}
+                    tableData={tableData}
 
-                connectionCallback={addConnection}
-            />
+                    connectionCallback={addConnection}
+                />
+            {/if}
         {/each}
 
         {#each nodeData.output as node, index}
-            <OutputNode
-                onDrag={(event) => initNodeDrag(event, "output", index)}
-                onDelete={() => {deleteNode("output", index)}}
+            {#if node}
+                <OutputNode
+                    onDrag={(event) => initNodeDrag(event, "output", index)}
+                    onDelete={() => {deleteNode("output", index)}}
 
-                posX={node.posX}
-                posY={node.posY}
-                offX={(viewX + mouseDrag.delta.x) / window.innerHeight * 50}
-                offY={(viewY + mouseDrag.delta.y) / window.innerHeight * 50}
-                simX={node.simX}
-                simY={node.simY}
-                zoom={viewZoom}
+                    posX={node.posX}
+                    posY={node.posY}
+                    offX={(viewX + mouseDrag.delta.x) / window.innerHeight * 50}
+                    offY={(viewY + mouseDrag.delta.y) / window.innerHeight * 50}
+                    simX={node.simX}
+                    simY={node.simY}
+                    zoom={viewZoom}
 
-                nodeData={node}
-                context={context}
+                    nodeData={node}
+                    context={context}
 
-                tableData={tableData}
+                    tableData={tableData}
 
-                connectionCallback={addConnection}
+                    connectionCallback={addConnection}
 
-                bind:process={outputProcessCallbacks[index]}
-            />
+                    bind:process={outputProcessCallbacks[index]}
+                />
+            {/if}
         {/each}
 
         {#each connections as c, index}
@@ -521,7 +538,8 @@
             </div>
         </div>
         <div class="nodePickerContents">
-            <NodePickerSlot
+            <div class="slotScrollContainer">
+                <NodePickerSlot
                 id="Input"
                 type="input"
                 color="var(--red)"
@@ -533,8 +551,8 @@
                 color="var(--blue)"
             />
 
-            {#each nodeCategories as category}
-                <div class="nodePickerGroupTitle">
+            {#each nodeCategories as category, index}
+                <div bind:this={categoryLabels[index]} class="nodePickerGroupTitle">
                     <h2>{category}</h2>
                 </div>
                 {#each nodeConfig[category] as id}
@@ -545,6 +563,18 @@
                     />
                 {/each}
             {/each}
+            </div>
+
+            <div class="verticalSeparator"></div>
+
+            <div class="navigationPannel">
+                {#each nodeCategories as category, index}
+                    <div on:click={() => {navJump(index)}} class="nodePickerGroupTitle navigationLabel">
+                        <h2>{category}</h2>
+                    </div>
+                {/each}
+            </div>
+            
         </div>
     </div>
 </main>
@@ -624,7 +654,7 @@
     }
 
     .nodePickerFrame:hover {
-        width: 24vh;
+        width: 36vh;
         height: calc(100% - 4vh);
     }
 
@@ -699,16 +729,13 @@
         opacity: 0;
 
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+
+        align-items: center;
 
         overflow: hidden;
-        overflow-y: scroll;
 
         transition: flex .5s cubic-bezier(0, 0, 0, .9), opacity .1s;
-    }
-
-    .nodePickerContents::-webkit-scrollbar {
-        display: none;
     }
 
     .nodePickerFrame:hover .nodePickerContents {
@@ -717,6 +744,46 @@
         opacity: 1;
 
         transition: flex .5s cubic-bezier(0, 0, 0, .9), opacity .5s .5s;
+    }
+
+    .slotScrollContainer {
+        height: 100%;
+        flex: 2;
+
+        display: flex;
+        flex-direction: column;
+
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+
+    .slotScrollContainer::-webkit-scrollbar {
+        display: none;
+    }
+
+
+    .verticalSeparator {
+        height: 90%;
+        width: .1vh;
+
+        border-radius: .05vh;
+        background-color: var(--orange);
+    }
+
+
+    .navigationPannel {
+        height: 100%;
+        flex: 1;
+
+        display: flex;
+        flex-direction: column;
+
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+
+    .navigationPannel::-webkit-scrollbar {
+        display: none;
     }
 
 
@@ -732,6 +799,18 @@
         font-size: 1.2vh;
         color: var(--orange);
         font-weight: 500;
+    }
+
+    .navigationLabel {
+        cursor: pointer;
+        margin-bottom: .2vh;
+
+        transition: 
+            transform .5s cubic-bezier(0, 0, 0, .9);
+    }
+
+    .navigationLabel:hover {
+        transform: translateY(-.2vh);
     }
 
 
