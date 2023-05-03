@@ -151,7 +151,7 @@
 		});
 	};
 
-	// States
+	// States //
 	let edited = null;
 	let settingsShown = false;
 </script>
