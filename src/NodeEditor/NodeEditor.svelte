@@ -6,6 +6,7 @@
     import OutputNode from "./OutputNode.svelte";
 
     import NodePickerSlot from "./NodePickerSlot.svelte";
+    import LiteralNode from "./LiteralNode.svelte";
 
     const path = require("path");
     const fs = require("fs");
@@ -214,6 +215,24 @@
                         return;
                     }
 
+                    case "literal": {
+                        let newObj = {
+                            "posX": Math.round((-viewX + event.layerX) / (window.innerHeight / 100 * 2 * viewZoom)),
+                            "posY": Math.round((-viewY + event.layerY) / (window.innerHeight / 100 * 2 * viewZoom)),
+                            "simX": 0,
+                            "simY": 0,
+                            "width": 6,
+                            "outputID": getNewId(),
+                            "color": "var(--velvet)",
+                            "textcolor": "var(--text1)",
+                            "id": event.dataTransfer.getData("nodeID"),
+                            "value": undefined,
+                        };
+
+                        nodeData[event.dataTransfer.getData("nodeType")].push(newObj);
+                        return;
+                    }
+
                     default:
                         try { 
                             const classRef = require(path.join(__dirname, "../src/_NodeResources/NodeTypes/") + event.dataTransfer.getData("nodeID"));
@@ -279,7 +298,7 @@
         });
     }
 
-    function recalculateConnections() {
+    function recalculateConnections(needsRefresh) {
         connections = [];
 
         nodeData.operator.forEach((n) => {
@@ -297,6 +316,8 @@
         });
 
         connections = Object.assign([], connections);
+
+        if (needsRefresh) invokeOutputs();
 
         console.log(connections);
     }
@@ -317,7 +338,7 @@
 
             connections.push(newConnection);
 
-            console.log(newConnection, destData);
+            invokeOutputs();
 
             connections = Object.assign([], connections);
         }
@@ -436,7 +457,36 @@
                     nodeData={node}
                     context={context}
 
-                    connectionCallback={addConnection}
+                    connectionCallback={(node, output, index, removeOld) => {
+                        addConnection(node, output, index);
+                        if (removeOld) recalculateConnections();
+                    }}
+                />
+            {/if}
+        {/each}
+
+        {#each nodeData.literal as node, index}
+            {#if node}
+                <LiteralNode
+                    onDrag={(event) => initNodeDrag(event, "literal", index)}
+                    onDelete={() => {deleteNode("literal", index)}}
+
+                    onChange={invokeOutputs}
+
+                    posX={node.posX}
+                    posY={node.posY}
+                    offX={(viewX + mouseDrag.delta.x) / window.innerHeight * 50}
+                    offY={(viewY + mouseDrag.delta.y) / window.innerHeight * 50}
+                    simX={node.simX}
+                    simY={node.simY}
+                    zoom={viewZoom}
+
+                    outputID={node.outputID}
+
+                    nodeData={node}
+                    context={context}
+
+                    connectionCallback={recalculateConnections}
                 />
             {/if}
         {/each}
@@ -487,7 +537,10 @@
 
                     tableData={tableData}
 
-                    connectionCallback={addConnection}
+                    connectionCallback={(node, output, index, removeOld) => {
+                        addConnection(node, output, index);
+                        if (removeOld) recalculateConnections();
+                    }}
 
                     bind:process={outputProcessCallbacks[index]}
                 />
@@ -539,7 +592,11 @@
         </div>
         <div class="nodePickerContents">
             <div class="slotScrollContainer">
-                <NodePickerSlot
+            <div bind:this={categoryLabels[0]} class="nodePickerGroupTitle">
+                <h2 style="color: var(--red)" >I/O</h2>
+            </div>
+
+            <NodePickerSlot
                 id="Input"
                 type="input"
                 color="var(--red)"
@@ -551,8 +608,24 @@
                 color="var(--blue)"
             />
 
+            <div bind:this={categoryLabels[1]} class="nodePickerGroupTitle">
+                <h2 style="color: var(--velvet)" >Literals</h2>
+            </div>
+
+            <NodePickerSlot
+                id="Number"
+                type="literal"
+                color="var(--velvet)"
+            />
+
+            <NodePickerSlot
+                id="Text"
+                type="literal"
+                color="var(--velvet)"
+            />
+
             {#each nodeCategories as category, index}
-                <div bind:this={categoryLabels[index]} class="nodePickerGroupTitle">
+                <div bind:this={categoryLabels[index + 2]} class="nodePickerGroupTitle">
                     <h2>{category}</h2>
                 </div>
                 {#each nodeConfig[category] as id}
@@ -568,8 +641,14 @@
             <div class="verticalSeparator"></div>
 
             <div class="navigationPannel">
+                <div on:click={() => {navJump(0)}} class="nodePickerGroupTitle navigationLabel">
+                    <h2 style="color: var(--red);">I/O</h2>
+                </div>
+                <div on:click={() => {navJump(1)}} class="nodePickerGroupTitle navigationLabel">
+                    <h2 style="color: var(--velvet);">Literals</h2>
+                </div>
                 {#each nodeCategories as category, index}
-                    <div on:click={() => {navJump(index)}} class="nodePickerGroupTitle navigationLabel">
+                    <div on:click={() => {navJump(index + 2)}} class="nodePickerGroupTitle navigationLabel">
                         <h2>{category}</h2>
                     </div>
                 {/each}

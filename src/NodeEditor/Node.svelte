@@ -69,12 +69,13 @@
         console.log("connected");
         switch (event.dataTransfer.getData("command")) {
             case "connectNode":
+                let removeOld = nodeData.inputs[index] != null;
                 let outputId = event.dataTransfer.getData("outputID");
 
                 nodeObject.inputs[index].connect(outputId);
 
                 nodeData.inputs[index] = outputId;
-                connectionCallback(nodeData, outputId, index);
+                connectionCallback(nodeData, outputId, index, removeOld);
 
                 break;
         }

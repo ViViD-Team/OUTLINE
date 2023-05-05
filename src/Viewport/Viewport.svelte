@@ -68,6 +68,7 @@ const   zoomBounds = [.75, 3]
             "nodes": {
                 "input": [],
                 "output": [],
+                "literal": [],
                 "operator": []
             },
 

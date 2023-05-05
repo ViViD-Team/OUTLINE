@@ -3,6 +3,7 @@
     const path = require("path");
 
 
+
     export let posX = 0;
     export let posY = 0;
     export let offX = 0;
@@ -14,14 +15,11 @@
     export let nodeData;
     export let context;
 
-    export let tableRef;
     export let tableData;
 
     let dragState = null;
 
-/*     //5000 iq
-    export let superNode = this;
-    export let rawNodeData = nodeData; */
+
     function initConnectionDrag(event, id, index) {
         // Clear default drag image
         let imageOverride = document.createElement("img");
@@ -51,16 +49,15 @@
         console.log("connected");
         switch (event.dataTransfer.getData("command")) {
             case "connectNode":
-                let removeOld = nodeData.input != null;
-                let outputId = event.dataTransfer.getData("outputID"); 
+                let outputId = event.dataTransfer.getData("outputID");
 
-                nodeData.input = outputId;
-                connectionCallback(nodeData, outputId, index, removeOld);
+                nodeObject.inputs[index].connect(outputId);
+
+                nodeData.inputs[index] = outputId;
+                connectionCallback(nodeData, outputId, index);
 
                 break;
         }
-
-        process();
     }
 
 
@@ -72,17 +69,16 @@
     }
 
     function handleDelete() {
-        try {
-            delete context[outputID];
-        }
-        catch (err) {console.log(err)}
+        delete context[outputID];
         onDelete();
     }
 
-    // THIS IS SPECIFIC FOR INPUT NODES
+    // THIS IS SPECIFIC FOR LITERAL NODES
     // As they only have one output tether the class can be simulated
 
-    /* export let outputID;
+    export let onChange;
+
+    export let outputID;
     onMount(() => {
 
         console.log("Input Node mounted with tether ID " + outputID);
@@ -97,16 +93,14 @@
         context[outputID] = simObject;
 
         console.log(context[outputID]);
-    }); */
+    });
 
 
-    export async function process() {
-        context[nodeData.input].process()
-            .then((value) => {
-                tableData.cellContents[nodeData.selectedCol][nodeData.selectedRow] = value;
-                tableData.reference.rerender();
-            })
-            .catch((err) => {console.error(err)});
+    function process() {
+        return new Promise(async (resolve, reject) => {
+            // Logic here
+            resolve(nodeData.value);
+        });
     }
 
 </script>
@@ -118,7 +112,7 @@
     top: {((posY + simY) * zoom + offY) * 2}vh;
 
     width: {2 * nodeData.width * zoom}vh;
-    height: {zoom * 12}vh;
+    height: {zoom * 10}vh;
 
     border-radius: {zoom}vh;
 ">
@@ -135,75 +129,88 @@
         <h1 style="
             font-size: {1.5*zoom}vh;
             margin-left: {zoom}vh;
-        ">Output</h1>
+        ">{nodeData.id}</h1>
     </div>
     <div class="contents">
         <div class="tetherContainer" style="
             height: {4*zoom}vh;
         ">
             <div style="padding-top: {.5*zoom}vh;" class="inputs">
-                <div style="
-                    height: {3*zoom}vh;
-                " 
-                    class="inputTether"
-                    on:dragover="{dragOver}"
-                    on:drop="{(event) => {handleConnect(event, 0)}}"
-                >
-                    <div style="width: {3*zoom}vh;" class="inputTetherCircleContainer">
-                        <svg style="width: {2*zoom}vh; height: {2*zoom}vh;" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="2.5" y="2.5" width="10" height="10" rx="5" stroke="#999999" stroke-dasharray="2 2"/>
-                            <rect x="5" y="5" width="5" height="5" rx="2.5" fill="{nodeData.color}"/>
-                        </svg>
-                    </div>
-                    <div class="inputTetherLabelContainer">
-                        <p style="
-                            font-size: {zoom}vh;
-                            color: {nodeData.color};
-                        ">Data</p>
-                    </div>
-                </div>
+                
             </div>
     
     
             <div style="padding-top: {.5*zoom}vh;" class="outputs">
     
-                
+                <div style="
+                    height: {3*zoom}vh;
+                "
+                    class="outputTether"
+    
+                    draggable="true"
+                    on:dragstart={(event) => initConnectionDrag(event, outputID, 0)}
+                    on:dragend={clearDrag}
+                >
+                    <div style="width: {3*zoom}vh;" class="outputTetherCircleContainer">
+                        <svg style="
+                            width: {2*zoom}vh;
+                            height: {2*zoom}vh;
+                            {dragState === 0 ? "transform: scale(1.5) rotate(360deg);" : ""}
+                            transition: transform .5s cubic-bezier(0, 0, 0, .9);
+                        " viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2.5" y="2.5" width="10" height="10" rx="5" stroke="#999999" stroke-dasharray="2 2"/>
+                            <rect x="5" y="5" width="5" height="5" rx="2.5" fill="{nodeData.color}"/>
+                        </svg>
+                    </div>
+                    <div class="outputTetherLabelContainer">
+                        <p style="
+                            font-size: {zoom}vh;
+                            color: {nodeData.color};
+                        ">Value</p>
+                    </div>
+                </div>
     
             </div>
         </div>
 
         <div class="settingsContainer">
             <div class="setting">
-                <h2 style="
-                    font-size: {zoom}vh;
-                    margin-left: {zoom}vh;
-                    margin-right: {.5*zoom}vh;
-                    color: {nodeData.color};
-                ">Column</h2>
-                <input type="number" name="col" min="0" bind:value={nodeData.selectedCol} style="
-                    width: {4*zoom}vh;
-                    height: {1.5*zoom}vh;
-                    margin-right: {zoom}vh;
-                    font-size: {zoom}vh;
-                    color: {nodeData.textcolor};
-                    border-radius: {.5*zoom}vh;
-                ">
-            </div>
-            <div class="setting">
-                <h2 style="
-                    font-size: {zoom}vh;
-                    margin-left: {zoom}vh;
-                    margin-right: {.5*zoom}vh;
-                    color: {nodeData.color};
-                ">Row</h2>
-                <input type="number" name="row" min="0" bind:value={nodeData.selectedRow} style="
-                    width: {4*zoom}vh;
-                    height: {1.5*zoom}vh;
-                    margin-right: {zoom}vh;
-                    font-size: {zoom}vh;
-                    color: {nodeData.textcolor};
-                    border-radius: {.5*zoom}vh;
-                ">
+                {#if nodeData.id == "Number"}
+                    <input
+                        type="number"
+                        name="val"
+                        on:change={onChange()}
+                        bind:value={nodeData.value}
+                        on:keypress={(event) => {
+                            if (event.key == "Enter") document.activeElement.blur();
+                        }}
+
+                        style="
+                            width: 80%;
+                            height: {1.5*zoom}vh;
+                            font-size: {zoom}vh;
+                            color: {nodeData.textcolor};
+                            border-radius: {.5*zoom}vh;
+                    ">
+                {/if}
+                {#if nodeData.id == "Text"}
+                    <input
+                        type="text"
+                        name="val"
+                        on:change={onChange()}
+                        bind:value={nodeData.value}
+                        on:keypress={(event) => {
+                            if (event.key == "Enter") document.activeElement.blur();
+                        }}
+
+                        style="
+                            width: 80%;
+                            height: {1.5*zoom}vh;
+                            font-size: {zoom}vh;
+                            color: {nodeData.textcolor};
+                            border-radius: {.5*zoom}vh;
+                    ">
+                {/if}
             </div>
             
         </div>
@@ -284,7 +291,8 @@
 
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
+        align-items: center;
     }
 
     .setting input {

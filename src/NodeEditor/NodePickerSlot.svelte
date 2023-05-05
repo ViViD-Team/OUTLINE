@@ -7,7 +7,7 @@
     function initDrag(event) {
         event.dataTransfer.setData("command", "createNode");
         event.dataTransfer.setData("nodeID", id);
-        event.dataTransfer.setData("nodeType", type);        
+        event.dataTransfer.setData("nodeType", type);
     }
 </script>
 
