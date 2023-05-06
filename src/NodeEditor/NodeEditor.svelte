@@ -553,20 +553,22 @@
                     top: {2 * (c.posY * viewZoom + (viewY + mouseDrag.delta.y) / window.innerHeight * 50)}vh;
                 
                     width: {Math.abs(c.width) * viewZoom * 2}vh;
-                    height: {Math.abs(c.height) * viewZoom * 2}vh;
+                    height: {Math.abs(c.height != 0 ? c.height : 1) * viewZoom * 2}vh;
 
                     transform:  translate({c.posX > c.destX ? "-100%" : "0"},
-                        {c.posY > c.destY ? "-100%" : "0"}) scale(1,  {c.destY > c.posY ? "-" : ""}1);
+                        {c.posY > c.destY ? "-100%" : "0"}) scale({c.destX > c.posX ? "-" : ""}1,  {c.destY > c.posY ? "-" : ""}1);
 
 
                 " class="inputFlowContainer">
                     <svg style="
-                        width: 100%; height: calc(100% + {viewZoom}px);
-                        transform: translateY(-{.5 * viewZoom}px);
-                    " preserveAspectRatio="none" viewBox="0 0 100 102" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 1C47.3934 1 52.6066 101 100 101" stroke="url(#paint0_linear_102_1243_{index})" stroke-width="{2*viewZoom}"/>
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%; height: calc(100%);
+                    " preserveAspectRatio="none" viewBox="0 0 {Math.abs(c.width)} {c.height != 0 ? Math.abs(c.height) : 1}" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0 C {Math.abs(c.width / 2)} 0 {Math.abs(c.width / 2)} {Math.abs(c.height)} {Math.abs(c.width)} {Math.abs(c.height)}" stroke="url(#paint0_linear_102_1243_{index})" stroke-width=".15"/>
                         <defs>
-                            <linearGradient id="paint0_linear_102_1243_{index}" x1="0" y1="1" x2="103.056" y2="4.25514" gradientUnits="userSpaceOnUse">
+                            <linearGradient id="paint0_linear_102_1243_{index}" x1="0" y1="1" x2="{Math.abs(c.width)}" y2="1" gradientUnits="userSpaceOnUse">
                             <stop stop-color="{c.destColor}"/>
                             <stop offset="1" stop-color="{c.originColor}"/>
                             </linearGradient>

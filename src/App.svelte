@@ -102,10 +102,13 @@
     }
 
 	function newFile() {
+		edited = null;
 		projectData = JSON.parse(fs.readFileSync(path.join(__dirname, "../src/config/basicTemplate.json")));
 	}
 
 	function open() {
+		edited = null;
+		
 		let path = ipcRenderer.sendSync("getOpenFilePath");
 		if (!path) return;
 
