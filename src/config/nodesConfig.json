@@ -2,6 +2,7 @@
     "Math - Basic": [
         "Add",
         "Subtract",
-        "Multiply"
+        "Multiply",
+        "Divide"
     ]
 }
