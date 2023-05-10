@@ -1,3 +1,9 @@
+# Update 10.05.2023
+#### Features
+- Added *divide* node.
+#### Minor Changes
+- Adjusted zoom bounds
+
 # Update 06.05.2023
 #### Bugfixes
 - The connection of two tethers with the same y-coordinate will now be visible as a straight line.
