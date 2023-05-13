@@ -63,7 +63,10 @@
         let oldZoom = viewZoom
         viewZoom -= event.deltaY / 1000;
         viewZoom = Math.max(zoomBounds[0], Math.min(viewZoom, zoomBounds[1]));
-        if (viewZoom == oldZoom) {return}
+        if (viewZoom == zoomBounds[0] || viewZoom == zoomBounds[1]) {
+            viewZoom = oldZoom
+            return
+        }
         viewX = (viewX - viewportWidth/2) * viewZoom / oldZoom + (viewportWidth / 2) + (((event.clientX - viewportRef.offsetLeft) - (viewportWidth / 2)) * Math.sign(event.deltaY)) / oldZoom / 10
         viewY = (viewY - viewportHeight/2) * viewZoom / oldZoom + (viewportHeight / 2) + (((event.clientY - viewportRef.offsetTop) - (viewportHeight / 2)) * Math.sign(event.deltaY)) / oldZoom / 10
     }

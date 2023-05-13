@@ -10015,7 +10015,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (442:12) {#if node}
+    // (445:12) {#if node}
     function create_if_block_3$1(ctx) {
     	let updating_nodeObject;
     	let current;
@@ -10101,14 +10101,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3$1.name,
     		type: "if",
-    		source: "(442:12) {#if node}",
+    		source: "(445:12) {#if node}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (441:8) {#each nodeData.operator as node, index}
+    // (444:8) {#each nodeData.operator as node, index}
     function create_each_block_7(ctx) {
     	let if_block_anchor;
     	let current;
@@ -10164,14 +10164,14 @@ var app = (function () {
     		block,
     		id: create_each_block_7.name,
     		type: "each",
-    		source: "(441:8) {#each nodeData.operator as node, index}",
+    		source: "(444:8) {#each nodeData.operator as node, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (469:12) {#if node}
+    // (472:12) {#if node}
     function create_if_block_2$1(ctx) {
     	let current;
 
@@ -10244,14 +10244,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2$1.name,
     		type: "if",
-    		source: "(469:12) {#if node}",
+    		source: "(472:12) {#if node}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (468:8) {#each nodeData.literal as node, index}
+    // (471:8) {#each nodeData.literal as node, index}
     function create_each_block_6(ctx) {
     	let if_block_anchor;
     	let current;
@@ -10307,14 +10307,14 @@ var app = (function () {
     		block,
     		id: create_each_block_6.name,
     		type: "each",
-    		source: "(468:8) {#each nodeData.literal as node, index}",
+    		source: "(471:8) {#each nodeData.literal as node, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (495:12) {#if node}
+    // (498:12) {#if node}
     function create_if_block_1$3(ctx) {
     	let current;
 
@@ -10390,14 +10390,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$3.name,
     		type: "if",
-    		source: "(495:12) {#if node}",
+    		source: "(498:12) {#if node}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (494:8) {#each nodeData.input as node, index}
+    // (497:8) {#each nodeData.input as node, index}
     function create_each_block_5(ctx) {
     	let if_block_anchor;
     	let current;
@@ -10453,14 +10453,14 @@ var app = (function () {
     		block,
     		id: create_each_block_5.name,
     		type: "each",
-    		source: "(494:8) {#each nodeData.input as node, index}",
+    		source: "(497:8) {#each nodeData.input as node, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (522:12) {#if node}
+    // (525:12) {#if node}
     function create_if_block$4(ctx) {
     	let updating_process;
     	let current;
@@ -10548,14 +10548,14 @@ var app = (function () {
     		block,
     		id: create_if_block$4.name,
     		type: "if",
-    		source: "(522:12) {#if node}",
+    		source: "(525:12) {#if node}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (521:8) {#each nodeData.output as node, index}
+    // (524:8) {#each nodeData.output as node, index}
     function create_each_block_4(ctx) {
     	let if_block_anchor;
     	let current;
@@ -10611,14 +10611,14 @@ var app = (function () {
     		block,
     		id: create_each_block_4.name,
     		type: "each",
-    		source: "(521:8) {#each nodeData.output as node, index}",
+    		source: "(524:8) {#each nodeData.output as node, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (550:8) {#each connections as c, index}
+    // (553:8) {#each connections as c, index}
     function create_each_block_3(ctx) {
     	let div;
     	let svg;
@@ -10650,20 +10650,20 @@ var app = (function () {
     			attr_dev(path_1, "stroke", path_1_stroke_value = "url(#paint0_linear_102_1243_" + /*index*/ ctx[58] + ")");
     			attr_dev(path_1, "stroke-width", ".15");
     			attr_dev(path_1, "class", "svelte-1cu0jzz");
-    			add_location(path_1, file$c, 568, 24, 20806);
+    			add_location(path_1, file$c, 571, 24, 20897);
     			attr_dev(stop0, "stop-color", stop0_stop_color_value = /*c*/ ctx[63].destColor);
-    			add_location(stop0, file$c, 571, 28, 21222);
+    			add_location(stop0, file$c, 574, 28, 21313);
     			attr_dev(stop1, "offset", "1");
     			attr_dev(stop1, "stop-color", stop1_stop_color_value = /*c*/ ctx[63].originColor);
-    			add_location(stop1, file$c, 572, 28, 21286);
+    			add_location(stop1, file$c, 575, 28, 21377);
     			attr_dev(linearGradient, "id", linearGradient_id_value = "paint0_linear_102_1243_" + /*index*/ ctx[58]);
     			attr_dev(linearGradient, "x1", "0");
     			attr_dev(linearGradient, "y1", "1");
     			attr_dev(linearGradient, "x2", linearGradient_x__value = Math.abs(/*c*/ ctx[63].width));
     			attr_dev(linearGradient, "y2", "1");
     			attr_dev(linearGradient, "gradientUnits", "userSpaceOnUse");
-    			add_location(linearGradient, file$c, 570, 28, 21063);
-    			add_location(defs, file$c, 569, 24, 21027);
+    			add_location(linearGradient, file$c, 573, 28, 21154);
+    			add_location(defs, file$c, 572, 24, 21118);
     			set_style(svg, "position", "absolute");
     			set_style(svg, "top", "0");
     			set_style(svg, "left", "0");
@@ -10678,14 +10678,14 @@ var app = (function () {
     			attr_dev(svg, "fill", "none");
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "class", "svelte-1cu0jzz");
-    			add_location(svg, file$c, 562, 20, 20425);
+    			add_location(svg, file$c, 565, 20, 20516);
     			set_style(div, "left", 2 * (/*c*/ ctx[63].posX * /*viewZoom*/ ctx[6] + (/*viewX*/ ctx[4] + /*mouseDrag*/ ctx[11].delta.x) / window.innerHeight * 50) + "vh");
     			set_style(div, "top", 2 * (/*c*/ ctx[63].posY * /*viewZoom*/ ctx[6] + (/*viewY*/ ctx[5] + /*mouseDrag*/ ctx[11].delta.y) / window.innerHeight * 50) + "vh");
     			set_style(div, "width", Math.abs(/*c*/ ctx[63].width) * /*viewZoom*/ ctx[6] * 2 + "vh");
     			set_style(div, "height", Math.abs(/*c*/ ctx[63].height != 0 ? /*c*/ ctx[63].height : 1) * /*viewZoom*/ ctx[6] * 2 + "vh");
     			set_style(div, "transform", "translate(" + (/*c*/ ctx[63].posX > /*c*/ ctx[63].destX ? "-100%" : "0") + ",\r\n                        " + (/*c*/ ctx[63].posY > /*c*/ ctx[63].destY ? "-100%" : "0") + ") scale(" + (/*c*/ ctx[63].destX > /*c*/ ctx[63].posX ? "-" : "") + "1,  " + (/*c*/ ctx[63].destY > /*c*/ ctx[63].posY ? "-" : "") + "1)");
     			attr_dev(div, "class", "inputFlowContainer svelte-1cu0jzz");
-    			add_location(div, file$c, 550, 16, 19731);
+    			add_location(div, file$c, 553, 16, 19822);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -10749,14 +10749,14 @@ var app = (function () {
     		block,
     		id: create_each_block_3.name,
     		type: "each",
-    		source: "(550:8) {#each connections as c, index}",
+    		source: "(553:8) {#each connections as c, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (633:16) {#each nodeConfig[category] as id}
+    // (636:16) {#each nodeConfig[category] as id}
     function create_each_block_2$2(ctx) {
     	let current;
 
@@ -10800,14 +10800,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2$2.name,
     		type: "each",
-    		source: "(633:16) {#each nodeConfig[category] as id}",
+    		source: "(636:16) {#each nodeConfig[category] as id}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (629:12) {#each nodeCategories as category, index}
+    // (632:12) {#each nodeCategories as category, index}
     function create_each_block_1$4(ctx) {
     	let div;
     	let h2;
@@ -10844,9 +10844,9 @@ var app = (function () {
 
     			each_1_anchor = empty();
     			attr_dev(h2, "class", "svelte-1cu0jzz");
-    			add_location(h2, file$c, 630, 20, 23690);
+    			add_location(h2, file$c, 633, 20, 23781);
     			attr_dev(div, "class", "nodePickerGroupTitle svelte-1cu0jzz");
-    			add_location(div, file$c, 629, 16, 23596);
+    			add_location(div, file$c, 632, 16, 23687);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -10931,14 +10931,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1$4.name,
     		type: "each",
-    		source: "(629:12) {#each nodeCategories as category, index}",
+    		source: "(632:12) {#each nodeCategories as category, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (652:16) {#each nodeCategories as category, index}
+    // (655:16) {#each nodeCategories as category, index}
     function create_each_block$4(ctx) {
     	let div;
     	let h2;
@@ -10958,9 +10958,9 @@ var app = (function () {
     			t0 = text(t0_value);
     			t1 = space();
     			attr_dev(h2, "class", "svelte-1cu0jzz");
-    			add_location(h2, file$c, 653, 24, 24703);
+    			add_location(h2, file$c, 656, 24, 24794);
     			attr_dev(div, "class", "nodePickerGroupTitle navigationLabel svelte-1cu0jzz");
-    			add_location(div, file$c, 652, 20, 24589);
+    			add_location(div, file$c, 655, 20, 24680);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -10983,7 +10983,7 @@ var app = (function () {
     		block,
     		id: create_each_block$4.name,
     		type: "each",
-    		source: "(652:16) {#each nodeCategories as category, index}",
+    		source: "(655:16) {#each nodeCategories as category, index}",
     		ctx
     	});
 
@@ -11234,57 +11234,57 @@ var app = (function () {
     			set_style(div0, "background-position-x", /*viewX*/ ctx[4] + /*mouseDrag*/ ctx[11].delta.x + "px");
     			set_style(div0, "background-position-y", /*viewY*/ ctx[5] + /*mouseDrag*/ ctx[11].delta.y + "px");
     			set_style(div0, "background-size", 2 * /*viewZoom*/ ctx[6] + "vh");
-    			add_location(div0, file$c, 434, 8, 15492);
+    			add_location(div0, file$c, 437, 8, 15583);
     			attr_dev(path_1, "d", "M7.724 65.49C13.36 55.11 21.79 46.47 32 40.56C39.63 36.15 48.25 33.26 57.46 32.33C59.61 32.11 61.79 32 64 32H448C483.3 32 512 60.65 512 96V416C512 451.3 483.3 480 448 480H64C28.65 480 0 451.3 0 416V96C0 93.79 .112 91.61 .3306 89.46C1.204 80.85 3.784 72.75 7.724 65.49V65.49zM48 416C48 424.8 55.16 432 64 432H448C456.8 432 464 424.8 464 416V224H48V416z");
     			attr_dev(path_1, "class", "svelte-1cu0jzz");
-    			add_location(path_1, file$c, 588, 246, 22017);
+    			add_location(path_1, file$c, 591, 246, 22108);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 512 512");
     			attr_dev(svg, "class", "svelte-1cu0jzz");
-    			add_location(svg, file$c, 588, 16, 21787);
+    			add_location(svg, file$c, 591, 16, 21878);
     			attr_dev(div1, "class", "nodePickerIcon svelte-1cu0jzz");
-    			add_location(div1, file$c, 587, 12, 21741);
+    			add_location(div1, file$c, 590, 12, 21832);
     			attr_dev(h20, "class", "svelte-1cu0jzz");
-    			add_location(h20, file$c, 591, 16, 22479);
+    			add_location(h20, file$c, 594, 16, 22570);
     			attr_dev(div2, "class", "nodePickerTitle svelte-1cu0jzz");
-    			add_location(div2, file$c, 590, 12, 22432);
+    			add_location(div2, file$c, 593, 12, 22523);
     			attr_dev(div3, "class", "nodePickerHeader svelte-1cu0jzz");
-    			add_location(div3, file$c, 586, 8, 21697);
+    			add_location(div3, file$c, 589, 8, 21788);
     			set_style(h21, "color", "var(--red)");
     			attr_dev(h21, "class", "svelte-1cu0jzz");
-    			add_location(h21, file$c, 597, 16, 22720);
+    			add_location(h21, file$c, 600, 16, 22811);
     			attr_dev(div4, "class", "nodePickerGroupTitle svelte-1cu0jzz");
-    			add_location(div4, file$c, 596, 12, 22638);
+    			add_location(div4, file$c, 599, 12, 22729);
     			set_style(h22, "color", "var(--velvet)");
     			attr_dev(h22, "class", "svelte-1cu0jzz");
-    			add_location(h22, file$c, 613, 16, 23162);
+    			add_location(h22, file$c, 616, 16, 23253);
     			attr_dev(div5, "class", "nodePickerGroupTitle svelte-1cu0jzz");
-    			add_location(div5, file$c, 612, 12, 23080);
+    			add_location(div5, file$c, 615, 12, 23171);
     			attr_dev(div6, "class", "slotScrollContainer svelte-1cu0jzz");
-    			add_location(div6, file$c, 595, 12, 22591);
+    			add_location(div6, file$c, 598, 12, 22682);
     			attr_dev(div7, "class", "verticalSeparator svelte-1cu0jzz");
-    			add_location(div7, file$c, 642, 12, 24051);
+    			add_location(div7, file$c, 645, 12, 24142);
     			set_style(h23, "color", "var(--red)");
     			attr_dev(h23, "class", "svelte-1cu0jzz");
-    			add_location(h23, file$c, 646, 20, 24254);
+    			add_location(h23, file$c, 649, 20, 24345);
     			attr_dev(div8, "class", "nodePickerGroupTitle navigationLabel svelte-1cu0jzz");
-    			add_location(div8, file$c, 645, 16, 24152);
+    			add_location(div8, file$c, 648, 16, 24243);
     			set_style(h24, "color", "var(--velvet)");
     			attr_dev(h24, "class", "svelte-1cu0jzz");
-    			add_location(h24, file$c, 649, 20, 24437);
+    			add_location(h24, file$c, 652, 20, 24528);
     			attr_dev(div9, "class", "nodePickerGroupTitle navigationLabel svelte-1cu0jzz");
-    			add_location(div9, file$c, 648, 16, 24335);
+    			add_location(div9, file$c, 651, 16, 24426);
     			attr_dev(div10, "class", "navigationPannel svelte-1cu0jzz");
-    			add_location(div10, file$c, 644, 12, 24104);
+    			add_location(div10, file$c, 647, 12, 24195);
     			attr_dev(div11, "class", "nodePickerContents svelte-1cu0jzz");
-    			add_location(div11, file$c, 594, 8, 22545);
+    			add_location(div11, file$c, 597, 8, 22636);
     			attr_dev(div12, "class", "nodePickerFrame neuOutdentShadow svelte-1cu0jzz");
-    			add_location(div12, file$c, 581, 4, 21508);
+    			add_location(div12, file$c, 584, 4, 21599);
     			attr_dev(div13, "class", "frame neuIndentShadow svelte-1cu0jzz");
     			add_render_callback(() => /*div13_elementresize_handler*/ ctx[55].call(div13));
-    			add_location(div13, file$c, 420, 4, 15083);
+    			add_location(div13, file$c, 423, 4, 15174);
     			attr_dev(main, "class", "svelte-1cu0jzz");
-    			add_location(main, file$c, 419, 0, 15071);
+    			add_location(main, file$c, 422, 0, 15162);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -11749,7 +11749,8 @@ var app = (function () {
     		$$invalidate(6, viewZoom -= event.deltaY / 1000);
     		$$invalidate(6, viewZoom = Math.max(zoomBounds[0], Math.min(viewZoom, zoomBounds[1])));
 
-    		if (viewZoom == oldZoom) {
+    		if (viewZoom == zoomBounds[0] || viewZoom == zoomBounds[1]) {
+    			$$invalidate(6, viewZoom = oldZoom);
     			return;
     		}
 
