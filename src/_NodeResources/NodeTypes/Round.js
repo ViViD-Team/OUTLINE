@@ -2,23 +2,22 @@ const NodeData = require("../NodeData");
 const NodeInputTether = require("../NodeInputTether");
 const NodeOutputTether = require("../NodeOutputTether");
 
-class DivisionNodeData extends NodeData {
+class RoundNodeData extends NodeData {
 
     constructor(outputRefs, context, rawNodeData) {
         let inputs = [
-            new NodeInputTether("A", context),
-            new NodeInputTether("B", context),
+            new NodeInputTether("A", context)
         ];
         let outputs = [
-            new DivisionNodeDataOutput("Frac.", inputs, outputRefs[0], context),
+            new RoundNodeDataOutput("Rnd.", inputs, outputRefs[0], context),
         ];
 
-        super("Divide", inputs, outputs, rawNodeData);
+        super("Round", inputs, outputs, rawNodeData);
     }
 }
 
 
-class DivisionNodeDataOutput extends NodeOutputTether {
+class RoundNodeDataOutput extends NodeOutputTether {
 
     constructor(reqInputs, puts, id, context) {
         super(reqInputs, puts, id, context);
@@ -26,12 +25,11 @@ class DivisionNodeDataOutput extends NodeOutputTether {
         this.process = function() {
             return new Promise(async (resolve, reject) => {
                 let a = await this.inputs[0].getValue();
-                let b = await this.inputs[1].getValue();
     
-                resolve(parseFloat(a) / parseFloat(b));
+                resolve(Math.round(parseFloat(a)));
             });
         }
     }
 }
 
-module.exports = DivisionNodeData;
+module.exports = RoundNodeData;

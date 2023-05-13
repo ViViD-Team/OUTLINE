@@ -2,7 +2,7 @@ const NodeData = require("../NodeData");
 const NodeInputTether = require("../NodeInputTether");
 const NodeOutputTether = require("../NodeOutputTether");
 
-class DivisionNodeData extends NodeData {
+class LogNodeData extends NodeData {
 
     constructor(outputRefs, context, rawNodeData) {
         let inputs = [
@@ -10,15 +10,15 @@ class DivisionNodeData extends NodeData {
             new NodeInputTether("B", context),
         ];
         let outputs = [
-            new DivisionNodeDataOutput("Frac.", inputs, outputRefs[0], context),
+            new LogNodeDataOutput("Log", inputs, outputRefs[0], context),
         ];
 
-        super("Divide", inputs, outputs, rawNodeData);
+        super("Log", inputs, outputs, rawNodeData);
     }
 }
 
 
-class DivisionNodeDataOutput extends NodeOutputTether {
+class LogNodeDataOutput extends NodeOutputTether {
 
     constructor(reqInputs, puts, id, context) {
         super(reqInputs, puts, id, context);
@@ -28,10 +28,10 @@ class DivisionNodeDataOutput extends NodeOutputTether {
                 let a = await this.inputs[0].getValue();
                 let b = await this.inputs[1].getValue();
     
-                resolve(parseFloat(a) / parseFloat(b));
+                resolve(Math.log(parseFloat(a)) / Math.log(parseFloat(b)));
             });
         }
     }
 }
 
-module.exports = DivisionNodeData;
+module.exports = LogNodeData;

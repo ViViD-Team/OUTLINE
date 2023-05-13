@@ -3,6 +3,28 @@
         "Add",
         "Subtract",
         "Multiply",
-        "Divide"
+        "Divide",
+        "Modulo",
+        "Power",
+        "Square",
+        "Root",
+        "SquareRoot",
+        "Abs",
+        "Round",
+        "RoundUp",
+        "RoundDown",
+        "Min",
+        "Max"
+    ],
+    "Math - Advanced": [
+        "Factorial",
+        "Log",
+        "Ln",
+        "Sin",
+        "Asin",
+        "Cos",
+        "Acos",
+        "Tan",
+        "Atan"
     ]
 }

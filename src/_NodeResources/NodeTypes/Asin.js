@@ -2,23 +2,22 @@ const NodeData = require("../NodeData");
 const NodeInputTether = require("../NodeInputTether");
 const NodeOutputTether = require("../NodeOutputTether");
 
-class DivisionNodeData extends NodeData {
+class AsinNodeData extends NodeData {
 
     constructor(outputRefs, context, rawNodeData) {
         let inputs = [
-            new NodeInputTether("A", context),
-            new NodeInputTether("B", context),
+            new NodeInputTether("A", context)
         ];
         let outputs = [
-            new DivisionNodeDataOutput("Frac.", inputs, outputRefs[0], context),
+            new AsinNodeDataOutput("Asin.", inputs, outputRefs[0], context),
         ];
 
-        super("Divide", inputs, outputs, rawNodeData);
+        super("Asin", inputs, outputs, rawNodeData);
     }
 }
 
 
-class DivisionNodeDataOutput extends NodeOutputTether {
+class AsinNodeDataOutput extends NodeOutputTether {
 
     constructor(reqInputs, puts, id, context) {
         super(reqInputs, puts, id, context);
@@ -26,12 +25,11 @@ class DivisionNodeDataOutput extends NodeOutputTether {
         this.process = function() {
             return new Promise(async (resolve, reject) => {
                 let a = await this.inputs[0].getValue();
-                let b = await this.inputs[1].getValue();
     
-                resolve(parseFloat(a) / parseFloat(b));
+                resolve(Math.asin(parseFloat(a)));
             });
         }
     }
 }
 
-module.exports = DivisionNodeData;
+module.exports = AsinNodeData;

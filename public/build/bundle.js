@@ -5401,12 +5401,12 @@ var app = (function () {
     			set_style(div0, "background-position-x", /*viewX*/ ctx[3] + /*mouseDrag*/ ctx[9].delta.x + "px");
     			set_style(div0, "background-position-y", /*viewY*/ ctx[4] + /*mouseDrag*/ ctx[9].delta.y + "px");
     			set_style(div0, "background-size", 2 * /*viewZoom*/ ctx[5] + "vh");
-    			add_location(div0, file$6, 404, 12, 13097);
+    			add_location(div0, file$6, 404, 12, 13011);
     			attr_dev(div1, "class", "frame neuIndentShadow svelte-d3k9sp");
     			add_render_callback(() => /*div1_elementresize_handler*/ ctx[49].call(div1));
-    			add_location(div1, file$6, 389, 4, 12667);
+    			add_location(div1, file$6, 389, 4, 12581);
     			attr_dev(main, "class", "svelte-d3k9sp");
-    			add_location(main, file$6, 385, 0, 12598);
+    			add_location(main, file$6, 385, 0, 12512);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -5606,7 +5606,7 @@ var app = (function () {
     function instance$6($$self, $$props, $$invalidate) {
     	let { debObjectDrag } = $$props, { debObjectResize } = $$props;
     	let viewX = 0, viewY = 0, viewZoom = 1;
-    	const zoomBounds = [0.3333333333333333, 5];
+    	const zoomBounds = [0.3, 5];
     	let viewportHeight, viewportWidth;
     	let viewportRef;
     	let { projectData } = $$props;
@@ -10650,20 +10650,20 @@ var app = (function () {
     			attr_dev(path_1, "stroke", path_1_stroke_value = "url(#paint0_linear_102_1243_" + /*index*/ ctx[58] + ")");
     			attr_dev(path_1, "stroke-width", ".15");
     			attr_dev(path_1, "class", "svelte-1cu0jzz");
-    			add_location(path_1, file$c, 568, 24, 20858);
+    			add_location(path_1, file$c, 568, 24, 20806);
     			attr_dev(stop0, "stop-color", stop0_stop_color_value = /*c*/ ctx[63].destColor);
-    			add_location(stop0, file$c, 571, 28, 21274);
+    			add_location(stop0, file$c, 571, 28, 21222);
     			attr_dev(stop1, "offset", "1");
     			attr_dev(stop1, "stop-color", stop1_stop_color_value = /*c*/ ctx[63].originColor);
-    			add_location(stop1, file$c, 572, 28, 21338);
+    			add_location(stop1, file$c, 572, 28, 21286);
     			attr_dev(linearGradient, "id", linearGradient_id_value = "paint0_linear_102_1243_" + /*index*/ ctx[58]);
     			attr_dev(linearGradient, "x1", "0");
     			attr_dev(linearGradient, "y1", "1");
     			attr_dev(linearGradient, "x2", linearGradient_x__value = Math.abs(/*c*/ ctx[63].width));
     			attr_dev(linearGradient, "y2", "1");
     			attr_dev(linearGradient, "gradientUnits", "userSpaceOnUse");
-    			add_location(linearGradient, file$c, 570, 28, 21115);
-    			add_location(defs, file$c, 569, 24, 21079);
+    			add_location(linearGradient, file$c, 570, 28, 21063);
+    			add_location(defs, file$c, 569, 24, 21027);
     			set_style(svg, "position", "absolute");
     			set_style(svg, "top", "0");
     			set_style(svg, "left", "0");
@@ -10678,14 +10678,14 @@ var app = (function () {
     			attr_dev(svg, "fill", "none");
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "class", "svelte-1cu0jzz");
-    			add_location(svg, file$c, 562, 20, 20477);
+    			add_location(svg, file$c, 562, 20, 20425);
     			set_style(div, "left", 2 * (/*c*/ ctx[63].posX * /*viewZoom*/ ctx[6] + (/*viewX*/ ctx[4] + /*mouseDrag*/ ctx[11].delta.x) / window.innerHeight * 50) + "vh");
     			set_style(div, "top", 2 * (/*c*/ ctx[63].posY * /*viewZoom*/ ctx[6] + (/*viewY*/ ctx[5] + /*mouseDrag*/ ctx[11].delta.y) / window.innerHeight * 50) + "vh");
     			set_style(div, "width", Math.abs(/*c*/ ctx[63].width) * /*viewZoom*/ ctx[6] * 2 + "vh");
     			set_style(div, "height", Math.abs(/*c*/ ctx[63].height != 0 ? /*c*/ ctx[63].height : 1) * /*viewZoom*/ ctx[6] * 2 + "vh");
     			set_style(div, "transform", "translate(" + (/*c*/ ctx[63].posX > /*c*/ ctx[63].destX ? "-100%" : "0") + ",\r\n                        " + (/*c*/ ctx[63].posY > /*c*/ ctx[63].destY ? "-100%" : "0") + ") scale(" + (/*c*/ ctx[63].destX > /*c*/ ctx[63].posX ? "-" : "") + "1,  " + (/*c*/ ctx[63].destY > /*c*/ ctx[63].posY ? "-" : "") + "1)");
     			attr_dev(div, "class", "inputFlowContainer svelte-1cu0jzz");
-    			add_location(div, file$c, 550, 16, 19783);
+    			add_location(div, file$c, 550, 16, 19731);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -10844,9 +10844,9 @@ var app = (function () {
 
     			each_1_anchor = empty();
     			attr_dev(h2, "class", "svelte-1cu0jzz");
-    			add_location(h2, file$c, 630, 20, 23742);
+    			add_location(h2, file$c, 630, 20, 23690);
     			attr_dev(div, "class", "nodePickerGroupTitle svelte-1cu0jzz");
-    			add_location(div, file$c, 629, 16, 23648);
+    			add_location(div, file$c, 629, 16, 23596);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -10958,9 +10958,9 @@ var app = (function () {
     			t0 = text(t0_value);
     			t1 = space();
     			attr_dev(h2, "class", "svelte-1cu0jzz");
-    			add_location(h2, file$c, 653, 24, 24755);
+    			add_location(h2, file$c, 653, 24, 24703);
     			attr_dev(div, "class", "nodePickerGroupTitle navigationLabel svelte-1cu0jzz");
-    			add_location(div, file$c, 652, 20, 24641);
+    			add_location(div, file$c, 652, 20, 24589);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -11234,57 +11234,57 @@ var app = (function () {
     			set_style(div0, "background-position-x", /*viewX*/ ctx[4] + /*mouseDrag*/ ctx[11].delta.x + "px");
     			set_style(div0, "background-position-y", /*viewY*/ ctx[5] + /*mouseDrag*/ ctx[11].delta.y + "px");
     			set_style(div0, "background-size", 2 * /*viewZoom*/ ctx[6] + "vh");
-    			add_location(div0, file$c, 434, 8, 15544);
+    			add_location(div0, file$c, 434, 8, 15492);
     			attr_dev(path_1, "d", "M7.724 65.49C13.36 55.11 21.79 46.47 32 40.56C39.63 36.15 48.25 33.26 57.46 32.33C59.61 32.11 61.79 32 64 32H448C483.3 32 512 60.65 512 96V416C512 451.3 483.3 480 448 480H64C28.65 480 0 451.3 0 416V96C0 93.79 .112 91.61 .3306 89.46C1.204 80.85 3.784 72.75 7.724 65.49V65.49zM48 416C48 424.8 55.16 432 64 432H448C456.8 432 464 424.8 464 416V224H48V416z");
     			attr_dev(path_1, "class", "svelte-1cu0jzz");
-    			add_location(path_1, file$c, 588, 246, 22069);
+    			add_location(path_1, file$c, 588, 246, 22017);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 512 512");
     			attr_dev(svg, "class", "svelte-1cu0jzz");
-    			add_location(svg, file$c, 588, 16, 21839);
+    			add_location(svg, file$c, 588, 16, 21787);
     			attr_dev(div1, "class", "nodePickerIcon svelte-1cu0jzz");
-    			add_location(div1, file$c, 587, 12, 21793);
+    			add_location(div1, file$c, 587, 12, 21741);
     			attr_dev(h20, "class", "svelte-1cu0jzz");
-    			add_location(h20, file$c, 591, 16, 22531);
+    			add_location(h20, file$c, 591, 16, 22479);
     			attr_dev(div2, "class", "nodePickerTitle svelte-1cu0jzz");
-    			add_location(div2, file$c, 590, 12, 22484);
+    			add_location(div2, file$c, 590, 12, 22432);
     			attr_dev(div3, "class", "nodePickerHeader svelte-1cu0jzz");
-    			add_location(div3, file$c, 586, 8, 21749);
+    			add_location(div3, file$c, 586, 8, 21697);
     			set_style(h21, "color", "var(--red)");
     			attr_dev(h21, "class", "svelte-1cu0jzz");
-    			add_location(h21, file$c, 597, 16, 22772);
+    			add_location(h21, file$c, 597, 16, 22720);
     			attr_dev(div4, "class", "nodePickerGroupTitle svelte-1cu0jzz");
-    			add_location(div4, file$c, 596, 12, 22690);
+    			add_location(div4, file$c, 596, 12, 22638);
     			set_style(h22, "color", "var(--velvet)");
     			attr_dev(h22, "class", "svelte-1cu0jzz");
-    			add_location(h22, file$c, 613, 16, 23214);
+    			add_location(h22, file$c, 613, 16, 23162);
     			attr_dev(div5, "class", "nodePickerGroupTitle svelte-1cu0jzz");
-    			add_location(div5, file$c, 612, 12, 23132);
+    			add_location(div5, file$c, 612, 12, 23080);
     			attr_dev(div6, "class", "slotScrollContainer svelte-1cu0jzz");
-    			add_location(div6, file$c, 595, 12, 22643);
+    			add_location(div6, file$c, 595, 12, 22591);
     			attr_dev(div7, "class", "verticalSeparator svelte-1cu0jzz");
-    			add_location(div7, file$c, 642, 12, 24103);
+    			add_location(div7, file$c, 642, 12, 24051);
     			set_style(h23, "color", "var(--red)");
     			attr_dev(h23, "class", "svelte-1cu0jzz");
-    			add_location(h23, file$c, 646, 20, 24306);
+    			add_location(h23, file$c, 646, 20, 24254);
     			attr_dev(div8, "class", "nodePickerGroupTitle navigationLabel svelte-1cu0jzz");
-    			add_location(div8, file$c, 645, 16, 24204);
+    			add_location(div8, file$c, 645, 16, 24152);
     			set_style(h24, "color", "var(--velvet)");
     			attr_dev(h24, "class", "svelte-1cu0jzz");
-    			add_location(h24, file$c, 649, 20, 24489);
+    			add_location(h24, file$c, 649, 20, 24437);
     			attr_dev(div9, "class", "nodePickerGroupTitle navigationLabel svelte-1cu0jzz");
-    			add_location(div9, file$c, 648, 16, 24387);
+    			add_location(div9, file$c, 648, 16, 24335);
     			attr_dev(div10, "class", "navigationPannel svelte-1cu0jzz");
-    			add_location(div10, file$c, 644, 12, 24156);
+    			add_location(div10, file$c, 644, 12, 24104);
     			attr_dev(div11, "class", "nodePickerContents svelte-1cu0jzz");
-    			add_location(div11, file$c, 594, 8, 22597);
+    			add_location(div11, file$c, 594, 8, 22545);
     			attr_dev(div12, "class", "nodePickerFrame neuOutdentShadow svelte-1cu0jzz");
-    			add_location(div12, file$c, 581, 4, 21560);
+    			add_location(div12, file$c, 581, 4, 21508);
     			attr_dev(div13, "class", "frame neuIndentShadow svelte-1cu0jzz");
     			add_render_callback(() => /*div13_elementresize_handler*/ ctx[55].call(div13));
-    			add_location(div13, file$c, 420, 4, 15135);
+    			add_location(div13, file$c, 420, 4, 15083);
     			attr_dev(main, "class", "svelte-1cu0jzz");
-    			add_location(main, file$c, 419, 0, 15123);
+    			add_location(main, file$c, 419, 0, 15071);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -11708,7 +11708,7 @@ var app = (function () {
     	const path = require("path");
     	const fs = require("fs");
     	let viewX = 0, viewY = 0, viewZoom = 1;
-    	const zoomBounds = [0.3333333333333333, 5];
+    	const zoomBounds = [0.3, 5];
     	let viewportHeight, viewportWidth;
     	let viewportRef;
     	let { nodeData } = $$props;

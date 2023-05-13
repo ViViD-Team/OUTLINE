@@ -2,23 +2,22 @@ const NodeData = require("../NodeData");
 const NodeInputTether = require("../NodeInputTether");
 const NodeOutputTether = require("../NodeOutputTether");
 
-class DivisionNodeData extends NodeData {
+class FactorialNodeData extends NodeData {
 
     constructor(outputRefs, context, rawNodeData) {
         let inputs = [
-            new NodeInputTether("A", context),
-            new NodeInputTether("B", context),
+            new NodeInputTether("A", context)
         ];
         let outputs = [
-            new DivisionNodeDataOutput("Frac.", inputs, outputRefs[0], context),
+            new FactorialNodeDataOutput("A!", inputs, outputRefs[0], context),
         ];
 
-        super("Divide", inputs, outputs, rawNodeData);
+        super("Factorial", inputs, outputs, rawNodeData);
     }
 }
 
 
-class DivisionNodeDataOutput extends NodeOutputTether {
+class FactorialNodeDataOutput extends NodeOutputTether {
 
     constructor(reqInputs, puts, id, context) {
         super(reqInputs, puts, id, context);
@@ -26,12 +25,16 @@ class DivisionNodeDataOutput extends NodeOutputTether {
         this.process = function() {
             return new Promise(async (resolve, reject) => {
                 let a = await this.inputs[0].getValue();
-                let b = await this.inputs[1].getValue();
     
-                resolve(parseFloat(a) / parseFloat(b));
+                resolve(factorialize(parseFloat(a)));
             });
         }
     }
 }
 
-module.exports = DivisionNodeData;
+function factorialize(num) {
+    if (num <= 0) {return 1}
+    return (num * factorialize(num - 1))
+}
+
+module.exports = FactorialNodeData;
