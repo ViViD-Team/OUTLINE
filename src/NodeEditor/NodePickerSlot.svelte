@@ -9,6 +9,16 @@
         event.dataTransfer.setData("nodeID", id);
         event.dataTransfer.setData("nodeType", type);
     }
+
+    function splitCamelCase(string) {
+        let spread = string.split("");
+        let out = "";
+        spread.forEach((letter) => {
+            if (letter == letter.toUpperCase()) out += " ";
+            out += letter;
+        });
+        return out;
+    }
 </script>
 
 
@@ -16,7 +26,7 @@
 <main draggable="true" on:dragstart="{initDrag}" style="
     border-color: {color};
 ">
-    <p style="color: {color};">{id}</p>
+    <p style="color: {color};">{splitCamelCase(id)}</p>
 </main>
 
 

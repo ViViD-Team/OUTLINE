@@ -1,3 +1,11 @@
+# Update 14.05.2023
+#### Minor Changes
+- Labels for node picker slots are now separated into individual words.
+
+# Update 13.05.2023
+#### Features
+- Added several new nodes.
+
 # Update 10.05.2023
 #### Features
 - Added *divide* node.

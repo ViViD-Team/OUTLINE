@@ -8902,6 +8902,7 @@ var app = (function () {
     function create_fragment$a(ctx) {
     	let main;
     	let p;
+    	let t_value = splitCamelCase(/*id*/ ctx[0]) + "";
     	let t;
     	let dispose;
 
@@ -8909,14 +8910,14 @@ var app = (function () {
     		c: function create() {
     			main = element("main");
     			p = element("p");
-    			t = text(/*id*/ ctx[0]);
+    			t = text(t_value);
     			set_style(p, "color", /*color*/ ctx[1]);
     			attr_dev(p, "class", "svelte-4tb4h5");
-    			add_location(p, file$a, 18, 4, 397);
+    			add_location(p, file$a, 28, 4, 669);
     			attr_dev(main, "draggable", "true");
     			set_style(main, "border-color", /*color*/ ctx[1]);
     			attr_dev(main, "class", "svelte-4tb4h5");
-    			add_location(main, file$a, 15, 0, 303);
+    			add_location(main, file$a, 25, 0, 575);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -8928,7 +8929,7 @@ var app = (function () {
     			dispose = listen_dev(main, "dragstart", /*initDrag*/ ctx[2], false, false, false);
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*id*/ 1) set_data_dev(t, /*id*/ ctx[0]);
+    			if (dirty & /*id*/ 1 && t_value !== (t_value = splitCamelCase(/*id*/ ctx[0]) + "")) set_data_dev(t, t_value);
 
     			if (dirty & /*color*/ 2) {
     				set_style(p, "color", /*color*/ ctx[1]);
@@ -8957,6 +8958,18 @@ var app = (function () {
     	return block;
     }
 
+    function splitCamelCase(string) {
+    	let spread = string.split("");
+    	let out = "";
+
+    	spread.forEach(letter => {
+    		if (letter == letter.toUpperCase()) out += " ";
+    		out += letter;
+    	});
+
+    	return out;
+    }
+
     function instance$a($$self, $$props, $$invalidate) {
     	let { id } = $$props;
     	let { type } = $$props;
@@ -8980,7 +8993,13 @@ var app = (function () {
     		if ("color" in $$props) $$invalidate(1, color = $$props.color);
     	};
 
-    	$$self.$capture_state = () => ({ id, type, color, initDrag });
+    	$$self.$capture_state = () => ({
+    		id,
+    		type,
+    		color,
+    		initDrag,
+    		splitCamelCase
+    	});
 
     	$$self.$inject_state = $$props => {
     		if ("id" in $$props) $$invalidate(0, id = $$props.id);
