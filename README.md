@@ -1,4 +1,4 @@
-# Update 18.05.2023
+# Update 28.05.2023
 #### Features
 - Node Connections now stay attatched while dragging.
 	- This makes calling the `recalculateConnections()` function every node move unnecessary, saving resources.
