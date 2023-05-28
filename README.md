@@ -4,6 +4,10 @@
 	- This makes calling the `recalculateConnections()` function every node move unnecessary, saving resources.
 - Added option to change the preferred Mouse Navigation Button.
 
+#### Bugfixes
+- Fixed cross background overflowing.
+- Fixed accidental navigation behaviour on drag in Node Picker.
+
 # Update 14.05.2023
 #### Minor Changes
 - Labels for node picker slots are now separated into individual words.

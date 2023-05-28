@@ -604,6 +604,7 @@
     </div>
 
     <div class="nodePickerFrame neuOutdentShadow"
+        on:mousedown={(event) => {event.stopPropagation();}}
         on:mousewheel={/* Disable Node Editor Scroll on Hover*/
             (event) => {event.stopPropagation();}
         }
@@ -723,6 +724,8 @@
 
         background-image: var(--cross-background);
         background-repeat: repeat;
+
+        overflow: hidden;
     }
 
     .nodePickerFrame {
