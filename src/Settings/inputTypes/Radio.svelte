@@ -39,7 +39,7 @@
 
     .labelContainer {
         height: 10vh;
-        flex: 4;
+        flex: 3;
     }
 
     .labelContainer p {
@@ -51,7 +51,7 @@
 
     .inputContainer {
         height: 100%;
-        flex: 1;
+        flex: 2;
 
         display: flex;
         flex-direction: column;

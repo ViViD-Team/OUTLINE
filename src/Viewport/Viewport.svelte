@@ -37,6 +37,8 @@ const   zoomBounds = [.3, 5]
     // GLOBALS
     export let projectData;
 
+    export let userSettings;
+
     const objectPrototypes = {
         "header": {
             "text": "Lorem",
@@ -106,7 +108,7 @@ const   zoomBounds = [.3, 5]
     }
 
     function mouseDown(event) {
-        if (event.button != 1) return;
+        if (userSettings.preferred_navigation_mb !== 3 && event.button != userSettings.preferred_navigation_mb) return;
         mouseDrag.ongoing = true;
         mouseDrag.start.x = event.clientX;
         mouseDrag.start.y = event.clientY;
@@ -122,7 +124,7 @@ const   zoomBounds = [.3, 5]
         clearObjectDrag();
         clearObjectResize();
 
-        if (!mouseDrag.ongoing || event.button != 1) return;
+        if (!mouseDrag.ongoing || event.button != userSettings.preferred_navigation_mb && userSettings.preferred_navigation_mb !== 3) return;
         mouseDrag.ongoing = false
         viewX += mouseDrag.delta.x;
         viewY += mouseDrag.delta.y;

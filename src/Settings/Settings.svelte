@@ -67,6 +67,16 @@
                         choices={["Background Blur", "Basic"]}
                         bind:value={userSettings.settings_theme}
                     />
+
+                {/if}
+                {#if selected === 1}
+
+                    <Radio
+                        label="Preferred Navigation Button"
+                        choices={["Left Mouse Button", "Middle Mouse Button (Wheel)", "Right Mouse Button", "Any"]}
+                        bind:value={userSettings.preferred_navigation_mb}
+                    />
+
                 {/if}
             </div>
 

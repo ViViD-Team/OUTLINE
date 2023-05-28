@@ -194,6 +194,7 @@
 				bind:this={viewportRef}
 
 				projectData={projectData}
+				userSettings={userSettings}
 				bind:edited={edited}
 
 				bind:debObjectDrag={debugInfo.objectDrag}
@@ -210,6 +211,8 @@
 				nodeData={projectData.objects["table"][edited].nodes}
 				tableRef={projectData.objects["table"][edited].reference}
 				tableData={projectData.objects["table"][edited]}
+
+				userSettings={userSettings}
 
 				bind:invokeOutputs={invokeProcessCallback}
 			/>

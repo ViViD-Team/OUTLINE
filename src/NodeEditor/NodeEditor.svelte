@@ -22,6 +22,8 @@
     export let tableRef;
     export let tableData;
 
+    export let userSettings;
+
     let context = {};
     
     //#region mouse
@@ -39,7 +41,7 @@
     }
 
     function mouseDown(event) {
-        if (event.button != 1) return;
+        if (userSettings.preferred_navigation_mb !== 3 && event.button != userSettings.preferred_navigation_mb) return;
         mouseDrag.ongoing = true;
         mouseDrag.start.x = event.clientX;
         mouseDrag.start.y = event.clientY;
@@ -52,7 +54,7 @@
     }
 
     function mouseUp(event) {
-        if (!mouseDrag.ongoing || event.button != 1) return;
+        if (!mouseDrag.ongoing || event.button != userSettings.preferred_navigation_mb && userSettings.preferred_navigation_mb !== 3) return;
         mouseDrag.ongoing = false
         viewX += mouseDrag.delta.x;
         viewY += mouseDrag.delta.y;
@@ -172,6 +174,10 @@
 
             nodeData[nodeDrag.objectInfo.type][nodeDrag.objectInfo.ID].simX = nodeDrag.delta.x;
             nodeData[nodeDrag.objectInfo.type][nodeDrag.objectInfo.ID].simY = nodeDrag.delta.y;
+
+            connections.forEach((c) => {
+                c.update();
+            });
         }
     }
 
@@ -275,7 +281,7 @@
 
                 clearNodeDrag();
 
-                recalculateConnections();
+                //recalculateConnections();
 
                 break;
         }
@@ -336,7 +342,22 @@
                 "width": (destData.posX + destData.width - .75) - (node.posX + .75),
                 "height": (destData.posY + (1 + (destData.outputs.indexOf(output) + 1) * 1.5)) - (node.posY + (1 + (index + 1)*1.5)),
                 "originColor": node.color,
-                "destColor": destData.color
+                "destColor": destData.color,
+
+                "inputHolder": node,
+                "outputHolder": context[output].superNode.rawNodeData,
+                "inputIndex": index,
+                "outputIndex": destData.outputs.indexOf(output),
+
+                "update": function() {
+                    this.posX = (this.inputHolder.posX + this.inputHolder.simX) + .75;
+                    this.posY = (this.inputHolder.posY + this.inputHolder.simY) + (1 + (this.inputIndex + 1)*1.5);
+                    this.destX = (this.outputHolder.posX + this.outputHolder.simX) + this.outputHolder.width - .75;
+                    this.destY = (this.outputHolder.posY + this.outputHolder.simY) + (1 + (this.outputIndex + 1) * 1.5);
+                    this.width = this.posX - this.destX;
+                    this.height = this.posY - this.destY;
+                    connections[connections.indexOf(this)] = Object.assign({}, this);
+                },
             };
 
             connections.push(newConnection);

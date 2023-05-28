@@ -1,3 +1,9 @@
+# Update 18.05.2023
+#### Features
+- Node Connections now stay attatched while dragging.
+	- This makes calling the `recalculateConnections()` function every node move unnecessary, saving resources.
+- Added option to change the preferred Mouse Navigation Button.
+
 # Update 14.05.2023
 #### Minor Changes
 - Labels for node picker slots are now separated into individual words.

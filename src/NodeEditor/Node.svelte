@@ -99,7 +99,7 @@
 
 
 {#if nodeObject !== null && nodeObject !== undefined && renderReady}
-    <main class="neuOutdentShadowRim" style="
+    <main on:mousedown={(event) => {event.stopPropagation();}} class="neuOutdentShadowRim" style="
         left: {((posX + simX) * zoom + offX) * 2}vh;
         top: {((posY + simY) * zoom + offY) * 2}vh;
 
