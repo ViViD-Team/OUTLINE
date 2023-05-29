@@ -1,3 +1,7 @@
+# Update 29.05.2023
+#### Features
+- Added fallback graphic if a node's resources fail to load.
+
 # Update 28.05.2023
 #### Features
 - Node Connections now stay attatched while dragging.

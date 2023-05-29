@@ -266,6 +266,21 @@
                             nodeData[event.dataTransfer.getData("nodeType")].push(newObj);
                         }
                         catch (err) {
+                            let newObj = {
+                                "id": event.dataTransfer.getData("nodeID"),
+                                "posX": Math.round((-viewX + event.layerX) / (window.innerHeight / 100 * 2 * viewZoom)),
+                                "posY": Math.round((-viewY + event.layerY) / (window.innerHeight / 100 * 2 * viewZoom)),
+                                "simX": 0,
+                                "simY": 0,
+                                "width": 6,
+                                "reference": null,
+                                "inputs": [],
+                                "outputs": [],
+                                "color": "var(--red)"
+                            };
+
+                            nodeData[event.dataTransfer.getData("nodeType")].push(newObj);
+                            nodeData[event.dataTransfer.getData("nodeType")] = Object.assign([], nodeData[event.dataTransfer.getData("nodeType")]);
                             console.error(err);
                         }
                         return;

@@ -17,6 +17,7 @@
     export let nodeObject;
 
     let renderReady = false;
+    let error = false;
 
     onMount(() => {
         // Load Node on the fly and subscribe to outputs
@@ -34,6 +35,7 @@
             renderReady = true;
         }
         catch (err) {
+            error = true;
             console.error(err);
         }
     });
@@ -98,7 +100,7 @@
 </script>
 
 
-{#if nodeObject !== null && nodeObject !== undefined && renderReady}
+{#if nodeObject !== null && nodeObject !== undefined && renderReady && !error}
     <main on:mousedown={(event) => {event.stopPropagation();}} class="neuOutdentShadowRim" style="
         left: {((posX + simX) * zoom + offX) * 2}vh;
         top: {((posY + simY) * zoom + offY) * 2}vh;
@@ -198,6 +200,56 @@
     
     </main>
 {/if}
+{#if error}
+<main on:mousedown={(event) => {event.stopPropagation();}} class="neuOutdentShadowRim" style="
+    left: {((posX + simX) * zoom + offX) * 2}vh;
+    top: {((posY + simY) * zoom + offY) * 2}vh;
+
+    width: {2 * nodeData.width * zoom}vh;
+    height: {zoom * 4 + 3 * zoom * 2}vh;
+
+    border-radius: {zoom}vh;
+">
+    <div
+        class="titleBar"
+    
+        draggable="true"
+        on:dragstart="{drag}"
+
+        style="
+            height: {3*zoom}vh;
+            background-color: var(--red);
+    ">
+        <svg style="
+            height: {1.5*zoom}vh;
+            margin-left: {zoom}vh;
+        " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg>
+        <h1 style="
+            font-size: {1.5*zoom}vh;
+            margin-left: {zoom}vh;
+        ">Error</h1>
+    </div>
+    <div style="align-items: center; justify-content: center;" class="contents">
+        <p style="
+            font-size: {zoom}vh;
+        ">Node resource could not be located.</p>
+    </div>
+
+
+    <div
+        class="deleteAction"
+        
+        on:click={handleDelete}
+        
+        style="
+            width: {3*zoom}vh;
+            height: {3*zoom}vh;"
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>
+    </div>
+
+</main>
+{/if}
 
 
 <style>
@@ -222,6 +274,10 @@
         justify-content: flex-start;
     }
 
+    .titleBar svg {
+        fill: var(--mainbg);
+    }
+
     .titleBar h1 {
         color: var(--mainbg);
         font-weight: 600;
@@ -234,6 +290,13 @@
         flex: 1;
 
         display: flex;
+    }
+
+    .contents p {
+        color: var(--red);
+        width: 80%;
+        text-align: center;
+        font-weight: 500;
     }
 
 
