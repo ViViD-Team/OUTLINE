@@ -5,6 +5,7 @@
 	import Toolkit from "./Toolkit/Toolkit.svelte";
 	import DebugConsole from "./DebugConsole.svelte";
     import Settings from "./Settings/Settings.svelte";
+	import NotificationCard from "./NotificationCard.svelte";
     import { onDestroy, onMount } from "svelte";
     
 
@@ -85,8 +86,30 @@
 			}
 
 		};
+
+		document.addEventListener("notificationEvent", (event) => {
+			const newObj = Object.assign({
+				"delete": () => {
+					notifications.splice(notifications.indexOf(this), 1);
+					notifications = Object.assign([], notifications);
+				},
+		}, event.detail);
+			notifications.push(newObj);
+			setTimeout(function() {
+				newObj.delete();
+				notifications = Object.assign([], notifications);
+			}, 10000);
+			notifications = Object.assign([], notifications);
+		});
 	});
 
+	// Notifications
+	let notifications = [];
+
+	function deleteNotification(index) {
+		notifications.splice(index, 1);
+		notifications = Object.assign([], notifications);
+	}
 
 
 	// Table and Nodes
@@ -141,6 +164,8 @@
 		if (projectData.targetFilePath) {
 			let fileContents = stringifyCircularJSON(projectData);
 			fs.writeFileSync(projectData.targetFilePath, fileContents);
+
+			document.dispatchEvent(new CustomEvent("notificationEvent", {detail: {"type": "note", "message": "File saved!"}}));
 		}
 		else saveAs();
 	}
@@ -153,6 +178,8 @@
 
 		let fileContents = stringifyCircularJSON(projectData);
 		fs.writeFileSync(path, fileContents);
+
+		document.dispatchEvent(new CustomEvent("notificationEvent", {detail: {"type": "note", "message": "File saved!"}}));
 	}
 
 	// Removes circular references resulting from trying to serialize classes
@@ -233,6 +260,16 @@
 			/>
 		{/if}
 	</div>
+
+	<div class="notificationsContainer">
+		{#each notifications as n, index}
+			<NotificationCard
+				type={n.type}
+				message={n.message}
+				onClose={() => {deleteNotification(index)}}
+			/>
+		{/each}
+	</div>
 </main>
 
 <style>
@@ -261,5 +298,16 @@
 		flex: 2;
 
 		display: flex;
+	}
+
+	.notificationsContainer {
+		position: fixed;
+		bottom: 0;
+		right: 0;
+		width: 25vw;
+
+		display: flex;
+		flex-direction: column-reverse;
+		align-items: center;
 	}
 </style>
