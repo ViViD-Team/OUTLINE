@@ -39,7 +39,7 @@
 
     function dragOver(event) {
         event.preventDefault();
-        event.stopPropagation();
+        //event.stopPropagation();
     }
 
     export let connectionCallback;
@@ -127,6 +127,14 @@
     
         draggable="true"
         on:dragstart="{drag}"
+        on:dragend="{() => {
+            nodeData.posX += nodeData.simX;
+            nodeData.posY += nodeData.simY;
+
+            nodeData.simX = 0;
+            nodeData.simY = 0;
+            clearDrag();
+        }}"
 
         style="
             height: {3*zoom}vh;

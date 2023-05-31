@@ -1,3 +1,8 @@
+# Update 31.05.2023
+#### Features
+- Added a simulated connection graphic when dragging node connections.
+- Added <kbd>CTRL</kbd> + <kbd>S</kbd> shortcut for saving.
+
 # Update 29.05.2023
 #### Features
 - Added fallback graphic if a node's resources fail to load.

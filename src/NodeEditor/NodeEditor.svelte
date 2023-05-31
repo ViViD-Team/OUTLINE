@@ -15,7 +15,7 @@
     let viewX = 0, viewY = 0, viewZoom = 1;
     const zoomBounds = [.3, 5];
 
-    let viewportHeight, viewportWidth;
+    let viewportHeight, viewportWidth, viewportTop, viewportLeft;
     let viewportRef;
 
     export let nodeData;
@@ -179,6 +179,11 @@
                 c.update();
             });
         }
+
+        if (simConnection.shown) {
+            simConnection.update(event);
+            simConnection = Object.assign({}, simConnection);
+        }
     }
 
     function drop(event) {
@@ -320,6 +325,48 @@
             nodeConfig = JSON.parse(file);
             nodeCategories = Object.keys(nodeConfig);
         });
+    }
+
+    let simConnection = {
+        "shown": false,
+        "node": null,
+        "index": 0,
+
+        "destX": 0,
+        "destY": 0,
+        "posX": 0,
+        "posY": 0,
+        "width": 0,
+        "height": 0,
+
+        "opacity": 0,
+
+        "update": function(event) {
+            console.log(event.pageY - viewportRef.offsetTop)
+            let mouseX = (-viewX + (event.pageX - viewportRef.offsetLeft)) / (window.innerHeight / 100 * 2 * viewZoom);
+            let mouseY = (-viewY + (event.pageY - viewportRef.offsetTop)) / (window.innerHeight / 100 * 2 * viewZoom);
+
+            this.posX = mouseX;
+            this.posY = mouseY;
+
+            this.destX = ((this.node.posX + this.node.simX) + this.node.width - .75);
+            this.destY = ((this.node.posY + this.node.simY) + (1 + (this.index + 1) * 1.5));
+
+            this.width = this.posX - this.destX;
+            this.height = this.posY - this.destY;
+        },
+    }
+
+    function initSimConnection(node, outputIndex) {
+        simConnection.node = node;
+        simConnection.index = outputIndex;
+        simConnection.shown = true;
+    }
+
+    function terminateSimConnection() {
+        simConnection.shown = false;
+        simConnection.node = null;
+        simConnection.index = 0;
     }
 
     function recalculateConnections(needsRefresh) {
@@ -496,6 +543,9 @@
                     nodeData={node}
                     context={context}
 
+                    onInitConnect={initSimConnection}
+                    onConnectDrop={terminateSimConnection}
+
                     connectionCallback={(node, output, index, removeOld) => {
                         addConnection(node, output, index);
                         if (removeOld) recalculateConnections();
@@ -525,6 +575,9 @@
                     nodeData={node}
                     context={context}
 
+                    onInitConnect={initSimConnection}
+                    onConnectDrop={terminateSimConnection}
+
                     connectionCallback={recalculateConnections}
                 />
             {/if}
@@ -551,6 +604,9 @@
 
                     tableRef={tableRef}
                     tableData={tableData}
+
+                    onInitConnect={initSimConnection}
+                    onConnectDrop={terminateSimConnection}
 
                     connectionCallback={addConnection}
                 />
@@ -587,35 +643,65 @@
         {/each}
 
         {#each connections as c, index}
-                <div style="
-                    left: {2 * (c.posX * viewZoom + (viewX + mouseDrag.delta.x) / window.innerHeight * 50)}vh;
-                    top: {2 * (c.posY * viewZoom + (viewY + mouseDrag.delta.y) / window.innerHeight * 50)}vh;
-                
-                    width: {Math.abs(c.width) * viewZoom * 2}vh;
-                    height: {Math.abs(c.height != 0 ? c.height : 1) * viewZoom * 2}vh;
+            <div style="
+                left: {2 * (c.posX * viewZoom + (viewX + mouseDrag.delta.x) / window.innerHeight * 50)}vh;
+                top: {2 * (c.posY * viewZoom + (viewY + mouseDrag.delta.y) / window.innerHeight * 50)}vh;
+            
+                width: {Math.abs(c.width) * viewZoom * 2}vh;
+                height: {Math.abs(c.height != 0 ? c.height : 1) * viewZoom * 2}vh;
 
-                    transform:  translate({c.posX > c.destX ? "-100%" : "0"},
-                        {c.posY > c.destY ? "-100%" : "0"}) scale({c.destX > c.posX ? "-" : ""}1,  {c.destY > c.posY ? "-" : ""}1);
+                transform:  translate({c.posX > c.destX ? "-100%" : "0"},
+                    {c.posY > c.destY ? "-100%" : "0"}) scale({c.destX > c.posX ? "-" : ""}1,  {c.destY > c.posY ? "-" : ""}1);
 
 
-                " class="inputFlowContainer">
-                    <svg style="
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%; height: calc(100%);
-                    " preserveAspectRatio="none" viewBox="0 0 {Math.abs(c.width)} {c.height != 0 ? Math.abs(c.height) : 1}" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 0 C {Math.abs(c.width / 2)} 0 {Math.abs(c.width / 2)} {Math.abs(c.height)} {Math.abs(c.width)} {Math.abs(c.height)}" stroke="url(#paint0_linear_102_1243_{index})" stroke-width=".15"/>
-                        <defs>
-                            <linearGradient id="paint0_linear_102_1243_{index}" x1="0" y1="1" x2="{Math.abs(c.width)}" y2="1" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="{c.destColor}"/>
-                            <stop offset="1" stop-color="{c.originColor}"/>
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                </div>
-            {/each}
+            " class="inputFlowContainer">
+                <svg style="
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%; height: calc(100%);
+                " preserveAspectRatio="none" viewBox="0 0 {Math.abs(c.width)} {c.height != 0 ? Math.abs(c.height) : 1}" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0 C {Math.abs(c.width / 2)} 0 {Math.abs(c.width / 2)} {Math.abs(c.height)} {Math.abs(c.width)} {Math.abs(c.height)}" stroke="url(#paint0_linear_102_1243_{index})" stroke-width=".15"/>
+                    <defs>
+                        <linearGradient id="paint0_linear_102_1243_{index}" x1="0" y1="1" x2="{Math.abs(c.width)}" y2="1" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="{c.destColor}"/>
+                        <stop offset="1" stop-color="{c.originColor}"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+        {/each}
 
+        {#if simConnection.shown}
+            <div style="
+
+                left: {2 * (simConnection.posX * viewZoom + (viewX + mouseDrag.delta.x) / window.innerHeight * 50)}vh;
+                top: {2 * (simConnection.posY * viewZoom + (viewY + mouseDrag.delta.y) / window.innerHeight * 50)}vh;
+            
+                width: {Math.abs(simConnection.width) * viewZoom * 2}vh;
+                height: {Math.abs(simConnection.height != 0 ? simConnection.height : 1) * viewZoom * 2}vh;
+
+                transform:  translate({simConnection.posX > simConnection.destX ? "-100%" : "0"},
+                    {simConnection.posY > simConnection.destY ? "-100%" : "0"}) scale({simConnection.destX > simConnection.posX ? "-" : ""}1,  {simConnection.destY > simConnection.posY ? "-" : ""}1);
+
+
+            " class="inputFlowContainer">
+                <svg style="
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%; height: calc(100%);
+                " preserveAspectRatio="none" viewBox="0 0 {Math.abs(simConnection.width)} {simConnection.height != 0 ? Math.abs(simConnection.height) : 1}" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path style="pointer-events: none;" d="M0 0 C {Math.abs(simConnection.width / 2)} 0 {Math.abs(simConnection.width / 2)} {Math.abs(simConnection.height)} {Math.abs(simConnection.width)} {Math.abs(simConnection.height)}" stroke="url(#paint0_linear_102_1243_SIM)" stroke-width=".15"/>
+                    <defs>
+                        <linearGradient id="paint0_linear_102_1243_SIM" x1="0" y1="1" x2="{Math.abs(simConnection.width)}" y2="1" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="{simConnection.node.color}"/>
+                        <stop offset="1" stop-color="{simConnection.node.color}"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+        {/if}
     </div>
 
     <div class="nodePickerFrame neuOutdentShadow"

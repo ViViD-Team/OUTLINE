@@ -26,8 +26,5 @@
         "Acos",
         "Tan",
         "Atan"
-    ],
-    "Test": [
-        "Error"
     ]
 }

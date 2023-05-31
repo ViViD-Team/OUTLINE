@@ -72,6 +72,21 @@
 		viewportRef.resetZoom();
 	}
 
+	onMount(() => {
+		document.onkeydown = (event) => {
+			event = event || window.event;
+
+			if (event.ctrlKey) {
+				switch (event.key) {
+					case "s":
+						save();
+						break;
+				}
+			}
+
+		};
+	});
+
 
 
 	// Table and Nodes

@@ -59,7 +59,7 @@
 
     function dragOver(event) {
         event.preventDefault();
-        event.stopPropagation();
+        //event.stopPropagation();
     }
 
     export let connectionCallback;
@@ -86,6 +86,9 @@
 
     export let onDrag;
     export let onDelete;
+
+    export let onInitConnect;
+    export let onConnectDrop;
 
     function drag(event) {
         onDrag(event);
@@ -115,6 +118,14 @@
         
             draggable="true"
             on:dragstart="{drag}"
+            on:dragend="{() => {
+                nodeData.posX += nodeData.simX;
+                nodeData.posY += nodeData.simY;
+    
+                nodeData.simX = 0;
+                nodeData.simY = 0;
+                clearDrag();
+            }}"
 
             style="
                 height: {3*zoom}vh;
@@ -160,8 +171,14 @@
                         class="outputTether"
 
                         draggable="true"
-                        on:dragstart={(event) => initConnectionDrag(event, output.id, index)}
-                        on:dragend={clearDrag}
+                        on:dragstart={(event) => {
+                            initConnectionDrag(event, output.id, index);
+                            onInitConnect(nodeData, index);
+                        }}
+                        on:dragend={() => {
+                            clearDrag();
+                            onConnectDrop();
+                        }}
                     >
                         <div style="width: {3*zoom}vh;" class="outputTetherCircleContainer">
                             <svg style="
