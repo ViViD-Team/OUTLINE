@@ -2,6 +2,7 @@
 #### Features
 - Added a simulated connection graphic when dragging node connections.
 - Added <kbd>CTRL</kbd> + <kbd>S</kbd> shortcut for saving.
+- Added notification cards.
 
 # Update 29.05.2023
 #### Features
