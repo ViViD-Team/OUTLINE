@@ -1,3 +1,7 @@
+# Update 11.06.2023
+#### Features
+- Added *annotation* node.
+
 # Update 31.05.2023
 #### Features
 - Added a simulated connection graphic when dragging node connections.

@@ -7,6 +7,7 @@
 
     import NodePickerSlot from "./NodePickerSlot.svelte";
     import LiteralNode from "./LiteralNode.svelte";
+    import AnnotationNode from "./AnnotationNode.svelte";
 
     const path = require("path");
     const fs = require("fs");
@@ -184,6 +185,16 @@
             simConnection.update(event);
             simConnection = Object.assign({}, simConnection);
         }
+
+        if (nodeResize.ongoing) {
+            // Update nodeResize
+
+            nodeResize.delta.x = Math.round((event.clientX - nodeResize.start.x) / vhConverter);
+            nodeResize.delta.y = Math.round((event.clientY - nodeResize.start.y) / vhConverter);
+
+            nodeData[nodeResize.nodeInfo.type][nodeResize.nodeInfo.ID].simResizeX = nodeResize.delta.x;
+            nodeData[nodeResize.nodeInfo.type][nodeResize.nodeInfo.ID].simResizeY = nodeResize.delta.y;
+        }
     }
 
     function drop(event) {
@@ -247,6 +258,27 @@
                         return;
                     }
 
+                    case "annotation": {
+                        let newObj = {
+                            "posX": Math.round((-viewX + event.layerX) / (window.innerHeight / 100 * 2 * viewZoom)),
+                            "posY": Math.round((-viewY + event.layerY) / (window.innerHeight / 100 * 2 * viewZoom)),
+                            "simX": 0,
+                            "simY": 0,
+                            "sizeX": 10,
+                            "sizeY": 5,
+                            "simResizeX": 0,
+                            "simResizeY": 0,
+                            "width": 6,
+                            "sizeBounds": [],
+                            "id": event.dataTransfer.getData("nodeID"),
+                            "text": "Annotation",
+                        };
+
+                        nodeData[event.dataTransfer.getData("nodeType")].push(newObj);
+                        nodeData[event.dataTransfer.getData("nodeType")] = Object.assign([], nodeData[event.dataTransfer.getData("nodeType")]);
+                        return;
+                    }
+
                     default:
                         try { 
                             const classRef = require(path.join(__dirname, "../src/_NodeResources/NodeTypes/") + event.dataTransfer.getData("nodeID"));
@@ -302,6 +334,22 @@
                 clearNodeDrag();
 
                 //recalculateConnections();
+
+                break;
+
+            case "resize":
+                nodeResize.ongoing = false;
+
+                let sizeX = nodeData[event.dataTransfer.getData("nodeType")][event.dataTransfer.getData("nodeID")].sizeX;
+                let sizeY = nodeData[event.dataTransfer.getData("nodeType")][event.dataTransfer.getData("nodeID")].sizeY;
+
+                let sizeBounds = nodeData[event.dataTransfer.getData("nodeType")][event.dataTransfer.getData("nodeID")].sizeBounds
+
+                nodeData[event.dataTransfer.getData("nodeType")][event.dataTransfer.getData("nodeID")].sizeX = Math.max(sizeBounds[0][0], Math.min(sizeX + nodeResize.delta.x, sizeBounds[0][1]));
+                nodeData[event.dataTransfer.getData("nodeType")][event.dataTransfer.getData("nodeID")].sizeY = Math.max(sizeBounds[1][0], Math.min(sizeY + nodeResize.delta.y, sizeBounds[1][1]));
+                
+                nodeData[event.dataTransfer.getData("nodeType")][event.dataTransfer.getData("nodeID")].simResizeX = 0;
+                nodeData[event.dataTransfer.getData("nodeType")][event.dataTransfer.getData("nodeID")].simResizeY = 0;
 
                 break;
         }
@@ -499,6 +547,61 @@
         });
     }
 
+
+
+    function initNodeResize(event, type, index) {
+        clearNodeDrag();
+        clearNodeResize();
+        // Override default drag image
+        let imageOverride = document.createElement("img");
+        event.dataTransfer.setDragImage(imageOverride, 0, 0);
+
+        event.dataTransfer.setData("command", "resize");
+        event.dataTransfer.setData("nodeType", type);
+        event.dataTransfer.setData("nodeID", index);
+
+        nodeResize.start.x = event.clientX;
+        nodeResize.start.y = event.clientY;
+        nodeResize.nodeInfo.type = type;
+        nodeResize.nodeInfo.ID = index;
+
+        nodeResize.ongoing = true;
+    }
+
+    let nodeResize = {
+        "ongoing": false,
+        "start": {
+            "x": 0,
+            "y": 0,
+        },
+        "delta": {
+            "x": 0,
+            "y": 0,
+        },
+        "nodeInfo": {
+            "type": "",
+            "ID": 0,
+        }
+    }
+
+    function clearNodeResize() {
+        nodeResize = {
+        "ongoing": false,
+        "start": {
+            "x": 0,
+            "y": 0,
+        },
+        "delta": {
+            "x": 0,
+            "y": 0,
+        },
+        "nodeInfo": {
+            "type": "",
+            "ID": 0,
+        }
+    }
+    }
+
 </script>
 
 
@@ -642,6 +745,34 @@
             {/if}
         {/each}
 
+        {#each nodeData.annotation as node, index}
+            {#if node}
+                <AnnotationNode
+                    onDrag={(event) => initNodeDrag(event, "annotation", index)}
+                    onDelete={() => {deleteNode("annotation", index)}}
+                    onResize={(event) => {initNodeResize(event, "annotation", index)}}
+
+                    posX={node.posX}
+                    posY={node.posY}
+                    offX={(viewX + mouseDrag.delta.x) / window.innerHeight * 50}
+                    offY={(viewY + mouseDrag.delta.y) / window.innerHeight * 50}
+                    simX={node.simX}
+                    simY={node.simY}
+                    zoom={viewZoom}
+
+                    sizeX={node.sizeX}
+                    sizeY={node.sizeY}
+                    simResizeX={node.simResizeX}
+                    simResizeY={node.simResizeY}
+
+                    bind:sizeBounds={node.sizeBounds}
+                    nodeData={node}
+
+                    bind:text={node.text}
+                />
+            {/if}
+        {/each}
+
         {#each connections as c, index}
             <div style="
                 left: {2 * (c.posX * viewZoom + (viewX + mouseDrag.delta.x) / window.innerHeight * 50)}vh;
@@ -752,8 +883,17 @@
                 color="var(--velvet)"
             />
 
+            <div bind:this={categoryLabels[2]} class="nodePickerGroupTitle">
+                <h2 style="color: var(--text1)" >Annotation</h2>
+            </div>
+            <NodePickerSlot
+                id="Annotation"
+                type="annotation"
+                color="var(--text1)"
+            />
+
             {#each nodeCategories as category, index}
-                <div bind:this={categoryLabels[index + 2]} class="nodePickerGroupTitle">
+                <div bind:this={categoryLabels[index + 3]} class="nodePickerGroupTitle">
                     <h2>{category}</h2>
                 </div>
                 {#each nodeConfig[category] as id}
@@ -775,8 +915,11 @@
                 <div on:click={() => {navJump(1)}} class="nodePickerGroupTitle navigationLabel">
                     <h2 style="color: var(--velvet);">Literals</h2>
                 </div>
+                <div on:click={() => {navJump(2)}} class="nodePickerGroupTitle navigationLabel">
+                    <h2 style="color: var(--text1);">Annotation</h2>
+                </div>
                 {#each nodeCategories as category, index}
-                    <div on:click={() => {navJump(index + 2)}} class="nodePickerGroupTitle navigationLabel">
+                    <div on:click={() => {navJump(index + 3)}} class="nodePickerGroupTitle navigationLabel">
                         <h2>{category}</h2>
                     </div>
                 {/each}

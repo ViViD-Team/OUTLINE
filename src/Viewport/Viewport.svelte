@@ -71,7 +71,8 @@ const   zoomBounds = [.3, 5]
                 "input": [],
                 "output": [],
                 "literal": [],
-                "operator": []
+                "operator": [],
+                "annotation": [],
             },
 
             "reference": undefined,
