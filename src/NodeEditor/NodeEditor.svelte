@@ -4,6 +4,7 @@
     import Node from "./Node.svelte"
     import InputNode from "./InputNode.svelte";
     import OutputNode from "./OutputNode.svelte";
+    import ResultNode from "./ResultNode.svelte";
 
     import NodePickerSlot from "./NodePickerSlot.svelte";
     import LiteralNode from "./LiteralNode.svelte";
@@ -22,6 +23,7 @@
     export let nodeData;
     export let tableRef;
     export let tableData;
+    export let resultWidgets;
 
     export let userSettings;
 
@@ -279,6 +281,24 @@
                         return;
                     }
 
+                    case "result": {
+                        let newObj = {
+                            "posX": Math.round((-viewX + event.layerX) / (window.innerHeight / 100 * 2 * viewZoom)),
+                            "posY": Math.round((-viewY + event.layerY) / (window.innerHeight / 100 * 2 * viewZoom)),
+                            "simX": 0,
+                            "simY": 0,
+                            "width": 8,
+                            "input": null,
+                            "color": "var(--blue)",
+                            "textcolor": "var(--text1)",
+                            "selectedResult": undefined
+                        };
+
+                        nodeData[event.dataTransfer.getData("nodeType")].push(newObj);
+                        nodeData[event.dataTransfer.getData("nodeType")] = Object.assign([], nodeData[event.dataTransfer.getData("nodeType")]);
+                        return;
+                    }
+
                     default:
                         try { 
                             const classRef = require(path.join(__dirname, "../src/_NodeResources/NodeTypes/") + event.dataTransfer.getData("nodeID"));
@@ -358,7 +378,7 @@
     // Generate Connection Display Objects
     let connections = [];
     onMount(() => {
-        console.log(nodeData);
+        console.log(resultWidgets);
 
         recalculateConnections();
 
@@ -390,7 +410,6 @@
         "opacity": 0,
 
         "update": function(event) {
-            console.log(event.pageY - viewportRef.offsetTop)
             let mouseX = (-viewX + (event.pageX - viewportRef.offsetLeft)) / (window.innerHeight / 100 * 2 * viewZoom);
             let mouseY = (-viewY + (event.pageY - viewportRef.offsetTop)) / (window.innerHeight / 100 * 2 * viewZoom);
 
@@ -429,6 +448,12 @@
         });
 
         nodeData.output.forEach((n) => {
+            if (n.input != null) {
+                addConnection(n, n.input, 0);
+            }
+        });
+
+        nodeData.result.forEach((n) => {
             if (n.input != null) {
                 addConnection(n, n.input, 0);
             }
@@ -527,8 +552,16 @@
     }
 
     let outputProcessCallbacks = [];
+    let resultProcessCallbacks = [];
     export function invokeOutputs() {
         outputProcessCallbacks.forEach((callback) => {
+            try {
+                callback();
+            }
+            catch (err) {console.error(err);}
+        });
+
+        resultProcessCallbacks.forEach((callback) => {
             try {
                 callback();
             }
@@ -745,6 +778,35 @@
             {/if}
         {/each}
 
+        {#each nodeData.result as node, index}
+            {#if node}
+                <ResultNode
+                    onDrag={(event) => initNodeDrag(event, "result", index)}
+                    onDelete={() => {deleteNode("result", index)}}
+
+                    posX={node.posX}
+                    posY={node.posY}
+                    offX={(viewX + mouseDrag.delta.x) / window.innerHeight * 50}
+                    offY={(viewY + mouseDrag.delta.y) / window.innerHeight * 50}
+                    simX={node.simX}
+                    simY={node.simY}
+                    zoom={viewZoom}
+
+                    nodeData={node}
+                    context={context}
+
+                    bind:resultWidgets="{resultWidgets}"
+
+                    connectionCallback={(node, output, index, removeOld) => {
+                        addConnection(node, output, index);
+                        if (removeOld) recalculateConnections();
+                    }}
+
+                    bind:process={resultProcessCallbacks[index]}
+                />
+            {/if}
+        {/each}
+
         {#each nodeData.annotation as node, index}
             {#if node}
                 <AnnotationNode
@@ -810,7 +872,7 @@
                 top: {2 * (simConnection.posY * viewZoom + (viewY + mouseDrag.delta.y) / window.innerHeight * 50)}vh;
             
                 width: {Math.abs(simConnection.width) * viewZoom * 2}vh;
-                height: {Math.abs(simConnection.height != 0 ? simConnection.height : 1) * viewZoom * 2}vh;
+                height: {Math.abs(Math.abs(simConnection.height) > .1 ? simConnection.height : .05) * viewZoom * 2}vh;
 
                 transform:  translate({simConnection.posX > simConnection.destX ? "-100%" : "0"},
                     {simConnection.posY > simConnection.destY ? "-100%" : "0"}) scale({simConnection.destX > simConnection.posX ? "-" : ""}1,  {simConnection.destY > simConnection.posY ? "-" : ""}1);
@@ -822,7 +884,7 @@
                     top: 0;
                     left: 0;
                     width: 100%; height: calc(100%);
-                " preserveAspectRatio="none" viewBox="0 0 {Math.abs(simConnection.width)} {simConnection.height != 0 ? Math.abs(simConnection.height) : 1}" fill="none" xmlns="http://www.w3.org/2000/svg">
+                " preserveAspectRatio="none" viewBox="0 0 {Math.abs(simConnection.width)} {Math.abs(simConnection.height) > .1 ? Math.abs(simConnection.height) : .05}" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path style="pointer-events: none;" d="M0 0 C {Math.abs(simConnection.width / 2)} 0 {Math.abs(simConnection.width / 2)} {Math.abs(simConnection.height)} {Math.abs(simConnection.width)} {Math.abs(simConnection.height)}" stroke="url(#paint0_linear_102_1243_SIM)" stroke-width=".15"/>
                     <defs>
                         <linearGradient id="paint0_linear_102_1243_SIM" x1="0" y1="1" x2="{Math.abs(simConnection.width)}" y2="1" gradientUnits="userSpaceOnUse">
@@ -856,14 +918,20 @@
             </div>
 
             <NodePickerSlot
-                id="Input"
+                id="Grab"
                 type="input"
                 color="var(--red)"
             />
 
             <NodePickerSlot
-                id="Output"
+                id="Put"
                 type="output"
+                color="var(--purple)"
+            />
+
+            <NodePickerSlot
+                id="Result"
+                type="result"
                 color="var(--blue)"
             />
 

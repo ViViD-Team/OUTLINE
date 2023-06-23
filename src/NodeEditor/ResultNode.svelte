@@ -1,7 +1,5 @@
 <script>
     import { onMount } from "svelte";
-    const path = require("path");
-
 
     export let posX = 0;
     export let posY = 0;
@@ -14,35 +12,9 @@
     export let nodeData;
     export let context;
 
-    export let tableRef;
-    export let tableData;
-
-    let dragState = null;
-
-/*     //5000 iq
-    export let superNode = this;
-    export let rawNodeData = nodeData; */
-    function initConnectionDrag(event, id, index) {
-        // Clear default drag image
-        let imageOverride = document.createElement("img");
-        event.dataTransfer.setDragImage(imageOverride, 0, 0);
-
-        event.dataTransfer.setData("command", "connectNode");
-        event.dataTransfer.setData("outputID", id);
-
-        dragState = index;
-    }
-
-    function clearDrag() {
-        dragState = null;
-    }
-
-    function dragOver(event) {
-        event.preventDefault();
-        //event.stopPropagation();
-    }
-
+    export let resultWidgets;
     export let connectionCallback;
+
 
     function handleConnect(event, index) {
         event.preventDefault();
@@ -63,13 +35,24 @@
         process();
     }
 
-
     export let onDrag;
     export let onDelete;
 
     function drag(event) {
         onDrag(event);
     }
+
+    function clearDrag() {
+        dragState = null;
+    }
+
+    function dragOver(event) {
+        event.preventDefault();
+        //event.stopPropagation();
+    }
+
+    let dragState = null;
+
 
     function handleDelete() {
         try {
@@ -79,36 +62,26 @@
         onDelete();
     }
 
-    // THIS IS SPECIFIC FOR INPUT NODES
-    // As they only have one output tether the class can be simulated
-
-    /* export let outputID;
-    onMount(() => {
-
-        console.log("Input Node mounted with tether ID " + outputID);
-
-        let simObject = {
-            "process": process,
-            "superNode": {
-                "rawNodeData": Object.assign(nodeData, {"outputs": [outputID]}),
-            },
-        }
-
-        context[outputID] = simObject;
-
-        console.log(context[outputID]);
-    }); */
-
-
     export async function process() {
+        console.log(nodeData);
+        if (nodeData.selectedResult == null) return;
+
         context[nodeData.input].process()
             .then((value) => {
-                tableData.cellContents[nodeData.selectedCol][nodeData.selectedRow] = value;
-                tableData.reference.rerender();
+                resultWidgets.forEach(widget => {
+                    if (widget.title == nodeData.selectedResult) {
+                        //widget.value = value;
+                        widget.update(value);
+                        return;
+                    }
+                });
             })
             .catch((err) => {console.error(err)});
     }
 
+    onMount(() => {
+        console.log(resultWidgets);
+    });
 </script>
 
 
@@ -143,7 +116,7 @@
         <h1 style="
             font-size: {1.5*zoom}vh;
             margin-left: {zoom}vh;
-        ">Put</h1>
+        ">Result</h1>
     </div>
     <div class="contents">
         <div class="tetherContainer" style="
@@ -187,33 +160,20 @@
                     margin-left: {zoom}vh;
                     margin-right: {.5*zoom}vh;
                     color: {nodeData.color};
-                ">Column</h2>
-                <input type="number" name="col" min="0" bind:value={nodeData.selectedCol} style="
-                    width: {4*zoom}vh;
+                ">Widget</h2>
+                <select on:input={function () {console.log(nodeData)}} name="resultWidget" bind:value={nodeData.selectedResult} style="
+                    width: {8*zoom}vh;
                     height: {1.5*zoom}vh;
                     margin-right: {zoom}vh;
                     font-size: {zoom}vh;
                     color: {nodeData.textcolor};
                     border-radius: {.5*zoom}vh;
                 ">
-            </div>
-            <div class="setting">
-                <h2 style="
-                    font-size: {zoom}vh;
-                    margin-left: {zoom}vh;
-                    margin-right: {.5*zoom}vh;
-                    color: {nodeData.color};
-                ">Row</h2>
-                <input type="number" name="row" min="0" bind:value={nodeData.selectedRow} style="
-                    width: {4*zoom}vh;
-                    height: {1.5*zoom}vh;
-                    margin-right: {zoom}vh;
-                    font-size: {zoom}vh;
-                    color: {nodeData.textcolor};
-                    border-radius: {.5*zoom}vh;
-                ">
-            </div>
-            
+                    {#each resultWidgets as rW}
+                        <option value="{rW.title}">{rW.title}</option>
+                    {/each}
+                </select>
+            </div>            
         </div>
         
     </div>
@@ -232,6 +192,7 @@
     </div>
 
 </main>
+
 
 
 <style>
@@ -295,9 +256,11 @@
         justify-content: space-between;
     }
 
-    .setting input {
+    .setting select {
         border: none;
         background-color: var(--textbg1);
+
+        color: var(--text1);
     }
 
 

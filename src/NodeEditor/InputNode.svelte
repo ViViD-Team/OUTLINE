@@ -139,7 +139,7 @@
         <h1 style="
             font-size: {1.5*zoom}vh;
             margin-left: {zoom}vh;
-        ">Input</h1>
+        ">Grab</h1>
     </div>
     <div class="contents">
         <div class="tetherContainer" style="

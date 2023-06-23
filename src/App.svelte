@@ -136,6 +136,10 @@
             "table": [
 				
             ],
+
+			"result": [
+
+			],
         }
     }
 
@@ -253,6 +257,7 @@
 				nodeData={projectData.objects["table"][edited].nodes}
 				tableRef={projectData.objects["table"][edited].reference}
 				tableData={projectData.objects["table"][edited]}
+				bind:resultWidgets={projectData.objects.result}
 
 				userSettings={userSettings}
 

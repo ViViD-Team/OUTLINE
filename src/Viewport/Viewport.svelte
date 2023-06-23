@@ -1,6 +1,7 @@
 <script>
     import Header from "./Components/Header.svelte"
     import Paragraph from "./Components/Paragraph.svelte"
+    import Result from "./Components/Result.svelte";
 
     import Table from "./Components/Table.svelte"
 
@@ -73,6 +74,7 @@ const   zoomBounds = [.3, 5]
                 "literal": [],
                 "operator": [],
                 "annotation": [],
+                "result": [],
             },
 
             "reference": undefined,
@@ -88,7 +90,20 @@ const   zoomBounds = [.3, 5]
             "simResizeX": 0,
             "simResizeY": 0,
             "sizeBounds": [],
-        }
+        },
+        "result": {
+            "title": "Result",
+            "value": undefined,
+            "posX": 0,
+            "posY": 0,
+            "sizeX": 10,
+            "sizeY": 3,
+            "simX": 0,
+            "simY": 0,
+            "simResizeX": 0,
+            "simResizeY": 0,
+            "sizeBounds": [],
+        },
     }
 
 
@@ -495,6 +510,32 @@ const   zoomBounds = [.3, 5]
                     simResizeY={object.simResizeY}
 
                     onInput={invokeTableProcess}
+                />
+            {/each}
+
+            {#each projectData.objects.result as object, index}
+                <Result
+                    bind:widgetData={object}
+                    bind:projectData={projectData}
+                    bind:sizeBounds={object.sizeBounds}
+
+
+                    onDrag={(event) => {initObjectDrag(event, "result", index, object.sizeX, object.sizeY)}}
+                    onResize={(event) => {initObjectResize(event, "result", index)}}
+                    onDelete={() => {deleteObject("result", index);}}
+
+                    posX={object.posX}
+                    posY={object.posY}
+                    offX={(viewX + mouseDrag.delta.x) / window.innerHeight * 50}
+                    offY={(viewY + mouseDrag.delta.y) / window.innerHeight * 50}
+                    zoom={viewZoom}
+                    sizeX={object.sizeX}
+                    sizeY={object.sizeY}
+
+                    simX={object.simX}
+                    simY={object.simY}
+                    simResizeX={object.simResizeX}
+                    simResizeY={object.simResizeY}
                 />
             {/each}
                 
