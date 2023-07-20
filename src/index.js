@@ -60,6 +60,10 @@ app.on('activate', () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 
+//! Safe Filepath
+const app_data = path.join(process.env.APPDATA || (process.platform == 'darwin' ? process.env.HOME + '/Library/Preferences' : process.env.HOME + "/.local/share"), "OUTLINE");
+
+
 ipcMain.on("getSaveFilePath", (event, data) => {
   let path = dialog.showSaveDialogSync({filters: [{name: "Outline Files", extensions: ["ols"]}]});
   event.returnValue = path;
@@ -75,5 +79,50 @@ ipcMain.on("sysDarkmode", (event, data) => {
 });
 
 ipcMain.on("getSaveLocation", (event, data) => {
-  event.returnValue = path.join(process.env.APPDATA || (process.platform == 'darwin' ? process.env.HOME + '/Library/Preferences' : process.env.HOME + "/.local/share"), "OUTLINE");
+  event.returnValue = app_data;
 });
+
+
+//* Plugin Loading
+
+let pluginsConfig = JSON.parse(fs.readFileSync(path.join(app_data, ".plugins", "pluginsConfig.json")));
+
+
+function scanPlugins() {
+  // Check existance of dir
+  if (!fs.existsSync(path.join(app_data, ".plugins"))) {
+    fs.mkdirSync(path.join(app_data, ".plugins"));
+    return [];
+  }
+
+  // Generate Map
+  const installed = fs.readdirSync(path.join(app_data, ".plugins"), {withFileTypes: true})
+    .filter(x => x.isDirectory())
+    .map(x => x.name);
+
+  const rawPluginConfig = JSON.parse(fs.readFileSync(path.join(app_data, ".plugins", "pluginsConfig.json")));
+  
+  installed.forEach((plugin) => {
+    if (plugin in rawPluginConfig) return;
+
+    const pluginInfo = JSON.parse(fs.readFileSync(path.join(app_data, ".plugins", plugin, "plugin.json")));
+    rawPluginConfig[plugin] = {
+      "enabled": true,
+      "name": pluginInfo.pluginName,
+      "description": pluginInfo.pluginDescription,
+      "version": pluginInfo.pluginVersion
+    }
+
+    console.log(`Pushed ${plugin} to config.`);
+  });
+
+  pluginsConfig = rawPluginConfig;
+  fs.writeFileSync(path.join(app_data, ".plugins", "pluginsConfig.json"), JSON.stringify(rawPluginConfig))
+
+  return rawPluginConfig;
+}
+ipcMain.on("scanPlugins", (event, data) => {
+  event.returnValue = scanPlugins();
+});
+
+

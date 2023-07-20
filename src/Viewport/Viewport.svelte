@@ -5,6 +5,8 @@
 
     import Table from "./Components/Table.svelte"
 
+    import PluginWrapper from "./Components/PluginWrapper.svelte";
+
     // Exports
     export let debObjectDrag, debObjectResize;
 
@@ -538,6 +540,23 @@ const   zoomBounds = [.3, 5]
                     simResizeY={object.simResizeY}
                 />
             {/each}
+
+            <PluginWrapper
+                posX={0}
+                posY={0}
+                sizeX={8}
+                sizeY={8}
+                simX={0}
+                simY={0}
+                simResizeX={0}
+                simResizeY={0}
+
+                projectData={projectData}
+                widgetData={{"count": 0}}
+
+                widgetID="example"
+                pluginID="std_example"
+            />
                 
             </div>
     </div>

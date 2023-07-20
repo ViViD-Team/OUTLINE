@@ -101,6 +101,8 @@
 			}, 10000);
 			notifications = Object.assign([], notifications);
 		});
+
+		console.log(ipcRenderer.sendSync("scanPlugins"));
 	});
 
 	// Notifications
