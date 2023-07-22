@@ -541,7 +541,7 @@ const   zoomBounds = [.3, 5]
                 />
             {/each}
 
-            <PluginWrapper
+            <!-- <PluginWrapper
                 posX={0}
                 posY={0}
                 sizeX={8}
@@ -556,7 +556,7 @@ const   zoomBounds = [.3, 5]
 
                 widgetID="example"
                 pluginID="std_example"
-            />
+            /> -->
                 
             </div>
     </div>

@@ -1,8 +1,25 @@
 <script>
+    import { onMount } from "svelte";
     import CategoryButton from "./CategoryButton.svelte";
     import ToolkitWidget from "./ToolkitWidget.svelte";
+    import PluginCategoryButton from "./PluginCategoryButton.svelte";
+    
+    const fs = require("fs");
+    const path = require("path");
+    const { ipcRenderer } = require("electron");
+
 
     let category = null;
+
+    let activePlugins = [];
+    onMount(() => {
+        const pluginsPath = path.join(ipcRenderer.sendSync("getSaveLocation"), ".plugins");
+
+        activePlugins = ipcRenderer.sendSync("getActivatedPlugins");
+        activePlugins = activePlugins.map(x => Object.assign(x, {
+            "categoryIconSVG": String(fs.readFileSync(path.join(pluginsPath, x.pluginID, "icon.svg")))
+        }));
+    });
 </script>
 
 
@@ -27,6 +44,14 @@
                 <path fill="var(--red)" d="M64 256V160H224v96H64zm0 64H224v96H64V320zm224 96V320H448v96H288zM448 256H288V160H448v96zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z"/>
             </svg>
             </CategoryButton>
+
+            {#each activePlugins as p, index}
+                <PluginCategoryButton
+                    onClick={function() {category = index + 2}}
+                    label={p.categoryLabel}
+                    svgContents={p.categoryIconSVG}
+                />
+            {/each}
         </div>
     {:else}
         <div on:click={() => {category = null}} class="backButtonContainer neuOutdentShadow">

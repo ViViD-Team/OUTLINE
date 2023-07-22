@@ -84,9 +84,8 @@ ipcMain.on("getSaveLocation", (event, data) => {
 
 
 //* Plugin Loading
-
-let pluginsConfig = JSON.parse(fs.readFileSync(path.join(app_data, ".plugins", "pluginsConfig.json")));
-
+let pluginsConfig;
+scanPlugins();
 
 function scanPlugins() {
   // Check existance of dir
@@ -100,7 +99,8 @@ function scanPlugins() {
     .filter(x => x.isDirectory())
     .map(x => x.name);
 
-  const rawPluginConfig = JSON.parse(fs.readFileSync(path.join(app_data, ".plugins", "pluginsConfig.json")));
+  let rawPluginConfig = {};
+  if (fs.existsSync(path.join(app_data, ".plugins", "pluginsConfig.json"))) rawPluginConfig = JSON.parse(fs.readFileSync(path.join(app_data, ".plugins", "pluginsConfig.json")));
   
   installed.forEach((plugin) => {
     if (plugin in rawPluginConfig) return;
@@ -110,7 +110,8 @@ function scanPlugins() {
       "enabled": true,
       "name": pluginInfo.pluginName,
       "description": pluginInfo.pluginDescription,
-      "version": pluginInfo.pluginVersion
+      "version": pluginInfo.pluginVersion,
+      "categoryLabel": pluginInfo.pluginCategoryLabel
     }
 
     console.log(`Pushed ${plugin} to config.`);
@@ -125,4 +126,9 @@ ipcMain.on("scanPlugins", (event, data) => {
   event.returnValue = scanPlugins();
 });
 
+ipcMain.on("getActivatedPlugins", (event, data) => {
+  event.returnValue = Object.keys(pluginsConfig)
+    .map(x => Object.assign(pluginsConfig[x], {"pluginID": x}))
+    .filter(y => y.enabled);
+});
 
