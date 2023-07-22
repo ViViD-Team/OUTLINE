@@ -111,7 +111,8 @@ function scanPlugins() {
       "name": pluginInfo.pluginName,
       "description": pluginInfo.pluginDescription,
       "version": pluginInfo.pluginVersion,
-      "categoryLabel": pluginInfo.pluginCategoryLabel
+      "categoryLabel": pluginInfo.pluginCategoryLabel,
+      "widgets": pluginInfo.widgets
     }
 
     console.log(`Pushed ${plugin} to config.`);

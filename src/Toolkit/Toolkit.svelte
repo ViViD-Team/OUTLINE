@@ -3,6 +3,7 @@
     import CategoryButton from "./CategoryButton.svelte";
     import ToolkitWidget from "./ToolkitWidget.svelte";
     import PluginCategoryButton from "./PluginCategoryButton.svelte";
+    import PluginToolkitWidget from "./PluginToolkitWidget.svelte";
     
     const fs = require("fs");
     const path = require("path");
@@ -17,7 +18,8 @@
 
         activePlugins = ipcRenderer.sendSync("getActivatedPlugins");
         activePlugins = activePlugins.map(x => Object.assign(x, {
-            "categoryIconSVG": String(fs.readFileSync(path.join(pluginsPath, x.pluginID, "icon.svg")))
+            "categoryIconSVG": String(fs.readFileSync(path.join(pluginsPath, x.pluginID, "icon.svg"))),
+            "widgets": x.widgets.map(y => Object.assign(y, {"widgetIconSVG": String(fs.readFileSync(path.join(pluginsPath, x.pluginID, y.widgetID, `${y.widgetID}.svg`)))}))
         }));
     });
 </script>
@@ -94,6 +96,17 @@
                 </ToolkitWidget>
             {/if}
 
+            {#each activePlugins as p, index}
+                {#if category == index + 2}
+                    {#each p.widgets as w}
+                        <PluginToolkitWidget
+                            label={w.widgetName}
+                            objectType={`${p.pluginID}:${w.widgetID}`}
+                            svgContents={w.widgetIconSVG}
+                        />
+                    {/each}
+                {/if}
+            {/each}
         </div>
     {/if}
 </main>
