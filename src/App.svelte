@@ -142,7 +142,10 @@
 			"result": [
 
 			],
-        }
+        },
+		"pluginObjects": {
+			
+		}
     }
 
 	function newFile() {

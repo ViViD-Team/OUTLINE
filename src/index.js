@@ -133,3 +133,6 @@ ipcMain.on("getActivatedPlugins", (event, data) => {
     .filter(y => y.enabled);
 });
 
+ipcMain.on("getPluginMap", (event, data) => {
+  event.returnValue = pluginsConfig;
+});

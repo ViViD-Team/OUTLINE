@@ -98,7 +98,7 @@
         border-radius .2s cubic-bezier(0, 0, 0, .9),
 ">
 
-    <div bind:this={_main} class="wrapper">
+    <div bind:this={_main} class="wrapper" style="--unit: {2*zoom}vh">
 
     </div>
 

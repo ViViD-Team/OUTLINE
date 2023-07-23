@@ -6,6 +6,9 @@
     import Table from "./Components/Table.svelte"
 
     import PluginWrapper from "./Components/PluginWrapper.svelte";
+    import { each } from "svelte/internal";
+
+    const { ipcRenderer } = require("electron");
 
     // Exports
     export let debObjectDrag, debObjectResize;
@@ -350,6 +353,15 @@ const   zoomBounds = [.3, 5]
                 break;
 
             case "create":
+
+                // Plugin Object Pattern Matching
+                const stripped = event.dataTransfer.getData("objectType").split(":");
+                if (stripped.length > 1) {
+                    const [p, w] = stripped;
+                    createPluginObject(p, w, event);
+                    return;
+                }
+
                 let type = event.dataTransfer.getData("objectType");
                 let instanceIndex = projectData.objects[type].length;
                 
@@ -374,6 +386,29 @@ const   zoomBounds = [.3, 5]
         projectData.objects[type].splice(index, 1);
 
         projectData.objects[type] = Object.assign([], projectData.objects[type]);
+    }
+
+
+    function createPluginObject(pluginID, widgetID, event) {
+        if (!(pluginID in projectData.pluginObjects)) projectData.pluginObjects[pluginID] = {};
+
+        if (!(widgetID in projectData.pluginObjects[pluginID]))
+            projectData.pluginObjects[pluginID][widgetID] = [];
+
+        const prototype = ipcRenderer.sendSync("getPluginMap")[pluginID].widgets.filter(x => x.widgetID == widgetID)[0].prototype;
+
+        const instance = JSON.parse(JSON.stringify(prototype));
+
+        projectData.pluginObjects[pluginID][widgetID].push(
+            instance
+        );
+
+        instance.posX = Math.round((-viewX + event.layerX) / (window.innerHeight / 100 * 2 * viewZoom) - prototype.sizeX / 2);
+        instance.posY = Math.round((-viewY + event.layerY) / (window.innerHeight / 100 * 2 * viewZoom) - prototype.sizeY / 2);
+
+        projectData.pluginObjects[pluginID][widgetID] = Object.assign([], projectData.pluginObjects[pluginID][widgetID]);
+
+        console.log(projectData.pluginObjects);
     }
 
     //#endregion
@@ -404,9 +439,6 @@ const   zoomBounds = [.3, 5]
 
 
 <main>
-
-    <!-- Ellens requested a waypoint system kek -->
-
     <div
         class="frame neuIndentShadow"
 
@@ -541,23 +573,36 @@ const   zoomBounds = [.3, 5]
                 />
             {/each}
 
-            <!-- <PluginWrapper
-                posX={0}
-                posY={0}
-                sizeX={8}
-                sizeY={8}
-                simX={0}
-                simY={0}
-                simResizeX={0}
-                simResizeY={0}
+            <!--! Plugin Handling -->
+            
+            {#each Object.keys(projectData.pluginObjects) as plugin}
+                {#each Object.keys(projectData.pluginObjects[plugin]) as widgetType}
+                    {#each projectData.pluginObjects[plugin][widgetType] as w, index}
+                        <PluginWrapper
+                            posX={w.posX}
+                            posY={w.posY}
+                            sizeX={w.sizeX}
+                            sizeY={w.sizeY}
+                            simX={w.simX}
+                            simY={w.simY}
+                            simResizeX={w.simResizeX}
+                            simResizeY={w.simResizeY}
 
-                projectData={projectData}
-                widgetData={{"count": 0}}
+                            offX={(viewX + mouseDrag.delta.x) / window.innerHeight * 50}
+                            offY={(viewY + mouseDrag.delta.y) / window.innerHeight * 50}
 
-                widgetID="example"
-                pluginID="std_example"
-            /> -->
-                
+                            zoom={viewZoom}
+
+                            widgetData={w}
+                            projectData={projectData}
+
+                            pluginID={plugin}
+                            widgetID={widgetType}
+                        />
+                    {/each}
+                {/each}
+            {/each}
+
             </div>
     </div>
 </main>
