@@ -359,14 +359,23 @@ const   zoomBounds = [.3, 5]
             objectDrag.layer.x = event.layerX;
             objectDrag.layer.y = event.layerY;
 
+            const [plugin, type, ID] = [
+                objectDrag.objectInfo.plugin,
+                objectDrag.objectInfo.type,
+                objectDrag.objectInfo.ID
+            ];
+            if (plugin == null) {
+                const target = projectData.objects[type][ID];
+                target.simX = objectDrag.delta.x;
+                target.simY = objectDrag.delta.y;
 
-            if (objectDrag.objectInfo.plugin == null) {
-                projectData.objects[objectDrag.objectInfo.type][objectDrag.objectInfo.ID].simX = objectDrag.delta.x;
-                projectData.objects[objectDrag.objectInfo.type][objectDrag.objectInfo.ID].simY = objectDrag.delta.y;
+                projectData.objects[type][ID] = Object.assign({}, target);
             }
             else {
-                projectData.pluginObjects[objectDrag.objectInfo.plugin][objectDrag.objectInfo.type][objectDrag.objectInfo.ID].simX = objectDrag.delta.x;
-                projectData.pluginObjects[objectDrag.objectInfo.plugin][objectDrag.objectInfo.type][objectDrag.objectInfo.ID].simY = objectDrag.delta.y;
+                const target = projectData.pluginObjects[plugin][type][ID];
+                target.simX = objectDrag.delta.x;
+                target.simY = objectDrag.delta.y;
+                projectData.pluginObjects[plugin][type][ID] = Object.assign({}, target);
             }
         }
         if (objectResize.ongoing) {
@@ -375,13 +384,25 @@ const   zoomBounds = [.3, 5]
             objectResize.delta.x = Math.round((event.clientX - objectResize.start.x) / vhConverter);
             objectResize.delta.y = Math.round((event.clientY - objectResize.start.y) / vhConverter);
 
-            if (objectResize.objectInfo.plugin == null) {
-                projectData.objects[objectResize.objectInfo.type][objectResize.objectInfo.ID].simResizeX = objectResize.delta.x;
-                projectData.objects[objectResize.objectInfo.type][objectResize.objectInfo.ID].simResizeY = objectResize.delta.y;
+
+            const [plugin, type, ID] = [
+                objectResize.objectInfo.plugin,
+                objectResize.objectInfo.type,
+                objectResize.objectInfo.ID
+            ];
+            if (plugin == null) {
+                const target = projectData.objects[type][ID];
+                target.simResizeX = objectResize.delta.x;
+                target.simResizeY = objectResize.delta.y;
+
+                projectData.objects[type][ID] = Object.assign({}, target);
             }
             else {
-                projectData.pluginObjects[objectResize.objectInfo.plugin][objectResize.objectInfo.type][objectResize.objectInfo.ID].simResizeX = objectResize.delta.x;
-                projectData.pluginObjects[objectResize.objectInfo.plugin][objectResize.objectInfo.type][objectResize.objectInfo.ID].simResizeY = objectResize.delta.y;
+                const target = projectData.pluginObjects[plugin][type][ID]
+                target.simResizeX = objectResize.delta.x;
+                target.simResizeY = objectResize.delta.y;
+
+                projectData.pluginObjects[plugin][type][ID] = Object.assign({}, target);
             }
         }
     }
@@ -391,61 +412,22 @@ const   zoomBounds = [.3, 5]
 
         switch (event.dataTransfer.getData("command")) {
             case "move":
-                projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].posX += Math.round((event.clientX - event.dataTransfer.getData("startX")) / (window.innerHeight / 100 * 2 * viewZoom));
-                projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].posY += Math.round((event.clientY - event.dataTransfer.getData("startY")) / (window.innerHeight / 100 * 2 * viewZoom));
-            
-                projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].simX = 0;
-                projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].simY = 0;
-
-                objectDrag.ongoing = false;
+                moveObject(event);
                 break;
 
             case "resize":
-                objectResize.ongoing = false;
-
-                let sizeX = projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeX;
-                let sizeY = projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeY;
-
-                let sizeBounds = projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeBounds
-
-                projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeX = Math.max(sizeBounds[0][0], Math.min(sizeX + objectResize.delta.x, sizeBounds[0][1]));
-                projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeY = Math.max(sizeBounds[1][0], Math.min(sizeY + objectResize.delta.y, sizeBounds[1][1]));
-                
-                projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].simResizeX = 0;
-                projectData.objects[event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].simResizeY = 0;
-
+                resizeObject(event);
                 break;
 
             case "pluginMove":
-                projectData.pluginObjects[event.dataTransfer.getData("objectPlugin")][event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].posX += Math.round((event.clientX - event.dataTransfer.getData("startX")) / (window.innerHeight / 100 * 2 * viewZoom));
-                projectData.pluginObjects[event.dataTransfer.getData("objectPlugin")][event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].posY += Math.round((event.clientY - event.dataTransfer.getData("startY")) / (window.innerHeight / 100 * 2 * viewZoom));
-            
-                projectData.pluginObjects[event.dataTransfer.getData("objectPlugin")][event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].simX = 0;
-                projectData.pluginObjects[event.dataTransfer.getData("objectPlugin")][event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].simY = 0;
-
-                objectDrag.ongoing = false;
+                movePluginObject(event);
                 break;
 
             case "pluginResize":
-                objectResize.ongoing = false;
-
-                let psizeX = projectData.pluginObjects[event.dataTransfer.getData("objectPlugin")][event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeX;
-                let psizeY = projectData.pluginObjects[event.dataTransfer.getData("objectPlugin")][event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeY;
-
-                let psizeBounds = projectData.pluginObjects[event.dataTransfer.getData("objectPlugin")][event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeBounds;
-
-                projectData.pluginObjects[event.dataTransfer.getData("objectPlugin")][event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeX = Math.max(psizeBounds[0][0], Math.min(psizeX + objectResize.delta.x, psizeBounds[0][1]));
-                projectData.pluginObjects[event.dataTransfer.getData("objectPlugin")][event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].sizeY = Math.max(psizeBounds[1][0], Math.min(psizeY + objectResize.delta.y, psizeBounds[1][1]));
-                
-                projectData.pluginObjects[event.dataTransfer.getData("objectPlugin")][event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].simResizeX = 0;
-                projectData.pluginObjects[event.dataTransfer.getData("objectPlugin")][event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")].simResizeY = 0;
-
-                console.log(projectData.pluginObjects[event.dataTransfer.getData("objectPlugin")][event.dataTransfer.getData("objectType")][event.dataTransfer.getData("objectID")]);
-
+                resizePluginObject(event);
                 break;
 
             case "create":
-
                 // Plugin Object Pattern Matching
                 const stripped = event.dataTransfer.getData("objectType").split(":");
                 if (stripped.length > 1) {
@@ -454,25 +436,99 @@ const   zoomBounds = [.3, 5]
                     return;
                 }
 
-                let type = event.dataTransfer.getData("objectType");
-                let instanceIndex = projectData.objects[type].length;
-                
-                projectData.objects[type].push(
-                    //Object.assign({}, objectPrototypes[type])
-                    JSON.parse(JSON.stringify(objectPrototypes[type]))
-                );
-
-                
-                
-                projectData.objects[type][instanceIndex].posX = Math.round((-viewX + event.layerX) / (window.innerHeight / 100 * 2 * viewZoom) - projectData.objects[type][instanceIndex].sizeX / 2);
-                projectData.objects[type][instanceIndex].posY = Math.round((-viewY + event.layerY) / (window.innerHeight / 100 * 2 * viewZoom) - projectData.objects[type][instanceIndex].sizeY / 2);
-                
+                createObject(event);
                 break;
         }
 
         clearObjectDrag();
         clearObjectResize();
     }
+
+    // Object Manipulation
+
+    function moveObject(event) {
+        const [objectType, objectID, startX, startY] = [
+            event.dataTransfer.getData("objectType"),
+            event.dataTransfer.getData("objectID"),
+            event.dataTransfer.getData("startX"),
+            event.dataTransfer.getData("startY")
+        ];
+
+        const target = projectData.objects[objectType][objectID];
+
+        target.posX += Math.round((event.clientX - startX) / (window.innerHeight / 100 * 2 * viewZoom));
+        target.posY += Math.round((event.clientY - startY) / (window.innerHeight / 100 * 2 * viewZoom));
+    
+        target.simX = 0;
+        target.simY = 0;
+
+        objectDrag.ongoing = false;
+    }
+
+    function resizeObject(event) {
+        const [objectType, objectID] = [
+            event.dataTransfer.getData("objectType"),
+            event.dataTransfer.getData("objectID")
+        ]
+        const target = projectData.objects[objectType][objectID];
+
+        objectResize.ongoing = false;
+
+        let sizeX = target.sizeX;
+        let sizeY = target.sizeY;
+
+        let [[minX, maxX], [minY, maxY]] = target.sizeBounds;
+
+        target.sizeX = Math.max(minX, Math.min(sizeX + objectResize.delta.x, maxX));
+        target.sizeY = Math.max(minY, Math.min(sizeY + objectResize.delta.y, maxY));
+        
+        target.simResizeX = 0;
+        target.simResizeY = 0;
+    }
+
+    function movePluginObject(event) {
+        const [objectPlugin, objectType, objectID, startX, startY] = [
+            event.dataTransfer.getData("objectPlugin"),
+            event.dataTransfer.getData("objectType"),
+            event.dataTransfer.getData("objectID"),
+            event.dataTransfer.getData("startX"),
+            event.dataTransfer.getData("startY")
+        ];
+        const target = projectData.pluginObjects[objectPlugin][objectType][objectID];
+
+        target.posX += Math.round((event.clientX - startX) / (window.innerHeight / 100 * 2 * viewZoom));
+        target.posY += Math.round((event.clientY - startY) / (window.innerHeight / 100 * 2 * viewZoom));
+    
+        target.simX = 0;
+        target.simY = 0;
+
+        objectDrag.ongoing = false;
+    }
+
+    function resizePluginObject(event) {
+        const [objectPlugin, objectType, objectID] = [
+            event.dataTransfer.getData("objectPlugin"),
+            event.dataTransfer.getData("objectType"),
+            event.dataTransfer.getData("objectID")
+        ];
+        const target = projectData.pluginObjects[objectPlugin][objectType][objectID];
+
+        objectResize.ongoing = false;
+
+        let sizeX = target.sizeX;
+        let sizeY = target.sizeY;
+
+        let [[minX, maxX], [minY, maxY]] = target.sizeBounds;
+
+        target.sizeX = Math.max(minX, Math.min(sizeX + objectResize.delta.x, maxX));
+        target.sizeY = Math.max(minY, Math.min(sizeY + objectResize.delta.y, maxY));
+        
+        target.simResizeX = 0;
+        target.simResizeY = 0;
+    }
+
+
+    // Object Deletion
 
     function deleteObject(type, index) {
         projectData.objects[type].splice(index, 1);
@@ -486,30 +542,52 @@ const   zoomBounds = [.3, 5]
         projectData.pluginObjects[plugin][type] = Object.assign([], projectData.pluginObjects[plugin][type]);
     }
 
+    // Object Creation
+
+    function createObject(event) {
+        const type = event.dataTransfer.getData("objectType");
+        const instanceIndex = projectData.objects[type].length;
+        
+        // Instance and insert object
+        projectData.objects[type].push(
+            JSON.parse(JSON.stringify(objectPrototypes[type]))
+        );
+
+        const instance = projectData.objects[type][instanceIndex];
+        
+        instance.posX = Math.round((-viewX + event.layerX) / (window.innerHeight / 100 * 2 * viewZoom) - instance.sizeX / 2);
+        instance.posY = Math.round((-viewY + event.layerY) / (window.innerHeight / 100 * 2 * viewZoom) - instance.sizeY / 2);
+    
+        // Trigger svelte update
+        projectData.objects[type] = Object.assign([], projectData.objects[type]);
+    }
 
     function createPluginObject(pluginID, widgetID, event) {
+        // Create subobjects in projectData if not already existant
         if (!(pluginID in projectData.pluginObjects)) projectData.pluginObjects[pluginID] = {};
 
         if (!(widgetID in projectData.pluginObjects[pluginID]))
             projectData.pluginObjects[pluginID][widgetID] = [];
 
+        // Fetch and clone prototype
         const prototype = ipcRenderer.sendSync("getPluginMap")[pluginID].widgets.filter(x => x.widgetID == widgetID)[0].prototype;
-
         const instance = JSON.parse(JSON.stringify(prototype));
+        
+        // Insert instance into list
+        const list = projectData.pluginObjects[pluginID][widgetID];
 
-        projectData.pluginObjects[pluginID][widgetID].push(
-            instance
-        );
+        list.push(instance);
 
+        // Set position of new instance to cursor position
         instance.posX = Math.round((-viewX + event.layerX) / (window.innerHeight / 100 * 2 * viewZoom) - prototype.sizeX / 2);
         instance.posY = Math.round((-viewY + event.layerY) / (window.innerHeight / 100 * 2 * viewZoom) - prototype.sizeY / 2);
 
-        projectData.pluginObjects[pluginID][widgetID] = Object.assign([], projectData.pluginObjects[pluginID][widgetID]);
-
-        console.log(projectData.pluginObjects);
+        // Trigger svelte update
+        projectData.pluginObjects[pluginID][widgetID] = Object.assign([], list);
     }
 
     //#endregion
+
 
 
     // Table Editing
@@ -705,7 +783,7 @@ const   zoomBounds = [.3, 5]
 
                                 zoom={viewZoom}
 
-                                widgetData={w}
+                                widgetData={projectData.pluginObjects[plugin][widgetType][index]}
                                 projectData={projectData}
 
                                 pluginID={plugin}

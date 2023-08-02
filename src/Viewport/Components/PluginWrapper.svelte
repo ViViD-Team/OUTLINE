@@ -46,9 +46,9 @@
     let controller;
     
     onMount(() => {
-        console.log("im here")
         try {
             // Load HTML
+
             const html = String(fs.readFileSync(
                 path.join(ipcRenderer.sendSync("getSaveLocation"),
                 ".plugins", pluginID, widgetID, `${widgetID}.html`
@@ -81,6 +81,11 @@
             console.error(err);
         }
     });
+
+    $: if (controller) {
+        controller._widgetData = widgetData;
+        controller.update();
+    }
 </script>
 
 

@@ -102,6 +102,7 @@ function scanPlugins() {
   let rawPluginConfig = {};
   if (fs.existsSync(path.join(app_data, ".plugins", "pluginsConfig.json"))) rawPluginConfig = JSON.parse(fs.readFileSync(path.join(app_data, ".plugins", "pluginsConfig.json")));
   
+  // Push newly installed
   installed.forEach((plugin) => {
     if (plugin in rawPluginConfig) return;
 
@@ -111,11 +112,17 @@ function scanPlugins() {
       "name": pluginInfo.pluginName,
       "description": pluginInfo.pluginDescription,
       "version": pluginInfo.pluginVersion,
+      "author": pluginInfo.pluginAuthor,
       "categoryLabel": pluginInfo.pluginCategoryLabel,
       "widgets": pluginInfo.widgets
     }
 
     console.log(`Pushed ${plugin} to config.`);
+  });
+
+  // Delete uninstalled
+  Object.keys(rawPluginConfig).forEach(key => {
+    if (!installed.includes(key)) delete rawPluginConfig[key];
   });
 
   pluginsConfig = rawPluginConfig;
