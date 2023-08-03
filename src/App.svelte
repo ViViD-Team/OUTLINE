@@ -80,6 +80,7 @@
 			if (event.ctrlKey) {
 				switch (event.key) {
 					case "s":
+					case "S":
 						save();
 						break;
 				}
@@ -160,11 +161,12 @@
 	function scanForMissingPlugins() {
 		const active = getActivatedPlugins();
 
-        for (let p in Object.keys(projectData.pluginObjects)) {
+        for (let p of Object.keys(projectData.pluginObjects)) {
+			console.log(p, active);
             if (!(p in active)) {
                 document.dispatchEvent(
                     new CustomEvent("notificationEvent", {detail: {
-                        "type": "error",
+                        "type": "warning",
                         "message": "One or more plugins this project uses could not be found.       \
                                     Make sure that the required plugins are installed and enabled."
                     }})
