@@ -15,9 +15,11 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
+let mainWindow;
+
 const createWindow = () => {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     minHeight: 150,
@@ -142,4 +144,16 @@ ipcMain.on("getActivatedPlugins", (event, data) => {
 
 ipcMain.on("getPluginMap", (event, data) => {
   event.returnValue = pluginsConfig;
+});
+
+
+ipcMain.on("setPluginActiveState", (event, data) => {
+  if (!data.pluginID in pluginsConfig) {event.returnValue = null; return;}
+
+  pluginsConfig[data.pluginID].enabled = data.state;
+  fs.writeFileSync(path.join(app_data, ".plugins", "pluginsConfig.json"), JSON.stringify(pluginsConfig))
+
+  mainWindow.webContents.send("refreshPlugins");
+
+  event.returnValue = null;
 });

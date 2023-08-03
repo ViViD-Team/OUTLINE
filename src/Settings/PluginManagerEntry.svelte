@@ -12,7 +12,7 @@
     function toggleEnabledState() {
         enabled = !enabled;
 
-
+        ipcRenderer.sendSync("setPluginActiveState", {"pluginID": pluginID, "state": enabled});
     }
 
     let iconContainer;

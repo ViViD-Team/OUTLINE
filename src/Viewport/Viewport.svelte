@@ -346,6 +346,9 @@ const   zoomBounds = [.3, 5]
         objectResize.objectInfo.plugin = plugin;
     }
 
+
+    // Viewport events
+
     function dragOver(event) {
         event.preventDefault();
 
@@ -592,8 +595,8 @@ const   zoomBounds = [.3, 5]
 
     // Table Editing
 
-    export let edited = null;  // null when outside of editmode,
-                        // index of edited table when inside of editmode.
+    export let edited = null;   // null when outside of editmode,
+                                // index of edited table when inside of editmode.
 
     
 
@@ -611,7 +614,7 @@ const   zoomBounds = [.3, 5]
     export let invokeTableProcess;
 
     let activePlugins;
-    onMount(() => {
+    function getActivatedPlugins() {
         let active = ipcRenderer.sendSync("getActivatedPlugins");
         
         let buffer = {};
@@ -619,7 +622,11 @@ const   zoomBounds = [.3, 5]
             buffer[x.pluginID] = x;
         });
         activePlugins = buffer;
+    }
+    onMount(() => {
+        getActivatedPlugins();
     });
+    ipcRenderer.on("refreshPlugins", getActivatedPlugins);
 
 </script>
 

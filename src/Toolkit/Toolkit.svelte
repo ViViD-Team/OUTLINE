@@ -9,19 +9,23 @@
     const path = require("path");
     const { ipcRenderer } = require("electron");
 
+    const pluginsPath = path.join(ipcRenderer.sendSync("getSaveLocation"), ".plugins");
 
     let category = null;
 
     let activePlugins = [];
-    onMount(() => {
-        const pluginsPath = path.join(ipcRenderer.sendSync("getSaveLocation"), ".plugins");
-
+    function getActivatedPlugins() {
         activePlugins = ipcRenderer.sendSync("getActivatedPlugins");
         activePlugins = activePlugins.map(x => Object.assign(x, {
             "categoryIconSVG": String(fs.readFileSync(path.join(pluginsPath, x.pluginID, "icon.svg"))),
             "widgets": x.widgets.map(y => Object.assign(y, {"widgetIconSVG": String(fs.readFileSync(path.join(pluginsPath, x.pluginID, y.widgetID, `${y.widgetID}.svg`)))}))
         }));
+    }
+    onMount(() => {
+        getActivatedPlugins();
     });
+
+    ipcRenderer.on("refreshPlugins", getActivatedPlugins);
 </script>
 
 

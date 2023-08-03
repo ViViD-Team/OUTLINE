@@ -148,6 +148,31 @@
 		}
     }
 
+    function getActivatedPlugins() {
+        let active = ipcRenderer.sendSync("getActivatedPlugins");
+        
+        let buffer = {};
+        active.forEach(x => {
+            buffer[x.pluginID] = x;
+        });
+        return buffer;
+    }
+	function scanForMissingPlugins() {
+		const active = getActivatedPlugins();
+
+        for (let p in Object.keys(projectData.pluginObjects)) {
+            if (!(p in active)) {
+                document.dispatchEvent(
+                    new CustomEvent("notificationEvent", {detail: {
+                        "type": "error",
+                        "message": "One or more plugins this project uses could not be found.       \
+                                    Make sure that the required plugins are installed and enabled."
+                    }})
+                );
+            }
+        };
+    }
+
 	function newFile() {
 		edited = null;
 		projectData = JSON.parse(fs.readFileSync(path.join(__dirname, "../src/config/basicTemplate.json")));
@@ -166,7 +191,7 @@
 
 		projectData = JSON.parse(rawData);
 
-		console.log(projectData);
+		scanForMissingPlugins();
 	}
 
 	function save() {
