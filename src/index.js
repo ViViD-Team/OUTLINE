@@ -86,9 +86,23 @@ ipcMain.on("getSaveLocation", (event, data) => {
 
 
 //* Plugin Loading
+
+/**
+ * Holds the installed plugins as keys with information
+ * about them as the values in an object.
+ */
 let pluginsConfig;
+
 scanPlugins();
 
+
+/**
+ * Scans the .plugins directory and constructs
+ * a new pluginsConfig object while keeping the
+ * config of unchanged plugins.
+ * 
+ * @returns {object} The new pluginsConfig
+ */
 function scanPlugins() {
   // Check existance of dir
   if (!fs.existsSync(path.join(app_data, ".plugins"))) {
@@ -118,8 +132,6 @@ function scanPlugins() {
       "categoryLabel": pluginInfo.pluginCategoryLabel,
       "widgets": pluginInfo.widgets
     }
-
-    console.log(`Pushed ${plugin} to config.`);
   });
 
   // Delete uninstalled
@@ -128,10 +140,13 @@ function scanPlugins() {
   });
 
   pluginsConfig = rawPluginConfig;
+
   fs.writeFileSync(path.join(app_data, ".plugins", "pluginsConfig.json"), JSON.stringify(rawPluginConfig))
 
   return rawPluginConfig;
 }
+
+
 ipcMain.on("scanPlugins", (event, data) => {
   event.returnValue = scanPlugins();
 });

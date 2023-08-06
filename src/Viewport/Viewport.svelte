@@ -31,8 +31,6 @@
                             objectResize.objectInfo.ID, 
                             objectResize.objectInfo.type]
 
-
-
 let
         viewX = 0, viewY = 0,
         viewZoom = 1;
@@ -42,10 +40,19 @@ const   zoomBounds = [.3, 5]
     let viewportRef;
 
     // GLOBALS
+    /**
+     * The project data passed in by the App component.
+    */
     export let projectData;
 
+    /**
+     * The user settings passed in by the App component.
+    */
     export let userSettings;
 
+    /**
+     * Holds the prototypes for hardcoded Widgets.
+    */
     const objectPrototypes = {
         "header": {
             "text": "Lorem",
@@ -117,6 +124,11 @@ const   zoomBounds = [.3, 5]
 
     //#region mouse
 
+    /**
+     * Holds information about the
+     * mouse drag while panning inside
+     * the viewport.
+    */
     let mouseDrag = {
         "ongoing": false,
         "start": {
@@ -129,6 +141,11 @@ const   zoomBounds = [.3, 5]
         }
     }
 
+    /**
+     * Event handler for mouseDown event on viewport.
+     * Initiates mouse drag if the preferred
+     * navigation button was pressed.
+    */
     function mouseDown(event) {
         if (userSettings.preferred_navigation_mb !== 3 && event.button != userSettings.preferred_navigation_mb) return;
         mouseDrag.ongoing = true;
@@ -136,12 +153,21 @@ const   zoomBounds = [.3, 5]
         mouseDrag.start.y = event.clientY;
     }
 
+    /**
+     * Event handler for mouseMove event on viewport.
+     * Updates mouseDrag if mouseDrag is ongoing.
+    */
     function mouseMove(event) {
         if (!mouseDrag.ongoing) return;
         mouseDrag.delta.x = event.clientX - mouseDrag.start.x;
         mouseDrag.delta.y = event.clientY - mouseDrag.start.y;
     }
 
+    /**
+     * Event handler for mouseUp event on viewport.
+     * Clears mouseDrag object and applies the delta position
+     * to viewX and viewY.
+    */
     function mouseUp(event) {
         clearObjectDrag();
         clearObjectResize();
@@ -153,16 +179,21 @@ const   zoomBounds = [.3, 5]
         mouseDrag.delta = {"x": 0, "y": 0};
     }
 
+    /**
+     * Event handler for scroll event on viewport.
+     * Changes viewX, viewY and viewZoom so that
+     * the viewport is scrolled towards the cursor.
+    */
     function scroll(event) {
-        let oldZoom = viewZoom
+        let oldZoom = viewZoom;
         viewZoom -= event.deltaY / 1000;
         viewZoom = Math.max(zoomBounds[0], Math.min(viewZoom, zoomBounds[1]));
         if (viewZoom == zoomBounds[0] || viewZoom == zoomBounds[1]) {
-            viewZoom = oldZoom
-            return
+            viewZoom = oldZoom;
+            return;
         }
-        viewX = (viewX - viewportWidth/2) * viewZoom / oldZoom + (viewportWidth / 2) + (((event.clientX - viewportRef.offsetLeft) - (viewportWidth / 2)) * Math.sign(event.deltaY)) / oldZoom / 10
-        viewY = (viewY - viewportHeight/2) * viewZoom / oldZoom + (viewportHeight / 2) + (((event.clientY - viewportRef.offsetTop) - (viewportHeight / 2)) * Math.sign(event.deltaY)) / oldZoom / 10
+        viewX = (viewX - viewportWidth/2) * viewZoom / oldZoom + (viewportWidth / 2) + (((event.clientX - viewportRef.offsetLeft) - (viewportWidth / 2)) * Math.sign(event.deltaY)) / oldZoom / 10;
+        viewY = (viewY - viewportHeight/2) * viewZoom / oldZoom + (viewportHeight / 2) + (((event.clientY - viewportRef.offsetTop) - (viewportHeight / 2)) * Math.sign(event.deltaY)) / oldZoom / 10;
     }
 
     //#endregion
@@ -172,6 +203,10 @@ const   zoomBounds = [.3, 5]
 
     //#region dragAndDrop
     
+    /**
+     * Holds information about the currently
+     * dragged (moved) widget.
+    */
     let objectDrag = {
         "ongoing": false,
         "start": {
@@ -195,6 +230,9 @@ const   zoomBounds = [.3, 5]
         },
     }
 
+    /**
+     * Resets the objectDrag object.
+    */
     function clearObjectDrag() {
         objectDrag = {
         "ongoing": false,
@@ -220,6 +258,11 @@ const   zoomBounds = [.3, 5]
     }
     }
 
+
+    /**
+     * Holds information about the currently
+     * resized widget.
+    */
     let objectResize = {
         "ongoing": false,
         "start": {
@@ -237,6 +280,9 @@ const   zoomBounds = [.3, 5]
         }
     }
 
+    /**
+     * Resets the objectResize object.
+    */
     function clearObjectResize() {
         objectResize = {
         "ongoing": false,
@@ -256,6 +302,16 @@ const   zoomBounds = [.3, 5]
     }
     }
 
+    /**
+     * Event handler for dragstart of move handles
+     * of widgets. Initiates object drag (move).
+     * 
+     * @param {DragEvent} event The event dispatched by the drag handle.
+     * @param {String} type The widget ID of the dragged widget.
+     * @param {Number} index The index of the dragged widget.
+     * @param {Number} width The width of the dragged widget.
+     * @param {Number} height The height of the dragged widget.
+    */
     function initObjectDrag(event, type, index, width, height) {
         clearObjectDrag();
         clearObjectResize();
@@ -280,6 +336,17 @@ const   zoomBounds = [.3, 5]
         objectDrag.objectInfo.height = height;
     }
 
+    /**
+     * Event handler for dragstart of move handles
+     * of plugin widgets. Initiates object drag (move).
+     * 
+     * @param {DragEvent} event The event dispatched by the drag handle.
+     * @param {String} plugin The widget's plugin ID.
+     * @param {String} type The widget ID of the dragged widget.
+     * @param {Number} index The index of the dragged widget.
+     * @param {Number} width The width of the dragged widget.
+     * @param {Number} height The height of the dragged widget.
+    */
     function initPluginObjectDrag(event, plugin, type, index, width, height) {
         clearObjectDrag();
         clearObjectResize();
@@ -306,6 +373,14 @@ const   zoomBounds = [.3, 5]
         objectDrag.objectInfo.plugin = plugin;
     }
 
+    /**
+     * Event handler for dragstart of resize handles
+     * of widgets. Initiates object resize.
+     * 
+     * @param {DragEvent} event The event dispatched by the drag handle.
+     * @param {String} type The widget ID of the resized widget.
+     * @param {Number} index The index of the resized widget.
+    */
     function initObjectResize(event, type, index) {
         clearObjectDrag();
         clearObjectResize();
@@ -325,6 +400,15 @@ const   zoomBounds = [.3, 5]
         objectResize.ongoing = true;
     }
 
+    /**
+     * Event handler for dragstart of resize handles
+     * of plugin widgets. Initiates object resize.
+     * 
+     * @param {DragEvent} event The event dispatched by the drag handle.
+     * @param {String} plugin The widget's plugin ID.
+     * @param {String} type The widget ID of the resized widget.
+     * @param {Number} index The index of the resized widget.
+    */
     function initPluginObjectResize(event, plugin, type, index) {
         clearObjectDrag();
         clearObjectResize();
@@ -349,6 +433,12 @@ const   zoomBounds = [.3, 5]
 
     // Viewport events
 
+    /**
+     * Event handler for dragOver on viewport.
+     * Updates objectDrag and/or objectResize.
+     * 
+     * @param {DragEvent} event The event dispatched by the viewport.
+    */
     function dragOver(event) {
         event.preventDefault();
 
@@ -410,6 +500,13 @@ const   zoomBounds = [.3, 5]
         }
     }
 
+    /**
+     * Event handler for drop on viewport.
+     * Handles the command associated with the drag
+     * (move, resize, create).
+     * 
+     * @param {DragEvent} event The event dispatched by the viewport.
+    */
     function drop(event) {
         event.preventDefault();
 
@@ -449,6 +546,12 @@ const   zoomBounds = [.3, 5]
 
     // Object Manipulation
 
+    /**
+     * Moves a widget as a result of a drop
+     * event on viewport.
+     * 
+     * @param {DragEvent} event The event dispatched by the viewport.
+    */
     function moveObject(event) {
         const [objectType, objectID, startX, startY] = [
             event.dataTransfer.getData("objectType"),
@@ -468,6 +571,12 @@ const   zoomBounds = [.3, 5]
         objectDrag.ongoing = false;
     }
 
+    /**
+     * Resizes a widget as a result of a drop
+     * event on viewport.
+     * 
+     * @param {DragEvent} event The event dispatched by the viewport.
+    */
     function resizeObject(event) {
         const [objectType, objectID] = [
             event.dataTransfer.getData("objectType"),
@@ -489,6 +598,13 @@ const   zoomBounds = [.3, 5]
         target.simResizeY = 0;
     }
 
+
+    /**
+     * Moves a plugin widget as a result of a drop
+     * event on viewport.
+     * 
+     * @param {DragEvent} event The event dispatched by the viewport.
+    */
     function movePluginObject(event) {
         const [objectPlugin, objectType, objectID, startX, startY] = [
             event.dataTransfer.getData("objectPlugin"),
@@ -508,6 +624,12 @@ const   zoomBounds = [.3, 5]
         objectDrag.ongoing = false;
     }
 
+    /**
+     * Resizes a plugin widget as a result of a drop
+     * event on viewport.
+     * 
+     * @param {DragEvent} event The event dispatched by the viewport.
+    */
     function resizePluginObject(event) {
         const [objectPlugin, objectType, objectID] = [
             event.dataTransfer.getData("objectPlugin"),
@@ -533,12 +655,25 @@ const   zoomBounds = [.3, 5]
 
     // Object Deletion
 
+    /**
+     * Deletes a widget.
+     * 
+     * @param {String} type The widget ID of the widget to be deleted.
+     * @param {Number} index The index of the widget to be deleted.
+    */
     function deleteObject(type, index) {
         projectData.objects[type].splice(index, 1);
 
         projectData.objects[type] = Object.assign([], projectData.objects[type]);
     }
 
+    /**
+     * Deletes a plugin widget.
+     * 
+     * @param {String} plugin The plugin ID of the widget to be deleted.
+     * @param {String} type The widget ID of the widget to be deleted.
+     * @param {Number} index The index of the widget to be deleted.
+    */
     function deletePluginObject(plugin, type, index) {
         projectData.pluginObjects[plugin][type].splice(index, 1);
 
@@ -547,6 +682,12 @@ const   zoomBounds = [.3, 5]
 
     // Object Creation
 
+    /**
+     * Creates a widget as a result of a drop
+     * event on viewport.
+     * 
+     * @param {DragEvent} event The event dispatched by the viewport.
+    */
     function createObject(event) {
         const type = event.dataTransfer.getData("objectType");
         const instanceIndex = projectData.objects[type].length;
@@ -565,6 +706,14 @@ const   zoomBounds = [.3, 5]
         projectData.objects[type] = Object.assign([], projectData.objects[type]);
     }
 
+    /**
+     * Creates a plugin widget as a result of a drop
+     * event on viewport.
+     * 
+     * @param {DragEvent} event The event dispatched by the viewport.
+     * @param {String} pluginID The plugin ID of the widget to be created.
+     * @param {String} widgetID The widget ID of the widget to be created.
+    */
     function createPluginObject(pluginID, widgetID, event) {
         // Create subobjects in projectData if not already existant
         if (!(pluginID in projectData.pluginObjects)) projectData.pluginObjects[pluginID] = {};
@@ -595,25 +744,52 @@ const   zoomBounds = [.3, 5]
 
     // Table Editing
 
-    export let edited = null;   // null when outside of editmode,
-                                // index of edited table when inside of editmode.
+    /**
+     * Null when outside of editmode,
+     * index of edited table when inside of editmode.
+    */
+    export let edited = null;
 
-    
 
     // EXPORTED FUNCTIONS
 
+    /**
+     * Centers the view.
+    */
     export function centerView() {
         viewX = 0;
         viewY = 0;
     }
 
+    /**
+     * Resets the zoom.
+    */
     export function resetZoom() {
         viewZoom = 1;
     }
 
+    /**
+     * Called everytime the currently edited table
+     * should re-process the values.
+     * 
+     * @type {Function}
+    */
     export let invokeTableProcess;
 
+    /**
+     * Contains every active plugin's ID as a key
+     * with information about each plugin as the
+     * associated value.
+     * 
+     * @type {object}
+    */
     let activePlugins;
+
+    /**
+     * Fetches the activated plugins from
+     * the main process, parses the array to an object and
+     * stores the result in activePlugins.
+    */
     function getActivatedPlugins() {
         let active = ipcRenderer.sendSync("getActivatedPlugins");
         
