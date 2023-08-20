@@ -1,17 +1,23 @@
 <script>
     import { onMount } from "svelte";
 
+    const { ipcRenderer } = require("electron");
+
     import Node from "./Node.svelte"
     import InputNode from "./InputNode.svelte";
     import OutputNode from "./OutputNode.svelte";
     import ResultNode from "./ResultNode.svelte";
-
-    import NodePickerSlot from "./NodePickerSlot.svelte";
     import LiteralNode from "./LiteralNode.svelte";
     import AnnotationNode from "./AnnotationNode.svelte";
+    import PluginNode from "./PluginNode.svelte";
+
+    import NodePickerSlot from "./NodePickerSlot.svelte";
+
 
     const path = require("path");
     const fs = require("fs");
+
+    let pluginPath;
 
 
     let viewX = 0, viewY = 0, viewZoom = 1;
@@ -299,8 +305,35 @@
                         return;
                     }
 
+                    case "plugin": {
+                        console.log("asdasd")
+                        const [pluginID, nodeID] = event.dataTransfer.getData("nodeID").split(":");
+
+                        const classRef = require(path.join(pluginPath, ".plugins", pluginID, `${nodeID}.js`));
+                        let nodeObject = new classRef([""], {});
+
+                        let inputs = nodeObject.inputs.map(x => null);
+                        let outputs = nodeObject.outputs.map(x => getNewId());
+
+                        let newObj = {
+                            "id": `${pluginID}:${nodeID}`,
+                            "posX": Math.round((-viewX + event.layerX) / (window.innerHeight / 100 * 2 * viewZoom)),
+                            "posY": Math.round((-viewY + event.layerY) / (window.innerHeight / 100 * 2 * viewZoom)),
+                            "simX": 0,
+                            "simY": 0,
+                            "width": 6,
+                            "reference": null,
+                            "inputs": inputs,
+                            "outputs": outputs,
+                            "color": "var(--purple)"
+                        };
+
+                        nodeData["plugin"].push(newObj);
+                        return;
+                    }
+
                     default:
-                        try { 
+                        try {
                             const classRef = require(path.join(__dirname, "../src/_NodeResources/NodeTypes/") + event.dataTransfer.getData("nodeID"));
                             let nodeObject = new classRef([""], {});
 
@@ -573,7 +606,7 @@
     let categoryLabels = [];
 
     function navJump(index) {
-        console.log(categoryLabels[index]);
+        console.log(categoryLabels);
         if (!categoryLabels[index]) return;
         categoryLabels[index].scrollIntoView({
             behavior: "smooth"
@@ -634,6 +667,37 @@
         }
     }
     }
+
+    // PLUGINS
+
+    /**
+     * Contains every active plugin's ID as a key
+     * with information about each plugin as the
+     * associated value.
+     * 
+     * @type {object}
+    */
+    let activePlugins;
+
+    /**
+     * Fetches the activated plugins from
+     * the main process, parses the array to an object and
+     * stores the result in activePlugins.
+    */
+    function getActivatedPlugins() {
+        let active = ipcRenderer.sendSync("getActivatedPlugins");
+        
+        let buffer = {};
+        active.forEach(x => {
+            buffer[x.pluginID] = x;
+        });
+        activePlugins = buffer;
+    }
+    onMount(() => {
+        pluginPath = ipcRenderer.sendSync("getSaveLocation");
+        getActivatedPlugins();
+    });
+    ipcRenderer.on("refreshPlugins", getActivatedPlugins);
 
 </script>
 
@@ -835,6 +899,38 @@
             {/if}
         {/each}
 
+        {#each nodeData.plugin as node, index}
+            {#if node}
+                <PluginNode
+                    bind:nodeObject={node.reference}
+
+                    onDrag={(event) => initNodeDrag(event, "operator", index)}
+                    onDelete={() => {deleteNode("operator", index)}}
+
+                    posX={node.posX}
+                    posY={node.posY}
+                    offX={(viewX + mouseDrag.delta.x) / window.innerHeight * 50}
+                    offY={(viewY + mouseDrag.delta.y) / window.innerHeight * 50}
+                    simX={node.simX}
+                    simY={node.simY}
+                    zoom={viewZoom}
+
+                    pluginPath={pluginPath}
+
+                    nodeData={node}
+                    context={context}
+
+                    onInitConnect={initSimConnection}
+                    onConnectDrop={terminateSimConnection}
+
+                    connectionCallback={(node, output, index, removeOld) => {
+                        addConnection(node, output, index);
+                        if (removeOld) recalculateConnections();
+                    }}
+                />
+            {/if}
+        {/each}
+
         {#each connections as c, index}
             <div style="
                 left: {2 * (c.posX * viewZoom + (viewX + mouseDrag.delta.x) / window.innerHeight * 50)}vh;
@@ -972,6 +1068,20 @@
                     />
                 {/each}
             {/each}
+            {#if activePlugins && nodeCategories.length > 0}
+            {#each Object.values(activePlugins) as plugin, index}
+                <div bind:this={categoryLabels[index + nodeCategories.length + 3]} class="nodePickerGroupTitle">
+                    <h2 style="color: var(--purple)">{plugin.name}</h2>
+                </div>
+                {#each plugin.nodes as node}
+                    <NodePickerSlot
+                        id="{plugin.pluginID}:{node.nodeID}"
+                        type="plugin"
+                        color="var(--purple)"
+                    />
+                {/each}
+            {/each}
+            {/if}
             </div>
 
             <div class="verticalSeparator"></div>
@@ -991,6 +1101,13 @@
                         <h2>{category}</h2>
                     </div>
                 {/each}
+                {#if activePlugins}
+                    {#each Object.values(activePlugins) as plugin, index}
+                        <div on:click={() => {navJump(index + nodeCategories.length + 3)}} class="nodePickerGroupTitle navigationLabel">
+                            <h2 style="color: var(--purple);">{plugin.name}</h2>
+                        </div>
+                    {/each}
+                {/if}
             </div>
             
         </div>
@@ -1219,6 +1336,7 @@
         font-size: 1.2vh;
         color: var(--orange);
         font-weight: 500;
+        text-align: center;
     }
 
     .navigationLabel {

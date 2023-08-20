@@ -10,6 +10,11 @@
         event.dataTransfer.setData("nodeType", type);
     }
 
+    function parse(string) {
+        const [pluginID, nodeID] = string.split(":");
+        return nodeID ? splitCamelCase(nodeID) : splitCamelCase(string);
+    }
+
     function splitCamelCase(string) {
         let spread = string.split("");
         let out = "";
@@ -26,7 +31,7 @@
 <main draggable="true" on:dragstart="{initDrag}" style="
     border-color: {color};
 ">
-    <p style="color: {color};">{splitCamelCase(id)}</p>
+    <p style="color: {color};">{parse(id)}</p>
 </main>
 
 

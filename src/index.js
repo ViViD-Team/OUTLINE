@@ -112,7 +112,7 @@ function scanPlugins() {
 
   // Generate Map
   const installed = fs.readdirSync(path.join(app_data, ".plugins"), {withFileTypes: true})
-    .filter(x => x.isDirectory())
+    .filter(x => x.isDirectory() && x.name != ".dependencies")
     .map(x => x.name);
 
   let rawPluginConfig = {};
@@ -130,7 +130,8 @@ function scanPlugins() {
       "version": pluginInfo.pluginVersion,
       "author": pluginInfo.pluginAuthor,
       "categoryLabel": pluginInfo.pluginCategoryLabel,
-      "widgets": pluginInfo.widgets
+      "widgets": pluginInfo.widgets,
+      "nodes": pluginInfo.nodes
     }
   });
 
