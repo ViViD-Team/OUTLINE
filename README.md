@@ -1,3 +1,7 @@
+# Update 20.08.2023
+#### Features
+- Added plugin support for nodes and widgets.
+
 # Update 11.06.2023
 #### Features
 - Added *annotation* node.
