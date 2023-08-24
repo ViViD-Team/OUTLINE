@@ -24843,21 +24843,21 @@ var app = (function () {
 
     function get_each_context$b(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[37] = list[i];
-    	child_ctx[39] = i;
+    	child_ctx[38] = list[i];
+    	child_ctx[40] = i;
     	return child_ctx;
     }
 
-    // (246:1) {#if settingsShown}
+    // (262:1) {#if settingsShown}
     function create_if_block_2$5(ctx) {
     	let updating_userSettings;
     	let current;
 
     	function settings_userSettings_binding(value) {
-    		/*settings_userSettings_binding*/ ctx[27].call(null, value);
+    		/*settings_userSettings_binding*/ ctx[28].call(null, value);
     	}
 
-    	let settings_props = { closeAction: /*func*/ ctx[26] };
+    	let settings_props = { closeAction: /*func*/ ctx[27] };
 
     	if (/*userSettings*/ ctx[0] !== void 0) {
     		settings_props.userSettings = /*userSettings*/ ctx[0];
@@ -24876,7 +24876,7 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const settings_changes = {};
-    			if (dirty[0] & /*settingsShown*/ 256) settings_changes.closeAction = /*func*/ ctx[26];
+    			if (dirty[0] & /*settingsShown*/ 256) settings_changes.closeAction = /*func*/ ctx[27];
 
     			if (!updating_userSettings && dirty[0] & /*userSettings*/ 1) {
     				updating_userSettings = true;
@@ -24904,14 +24904,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2$5.name,
     		type: "if",
-    		source: "(246:1) {#if settingsShown}",
+    		source: "(262:1) {#if settingsShown}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (283:3) {#if debugConsoleOpen}
+    // (299:3) {#if debugConsoleOpen}
     function create_if_block_1$9(ctx) {
     	let current;
 
@@ -24951,25 +24951,25 @@ var app = (function () {
     		block,
     		id: create_if_block_1$9.name,
     		type: "if",
-    		source: "(283:3) {#if debugConsoleOpen}",
+    		source: "(299:3) {#if debugConsoleOpen}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (287:2) {#if edited != null}
+    // (303:2) {#if edited != null}
     function create_if_block$b(ctx) {
     	let updating_resultWidgets;
     	let updating_invokeOutputs;
     	let current;
 
     	function nodeeditor_resultWidgets_binding(value) {
-    		/*nodeeditor_resultWidgets_binding*/ ctx[34].call(null, value);
+    		/*nodeeditor_resultWidgets_binding*/ ctx[35].call(null, value);
     	}
 
     	function nodeeditor_invokeOutputs_binding(value) {
-    		/*nodeeditor_invokeOutputs_binding*/ ctx[35].call(null, value);
+    		/*nodeeditor_invokeOutputs_binding*/ ctx[36].call(null, value);
     	}
 
     	let nodeeditor_props = {
@@ -25038,25 +25038,25 @@ var app = (function () {
     		block,
     		id: create_if_block$b.name,
     		type: "if",
-    		source: "(287:2) {#if edited != null}",
+    		source: "(303:2) {#if edited != null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (302:2) {#each notifications as n, index}
+    // (318:2) {#each notifications as n, index}
     function create_each_block$b(ctx) {
     	let current;
 
     	function func_3(...args) {
-    		return /*func_3*/ ctx[36](/*index*/ ctx[39], ...args);
+    		return /*func_3*/ ctx[37](/*index*/ ctx[40], ...args);
     	}
 
     	const notificationcard = new NotificationCard({
     			props: {
-    				type: /*n*/ ctx[37].type,
-    				message: /*n*/ ctx[37].message,
+    				type: /*n*/ ctx[38].type,
+    				message: /*n*/ ctx[38].message,
     				onClose: func_3
     			},
     			$$inline: true
@@ -25073,8 +25073,8 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
     			const notificationcard_changes = {};
-    			if (dirty[0] & /*notifications*/ 16) notificationcard_changes.type = /*n*/ ctx[37].type;
-    			if (dirty[0] & /*notifications*/ 16) notificationcard_changes.message = /*n*/ ctx[37].message;
+    			if (dirty[0] & /*notifications*/ 16) notificationcard_changes.type = /*n*/ ctx[38].type;
+    			if (dirty[0] & /*notifications*/ 16) notificationcard_changes.message = /*n*/ ctx[38].message;
     			notificationcard.$set(notificationcard_changes);
     		},
     		i: function intro(local) {
@@ -25095,7 +25095,7 @@ var app = (function () {
     		block,
     		id: create_each_block$b.name,
     		type: "each",
-    		source: "(302:2) {#each notifications as n, index}",
+    		source: "(318:2) {#each notifications as n, index}",
     		ctx
     	});
 
@@ -25122,14 +25122,14 @@ var app = (function () {
 
     	const topbar = new TopBar({
     			props: {
-    				toggleDebugConsole: /*func_1*/ ctx[28],
+    				toggleDebugConsole: /*func_1*/ ctx[29],
     				centerView: /*centerViewport*/ ctx[12],
     				resetZoom: /*resetZoom*/ ctx[13],
     				newFile: /*newFile*/ ctx[15],
     				open: /*open*/ ctx[16],
     				save: /*save*/ ctx[17],
     				saveAs: /*saveAs*/ ctx[18],
-    				settingsAction: /*func_2*/ ctx[29]
+    				settingsAction: /*func_2*/ ctx[30]
     			},
     			$$inline: true
     		});
@@ -25137,15 +25137,15 @@ var app = (function () {
     	const toolkit = new Toolkit({ $$inline: true });
 
     	function viewport_edited_binding(value) {
-    		/*viewport_edited_binding*/ ctx[31].call(null, value);
+    		/*viewport_edited_binding*/ ctx[32].call(null, value);
     	}
 
     	function viewport_debObjectDrag_binding(value) {
-    		/*viewport_debObjectDrag_binding*/ ctx[32].call(null, value);
+    		/*viewport_debObjectDrag_binding*/ ctx[33].call(null, value);
     	}
 
     	function viewport_debObjectResize_binding(value) {
-    		/*viewport_debObjectResize_binding*/ ctx[33].call(null, value);
+    		/*viewport_debObjectResize_binding*/ ctx[34].call(null, value);
     	}
 
     	let viewport_props = {
@@ -25167,7 +25167,7 @@ var app = (function () {
     	}
 
     	const viewport = new Viewport({ props: viewport_props, $$inline: true });
-    	/*viewport_binding*/ ctx[30](viewport);
+    	/*viewport_binding*/ ctx[31](viewport);
     	binding_callbacks.push(() => bind(viewport, "edited", viewport_edited_binding));
     	binding_callbacks.push(() => bind(viewport, "debObjectDrag", viewport_debObjectDrag_binding));
     	binding_callbacks.push(() => bind(viewport, "debObjectResize", viewport_debObjectResize_binding));
@@ -25209,17 +25209,17 @@ var app = (function () {
     			}
 
     			attr_dev(div0, "class", "centerRow svelte-1g7e7k1");
-    			add_location(div0, file$v, 268, 2, 7072);
+    			add_location(div0, file$v, 284, 2, 7431);
     			attr_dev(div1, "class", "mainLayout svelte-1g7e7k1");
-    			add_location(div1, file$v, 255, 1, 6771);
+    			add_location(div1, file$v, 271, 1, 7130);
     			attr_dev(div2, "class", "notificationsContainer svelte-1g7e7k1");
-    			add_location(div2, file$v, 300, 1, 7877);
+    			add_location(div2, file$v, 316, 1, 8236);
 
     			attr_dev(main, "class", main_class_value = "\r\n\t" + (/*userSettings*/ ctx[0].theme == 1 || /*userSettings*/ ctx[0].theme == 2 && /*ipcRenderer*/ ctx[10].sendSync("sysDarkmode")
     			? "darkmode"
     			: "") + "\r\n" + " svelte-1g7e7k1");
 
-    			add_location(main, file$v, 239, 0, 6427);
+    			add_location(main, file$v, 255, 0, 6786);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -25270,8 +25270,8 @@ var app = (function () {
     			}
 
     			const topbar_changes = {};
-    			if (dirty[0] & /*debugConsoleOpen*/ 2) topbar_changes.toggleDebugConsole = /*func_1*/ ctx[28];
-    			if (dirty[0] & /*settingsShown*/ 256) topbar_changes.settingsAction = /*func_2*/ ctx[29];
+    			if (dirty[0] & /*debugConsoleOpen*/ 2) topbar_changes.toggleDebugConsole = /*func_1*/ ctx[29];
+    			if (dirty[0] & /*settingsShown*/ 256) topbar_changes.settingsAction = /*func_2*/ ctx[30];
     			topbar.$set(topbar_changes);
     			const viewport_changes = {};
     			if (dirty[0] & /*projectData*/ 64) viewport_changes.projectData = /*projectData*/ ctx[6];
@@ -25407,7 +25407,7 @@ var app = (function () {
     			if (if_block0) if_block0.d();
     			destroy_component(topbar);
     			destroy_component(toolkit);
-    			/*viewport_binding*/ ctx[30](null);
+    			/*viewport_binding*/ ctx[31](null);
     			destroy_component(viewport);
     			if (if_block1) if_block1.d();
     			if (if_block2) if_block2.d();
@@ -25498,8 +25498,6 @@ var app = (function () {
 
     			$$invalidate(4, notifications = Object.assign([], notifications));
     		});
-
-    		console.log(ipcRenderer.sendSync("scanPlugins"));
     	});
 
     	// Notifications
@@ -25573,6 +25571,24 @@ var app = (function () {
 
     		// Nice try hecker :)
     		let rawData = fs.readFileSync(path[0]).toString();
+
+    		rawData = rawData.replace("<script>", "");
+    		rawData = rawData.replace("</script>", "");
+    		$$invalidate(6, projectData = JSON.parse(rawData));
+    		scanForMissingPlugins();
+    	}
+
+    	ipcRenderer.on("openFile", (event, arg) => {
+    		openInstant(arg);
+    	});
+
+    	function openInstant(path) {
+    		$$invalidate(7, edited = null);
+    		console.log(path);
+    		if (!path) return;
+
+    		// Nice try hecker :)
+    		let rawData = fs.readFileSync(path).toString();
 
     		rawData = rawData.replace("<script>", "");
     		rawData = rawData.replace("</script>", "");
@@ -25715,6 +25731,7 @@ var app = (function () {
     		scanForMissingPlugins,
     		newFile,
     		open,
+    		openInstant,
     		save,
     		saveAs,
     		stringifyCircularJSON,
@@ -25804,6 +25821,7 @@ var app = (function () {
     		processCallback,
     		getActivatedPlugins,
     		scanForMissingPlugins,
+    		openInstant,
     		stringifyCircularJSON,
     		func,
     		settings_userSettings_binding,

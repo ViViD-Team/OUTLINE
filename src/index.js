@@ -18,7 +18,11 @@ if (require('electron-squirrel-startup')) {
 let mainWindow;
 
 const createWindow = () => {
-  // Create the browser window.
+
+  const fileOpenPath = process.argv[1];
+
+  //TODO: Add logic for splash screen
+
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
@@ -30,11 +34,11 @@ const createWindow = () => {
     }
   });
 
-  // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, '../public/index.html'));
-
-  // Open the DevTools.
-  //mainWindow.webContents.openDevTools();
+  if (fileOpenPath) mainWindow.webContents.once("dom-ready", () => {
+    mainWindow.webContents.send("openFile", fileOpenPath)
+  })
+  
 };
 
 // This method will be called when Electron has finished

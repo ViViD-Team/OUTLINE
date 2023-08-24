@@ -1,12 +1,13 @@
 {
   "name": "outline",
-  "productName": "outline-by-vivid",
+  "productName": "OUTLINE",
   "version": "0.1.0",
   "description": "Plan, Document, Outline",
   "main": "src/index.js",
   "scripts": {
     "start": "concurrently \"npm:svelte-dev\" \"electron-forge start\"",
     "package": "electron-forge package",
+    "package2": "electron-builder --config electron-builder-config.json",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
     "lint": "echo \"No linting configured\"",

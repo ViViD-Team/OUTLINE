@@ -102,8 +102,6 @@
 			}, 10000);
 			notifications = Object.assign([], notifications);
 		});
-
-		console.log(ipcRenderer.sendSync("scanPlugins"));
 	});
 
 	// Notifications
@@ -188,6 +186,24 @@
 
 		// Nice try hecker :)
 		let rawData = fs.readFileSync(path[0]).toString();
+		rawData = rawData.replace("<script>", "");
+		rawData = rawData.replace("<\/script>", "");
+
+		projectData = JSON.parse(rawData);
+
+		scanForMissingPlugins();
+	}
+
+	ipcRenderer.on("openFile", (event, arg) => {
+		openInstant(arg);
+	})
+	function openInstant(path) {
+		edited = null;
+		console.log(path);
+		if (!path) return;
+
+		// Nice try hecker :)
+		let rawData = fs.readFileSync(path).toString();
 		rawData = rawData.replace("<script>", "");
 		rawData = rawData.replace("<\/script>", "");
 

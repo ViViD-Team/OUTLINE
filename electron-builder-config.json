@@ -1,0 +1,16 @@
+{
+    "fileAssociations": [
+        {
+            "ext": "ols",
+            "name": "OUTLINE sheet",
+            "role": "Editor",
+            "icon": "ico/OLS.ico"
+        },
+        {
+            "ext": "opb",
+            "name": "OUTLINE plugin",
+            "role": "Viewer",
+            "icon": "ico/OPB.ico"
+        }
+    ]
+}
