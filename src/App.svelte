@@ -112,6 +112,21 @@
 		notifications = Object.assign([], notifications);
 	}
 
+	ipcRenderer.on("dispatchNotification", (event, arg) => {
+		const newObj = Object.assign({
+			"delete": () => {
+				notifications.splice(notifications.indexOf(this), 1);
+				notifications = Object.assign([], notifications);
+			},
+		}, arg);
+		notifications.push(newObj);
+		setTimeout(function() {
+			newObj.delete();
+			notifications = Object.assign([], notifications);
+		}, 10000);
+		notifications = Object.assign([], notifications);
+	})
+
 
 	// Table and Nodes
 
@@ -354,6 +369,8 @@
 	}
 
 	.notificationsContainer {
+		z-index: 1000;
+
 		position: fixed;
 		bottom: 0;
 		right: 0;

@@ -23154,42 +23154,42 @@ var app = (function () {
     			div8 = element("div");
     			div7 = element("div");
     			div6 = element("div");
-    			attr_dev(div0, "class", "iconContainer svelte-1v5mpg8");
+    			attr_dev(div0, "class", "iconContainer svelte-d79kx0");
     			add_location(div0, file$r, 34, 4, 906);
-    			attr_dev(h1, "class", "svelte-1v5mpg8");
+    			attr_dev(h1, "class", "svelte-d79kx0");
     			add_location(h1, file$r, 39, 12, 1070);
-    			attr_dev(div1, "class", "detailsStrip titleStrip svelte-1v5mpg8");
+    			attr_dev(div1, "class", "detailsStrip titleStrip svelte-d79kx0");
     			add_location(div1, file$r, 38, 8, 1019);
-    			attr_dev(p, "class", "svelte-1v5mpg8");
+    			attr_dev(p, "class", "svelte-d79kx0");
     			add_location(p, file$r, 42, 12, 1173);
-    			attr_dev(div2, "class", "detailsStrip descriptionStrip svelte-1v5mpg8");
+    			attr_dev(div2, "class", "detailsStrip descriptionStrip svelte-d79kx0");
     			add_location(div2, file$r, 41, 8, 1116);
-    			attr_dev(h20, "class", "svelte-1v5mpg8");
+    			attr_dev(h20, "class", "svelte-d79kx0");
     			add_location(h20, file$r, 45, 12, 1274);
-    			attr_dev(div3, "class", "dot svelte-1v5mpg8");
+    			attr_dev(div3, "class", "dot svelte-d79kx0");
     			add_location(div3, file$r, 46, 12, 1310);
-    			attr_dev(h21, "class", "svelte-1v5mpg8");
+    			attr_dev(h21, "class", "svelte-d79kx0");
     			add_location(h21, file$r, 47, 12, 1347);
-    			attr_dev(div4, "class", "detailsStrip infoStrip svelte-1v5mpg8");
+    			attr_dev(div4, "class", "detailsStrip infoStrip svelte-d79kx0");
     			add_location(div4, file$r, 44, 8, 1224);
-    			attr_dev(div5, "class", "detailsContainer svelte-1v5mpg8");
+    			attr_dev(div5, "class", "detailsContainer svelte-d79kx0");
     			add_location(div5, file$r, 37, 4, 979);
     			set_style(div6, "margin-left", (/*enabled*/ ctx[1] ? "3.25" : ".25") + "vh");
     			set_style(div6, "background-color", /*enabled*/ ctx[1] ? "var(--text1)" : "var(--mainbg)");
-    			attr_dev(div6, "class", "toggleHandle svelte-1v5mpg8");
+    			attr_dev(div6, "class", "toggleHandle svelte-d79kx0");
     			add_location(div6, file$r, 58, 16, 1789);
 
     			attr_dev(div7, "style", div7_style_value = "\r\n                background-color: " + (/*enabled*/ ctx[1] ? "var(--red)" : "var(--text1)") + ";\r\n                opacity: " + (/*enabled*/ ctx[1] ? "1" : ".5") + ";\r\n                " + (/*enabled*/ ctx[1] || true
     			? ""
     			: "filter: brightness(.5) saturate(.5);") + "\r\n            ");
 
-    			attr_dev(div7, "class", "toggleRail svelte-1v5mpg8");
+    			attr_dev(div7, "class", "toggleRail svelte-d79kx0");
     			add_location(div7, file$r, 52, 12, 1513);
-    			attr_dev(div8, "class", "toggle svelte-1v5mpg8");
+    			attr_dev(div8, "class", "toggle svelte-d79kx0");
     			add_location(div8, file$r, 51, 8, 1449);
-    			attr_dev(div9, "class", "activeToggleContainer svelte-1v5mpg8");
+    			attr_dev(div9, "class", "activeToggleContainer svelte-d79kx0");
     			add_location(div9, file$r, 50, 4, 1404);
-    			attr_dev(main, "class", "svelte-1v5mpg8");
+    			attr_dev(main, "class", "svelte-d79kx0");
     			add_location(main, file$r, 33, 0, 894);
     		},
     		l: function claim(nodes) {
@@ -23389,14 +23389,19 @@ var app = (function () {
 
     function get_each_context$a(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[2] = list[i];
+    	child_ctx[5] = list[i];
     	return child_ctx;
     }
 
-    // (17:4) {#if installedPlugins}
+    // (29:4) {#if installedPlugins}
     function create_if_block$8(ctx) {
-    	let each_1_anchor;
+    	let t0;
+    	let button;
+    	let svg;
+    	let path;
+    	let t1;
     	let current;
+    	let dispose;
     	let each_value = Object.keys(/*installedPlugins*/ ctx[0]);
     	validate_each_argument(each_value);
     	let each_blocks = [];
@@ -23415,15 +23420,34 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			each_1_anchor = empty();
+    			t0 = space();
+    			button = element("button");
+    			svg = svg_element("svg");
+    			path = svg_element("path");
+    			t1 = text("\r\n        Install from .opb");
+    			attr_dev(path, "d", "M96 0C78.3 0 64 14.3 64 32v96h64V32c0-17.7-14.3-32-32-32zM288 0c-17.7 0-32 14.3-32 32v96h64V32c0-17.7-14.3-32-32-32zM32 160c-17.7 0-32 14.3-32 32s14.3 32 32 32v32c0 77.4 55 142 128 156.8V480c0 17.7 14.3 32 32 32s32-14.3 32-32V412.8c12.3-2.5 24.1-6.4 35.1-11.5c-2.1-10.8-3.1-21.9-3.1-33.3c0-80.3 53.8-148 127.3-169.2c.5-2.2 .7-4.5 .7-6.8c0-17.7-14.3-32-32-32H32zM432 512a144 144 0 1 0 0-288 144 144 0 1 0 0 288zm16-208v48h48c8.8 0 16 7.2 16 16s-7.2 16-16 16H448v48c0 8.8-7.2 16-16 16s-16-7.2-16-16V384H368c-8.8 0-16-7.2-16-16s7.2-16 16-16h48V304c0-8.8 7.2-16 16-16s16 7.2 16 16z");
+    			attr_dev(path, "class", "svelte-1lrf4c2");
+    			add_location(path, file$s, 38, 12, 1165);
+    			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
+    			attr_dev(svg, "height", "1em");
+    			attr_dev(svg, "viewBox", "0 0 576 512");
+    			attr_dev(svg, "class", "svelte-1lrf4c2");
+    			add_location(svg, file$s, 36, 8, 893);
+    			attr_dev(button, "class", "installButton svelte-1lrf4c2");
+    			add_location(button, file$s, 35, 4, 824);
     		},
     		m: function mount(target, anchor) {
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(target, anchor);
     			}
 
-    			insert_dev(target, each_1_anchor, anchor);
+    			insert_dev(target, t0, anchor);
+    			insert_dev(target, button, anchor);
+    			append_dev(button, svg);
+    			append_dev(svg, path);
+    			append_dev(button, t1);
     			current = true;
+    			dispose = listen_dev(button, "click", /*initPluginInstall*/ ctx[1], false, false, false);
     		},
     		p: function update(ctx, dirty) {
     			if (dirty & /*installedPlugins, Object*/ 1) {
@@ -23441,7 +23465,7 @@ var app = (function () {
     						each_blocks[i] = create_each_block$a(child_ctx);
     						each_blocks[i].c();
     						transition_in(each_blocks[i], 1);
-    						each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
+    						each_blocks[i].m(t0.parentNode, t0);
     					}
     				}
 
@@ -23474,7 +23498,9 @@ var app = (function () {
     		},
     		d: function destroy(detaching) {
     			destroy_each(each_blocks, detaching);
-    			if (detaching) detach_dev(each_1_anchor);
+    			if (detaching) detach_dev(t0);
+    			if (detaching) detach_dev(button);
+    			dispose();
     		}
     	};
 
@@ -23482,21 +23508,21 @@ var app = (function () {
     		block,
     		id: create_if_block$8.name,
     		type: "if",
-    		source: "(17:4) {#if installedPlugins}",
+    		source: "(29:4) {#if installedPlugins}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (18:4) {#each Object.keys(installedPlugins) as pluginID}
+    // (30:4) {#each Object.keys(installedPlugins) as pluginID}
     function create_each_block$a(ctx) {
     	let current;
 
     	const pluginmanagerentry = new PluginManagerEntry({
     			props: {
-    				data: /*installedPlugins*/ ctx[0][/*pluginID*/ ctx[2]],
-    				pluginID: /*pluginID*/ ctx[2]
+    				data: /*installedPlugins*/ ctx[0][/*pluginID*/ ctx[5]],
+    				pluginID: /*pluginID*/ ctx[5]
     			},
     			$$inline: true
     		});
@@ -23511,8 +23537,8 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const pluginmanagerentry_changes = {};
-    			if (dirty & /*installedPlugins*/ 1) pluginmanagerentry_changes.data = /*installedPlugins*/ ctx[0][/*pluginID*/ ctx[2]];
-    			if (dirty & /*installedPlugins*/ 1) pluginmanagerentry_changes.pluginID = /*pluginID*/ ctx[2];
+    			if (dirty & /*installedPlugins*/ 1) pluginmanagerentry_changes.data = /*installedPlugins*/ ctx[0][/*pluginID*/ ctx[5]];
+    			if (dirty & /*installedPlugins*/ 1) pluginmanagerentry_changes.pluginID = /*pluginID*/ ctx[5];
     			pluginmanagerentry.$set(pluginmanagerentry_changes);
     		},
     		i: function intro(local) {
@@ -23533,7 +23559,7 @@ var app = (function () {
     		block,
     		id: create_each_block$a.name,
     		type: "each",
-    		source: "(18:4) {#each Object.keys(installedPlugins) as pluginID}",
+    		source: "(30:4) {#each Object.keys(installedPlugins) as pluginID}",
     		ctx
     	});
 
@@ -23549,8 +23575,8 @@ var app = (function () {
     		c: function create() {
     			main = element("main");
     			if (if_block) if_block.c();
-    			attr_dev(main, "class", "svelte-7srwo");
-    			add_location(main, file$s, 15, 0, 311);
+    			attr_dev(main, "class", "svelte-1lrf4c2");
+    			add_location(main, file$s, 27, 0, 595);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -23608,18 +23634,32 @@ var app = (function () {
     }
 
     function instance$s($$self, $$props, $$invalidate) {
-    	const { ipcRenderer } = require("electron");
+    	const { ipcRenderer, ipcMain } = require("electron");
     	let installedPlugins;
 
     	onMount(() => {
-    		$$invalidate(0, installedPlugins = ipcRenderer.sendSync("getPluginMap"));
+    		getInstalledPlugins();
     	});
+
+    	function getInstalledPlugins() {
+    		$$invalidate(0, installedPlugins = null);
+    		$$invalidate(0, installedPlugins = ipcRenderer.sendSync("getPluginMap"));
+    	}
+
+    	ipcRenderer.on("refreshPlugins", getInstalledPlugins);
+
+    	function initPluginInstall() {
+    		ipcRenderer.sendSync("installPlugin");
+    	}
 
     	$$self.$capture_state = () => ({
     		onMount,
     		ipcRenderer,
+    		ipcMain,
     		PluginManagerEntry,
     		installedPlugins,
+    		getInstalledPlugins,
+    		initPluginInstall,
     		require
     	});
 
@@ -23631,7 +23671,7 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [installedPlugins];
+    	return [installedPlugins, initPluginInstall];
     }
 
     class PluginManager extends SvelteComponentDev {
@@ -24848,7 +24888,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (262:1) {#if settingsShown}
+    // (277:1) {#if settingsShown}
     function create_if_block_2$5(ctx) {
     	let updating_userSettings;
     	let current;
@@ -24904,14 +24944,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2$5.name,
     		type: "if",
-    		source: "(262:1) {#if settingsShown}",
+    		source: "(277:1) {#if settingsShown}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (299:3) {#if debugConsoleOpen}
+    // (314:3) {#if debugConsoleOpen}
     function create_if_block_1$9(ctx) {
     	let current;
 
@@ -24951,14 +24991,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$9.name,
     		type: "if",
-    		source: "(299:3) {#if debugConsoleOpen}",
+    		source: "(314:3) {#if debugConsoleOpen}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (303:2) {#if edited != null}
+    // (318:2) {#if edited != null}
     function create_if_block$b(ctx) {
     	let updating_resultWidgets;
     	let updating_invokeOutputs;
@@ -25038,14 +25078,14 @@ var app = (function () {
     		block,
     		id: create_if_block$b.name,
     		type: "if",
-    		source: "(303:2) {#if edited != null}",
+    		source: "(318:2) {#if edited != null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (318:2) {#each notifications as n, index}
+    // (333:2) {#each notifications as n, index}
     function create_each_block$b(ctx) {
     	let current;
 
@@ -25095,7 +25135,7 @@ var app = (function () {
     		block,
     		id: create_each_block$b.name,
     		type: "each",
-    		source: "(318:2) {#each notifications as n, index}",
+    		source: "(333:2) {#each notifications as n, index}",
     		ctx
     	});
 
@@ -25208,18 +25248,18 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(div0, "class", "centerRow svelte-1g7e7k1");
-    			add_location(div0, file$v, 284, 2, 7431);
-    			attr_dev(div1, "class", "mainLayout svelte-1g7e7k1");
-    			add_location(div1, file$v, 271, 1, 7130);
-    			attr_dev(div2, "class", "notificationsContainer svelte-1g7e7k1");
-    			add_location(div2, file$v, 316, 1, 8236);
+    			attr_dev(div0, "class", "centerRow svelte-lnayme");
+    			add_location(div0, file$v, 299, 2, 7886);
+    			attr_dev(div1, "class", "mainLayout svelte-lnayme");
+    			add_location(div1, file$v, 286, 1, 7585);
+    			attr_dev(div2, "class", "notificationsContainer svelte-lnayme");
+    			add_location(div2, file$v, 331, 1, 8691);
 
     			attr_dev(main, "class", main_class_value = "\r\n\t" + (/*userSettings*/ ctx[0].theme == 1 || /*userSettings*/ ctx[0].theme == 2 && /*ipcRenderer*/ ctx[10].sendSync("sysDarkmode")
     			? "darkmode"
-    			: "") + "\r\n" + " svelte-1g7e7k1");
+    			: "") + "\r\n" + " svelte-lnayme");
 
-    			add_location(main, file$v, 255, 0, 6786);
+    			add_location(main, file$v, 270, 0, 7241);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -25368,7 +25408,7 @@ var app = (function () {
 
     			if (!current || dirty[0] & /*userSettings*/ 1 && main_class_value !== (main_class_value = "\r\n\t" + (/*userSettings*/ ctx[0].theme == 1 || /*userSettings*/ ctx[0].theme == 2 && /*ipcRenderer*/ ctx[10].sendSync("sysDarkmode")
     			? "darkmode"
-    			: "") + "\r\n" + " svelte-1g7e7k1")) {
+    			: "") + "\r\n" + " svelte-lnayme")) {
     				attr_dev(main, "class", main_class_value);
     			}
     		},
@@ -25507,6 +25547,30 @@ var app = (function () {
     		notifications.splice(index, 1);
     		$$invalidate(4, notifications = Object.assign([], notifications));
     	}
+
+    	ipcRenderer.on("dispatchNotification", (event, arg) => {
+    		const newObj = Object.assign(
+    			{
+    				"delete": () => {
+    					notifications.splice(notifications.indexOf(this), 1);
+    					$$invalidate(4, notifications = Object.assign([], notifications));
+    				}
+    			},
+    			arg
+    		);
+
+    		notifications.push(newObj);
+
+    		setTimeout(
+    			function () {
+    				newObj.delete();
+    				$$invalidate(4, notifications = Object.assign([], notifications));
+    			},
+    			10000
+    		);
+
+    		$$invalidate(4, notifications = Object.assign([], notifications));
+    	});
 
     	// Table and Nodes
     	let processCallback;

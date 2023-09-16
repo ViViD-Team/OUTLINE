@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, dialog, nativeTheme} = require('electron');
+const { app, BrowserWindow, ipcMain, dialog, nativeTheme, ipcRenderer} = require('electron');
 const path = require('path');
 const fs = require("fs");
 
@@ -21,8 +21,6 @@ const createWindow = () => {
 
   const fileOpenPath = process.argv[1];
 
-  //TODO: Add logic for splash screen
-
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
@@ -35,7 +33,7 @@ const createWindow = () => {
   });
 
   mainWindow.loadFile(path.join(__dirname, '../public/index.html'));
-  if (fileOpenPath) mainWindow.webContents.once("dom-ready", () => {
+  if (fileOpenPath /* for dev */ && fileOpenPath != ".") mainWindow.webContents.once("dom-ready", () => {
     mainWindow.webContents.send("openFile", fileOpenPath)
   })
   
@@ -172,6 +170,80 @@ ipcMain.on("setPluginActiveState", (event, data) => {
 
   pluginsConfig[data.pluginID].enabled = data.state;
   fs.writeFileSync(path.join(app_data, ".plugins", "pluginsConfig.json"), JSON.stringify(pluginsConfig))
+
+  mainWindow.webContents.send("refreshPlugins");
+
+  event.returnValue = null;
+});
+
+ipcMain.on("installPlugin", (event, data) => {
+  let opbPath = dialog.showOpenDialogSync({properties: ['openFile'], filters: [{name: "Outline Plugin Files", extensions: ["opb"]}]});
+
+  if (!opbPath) {
+    event.returnValue = null;
+    return;
+  }
+
+  let fileContents = JSON.parse(String(fs.readFileSync(opbPath[0])));
+
+  if (fs.existsSync(path.join(app_data, ".plugins", fileContents.pluginID))) {
+    mainWindow.webContents.send("dispatchNotification", {"type": "error", "message": "Plugin already installed!"});
+    event.returnValue = null;
+    return;
+  }
+
+  fs.mkdirSync(path.join(app_data, ".plugins", fileContents.pluginID));
+
+  fileContents.widgets.forEach(widget => {
+    fs.mkdirSync(path.join(app_data, ".plugins", fileContents.pluginID, widget.widgetID));
+
+    fs.writeFileSync(
+      path.join(app_data, ".plugins", fileContents.pluginID, widget.widgetID, `${widget.widgetID}.html`),
+      widget.fileContents.html
+    );
+
+    fs.writeFileSync(
+      path.join(app_data, ".plugins", fileContents.pluginID, widget.widgetID, `${widget.widgetID}.css`),
+      widget.fileContents.css
+    );
+
+    fs.writeFileSync(
+      path.join(app_data, ".plugins", fileContents.pluginID, widget.widgetID, `${widget.widgetID}.js`),
+      widget.fileContents.js
+    );
+
+    fs.writeFileSync(
+      path.join(app_data, ".plugins", fileContents.pluginID, widget.widgetID, `${widget.widgetID}.svg`),
+      widget.fileContents.svg
+    );
+
+    delete widget.fileContents;
+  });
+
+  fileContents.nodes.forEach(node => {
+    fs.writeFileSync(
+      path.join(app_data, ".plugins", fileContents.pluginID, `${node.nodeID}.js`),
+      node.fileContents.js
+    );
+
+    delete node.fileContents;
+  });
+
+  fs.writeFileSync(
+    path.join(app_data, ".plugins", fileContents.pluginID, "icon.svg"),
+    fileContents.icon.svg
+  );
+
+  delete fileContents.icon;
+
+  fs.writeFileSync(
+    path.join(app_data, ".plugins", fileContents.pluginID, "plugin.json"),
+    JSON.stringify(fileContents)
+  );
+
+  mainWindow.webContents.send("dispatchNotification", {"type": "note", "message": `Plugin ${fileContents.pluginName} successfully installed!`});
+
+  scanPlugins();
 
   mainWindow.webContents.send("refreshPlugins");
 

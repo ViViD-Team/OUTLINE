@@ -70,8 +70,11 @@
 
 <style>
     main {
+        margin-bottom: 2vh;
+
         width: calc(100% - 4vh);
         height: 12vh;
+
 
         display: flex;
     }
