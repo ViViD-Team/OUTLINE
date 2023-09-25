@@ -75,6 +75,8 @@
         justify-self: flex-end;
 
         font-size: 1.5vh;
+
+        color: var(--mainbg);
     }
 
     .installButton:hover {

@@ -58,7 +58,7 @@
 
                 <div style="
                     margin-left: {enabled ? "3.25" : ".25"}vh;
-                    background-color: {enabled ? "var(--text1)" : "var(--mainbg)"};
+                    background-color: {enabled ? "var(--white)" : "var(--mainbg)"};
                 " class="toggleHandle"></div>
             
             </div>

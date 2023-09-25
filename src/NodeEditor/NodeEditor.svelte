@@ -37,6 +37,11 @@
     
     //#region mouse
 
+    /**
+     * Holds information about the
+     * mouse drag while panning inside
+     * the viewport.
+    */
     let mouseDrag = {
         "ongoing": false,
         "start": {
@@ -49,6 +54,13 @@
         }
     }
 
+    /**
+     * Event handler for mouseDown event on viewport.
+     * Initiates mouse drag if the preferred
+     * navigation button was pressed.
+     * 
+     * @param {MouseEvent} event The event emitted by the event listener
+    */
     function mouseDown(event) {
         if (userSettings.preferred_navigation_mb !== 3 && event.button != userSettings.preferred_navigation_mb) return;
         mouseDrag.ongoing = true;
@@ -56,12 +68,25 @@
         mouseDrag.start.y = event.clientY;
     }
 
+    /**
+     * Event handler for mouseMove event on viewport.
+     * Updates mouseDrag if mouseDrag is ongoing.
+     * 
+     * @param {MouseEvent} event The event emitted by the event listener
+    */
     function mouseMove(event) {
         if (!mouseDrag.ongoing) return;
         mouseDrag.delta.x = event.clientX - mouseDrag.start.x;
         mouseDrag.delta.y = event.clientY - mouseDrag.start.y;
     }
 
+    /**
+     * Event handler for mouseUp event on viewport.
+     * Clears mouseDrag object and applies the delta position
+     * to viewX and viewY.
+     * 
+     * @param {MouseEvent} event The event emitted by the event listener
+    */
     function mouseUp(event) {
         if (!mouseDrag.ongoing || event.button != userSettings.preferred_navigation_mb && userSettings.preferred_navigation_mb !== 3) return;
         mouseDrag.ongoing = false
@@ -70,6 +95,13 @@
         mouseDrag.delta = {"x": 0, "y": 0};
     }
 
+    /**
+     * Event handler for scroll event on viewport.
+     * Changes viewX, viewY and viewZoom so that
+     * the viewport is scrolled towards the cursor.
+     * 
+     * @param {MouseEvent} event The event emitted by the event listener
+    */
     function scroll(event) {
         let oldZoom = viewZoom
         viewZoom -= event.deltaY / 1000;
@@ -84,6 +116,12 @@
 
     //#endregion
 
+    /**
+     * Generates a random base64 id
+     * @param {Number} length The desired length in characters of the id
+     * 
+     * @returns {String} The base64 id string
+     */
     function makeid(length) {
         var result           = '';
         var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -94,6 +132,11 @@
         return result;
     }
 
+    /**
+     * Gets a new random, unique and 4-character-long base64 id
+     * 
+     * @returns {String} The 4-character-long, unique base64 id
+     */
     function getNewId() {
         let newId;
         do {
@@ -103,7 +146,10 @@
         return newId;
     }
 
-
+    /**
+     * Holds information about the currently
+     * dragged (moved) node.
+    */
     let nodeDrag = {
         "ongoing": false,
         "start": {
@@ -125,27 +171,40 @@
             "height": 0,
         },
     }
+
+    /**
+     * Clears `nodeDrag`
+     */
     function clearNodeDrag() {
         nodeDrag = {
-        "ongoing": false,
-        "start": {
-            "x": 0,
-            "y": 0,
-        },
-        "delta": {
-            "x": 0,
-            "y": 0,
-        },
-        "layer": {
-            "x": 0,
-            "y": 0,
-        },
-        "objectInfo": {
-            "type": "",
-            "ID": 0,
-        },
+            "ongoing": false,
+            "start": {
+                "x": 0,
+                "y": 0,
+            },
+            "delta": {
+                "x": 0,
+                "y": 0,
+            },
+            "layer": {
+                "x": 0,
+                "y": 0,
+            },
+            "objectInfo": {
+                "type": "",
+                "ID": 0,
+            },
+        }
     }
-    }
+
+    /**
+     * Initiates the node drag event and sets
+     * the fields in `nodeDrag`
+     * 
+     * @param {MouseEvent} event The event object emitted by the event listener
+     * @param {String} type The type of the node
+     * @param {Number} index The index of the node
+     */
     function initNodeDrag(event, type, index) {
         clearNodeDrag();
         
@@ -167,6 +226,12 @@
         nodeDrag.objectInfo.type = type;
         nodeDrag.objectInfo.ID = index;
     }
+
+    /**
+     * Event handler for dragOver event on viewport
+     * 
+     * @param {MouseEvent} event The event emitted by the event listener
+     */
     function dragOver(event) {
         event.preventDefault();
         event.stopPropagation();
@@ -205,6 +270,11 @@
         }
     }
 
+    /**
+     * Event handler for drop event on viewport
+     * 
+     * @param {MouseEvent} event The event emitted by the event listener
+     */
     function drop(event) {
         event.stopPropagation();
 
@@ -410,6 +480,8 @@
 
     // Generate Connection Display Objects
     let connections = [];
+
+
     onMount(() => {
         console.log(resultWidgets);
 
@@ -420,6 +492,10 @@
 
     let nodeConfig = {};
     let nodeCategories = [];
+
+    /**
+     * Constructs `nodeConfig` and `nodeCategories`
+     */
     async function constructNodePicker() {
         fs.readFile(path.join(__dirname, "../src/config/nodesConfig.json"), (err, file) => {
             if (err) return;
@@ -428,6 +504,10 @@
         });
     }
 
+    /**
+     * Holds information about the simulated connection appearing
+     * when draging a new node connection
+     */
     let simConnection = {
         "shown": false,
         "node": null,
@@ -457,18 +537,32 @@
         },
     }
 
+    /**
+     * Initiates `simConnection`
+     * 
+     * @param {Object} node The data of the node the connection originates from
+     * @param {Number} outputIndex The index of the output tether that is currently being connected 
+     */
     function initSimConnection(node, outputIndex) {
         simConnection.node = node;
         simConnection.index = outputIndex;
         simConnection.shown = true;
     }
 
+    /**
+     * Terminates `simConnection`
+     */
     function terminateSimConnection() {
         simConnection.shown = false;
         simConnection.node = null;
         simConnection.index = 0;
     }
 
+    /**
+     * Recalculates all the node connections
+     * 
+     * @param {bool} needsRefresh Determines whether the node logic should be executed
+     */
     function recalculateConnections(needsRefresh) {
         connections = [];
 
@@ -499,6 +593,13 @@
         console.log(connections);
     }
 
+    /**
+     * Adds a connection between A (output) and B (input)
+     * 
+     * @param {Object} node The data of the node holding B
+     * @param {Number} output The index of the output (A)
+     * @param {Number} index The index of the input (B)
+     */
     function addConnection(node, output, index) {
         try {
             let destData = context[output].superNode.rawNodeData;
@@ -539,6 +640,9 @@
         }
     }
 
+    /**
+     * Legacy
+     */
     function mutateConnection(connection, io, index, newX, newY, nodeWidth) {
         if (!io) {
             let oldPosX = connection.posX;
@@ -577,6 +681,12 @@
         connections = Object.assign([], connections);
     }
 
+    /**
+     * Deletes a node
+     * 
+     * @param {String} type The node's type
+     * @param {Number} index The node's index
+     */
     function deleteNode(type, index) {
         nodeData[type].splice(index, 1);
         nodeData[type] = Object.assign([], nodeData[type]);
@@ -586,6 +696,10 @@
 
     let outputProcessCallbacks = [];
     let resultProcessCallbacks = [];
+
+    /**
+     * Invokes a complete execution of the node logic
+     */
     export function invokeOutputs() {
         outputProcessCallbacks.forEach((callback) => {
             try {
@@ -605,6 +719,11 @@
     // Node Picker Navigator
     let categoryLabels = [];
 
+    /**
+     * Scrolls the node picker to a certain category
+     * 
+     * @param {Number} index The category's index
+     */
     function navJump(index) {
         console.log(categoryLabels);
         if (!categoryLabels[index]) return;
@@ -614,7 +733,14 @@
     }
 
 
-
+    /**
+     * Initiates `nodeResize`
+     * Only used for annotation nodes
+     * 
+     * @param {MouseEvent} event The event emitted by the event listener
+     * @param {String} type The node's type
+     * @param {Number} index The node's index
+     */
     function initNodeResize(event, type, index) {
         clearNodeDrag();
         clearNodeResize();
@@ -634,6 +760,9 @@
         nodeResize.ongoing = true;
     }
 
+    /**
+     * Holds information about the node resize
+     */
     let nodeResize = {
         "ongoing": false,
         "start": {
@@ -650,6 +779,9 @@
         }
     }
 
+    /**
+     * Clears `nodeResize`
+     */
     function clearNodeResize() {
         nodeResize = {
         "ongoing": false,
