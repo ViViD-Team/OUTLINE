@@ -904,8 +904,8 @@
                 <PluginNode
                     bind:nodeObject={node.reference}
 
-                    onDrag={(event) => initNodeDrag(event, "operator", index)}
-                    onDelete={() => {deleteNode("operator", index)}}
+                    onDrag={(event) => initNodeDrag(event, "plugin", index)}
+                    onDelete={() => {deleteNode("plugin", index)}}
 
                     posX={node.posX}
                     posY={node.posY}
