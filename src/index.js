@@ -155,7 +155,7 @@ ipcMain.on("scanPlugins", (event, data) => {
 });
 
 ipcMain.on("getActivatedPlugins", (event, data) => {
-  event.returnValue = Object.keys(pluginsConfig)
+  event.returnValue = Object.keys(pluginsConfig == null ? {} : pluginsConfig)
     .map(x => Object.assign(pluginsConfig[x], {"pluginID": x}))
     .filter(y => y.enabled);
 });
