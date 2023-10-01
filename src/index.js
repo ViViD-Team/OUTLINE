@@ -93,8 +93,9 @@ ipcMain.on("getSaveLocation", (event, data) => {
  * Holds the installed plugins as keys with information
  * about them as the values in an object.
  */
-let pluginsConfig = scanPlugins();
+let pluginsConfig;
 
+scanPlugins();
 
 /**
  * Scans the .plugins directory and constructs
@@ -107,6 +108,7 @@ function scanPlugins() {
   // Check existance of dir
   if (!fs.existsSync(path.join(app_data, ".plugins"))) {
     fs.mkdirSync(path.join(app_data, ".plugins"));
+    pluginsConfig = {};
     return {};
   }
 
