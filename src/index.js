@@ -93,9 +93,7 @@ ipcMain.on("getSaveLocation", (event, data) => {
  * Holds the installed plugins as keys with information
  * about them as the values in an object.
  */
-let pluginsConfig;
-
-scanPlugins();
+let pluginsConfig = scanPlugins();
 
 
 /**
@@ -109,7 +107,7 @@ function scanPlugins() {
   // Check existance of dir
   if (!fs.existsSync(path.join(app_data, ".plugins"))) {
     fs.mkdirSync(path.join(app_data, ".plugins"));
-    return [];
+    return {};
   }
 
   // Generate Map
@@ -155,7 +153,7 @@ ipcMain.on("scanPlugins", (event, data) => {
 });
 
 ipcMain.on("getActivatedPlugins", (event, data) => {
-  event.returnValue = Object.keys(pluginsConfig == null ? {} : pluginsConfig)
+  event.returnValue = Object.keys(pluginsConfig)
     .map(x => Object.assign(pluginsConfig[x], {"pluginID": x}))
     .filter(y => y.enabled);
 });
