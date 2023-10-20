@@ -64,23 +64,29 @@
 
     export async function process() {
         console.log(nodeData);
-        if (nodeData.selectedResult == null) return;
+        if (nodeData.selectedResult === null || nodeData.selectedResult === undefined) return;
 
-        context[nodeData.input].process()
+        if (context[nodeData.input]) context[nodeData.input].process()
             .then((value) => {
-                resultWidgets.forEach(widget => {
+                /* resultWidgets.forEach(widget => {
                     if (widget.title == nodeData.selectedResult) {
                         //widget.value = value;
                         widget.update(value);
                         return;
                     }
-                });
+                }); */
+                for (let i = 0; i < resultWidgets.length; i++) {
+                    if (resultWidgets[i].title == nodeData.selectedResult) {
+                        resultWidgets[i].title.update(value);
+                        return;
+                    }
+                }
             })
             .catch((err) => {console.error(err)});
     }
 
     onMount(() => {
-        console.log(resultWidgets);
+        if (resultWidgets) nodeData.selectedResult = resultWidgets[0].title;
     });
 </script>
 

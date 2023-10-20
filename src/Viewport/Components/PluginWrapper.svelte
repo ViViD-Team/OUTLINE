@@ -5,7 +5,7 @@
     const fs = require('fs');
     const path = require('path');
 
-    export const sizeBounds = [ /* X */ [5, 30], /* Y */ [5, 30]]
+    export let sizeBounds = [ /* X */ [5, 30], /* Y */ [5, 30]];
 
     export let sizeX = 5;
     export let sizeY = 2;
@@ -90,7 +90,7 @@
 
 
 
-<main on:mousedown={(event) => {event.stopPropagation();}} class="neuIndentShadow" style="
+<main on:mousedown={(event) => {event.stopPropagation();}} class="neuOutdentShadowRim" style="
     left: {((posX + simX) * zoom + offX) * 2}vh;
     top: {((posY + simY) * zoom + offY) * 2}vh;
 
@@ -146,7 +146,6 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M32 288c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 288zm0-128c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 160z"/></svg>
     </div>
 </main>
-
 
 
 <style>

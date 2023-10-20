@@ -5612,47 +5612,47 @@ var app = (function () {
     			path2 = svg_element("path");
     			attr_dev(div0, "class", "wrapper svelte-8p997g");
     			set_style(div0, "--unit", 2 * /*zoom*/ ctx[7] + "vh");
-    			add_location(div0, file$7, 105, 4, 2675);
+    			add_location(div0, file$7, 105, 4, 2678);
     			attr_dev(path0, "d", "M278.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l9.4-9.4V224H109.3l9.4-9.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-64 64c-12.5 12.5-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-9.4-9.4H224V402.7l-9.4-9.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l64 64c12.5 12.5 32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-9.4 9.4V288H402.7l-9.4 9.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l64-64c12.5-12.5 12.5-32.8 0-45.3l-64-64c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l9.4 9.4H288V109.3l9.4 9.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-64-64z");
-    			add_location(path0, file$7, 120, 238, 3197);
+    			add_location(path0, file$7, 120, 238, 3200);
     			attr_dev(svg0, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg0, "viewBox", "0 0 512 512");
     			attr_dev(svg0, "class", "svelte-8p997g");
-    			add_location(svg0, file$7, 120, 8, 2967);
+    			add_location(svg0, file$7, 120, 8, 2970);
     			attr_dev(div1, "class", "dragHandle svelte-8p997g");
     			attr_dev(div1, "draggable", "true");
     			set_style(div1, "width", 3 * /*zoom*/ ctx[7] + "vh");
     			set_style(div1, "height", 3 * /*zoom*/ ctx[7] + "vh");
-    			add_location(div1, file$7, 110, 4, 2765);
+    			add_location(div1, file$7, 110, 4, 2768);
     			attr_dev(path1, "d", "M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z");
-    			add_location(path1, file$7, 132, 238, 4293);
+    			add_location(path1, file$7, 132, 238, 4296);
     			attr_dev(svg1, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg1, "viewBox", "0 0 448 512");
     			attr_dev(svg1, "class", "svelte-8p997g");
-    			add_location(svg1, file$7, 132, 8, 4063);
+    			add_location(svg1, file$7, 132, 8, 4066);
     			attr_dev(div2, "class", "deleteAction svelte-8p997g");
     			set_style(div2, "width", 3 * /*zoom*/ ctx[7] + "vh");
     			set_style(div2, "height", 3 * /*zoom*/ ctx[7] + "vh");
-    			add_location(div2, file$7, 123, 4, 3876);
+    			add_location(div2, file$7, 123, 4, 3879);
     			attr_dev(path2, "d", "M32 288c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 288zm0-128c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 160z");
-    			add_location(path2, file$7, 145, 238, 5020);
+    			add_location(path2, file$7, 145, 238, 5023);
     			attr_dev(svg2, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg2, "viewBox", "0 0 448 512");
     			attr_dev(svg2, "class", "svelte-8p997g");
-    			add_location(svg2, file$7, 145, 8, 4790);
+    			add_location(svg2, file$7, 145, 8, 4793);
     			attr_dev(div3, "class", "resizeHandle svelte-8p997g");
     			attr_dev(div3, "draggable", "true");
     			set_style(div3, "width", 3 * /*zoom*/ ctx[7] + "vh");
     			set_style(div3, "height", 3 * /*zoom*/ ctx[7] + "vh");
-    			add_location(div3, file$7, 135, 4, 4585);
-    			attr_dev(main, "class", "neuIndentShadow svelte-8p997g");
+    			add_location(div3, file$7, 135, 4, 4588);
+    			attr_dev(main, "class", "neuOutdentShadowRim svelte-8p997g");
     			set_style(main, "left", ((/*posX*/ ctx[3] + /*simX*/ ctx[8]) * /*zoom*/ ctx[7] + /*offX*/ ctx[5]) * 2 + "vh");
     			set_style(main, "top", ((/*posY*/ ctx[4] + /*simY*/ ctx[9]) * /*zoom*/ ctx[7] + /*offY*/ ctx[6]) * 2 + "vh");
     			set_style(main, "width", Math.max(/*sizeBounds*/ ctx[0][0][0], Math.min(/*sizeX*/ ctx[1] + /*simResizeX*/ ctx[10], /*sizeBounds*/ ctx[0][0][1])) * 2 * /*zoom*/ ctx[7] + "vh");
     			set_style(main, "height", Math.max(/*sizeBounds*/ ctx[0][1][0], Math.min(/*sizeY*/ ctx[2] + /*simResizeY*/ ctx[11], /*sizeBounds*/ ctx[0][1][1])) * 2 * /*zoom*/ ctx[7] + "vh");
     			set_style(main, "border-radius", 1.5 * /*zoom*/ ctx[7] + "vh");
     			set_style(main, "transition", "border-radius .2s cubic-bezier(0, 0, 0, .9),\r\n");
-    			add_location(main, file$7, 92, 0, 2150);
+    			add_location(main, file$7, 92, 0, 2149);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -5718,11 +5718,11 @@ var app = (function () {
     				set_style(main, "top", ((/*posY*/ ctx[4] + /*simY*/ ctx[9]) * /*zoom*/ ctx[7] + /*offY*/ ctx[6]) * 2 + "vh");
     			}
 
-    			if (dirty & /*sizeX, simResizeX, zoom*/ 1154) {
+    			if (dirty & /*sizeBounds, sizeX, simResizeX, zoom*/ 1155) {
     				set_style(main, "width", Math.max(/*sizeBounds*/ ctx[0][0][0], Math.min(/*sizeX*/ ctx[1] + /*simResizeX*/ ctx[10], /*sizeBounds*/ ctx[0][0][1])) * 2 * /*zoom*/ ctx[7] + "vh");
     			}
 
-    			if (dirty & /*sizeY, simResizeY, zoom*/ 2180) {
+    			if (dirty & /*sizeBounds, sizeY, simResizeY, zoom*/ 2181) {
     				set_style(main, "height", Math.max(/*sizeBounds*/ ctx[0][1][0], Math.min(/*sizeY*/ ctx[2] + /*simResizeY*/ ctx[11], /*sizeBounds*/ ctx[0][1][1])) * 2 * /*zoom*/ ctx[7] + "vh");
     			}
 
@@ -5758,7 +5758,7 @@ var app = (function () {
     	const { ipcRenderer } = require("electron");
     	const fs = require("fs");
     	const path = require("path");
-    	const sizeBounds = [/* X */ [5, 30], [5, 30]]; /* Y */
+    	let { sizeBounds = [/* X */ [5, 30], [5, 30]] } = $$props; /* Y */
     	let { sizeX = 5 } = $$props;
     	let { sizeY = 2 } = $$props;
     	let { posX = 0 } = $$props;
@@ -5818,6 +5818,7 @@ var app = (function () {
     	});
 
     	const writable_props = [
+    		"sizeBounds",
     		"sizeX",
     		"sizeY",
     		"posX",
@@ -5849,6 +5850,7 @@ var app = (function () {
     	}
 
     	$$self.$set = $$props => {
+    		if ("sizeBounds" in $$props) $$invalidate(0, sizeBounds = $$props.sizeBounds);
     		if ("sizeX" in $$props) $$invalidate(1, sizeX = $$props.sizeX);
     		if ("sizeY" in $$props) $$invalidate(2, sizeY = $$props.sizeY);
     		if ("posX" in $$props) $$invalidate(3, posX = $$props.posX);
@@ -5905,6 +5907,7 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
+    		if ("sizeBounds" in $$props) $$invalidate(0, sizeBounds = $$props.sizeBounds);
     		if ("sizeX" in $$props) $$invalidate(1, sizeX = $$props.sizeX);
     		if ("sizeY" in $$props) $$invalidate(2, sizeY = $$props.sizeY);
     		if ("posX" in $$props) $$invalidate(3, posX = $$props.posX);
@@ -6054,7 +6057,7 @@ var app = (function () {
     	}
 
     	get sizeBounds() {
-    		return this.$$.ctx[0];
+    		throw new Error("<PluginWrapper>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
     	set sizeBounds(value) {
@@ -6834,53 +6837,52 @@ var app = (function () {
 
     function get_each_context_2$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[79] = list[i];
-    	child_ctx[80] = list;
-    	child_ctx[81] = i;
+    	child_ctx[78] = list[i];
+    	child_ctx[80] = i;
     	return child_ctx;
     }
 
     function get_each_context_1$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[76] = list[i];
+    	child_ctx[75] = list[i];
     	return child_ctx;
     }
 
     function get_each_context$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[73] = list[i];
+    	child_ctx[72] = list[i];
     	return child_ctx;
     }
 
     function get_each_context_3(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[82] = list[i];
-    	child_ctx[83] = list;
-    	child_ctx[81] = i;
+    	child_ctx[81] = list[i];
+    	child_ctx[82] = list;
+    	child_ctx[80] = i;
     	return child_ctx;
     }
 
     function get_each_context_4(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[82] = list[i];
-    	child_ctx[84] = list;
-    	child_ctx[81] = i;
+    	child_ctx[81] = list[i];
+    	child_ctx[83] = list;
+    	child_ctx[80] = i;
     	return child_ctx;
     }
 
     function get_each_context_5(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[82] = list[i];
-    	child_ctx[85] = list;
-    	child_ctx[81] = i;
+    	child_ctx[81] = list[i];
+    	child_ctx[84] = list;
+    	child_ctx[80] = i;
     	return child_ctx;
     }
 
     function get_each_context_6(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[82] = list[i];
-    	child_ctx[86] = list;
-    	child_ctx[81] = i;
+    	child_ctx[81] = list[i];
+    	child_ctx[85] = list;
+    	child_ctx[80] = i;
     	return child_ctx;
     }
 
@@ -6891,48 +6893,48 @@ var app = (function () {
     	let current;
 
     	function func(...args) {
-    		return /*func*/ ctx[42](/*index*/ ctx[81], /*object*/ ctx[82], ...args);
+    		return /*func*/ ctx[42](/*index*/ ctx[80], /*object*/ ctx[81], ...args);
     	}
 
     	function func_1(...args) {
-    		return /*func_1*/ ctx[43](/*index*/ ctx[81], ...args);
+    		return /*func_1*/ ctx[43](/*index*/ ctx[80], ...args);
     	}
 
     	function func_2(...args) {
-    		return /*func_2*/ ctx[44](/*index*/ ctx[81], ...args);
+    		return /*func_2*/ ctx[44](/*index*/ ctx[80], ...args);
     	}
 
     	function header_text_binding(value) {
-    		/*header_text_binding*/ ctx[45].call(null, value, /*object*/ ctx[82]);
+    		/*header_text_binding*/ ctx[45].call(null, value, /*object*/ ctx[81]);
     	}
 
     	function header_sizeBounds_binding(value) {
-    		/*header_sizeBounds_binding*/ ctx[46].call(null, value, /*object*/ ctx[82]);
+    		/*header_sizeBounds_binding*/ ctx[46].call(null, value, /*object*/ ctx[81]);
     	}
 
     	let header_props = {
     		onDrag: func,
     		onResize: func_1,
     		onDelete: func_2,
-    		posX: /*object*/ ctx[82].posX,
-    		posY: /*object*/ ctx[82].posY,
+    		posX: /*object*/ ctx[81].posX,
+    		posY: /*object*/ ctx[81].posY,
     		offX: (/*viewX*/ ctx[3] + /*mouseDrag*/ ctx[9].delta.x) / window.innerHeight * 50,
     		offY: (/*viewY*/ ctx[4] + /*mouseDrag*/ ctx[9].delta.y) / window.innerHeight * 50,
     		zoom: /*viewZoom*/ ctx[5],
-    		sizeX: /*object*/ ctx[82].sizeX,
-    		sizeY: /*object*/ ctx[82].sizeY,
-    		simX: /*object*/ ctx[82].simX,
-    		simY: /*object*/ ctx[82].simY,
-    		simResizeX: /*object*/ ctx[82].simResizeX,
-    		simResizeY: /*object*/ ctx[82].simResizeY
+    		sizeX: /*object*/ ctx[81].sizeX,
+    		sizeY: /*object*/ ctx[81].sizeY,
+    		simX: /*object*/ ctx[81].simX,
+    		simY: /*object*/ ctx[81].simY,
+    		simResizeX: /*object*/ ctx[81].simResizeX,
+    		simResizeY: /*object*/ ctx[81].simResizeY
     	};
 
-    	if (/*object*/ ctx[82].text !== void 0) {
-    		header_props.text = /*object*/ ctx[82].text;
+    	if (/*object*/ ctx[81].text !== void 0) {
+    		header_props.text = /*object*/ ctx[81].text;
     	}
 
-    	if (/*object*/ ctx[82].sizeBounds !== void 0) {
-    		header_props.sizeBounds = /*object*/ ctx[82].sizeBounds;
+    	if (/*object*/ ctx[81].sizeBounds !== void 0) {
+    		header_props.sizeBounds = /*object*/ ctx[81].sizeBounds;
     	}
 
     	const header = new Header({ props: header_props, $$inline: true });
@@ -6951,27 +6953,27 @@ var app = (function () {
     			ctx = new_ctx;
     			const header_changes = {};
     			if (dirty[0] & /*projectData*/ 1) header_changes.onDrag = func;
-    			if (dirty[0] & /*projectData*/ 1) header_changes.posX = /*object*/ ctx[82].posX;
-    			if (dirty[0] & /*projectData*/ 1) header_changes.posY = /*object*/ ctx[82].posY;
+    			if (dirty[0] & /*projectData*/ 1) header_changes.posX = /*object*/ ctx[81].posX;
+    			if (dirty[0] & /*projectData*/ 1) header_changes.posY = /*object*/ ctx[81].posY;
     			if (dirty[0] & /*viewX, mouseDrag*/ 520) header_changes.offX = (/*viewX*/ ctx[3] + /*mouseDrag*/ ctx[9].delta.x) / window.innerHeight * 50;
     			if (dirty[0] & /*viewY, mouseDrag*/ 528) header_changes.offY = (/*viewY*/ ctx[4] + /*mouseDrag*/ ctx[9].delta.y) / window.innerHeight * 50;
     			if (dirty[0] & /*viewZoom*/ 32) header_changes.zoom = /*viewZoom*/ ctx[5];
-    			if (dirty[0] & /*projectData*/ 1) header_changes.sizeX = /*object*/ ctx[82].sizeX;
-    			if (dirty[0] & /*projectData*/ 1) header_changes.sizeY = /*object*/ ctx[82].sizeY;
-    			if (dirty[0] & /*projectData*/ 1) header_changes.simX = /*object*/ ctx[82].simX;
-    			if (dirty[0] & /*projectData*/ 1) header_changes.simY = /*object*/ ctx[82].simY;
-    			if (dirty[0] & /*projectData*/ 1) header_changes.simResizeX = /*object*/ ctx[82].simResizeX;
-    			if (dirty[0] & /*projectData*/ 1) header_changes.simResizeY = /*object*/ ctx[82].simResizeY;
+    			if (dirty[0] & /*projectData*/ 1) header_changes.sizeX = /*object*/ ctx[81].sizeX;
+    			if (dirty[0] & /*projectData*/ 1) header_changes.sizeY = /*object*/ ctx[81].sizeY;
+    			if (dirty[0] & /*projectData*/ 1) header_changes.simX = /*object*/ ctx[81].simX;
+    			if (dirty[0] & /*projectData*/ 1) header_changes.simY = /*object*/ ctx[81].simY;
+    			if (dirty[0] & /*projectData*/ 1) header_changes.simResizeX = /*object*/ ctx[81].simResizeX;
+    			if (dirty[0] & /*projectData*/ 1) header_changes.simResizeY = /*object*/ ctx[81].simResizeY;
 
     			if (!updating_text && dirty[0] & /*projectData*/ 1) {
     				updating_text = true;
-    				header_changes.text = /*object*/ ctx[82].text;
+    				header_changes.text = /*object*/ ctx[81].text;
     				add_flush_callback(() => updating_text = false);
     			}
 
     			if (!updating_sizeBounds && dirty[0] & /*projectData*/ 1) {
     				updating_sizeBounds = true;
-    				header_changes.sizeBounds = /*object*/ ctx[82].sizeBounds;
+    				header_changes.sizeBounds = /*object*/ ctx[81].sizeBounds;
     				add_flush_callback(() => updating_sizeBounds = false);
     			}
 
@@ -7009,48 +7011,48 @@ var app = (function () {
     	let current;
 
     	function func_3(...args) {
-    		return /*func_3*/ ctx[47](/*index*/ ctx[81], /*object*/ ctx[82], ...args);
+    		return /*func_3*/ ctx[47](/*index*/ ctx[80], /*object*/ ctx[81], ...args);
     	}
 
     	function func_4(...args) {
-    		return /*func_4*/ ctx[48](/*index*/ ctx[81], ...args);
+    		return /*func_4*/ ctx[48](/*index*/ ctx[80], ...args);
     	}
 
     	function func_5(...args) {
-    		return /*func_5*/ ctx[49](/*index*/ ctx[81], ...args);
+    		return /*func_5*/ ctx[49](/*index*/ ctx[80], ...args);
     	}
 
     	function paragraph_text_binding(value) {
-    		/*paragraph_text_binding*/ ctx[50].call(null, value, /*object*/ ctx[82]);
+    		/*paragraph_text_binding*/ ctx[50].call(null, value, /*object*/ ctx[81]);
     	}
 
     	function paragraph_sizeBounds_binding(value) {
-    		/*paragraph_sizeBounds_binding*/ ctx[51].call(null, value, /*object*/ ctx[82]);
+    		/*paragraph_sizeBounds_binding*/ ctx[51].call(null, value, /*object*/ ctx[81]);
     	}
 
     	let paragraph_props = {
     		onDrag: func_3,
     		onResize: func_4,
     		onDelete: func_5,
-    		posX: /*object*/ ctx[82].posX,
-    		posY: /*object*/ ctx[82].posY,
+    		posX: /*object*/ ctx[81].posX,
+    		posY: /*object*/ ctx[81].posY,
     		offX: (/*viewX*/ ctx[3] + /*mouseDrag*/ ctx[9].delta.x) / window.innerHeight * 50,
     		offY: (/*viewY*/ ctx[4] + /*mouseDrag*/ ctx[9].delta.y) / window.innerHeight * 50,
     		zoom: /*viewZoom*/ ctx[5],
-    		sizeX: /*object*/ ctx[82].sizeX,
-    		sizeY: /*object*/ ctx[82].sizeY,
-    		simX: /*object*/ ctx[82].simX,
-    		simY: /*object*/ ctx[82].simY,
-    		simResizeX: /*object*/ ctx[82].simResizeX,
-    		simResizeY: /*object*/ ctx[82].simResizeY
+    		sizeX: /*object*/ ctx[81].sizeX,
+    		sizeY: /*object*/ ctx[81].sizeY,
+    		simX: /*object*/ ctx[81].simX,
+    		simY: /*object*/ ctx[81].simY,
+    		simResizeX: /*object*/ ctx[81].simResizeX,
+    		simResizeY: /*object*/ ctx[81].simResizeY
     	};
 
-    	if (/*object*/ ctx[82].text !== void 0) {
-    		paragraph_props.text = /*object*/ ctx[82].text;
+    	if (/*object*/ ctx[81].text !== void 0) {
+    		paragraph_props.text = /*object*/ ctx[81].text;
     	}
 
-    	if (/*object*/ ctx[82].sizeBounds !== void 0) {
-    		paragraph_props.sizeBounds = /*object*/ ctx[82].sizeBounds;
+    	if (/*object*/ ctx[81].sizeBounds !== void 0) {
+    		paragraph_props.sizeBounds = /*object*/ ctx[81].sizeBounds;
     	}
 
     	const paragraph = new Paragraph({ props: paragraph_props, $$inline: true });
@@ -7069,27 +7071,27 @@ var app = (function () {
     			ctx = new_ctx;
     			const paragraph_changes = {};
     			if (dirty[0] & /*projectData*/ 1) paragraph_changes.onDrag = func_3;
-    			if (dirty[0] & /*projectData*/ 1) paragraph_changes.posX = /*object*/ ctx[82].posX;
-    			if (dirty[0] & /*projectData*/ 1) paragraph_changes.posY = /*object*/ ctx[82].posY;
+    			if (dirty[0] & /*projectData*/ 1) paragraph_changes.posX = /*object*/ ctx[81].posX;
+    			if (dirty[0] & /*projectData*/ 1) paragraph_changes.posY = /*object*/ ctx[81].posY;
     			if (dirty[0] & /*viewX, mouseDrag*/ 520) paragraph_changes.offX = (/*viewX*/ ctx[3] + /*mouseDrag*/ ctx[9].delta.x) / window.innerHeight * 50;
     			if (dirty[0] & /*viewY, mouseDrag*/ 528) paragraph_changes.offY = (/*viewY*/ ctx[4] + /*mouseDrag*/ ctx[9].delta.y) / window.innerHeight * 50;
     			if (dirty[0] & /*viewZoom*/ 32) paragraph_changes.zoom = /*viewZoom*/ ctx[5];
-    			if (dirty[0] & /*projectData*/ 1) paragraph_changes.sizeX = /*object*/ ctx[82].sizeX;
-    			if (dirty[0] & /*projectData*/ 1) paragraph_changes.sizeY = /*object*/ ctx[82].sizeY;
-    			if (dirty[0] & /*projectData*/ 1) paragraph_changes.simX = /*object*/ ctx[82].simX;
-    			if (dirty[0] & /*projectData*/ 1) paragraph_changes.simY = /*object*/ ctx[82].simY;
-    			if (dirty[0] & /*projectData*/ 1) paragraph_changes.simResizeX = /*object*/ ctx[82].simResizeX;
-    			if (dirty[0] & /*projectData*/ 1) paragraph_changes.simResizeY = /*object*/ ctx[82].simResizeY;
+    			if (dirty[0] & /*projectData*/ 1) paragraph_changes.sizeX = /*object*/ ctx[81].sizeX;
+    			if (dirty[0] & /*projectData*/ 1) paragraph_changes.sizeY = /*object*/ ctx[81].sizeY;
+    			if (dirty[0] & /*projectData*/ 1) paragraph_changes.simX = /*object*/ ctx[81].simX;
+    			if (dirty[0] & /*projectData*/ 1) paragraph_changes.simY = /*object*/ ctx[81].simY;
+    			if (dirty[0] & /*projectData*/ 1) paragraph_changes.simResizeX = /*object*/ ctx[81].simResizeX;
+    			if (dirty[0] & /*projectData*/ 1) paragraph_changes.simResizeY = /*object*/ ctx[81].simResizeY;
 
     			if (!updating_text && dirty[0] & /*projectData*/ 1) {
     				updating_text = true;
-    				paragraph_changes.text = /*object*/ ctx[82].text;
+    				paragraph_changes.text = /*object*/ ctx[81].text;
     				add_flush_callback(() => updating_text = false);
     			}
 
     			if (!updating_sizeBounds && dirty[0] & /*projectData*/ 1) {
     				updating_sizeBounds = true;
-    				paragraph_changes.sizeBounds = /*object*/ ctx[82].sizeBounds;
+    				paragraph_changes.sizeBounds = /*object*/ ctx[81].sizeBounds;
     				add_flush_callback(() => updating_sizeBounds = false);
     			}
 
@@ -7124,81 +7126,81 @@ var app = (function () {
     function create_each_block_4(ctx) {
     	let updating_title;
     	let updating_sizeBounds;
-    	let object = /*object*/ ctx[82];
+    	let object = /*object*/ ctx[81];
     	let updating_cellContents;
     	let updating_colNames;
     	let current;
 
     	function func_6(...args) {
-    		return /*func_6*/ ctx[52](/*index*/ ctx[81], /*object*/ ctx[82], ...args);
+    		return /*func_6*/ ctx[52](/*index*/ ctx[80], /*object*/ ctx[81], ...args);
     	}
 
     	function func_7(...args) {
-    		return /*func_7*/ ctx[53](/*index*/ ctx[81], ...args);
+    		return /*func_7*/ ctx[53](/*index*/ ctx[80], ...args);
     	}
 
     	function func_8(...args) {
-    		return /*func_8*/ ctx[54](/*index*/ ctx[81], ...args);
+    		return /*func_8*/ ctx[54](/*index*/ ctx[80], ...args);
     	}
 
     	function func_9(...args) {
-    		return /*func_9*/ ctx[55](/*index*/ ctx[81], ...args);
+    		return /*func_9*/ ctx[55](/*index*/ ctx[80], ...args);
     	}
 
     	function table_title_binding(value) {
-    		/*table_title_binding*/ ctx[56].call(null, value, /*object*/ ctx[82]);
+    		/*table_title_binding*/ ctx[56].call(null, value, /*object*/ ctx[81]);
     	}
 
     	function table_sizeBounds_binding(value) {
-    		/*table_sizeBounds_binding*/ ctx[57].call(null, value, /*object*/ ctx[82]);
+    		/*table_sizeBounds_binding*/ ctx[57].call(null, value, /*object*/ ctx[81]);
     	}
 
     	const assign_table = () => /*table_binding*/ ctx[58](table, object);
     	const unassign_table = () => /*table_binding*/ ctx[58](null, object);
 
     	function table_cellContents_binding(value) {
-    		/*table_cellContents_binding*/ ctx[59].call(null, value, /*object*/ ctx[82]);
+    		/*table_cellContents_binding*/ ctx[59].call(null, value, /*object*/ ctx[81]);
     	}
 
     	function table_colNames_binding(value) {
-    		/*table_colNames_binding*/ ctx[60].call(null, value, /*object*/ ctx[82]);
+    		/*table_colNames_binding*/ ctx[60].call(null, value, /*object*/ ctx[81]);
     	}
 
     	let table_props = {
-    		editmode: /*edited*/ ctx[1] == /*index*/ ctx[81],
+    		editmode: /*edited*/ ctx[1] == /*index*/ ctx[80],
     		lockedCells: [],
     		onDrag: func_6,
     		onResize: func_7,
     		onDelete: func_8,
     		onEdit: func_9,
-    		posX: /*object*/ ctx[82].posX,
-    		posY: /*object*/ ctx[82].posY,
+    		posX: /*object*/ ctx[81].posX,
+    		posY: /*object*/ ctx[81].posY,
     		offX: (/*viewX*/ ctx[3] + /*mouseDrag*/ ctx[9].delta.x) / window.innerHeight * 50,
     		offY: (/*viewY*/ ctx[4] + /*mouseDrag*/ ctx[9].delta.y) / window.innerHeight * 50,
     		zoom: /*viewZoom*/ ctx[5],
-    		sizeX: /*object*/ ctx[82].sizeX,
-    		sizeY: /*object*/ ctx[82].sizeY,
-    		simX: /*object*/ ctx[82].simX,
-    		simY: /*object*/ ctx[82].simY,
-    		simResizeX: /*object*/ ctx[82].simResizeX,
-    		simResizeY: /*object*/ ctx[82].simResizeY,
+    		sizeX: /*object*/ ctx[81].sizeX,
+    		sizeY: /*object*/ ctx[81].sizeY,
+    		simX: /*object*/ ctx[81].simX,
+    		simY: /*object*/ ctx[81].simY,
+    		simResizeX: /*object*/ ctx[81].simResizeX,
+    		simResizeY: /*object*/ ctx[81].simResizeY,
     		onInput: /*invokeTableProcess*/ ctx[2]
     	};
 
-    	if (/*object*/ ctx[82].title !== void 0) {
-    		table_props.title = /*object*/ ctx[82].title;
+    	if (/*object*/ ctx[81].title !== void 0) {
+    		table_props.title = /*object*/ ctx[81].title;
     	}
 
-    	if (/*object*/ ctx[82].sizeBounds !== void 0) {
-    		table_props.sizeBounds = /*object*/ ctx[82].sizeBounds;
+    	if (/*object*/ ctx[81].sizeBounds !== void 0) {
+    		table_props.sizeBounds = /*object*/ ctx[81].sizeBounds;
     	}
 
-    	if (/*object*/ ctx[82].cellContents !== void 0) {
-    		table_props.cellContents = /*object*/ ctx[82].cellContents;
+    	if (/*object*/ ctx[81].cellContents !== void 0) {
+    		table_props.cellContents = /*object*/ ctx[81].cellContents;
     	}
 
-    	if (/*object*/ ctx[82].colNames !== void 0) {
-    		table_props.colNames = /*object*/ ctx[82].colNames;
+    	if (/*object*/ ctx[81].colNames !== void 0) {
+    		table_props.colNames = /*object*/ ctx[81].colNames;
     	}
 
     	const table = new Table({ props: table_props, $$inline: true });
@@ -7219,51 +7221,51 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
 
-    			if (object !== /*object*/ ctx[82]) {
+    			if (object !== /*object*/ ctx[81]) {
     				unassign_table();
-    				object = /*object*/ ctx[82];
+    				object = /*object*/ ctx[81];
     				assign_table();
     			}
 
     			const table_changes = {};
-    			if (dirty[0] & /*edited*/ 2) table_changes.editmode = /*edited*/ ctx[1] == /*index*/ ctx[81];
+    			if (dirty[0] & /*edited*/ 2) table_changes.editmode = /*edited*/ ctx[1] == /*index*/ ctx[80];
     			if (dirty[0] & /*projectData*/ 1) table_changes.onDrag = func_6;
     			if (dirty[0] & /*edited*/ 2) table_changes.onDelete = func_8;
     			if (dirty[0] & /*edited*/ 2) table_changes.onEdit = func_9;
-    			if (dirty[0] & /*projectData*/ 1) table_changes.posX = /*object*/ ctx[82].posX;
-    			if (dirty[0] & /*projectData*/ 1) table_changes.posY = /*object*/ ctx[82].posY;
+    			if (dirty[0] & /*projectData*/ 1) table_changes.posX = /*object*/ ctx[81].posX;
+    			if (dirty[0] & /*projectData*/ 1) table_changes.posY = /*object*/ ctx[81].posY;
     			if (dirty[0] & /*viewX, mouseDrag*/ 520) table_changes.offX = (/*viewX*/ ctx[3] + /*mouseDrag*/ ctx[9].delta.x) / window.innerHeight * 50;
     			if (dirty[0] & /*viewY, mouseDrag*/ 528) table_changes.offY = (/*viewY*/ ctx[4] + /*mouseDrag*/ ctx[9].delta.y) / window.innerHeight * 50;
     			if (dirty[0] & /*viewZoom*/ 32) table_changes.zoom = /*viewZoom*/ ctx[5];
-    			if (dirty[0] & /*projectData*/ 1) table_changes.sizeX = /*object*/ ctx[82].sizeX;
-    			if (dirty[0] & /*projectData*/ 1) table_changes.sizeY = /*object*/ ctx[82].sizeY;
-    			if (dirty[0] & /*projectData*/ 1) table_changes.simX = /*object*/ ctx[82].simX;
-    			if (dirty[0] & /*projectData*/ 1) table_changes.simY = /*object*/ ctx[82].simY;
-    			if (dirty[0] & /*projectData*/ 1) table_changes.simResizeX = /*object*/ ctx[82].simResizeX;
-    			if (dirty[0] & /*projectData*/ 1) table_changes.simResizeY = /*object*/ ctx[82].simResizeY;
+    			if (dirty[0] & /*projectData*/ 1) table_changes.sizeX = /*object*/ ctx[81].sizeX;
+    			if (dirty[0] & /*projectData*/ 1) table_changes.sizeY = /*object*/ ctx[81].sizeY;
+    			if (dirty[0] & /*projectData*/ 1) table_changes.simX = /*object*/ ctx[81].simX;
+    			if (dirty[0] & /*projectData*/ 1) table_changes.simY = /*object*/ ctx[81].simY;
+    			if (dirty[0] & /*projectData*/ 1) table_changes.simResizeX = /*object*/ ctx[81].simResizeX;
+    			if (dirty[0] & /*projectData*/ 1) table_changes.simResizeY = /*object*/ ctx[81].simResizeY;
     			if (dirty[0] & /*invokeTableProcess*/ 4) table_changes.onInput = /*invokeTableProcess*/ ctx[2];
 
     			if (!updating_title && dirty[0] & /*projectData*/ 1) {
     				updating_title = true;
-    				table_changes.title = /*object*/ ctx[82].title;
+    				table_changes.title = /*object*/ ctx[81].title;
     				add_flush_callback(() => updating_title = false);
     			}
 
     			if (!updating_sizeBounds && dirty[0] & /*projectData*/ 1) {
     				updating_sizeBounds = true;
-    				table_changes.sizeBounds = /*object*/ ctx[82].sizeBounds;
+    				table_changes.sizeBounds = /*object*/ ctx[81].sizeBounds;
     				add_flush_callback(() => updating_sizeBounds = false);
     			}
 
     			if (!updating_cellContents && dirty[0] & /*projectData*/ 1) {
     				updating_cellContents = true;
-    				table_changes.cellContents = /*object*/ ctx[82].cellContents;
+    				table_changes.cellContents = /*object*/ ctx[81].cellContents;
     				add_flush_callback(() => updating_cellContents = false);
     			}
 
     			if (!updating_colNames && dirty[0] & /*projectData*/ 1) {
     				updating_colNames = true;
-    				table_changes.colNames = /*object*/ ctx[82].colNames;
+    				table_changes.colNames = /*object*/ ctx[81].colNames;
     				add_flush_callback(() => updating_colNames = false);
     			}
 
@@ -7303,19 +7305,19 @@ var app = (function () {
     	let current;
 
     	function func_10(...args) {
-    		return /*func_10*/ ctx[61](/*index*/ ctx[81], /*object*/ ctx[82], ...args);
+    		return /*func_10*/ ctx[61](/*index*/ ctx[80], /*object*/ ctx[81], ...args);
     	}
 
     	function func_11(...args) {
-    		return /*func_11*/ ctx[62](/*index*/ ctx[81], ...args);
+    		return /*func_11*/ ctx[62](/*index*/ ctx[80], ...args);
     	}
 
     	function func_12(...args) {
-    		return /*func_12*/ ctx[63](/*index*/ ctx[81], ...args);
+    		return /*func_12*/ ctx[63](/*index*/ ctx[80], ...args);
     	}
 
     	function result_widgetData_binding(value) {
-    		/*result_widgetData_binding*/ ctx[64].call(null, value, /*object*/ ctx[82], /*each_value_3*/ ctx[83], /*index*/ ctx[81]);
+    		/*result_widgetData_binding*/ ctx[64].call(null, value, /*object*/ ctx[81], /*each_value_3*/ ctx[82], /*index*/ ctx[80]);
     	}
 
     	function result_projectData_binding(value) {
@@ -7323,36 +7325,36 @@ var app = (function () {
     	}
 
     	function result_sizeBounds_binding(value) {
-    		/*result_sizeBounds_binding*/ ctx[66].call(null, value, /*object*/ ctx[82]);
+    		/*result_sizeBounds_binding*/ ctx[66].call(null, value, /*object*/ ctx[81]);
     	}
 
     	let result_props = {
     		onDrag: func_10,
     		onResize: func_11,
     		onDelete: func_12,
-    		posX: /*object*/ ctx[82].posX,
-    		posY: /*object*/ ctx[82].posY,
+    		posX: /*object*/ ctx[81].posX,
+    		posY: /*object*/ ctx[81].posY,
     		offX: (/*viewX*/ ctx[3] + /*mouseDrag*/ ctx[9].delta.x) / window.innerHeight * 50,
     		offY: (/*viewY*/ ctx[4] + /*mouseDrag*/ ctx[9].delta.y) / window.innerHeight * 50,
     		zoom: /*viewZoom*/ ctx[5],
-    		sizeX: /*object*/ ctx[82].sizeX,
-    		sizeY: /*object*/ ctx[82].sizeY,
-    		simX: /*object*/ ctx[82].simX,
-    		simY: /*object*/ ctx[82].simY,
-    		simResizeX: /*object*/ ctx[82].simResizeX,
-    		simResizeY: /*object*/ ctx[82].simResizeY
+    		sizeX: /*object*/ ctx[81].sizeX,
+    		sizeY: /*object*/ ctx[81].sizeY,
+    		simX: /*object*/ ctx[81].simX,
+    		simY: /*object*/ ctx[81].simY,
+    		simResizeX: /*object*/ ctx[81].simResizeX,
+    		simResizeY: /*object*/ ctx[81].simResizeY
     	};
 
-    	if (/*object*/ ctx[82] !== void 0) {
-    		result_props.widgetData = /*object*/ ctx[82];
+    	if (/*object*/ ctx[81] !== void 0) {
+    		result_props.widgetData = /*object*/ ctx[81];
     	}
 
     	if (/*projectData*/ ctx[0] !== void 0) {
     		result_props.projectData = /*projectData*/ ctx[0];
     	}
 
-    	if (/*object*/ ctx[82].sizeBounds !== void 0) {
-    		result_props.sizeBounds = /*object*/ ctx[82].sizeBounds;
+    	if (/*object*/ ctx[81].sizeBounds !== void 0) {
+    		result_props.sizeBounds = /*object*/ ctx[81].sizeBounds;
     	}
 
     	const result = new Result({ props: result_props, $$inline: true });
@@ -7372,21 +7374,21 @@ var app = (function () {
     			ctx = new_ctx;
     			const result_changes = {};
     			if (dirty[0] & /*projectData*/ 1) result_changes.onDrag = func_10;
-    			if (dirty[0] & /*projectData*/ 1) result_changes.posX = /*object*/ ctx[82].posX;
-    			if (dirty[0] & /*projectData*/ 1) result_changes.posY = /*object*/ ctx[82].posY;
+    			if (dirty[0] & /*projectData*/ 1) result_changes.posX = /*object*/ ctx[81].posX;
+    			if (dirty[0] & /*projectData*/ 1) result_changes.posY = /*object*/ ctx[81].posY;
     			if (dirty[0] & /*viewX, mouseDrag*/ 520) result_changes.offX = (/*viewX*/ ctx[3] + /*mouseDrag*/ ctx[9].delta.x) / window.innerHeight * 50;
     			if (dirty[0] & /*viewY, mouseDrag*/ 528) result_changes.offY = (/*viewY*/ ctx[4] + /*mouseDrag*/ ctx[9].delta.y) / window.innerHeight * 50;
     			if (dirty[0] & /*viewZoom*/ 32) result_changes.zoom = /*viewZoom*/ ctx[5];
-    			if (dirty[0] & /*projectData*/ 1) result_changes.sizeX = /*object*/ ctx[82].sizeX;
-    			if (dirty[0] & /*projectData*/ 1) result_changes.sizeY = /*object*/ ctx[82].sizeY;
-    			if (dirty[0] & /*projectData*/ 1) result_changes.simX = /*object*/ ctx[82].simX;
-    			if (dirty[0] & /*projectData*/ 1) result_changes.simY = /*object*/ ctx[82].simY;
-    			if (dirty[0] & /*projectData*/ 1) result_changes.simResizeX = /*object*/ ctx[82].simResizeX;
-    			if (dirty[0] & /*projectData*/ 1) result_changes.simResizeY = /*object*/ ctx[82].simResizeY;
+    			if (dirty[0] & /*projectData*/ 1) result_changes.sizeX = /*object*/ ctx[81].sizeX;
+    			if (dirty[0] & /*projectData*/ 1) result_changes.sizeY = /*object*/ ctx[81].sizeY;
+    			if (dirty[0] & /*projectData*/ 1) result_changes.simX = /*object*/ ctx[81].simX;
+    			if (dirty[0] & /*projectData*/ 1) result_changes.simY = /*object*/ ctx[81].simY;
+    			if (dirty[0] & /*projectData*/ 1) result_changes.simResizeX = /*object*/ ctx[81].simResizeX;
+    			if (dirty[0] & /*projectData*/ 1) result_changes.simResizeY = /*object*/ ctx[81].simResizeY;
 
     			if (!updating_widgetData && dirty[0] & /*projectData*/ 1) {
     				updating_widgetData = true;
-    				result_changes.widgetData = /*object*/ ctx[82];
+    				result_changes.widgetData = /*object*/ ctx[81];
     				add_flush_callback(() => updating_widgetData = false);
     			}
 
@@ -7398,7 +7400,7 @@ var app = (function () {
 
     			if (!updating_sizeBounds && dirty[0] & /*projectData*/ 1) {
     				updating_sizeBounds = true;
-    				result_changes.sizeBounds = /*object*/ ctx[82].sizeBounds;
+    				result_changes.sizeBounds = /*object*/ ctx[81].sizeBounds;
     				add_flush_callback(() => updating_sizeBounds = false);
     			}
 
@@ -7435,19 +7437,19 @@ var app = (function () {
 
     	const pluginfallback = new PluginFallback({
     			props: {
-    				posX: /*w*/ ctx[79].posX,
-    				posY: /*w*/ ctx[79].posY,
-    				sizeX: /*w*/ ctx[79].sizeX,
-    				sizeY: /*w*/ ctx[79].sizeY,
-    				simX: /*w*/ ctx[79].simX,
-    				simY: /*w*/ ctx[79].simY,
-    				simResizeX: /*w*/ ctx[79].simResizeX,
-    				simResizeY: /*w*/ ctx[79].simResizeY,
+    				posX: /*w*/ ctx[78].posX,
+    				posY: /*w*/ ctx[78].posY,
+    				sizeX: /*w*/ ctx[78].sizeX,
+    				sizeY: /*w*/ ctx[78].sizeY,
+    				simX: /*w*/ ctx[78].simX,
+    				simY: /*w*/ ctx[78].simY,
+    				simResizeX: /*w*/ ctx[78].simResizeX,
+    				simResizeY: /*w*/ ctx[78].simResizeY,
     				offX: (/*viewX*/ ctx[3] + /*mouseDrag*/ ctx[9].delta.x) / window.innerHeight * 50,
     				offY: (/*viewY*/ ctx[4] + /*mouseDrag*/ ctx[9].delta.y) / window.innerHeight * 50,
     				zoom: /*viewZoom*/ ctx[5],
-    				pluginID: /*plugin*/ ctx[73],
-    				widgetID: /*widgetType*/ ctx[76]
+    				pluginID: /*plugin*/ ctx[72],
+    				widgetID: /*widgetType*/ ctx[75]
     			},
     			$$inline: true
     		});
@@ -7462,19 +7464,19 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const pluginfallback_changes = {};
-    			if (dirty[0] & /*projectData*/ 1) pluginfallback_changes.posX = /*w*/ ctx[79].posX;
-    			if (dirty[0] & /*projectData*/ 1) pluginfallback_changes.posY = /*w*/ ctx[79].posY;
-    			if (dirty[0] & /*projectData*/ 1) pluginfallback_changes.sizeX = /*w*/ ctx[79].sizeX;
-    			if (dirty[0] & /*projectData*/ 1) pluginfallback_changes.sizeY = /*w*/ ctx[79].sizeY;
-    			if (dirty[0] & /*projectData*/ 1) pluginfallback_changes.simX = /*w*/ ctx[79].simX;
-    			if (dirty[0] & /*projectData*/ 1) pluginfallback_changes.simY = /*w*/ ctx[79].simY;
-    			if (dirty[0] & /*projectData*/ 1) pluginfallback_changes.simResizeX = /*w*/ ctx[79].simResizeX;
-    			if (dirty[0] & /*projectData*/ 1) pluginfallback_changes.simResizeY = /*w*/ ctx[79].simResizeY;
+    			if (dirty[0] & /*projectData*/ 1) pluginfallback_changes.posX = /*w*/ ctx[78].posX;
+    			if (dirty[0] & /*projectData*/ 1) pluginfallback_changes.posY = /*w*/ ctx[78].posY;
+    			if (dirty[0] & /*projectData*/ 1) pluginfallback_changes.sizeX = /*w*/ ctx[78].sizeX;
+    			if (dirty[0] & /*projectData*/ 1) pluginfallback_changes.sizeY = /*w*/ ctx[78].sizeY;
+    			if (dirty[0] & /*projectData*/ 1) pluginfallback_changes.simX = /*w*/ ctx[78].simX;
+    			if (dirty[0] & /*projectData*/ 1) pluginfallback_changes.simY = /*w*/ ctx[78].simY;
+    			if (dirty[0] & /*projectData*/ 1) pluginfallback_changes.simResizeX = /*w*/ ctx[78].simResizeX;
+    			if (dirty[0] & /*projectData*/ 1) pluginfallback_changes.simResizeY = /*w*/ ctx[78].simResizeY;
     			if (dirty[0] & /*viewX, mouseDrag*/ 520) pluginfallback_changes.offX = (/*viewX*/ ctx[3] + /*mouseDrag*/ ctx[9].delta.x) / window.innerHeight * 50;
     			if (dirty[0] & /*viewY, mouseDrag*/ 528) pluginfallback_changes.offY = (/*viewY*/ ctx[4] + /*mouseDrag*/ ctx[9].delta.y) / window.innerHeight * 50;
     			if (dirty[0] & /*viewZoom*/ 32) pluginfallback_changes.zoom = /*viewZoom*/ ctx[5];
-    			if (dirty[0] & /*projectData*/ 1) pluginfallback_changes.pluginID = /*plugin*/ ctx[73];
-    			if (dirty[0] & /*projectData*/ 1) pluginfallback_changes.widgetID = /*widgetType*/ ctx[76];
+    			if (dirty[0] & /*projectData*/ 1) pluginfallback_changes.pluginID = /*plugin*/ ctx[72];
+    			if (dirty[0] & /*projectData*/ 1) pluginfallback_changes.widgetID = /*widgetType*/ ctx[75];
     			pluginfallback.$set(pluginfallback_changes);
     		},
     		i: function intro(local) {
@@ -7504,56 +7506,44 @@ var app = (function () {
 
     // (952:24) {#if activePlugins[plugin] != null}
     function create_if_block$2(ctx) {
-    	let updating_sizeBounds;
     	let current;
 
     	function func_13(...args) {
-    		return /*func_13*/ ctx[67](/*plugin*/ ctx[73], /*widgetType*/ ctx[76], /*index*/ ctx[81], /*w*/ ctx[79], ...args);
+    		return /*func_13*/ ctx[67](/*plugin*/ ctx[72], /*widgetType*/ ctx[75], /*index*/ ctx[80], /*w*/ ctx[78], ...args);
     	}
 
     	function func_14(...args) {
-    		return /*func_14*/ ctx[68](/*plugin*/ ctx[73], /*widgetType*/ ctx[76], /*index*/ ctx[81], ...args);
+    		return /*func_14*/ ctx[68](/*plugin*/ ctx[72], /*widgetType*/ ctx[75], /*index*/ ctx[80], ...args);
     	}
 
     	function func_15(...args) {
-    		return /*func_15*/ ctx[69](/*plugin*/ ctx[73], /*widgetType*/ ctx[76], /*index*/ ctx[81], ...args);
-    	}
-
-    	function pluginwrapper_sizeBounds_binding(value) {
-    		/*pluginwrapper_sizeBounds_binding*/ ctx[70].call(null, value, /*w*/ ctx[79]);
-    	}
-
-    	let pluginwrapper_props = {
-    		posX: /*w*/ ctx[79].posX,
-    		posY: /*w*/ ctx[79].posY,
-    		sizeX: /*w*/ ctx[79].sizeX,
-    		sizeY: /*w*/ ctx[79].sizeY,
-    		simX: /*w*/ ctx[79].simX,
-    		simY: /*w*/ ctx[79].simY,
-    		simResizeX: /*w*/ ctx[79].simResizeX,
-    		simResizeY: /*w*/ ctx[79].simResizeY,
-    		offX: (/*viewX*/ ctx[3] + /*mouseDrag*/ ctx[9].delta.x) / window.innerHeight * 50,
-    		offY: (/*viewY*/ ctx[4] + /*mouseDrag*/ ctx[9].delta.y) / window.innerHeight * 50,
-    		zoom: /*viewZoom*/ ctx[5],
-    		widgetData: /*projectData*/ ctx[0].pluginObjects[/*plugin*/ ctx[73]][/*widgetType*/ ctx[76]][/*index*/ ctx[81]],
-    		projectData: /*projectData*/ ctx[0],
-    		pluginID: /*plugin*/ ctx[73],
-    		widgetID: /*widgetType*/ ctx[76],
-    		onDrag: func_13,
-    		onResize: func_14,
-    		onDelete: func_15
-    	};
-
-    	if (/*w*/ ctx[79].sizeBounds !== void 0) {
-    		pluginwrapper_props.sizeBounds = /*w*/ ctx[79].sizeBounds;
+    		return /*func_15*/ ctx[69](/*plugin*/ ctx[72], /*widgetType*/ ctx[75], /*index*/ ctx[80], ...args);
     	}
 
     	const pluginwrapper = new PluginWrapper({
-    			props: pluginwrapper_props,
+    			props: {
+    				sizeBounds: /*w*/ ctx[78].sizeBounds,
+    				posX: /*w*/ ctx[78].posX,
+    				posY: /*w*/ ctx[78].posY,
+    				sizeX: /*w*/ ctx[78].sizeX,
+    				sizeY: /*w*/ ctx[78].sizeY,
+    				simX: /*w*/ ctx[78].simX,
+    				simY: /*w*/ ctx[78].simY,
+    				simResizeX: /*w*/ ctx[78].simResizeX,
+    				simResizeY: /*w*/ ctx[78].simResizeY,
+    				offX: (/*viewX*/ ctx[3] + /*mouseDrag*/ ctx[9].delta.x) / window.innerHeight * 50,
+    				offY: (/*viewY*/ ctx[4] + /*mouseDrag*/ ctx[9].delta.y) / window.innerHeight * 50,
+    				zoom: /*viewZoom*/ ctx[5],
+    				widgetData: /*projectData*/ ctx[0].pluginObjects[/*plugin*/ ctx[72]][/*widgetType*/ ctx[75]][/*index*/ ctx[80]],
+    				projectData: /*projectData*/ ctx[0],
+    				pluginID: /*plugin*/ ctx[72],
+    				widgetID: /*widgetType*/ ctx[75],
+    				onDrag: func_13,
+    				onResize: func_14,
+    				onDelete: func_15
+    			},
     			$$inline: true
     		});
-
-    	binding_callbacks.push(() => bind(pluginwrapper, "sizeBounds", pluginwrapper_sizeBounds_binding));
 
     	const block = {
     		c: function create() {
@@ -7566,31 +7556,25 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
     			const pluginwrapper_changes = {};
-    			if (dirty[0] & /*projectData*/ 1) pluginwrapper_changes.posX = /*w*/ ctx[79].posX;
-    			if (dirty[0] & /*projectData*/ 1) pluginwrapper_changes.posY = /*w*/ ctx[79].posY;
-    			if (dirty[0] & /*projectData*/ 1) pluginwrapper_changes.sizeX = /*w*/ ctx[79].sizeX;
-    			if (dirty[0] & /*projectData*/ 1) pluginwrapper_changes.sizeY = /*w*/ ctx[79].sizeY;
-    			if (dirty[0] & /*projectData*/ 1) pluginwrapper_changes.simX = /*w*/ ctx[79].simX;
-    			if (dirty[0] & /*projectData*/ 1) pluginwrapper_changes.simY = /*w*/ ctx[79].simY;
-    			if (dirty[0] & /*projectData*/ 1) pluginwrapper_changes.simResizeX = /*w*/ ctx[79].simResizeX;
-    			if (dirty[0] & /*projectData*/ 1) pluginwrapper_changes.simResizeY = /*w*/ ctx[79].simResizeY;
+    			if (dirty[0] & /*projectData*/ 1) pluginwrapper_changes.sizeBounds = /*w*/ ctx[78].sizeBounds;
+    			if (dirty[0] & /*projectData*/ 1) pluginwrapper_changes.posX = /*w*/ ctx[78].posX;
+    			if (dirty[0] & /*projectData*/ 1) pluginwrapper_changes.posY = /*w*/ ctx[78].posY;
+    			if (dirty[0] & /*projectData*/ 1) pluginwrapper_changes.sizeX = /*w*/ ctx[78].sizeX;
+    			if (dirty[0] & /*projectData*/ 1) pluginwrapper_changes.sizeY = /*w*/ ctx[78].sizeY;
+    			if (dirty[0] & /*projectData*/ 1) pluginwrapper_changes.simX = /*w*/ ctx[78].simX;
+    			if (dirty[0] & /*projectData*/ 1) pluginwrapper_changes.simY = /*w*/ ctx[78].simY;
+    			if (dirty[0] & /*projectData*/ 1) pluginwrapper_changes.simResizeX = /*w*/ ctx[78].simResizeX;
+    			if (dirty[0] & /*projectData*/ 1) pluginwrapper_changes.simResizeY = /*w*/ ctx[78].simResizeY;
     			if (dirty[0] & /*viewX, mouseDrag*/ 520) pluginwrapper_changes.offX = (/*viewX*/ ctx[3] + /*mouseDrag*/ ctx[9].delta.x) / window.innerHeight * 50;
     			if (dirty[0] & /*viewY, mouseDrag*/ 528) pluginwrapper_changes.offY = (/*viewY*/ ctx[4] + /*mouseDrag*/ ctx[9].delta.y) / window.innerHeight * 50;
     			if (dirty[0] & /*viewZoom*/ 32) pluginwrapper_changes.zoom = /*viewZoom*/ ctx[5];
-    			if (dirty[0] & /*projectData*/ 1) pluginwrapper_changes.widgetData = /*projectData*/ ctx[0].pluginObjects[/*plugin*/ ctx[73]][/*widgetType*/ ctx[76]][/*index*/ ctx[81]];
+    			if (dirty[0] & /*projectData*/ 1) pluginwrapper_changes.widgetData = /*projectData*/ ctx[0].pluginObjects[/*plugin*/ ctx[72]][/*widgetType*/ ctx[75]][/*index*/ ctx[80]];
     			if (dirty[0] & /*projectData*/ 1) pluginwrapper_changes.projectData = /*projectData*/ ctx[0];
-    			if (dirty[0] & /*projectData*/ 1) pluginwrapper_changes.pluginID = /*plugin*/ ctx[73];
-    			if (dirty[0] & /*projectData*/ 1) pluginwrapper_changes.widgetID = /*widgetType*/ ctx[76];
+    			if (dirty[0] & /*projectData*/ 1) pluginwrapper_changes.pluginID = /*plugin*/ ctx[72];
+    			if (dirty[0] & /*projectData*/ 1) pluginwrapper_changes.widgetID = /*widgetType*/ ctx[75];
     			if (dirty[0] & /*projectData*/ 1) pluginwrapper_changes.onDrag = func_13;
     			if (dirty[0] & /*projectData*/ 1) pluginwrapper_changes.onResize = func_14;
     			if (dirty[0] & /*projectData*/ 1) pluginwrapper_changes.onDelete = func_15;
-
-    			if (!updating_sizeBounds && dirty[0] & /*projectData*/ 1) {
-    				updating_sizeBounds = true;
-    				pluginwrapper_changes.sizeBounds = /*w*/ ctx[79].sizeBounds;
-    				add_flush_callback(() => updating_sizeBounds = false);
-    			}
-
     			pluginwrapper.$set(pluginwrapper_changes);
     		},
     		i: function intro(local) {
@@ -7628,7 +7612,7 @@ var app = (function () {
     	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
-    		if (/*activePlugins*/ ctx[10][/*plugin*/ ctx[73]] != null) return 0;
+    		if (/*activePlugins*/ ctx[10][/*plugin*/ ctx[72]] != null) return 0;
     		return 1;
     	}
 
@@ -7700,7 +7684,7 @@ var app = (function () {
     function create_each_block_1$2(ctx) {
     	let each_1_anchor;
     	let current;
-    	let each_value_2 = /*projectData*/ ctx[0].pluginObjects[/*plugin*/ ctx[73]][/*widgetType*/ ctx[76]];
+    	let each_value_2 = /*projectData*/ ctx[0].pluginObjects[/*plugin*/ ctx[72]][/*widgetType*/ ctx[75]];
     	validate_each_argument(each_value_2);
     	let each_blocks = [];
 
@@ -7730,7 +7714,7 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			if (dirty[0] & /*projectData, viewX, mouseDrag, viewY, viewZoom, initPluginObjectDrag, initPluginObjectResize, deletePluginObject, activePlugins*/ 4523577) {
-    				each_value_2 = /*projectData*/ ctx[0].pluginObjects[/*plugin*/ ctx[73]][/*widgetType*/ ctx[76]];
+    				each_value_2 = /*projectData*/ ctx[0].pluginObjects[/*plugin*/ ctx[72]][/*widgetType*/ ctx[75]];
     				validate_each_argument(each_value_2);
     				let i;
 
@@ -7796,7 +7780,7 @@ var app = (function () {
     function create_each_block$2(ctx) {
     	let each_1_anchor;
     	let current;
-    	let each_value_1 = Object.keys(/*projectData*/ ctx[0].pluginObjects[/*plugin*/ ctx[73]]);
+    	let each_value_1 = Object.keys(/*projectData*/ ctx[0].pluginObjects[/*plugin*/ ctx[72]]);
     	validate_each_argument(each_value_1);
     	let each_blocks = [];
 
@@ -7826,7 +7810,7 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			if (dirty[0] & /*projectData, viewX, mouseDrag, viewY, viewZoom, initPluginObjectDrag, initPluginObjectResize, deletePluginObject, activePlugins*/ 4523577) {
-    				each_value_1 = Object.keys(/*projectData*/ ctx[0].pluginObjects[/*plugin*/ ctx[73]]);
+    				each_value_1 = Object.keys(/*projectData*/ ctx[0].pluginObjects[/*plugin*/ ctx[72]]);
     				validate_each_argument(each_value_1);
     				let i;
 
@@ -7999,7 +7983,7 @@ var app = (function () {
     			set_style(div0, "background-size", 2 * /*viewZoom*/ ctx[5] + "vh");
     			add_location(div0, file$9, 827, 12, 26200);
     			attr_dev(div1, "class", "frame neuIndentShadow svelte-d3k9sp");
-    			add_render_callback(() => /*div1_elementresize_handler*/ ctx[72].call(div1));
+    			add_render_callback(() => /*div1_elementresize_handler*/ ctx[71].call(div1));
     			add_location(div1, file$9, 812, 4, 25770);
     			attr_dev(main, "class", "svelte-d3k9sp");
     			add_location(main, file$9, 811, 0, 25758);
@@ -8040,8 +8024,8 @@ var app = (function () {
     				each_blocks[i].m(div0, null);
     			}
 
-    			/*div1_binding*/ ctx[71](div1);
-    			div1_resize_listener = add_resize_listener(div1, /*div1_elementresize_handler*/ ctx[72].bind(div1));
+    			/*div1_binding*/ ctx[70](div1);
+    			div1_resize_listener = add_resize_listener(div1, /*div1_elementresize_handler*/ ctx[71].bind(div1));
     			current = true;
 
     			dispose = [
@@ -8272,7 +8256,7 @@ var app = (function () {
     			destroy_each(each_blocks_2, detaching);
     			destroy_each(each_blocks_1, detaching);
     			destroy_each(each_blocks, detaching);
-    			/*div1_binding*/ ctx[71](null);
+    			/*div1_binding*/ ctx[70](null);
     			div1_resize_listener.cancel();
     			run_all(dispose);
     		}
@@ -9040,7 +9024,7 @@ var app = (function () {
 
     		binding_callbacks[$$value ? "unshift" : "push"](() => {
     			object.reference = $$value;
-    			$$invalidate(82, object);
+    			$$invalidate(81, object);
     		});
     	}
 
@@ -9092,11 +9076,6 @@ var app = (function () {
     	const func_15 = (plugin, widgetType, index) => {
     		deletePluginObject(plugin, widgetType, index);
     	};
-
-    	function pluginwrapper_sizeBounds_binding(value, w) {
-    		w.sizeBounds = value;
-    		$$invalidate(0, projectData);
-    	}
 
     	function div1_binding($$value) {
     		binding_callbacks[$$value ? "unshift" : "push"](() => {
@@ -9301,7 +9280,6 @@ var app = (function () {
     		func_13,
     		func_14,
     		func_15,
-    		pluginwrapper_sizeBounds_binding,
     		div1_binding,
     		div1_elementresize_handler
     	];
@@ -12430,7 +12408,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (172:20) {#each resultWidgets as rW}
+    // (178:20) {#each resultWidgets as rW}
     function create_each_block$4(ctx) {
     	let option;
     	let t_value = /*rW*/ ctx[23].title + "";
@@ -12443,7 +12421,7 @@ var app = (function () {
     			t = text(t_value);
     			option.__value = option_value_value = /*rW*/ ctx[23].title;
     			option.value = option.__value;
-    			add_location(option, file$d, 172, 24, 5170);
+    			add_location(option, file$d, 178, 24, 5570);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
@@ -12467,7 +12445,7 @@ var app = (function () {
     		block,
     		id: create_each_block$4.name,
     		type: "each",
-    		source: "(172:20) {#each resultWidgets as rW}",
+    		source: "(178:20) {#each resultWidgets as rW}",
     		ctx
     	});
 
@@ -12555,12 +12533,12 @@ var app = (function () {
     			set_style(h1, "font-size", 1.5 * /*zoom*/ ctx[7] + "vh");
     			set_style(h1, "margin-left", /*zoom*/ ctx[7] + "vh");
     			attr_dev(h1, "class", "svelte-bj4wx1");
-    			add_location(h1, file$d, 115, 8, 2801);
+    			add_location(h1, file$d, 121, 8, 3201);
     			attr_dev(div0, "class", "titleBar svelte-bj4wx1");
     			attr_dev(div0, "draggable", "true");
     			set_style(div0, "height", 3 * /*zoom*/ ctx[7] + "vh");
     			set_style(div0, "background-color", /*nodeData*/ ctx[0].color);
-    			add_location(div0, file$d, 97, 4, 2364);
+    			add_location(div0, file$d, 103, 4, 2764);
     			attr_dev(rect0, "x", "2.5");
     			attr_dev(rect0, "y", "2.5");
     			attr_dev(rect0, "width", "10");
@@ -12568,46 +12546,46 @@ var app = (function () {
     			attr_dev(rect0, "rx", "5");
     			attr_dev(rect0, "stroke", "#999999");
     			attr_dev(rect0, "stroke-dasharray", "2 2");
-    			add_location(rect0, file$d, 134, 28, 3639);
+    			add_location(rect0, file$d, 140, 28, 4039);
     			attr_dev(rect1, "x", "5");
     			attr_dev(rect1, "y", "5");
     			attr_dev(rect1, "width", "5");
     			attr_dev(rect1, "height", "5");
     			attr_dev(rect1, "rx", "2.5");
     			attr_dev(rect1, "fill", rect1_fill_value = /*nodeData*/ ctx[0].color);
-    			add_location(rect1, file$d, 135, 28, 3762);
+    			add_location(rect1, file$d, 141, 28, 4162);
     			set_style(svg0, "width", 2 * /*zoom*/ ctx[7] + "vh");
     			set_style(svg0, "height", 2 * /*zoom*/ ctx[7] + "vh");
     			attr_dev(svg0, "viewBox", "0 0 15 15");
     			attr_dev(svg0, "fill", "none");
     			attr_dev(svg0, "xmlns", "http://www.w3.org/2000/svg");
-    			add_location(svg0, file$d, 133, 24, 3490);
+    			add_location(svg0, file$d, 139, 24, 3890);
     			set_style(div1, "width", 3 * /*zoom*/ ctx[7] + "vh");
     			attr_dev(div1, "class", "inputTetherCircleContainer svelte-bj4wx1");
-    			add_location(div1, file$d, 132, 20, 3397);
+    			add_location(div1, file$d, 138, 20, 3797);
     			set_style(p, "font-size", /*zoom*/ ctx[7] + "vh");
     			set_style(p, "color", /*nodeData*/ ctx[0].color);
     			attr_dev(p, "class", "svelte-bj4wx1");
-    			add_location(p, file$d, 139, 24, 3982);
+    			add_location(p, file$d, 145, 24, 4382);
     			attr_dev(div2, "class", "inputTetherLabelContainer svelte-bj4wx1");
-    			add_location(div2, file$d, 138, 20, 3917);
+    			add_location(div2, file$d, 144, 20, 4317);
     			set_style(div3, "height", 3 * /*zoom*/ ctx[7] + "vh");
     			attr_dev(div3, "class", "inputTether svelte-bj4wx1");
-    			add_location(div3, file$d, 125, 16, 3126);
+    			add_location(div3, file$d, 131, 16, 3526);
     			set_style(div4, "padding-top", 0.5 * /*zoom*/ ctx[7] + "vh");
     			attr_dev(div4, "class", "inputs svelte-bj4wx1");
-    			add_location(div4, file$d, 124, 12, 3054);
+    			add_location(div4, file$d, 130, 12, 3454);
     			set_style(div5, "padding-top", 0.5 * /*zoom*/ ctx[7] + "vh");
     			attr_dev(div5, "class", "outputs svelte-bj4wx1");
-    			add_location(div5, file$d, 148, 12, 4230);
+    			add_location(div5, file$d, 154, 12, 4630);
     			attr_dev(div6, "class", "tetherContainer svelte-bj4wx1");
     			set_style(div6, "height", 4 * /*zoom*/ ctx[7] + "vh");
-    			add_location(div6, file$d, 121, 8, 2959);
+    			add_location(div6, file$d, 127, 8, 3359);
     			set_style(h2, "font-size", /*zoom*/ ctx[7] + "vh");
     			set_style(h2, "margin-left", /*zoom*/ ctx[7] + "vh");
     			set_style(h2, "margin-right", 0.5 * /*zoom*/ ctx[7] + "vh");
     			set_style(h2, "color", /*nodeData*/ ctx[0].color);
-    			add_location(h2, file$d, 157, 16, 4447);
+    			add_location(h2, file$d, 163, 16, 4847);
     			attr_dev(select, "name", "resultWidget");
     			set_style(select, "width", 8 * /*zoom*/ ctx[7] + "vh");
     			set_style(select, "height", 1.5 * /*zoom*/ ctx[7] + "vh");
@@ -12617,30 +12595,30 @@ var app = (function () {
     			set_style(select, "border-radius", 0.5 * /*zoom*/ ctx[7] + "vh");
     			attr_dev(select, "class", "svelte-bj4wx1");
     			if (/*nodeData*/ ctx[0].selectedResult === void 0) add_render_callback(() => /*select_change_handler*/ ctx[22].call(select));
-    			add_location(select, file$d, 163, 16, 4687);
+    			add_location(select, file$d, 169, 16, 5087);
     			attr_dev(div7, "class", "setting svelte-bj4wx1");
-    			add_location(div7, file$d, 156, 12, 4408);
+    			add_location(div7, file$d, 162, 12, 4808);
     			attr_dev(div8, "class", "settingsContainer svelte-bj4wx1");
-    			add_location(div8, file$d, 155, 8, 4363);
+    			add_location(div8, file$d, 161, 8, 4763);
     			attr_dev(div9, "class", "contents svelte-bj4wx1");
-    			add_location(div9, file$d, 120, 4, 2927);
+    			add_location(div9, file$d, 126, 4, 3327);
     			attr_dev(path, "d", "M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z");
-    			add_location(path, file$d, 190, 238, 5769);
+    			add_location(path, file$d, 196, 238, 6169);
     			attr_dev(svg1, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg1, "viewBox", "0 0 448 512");
     			attr_dev(svg1, "class", "svelte-bj4wx1");
-    			add_location(svg1, file$d, 190, 8, 5539);
+    			add_location(svg1, file$d, 196, 8, 5939);
     			attr_dev(div10, "class", "deleteAction svelte-bj4wx1");
     			set_style(div10, "width", 3 * /*zoom*/ ctx[7] + "vh");
     			set_style(div10, "height", 3 * /*zoom*/ ctx[7] + "vh");
-    			add_location(div10, file$d, 181, 4, 5352);
+    			add_location(div10, file$d, 187, 4, 5752);
     			attr_dev(main, "class", "neuOutdentShadowRim svelte-bj4wx1");
     			set_style(main, "left", ((/*posX*/ ctx[1] + /*simX*/ ctx[5]) * /*zoom*/ ctx[7] + /*offX*/ ctx[3]) * 2 + "vh");
     			set_style(main, "top", ((/*posY*/ ctx[2] + /*simY*/ ctx[6]) * /*zoom*/ ctx[7] + /*offY*/ ctx[4]) * 2 + "vh");
     			set_style(main, "width", 2 * /*nodeData*/ ctx[0].width * /*zoom*/ ctx[7] + "vh");
     			set_style(main, "height", /*zoom*/ ctx[7] * 12 + "vh");
     			set_style(main, "border-radius", /*zoom*/ ctx[7] + "vh");
-    			add_location(main, file$d, 88, 0, 2056);
+    			add_location(main, file$d, 94, 0, 2456);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -12930,24 +12908,29 @@ var app = (function () {
 
     	async function process() {
     		console.log(nodeData);
-    		if (nodeData.selectedResult == null) return;
+    		if (nodeData.selectedResult === null || nodeData.selectedResult === undefined) return;
 
-    		context[nodeData.input].process().then(value => {
-    			resultWidgets.forEach(widget => {
-    				if (widget.title == nodeData.selectedResult) {
-    					//widget.value = value;
-    					widget.update(value);
-
+    		if (context[nodeData.input]) context[nodeData.input].process().then(value => {
+    			/* resultWidgets.forEach(widget => {
+        if (widget.title == nodeData.selectedResult) {
+            //widget.value = value;
+            widget.update(value);
+            return;
+        }
+    }); */
+    			for (let i = 0; i < resultWidgets.length; i++) {
+    				if (resultWidgets[i].title == nodeData.selectedResult) {
+    					resultWidgets[i].title.update(value);
     					return;
     				}
-    			});
+    			}
     		}).catch(err => {
     			console.error(err);
     		});
     	}
 
     	onMount(() => {
-    		console.log(resultWidgets);
+    		if (resultWidgets) $$invalidate(0, nodeData.selectedResult = resultWidgets[0].title, nodeData);
     	});
 
     	const writable_props = [
@@ -13031,7 +13014,8 @@ var app = (function () {
     		handleDelete,
     		process,
     		console,
-    		outputID
+    		outputID,
+    		undefined
     	});
 
     	$$self.$inject_state = $$props => {

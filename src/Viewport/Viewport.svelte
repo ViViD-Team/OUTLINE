@@ -951,7 +951,7 @@ const   zoomBounds = [.3, 5]
                     {#each projectData.pluginObjects[plugin][widgetType] as w, index}
                         {#if activePlugins[plugin] != null}
                             <PluginWrapper
-                                bind:sizeBounds={w.sizeBounds}
+                                sizeBounds={w.sizeBounds}
 
                                 posX={w.posX}
                                 posY={w.posY}
