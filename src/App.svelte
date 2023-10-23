@@ -16,6 +16,13 @@
 
 	let userSettings = getUserData();
 
+	/**
+	 * Fetches the user settings data.
+	 * If the settings json can not be found,
+	 * the default settings will be loaded.
+	 * 
+	 * @returns {Object} The user settings
+	 */
 	function getUserData() {
 		const dir = ipcRenderer.sendSync("getSaveLocation");
 		const location = path.join(dir, "userSettings.json");
@@ -36,30 +43,6 @@
 
 	let debugConsoleOpen = false;
 
-	let debugInfo = {
-		"objectDrag": [],
-		"objectResize": []
-	};
-
-	$: debugContents = [	"::Object Drag::",
-							"Ongoing:" + debugInfo.objectDrag[0], 
-							"StartX:" + debugInfo.objectDrag[1],
-							"StartY:" + debugInfo.objectDrag[2],
-							"DeltaX:" + debugInfo.objectDrag[3],
-							"DeltaY:" + debugInfo.objectDrag[4],
-							"LayerX:" + debugInfo.objectDrag[5],
-							"LayerY:" + debugInfo.objectDrag[6],
-							"ObjectID:" + debugInfo.objectDrag[7],
-							"ObjectType:" + debugInfo.objectDrag[8],
-							"---",
-							"::Object Resize::",
-							"Ongoing:" + debugInfo.objectResize[0], 
-							"StartX:" + debugInfo.objectResize[1],
-							"StartY:" + debugInfo.objectResize[2],
-							"DeltaX:" + debugInfo.objectResize[3],
-							"DeltaY:" + debugInfo.objectResize[4],
-							"ObjectID:" + debugInfo.objectResize[5],
-							"ObjectType:" + debugInfo.objectResize[6],];
 
 	
 	// Top Bar
@@ -136,8 +119,6 @@
 	}
 	
 	// Project Data
-
-	// !!! NOTICE !!! THIS CONSTELLATION IS FOR DEV PURPOSES ONLY!!!
 
 	let projectData = {
 		"targetFilePath": "",
@@ -286,6 +267,8 @@
 
 	<div class="mainLayout">
 		<TopBar
+			userSettings={userSettings}
+
 			toggleDebugConsole={() => {debugConsoleOpen = !debugConsoleOpen}}
 			centerView={centerViewport}
 			resetZoom={resetZoom}
@@ -302,17 +285,16 @@
 			<Viewport
 				bind:this={viewportRef}
 
-				projectData={projectData}
+				bind:projectData={projectData}
 				userSettings={userSettings}
 				bind:edited={edited}
 
-				bind:debObjectDrag={debugInfo.objectDrag}
-				bind:debObjectResize={debugInfo.objectResize}
-
 				invokeTableProcess={invokeProcessCallback}
 			/>
-			{#if debugConsoleOpen}
-				<DebugConsole info={debugContents} />
+			{#if debugConsoleOpen && userSettings.devModeEnabled}
+				<DebugConsole
+					bind:projectData={projectData}
+				/>
 			{/if}
 		</div>
 		{#if edited != null}
@@ -347,6 +329,8 @@
 		background-color: var(--mainbg);
 
 		position: relative;
+
+		overflow: hidden;
 	}
 
 	/* MAIN APP LAYOUT */
@@ -366,6 +350,8 @@
 		flex: 2;
 
 		display: flex;
+
+		overflow: hidden;
 	}
 
 	.notificationsContainer {

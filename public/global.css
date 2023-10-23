@@ -9,6 +9,10 @@
 	font-family: 'Inter', sans-serif;
 }
 
+html, body {
+	overflow: hidden;
+}
+
 :root {
 
 	--white: #e6e6e6;

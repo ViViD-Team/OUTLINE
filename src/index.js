@@ -249,3 +249,8 @@ ipcMain.on("installPlugin", (event, data) => {
 
   event.returnValue = null;
 });
+
+
+ipcMain.on("searchDevPluginDir", (event, data) => {
+  event.returnValue = dialog.showOpenDialogSync({properties: ['openDirectory', 'createDirectory']});
+});

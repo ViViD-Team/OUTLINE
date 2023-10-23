@@ -4,6 +4,7 @@
     import Radio from "./inputTypes/Radio.svelte";
 
     import PluginManager from "./PluginManager.svelte";
+    import DevModePannel from "./DevModePannel.svelte";
 
     export let closeAction;
     let opened = true;
@@ -61,6 +62,17 @@
                     <path fill="var(--red)" d="M96 0C78.3 0 64 14.3 64 32v96h64V32c0-17.7-14.3-32-32-32zM288 0c-17.7 0-32 14.3-32 32v96h64V32c0-17.7-14.3-32-32-32zM32 160c-17.7 0-32 14.3-32 32s14.3 32 32 32v32c0 77.4 55 142 128 156.8V480c0 17.7 14.3 32 32 32s32-14.3 32-32V412.8C297 398 352 333.4 352 256V224c17.7 0 32-14.3 32-32s-14.3-32-32-32H32z"/>
                 </svg>
                 </SettingsCategory>
+
+                <SettingsCategory
+                    label="Dev Mode"
+                    selected={selected == 3}
+                    clickAction={() => {selected = 3}}
+                >
+                <svg xmlns="http://www.w3.org/2000/svg" height="40%" viewBox="0 0 640 512">
+                    <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                    <path fill="var(--red)" d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"/>
+                </svg>
+                </SettingsCategory>
             </div>
 
             <div class="center">
@@ -92,6 +104,9 @@
                 {/if}
                 {#if selected === 2}
                     <PluginManager />
+                {/if}
+                {#if selected === 3}
+                    <DevModePannel userSettings={userSettings} />
                 {/if}
             </div>
 

@@ -11,26 +11,6 @@
 
     const { ipcRenderer } = require("electron");
 
-    // Exports
-    export let debObjectDrag, debObjectResize;
-
-    $: debObjectDrag = [objectDrag.ongoing, 
-                        objectDrag.start.x, 
-                        objectDrag.start.y, 
-                        objectDrag.delta.x, 
-                        objectDrag.delta.y, 
-                        objectDrag.layer.x, 
-                        objectDrag.layer.y, 
-                        objectDrag.objectInfo.ID, 
-                        objectDrag.objectInfo.type]
-    $: debObjectResize = [  objectResize.ongoing, 
-                            objectResize.start.x, 
-                            objectResize.start.y, 
-                            objectResize.delta.x, 
-                            objectResize.delta.y, 
-                            objectResize.objectInfo.ID, 
-                            objectResize.objectInfo.type]
-
 let
         viewX = 0, viewY = 0,
         viewZoom = 1;
@@ -953,21 +933,21 @@ const   zoomBounds = [.3, 5]
                             <PluginWrapper
                                 sizeBounds={w.sizeBounds}
 
-                                posX={w.posX}
-                                posY={w.posY}
-                                sizeX={w.sizeX}
-                                sizeY={w.sizeY}
-                                simX={w.simX}
-                                simY={w.simY}
-                                simResizeX={w.simResizeX}
-                                simResizeY={w.simResizeY}
+                                bind:posX={w.posX}
+                                bind:posY={w.posY}
+                                bind:sizeX={w.sizeX}
+                                bind:sizeY={w.sizeY}
+                                bind:simX={w.simX}
+                                bind:simY={w.simY}
+                                bind:simResizeX={w.simResizeX}
+                                bind:simResizeY={w.simResizeY}
 
                                 offX={(viewX + mouseDrag.delta.x) / window.innerHeight * 50}
                                 offY={(viewY + mouseDrag.delta.y) / window.innerHeight * 50}
 
                                 zoom={viewZoom}
 
-                                widgetData={projectData.pluginObjects[plugin][widgetType][index]}
+                                bind:widgetData={projectData.pluginObjects[plugin][widgetType][index]}
                                 projectData={projectData}
 
                                 pluginID={plugin}

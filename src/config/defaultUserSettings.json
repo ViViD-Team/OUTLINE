@@ -1,5 +1,9 @@
 {
     "theme": 2,
     "settings_theme": 0,
-    "preferred_navigation_mb": 1
+    "preferred_navigation_mb": 1,
+
+
+    "devModeEnabled": false,
+    "devPluginDirs": []
 }

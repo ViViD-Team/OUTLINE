@@ -75,12 +75,16 @@
                 path.join(ipcRenderer.sendSync("getSaveLocation"),
                 ".plugins", pluginID, widgetID, `${widgetID}.js`
             ));
-            controller = new classModule(_main, projectData, widgetData);
+            controller = new classModule(_main, projectData, widgetData, update);
         }
         catch (err) {
             console.error(err);
         }
     });
+
+    function update() {
+        widgetData = controller._widgetData;
+    }
 
     $: if (controller) {
         controller._widgetData = widgetData;
