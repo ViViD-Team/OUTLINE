@@ -19,7 +19,7 @@
                                 {#each Object.entries(w) as [key, val], dataIndex}
                                     <div
                                         class="dataRow"
-                                        style="{dataIndex % 2 == 0 ? "background-color: var(--shadow2);" : ""}"
+                                        style="{dataIndex % 2 == 0 ? "background-color: var(--mainbg);" : ""}"
                                     >
                                         {#if key != "params"}
                                             <p>{key}</p>
@@ -27,10 +27,10 @@
                                         {:else}
                                             <div class="paramsWrapper">
                                                 <div class="paramsHeader">Custom Params</div>
-                                                {#each Object.entries(val) as [pKey, pVal]}
+                                                {#each Object.entries(val) as [pKey, pVal], paramIndex}
                                                     <div
                                                         class="dataRow"
-                                                        style="{dataIndex % 2 == 0 ? "background-color: var(--shadow2);" : ""}"
+                                                        style="{paramIndex % 2 == 0 ? "background-color: var(--mainbg);" : ""}"
                                                     >
                                                         <p>{pKey}</p>
                                                         <p style="text-align: right;">{typeof(pVal) != "object" ? pVal : JSON.stringify(pVal)}</p>
@@ -102,6 +102,8 @@
         border-radius: 2vh;
         background-color: var(--shadow1);
 
+        box-shadow: inset 0 0 0 .2vh var(--red);
+
         overflow: visible;
     }
 
@@ -115,7 +117,8 @@
         padding-bottom: 2vh;
 
         border-radius: 2vh;
-        background-color: var(--shadow2);
+        background-color: var(--mainbg);
+        box-shadow: inset 0 0 0 .2vh var(--orange);
     }
 
     details.widget {
@@ -125,10 +128,13 @@
 
         border-radius: 2vh;
         background-color: var(--shadow1);
+        box-shadow: inset 0 0 0 .2vh var(--velvet);
     }
 
     summary {
         cursor: pointer;
+
+        color: var(--mainbg);
     }
 
     summary.plugin {
@@ -142,8 +148,6 @@
         background-color: var(--red);
         border-top-right-radius: 2vh;
         border-top-left-radius: 2vh;
-
-        color: var(--text1);
 
     }
 
@@ -159,8 +163,6 @@
         background-color: var(--orange);
         border-top-right-radius: 1vh;
         border-top-left-radius: 1vh;
-
-        color: var(--text1);
     }
 
     summary.widget {
@@ -175,18 +177,19 @@
         background-color: var(--velvet);
         border-top-right-radius: 1vh;
         border-top-left-radius: 1vh;
-
-        color: var(--text1);
     }
 
 
     .dataRow {
-        width: 100%;
+        width: calc(100% - .4vh);
         min-height: 3vh;
 
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        border-right: .2vh solid var(--velvet);
+        border-left: .2vh solid var(--velvet);
     }
 
     .dataRow p {
@@ -216,6 +219,11 @@
 
         color: var(--text1);
         font-weight: 800;
+    }
+
+    .paramsWrapper .dataRow {
+        width: 100%;
+        border: none;
     }
     
 </style>

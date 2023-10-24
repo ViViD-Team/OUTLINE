@@ -12885,7 +12885,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (178:20) {#each resultWidgets as rW}
+    // (184:20) {#each resultWidgets as rW}
     function create_each_block$4(ctx) {
     	let option;
     	let t_value = /*rW*/ ctx[23].title + "";
@@ -12898,7 +12898,7 @@ var app = (function () {
     			t = text(t_value);
     			option.__value = option_value_value = /*rW*/ ctx[23].title;
     			option.value = option.__value;
-    			add_location(option, file$d, 178, 24, 5570);
+    			add_location(option, file$d, 184, 24, 5741);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
@@ -12922,7 +12922,7 @@ var app = (function () {
     		block,
     		id: create_each_block$4.name,
     		type: "each",
-    		source: "(178:20) {#each resultWidgets as rW}",
+    		source: "(184:20) {#each resultWidgets as rW}",
     		ctx
     	});
 
@@ -13010,12 +13010,12 @@ var app = (function () {
     			set_style(h1, "font-size", 1.5 * /*zoom*/ ctx[7] + "vh");
     			set_style(h1, "margin-left", /*zoom*/ ctx[7] + "vh");
     			attr_dev(h1, "class", "svelte-bj4wx1");
-    			add_location(h1, file$d, 121, 8, 3201);
+    			add_location(h1, file$d, 127, 8, 3372);
     			attr_dev(div0, "class", "titleBar svelte-bj4wx1");
     			attr_dev(div0, "draggable", "true");
     			set_style(div0, "height", 3 * /*zoom*/ ctx[7] + "vh");
     			set_style(div0, "background-color", /*nodeData*/ ctx[0].color);
-    			add_location(div0, file$d, 103, 4, 2764);
+    			add_location(div0, file$d, 109, 4, 2935);
     			attr_dev(rect0, "x", "2.5");
     			attr_dev(rect0, "y", "2.5");
     			attr_dev(rect0, "width", "10");
@@ -13023,46 +13023,46 @@ var app = (function () {
     			attr_dev(rect0, "rx", "5");
     			attr_dev(rect0, "stroke", "#999999");
     			attr_dev(rect0, "stroke-dasharray", "2 2");
-    			add_location(rect0, file$d, 140, 28, 4039);
+    			add_location(rect0, file$d, 146, 28, 4210);
     			attr_dev(rect1, "x", "5");
     			attr_dev(rect1, "y", "5");
     			attr_dev(rect1, "width", "5");
     			attr_dev(rect1, "height", "5");
     			attr_dev(rect1, "rx", "2.5");
     			attr_dev(rect1, "fill", rect1_fill_value = /*nodeData*/ ctx[0].color);
-    			add_location(rect1, file$d, 141, 28, 4162);
+    			add_location(rect1, file$d, 147, 28, 4333);
     			set_style(svg0, "width", 2 * /*zoom*/ ctx[7] + "vh");
     			set_style(svg0, "height", 2 * /*zoom*/ ctx[7] + "vh");
     			attr_dev(svg0, "viewBox", "0 0 15 15");
     			attr_dev(svg0, "fill", "none");
     			attr_dev(svg0, "xmlns", "http://www.w3.org/2000/svg");
-    			add_location(svg0, file$d, 139, 24, 3890);
+    			add_location(svg0, file$d, 145, 24, 4061);
     			set_style(div1, "width", 3 * /*zoom*/ ctx[7] + "vh");
     			attr_dev(div1, "class", "inputTetherCircleContainer svelte-bj4wx1");
-    			add_location(div1, file$d, 138, 20, 3797);
+    			add_location(div1, file$d, 144, 20, 3968);
     			set_style(p, "font-size", /*zoom*/ ctx[7] + "vh");
     			set_style(p, "color", /*nodeData*/ ctx[0].color);
     			attr_dev(p, "class", "svelte-bj4wx1");
-    			add_location(p, file$d, 145, 24, 4382);
+    			add_location(p, file$d, 151, 24, 4553);
     			attr_dev(div2, "class", "inputTetherLabelContainer svelte-bj4wx1");
-    			add_location(div2, file$d, 144, 20, 4317);
+    			add_location(div2, file$d, 150, 20, 4488);
     			set_style(div3, "height", 3 * /*zoom*/ ctx[7] + "vh");
     			attr_dev(div3, "class", "inputTether svelte-bj4wx1");
-    			add_location(div3, file$d, 131, 16, 3526);
+    			add_location(div3, file$d, 137, 16, 3697);
     			set_style(div4, "padding-top", 0.5 * /*zoom*/ ctx[7] + "vh");
     			attr_dev(div4, "class", "inputs svelte-bj4wx1");
-    			add_location(div4, file$d, 130, 12, 3454);
+    			add_location(div4, file$d, 136, 12, 3625);
     			set_style(div5, "padding-top", 0.5 * /*zoom*/ ctx[7] + "vh");
     			attr_dev(div5, "class", "outputs svelte-bj4wx1");
-    			add_location(div5, file$d, 154, 12, 4630);
+    			add_location(div5, file$d, 160, 12, 4801);
     			attr_dev(div6, "class", "tetherContainer svelte-bj4wx1");
     			set_style(div6, "height", 4 * /*zoom*/ ctx[7] + "vh");
-    			add_location(div6, file$d, 127, 8, 3359);
+    			add_location(div6, file$d, 133, 8, 3530);
     			set_style(h2, "font-size", /*zoom*/ ctx[7] + "vh");
     			set_style(h2, "margin-left", /*zoom*/ ctx[7] + "vh");
     			set_style(h2, "margin-right", 0.5 * /*zoom*/ ctx[7] + "vh");
     			set_style(h2, "color", /*nodeData*/ ctx[0].color);
-    			add_location(h2, file$d, 163, 16, 4847);
+    			add_location(h2, file$d, 169, 16, 5018);
     			attr_dev(select, "name", "resultWidget");
     			set_style(select, "width", 8 * /*zoom*/ ctx[7] + "vh");
     			set_style(select, "height", 1.5 * /*zoom*/ ctx[7] + "vh");
@@ -13072,30 +13072,30 @@ var app = (function () {
     			set_style(select, "border-radius", 0.5 * /*zoom*/ ctx[7] + "vh");
     			attr_dev(select, "class", "svelte-bj4wx1");
     			if (/*nodeData*/ ctx[0].selectedResult === void 0) add_render_callback(() => /*select_change_handler*/ ctx[22].call(select));
-    			add_location(select, file$d, 169, 16, 5087);
+    			add_location(select, file$d, 175, 16, 5258);
     			attr_dev(div7, "class", "setting svelte-bj4wx1");
-    			add_location(div7, file$d, 162, 12, 4808);
+    			add_location(div7, file$d, 168, 12, 4979);
     			attr_dev(div8, "class", "settingsContainer svelte-bj4wx1");
-    			add_location(div8, file$d, 161, 8, 4763);
+    			add_location(div8, file$d, 167, 8, 4934);
     			attr_dev(div9, "class", "contents svelte-bj4wx1");
-    			add_location(div9, file$d, 126, 4, 3327);
+    			add_location(div9, file$d, 132, 4, 3498);
     			attr_dev(path, "d", "M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z");
-    			add_location(path, file$d, 196, 238, 6169);
+    			add_location(path, file$d, 202, 238, 6340);
     			attr_dev(svg1, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg1, "viewBox", "0 0 448 512");
     			attr_dev(svg1, "class", "svelte-bj4wx1");
-    			add_location(svg1, file$d, 196, 8, 5939);
+    			add_location(svg1, file$d, 202, 8, 6110);
     			attr_dev(div10, "class", "deleteAction svelte-bj4wx1");
     			set_style(div10, "width", 3 * /*zoom*/ ctx[7] + "vh");
     			set_style(div10, "height", 3 * /*zoom*/ ctx[7] + "vh");
-    			add_location(div10, file$d, 187, 4, 5752);
+    			add_location(div10, file$d, 193, 4, 5923);
     			attr_dev(main, "class", "neuOutdentShadowRim svelte-bj4wx1");
     			set_style(main, "left", ((/*posX*/ ctx[1] + /*simX*/ ctx[5]) * /*zoom*/ ctx[7] + /*offX*/ ctx[3]) * 2 + "vh");
     			set_style(main, "top", ((/*posY*/ ctx[2] + /*simY*/ ctx[6]) * /*zoom*/ ctx[7] + /*offY*/ ctx[4]) * 2 + "vh");
     			set_style(main, "width", 2 * /*nodeData*/ ctx[0].width * /*zoom*/ ctx[7] + "vh");
     			set_style(main, "height", /*zoom*/ ctx[7] * 12 + "vh");
     			set_style(main, "border-radius", /*zoom*/ ctx[7] + "vh");
-    			add_location(main, file$d, 94, 0, 2456);
+    			add_location(main, file$d, 100, 0, 2627);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -13384,8 +13384,13 @@ var app = (function () {
     	}
 
     	async function process() {
-    		console.log(nodeData);
-    		if (nodeData.selectedResult === null || nodeData.selectedResult === undefined) return;
+    		console.log(nodeData.selectedResult, resultWidgets);
+
+    		if (nodeData.selectedResult == null) {
+    			if (resultWidgets && resultWidgets[0]) {
+    				$$invalidate(0, nodeData.selectedResult = resultWidgets[0].title, nodeData);
+    			} else return;
+    		}
 
     		if (context[nodeData.input]) context[nodeData.input].process().then(value => {
     			/* resultWidgets.forEach(widget => {
@@ -13397,7 +13402,7 @@ var app = (function () {
     }); */
     			for (let i = 0; i < resultWidgets.length; i++) {
     				if (resultWidgets[i].title == nodeData.selectedResult) {
-    					resultWidgets[i].title.update(value);
+    					resultWidgets[i].update(value);
     					return;
     				}
     			}
@@ -13407,7 +13412,7 @@ var app = (function () {
     	}
 
     	onMount(() => {
-    		if (resultWidgets) $$invalidate(0, nodeData.selectedResult = resultWidgets[0].title, nodeData);
+    		if (resultWidgets && resultWidgets[0]) $$invalidate(0, nodeData.selectedResult = resultWidgets[0].title, nodeData);
     	});
 
     	const writable_props = [
@@ -13491,8 +13496,7 @@ var app = (function () {
     		handleDelete,
     		process,
     		console,
-    		outputID,
-    		undefined
+    		outputID
     	});
 
     	$$self.$inject_state = $$props => {
@@ -23019,6 +23023,7 @@ var app = (function () {
     	const child_ctx = ctx.slice();
     	child_ctx[14] = list[i][0];
     	child_ctx[15] = list[i][1];
+    	child_ctx[17] = i;
     	return child_ctx;
     }
 
@@ -23073,10 +23078,10 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(div0, "class", "paramsHeader svelte-fewv29");
-    			add_location(div0, file$o, 28, 48, 1498);
-    			attr_dev(div1, "class", "paramsWrapper svelte-fewv29");
-    			add_location(div1, file$o, 27, 44, 1421);
+    			attr_dev(div0, "class", "paramsHeader svelte-24gsrp");
+    			add_location(div0, file$o, 28, 48, 1497);
+    			attr_dev(div1, "class", "paramsWrapper svelte-24gsrp");
+    			add_location(div1, file$o, 27, 44, 1420);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
@@ -23150,11 +23155,11 @@ var app = (function () {
     			t1 = space();
     			p1 = element("p");
     			t2 = text(t2_value);
-    			attr_dev(p0, "class", "svelte-fewv29");
-    			add_location(p0, file$o, 24, 44, 1181);
+    			attr_dev(p0, "class", "svelte-24gsrp");
+    			add_location(p0, file$o, 24, 44, 1180);
     			set_style(p1, "text-align", "right");
-    			attr_dev(p1, "class", "svelte-fewv29");
-    			add_location(p1, file$o, 25, 44, 1239);
+    			attr_dev(p1, "class", "svelte-24gsrp");
+    			add_location(p1, file$o, 25, 44, 1238);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p0, anchor);
@@ -23188,7 +23193,7 @@ var app = (function () {
     	return block;
     }
 
-    // (30:48) {#each Object.entries(val) as [pKey, pVal]}
+    // (30:48) {#each Object.entries(val) as [pKey, pVal], paramIndex}
     function create_each_block_4$2(ctx) {
     	let div;
     	let p0;
@@ -23212,18 +23217,18 @@ var app = (function () {
     			t1 = space();
     			p1 = element("p");
     			t2 = text(t2_value);
-    			attr_dev(p0, "class", "svelte-fewv29");
-    			add_location(p0, file$o, 34, 56, 2009);
+    			attr_dev(p0, "class", "svelte-24gsrp");
+    			add_location(p0, file$o, 34, 56, 2020);
     			set_style(p1, "text-align", "right");
-    			attr_dev(p1, "class", "svelte-fewv29");
-    			add_location(p1, file$o, 35, 56, 2080);
-    			attr_dev(div, "class", "dataRow svelte-fewv29");
+    			attr_dev(p1, "class", "svelte-24gsrp");
+    			add_location(p1, file$o, 35, 56, 2091);
+    			attr_dev(div, "class", "dataRow svelte-24gsrp");
 
-    			attr_dev(div, "style", div_style_value = /*dataIndex*/ ctx[13] % 2 == 0
-    			? "background-color: var(--shadow2);"
+    			attr_dev(div, "style", div_style_value = /*paramIndex*/ ctx[17] % 2 == 0
+    			? "background-color: var(--mainbg);"
     			: "");
 
-    			add_location(div, file$o, 30, 52, 1690);
+    			add_location(div, file$o, 30, 52, 1701);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -23249,7 +23254,7 @@ var app = (function () {
     		block,
     		id: create_each_block_4$2.name,
     		type: "each",
-    		source: "(30:48) {#each Object.entries(val) as [pKey, pVal]}",
+    		source: "(30:48) {#each Object.entries(val) as [pKey, pVal], paramIndex}",
     		ctx
     	});
 
@@ -23273,10 +23278,10 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			if_block.c();
-    			attr_dev(div, "class", "dataRow svelte-fewv29");
+    			attr_dev(div, "class", "dataRow svelte-24gsrp");
 
     			attr_dev(div, "style", div_style_value = /*dataIndex*/ ctx[13] % 2 == 0
-    			? "background-color: var(--shadow2);"
+    			? "background-color: var(--mainbg);"
     			: "");
 
     			add_location(div, file$o, 19, 36, 859);
@@ -23347,9 +23352,9 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(summary, "class", "widget svelte-fewv29");
+    			attr_dev(summary, "class", "widget svelte-24gsrp");
     			add_location(summary, file$o, 17, 32, 682);
-    			attr_dev(details, "class", "widget svelte-fewv29");
+    			attr_dev(details, "class", "widget svelte-24gsrp");
     			add_location(details, file$o, 16, 28, 624);
     		},
     		m: function mount(target, anchor) {
@@ -23437,9 +23442,9 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(summary, "class", "widgetType svelte-fewv29");
+    			attr_dev(summary, "class", "widgetType svelte-24gsrp");
     			add_location(summary, file$o, 14, 24, 440);
-    			attr_dev(details, "class", "widgetType svelte-fewv29");
+    			attr_dev(details, "class", "widgetType svelte-24gsrp");
     			add_location(details, file$o, 13, 20, 386);
     		},
     		m: function mount(target, anchor) {
@@ -23527,9 +23532,9 @@ var app = (function () {
     			}
 
     			t3 = space();
-    			attr_dev(summary, "class", "plugin svelte-fewv29");
+    			attr_dev(summary, "class", "plugin svelte-24gsrp");
     			add_location(summary, file$o, 11, 16, 227);
-    			attr_dev(details, "class", "plugin svelte-fewv29");
+    			attr_dev(details, "class", "plugin svelte-24gsrp");
     			add_location(details, file$o, 10, 12, 185);
     		},
     		m: function mount(target, anchor) {
@@ -23609,9 +23614,9 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(div, "class", "frame neuIndentShadow svelte-fewv29");
+    			attr_dev(div, "class", "frame neuIndentShadow svelte-24gsrp");
     			add_location(div, file$o, 8, 4, 70);
-    			attr_dev(main, "class", "svelte-fewv29");
+    			attr_dev(main, "class", "svelte-24gsrp");
     			add_location(main, file$o, 7, 0, 58);
     		},
     		l: function claim(nodes) {

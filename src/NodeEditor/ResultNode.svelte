@@ -63,8 +63,13 @@
     }
 
     export async function process() {
-        console.log(nodeData);
-        if (nodeData.selectedResult === null || nodeData.selectedResult === undefined) return;
+        console.log(nodeData.selectedResult, resultWidgets);
+        if (nodeData.selectedResult == null) {
+            if (resultWidgets && resultWidgets[0]) {
+                nodeData.selectedResult = resultWidgets[0].title;
+            }
+            else return;
+        }
 
         if (context[nodeData.input]) context[nodeData.input].process()
             .then((value) => {
@@ -75,9 +80,10 @@
                         return;
                     }
                 }); */
+
                 for (let i = 0; i < resultWidgets.length; i++) {
                     if (resultWidgets[i].title == nodeData.selectedResult) {
-                        resultWidgets[i].title.update(value);
+                        resultWidgets[i].update(value);
                         return;
                     }
                 }
@@ -86,7 +92,7 @@
     }
 
     onMount(() => {
-        if (resultWidgets) nodeData.selectedResult = resultWidgets[0].title;
+        if (resultWidgets && resultWidgets[0]) nodeData.selectedResult = resultWidgets[0].title;
     });
 </script>
 
