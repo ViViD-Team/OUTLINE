@@ -1,3 +1,9 @@
+# Update 12.11.2023
+#### Features
+- Added "Dev Mode" settings category.
+- Added Debug Inspector for plugin and dev plugin widgets.
+- Added support for dev plugins with hot reload.
+
 # Update 20.08.2023
 #### Features
 - Added plugin support for nodes and widgets.
