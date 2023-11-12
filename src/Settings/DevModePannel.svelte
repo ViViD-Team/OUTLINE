@@ -15,6 +15,7 @@
         if (!dirPath || userSettings.devPluginDirs.includes(dirPath[0])) return;
 
         userSettings.devPluginDirs = [...userSettings.devPluginDirs, dirPath[0]];
+        userSettings.devPluginDirs = Object.assign([], userSettings.devPluginDirs);
     }
 
     /**
@@ -24,6 +25,7 @@
      */
     function removePluginDevDirectory(dirName) {
         userSettings.devPluginDirs = userSettings.devPluginDirs.filter((x) => {return x != dirName});
+        userSettings.devPluginDirs = Object.assign([], userSettings.devPluginDirs);
     }
 </script>
 
@@ -38,7 +40,7 @@
             </svg>
             <p>
                 These options are intended to be used by programmers only.
-                Use these solely if you know what you are doing!
+                Enabling the developer mode may significantly affect performance.
             </p>
         </div>
     {/if}

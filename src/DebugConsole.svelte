@@ -1,6 +1,6 @@
 <script>
     export let projectData;
-
+    export let devPluginObjects;
 </script>
 
 
@@ -21,22 +21,24 @@
                                         class="dataRow"
                                         style="{dataIndex % 2 == 0 ? "background-color: var(--mainbg);" : ""}"
                                     >
-                                        {#if key != "params"}
-                                            <p>{key}</p>
-                                            <p style="text-align: right;">{typeof(val) != "object" ? val : JSON.stringify(val)}</p>
-                                        {:else}
-                                            <div class="paramsWrapper">
-                                                <div class="paramsHeader">Custom Params</div>
-                                                {#each Object.entries(val) as [pKey, pVal], paramIndex}
-                                                    <div
-                                                        class="dataRow"
-                                                        style="{paramIndex % 2 == 0 ? "background-color: var(--mainbg);" : ""}"
-                                                    >
-                                                        <p>{pKey}</p>
-                                                        <p style="text-align: right;">{typeof(pVal) != "object" ? pVal : JSON.stringify(pVal)}</p>
-                                                    </div>
-                                                {/each}
-                                            </div>
+                                        {#if key != "actionButtonColors"}
+                                            {#if key != "params"}
+                                                <p>{key}</p>
+                                                <p style="text-align: right;">{typeof(val) != "object" ? val : JSON.stringify(val)}</p>
+                                            {:else}
+                                                <div class="paramsWrapper">
+                                                    <div class="paramsHeader">Custom Params</div>
+                                                    {#each Object.entries(val) as [pKey, pVal], paramIndex}
+                                                        <div
+                                                            class="dataRow"
+                                                            style="{paramIndex % 2 == 0 ? "background-color: var(--mainbg);" : ""}"
+                                                        >
+                                                            <p>{pKey}</p>
+                                                            <p style="text-align: right;">{typeof(pVal) != "object" ? pVal : JSON.stringify(pVal)}</p>
+                                                        </div>
+                                                    {/each}
+                                                </div>
+                                            {/if}
                                         {/if}
                                     </div>
                                 {/each}
@@ -46,6 +48,42 @@
                 {/each}
             </details>
         {/each}
+
+        <!-- DEV MODE PLUGINS -->
+        <details class="plugin">
+            <summary class="plugin">Dev Plugins</summary>
+                {#each devPluginObjects || [] as w, index}
+                    <details class="widget">
+                        <summary class="widget">{w.widgetID}[{index}]</summary>
+                        {#each Object.entries(w) as [key, val], dataIndex}
+                            <div
+                                class="dataRow"
+                                style="{dataIndex % 2 == 0 ? "background-color: var(--mainbg);" : ""}"
+                            >
+                                {#if key != "actionButtonColors"}
+                                    {#if key != "params"}
+                                        <p>{key}</p>
+                                        <p style="text-align: right;">{typeof(val) != "object" ? val : JSON.stringify(val)}</p>
+                                    {:else}
+                                        <div class="paramsWrapper">
+                                            <div class="paramsHeader">Custom Params</div>
+                                            {#each Object.entries(val) as [pKey, pVal], paramIndex}
+                                                <div
+                                                    class="dataRow"
+                                                    style="{paramIndex % 2 == 0 ? "background-color: var(--mainbg);" : ""}"
+                                                >
+                                                    <p>{pKey}</p>
+                                                    <p style="text-align: right;">{typeof(pVal) != "object" ? pVal : JSON.stringify(pVal)}</p>
+                                                </div>
+                                            {/each}
+                                        </div>
+                                    {/if}
+                                {/if}
+                            </div>
+                        {/each}
+                    </details>
+                {/each}
+        </details>
     </div>
 </main>
 

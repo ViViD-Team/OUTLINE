@@ -7,14 +7,17 @@
 
     import PluginWrapper from "./Components/PluginWrapper.svelte";
     import PluginFallback from "./Components/PluginFallback.svelte";
+    import DevPluginWrapper from "./Components/DevPluginWrapper.svelte";
     import { onMount } from "svelte";
+
+    const path = require("path");
+    const fs = require("fs");
 
     const { ipcRenderer } = require("electron");
 
-let
-        viewX = 0, viewY = 0,
+    let viewX = 0, viewY = 0,
         viewZoom = 1;
-const   zoomBounds = [.3, 5]
+    const   zoomBounds = [.3, 5]
 
     let viewportHeight, viewportWidth;
     let viewportRef;
@@ -29,6 +32,11 @@ const   zoomBounds = [.3, 5]
      * The user settings passed in by the App component.
     */
     export let userSettings;
+
+    /**
+     * The dev plugin Objects inside the viewport.
+     */
+    export let devPluginObjects = [];
 
     /**
      * Holds the prototypes for hardcoded Widgets.
@@ -207,7 +215,8 @@ const   zoomBounds = [.3, 5]
             "ID": 0,
             "width": 0,
             "height": 0,
-            "plugin": null
+            "plugin": null,
+            "dev": false
         },
     }
 
@@ -234,7 +243,8 @@ const   zoomBounds = [.3, 5]
             "ID": 0,
             "width": 0,
             "height": 0,
-            "plugin": null
+            "plugin": null,
+            "dev": false
         },
     }
     }
@@ -257,7 +267,8 @@ const   zoomBounds = [.3, 5]
         "objectInfo": {
             "type": "",
             "ID": 0,
-            "plugin": null
+            "plugin": null,
+            "dev": false
         }
     }
 
@@ -278,7 +289,8 @@ const   zoomBounds = [.3, 5]
         "objectInfo": {
             "type": "",
             "ID": 0,
-            "plugin": null
+            "plugin": null,
+            "dev": false
         }
     }
     }
@@ -352,6 +364,39 @@ const   zoomBounds = [.3, 5]
         objectDrag.objectInfo.width = width;
         objectDrag.objectInfo.height = height;
         objectDrag.objectInfo.plugin = plugin;
+        objectDrag.objectInfo.dev = false;
+    }
+
+    /**
+     * Event handler for dragstart of move handles
+     * of devPlugin widgets. Initiates object drag (move).
+     * 
+     * @param {DragEvent} event The event dispatched by the drag handle.
+     * @param {Number} index The index of the dragged widget.
+     * @param {Number} width The width of the dragged widget.
+     * @param {Number} height The height of the dragged widget.
+    */
+    function initDevPluginObjectDrag(event, index, width, height) {
+        clearObjectDrag();
+        clearObjectResize();
+        // Override default drag image
+        let imageOverride = document.createElement("img");
+        event.dataTransfer.setDragImage(imageOverride, 0, 0);
+
+        // Append necessary info
+        event.dataTransfer.setData("command", "devPluginMove");
+        event.dataTransfer.setData("objectID", index);
+        event.dataTransfer.setData("startX", event.clientX);
+        event.dataTransfer.setData("startY", event.clientY);
+
+        // Update objectDrag
+        objectDrag.ongoing = true;
+        objectDrag.start.x = event.clientX;
+        objectDrag.start.y = event.clientY;
+        objectDrag.objectInfo.ID = index;
+        objectDrag.objectInfo.width = width;
+        objectDrag.objectInfo.height = height;
+        objectDrag.objectInfo.dev = true;
     }
 
     /**
@@ -411,6 +456,31 @@ const   zoomBounds = [.3, 5]
         objectResize.objectInfo.plugin = plugin;
     }
 
+    /**
+     * Event handler for dragstart of resize handles
+     * of devPlugin widgets. Initiates object resize.
+     * 
+     * @param {DragEvent} event The event dispatched by the drag handle.
+     * @param {Number} index The index of the resized widget.
+    */
+    function initDevPluginObjectResize(event, index) {
+        clearObjectDrag();
+        clearObjectResize();
+        // Override default drag image
+        let imageOverride = document.createElement("img");
+        event.dataTransfer.setDragImage(imageOverride, 0, 0);
+
+        event.dataTransfer.setData("command", "devPluginResize");
+        event.dataTransfer.setData("objectID", index);
+
+        objectResize.start.x = event.clientX;
+        objectResize.start.y = event.clientY;
+        objectResize.objectInfo.ID = index;
+
+        objectResize.ongoing = true;
+        objectResize.objectInfo.dev = true;
+    }
+
 
     // Viewport events
 
@@ -433,24 +503,36 @@ const   zoomBounds = [.3, 5]
             objectDrag.layer.x = event.layerX;
             objectDrag.layer.y = event.layerY;
 
-            const [plugin, type, ID] = [
+            const [plugin, type, ID, dev] = [
                 objectDrag.objectInfo.plugin,
                 objectDrag.objectInfo.type,
-                objectDrag.objectInfo.ID
+                objectDrag.objectInfo.ID,
+                objectDrag.objectInfo.dev
             ];
-            if (plugin == null) {
-                const target = projectData.objects[type][ID];
+            if (dev) {
+                const target = devPluginObjects[ID];
+
                 target.simX = objectDrag.delta.x;
                 target.simY = objectDrag.delta.y;
 
-                projectData.objects[type][ID] = Object.assign({}, target);
+                devPluginObjects = [...devPluginObjects];
             }
             else {
-                const target = projectData.pluginObjects[plugin][type][ID];
-                target.simX = objectDrag.delta.x;
-                target.simY = objectDrag.delta.y;
-                projectData.pluginObjects[plugin][type][ID] = Object.assign({}, target);
+                if (plugin == null) {
+                    const target = projectData.objects[type][ID];
+                    target.simX = objectDrag.delta.x;
+                    target.simY = objectDrag.delta.y;
+
+                    projectData.objects[type][ID] = Object.assign({}, target);
+                }
+                else {
+                    const target = projectData.pluginObjects[plugin][type][ID];
+                    target.simX = objectDrag.delta.x;
+                    target.simY = objectDrag.delta.y;
+                    projectData.pluginObjects[plugin][type][ID] = Object.assign({}, target);
+                }
             }
+            
         }
         if (objectResize.ongoing) {
             // Update objectResize
@@ -459,25 +541,37 @@ const   zoomBounds = [.3, 5]
             objectResize.delta.y = Math.round((event.clientY - objectResize.start.y) / vhConverter);
 
 
-            const [plugin, type, ID] = [
+            const [plugin, type, ID, dev] = [
                 objectResize.objectInfo.plugin,
                 objectResize.objectInfo.type,
-                objectResize.objectInfo.ID
+                objectResize.objectInfo.ID,
+                objectResize.objectInfo.dev
             ];
-            if (plugin == null) {
-                const target = projectData.objects[type][ID];
+            if (dev) {
+                const target = devPluginObjects[ID];
+
                 target.simResizeX = objectResize.delta.x;
                 target.simResizeY = objectResize.delta.y;
 
-                projectData.objects[type][ID] = Object.assign({}, target);
+                devPluginObjects = [...devPluginObjects];
             }
             else {
-                const target = projectData.pluginObjects[plugin][type][ID]
-                target.simResizeX = objectResize.delta.x;
-                target.simResizeY = objectResize.delta.y;
+                if (plugin == null) {
+                    const target = projectData.objects[type][ID];
+                    target.simResizeX = objectResize.delta.x;
+                    target.simResizeY = objectResize.delta.y;
 
-                projectData.pluginObjects[plugin][type][ID] = Object.assign({}, target);
+                    projectData.objects[type][ID] = Object.assign({}, target);
+                }
+                else {
+                    const target = projectData.pluginObjects[plugin][type][ID]
+                    target.simResizeX = objectResize.delta.x;
+                    target.simResizeY = objectResize.delta.y;
+
+                    projectData.pluginObjects[plugin][type][ID] = Object.assign({}, target);
+                }
             }
+            
         }
     }
 
@@ -508,8 +602,26 @@ const   zoomBounds = [.3, 5]
                 resizePluginObject(event);
                 break;
 
+            case "devPluginMove":
+                moveDevPluginObject(event);
+                break;
+
+            case "devPluginResize":
+                resizeDevPluginObject(event);
+                break;
+
             case "create":
+                const rawObjectType = event.dataTransfer.getData("objectType");
                 // Plugin Object Pattern Matching
+                const undeved = rawObjectType.split("(DEV)");
+                if (undeved != rawObjectType) {
+                    const [path, widgetID] = undeved[1].split("|");
+
+                    createDevPluginObject(path, widgetID, event);
+                    return;
+                }
+
+
                 const stripped = event.dataTransfer.getData("objectType").split(":");
                 if (stripped.length > 1) {
                     const [p, w] = stripped;
@@ -603,6 +715,37 @@ const   zoomBounds = [.3, 5]
         target.simY = 0;
 
         objectDrag.ongoing = false;
+
+        clearObjectDrag();
+
+        projectData.pluginObjects[objectPlugin][objectType] = [...projectData.pluginObjects[objectPlugin][objectType]];
+    }
+
+    /**
+     * Moves a devPlugin widget as a result of a drop
+     * event on viewport.
+     * 
+     * @param {DragEvent} event The event dispatched by the viewport.
+    */
+    function moveDevPluginObject(event) {
+        const [objectID, startX, startY] = [
+            event.dataTransfer.getData("objectID"),
+            event.dataTransfer.getData("startX"),
+            event.dataTransfer.getData("startY")
+        ];
+        const target = devPluginObjects[objectID];
+
+        target.posX += Math.round((event.clientX - startX) / (window.innerHeight / 100 * 2 * viewZoom));
+        target.posY += Math.round((event.clientY - startY) / (window.innerHeight / 100 * 2 * viewZoom));
+    
+        target.simX = 0;
+        target.simY = 0;
+
+        objectDrag.ongoing = false;
+
+        clearObjectDrag();
+
+        devPluginObjects = [...devPluginObjects];
     }
 
     /**
@@ -631,6 +774,38 @@ const   zoomBounds = [.3, 5]
         
         target.simResizeX = 0;
         target.simResizeY = 0;
+
+        clearObjectResize();
+
+        projectData.pluginObjects[objectPlugin][objectType] = [...projectData.pluginObjects[objectPlugin][objectType]];
+    }
+
+    /**
+     * Resizes a devPlugin widget as a result of a drop
+     * event on viewport.
+     * 
+     * @param {DragEvent} event The event dispatched by the viewport.
+    */
+    function resizeDevPluginObject(event) {
+        const objectID = event.dataTransfer.getData("objectID");
+        const target = devPluginObjects[objectID];
+
+        objectResize.ongoing = false;
+
+        let sizeX = target.sizeX;
+        let sizeY = target.sizeY;
+
+        let [[minX, maxX], [minY, maxY]] = target.sizeBounds;
+
+        target.sizeX = Math.max(minX, Math.min(sizeX + objectResize.delta.x, maxX));
+        target.sizeY = Math.max(minY, Math.min(sizeY + objectResize.delta.y, maxY));
+        
+        target.simResizeX = 0;
+        target.simResizeY = 0;
+
+        clearObjectResize();
+
+        devPluginObjects = [...devPluginObjects];
     }
 
 
@@ -659,6 +834,17 @@ const   zoomBounds = [.3, 5]
         projectData.pluginObjects[plugin][type].splice(index, 1);
 
         projectData.pluginObjects[plugin][type] = Object.assign([], projectData.pluginObjects[plugin][type]);
+    }
+
+    /**
+     * Deletes a devPlugin widget.
+     * 
+     * @param {Number} index The index of the widget to be deleted.
+    */
+    function deleteDevPluginObject(index) {
+        devPluginObjects.splice(index, 1);
+
+        devPluginObjects = [...devPluginObjects];
     }
 
     // Object Creation
@@ -691,6 +877,8 @@ const   zoomBounds = [.3, 5]
      * Creates a plugin widget as a result of a drop
      * event on viewport.
      * 
+     * Resolves widgetTypes of pattern `pluginID:widgetID`
+     * 
      * @param {DragEvent} event The event dispatched by the viewport.
      * @param {String} pluginID The plugin ID of the widget to be created.
      * @param {String} widgetID The widget ID of the widget to be created.
@@ -717,6 +905,35 @@ const   zoomBounds = [.3, 5]
 
         // Trigger svelte update
         projectData.pluginObjects[pluginID][widgetID] = Object.assign([], list);
+    }
+    
+    /**
+     * Creates a devPlugin widget as a result of a drop
+     * event on viewport.
+     * 
+     * Resolves widgetTypes of pattern `(DEV)<path>|<widgetID>`
+     * 
+     * @param {DragEvent} event The event dispatched by the viewport.
+     * @param {String} resourcePath The filepath of the widget's plugin.
+     * @param {String} widgetID The widget ID of the widget to be created.
+    */
+    function createDevPluginObject(resourcePath, widgetID, event) {
+        try {
+            const prototype = JSON.parse(String(fs.readFileSync(
+                path.join(resourcePath, "plugin.json")
+            ))).widgets.filter(x => x.widgetID == widgetID)[0].prototype;
+            const instance = JSON.parse(JSON.stringify(prototype));
+
+            instance.posX = Math.round((-viewX + event.layerX) / (window.innerHeight / 100 * 2 * viewZoom) - prototype.sizeX / 2);
+            instance.posY = Math.round((-viewY + event.layerY) / (window.innerHeight / 100 * 2 * viewZoom) - prototype.sizeY / 2);
+
+            devPluginObjects.push({"resourcePath": resourcePath, "widgetID": widgetID, ...instance});
+
+            devPluginObjects = [...devPluginObjects];
+        }
+        catch (e) {
+            console.error(e);
+        }
     }
 
     //#endregion
@@ -979,6 +1196,36 @@ const   zoomBounds = [.3, 5]
                         {/if}
                     {/each}
                 {/each}
+            {/each}
+
+            {#each devPluginObjects as w, index}
+                <DevPluginWrapper
+                    sizeBounds={w.sizeBounds}
+
+                    bind:posX={w.posX}
+                    bind:posY={w.posY}
+                    bind:sizeX={w.sizeX}
+                    bind:sizeY={w.sizeY}
+                    bind:simX={w.simX}
+                    bind:simY={w.simY}
+                    bind:simResizeX={w.simResizeX}
+                    bind:simResizeY={w.simResizeY}
+
+                    offX={(viewX + mouseDrag.delta.x) / window.innerHeight * 50}
+                    offY={(viewY + mouseDrag.delta.y) / window.innerHeight * 50}
+
+                    zoom={viewZoom}
+
+                    bind:widgetData={w}
+                    projectData={projectData}
+
+                    resourcePath={w.resourcePath}
+                    widgetID={w.widgetID}
+
+                    onDrag={(event) => {initDevPluginObjectDrag(event, index, w.sizeX, w.sizeY)}}
+                    onResize={(event) => {initDevPluginObjectResize(event, index)}}
+                    onDelete={() => {deleteDevPluginObject(index)}}
+                />
             {/each}
 
             </div>

@@ -10,6 +10,7 @@
 
     export let centerView;
     export let resetZoom;
+    export let refreshDevPlugins;
 
     export let newFile;
     export let open;
@@ -58,7 +59,10 @@
             "label": "Toggle Console",
             "func": toggleDebugConsole
         },
-
+        {
+            "label": "Refresh Dev Plugins",
+            "func": refreshDevPlugins
+        },
     ];
 
     export let settingsAction;

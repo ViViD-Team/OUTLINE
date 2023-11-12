@@ -46,7 +46,7 @@
 
 	
 	// Top Bar
-	let viewportRef;
+	let viewportRef, toolkitRef;
 	
 	function centerViewport() {
 		viewportRef.centerView();
@@ -54,6 +54,10 @@
 
 	function resetZoom() {
 		viewportRef.resetZoom();
+	}
+
+	function refreshDevPlugins() {
+		toolkitRef.refreshDevPlugins();
 	}
 
 	onMount(() => {
@@ -142,6 +146,8 @@
 			
 		}
     }
+
+	let devPluginObjects;
 
     function getActivatedPlugins() {
         let active = ipcRenderer.sendSync("getActivatedPlugins");
@@ -260,6 +266,7 @@
 			closeAction={() => {
 				setTimeout(() => {settingsShown = false}, 500);
 				saveUserSettings();
+				if (userSettings.devModeEnabled) toolkitRef.refreshDevPlugins();
 			}}
 			bind:userSettings={userSettings}
 		/>
@@ -272,6 +279,7 @@
 			toggleDebugConsole={() => {debugConsoleOpen = !debugConsoleOpen}}
 			centerView={centerViewport}
 			resetZoom={resetZoom}
+			refreshDevPlugins={refreshDevPlugins}
 
 			newFile={newFile}
 			open={open}
@@ -281,19 +289,25 @@
 			settingsAction={() => {settingsShown = true}}
 		/>
 		<div class="centerRow">
-			<Toolkit />
+			<Toolkit
+				userSettings={userSettings}
+
+				bind:this={toolkitRef}
+			/>
 			<Viewport
 				bind:this={viewportRef}
 
 				bind:projectData={projectData}
-				userSettings={userSettings}
+				bind:userSettings={userSettings}
 				bind:edited={edited}
+				bind:devPluginObjects={devPluginObjects}
 
 				invokeTableProcess={invokeProcessCallback}
 			/>
 			{#if debugConsoleOpen && userSettings.devModeEnabled}
 				<DebugConsole
 					bind:projectData={projectData}
+					bind:devPluginObjects={devPluginObjects}
 				/>
 			{/if}
 		</div>

@@ -40,7 +40,7 @@
 
     // For Plugin Loading
 
-    export let projectData, widgetData, widgetID, pluginID;
+    export let projectData, widgetData, widgetID, resourcePath;
     let _main;
 
     let controller;
@@ -50,8 +50,7 @@
             // Load HTML
 
             const html = String(fs.readFileSync(
-                path.join(ipcRenderer.sendSync("getSaveLocation"),
-                ".plugins", pluginID, widgetID, `${widgetID}.html`
+                path.join(resourcePath, widgetID, `${widgetID}.html`
             )));
 
             _main.innerHTML = html;
@@ -60,8 +59,7 @@
             // Load CSS
 
             const css = String(fs.readFileSync(
-                path.join(ipcRenderer.sendSync("getSaveLocation"),
-                ".plugins", pluginID, widgetID, `${widgetID}.css`
+                path.join(resourcePath, widgetID, `${widgetID}.css`
             )));
 
             let styleElement = document.createElement("style");
@@ -72,8 +70,7 @@
             // Load js module
 
             const classModule = require(
-                path.join(ipcRenderer.sendSync("getSaveLocation"),
-                ".plugins", pluginID, widgetID, `${widgetID}.js`
+                path.join(resourcePath, widgetID, `${widgetID}.js`
             ));
             controller = new classModule(_main, projectData, widgetData, update);
         }
@@ -98,6 +95,44 @@
         if (!controller) return;
         controller._widgetData = widgetData;
         controller.update();
+    }
+
+
+    function reload() {
+        try {
+            // Load HTML
+
+            const html = String(fs.readFileSync(
+                path.join(resourcePath, widgetID, `${widgetID}.html`
+            )));
+
+            _main.innerHTML = html;
+
+
+            // Load CSS
+
+            const css = String(fs.readFileSync(
+                path.join(resourcePath, widgetID, `${widgetID}.css`
+            )));
+
+            let styleElement = document.createElement("style");
+            styleElement.innerHTML = css;
+            _main.appendChild(styleElement);
+
+
+            // Load js module
+
+            const classModule = require(
+                path.join(resourcePath, widgetID, `${widgetID}.js`
+            ));
+            controller = new classModule(_main, projectData, widgetData, update);
+
+			document.dispatchEvent(new CustomEvent("notificationEvent", {detail: {"type": "note", "message": "Reload performed!"}}));
+        }
+        catch (err) {
+            console.error(err);
+			document.dispatchEvent(new CustomEvent("notificationEvent", {detail: {"type": "error", "message": "Error while reloading!"}}));
+        }
     }
 </script>
 
@@ -176,6 +211,18 @@
             };
     ">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M32 288c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 288zm0-128c-17.7 0-32 14.3-32 32s14.3 32 32 32l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 160z"/></svg>
+    </div>
+
+    <div 
+        class="resizeAction"
+
+        on:click={reload}
+        
+        style="
+            width: {3*zoom}vh;
+            height: {3*zoom}vh;
+    ">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M142.9 142.9c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5c0 0 0 0 0 0H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1C73.2 122 55.6 150.7 44.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5c7.7-21.8 20.2-42.3 37.8-59.8zM16 312v7.6 .7V440c0 9.7 5.8 18.5 14.8 22.2s19.3 1.7 26.2-5.2l41.6-41.6c87.6 86.5 228.7 86.2 315.8-1c24.4-24.4 42.1-53.1 52.9-83.7c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.2 62.2-162.7 62.5-225.3 1L185 329c6.9-6.9 8.9-17.2 5.2-26.2s-12.5-14.8-22.2-14.8H48.4h-.7H40c-13.3 0-24 10.7-24 24z"/></svg>
     </div>
 </main>
 
@@ -284,6 +331,33 @@
 
     .deleteAction svg {
         fill: var(--col);
+        width: 50%;
+    }
+
+    .resizeAction {
+        cursor: pointer;
+
+        position: absolute;
+        top: 0;
+        right: 50%;
+
+        transform: translate(50%, -100%);
+
+        transition: transform .25s cubic-bezier(0, 0, 0, .9);
+
+        display: grid;
+        place-items: center;
+
+        border-radius: 50%;
+        background-color: var(--velvet);
+    }
+
+    main:hover .resizeAction {
+        transform: translate(50%, 0);
+    }
+
+    .resizeAction svg {
+        fill: var(--mainbg);
         width: 50%;
     }
 </style>
