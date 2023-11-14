@@ -10,6 +10,9 @@ var app = (function () {
             tar[k] = src[k];
         return tar;
     }
+    function is_promise(value) {
+        return value && typeof value === 'object' && typeof value.then === 'function';
+    }
     function add_location(element, file, line, column, char) {
         element.__svelte_meta = {
             loc: { file, line, column, char }
@@ -281,6 +284,72 @@ var app = (function () {
                 }
             });
             block.o(local);
+        }
+    }
+
+    function handle_promise(promise, info) {
+        const token = info.token = {};
+        function update(type, index, key, value) {
+            if (info.token !== token)
+                return;
+            info.resolved = value;
+            let child_ctx = info.ctx;
+            if (key !== undefined) {
+                child_ctx = child_ctx.slice();
+                child_ctx[key] = value;
+            }
+            const block = type && (info.current = type)(child_ctx);
+            let needs_flush = false;
+            if (info.block) {
+                if (info.blocks) {
+                    info.blocks.forEach((block, i) => {
+                        if (i !== index && block) {
+                            group_outros();
+                            transition_out(block, 1, 1, () => {
+                                info.blocks[i] = null;
+                            });
+                            check_outros();
+                        }
+                    });
+                }
+                else {
+                    info.block.d(1);
+                }
+                block.c();
+                transition_in(block, 1);
+                block.m(info.mount(), info.anchor);
+                needs_flush = true;
+            }
+            info.block = block;
+            if (info.blocks)
+                info.blocks[index] = block;
+            if (needs_flush) {
+                flush();
+            }
+        }
+        if (is_promise(promise)) {
+            const current_component = get_current_component();
+            promise.then(value => {
+                set_current_component(current_component);
+                update(info.then, 1, info.value, value);
+                set_current_component(null);
+            }, error => {
+                set_current_component(current_component);
+                update(info.catch, 2, info.error, error);
+                set_current_component(null);
+            });
+            // if we previously had a then/catch block, destroy it
+            if (info.current !== info.pending) {
+                update(info.pending, 0);
+                return true;
+            }
+        }
+        else {
+            if (info.current !== info.then) {
+                update(info.then, 1, info.value, promise);
+                return true;
+            }
+            info.resolved = promise;
         }
     }
 
@@ -23291,45 +23360,45 @@ var app = (function () {
 
     function get_each_context_3$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[22] = list[i];
+    	child_ctx[23] = list[i];
     	return child_ctx;
     }
 
     function get_each_context_2$4(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[19] = list[i];
-    	child_ctx[18] = i;
+    	child_ctx[20] = list[i];
+    	child_ctx[19] = i;
     	return child_ctx;
     }
 
     function get_each_context_5$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[22] = list[i];
+    	child_ctx[23] = list[i];
     	return child_ctx;
     }
 
     function get_each_context_4$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[19] = list[i];
-    	child_ctx[18] = i;
+    	child_ctx[20] = list[i];
+    	child_ctx[19] = i;
     	return child_ctx;
     }
 
     function get_each_context$7(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[16] = list[i];
-    	child_ctx[18] = i;
+    	child_ctx[17] = list[i];
+    	child_ctx[19] = i;
     	return child_ctx;
     }
 
     function get_each_context_1$6(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[19] = list[i];
-    	child_ctx[18] = i;
+    	child_ctx[20] = list[i];
+    	child_ctx[19] = i;
     	return child_ctx;
     }
 
-    // (100:4) {:else}
+    // (106:4) {:else}
     function create_else_block$2(ctx) {
     	let div0;
     	let svg;
@@ -23341,9 +23410,9 @@ var app = (function () {
     	let t3;
     	let current;
     	let dispose;
-    	let if_block0 = /*category*/ ctx[0] == 0 && create_if_block_4$3(ctx);
-    	let if_block1 = /*category*/ ctx[0] == 1 && create_if_block_3$3(ctx);
-    	let each_value_4 = /*activePlugins*/ ctx[1];
+    	let if_block0 = /*category*/ ctx[1] == 0 && create_if_block_5$2(ctx);
+    	let if_block1 = /*category*/ ctx[1] == 1 && create_if_block_4$3(ctx);
+    	let each_value_4 = /*activePlugins*/ ctx[2];
     	validate_each_argument(each_value_4);
     	let each_blocks_1 = [];
 
@@ -23355,7 +23424,7 @@ var app = (function () {
     		each_blocks_1[i] = null;
     	});
 
-    	let each_value_2 = /*devPlugins*/ ctx[2];
+    	let each_value_2 = /*devPlugins*/ ctx[3];
     	validate_each_argument(each_value_2);
     	let each_blocks = [];
 
@@ -23390,15 +23459,15 @@ var app = (function () {
     			}
 
     			attr_dev(path_1, "d", "M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z");
-    			add_location(path_1, file$o, 101, 242, 4779);
+    			add_location(path_1, file$o, 107, 242, 4970);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 320 512");
     			attr_dev(svg, "class", "svelte-1qmj3si");
-    			add_location(svg, file$o, 101, 12, 4549);
+    			add_location(svg, file$o, 107, 12, 4740);
     			attr_dev(div0, "class", "backButtonContainer neuOutdentShadow svelte-1qmj3si");
-    			add_location(div0, file$o, 100, 8, 4450);
+    			add_location(div0, file$o, 106, 8, 4641);
     			attr_dev(div1, "class", "listFrame neuOutdentShadow svelte-1qmj3si");
-    			add_location(div1, file$o, 103, 8, 4991);
+    			add_location(div1, file$o, 109, 8, 5182);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
@@ -23422,12 +23491,12 @@ var app = (function () {
     			}
 
     			current = true;
-    			dispose = listen_dev(div0, "click", /*click_handler*/ ctx[15], false, false, false);
+    			dispose = listen_dev(div0, "click", /*click_handler*/ ctx[16], false, false, false);
     		},
     		p: function update(ctx, dirty) {
-    			if (/*category*/ ctx[0] == 0) {
+    			if (/*category*/ ctx[1] == 0) {
     				if (!if_block0) {
-    					if_block0 = create_if_block_4$3(ctx);
+    					if_block0 = create_if_block_5$2(ctx);
     					if_block0.c();
     					transition_in(if_block0, 1);
     					if_block0.m(div1, t1);
@@ -23444,9 +23513,9 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (/*category*/ ctx[0] == 1) {
+    			if (/*category*/ ctx[1] == 1) {
     				if (!if_block1) {
-    					if_block1 = create_if_block_3$3(ctx);
+    					if_block1 = create_if_block_4$3(ctx);
     					if_block1.c();
     					transition_in(if_block1, 1);
     					if_block1.m(div1, t2);
@@ -23463,8 +23532,8 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (dirty & /*activePlugins, category*/ 3) {
-    				each_value_4 = /*activePlugins*/ ctx[1];
+    			if (dirty & /*activePlugins, category*/ 6) {
+    				each_value_4 = /*activePlugins*/ ctx[2];
     				validate_each_argument(each_value_4);
     				let i;
 
@@ -23491,8 +23560,8 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (dirty & /*devPlugins, category, activePlugins*/ 7) {
-    				each_value_2 = /*devPlugins*/ ctx[2];
+    			if (dirty & /*devPlugins, category, activePlugins*/ 14) {
+    				each_value_2 = /*devPlugins*/ ctx[3];
     				validate_each_argument(each_value_2);
     				let i;
 
@@ -23567,14 +23636,14 @@ var app = (function () {
     		block,
     		id: create_else_block$2.name,
     		type: "else",
-    		source: "(100:4) {:else}",
+    		source: "(106:4) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (64:4) {#if category == null}
+    // (68:4) {#if category == null}
     function create_if_block$7(ctx) {
     	let div;
     	let t0;
@@ -23584,7 +23653,7 @@ var app = (function () {
 
     	const categorybutton0 = new CategoryButton({
     			props: {
-    				onClick: /*func*/ ctx[11],
+    				onClick: /*func*/ ctx[12],
     				label: "Text",
     				$$slots: { default: [create_default_slot_1] },
     				$$scope: { ctx }
@@ -23594,7 +23663,7 @@ var app = (function () {
 
     	const categorybutton1 = new CategoryButton({
     			props: {
-    				onClick: /*func_1*/ ctx[12],
+    				onClick: /*func_1*/ ctx[13],
     				label: "Data",
     				$$slots: { default: [create_default_slot] },
     				$$scope: { ctx }
@@ -23602,29 +23671,19 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	let each_value_1 = /*activePlugins*/ ctx[1];
+    	let each_value_1 = /*activePlugins*/ ctx[2];
     	validate_each_argument(each_value_1);
-    	let each_blocks_1 = [];
-
-    	for (let i = 0; i < each_value_1.length; i += 1) {
-    		each_blocks_1[i] = create_each_block_1$6(get_each_context_1$6(ctx, each_value_1, i));
-    	}
-
-    	const out = i => transition_out(each_blocks_1[i], 1, 1, () => {
-    		each_blocks_1[i] = null;
-    	});
-
-    	let each_value = /*devPlugins*/ ctx[2];
-    	validate_each_argument(each_value);
     	let each_blocks = [];
 
-    	for (let i = 0; i < each_value.length; i += 1) {
-    		each_blocks[i] = create_each_block$7(get_each_context$7(ctx, each_value, i));
+    	for (let i = 0; i < each_value_1.length; i += 1) {
+    		each_blocks[i] = create_each_block_1$6(get_each_context_1$6(ctx, each_value_1, i));
     	}
 
-    	const out_1 = i => transition_out(each_blocks[i], 1, 1, () => {
+    	const out = i => transition_out(each_blocks[i], 1, 1, () => {
     		each_blocks[i] = null;
     	});
+
+    	let if_block = /*userSettings*/ ctx[0].devModeEnabled && create_if_block_1$6(ctx);
 
     	const block = {
     		c: function create() {
@@ -23634,18 +23693,14 @@ var app = (function () {
     			create_component(categorybutton1.$$.fragment);
     			t1 = space();
 
-    			for (let i = 0; i < each_blocks_1.length; i += 1) {
-    				each_blocks_1[i].c();
-    			}
-
-    			t2 = space();
-
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
+    			t2 = space();
+    			if (if_block) if_block.c();
     			attr_dev(div, "class", "categoryButtonLayout svelte-1qmj3si");
-    			add_location(div, file$o, 64, 8, 2018);
+    			add_location(div, file$o, 68, 8, 2115);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -23654,88 +23709,76 @@ var app = (function () {
     			mount_component(categorybutton1, div, null);
     			append_dev(div, t1);
 
-    			for (let i = 0; i < each_blocks_1.length; i += 1) {
-    				each_blocks_1[i].m(div, null);
-    			}
-
-    			append_dev(div, t2);
-
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(div, null);
     			}
 
+    			append_dev(div, t2);
+    			if (if_block) if_block.m(div, null);
     			current = true;
     		},
     		p: function update(ctx, dirty) {
     			const categorybutton0_changes = {};
-    			if (dirty & /*category*/ 1) categorybutton0_changes.onClick = /*func*/ ctx[11];
+    			if (dirty & /*category*/ 2) categorybutton0_changes.onClick = /*func*/ ctx[12];
 
-    			if (dirty & /*$$scope*/ 268435456) {
+    			if (dirty & /*$$scope*/ 536870912) {
     				categorybutton0_changes.$$scope = { dirty, ctx };
     			}
 
     			categorybutton0.$set(categorybutton0_changes);
     			const categorybutton1_changes = {};
-    			if (dirty & /*category*/ 1) categorybutton1_changes.onClick = /*func_1*/ ctx[12];
+    			if (dirty & /*category*/ 2) categorybutton1_changes.onClick = /*func_1*/ ctx[13];
 
-    			if (dirty & /*$$scope*/ 268435456) {
+    			if (dirty & /*$$scope*/ 536870912) {
     				categorybutton1_changes.$$scope = { dirty, ctx };
     			}
 
     			categorybutton1.$set(categorybutton1_changes);
 
-    			if (dirty & /*category, activePlugins*/ 3) {
-    				each_value_1 = /*activePlugins*/ ctx[1];
+    			if (dirty & /*category, activePlugins*/ 6) {
+    				each_value_1 = /*activePlugins*/ ctx[2];
     				validate_each_argument(each_value_1);
     				let i;
 
     				for (i = 0; i < each_value_1.length; i += 1) {
     					const child_ctx = get_each_context_1$6(ctx, each_value_1, i);
 
-    					if (each_blocks_1[i]) {
-    						each_blocks_1[i].p(child_ctx, dirty);
-    						transition_in(each_blocks_1[i], 1);
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    						transition_in(each_blocks[i], 1);
     					} else {
-    						each_blocks_1[i] = create_each_block_1$6(child_ctx);
-    						each_blocks_1[i].c();
-    						transition_in(each_blocks_1[i], 1);
-    						each_blocks_1[i].m(div, t2);
+    						each_blocks[i] = create_each_block_1$6(child_ctx);
+    						each_blocks[i].c();
+    						transition_in(each_blocks[i], 1);
+    						each_blocks[i].m(div, t2);
     					}
     				}
 
     				group_outros();
 
-    				for (i = each_value_1.length; i < each_blocks_1.length; i += 1) {
+    				for (i = each_value_1.length; i < each_blocks.length; i += 1) {
     					out(i);
     				}
 
     				check_outros();
     			}
 
-    			if (dirty & /*category, activePlugins, devPlugins*/ 7) {
-    				each_value = /*devPlugins*/ ctx[2];
-    				validate_each_argument(each_value);
-    				let i;
-
-    				for (i = 0; i < each_value.length; i += 1) {
-    					const child_ctx = get_each_context$7(ctx, each_value, i);
-
-    					if (each_blocks[i]) {
-    						each_blocks[i].p(child_ctx, dirty);
-    						transition_in(each_blocks[i], 1);
-    					} else {
-    						each_blocks[i] = create_each_block$7(child_ctx);
-    						each_blocks[i].c();
-    						transition_in(each_blocks[i], 1);
-    						each_blocks[i].m(div, null);
-    					}
+    			if (/*userSettings*/ ctx[0].devModeEnabled) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+    					transition_in(if_block, 1);
+    				} else {
+    					if_block = create_if_block_1$6(ctx);
+    					if_block.c();
+    					transition_in(if_block, 1);
+    					if_block.m(div, null);
     				}
-
+    			} else if (if_block) {
     				group_outros();
 
-    				for (i = each_value.length; i < each_blocks.length; i += 1) {
-    					out_1(i);
-    				}
+    				transition_out(if_block, 1, 1, () => {
+    					if_block = null;
+    				});
 
     				check_outros();
     			}
@@ -23746,38 +23789,30 @@ var app = (function () {
     			transition_in(categorybutton1.$$.fragment, local);
 
     			for (let i = 0; i < each_value_1.length; i += 1) {
-    				transition_in(each_blocks_1[i]);
-    			}
-
-    			for (let i = 0; i < each_value.length; i += 1) {
     				transition_in(each_blocks[i]);
     			}
 
+    			transition_in(if_block);
     			current = true;
     		},
     		o: function outro(local) {
     			transition_out(categorybutton0.$$.fragment, local);
     			transition_out(categorybutton1.$$.fragment, local);
-    			each_blocks_1 = each_blocks_1.filter(Boolean);
-
-    			for (let i = 0; i < each_blocks_1.length; i += 1) {
-    				transition_out(each_blocks_1[i]);
-    			}
-
     			each_blocks = each_blocks.filter(Boolean);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				transition_out(each_blocks[i]);
     			}
 
+    			transition_out(if_block);
     			current = false;
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div);
     			destroy_component(categorybutton0);
     			destroy_component(categorybutton1);
-    			destroy_each(each_blocks_1, detaching);
     			destroy_each(each_blocks, detaching);
+    			if (if_block) if_block.d();
     		}
     	};
 
@@ -23785,15 +23820,15 @@ var app = (function () {
     		block,
     		id: create_if_block$7.name,
     		type: "if",
-    		source: "(64:4) {#if category == null}",
+    		source: "(68:4) {#if category == null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (106:12) {#if category == 0}
-    function create_if_block_4$3(ctx) {
+    // (112:12) {#if category == 0}
+    function create_if_block_5$2(ctx) {
     	let t;
     	let current;
 
@@ -23849,16 +23884,16 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_4$3.name,
+    		id: create_if_block_5$2.name,
     		type: "if",
-    		source: "(106:12) {#if category == 0}",
+    		source: "(112:12) {#if category == 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (107:16) <ToolkitWidget                       label="Header"                      objectType="header"                  >
+    // (113:16) <ToolkitWidget                       label="Header"                      objectType="header"                  >
     function create_default_slot_5(ctx) {
     	let svg;
     	let path_1;
@@ -23868,11 +23903,11 @@ var app = (function () {
     			svg = svg_element("svg");
     			path_1 = svg_element("path");
     			attr_dev(path_1, "d", "M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zM336 152V256 360c0 13.3-10.7 24-24 24s-24-10.7-24-24V280H160l0 80c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-208c0-13.3 10.7-24 24-24s24 10.7 24 24v80H288V152c0-13.3 10.7-24 24-24s24 10.7 24 24z");
-    			add_location(path_1, file$o, 111, 24, 5305);
+    			add_location(path_1, file$o, 117, 24, 5496);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 448 512");
     			attr_dev(svg, "class", "svelte-1qmj3si");
-    			add_location(svg, file$o, 110, 20, 5217);
+    			add_location(svg, file$o, 116, 20, 5408);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -23887,14 +23922,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_5.name,
     		type: "slot",
-    		source: "(107:16) <ToolkitWidget                       label=\\\"Header\\\"                      objectType=\\\"header\\\"                  >",
+    		source: "(113:16) <ToolkitWidget                       label=\\\"Header\\\"                      objectType=\\\"header\\\"                  >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (115:16) <ToolkitWidget                      label="Paragraph"                      objectType="paragraph"                  >
+    // (121:16) <ToolkitWidget                      label="Paragraph"                      objectType="paragraph"                  >
     function create_default_slot_4(ctx) {
     	let svg;
     	let path_1;
@@ -23904,11 +23939,11 @@ var app = (function () {
     			svg = svg_element("svg");
     			path_1 = svg_element("path");
     			attr_dev(path_1, "d", "M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zM336 152V256 360c0 13.3-10.7 24-24 24s-24-10.7-24-24V280H160l0 80c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-208c0-13.3 10.7-24 24-24s24 10.7 24 24v80H288V152c0-13.3 10.7-24 24-24s24 10.7 24 24z");
-    			add_location(path_1, file$o, 119, 24, 5916);
+    			add_location(path_1, file$o, 125, 24, 6107);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 448 512");
     			attr_dev(svg, "class", "svelte-1qmj3si");
-    			add_location(svg, file$o, 118, 20, 5828);
+    			add_location(svg, file$o, 124, 20, 6019);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -23923,15 +23958,15 @@ var app = (function () {
     		block,
     		id: create_default_slot_4.name,
     		type: "slot",
-    		source: "(115:16) <ToolkitWidget                      label=\\\"Paragraph\\\"                      objectType=\\\"paragraph\\\"                  >",
+    		source: "(121:16) <ToolkitWidget                      label=\\\"Paragraph\\\"                      objectType=\\\"paragraph\\\"                  >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (125:12) {#if category == 1}
-    function create_if_block_3$3(ctx) {
+    // (131:12) {#if category == 1}
+    function create_if_block_4$3(ctx) {
     	let t;
     	let current;
 
@@ -23987,16 +24022,16 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_3$3.name,
+    		id: create_if_block_4$3.name,
     		type: "if",
-    		source: "(125:12) {#if category == 1}",
+    		source: "(131:12) {#if category == 1}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (126:16) <ToolkitWidget                      label="Smart Table"                      objectType="table"                  >
+    // (132:16) <ToolkitWidget                      label="Smart Table"                      objectType="table"                  >
     function create_default_slot_3(ctx) {
     	let svg;
     	let path_1;
@@ -24006,11 +24041,11 @@ var app = (function () {
     			svg = svg_element("svg");
     			path_1 = svg_element("path");
     			attr_dev(path_1, "d", "M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm88 64v64H64V96h88zm56 0h88v64H208V96zm240 0v64H360V96h88zM64 224h88v64H64V224zm232 0v64H208V224h88zm64 0h88v64H360V224zM152 352v64H64V352h88zm56 0h88v64H208V352zm240 0v64H360V352h88z");
-    			add_location(path_1, file$o, 129, 246, 6717);
+    			add_location(path_1, file$o, 135, 246, 6908);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 512 512");
     			attr_dev(svg, "class", "svelte-1qmj3si");
-    			add_location(svg, file$o, 129, 16, 6487);
+    			add_location(svg, file$o, 135, 16, 6678);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -24025,14 +24060,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_3.name,
     		type: "slot",
-    		source: "(126:16) <ToolkitWidget                      label=\\\"Smart Table\\\"                      objectType=\\\"table\\\"                  >",
+    		source: "(132:16) <ToolkitWidget                      label=\\\"Smart Table\\\"                      objectType=\\\"table\\\"                  >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (133:16) <ToolkitWidget                      label="Result"                      objectType="result"                  >
+    // (139:16) <ToolkitWidget                      label="Result"                      objectType="result"                  >
     function create_default_slot_2(ctx) {
     	let svg;
     	let path_1;
@@ -24042,11 +24077,11 @@ var app = (function () {
     			svg = svg_element("svg");
     			path_1 = svg_element("path");
     			attr_dev(path_1, "d", "M342.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 178.7l-57.4-57.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l80 80c12.5 12.5 32.8 12.5 45.3 0l160-160zm96 128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 402.7 54.6 297.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l256-256z");
-    			add_location(path_1, file$o, 136, 247, 7435);
+    			add_location(path_1, file$o, 142, 247, 7626);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 448 512");
     			attr_dev(svg, "class", "svelte-1qmj3si");
-    			add_location(svg, file$o, 136, 16, 7204);
+    			add_location(svg, file$o, 142, 16, 7395);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -24061,18 +24096,18 @@ var app = (function () {
     		block,
     		id: create_default_slot_2.name,
     		type: "slot",
-    		source: "(133:16) <ToolkitWidget                      label=\\\"Result\\\"                      objectType=\\\"result\\\"                  >",
+    		source: "(139:16) <ToolkitWidget                      label=\\\"Result\\\"                      objectType=\\\"result\\\"                  >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (142:16) {#if category == index + 2}
-    function create_if_block_2$3(ctx) {
+    // (148:16) {#if category == index + 2}
+    function create_if_block_3$3(ctx) {
     	let each_1_anchor;
     	let current;
-    	let each_value_5 = /*p*/ ctx[19].widgets;
+    	let each_value_5 = /*p*/ ctx[20].widgets;
     	validate_each_argument(each_value_5);
     	let each_blocks = [];
 
@@ -24101,8 +24136,8 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*activePlugins*/ 2) {
-    				each_value_5 = /*p*/ ctx[19].widgets;
+    			if (dirty & /*activePlugins*/ 4) {
+    				each_value_5 = /*p*/ ctx[20].widgets;
     				validate_each_argument(each_value_5);
     				let i;
 
@@ -24155,24 +24190,24 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_2$3.name,
+    		id: create_if_block_3$3.name,
     		type: "if",
-    		source: "(142:16) {#if category == index + 2}",
+    		source: "(148:16) {#if category == index + 2}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (143:20) {#each p.widgets as w}
+    // (149:20) {#each p.widgets as w}
     function create_each_block_5$2(ctx) {
     	let current;
 
     	const plugintoolkitwidget = new PluginToolkitWidget({
     			props: {
-    				label: /*w*/ ctx[22].widgetName,
-    				objectType: `${/*p*/ ctx[19].path}:${/*w*/ ctx[22].widgetID}`,
-    				svgContents: /*w*/ ctx[22].widgetIconSVG
+    				label: /*w*/ ctx[23].widgetName,
+    				objectType: `${/*p*/ ctx[20].path}:${/*w*/ ctx[23].widgetID}`,
+    				svgContents: /*w*/ ctx[23].widgetIconSVG
     			},
     			$$inline: true
     		});
@@ -24187,9 +24222,9 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const plugintoolkitwidget_changes = {};
-    			if (dirty & /*activePlugins*/ 2) plugintoolkitwidget_changes.label = /*w*/ ctx[22].widgetName;
-    			if (dirty & /*activePlugins*/ 2) plugintoolkitwidget_changes.objectType = `${/*p*/ ctx[19].path}:${/*w*/ ctx[22].widgetID}`;
-    			if (dirty & /*activePlugins*/ 2) plugintoolkitwidget_changes.svgContents = /*w*/ ctx[22].widgetIconSVG;
+    			if (dirty & /*activePlugins*/ 4) plugintoolkitwidget_changes.label = /*w*/ ctx[23].widgetName;
+    			if (dirty & /*activePlugins*/ 4) plugintoolkitwidget_changes.objectType = `${/*p*/ ctx[20].path}:${/*w*/ ctx[23].widgetID}`;
+    			if (dirty & /*activePlugins*/ 4) plugintoolkitwidget_changes.svgContents = /*w*/ ctx[23].widgetIconSVG;
     			plugintoolkitwidget.$set(plugintoolkitwidget_changes);
     		},
     		i: function intro(local) {
@@ -24210,18 +24245,18 @@ var app = (function () {
     		block,
     		id: create_each_block_5$2.name,
     		type: "each",
-    		source: "(143:20) {#each p.widgets as w}",
+    		source: "(149:20) {#each p.widgets as w}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (141:12) {#each activePlugins as p, index}
+    // (147:12) {#each activePlugins as p, index}
     function create_each_block_4$2(ctx) {
     	let if_block_anchor;
     	let current;
-    	let if_block = /*category*/ ctx[0] == /*index*/ ctx[18] + 2 && create_if_block_2$3(ctx);
+    	let if_block = /*category*/ ctx[1] == /*index*/ ctx[19] + 2 && create_if_block_3$3(ctx);
 
     	const block = {
     		c: function create() {
@@ -24234,12 +24269,12 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (/*category*/ ctx[0] == /*index*/ ctx[18] + 2) {
+    			if (/*category*/ ctx[1] == /*index*/ ctx[19] + 2) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     					transition_in(if_block, 1);
     				} else {
-    					if_block = create_if_block_2$3(ctx);
+    					if_block = create_if_block_3$3(ctx);
     					if_block.c();
     					transition_in(if_block, 1);
     					if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -24273,18 +24308,18 @@ var app = (function () {
     		block,
     		id: create_each_block_4$2.name,
     		type: "each",
-    		source: "(141:12) {#each activePlugins as p, index}",
+    		source: "(147:12) {#each activePlugins as p, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (154:16) {#if category == index + 2 + activePlugins.length}
-    function create_if_block_1$6(ctx) {
+    // (160:16) {#if category == index + 2 + activePlugins.length}
+    function create_if_block_2$3(ctx) {
     	let each_1_anchor;
     	let current;
-    	let each_value_3 = /*p*/ ctx[19].widgets;
+    	let each_value_3 = /*p*/ ctx[20].widgets;
     	validate_each_argument(each_value_3);
     	let each_blocks = [];
 
@@ -24313,8 +24348,8 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*devPlugins*/ 4) {
-    				each_value_3 = /*p*/ ctx[19].widgets;
+    			if (dirty & /*devPlugins*/ 8) {
+    				each_value_3 = /*p*/ ctx[20].widgets;
     				validate_each_argument(each_value_3);
     				let i;
 
@@ -24367,24 +24402,24 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_1$6.name,
+    		id: create_if_block_2$3.name,
     		type: "if",
-    		source: "(154:16) {#if category == index + 2 + activePlugins.length}",
+    		source: "(160:16) {#if category == index + 2 + activePlugins.length}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (155:20) {#each p.widgets as w}
+    // (161:20) {#each p.widgets as w}
     function create_each_block_3$2(ctx) {
     	let current;
 
     	const plugintoolkitwidget = new PluginToolkitWidget({
     			props: {
-    				label: /*w*/ ctx[22].widgetName,
-    				objectType: `(DEV)${/*p*/ ctx[19].path}|${/*w*/ ctx[22].widgetID}`,
-    				svgContents: /*w*/ ctx[22].widgetIconSVG
+    				label: /*w*/ ctx[23].widgetName,
+    				objectType: `(DEV)${/*p*/ ctx[20].path}|${/*w*/ ctx[23].widgetID}`,
+    				svgContents: /*w*/ ctx[23].widgetIconSVG
     			},
     			$$inline: true
     		});
@@ -24399,9 +24434,9 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const plugintoolkitwidget_changes = {};
-    			if (dirty & /*devPlugins*/ 4) plugintoolkitwidget_changes.label = /*w*/ ctx[22].widgetName;
-    			if (dirty & /*devPlugins*/ 4) plugintoolkitwidget_changes.objectType = `(DEV)${/*p*/ ctx[19].path}|${/*w*/ ctx[22].widgetID}`;
-    			if (dirty & /*devPlugins*/ 4) plugintoolkitwidget_changes.svgContents = /*w*/ ctx[22].widgetIconSVG;
+    			if (dirty & /*devPlugins*/ 8) plugintoolkitwidget_changes.label = /*w*/ ctx[23].widgetName;
+    			if (dirty & /*devPlugins*/ 8) plugintoolkitwidget_changes.objectType = `(DEV)${/*p*/ ctx[20].path}|${/*w*/ ctx[23].widgetID}`;
+    			if (dirty & /*devPlugins*/ 8) plugintoolkitwidget_changes.svgContents = /*w*/ ctx[23].widgetIconSVG;
     			plugintoolkitwidget.$set(plugintoolkitwidget_changes);
     		},
     		i: function intro(local) {
@@ -24422,18 +24457,18 @@ var app = (function () {
     		block,
     		id: create_each_block_3$2.name,
     		type: "each",
-    		source: "(155:20) {#each p.widgets as w}",
+    		source: "(161:20) {#each p.widgets as w}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (153:12) {#each devPlugins as p, index}
+    // (159:12) {#each devPlugins as p, index}
     function create_each_block_2$4(ctx) {
     	let if_block_anchor;
     	let current;
-    	let if_block = /*category*/ ctx[0] == /*index*/ ctx[18] + 2 + /*activePlugins*/ ctx[1].length && create_if_block_1$6(ctx);
+    	let if_block = /*category*/ ctx[1] == /*index*/ ctx[19] + 2 + /*activePlugins*/ ctx[2].length && create_if_block_2$3(ctx);
 
     	const block = {
     		c: function create() {
@@ -24446,12 +24481,12 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (/*category*/ ctx[0] == /*index*/ ctx[18] + 2 + /*activePlugins*/ ctx[1].length) {
+    			if (/*category*/ ctx[1] == /*index*/ ctx[19] + 2 + /*activePlugins*/ ctx[2].length) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     					transition_in(if_block, 1);
     				} else {
-    					if_block = create_if_block_1$6(ctx);
+    					if_block = create_if_block_2$3(ctx);
     					if_block.c();
     					transition_in(if_block, 1);
     					if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -24485,14 +24520,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2$4.name,
     		type: "each",
-    		source: "(153:12) {#each devPlugins as p, index}",
+    		source: "(159:12) {#each devPlugins as p, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (66:12) <CategoryButton                  onClick={() => {category = 0}}                  label="Text"              >
+    // (70:12) <CategoryButton                  onClick={() => {category = 0}}                  label="Text"              >
     function create_default_slot_1(ctx) {
     	let svg;
     	let path_1;
@@ -24503,10 +24538,10 @@ var app = (function () {
     			path_1 = svg_element("path");
     			attr_dev(path_1, "fill", "var(--red)");
     			attr_dev(path_1, "d", "M254 52.8C249.3 40.3 237.3 32 224 32s-25.3 8.3-30 20.8L57.8 416H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32h-1.8l18-48H303.8l18 48H320c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H390.2L254 52.8zM279.8 304H168.2L224 155.1 279.8 304z");
-    			add_location(path_1, file$o, 70, 20, 2276);
+    			add_location(path_1, file$o, 74, 20, 2373);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 448 512");
-    			add_location(svg, file$o, 69, 16, 2192);
+    			add_location(svg, file$o, 73, 16, 2289);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -24521,14 +24556,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1.name,
     		type: "slot",
-    		source: "(66:12) <CategoryButton                  onClick={() => {category = 0}}                  label=\\\"Text\\\"              >",
+    		source: "(70:12) <CategoryButton                  onClick={() => {category = 0}}                  label=\\\"Text\\\"              >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (75:12) <CategoryButton                  onClick={() => {category = 1}}                  label="Data"              >
+    // (79:12) <CategoryButton                  onClick={() => {category = 1}}                  label="Data"              >
     function create_default_slot(ctx) {
     	let svg;
     	let path_1;
@@ -24539,10 +24574,10 @@ var app = (function () {
     			path_1 = svg_element("path");
     			attr_dev(path_1, "fill", "var(--red)");
     			attr_dev(path_1, "d", "M64 256V160H224v96H64zm0 64H224v96H64V320zm224 96V320H448v96H288zM448 256H288V160H448v96zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z");
-    			add_location(path_1, file$o, 79, 16, 2875);
+    			add_location(path_1, file$o, 83, 16, 2972);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 512 512");
-    			add_location(svg, file$o, 78, 12, 2795);
+    			add_location(svg, file$o, 82, 12, 2892);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -24557,26 +24592,26 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(75:12) <CategoryButton                  onClick={() => {category = 1}}                  label=\\\"Data\\\"              >",
+    		source: "(79:12) <CategoryButton                  onClick={() => {category = 1}}                  label=\\\"Data\\\"              >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (84:12) {#each activePlugins as p, index}
+    // (88:12) {#each activePlugins as p, index}
     function create_each_block_1$6(ctx) {
     	let current;
 
     	function func_2(...args) {
-    		return /*func_2*/ ctx[13](/*index*/ ctx[18], ...args);
+    		return /*func_2*/ ctx[14](/*index*/ ctx[19], ...args);
     	}
 
     	const plugincategorybutton = new PluginCategoryButton({
     			props: {
     				onClick: func_2,
-    				label: /*p*/ ctx[19].categoryLabel,
-    				svgContents: /*p*/ ctx[19].categoryIconSVG
+    				label: /*p*/ ctx[20].categoryLabel,
+    				svgContents: /*p*/ ctx[20].categoryIconSVG
     			},
     			$$inline: true
     		});
@@ -24592,9 +24627,9 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
     			const plugincategorybutton_changes = {};
-    			if (dirty & /*category*/ 1) plugincategorybutton_changes.onClick = func_2;
-    			if (dirty & /*activePlugins*/ 2) plugincategorybutton_changes.label = /*p*/ ctx[19].categoryLabel;
-    			if (dirty & /*activePlugins*/ 2) plugincategorybutton_changes.svgContents = /*p*/ ctx[19].categoryIconSVG;
+    			if (dirty & /*category*/ 2) plugincategorybutton_changes.onClick = func_2;
+    			if (dirty & /*activePlugins*/ 4) plugincategorybutton_changes.label = /*p*/ ctx[20].categoryLabel;
+    			if (dirty & /*activePlugins*/ 4) plugincategorybutton_changes.svgContents = /*p*/ ctx[20].categoryIconSVG;
     			plugincategorybutton.$set(plugincategorybutton_changes);
     		},
     		i: function intro(local) {
@@ -24615,25 +24650,121 @@ var app = (function () {
     		block,
     		id: create_each_block_1$6.name,
     		type: "each",
-    		source: "(84:12) {#each activePlugins as p, index}",
+    		source: "(88:12) {#each activePlugins as p, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (92:12) {#each devPlugins as devPlugin, index}
+    // (96:12) {#if userSettings.devModeEnabled}
+    function create_if_block_1$6(ctx) {
+    	let each_1_anchor;
+    	let current;
+    	let each_value = /*devPlugins*/ ctx[3];
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block$7(get_each_context$7(ctx, each_value, i));
+    	}
+
+    	const out = i => transition_out(each_blocks[i], 1, 1, () => {
+    		each_blocks[i] = null;
+    	});
+
+    	const block = {
+    		c: function create() {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			each_1_anchor = empty();
+    		},
+    		m: function mount(target, anchor) {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(target, anchor);
+    			}
+
+    			insert_dev(target, each_1_anchor, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*category, activePlugins, devPlugins*/ 14) {
+    				each_value = /*devPlugins*/ ctx[3];
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context$7(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    						transition_in(each_blocks[i], 1);
+    					} else {
+    						each_blocks[i] = create_each_block$7(child_ctx);
+    						each_blocks[i].c();
+    						transition_in(each_blocks[i], 1);
+    						each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
+    					}
+    				}
+
+    				group_outros();
+
+    				for (i = each_value.length; i < each_blocks.length; i += 1) {
+    					out(i);
+    				}
+
+    				check_outros();
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			for (let i = 0; i < each_value.length; i += 1) {
+    				transition_in(each_blocks[i]);
+    			}
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			each_blocks = each_blocks.filter(Boolean);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				transition_out(each_blocks[i]);
+    			}
+
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_each(each_blocks, detaching);
+    			if (detaching) detach_dev(each_1_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_1$6.name,
+    		type: "if",
+    		source: "(96:12) {#if userSettings.devModeEnabled}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (97:16) {#each devPlugins as devPlugin, index}
     function create_each_block$7(ctx) {
     	let current;
 
     	function func_3(...args) {
-    		return /*func_3*/ ctx[14](/*index*/ ctx[18], ...args);
+    		return /*func_3*/ ctx[15](/*index*/ ctx[19], ...args);
     	}
 
     	const plugincategorybutton = new PluginCategoryButton({
     			props: {
     				onClick: func_3,
-    				label: /*devPlugin*/ ctx[16].pluginCategoryLabel,
+    				label: /*devPlugin*/ ctx[17].pluginCategoryLabel,
     				svgContents: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\"><!-- Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d=\"M288 0H160 128C110.3 0 96 14.3 96 32s14.3 32 32 32V196.8c0 11.8-3.3 23.5-9.5 33.5L10.3 406.2C3.6 417.2 0 429.7 0 442.6C0 480.9 31.1 512 69.4 512H378.6c38.3 0 69.4-31.1 69.4-69.4c0-12.8-3.6-25.4-10.3-36.4L329.5 230.4c-6.2-10.1-9.5-21.7-9.5-33.5V64c17.7 0 32-14.3 32-32s-14.3-32-32-32H288zM192 196.8V64h64V196.8c0 23.7 6.6 46.9 19 67.1L309.5 320h-171L173 263.9c12.4-20.2 19-43.4 19-67.1z\" fill=\"var(--red)\"/></svg>"
     			},
     			$$inline: true
@@ -24650,8 +24781,8 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
     			const plugincategorybutton_changes = {};
-    			if (dirty & /*category, activePlugins*/ 3) plugincategorybutton_changes.onClick = func_3;
-    			if (dirty & /*devPlugins*/ 4) plugincategorybutton_changes.label = /*devPlugin*/ ctx[16].pluginCategoryLabel;
+    			if (dirty & /*category, activePlugins*/ 6) plugincategorybutton_changes.onClick = func_3;
+    			if (dirty & /*devPlugins*/ 8) plugincategorybutton_changes.label = /*devPlugin*/ ctx[17].pluginCategoryLabel;
     			plugincategorybutton.$set(plugincategorybutton_changes);
     		},
     		i: function intro(local) {
@@ -24672,7 +24803,7 @@ var app = (function () {
     		block,
     		id: create_each_block$7.name,
     		type: "each",
-    		source: "(92:12) {#each devPlugins as devPlugin, index}",
+    		source: "(97:16) {#each devPlugins as devPlugin, index}",
     		ctx
     	});
 
@@ -24688,7 +24819,7 @@ var app = (function () {
     	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
-    		if (/*category*/ ctx[0] == null) return 0;
+    		if (/*category*/ ctx[1] == null) return 0;
     		return 1;
     	}
 
@@ -24700,7 +24831,7 @@ var app = (function () {
     			main = element("main");
     			if_block.c();
     			attr_dev(main, "class", "svelte-1qmj3si");
-    			add_location(main, file$o, 62, 0, 1974);
+    			add_location(main, file$o, 66, 0, 2071);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -24771,9 +24902,9 @@ var app = (function () {
     	let activePlugins = [];
 
     	function getActivatedPlugins() {
-    		$$invalidate(1, activePlugins = ipcRenderer.sendSync("getActivatedPlugins"));
+    		$$invalidate(2, activePlugins = ipcRenderer.sendSync("getActivatedPlugins"));
 
-    		$$invalidate(1, activePlugins = activePlugins.map(x => Object.assign(x, {
+    		$$invalidate(2, activePlugins = activePlugins.map(x => Object.assign(x, {
     			"categoryIconSVG": String(fs.readFileSync(path.join(pluginsPath, x.pluginID, "icon.svg"))),
     			"widgets": x.widgets.map(y => Object.assign(y, {
     				"widgetIconSVG": String(fs.readFileSync(path.join(pluginsPath, x.pluginID, y.widgetID, `${y.widgetID}.svg`)))
@@ -24783,7 +24914,7 @@ var app = (function () {
 
     	onMount(() => {
     		getActivatedPlugins();
-    		$$invalidate(2, devPlugins = getDevPlugins());
+    		$$invalidate(3, devPlugins = getDevPlugins());
     	});
 
     	ipcRenderer.on("refreshPlugins", getActivatedPlugins);
@@ -24802,7 +24933,7 @@ var app = (function () {
     	}
 
     	function refreshDevPlugins() {
-    		$$invalidate(2, devPlugins = getDevPlugins());
+    		$$invalidate(3, devPlugins = getDevPlugins());
 
     		document.dispatchEvent(new CustomEvent("notificationEvent",
     		{
@@ -24815,6 +24946,10 @@ var app = (function () {
     		console.log(devPlugins);
     	}
 
+    	function refreshDevPluginsSilent() {
+    		$$invalidate(3, devPlugins = getDevPlugins());
+    	}
+
     	const writable_props = ["userSettings"];
 
     	Object_1$6.keys($$props).forEach(key => {
@@ -24822,27 +24957,27 @@ var app = (function () {
     	});
 
     	const func = () => {
-    		$$invalidate(0, category = 0);
+    		$$invalidate(1, category = 0);
     	};
 
     	const func_1 = () => {
-    		$$invalidate(0, category = 1);
+    		$$invalidate(1, category = 1);
     	};
 
     	const func_2 = function (index) {
-    		$$invalidate(0, category = index + 2);
+    		$$invalidate(1, category = index + 2);
     	};
 
     	const func_3 = function (index) {
-    		$$invalidate(0, category = index + 2 + activePlugins.length);
+    		$$invalidate(1, category = index + 2 + activePlugins.length);
     	};
 
     	const click_handler = () => {
-    		$$invalidate(0, category = null);
+    		$$invalidate(1, category = null);
     	};
 
     	$$self.$set = $$props => {
-    		if ("userSettings" in $$props) $$invalidate(3, userSettings = $$props.userSettings);
+    		if ("userSettings" in $$props) $$invalidate(0, userSettings = $$props.userSettings);
     	};
 
     	$$self.$capture_state = () => ({
@@ -24862,6 +24997,7 @@ var app = (function () {
     		devPlugins,
     		getDevPlugins,
     		refreshDevPlugins,
+    		refreshDevPluginsSilent,
     		require,
     		Object,
     		String,
@@ -24872,10 +25008,10 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ("userSettings" in $$props) $$invalidate(3, userSettings = $$props.userSettings);
-    		if ("category" in $$props) $$invalidate(0, category = $$props.category);
-    		if ("activePlugins" in $$props) $$invalidate(1, activePlugins = $$props.activePlugins);
-    		if ("devPlugins" in $$props) $$invalidate(2, devPlugins = $$props.devPlugins);
+    		if ("userSettings" in $$props) $$invalidate(0, userSettings = $$props.userSettings);
+    		if ("category" in $$props) $$invalidate(1, category = $$props.category);
+    		if ("activePlugins" in $$props) $$invalidate(2, activePlugins = $$props.activePlugins);
+    		if ("devPlugins" in $$props) $$invalidate(3, devPlugins = $$props.devPlugins);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -24883,11 +25019,12 @@ var app = (function () {
     	}
 
     	return [
+    		userSettings,
     		category,
     		activePlugins,
     		devPlugins,
-    		userSettings,
     		refreshDevPlugins,
+    		refreshDevPluginsSilent,
     		fs,
     		path,
     		ipcRenderer,
@@ -24905,7 +25042,12 @@ var app = (function () {
     class Toolkit extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$o, create_fragment$o, safe_not_equal, { userSettings: 3, refreshDevPlugins: 4 });
+
+    		init(this, options, instance$o, create_fragment$o, safe_not_equal, {
+    			userSettings: 0,
+    			refreshDevPlugins: 4,
+    			refreshDevPluginsSilent: 5
+    		});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -24917,7 +25059,7 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*userSettings*/ ctx[3] === undefined && !("userSettings" in props)) {
+    		if (/*userSettings*/ ctx[0] === undefined && !("userSettings" in props)) {
     			console_1$a.warn("<Toolkit> was created without expected prop 'userSettings'");
     		}
     	}
@@ -24935,6 +25077,14 @@ var app = (function () {
     	}
 
     	set refreshDevPlugins(value) {
+    		throw new Error("<Toolkit>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get refreshDevPluginsSilent() {
+    		return this.$$.ctx[5];
+    	}
+
+    	set refreshDevPluginsSilent(value) {
     		throw new Error("<Toolkit>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -26994,7 +27144,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (29:4) {#if installedPlugins}
+    // (39:4) {#if installedPlugins}
     function create_if_block$9(ctx) {
     	let t0;
     	let button;
@@ -27027,15 +27177,15 @@ var app = (function () {
     			path = svg_element("path");
     			t1 = text("\r\n        Install from .opb");
     			attr_dev(path, "d", "M96 0C78.3 0 64 14.3 64 32v96h64V32c0-17.7-14.3-32-32-32zM288 0c-17.7 0-32 14.3-32 32v96h64V32c0-17.7-14.3-32-32-32zM32 160c-17.7 0-32 14.3-32 32s14.3 32 32 32v32c0 77.4 55 142 128 156.8V480c0 17.7 14.3 32 32 32s32-14.3 32-32V412.8c12.3-2.5 24.1-6.4 35.1-11.5c-2.1-10.8-3.1-21.9-3.1-33.3c0-80.3 53.8-148 127.3-169.2c.5-2.2 .7-4.5 .7-6.8c0-17.7-14.3-32-32-32H32zM432 512a144 144 0 1 0 0-288 144 144 0 1 0 0 288zm16-208v48h48c8.8 0 16 7.2 16 16s-7.2 16-16 16H448v48c0 8.8-7.2 16-16 16s-16-7.2-16-16V384H368c-8.8 0-16-7.2-16-16s7.2-16 16-16h48V304c0-8.8 7.2-16 16-16s16 7.2 16 16z");
-    			attr_dev(path, "class", "svelte-sd4qs4");
-    			add_location(path, file$t, 38, 12, 1165);
+    			attr_dev(path, "class", "svelte-1l1hy5e");
+    			add_location(path, file$t, 48, 12, 1987);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "height", "1em");
     			attr_dev(svg, "viewBox", "0 0 576 512");
-    			attr_dev(svg, "class", "svelte-sd4qs4");
-    			add_location(svg, file$t, 36, 8, 893);
-    			attr_dev(button, "class", "installButton svelte-sd4qs4");
-    			add_location(button, file$t, 35, 4, 824);
+    			attr_dev(svg, "class", "svelte-1l1hy5e");
+    			add_location(svg, file$t, 46, 8, 1715);
+    			attr_dev(button, "class", "installButton svelte-1l1hy5e");
+    			add_location(button, file$t, 45, 4, 1646);
     		},
     		m: function mount(target, anchor) {
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -27109,14 +27259,14 @@ var app = (function () {
     		block,
     		id: create_if_block$9.name,
     		type: "if",
-    		source: "(29:4) {#if installedPlugins}",
+    		source: "(39:4) {#if installedPlugins}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (30:4) {#each Object.keys(installedPlugins) as pluginID}
+    // (40:4) {#each Object.keys(installedPlugins) as pluginID}
     function create_each_block$a(ctx) {
     	let current;
 
@@ -27160,7 +27310,7 @@ var app = (function () {
     		block,
     		id: create_each_block$a.name,
     		type: "each",
-    		source: "(30:4) {#each Object.keys(installedPlugins) as pluginID}",
+    		source: "(40:4) {#each Object.keys(installedPlugins) as pluginID}",
     		ctx
     	});
 
@@ -27169,14 +27319,38 @@ var app = (function () {
 
     function create_fragment$t(ctx) {
     	let main;
+    	let div;
+    	let svg;
+    	let path;
+    	let t0;
+    	let p;
+    	let t2;
     	let current;
     	let if_block = /*installedPlugins*/ ctx[0] && create_if_block$9(ctx);
 
     	const block = {
     		c: function create() {
     			main = element("main");
+    			div = element("div");
+    			svg = svg_element("svg");
+    			path = svg_element("path");
+    			t0 = space();
+    			p = element("p");
+    			p.textContent = "Only install and use plugins from sources you trust!\r\n            Using untrustworthy plugins might subject you to security risks.";
+    			t2 = space();
     			if (if_block) if_block.c();
-    			attr_dev(main, "class", "svelte-sd4qs4");
+    			attr_dev(path, "d", "M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z");
+    			attr_dev(path, "class", "svelte-1l1hy5e");
+    			add_location(path, file$t, 31, 12, 909);
+    			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
+    			attr_dev(svg, "viewBox", "0 0 512 512");
+    			attr_dev(svg, "class", "svelte-1l1hy5e");
+    			add_location(svg, file$t, 29, 8, 650);
+    			attr_dev(p, "class", "svelte-1l1hy5e");
+    			add_location(p, file$t, 33, 8, 1250);
+    			attr_dev(div, "class", "pluginWarningNotice svelte-1l1hy5e");
+    			add_location(div, file$t, 28, 4, 607);
+    			attr_dev(main, "class", "svelte-1l1hy5e");
     			add_location(main, file$t, 27, 0, 595);
     		},
     		l: function claim(nodes) {
@@ -27184,6 +27358,12 @@ var app = (function () {
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, main, anchor);
+    			append_dev(main, div);
+    			append_dev(div, svg);
+    			append_dev(svg, path);
+    			append_dev(div, t0);
+    			append_dev(div, p);
+    			append_dev(main, t2);
     			if (if_block) if_block.m(main, null);
     			current = true;
     		},
@@ -27486,15 +27666,15 @@ var app = (function () {
 
     function get_each_context$b(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[6] = list[i];
+    	child_ctx[9] = list[i];
     	return child_ctx;
     }
 
-    // (35:4) {#if !userSettings.devModeEnabled}
+    // (44:4) {#if !userSettings.devModeEnabled}
     function create_if_block_1$8(ctx) {
     	let div;
     	let svg;
-    	let path;
+    	let path_1;
     	let t0;
     	let p;
 
@@ -27502,26 +27682,26 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			svg = svg_element("svg");
-    			path = svg_element("path");
+    			path_1 = svg_element("path");
     			t0 = space();
     			p = element("p");
     			p.textContent = "These options are intended to be used by programmers only.\r\n                Enabling the developer mode may significantly affect performance.";
-    			attr_dev(path, "d", "M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z");
-    			attr_dev(path, "class", "svelte-1g3h60o");
-    			add_location(path, file$v, 38, 16, 1478);
+    			attr_dev(path_1, "d", "M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z");
+    			attr_dev(path_1, "class", "svelte-51ymvp");
+    			add_location(path_1, file$v, 47, 16, 1930);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 512 512");
-    			attr_dev(svg, "class", "svelte-1g3h60o");
-    			add_location(svg, file$v, 36, 12, 1211);
-    			attr_dev(p, "class", "svelte-1g3h60o");
-    			add_location(p, file$v, 40, 12, 1827);
-    			attr_dev(div, "class", "devWarningNotice svelte-1g3h60o");
-    			add_location(div, file$v, 35, 8, 1167);
+    			attr_dev(svg, "class", "svelte-51ymvp");
+    			add_location(svg, file$v, 45, 12, 1663);
+    			attr_dev(p, "class", "svelte-51ymvp");
+    			add_location(p, file$v, 49, 12, 2279);
+    			attr_dev(div, "class", "devWarningNotice svelte-51ymvp");
+    			add_location(div, file$v, 44, 8, 1619);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
     			append_dev(div, svg);
-    			append_dev(svg, path);
+    			append_dev(svg, path_1);
     			append_dev(div, t0);
     			append_dev(div, p);
     		},
@@ -27534,24 +27714,28 @@ var app = (function () {
     		block,
     		id: create_if_block_1$8.name,
     		type: "if",
-    		source: "(35:4) {#if !userSettings.devModeEnabled}",
+    		source: "(44:4) {#if !userSettings.devModeEnabled}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (51:4) {#if userSettings.devModeEnabled}
+    // (60:4) {#if userSettings.devModeEnabled}
     function create_if_block$a(ctx) {
-    	let div3;
+    	let div5;
     	let h1;
     	let t1;
     	let div0;
     	let t2;
-    	let div2;
     	let div1;
+    	let t3;
+    	let div2;
+    	let t4;
+    	let div4;
+    	let div3;
     	let svg;
-    	let path;
+    	let path_1;
     	let dispose;
     	let each_value = /*userSettings*/ ctx[0].devPluginDirs;
     	validate_each_argument(each_value);
@@ -27563,59 +27747,71 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			div3 = element("div");
+    			div5 = element("div");
     			h1 = element("h1");
-    			h1.textContent = "Plugin Development Directories";
+    			h1.textContent = "Development Plugins";
     			t1 = space();
     			div0 = element("div");
+    			t2 = space();
+    			div1 = element("div");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			t2 = space();
+    			t3 = space();
     			div2 = element("div");
-    			div1 = element("div");
+    			t4 = space();
+    			div4 = element("div");
+    			div3 = element("div");
     			svg = svg_element("svg");
-    			path = svg_element("path");
-    			attr_dev(h1, "class", "svelte-1g3h60o");
-    			add_location(h1, file$v, 52, 12, 2242);
-    			attr_dev(div0, "class", "devDirList svelte-1g3h60o");
-    			add_location(div0, file$v, 53, 12, 2295);
-    			attr_dev(path, "d", "M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z");
-    			attr_dev(path, "class", "svelte-1g3h60o");
-    			add_location(path, file$v, 74, 24, 3894);
+    			path_1 = svg_element("path");
+    			attr_dev(h1, "class", "svelte-51ymvp");
+    			add_location(h1, file$v, 61, 12, 2694);
+    			attr_dev(div0, "class", "hr svelte-51ymvp");
+    			add_location(div0, file$v, 62, 12, 2736);
+    			attr_dev(div1, "class", "devDirList svelte-51ymvp");
+    			add_location(div1, file$v, 63, 12, 2772);
+    			attr_dev(div2, "class", "hr svelte-51ymvp");
+    			add_location(div2, file$v, 98, 12, 4877);
+    			attr_dev(path_1, "d", "M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z");
+    			attr_dev(path_1, "class", "svelte-51ymvp");
+    			add_location(path_1, file$v, 103, 24, 5349);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 448 512");
-    			attr_dev(svg, "class", "svelte-1g3h60o");
-    			add_location(svg, file$v, 72, 20, 3611);
-    			attr_dev(div1, "class", "devDirAddButton svelte-1g3h60o");
-    			attr_dev(div1, "tabindex", "0");
-    			add_location(div1, file$v, 71, 16, 3514);
-    			attr_dev(div2, "class", "devDirAddButtonContainer svelte-1g3h60o");
-    			add_location(div2, file$v, 70, 12, 3458);
-    			attr_dev(div3, "class", "devPluginDirsSelector svelte-1g3h60o");
-    			add_location(div3, file$v, 51, 8, 2193);
+    			attr_dev(svg, "class", "svelte-51ymvp");
+    			add_location(svg, file$v, 101, 20, 5066);
+    			attr_dev(div3, "class", "devDirAddButton svelte-51ymvp");
+    			attr_dev(div3, "tabindex", "0");
+    			add_location(div3, file$v, 100, 16, 4969);
+    			attr_dev(div4, "class", "devDirAddButtonContainer svelte-51ymvp");
+    			add_location(div4, file$v, 99, 12, 4913);
+    			attr_dev(div5, "class", "devPluginDirsSelector svelte-51ymvp");
+    			add_location(div5, file$v, 60, 8, 2645);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div3, anchor);
-    			append_dev(div3, h1);
-    			append_dev(div3, t1);
-    			append_dev(div3, div0);
+    			insert_dev(target, div5, anchor);
+    			append_dev(div5, h1);
+    			append_dev(div5, t1);
+    			append_dev(div5, div0);
+    			append_dev(div5, t2);
+    			append_dev(div5, div1);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].m(div0, null);
+    				each_blocks[i].m(div1, null);
     			}
 
-    			append_dev(div3, t2);
-    			append_dev(div3, div2);
-    			append_dev(div2, div1);
-    			append_dev(div1, svg);
-    			append_dev(svg, path);
-    			dispose = listen_dev(div1, "click", /*addPluginDevDirectory*/ ctx[1], false, false, false);
+    			append_dev(div5, t3);
+    			append_dev(div5, div2);
+    			append_dev(div5, t4);
+    			append_dev(div5, div4);
+    			append_dev(div4, div3);
+    			append_dev(div3, svg);
+    			append_dev(svg, path_1);
+    			dispose = listen_dev(div3, "click", /*addPluginDevDirectory*/ ctx[3], false, false, false);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*removePluginDevDirectory, userSettings*/ 5) {
+    			if (dirty & /*removePluginDevDirectory, userSettings, Promise, fs, path, JSON*/ 23) {
     				each_value = /*userSettings*/ ctx[0].devPluginDirs;
     				validate_each_argument(each_value);
     				let i;
@@ -27628,7 +27824,7 @@ var app = (function () {
     					} else {
     						each_blocks[i] = create_each_block$b(child_ctx);
     						each_blocks[i].c();
-    						each_blocks[i].m(div0, null);
+    						each_blocks[i].m(div1, null);
     					}
     				}
 
@@ -27640,7 +27836,7 @@ var app = (function () {
     			}
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div3);
+    			if (detaching) detach_dev(div5);
     			destroy_each(each_blocks, detaching);
     			dispose();
     		}
@@ -27650,72 +27846,232 @@ var app = (function () {
     		block,
     		id: create_if_block$a.name,
     		type: "if",
-    		source: "(51:4) {#if userSettings.devModeEnabled}",
+    		source: "(60:4) {#if userSettings.devModeEnabled}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (55:16) {#each userSettings.devPluginDirs as dirName}
+    // (79:24) {:catch}
+    function create_catch_block(ctx) {
+    	let h3;
+
+    	const block = {
+    		c: function create() {
+    			h3 = element("h3");
+    			h3.textContent = "Not Found";
+    			set_style(h3, "color", "var(--red)");
+    			attr_dev(h3, "class", "svelte-51ymvp");
+    			add_location(h3, file$v, 79, 28, 3715);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, h3, anchor);
+    		},
+    		p: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(h3);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_catch_block.name,
+    		type: "catch",
+    		source: "(79:24) {:catch}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (77:24) {:then name}
+    function create_then_block(ctx) {
+    	let h3;
+    	let t_value = /*name*/ ctx[12] + "";
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			h3 = element("h3");
+    			t = text(t_value);
+    			attr_dev(h3, "class", "svelte-51ymvp");
+    			add_location(h3, file$v, 77, 28, 3636);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, h3, anchor);
+    			append_dev(h3, t);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*userSettings*/ 1 && t_value !== (t_value = /*name*/ ctx[12] + "")) set_data_dev(t, t_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(h3);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_then_block.name,
+    		type: "then",
+    		source: "(77:24) {:then name}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (71:27)                               <h3 class="loading" style="color: var(--text1);">                                  <span>.</span>                                  <span style="animation-delay: .2s;">.</span>                                  <span style="animation-delay: .4s;">.</span>                              </h3>                          {:then name}
+    function create_pending_block(ctx) {
+    	let h3;
+    	let span0;
+    	let t1;
+    	let span1;
+    	let t3;
+    	let span2;
+
+    	const block = {
+    		c: function create() {
+    			h3 = element("h3");
+    			span0 = element("span");
+    			span0.textContent = ".";
+    			t1 = space();
+    			span1 = element("span");
+    			span1.textContent = ".";
+    			t3 = space();
+    			span2 = element("span");
+    			span2.textContent = ".";
+    			attr_dev(span0, "class", "svelte-51ymvp");
+    			add_location(span0, file$v, 72, 32, 3362);
+    			set_style(span1, "animation-delay", ".2s");
+    			attr_dev(span1, "class", "svelte-51ymvp");
+    			add_location(span1, file$v, 73, 32, 3410);
+    			set_style(span2, "animation-delay", ".4s");
+    			attr_dev(span2, "class", "svelte-51ymvp");
+    			add_location(span2, file$v, 74, 32, 3488);
+    			attr_dev(h3, "class", "loading svelte-51ymvp");
+    			set_style(h3, "color", "var(--text1)");
+    			add_location(h3, file$v, 71, 28, 3279);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, h3, anchor);
+    			append_dev(h3, span0);
+    			append_dev(h3, t1);
+    			append_dev(h3, span1);
+    			append_dev(h3, t3);
+    			append_dev(h3, span2);
+    		},
+    		p: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(h3);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_pending_block.name,
+    		type: "pending",
+    		source: "(71:27)                               <h3 class=\\\"loading\\\" style=\\\"color: var(--text1);\\\">                                  <span>.</span>                                  <span style=\\\"animation-delay: .2s;\\\">.</span>                                  <span style=\\\"animation-delay: .4s;\\\">.</span>                              </h3>                          {:then name}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (65:16) {#each userSettings.devPluginDirs as dirName}
     function create_each_block$b(ctx) {
     	let div1;
-    	let p;
-    	let t0_value = /*dirName*/ ctx[6] + "";
+    	let promise;
     	let t0;
+    	let p;
+    	let t1_value = /*dirName*/ ctx[9] + "";
     	let t1;
+    	let t2;
     	let div0;
     	let svg;
-    	let path;
-    	let t2;
+    	let path_1;
+    	let t3;
     	let dispose;
 
+    	function func(...args) {
+    		return /*func*/ ctx[7](/*dirName*/ ctx[9], ...args);
+    	}
+
+    	let info = {
+    		ctx,
+    		current: null,
+    		token: null,
+    		pending: create_pending_block,
+    		then: create_then_block,
+    		catch: create_catch_block,
+    		value: 12
+    	};
+
+    	handle_promise(promise = new Promise(func), info);
+
     	function click_handler(...args) {
-    		return /*click_handler*/ ctx[5](/*dirName*/ ctx[6], ...args);
+    		return /*click_handler*/ ctx[8](/*dirName*/ ctx[9], ...args);
     	}
 
     	const block = {
     		c: function create() {
     			div1 = element("div");
+    			info.block.c();
+    			t0 = space();
     			p = element("p");
-    			t0 = text(t0_value);
-    			t1 = space();
+    			t1 = text(t1_value);
+    			t2 = space();
     			div0 = element("div");
     			svg = svg_element("svg");
-    			path = svg_element("path");
-    			t2 = space();
-    			attr_dev(p, "class", "svelte-1g3h60o");
-    			add_location(p, file$v, 56, 24, 2455);
-    			attr_dev(path, "d", "M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z");
-    			attr_dev(path, "class", "svelte-1g3h60o");
-    			add_location(path, file$v, 64, 32, 3037);
+    			path_1 = svg_element("path");
+    			t3 = space();
+    			attr_dev(p, "class", "svelte-51ymvp");
+    			add_location(p, file$v, 84, 24, 3874);
+    			attr_dev(path_1, "d", "M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z");
+    			attr_dev(path_1, "class", "svelte-51ymvp");
+    			add_location(path_1, file$v, 92, 32, 4456);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 448 512");
-    			attr_dev(svg, "class", "svelte-1g3h60o");
-    			add_location(svg, file$v, 62, 28, 2738);
-    			attr_dev(div0, "class", "devDirRemoveButton svelte-1g3h60o");
+    			attr_dev(svg, "class", "svelte-51ymvp");
+    			add_location(svg, file$v, 90, 28, 4157);
+    			attr_dev(div0, "class", "devDirRemoveButton svelte-51ymvp");
     			attr_dev(div0, "tabindex", "0");
-    			add_location(div0, file$v, 57, 24, 2497);
-    			attr_dev(div1, "class", "devDirEntry svelte-1g3h60o");
-    			add_location(div1, file$v, 55, 20, 2404);
+    			add_location(div0, file$v, 85, 24, 3916);
+    			attr_dev(div1, "class", "devDirEntry svelte-51ymvp");
+    			add_location(div1, file$v, 65, 20, 2881);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
+    			info.block.m(div1, info.anchor = null);
+    			info.mount = () => div1;
+    			info.anchor = t0;
+    			append_dev(div1, t0);
     			append_dev(div1, p);
-    			append_dev(p, t0);
-    			append_dev(div1, t1);
+    			append_dev(p, t1);
+    			append_dev(div1, t2);
     			append_dev(div1, div0);
     			append_dev(div0, svg);
-    			append_dev(svg, path);
-    			append_dev(div1, t2);
+    			append_dev(svg, path_1);
+    			append_dev(div1, t3);
     			dispose = listen_dev(div0, "click", click_handler, false, false, false);
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
-    			if (dirty & /*userSettings*/ 1 && t0_value !== (t0_value = /*dirName*/ ctx[6] + "")) set_data_dev(t0, t0_value);
+    			info.ctx = ctx;
+
+    			if (dirty & /*userSettings*/ 1 && promise !== (promise = new Promise(func)) && handle_promise(promise, info)) ; else {
+    				const child_ctx = ctx.slice();
+    				child_ctx[12] = info.resolved;
+    				info.block.p(child_ctx, dirty);
+    			}
+
+    			if (dirty & /*userSettings*/ 1 && t1_value !== (t1_value = /*dirName*/ ctx[9] + "")) set_data_dev(t1, t1_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div1);
+    			info.block.d();
+    			info.token = null;
+    			info = null;
     			dispose();
     		}
     	};
@@ -27724,7 +28080,7 @@ var app = (function () {
     		block,
     		id: create_each_block$b.name,
     		type: "each",
-    		source: "(55:16) {#each userSettings.devPluginDirs as dirName}",
+    		source: "(65:16) {#each userSettings.devPluginDirs as dirName}",
     		ctx
     	});
 
@@ -27740,7 +28096,7 @@ var app = (function () {
     	let if_block0 = !/*userSettings*/ ctx[0].devModeEnabled && create_if_block_1$8(ctx);
 
     	function toggle_value_binding(value) {
-    		/*toggle_value_binding*/ ctx[4].call(null, value);
+    		/*toggle_value_binding*/ ctx[6].call(null, value);
     	}
 
     	let toggle_props = { label: "Enable Developer Mode" };
@@ -27761,8 +28117,8 @@ var app = (function () {
     			create_component(toggle.$$.fragment);
     			t1 = space();
     			if (if_block1) if_block1.c();
-    			attr_dev(main, "class", "svelte-1g3h60o");
-    			add_location(main, file$v, 33, 0, 1111);
+    			attr_dev(main, "class", "svelte-51ymvp");
+    			add_location(main, file$v, 42, 0, 1563);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -27840,16 +28196,32 @@ var app = (function () {
     }
 
     function instance$v($$self, $$props, $$invalidate) {
+    	const fs = require("fs");
+    	const path = require("path");
     	const { ipcRenderer } = require("electron");
     	let { userSettings } = $$props;
 
     	/**
      * Calls main process to show a dir selection dialogue.
-     * The selected directory will be added to `userSettings.devPluginDirs`
+     * The selected directory will be added to `userSettings.devPluginDirs`.
+     * The selected directory must be a valid plugin (include plugin.json). 
      */
     	function addPluginDevDirectory() {
     		const dirPath = ipcRenderer.sendSync("searchDevPluginDir");
     		if (!dirPath || userSettings.devPluginDirs.includes(dirPath[0])) return;
+
+    		if (!fs.existsSync(path.join(dirPath[0], "plugin.json"))) {
+    			document.dispatchEvent(new CustomEvent("notificationEvent",
+    			{
+    					detail: {
+    						"type": "error",
+    						"message": "Selected path is not a plugin. Make sure to select a path containing a plugin.json!"
+    					}
+    				}));
+
+    			return;
+    		}
+
     		$$invalidate(0, userSettings.devPluginDirs = [...userSettings.devPluginDirs, dirPath[0]], userSettings);
     		$$invalidate(0, userSettings.devPluginDirs = Object.assign([], userSettings.devPluginDirs), userSettings);
     	}
@@ -27882,6 +28254,11 @@ var app = (function () {
     		$$invalidate(0, userSettings);
     	}
 
+    	const func = (dirName, resolve, reject) => {
+    		if (!fs.existsSync(path.join(dirName, "plugin.json"))) reject("404");
+    		resolve(JSON.parse(fs.readFileSync(path.join(dirName, "plugin.json"))).pluginName);
+    	};
+
     	const click_handler = dirName => {
     		removePluginDevDirectory(dirName);
     	};
@@ -27891,12 +28268,16 @@ var app = (function () {
     	};
 
     	$$self.$capture_state = () => ({
+    		fs,
+    		path,
     		ipcRenderer,
     		Toggle,
     		userSettings,
     		addPluginDevDirectory,
     		removePluginDevDirectory,
     		require,
+    		document,
+    		CustomEvent,
     		Object
     	});
 
@@ -27910,10 +28291,13 @@ var app = (function () {
 
     	return [
     		userSettings,
+    		fs,
+    		path,
     		addPluginDevDirectory,
     		removePluginDevDirectory,
     		ipcRenderer,
     		toggle_value_binding,
+    		func,
     		click_handler
     	];
     }
@@ -29289,8 +29673,8 @@ var app = (function () {
 
     function get_each_context$c(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[43] = list[i];
-    	child_ctx[45] = i;
+    	child_ctx[44] = list[i];
+    	child_ctx[46] = i;
     	return child_ctx;
     }
 
@@ -29322,7 +29706,7 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const settings_changes = {};
-    			if (dirty[0] & /*settingsShown, userSettings, toolkitRef*/ 521) settings_changes.closeAction = /*func*/ ctx[28];
+    			if (dirty[0] & /*settingsShown, toolkitRef*/ 520) settings_changes.closeAction = /*func*/ ctx[28];
 
     			if (!updating_userSettings && dirty[0] & /*userSettings*/ 1) {
     				updating_userSettings = true;
@@ -29364,11 +29748,11 @@ var app = (function () {
     	let current;
 
     	function debugconsole_projectData_binding(value) {
-    		/*debugconsole_projectData_binding*/ ctx[38].call(null, value);
+    		/*debugconsole_projectData_binding*/ ctx[39].call(null, value);
     	}
 
     	function debugconsole_devPluginObjects_binding(value) {
-    		/*debugconsole_devPluginObjects_binding*/ ctx[39].call(null, value);
+    		/*debugconsole_devPluginObjects_binding*/ ctx[40].call(null, value);
     	}
 
     	let debugconsole_props = {};
@@ -29446,11 +29830,11 @@ var app = (function () {
     	let current;
 
     	function nodeeditor_resultWidgets_binding(value) {
-    		/*nodeeditor_resultWidgets_binding*/ ctx[40].call(null, value);
+    		/*nodeeditor_resultWidgets_binding*/ ctx[41].call(null, value);
     	}
 
     	function nodeeditor_invokeOutputs_binding(value) {
-    		/*nodeeditor_invokeOutputs_binding*/ ctx[41].call(null, value);
+    		/*nodeeditor_invokeOutputs_binding*/ ctx[42].call(null, value);
     	}
 
     	let nodeeditor_props = {
@@ -29531,13 +29915,13 @@ var app = (function () {
     	let current;
 
     	function func_3(...args) {
-    		return /*func_3*/ ctx[42](/*index*/ ctx[45], ...args);
+    		return /*func_3*/ ctx[43](/*index*/ ctx[46], ...args);
     	}
 
     	const notificationcard = new NotificationCard({
     			props: {
-    				type: /*n*/ ctx[43].type,
-    				message: /*n*/ ctx[43].message,
+    				type: /*n*/ ctx[44].type,
+    				message: /*n*/ ctx[44].message,
     				onClose: func_3
     			},
     			$$inline: true
@@ -29554,8 +29938,8 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
     			const notificationcard_changes = {};
-    			if (dirty[0] & /*notifications*/ 16) notificationcard_changes.type = /*n*/ ctx[43].type;
-    			if (dirty[0] & /*notifications*/ 16) notificationcard_changes.message = /*n*/ ctx[43].message;
+    			if (dirty[0] & /*notifications*/ 16) notificationcard_changes.type = /*n*/ ctx[44].type;
+    			if (dirty[0] & /*notifications*/ 16) notificationcard_changes.message = /*n*/ ctx[44].message;
     			notificationcard.$set(notificationcard_changes);
     		},
     		i: function intro(local) {
@@ -29589,9 +29973,10 @@ var app = (function () {
     	let div1;
     	let t1;
     	let div0;
+    	let updating_userSettings;
     	let t2;
     	let updating_projectData;
-    	let updating_userSettings;
+    	let updating_userSettings_1;
     	let updating_edited;
     	let updating_devPluginObjects;
     	let t3;
@@ -29618,24 +30003,34 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	let toolkit_props = { userSettings: /*userSettings*/ ctx[0] };
+    	function toolkit_userSettings_binding(value) {
+    		/*toolkit_userSettings_binding*/ ctx[32].call(null, value);
+    	}
+
+    	let toolkit_props = {};
+
+    	if (/*userSettings*/ ctx[0] !== void 0) {
+    		toolkit_props.userSettings = /*userSettings*/ ctx[0];
+    	}
+
     	const toolkit = new Toolkit({ props: toolkit_props, $$inline: true });
-    	/*toolkit_binding*/ ctx[32](toolkit);
+    	binding_callbacks.push(() => bind(toolkit, "userSettings", toolkit_userSettings_binding));
+    	/*toolkit_binding*/ ctx[33](toolkit);
 
     	function viewport_projectData_binding(value) {
-    		/*viewport_projectData_binding*/ ctx[34].call(null, value);
+    		/*viewport_projectData_binding*/ ctx[35].call(null, value);
     	}
 
     	function viewport_userSettings_binding(value) {
-    		/*viewport_userSettings_binding*/ ctx[35].call(null, value);
+    		/*viewport_userSettings_binding*/ ctx[36].call(null, value);
     	}
 
     	function viewport_edited_binding(value) {
-    		/*viewport_edited_binding*/ ctx[36].call(null, value);
+    		/*viewport_edited_binding*/ ctx[37].call(null, value);
     	}
 
     	function viewport_devPluginObjects_binding(value) {
-    		/*viewport_devPluginObjects_binding*/ ctx[37].call(null, value);
+    		/*viewport_devPluginObjects_binding*/ ctx[38].call(null, value);
     	}
 
     	let viewport_props = {
@@ -29659,7 +30054,7 @@ var app = (function () {
     	}
 
     	const viewport = new Viewport({ props: viewport_props, $$inline: true });
-    	/*viewport_binding*/ ctx[33](viewport);
+    	/*viewport_binding*/ ctx[34](viewport);
     	binding_callbacks.push(() => bind(viewport, "projectData", viewport_projectData_binding));
     	binding_callbacks.push(() => bind(viewport, "userSettings", viewport_userSettings_binding));
     	binding_callbacks.push(() => bind(viewport, "edited", viewport_edited_binding));
@@ -29702,11 +30097,11 @@ var app = (function () {
     			}
 
     			attr_dev(div0, "class", "centerRow svelte-v7hjp0");
-    			add_location(div0, file$y, 290, 2, 7349);
+    			add_location(div0, file$y, 290, 2, 7322);
     			attr_dev(div1, "class", "mainLayout svelte-v7hjp0");
-    			add_location(div1, file$y, 274, 1, 6972);
+    			add_location(div1, file$y, 274, 1, 6945);
     			attr_dev(div2, "class", "notificationsContainer svelte-v7hjp0");
-    			add_location(div2, file$y, 327, 1, 8276);
+    			add_location(div2, file$y, 327, 1, 8254);
 
     			attr_dev(main, "class", main_class_value = "\r\n\t" + (/*userSettings*/ ctx[0].theme == 1 || /*userSettings*/ ctx[0].theme == 2 && /*ipcRenderer*/ ctx[10].sendSync("sysDarkmode")
     			? "darkmode"
@@ -29768,7 +30163,13 @@ var app = (function () {
     			if (dirty[0] & /*settingsShown*/ 512) topbar_changes.settingsAction = /*func_2*/ ctx[31];
     			topbar.$set(topbar_changes);
     			const toolkit_changes = {};
-    			if (dirty[0] & /*userSettings*/ 1) toolkit_changes.userSettings = /*userSettings*/ ctx[0];
+
+    			if (!updating_userSettings && dirty[0] & /*userSettings*/ 1) {
+    				updating_userSettings = true;
+    				toolkit_changes.userSettings = /*userSettings*/ ctx[0];
+    				add_flush_callback(() => updating_userSettings = false);
+    			}
+
     			toolkit.$set(toolkit_changes);
     			const viewport_changes = {};
     			if (dirty[0] & /*invokeProcessCallback*/ 32) viewport_changes.invokeTableProcess = /*invokeProcessCallback*/ ctx[5];
@@ -29779,10 +30180,10 @@ var app = (function () {
     				add_flush_callback(() => updating_projectData = false);
     			}
 
-    			if (!updating_userSettings && dirty[0] & /*userSettings*/ 1) {
-    				updating_userSettings = true;
+    			if (!updating_userSettings_1 && dirty[0] & /*userSettings*/ 1) {
+    				updating_userSettings_1 = true;
     				viewport_changes.userSettings = /*userSettings*/ ctx[0];
-    				add_flush_callback(() => updating_userSettings = false);
+    				add_flush_callback(() => updating_userSettings_1 = false);
     			}
 
     			if (!updating_edited && dirty[0] & /*edited*/ 256) {
@@ -29907,9 +30308,9 @@ var app = (function () {
     			if (detaching) detach_dev(main);
     			if (if_block0) if_block0.d();
     			destroy_component(topbar);
-    			/*toolkit_binding*/ ctx[32](null);
+    			/*toolkit_binding*/ ctx[33](null);
     			destroy_component(toolkit);
-    			/*viewport_binding*/ ctx[33](null);
+    			/*viewport_binding*/ ctx[34](null);
     			destroy_component(viewport);
     			if (if_block1) if_block1.d();
     			if (if_block2) if_block2.d();
@@ -30187,7 +30588,7 @@ var app = (function () {
     		);
 
     		saveUserSettings();
-    		if (userSettings.devModeEnabled) toolkitRef.refreshDevPlugins();
+    		toolkitRef.refreshDevPluginsSilent();
     	};
 
     	function settings_userSettings_binding(value) {
@@ -30202,6 +30603,11 @@ var app = (function () {
     	const func_2 = () => {
     		$$invalidate(9, settingsShown = true);
     	};
+
+    	function toolkit_userSettings_binding(value) {
+    		userSettings = value;
+    		$$invalidate(0, userSettings);
+    	}
 
     	function toolkit_binding($$value) {
     		binding_callbacks[$$value ? "unshift" : "push"](() => {
@@ -30359,6 +30765,7 @@ var app = (function () {
     		settings_userSettings_binding,
     		func_1,
     		func_2,
+    		toolkit_userSettings_binding,
     		toolkit_binding,
     		viewport_binding,
     		viewport_projectData_binding,

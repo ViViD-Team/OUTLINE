@@ -1,4 +1,7 @@
 <script>
+    const fs = require("fs");
+    const path = require("path");
+
     const { ipcRenderer } = require("electron");
 
     import Toggle from "./inputTypes/Toggle.svelte";
@@ -8,11 +11,17 @@
 
     /**
      * Calls main process to show a dir selection dialogue.
-     * The selected directory will be added to `userSettings.devPluginDirs`
+     * The selected directory will be added to `userSettings.devPluginDirs`.
+     * The selected directory must be a valid plugin (include plugin.json). 
      */
     function addPluginDevDirectory() {
         const dirPath = ipcRenderer.sendSync("searchDevPluginDir");
         if (!dirPath || userSettings.devPluginDirs.includes(dirPath[0])) return;
+
+        if (!fs.existsSync(path.join(dirPath[0], "plugin.json"))) {
+            document.dispatchEvent(new CustomEvent("notificationEvent", {detail: {"type": "error", "message": "Selected path is not a plugin. Make sure to select a path containing a plugin.json!"}}));
+            return;
+        }
 
         userSettings.devPluginDirs = [...userSettings.devPluginDirs, dirPath[0]];
         userSettings.devPluginDirs = Object.assign([], userSettings.devPluginDirs);
@@ -50,10 +59,29 @@
     />
     {#if userSettings.devModeEnabled}
         <div class="devPluginDirsSelector">
-            <h1>Plugin Development Directories</h1>
+            <h1>Development Plugins</h1>
+            <div class="hr"></div>
             <div class="devDirList">
                 {#each userSettings.devPluginDirs as dirName}
                     <div class="devDirEntry">
+                        {#await new Promise((resolve, reject) => {
+                            if (!fs.existsSync(path.join(dirName, "plugin.json"))) reject("404");
+                            resolve(JSON.parse(fs.readFileSync(path.join(dirName, "plugin.json")))
+                                .pluginName);
+                        })}
+                            <h3 class="loading" style="color: var(--text1);">
+                                <span>.</span>
+                                <span style="animation-delay: .2s;">.</span>
+                                <span style="animation-delay: .4s;">.</span>
+                            </h3>
+                        {:then name} 
+                            <h3>{name}</h3>
+                        {:catch}
+                            <h3 style="color: var(--red);">Not Found</h3>
+                        {/await}
+
+                        
+                        
                         <p>{dirName}</p>
                         <div
                             class="devDirRemoveButton"
@@ -68,6 +96,7 @@
                     </div>
                 {/each}
             </div>
+            <div class="hr"></div>
             <div class="devDirAddButtonContainer">
                 <div class="devDirAddButton" tabindex="0" on:click={addPluginDevDirectory}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -108,8 +137,8 @@
     }
 
     .devWarningNotice svg {
-
         height: 4vh;
+        animation: fadeBlink .5s;
     }
 
     .devWarningNotice svg path {
@@ -117,13 +146,31 @@
     }
 
     .devWarningNotice p {
-        max-width: calc(100% - 16vh);
+        width: calc(100% - 16vh);
         flex-grow: 0;
 
         color: var(--mainbg);
 
         font-size: 1.75vh;
     }
+
+    @keyframes fadeBlink {
+        50% {
+            opacity: .6;
+        }
+    }
+
+
+    div.hr {
+        opacity: .5;
+
+        width: calc(100% - 4vh);
+        height: .2vh;
+
+        border-radius: .1vh;
+        background-color: var(--shadow2);
+    }
+
 
     .devPluginDirsSelector {
         margin-top: 1.5vh;
@@ -132,7 +179,7 @@
         width: calc(100% - 10vh);
         min-height: 8vh;
 
-        border-radius: 4vh;
+        border-radius: 2vh;
         background-color: var(--shadow1);
 
         display: flex;
@@ -152,6 +199,8 @@
     }
 
     .devDirList {
+        padding-top: 2vh;
+        padding-bottom: 2vh;
         width: 100%;
         min-height: 4vh;
 
@@ -169,6 +218,31 @@
         overflow: hidden;
     }
 
+    .devDirEntry h3 {
+        color: var(--velvet);
+        font-size: 2vh;
+        font-weight: 800;
+        margin-left: 2vh;
+    }
+
+    @keyframes flash {
+        from {
+            transform: translateY(0);
+        }
+        50% {
+            opacity: .2;
+            transform: translateY(-.2vh);
+        }
+        to {
+            transform: translateY(0);
+        }
+    }
+
+    .devDirEntry h3.loading span {
+        display: inline-block;
+        animation: flash 1s infinite cubic-bezier(0, 0, 0, .9);
+    }
+
     .devDirEntry p {
         margin-left: 2vh;
         font-size: 1.5vh;
@@ -183,7 +257,7 @@
     .devDirRemoveButton {
         cursor: pointer;
 
-        margin-right: 4vh;
+        margin-right: 2vh;
         margin-left: 4vh;
 
         height: 4vh;

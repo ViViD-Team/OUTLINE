@@ -266,7 +266,7 @@
 			closeAction={() => {
 				setTimeout(() => {settingsShown = false}, 500);
 				saveUserSettings();
-				if (userSettings.devModeEnabled) toolkitRef.refreshDevPlugins();
+				toolkitRef.refreshDevPluginsSilent();
 			}}
 			bind:userSettings={userSettings}
 		/>
@@ -290,7 +290,7 @@
 		/>
 		<div class="centerRow">
 			<Toolkit
-				userSettings={userSettings}
+				bind:userSettings={userSettings}
 
 				bind:this={toolkitRef}
 			/>
