@@ -6,7 +6,7 @@ class AsinNodeData extends NodeData {
 
     constructor(outputRefs, context, rawNodeData) {
         let inputs = [
-            new NodeInputTether("A", context)
+            new NodeInputTether("Num", context)
         ];
         let outputs = [
             new AsinNodeDataOutput("Asin.", inputs, outputRefs[0], context),

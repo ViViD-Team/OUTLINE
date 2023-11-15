@@ -6,7 +6,7 @@ class TanNodeData extends NodeData {
 
     constructor(outputRefs, context, rawNodeData) {
         let inputs = [
-            new NodeInputTether("A", context)
+            new NodeInputTether("Num", context)
         ];
         let outputs = [
             new TanNodeDataOutput("Tan.", inputs, outputRefs[0], context),

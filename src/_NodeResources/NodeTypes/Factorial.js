@@ -6,10 +6,10 @@ class FactorialNodeData extends NodeData {
 
     constructor(outputRefs, context, rawNodeData) {
         let inputs = [
-            new NodeInputTether("A", context)
+            new NodeInputTether("Num", context)
         ];
         let outputs = [
-            new FactorialNodeDataOutput("A!", inputs, outputRefs[0], context),
+            new FactorialNodeDataOutput("Fact.", inputs, outputRefs[0], context),
         ];
 
         super("Factorial", inputs, outputs, rawNodeData);

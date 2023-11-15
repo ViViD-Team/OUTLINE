@@ -6,8 +6,8 @@ class DivisionNodeData extends NodeData {
 
     constructor(outputRefs, context, rawNodeData) {
         let inputs = [
-            new NodeInputTether("A", context),
-            new NodeInputTether("B", context),
+            new NodeInputTether("Num", context),
+            new NodeInputTether("Div.", context),
         ];
         let outputs = [
             new DivisionNodeDataOutput("Frac.", inputs, outputRefs[0], context),

@@ -197,6 +197,8 @@
 	}
 
 	ipcRenderer.on("openFile", (event, arg) => {
+		// TODO Differentiate between .ols and .opb
+
 		openInstant(arg);
 	})
 	function openInstant(path) {

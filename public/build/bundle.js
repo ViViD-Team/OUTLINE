@@ -29678,7 +29678,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (264:1) {#if settingsShown}
+    // (266:1) {#if settingsShown}
     function create_if_block_2$7(ctx) {
     	let updating_userSettings;
     	let current;
@@ -29734,14 +29734,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2$7.name,
     		type: "if",
-    		source: "(264:1) {#if settingsShown}",
+    		source: "(266:1) {#if settingsShown}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (307:3) {#if debugConsoleOpen && userSettings.devModeEnabled}
+    // (309:3) {#if debugConsoleOpen && userSettings.devModeEnabled}
     function create_if_block_1$b(ctx) {
     	let updating_projectData;
     	let updating_devPluginObjects;
@@ -29816,14 +29816,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$b.name,
     		type: "if",
-    		source: "(307:3) {#if debugConsoleOpen && userSettings.devModeEnabled}",
+    		source: "(309:3) {#if debugConsoleOpen && userSettings.devModeEnabled}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (314:2) {#if edited != null}
+    // (316:2) {#if edited != null}
     function create_if_block$d(ctx) {
     	let updating_resultWidgets;
     	let updating_invokeOutputs;
@@ -29903,14 +29903,14 @@ var app = (function () {
     		block,
     		id: create_if_block$d.name,
     		type: "if",
-    		source: "(314:2) {#if edited != null}",
+    		source: "(316:2) {#if edited != null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (329:2) {#each notifications as n, index}
+    // (331:2) {#each notifications as n, index}
     function create_each_block$c(ctx) {
     	let current;
 
@@ -29960,7 +29960,7 @@ var app = (function () {
     		block,
     		id: create_each_block$c.name,
     		type: "each",
-    		source: "(329:2) {#each notifications as n, index}",
+    		source: "(331:2) {#each notifications as n, index}",
     		ctx
     	});
 
@@ -30097,17 +30097,17 @@ var app = (function () {
     			}
 
     			attr_dev(div0, "class", "centerRow svelte-v7hjp0");
-    			add_location(div0, file$y, 290, 2, 7322);
+    			add_location(div0, file$y, 292, 2, 7371);
     			attr_dev(div1, "class", "mainLayout svelte-v7hjp0");
-    			add_location(div1, file$y, 274, 1, 6945);
+    			add_location(div1, file$y, 276, 1, 6994);
     			attr_dev(div2, "class", "notificationsContainer svelte-v7hjp0");
-    			add_location(div2, file$y, 327, 1, 8254);
+    			add_location(div2, file$y, 329, 1, 8303);
 
     			attr_dev(main, "class", main_class_value = "\r\n\t" + (/*userSettings*/ ctx[0].theme == 1 || /*userSettings*/ ctx[0].theme == 2 && /*ipcRenderer*/ ctx[10].sendSync("sysDarkmode")
     			? "darkmode"
     			: "") + "\r\n" + " svelte-v7hjp0");
 
-    			add_location(main, file$y, 257, 0, 6558);
+    			add_location(main, file$y, 259, 0, 6607);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -30516,6 +30516,7 @@ var app = (function () {
     	}
 
     	ipcRenderer.on("openFile", (event, arg) => {
+    		// TODO Differentiate between .ols and .opb
     		openInstant(arg);
     	});
 

@@ -6,8 +6,8 @@ class RootNodeData extends NodeData {
 
     constructor(outputRefs, context, rawNodeData) {
         let inputs = [
-            new NodeInputTether("A", context),
-            new NodeInputTether("B", context),
+            new NodeInputTether("Num", context),
+            new NodeInputTether("n", context),
         ];
         let outputs = [
             new RootNodeDataOutput("Root", inputs, outputRefs[0], context),

@@ -6,8 +6,8 @@ class PowerNodeData extends NodeData {
 
     constructor(outputRefs, context, rawNodeData) {
         let inputs = [
-            new NodeInputTether("A", context),
-            new NodeInputTether("B", context),
+            new NodeInputTether("Base", context),
+            new NodeInputTether("Exp.", context),
         ];
         let outputs = [
             new PowerNodeDataOutput("Pow.", inputs, outputRefs[0], context),

@@ -6,7 +6,7 @@ class SquareRootNodeData extends NodeData {
 
     constructor(outputRefs, context, rawNodeData) {
         let inputs = [
-            new NodeInputTether("A", context)
+            new NodeInputTether("Num", context)
         ];
         let outputs = [
             new SquareRootNodeDataOutput("Sqrt.", inputs, outputRefs[0], context),
