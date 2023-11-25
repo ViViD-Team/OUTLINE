@@ -72,11 +72,13 @@
             "nodes": {
                 "input": [],
                 "output": [],
+                "batchInput": [],
+                "batchOutput": [],
                 "literal": [],
                 "operator": [],
                 "annotation": [],
                 "result": [],
-                "plugin": []
+                "plugin": [],
             },
 
             "reference": undefined,

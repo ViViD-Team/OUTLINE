@@ -6,6 +6,8 @@
     import Node from "./Node.svelte"
     import InputNode from "./InputNode.svelte";
     import OutputNode from "./OutputNode.svelte";
+    import BatchInputNode from "./BatchInputNode.svelte";
+    import BatchOutputNode from "./BatchOutputNode.svelte";
     import ResultNode from "./ResultNode.svelte";
     import LiteralNode from "./LiteralNode.svelte";
     import AnnotationNode from "./AnnotationNode.svelte";
@@ -299,6 +301,23 @@
                         return;
                     }
 
+                    case "batchInput": {
+                        let newObj = {
+                            "posX": Math.round((-viewX + event.layerX) / (window.innerHeight / 100 * 2 * viewZoom)),
+                            "posY": Math.round((-viewY + event.layerY) / (window.innerHeight / 100 * 2 * viewZoom)),
+                            "simX": 0,
+                            "simY": 0,
+                            "width": 6,
+                            "outputID": getNewId(),
+                            "color": "var(--red)",
+                            "textcolor": "var(--text1)",
+                            "selectedCol": 0,
+                        };
+
+                        nodeData[event.dataTransfer.getData("nodeType")].push(newObj);
+                        return;
+                    }
+
                     case "output": {
                         let newObj = {
                             "posX": Math.round((-viewX + event.layerX) / (window.innerHeight / 100 * 2 * viewZoom)),
@@ -311,6 +330,24 @@
                             "textcolor": "var(--text1)",
                             "selectedCol": 0,
                             "selectedRow": 0,
+                        };
+
+                        nodeData[event.dataTransfer.getData("nodeType")].push(newObj);
+                        nodeData[event.dataTransfer.getData("nodeType")] = Object.assign([], nodeData[event.dataTransfer.getData("nodeType")]);
+                        return;
+                    }
+
+                    case "batchOutput": {
+                        let newObj = {
+                            "posX": Math.round((-viewX + event.layerX) / (window.innerHeight / 100 * 2 * viewZoom)),
+                            "posY": Math.round((-viewY + event.layerY) / (window.innerHeight / 100 * 2 * viewZoom)),
+                            "simX": 0,
+                            "simY": 0,
+                            "width": 6,
+                            "input": null,
+                            "color": "var(--purple)",
+                            "textcolor": "var(--text1)",
+                            "selectedCol": 0,
                         };
 
                         nodeData[event.dataTransfer.getData("nodeType")].push(newObj);
@@ -945,11 +982,70 @@
             {/if}
         {/each}
 
+        {#each nodeData.batchInput as node, index}
+            {#if node}
+                <BatchInputNode
+                    onDrag={(event) => initNodeDrag(event, "batchInput", index)}
+                    onDelete={() => {deleteNode("batchInput", index)}}
+
+                    posX={node.posX}
+                    posY={node.posY}
+                    offX={(viewX + mouseDrag.delta.x) / window.innerHeight * 50}
+                    offY={(viewY + mouseDrag.delta.y) / window.innerHeight * 50}
+                    simX={node.simX}
+                    simY={node.simY}
+                    zoom={viewZoom}
+
+                    outputID={node.outputID}
+
+                    nodeData={node}
+                    context={context}
+
+                    tableRef={tableRef}
+                    tableData={tableData}
+
+                    onInitConnect={initSimConnection}
+                    onConnectDrop={terminateSimConnection}
+
+                    connectionCallback={addConnection}
+                />
+            {/if}
+        {/each}
+
         {#each nodeData.output as node, index}
             {#if node}
                 <OutputNode
                     onDrag={(event) => initNodeDrag(event, "output", index)}
                     onDelete={() => {deleteNode("output", index)}}
+
+                    posX={node.posX}
+                    posY={node.posY}
+                    offX={(viewX + mouseDrag.delta.x) / window.innerHeight * 50}
+                    offY={(viewY + mouseDrag.delta.y) / window.innerHeight * 50}
+                    simX={node.simX}
+                    simY={node.simY}
+                    zoom={viewZoom}
+
+                    nodeData={node}
+                    context={context}
+
+                    tableData={tableData}
+
+                    connectionCallback={(node, output, index, removeOld) => {
+                        addConnection(node, output, index);
+                        if (removeOld) recalculateConnections();
+                    }}
+
+                    bind:process={outputProcessCallbacks[index]}
+                />
+            {/if}
+        {/each}
+
+        {#each nodeData.batchOutput as node, index}
+            {#if node}
+                <BatchOutputNode
+                    onDrag={(event) => initNodeDrag(event, "batchOutput", index)}
+                    onDelete={() => {deleteNode("batchOutput", index)}}
 
                     posX={node.posX}
                     posY={node.posY}
@@ -1154,6 +1250,18 @@
             <NodePickerSlot
                 id="Put"
                 type="output"
+                color="var(--purple)"
+            />
+
+            <NodePickerSlot
+                id="Grab Batch"
+                type="batchInput"
+                color="var(--red)"
+            />
+
+            <NodePickerSlot
+                id="Put Batch"
+                type="batchOutput"
                 color="var(--purple)"
             />
 
