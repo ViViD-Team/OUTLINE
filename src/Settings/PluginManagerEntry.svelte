@@ -15,8 +15,39 @@
         ipcRenderer.sendSync("setPluginActiveState", {"pluginID": pluginID, "state": enabled});
     }
 
-    function uninstall() {
-        ipcRenderer.sendSync("uninstallPlugin", {"pluginID": pluginID});
+    async function uninstall() {
+        const promise = new Promise((resolve, reject) => {
+            document.dispatchEvent(new CustomEvent("pushModal", {
+                detail: {
+                    "title": "Are you sure?",
+                    "description": `Would you really like to uninstall ${data.name}?`,
+                    "actions": [
+                        {
+                            "label": "Yes",
+                            "emphasized": false,
+                            "action": () => {
+                                resolve();
+                            }
+                        },
+                        {
+                            "label": "No",
+                            "emphasized": true,
+                            "action": () => {
+                                reject();
+                            }
+                        }
+                    ]
+                }
+            }))
+        });
+
+        promise.then(() => {
+            ipcRenderer.sendSync("uninstallPlugin", {"pluginID": pluginID});
+        });
+
+        promise.catch(() => {
+            
+        })
     }
 
     let iconContainer;

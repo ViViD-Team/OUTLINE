@@ -62,6 +62,9 @@ var app = (function () {
     function null_to_empty(value) {
         return value == null ? '' : value;
     }
+    function action_destroyer(action_result) {
+        return action_result && is_function(action_result.destroy) ? action_result.destroy : noop;
+    }
 
     function append(target, node) {
         target.appendChild(node);
@@ -29248,51 +29251,51 @@ var app = (function () {
     			svg = svg_element("svg");
     			path_1 = svg_element("path");
     			attr_dev(div0, "class", "iconContainer svelte-1kgrq60");
-    			add_location(div0, file$u, 38, 4, 1017);
+    			add_location(div0, file$u, 69, 4, 2066);
     			attr_dev(h1, "class", "svelte-1kgrq60");
-    			add_location(h1, file$u, 43, 12, 1181);
+    			add_location(h1, file$u, 74, 12, 2230);
     			attr_dev(div1, "class", "detailsStrip titleStrip svelte-1kgrq60");
-    			add_location(div1, file$u, 42, 8, 1130);
+    			add_location(div1, file$u, 73, 8, 2179);
     			attr_dev(p, "class", "svelte-1kgrq60");
-    			add_location(p, file$u, 46, 12, 1284);
+    			add_location(p, file$u, 77, 12, 2333);
     			attr_dev(div2, "class", "detailsStrip descriptionStrip svelte-1kgrq60");
-    			add_location(div2, file$u, 45, 8, 1227);
+    			add_location(div2, file$u, 76, 8, 2276);
     			attr_dev(h20, "class", "svelte-1kgrq60");
-    			add_location(h20, file$u, 49, 12, 1385);
+    			add_location(h20, file$u, 80, 12, 2434);
     			attr_dev(div3, "class", "dot svelte-1kgrq60");
-    			add_location(div3, file$u, 50, 12, 1421);
+    			add_location(div3, file$u, 81, 12, 2470);
     			attr_dev(h21, "class", "svelte-1kgrq60");
-    			add_location(h21, file$u, 51, 12, 1458);
+    			add_location(h21, file$u, 82, 12, 2507);
     			attr_dev(div4, "class", "detailsStrip infoStrip svelte-1kgrq60");
-    			add_location(div4, file$u, 48, 8, 1335);
+    			add_location(div4, file$u, 79, 8, 2384);
     			attr_dev(div5, "class", "detailsContainer svelte-1kgrq60");
-    			add_location(div5, file$u, 41, 4, 1090);
+    			add_location(div5, file$u, 72, 4, 2139);
     			set_style(div6, "margin-left", (/*enabled*/ ctx[1] ? "3.25" : ".25") + "vh");
     			set_style(div6, "background-color", /*enabled*/ ctx[1] ? "var(--white)" : "var(--mainbg)");
     			attr_dev(div6, "class", "toggleHandle svelte-1kgrq60");
-    			add_location(div6, file$u, 62, 16, 1900);
+    			add_location(div6, file$u, 93, 16, 2949);
 
     			attr_dev(div7, "style", div7_style_value = "\r\n                background-color: " + (/*enabled*/ ctx[1] ? "var(--red)" : "var(--text1)") + ";\r\n                opacity: " + (/*enabled*/ ctx[1] ? "1" : ".5") + ";\r\n                " + (/*enabled*/ ctx[1] || true
     			? ""
     			: "filter: brightness(.5) saturate(.5);") + "\r\n            ");
 
     			attr_dev(div7, "class", "toggleRail svelte-1kgrq60");
-    			add_location(div7, file$u, 56, 12, 1624);
+    			add_location(div7, file$u, 87, 12, 2673);
     			attr_dev(div8, "class", "toggle svelte-1kgrq60");
-    			add_location(div8, file$u, 55, 8, 1560);
+    			add_location(div8, file$u, 86, 8, 2609);
     			attr_dev(div9, "class", "activeToggleContainer svelte-1kgrq60");
-    			add_location(div9, file$u, 54, 4, 1515);
+    			add_location(div9, file$u, 85, 4, 2564);
     			attr_dev(path_1, "d", "M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z");
     			attr_dev(path_1, "class", "svelte-1kgrq60");
-    			add_location(path_1, file$u, 73, 12, 2486);
+    			add_location(path_1, file$u, 104, 12, 3535);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 448 512");
     			attr_dev(svg, "class", "svelte-1kgrq60");
-    			add_location(svg, file$u, 71, 8, 2224);
+    			add_location(svg, file$u, 102, 8, 3273);
     			attr_dev(div10, "class", "uninstallButtonContainer svelte-1kgrq60");
-    			add_location(div10, file$u, 70, 4, 2176);
+    			add_location(div10, file$u, 101, 4, 3225);
     			attr_dev(main, "class", "svelte-1kgrq60");
-    			add_location(main, file$u, 37, 0, 1005);
+    			add_location(main, file$u, 68, 0, 2054);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -29387,8 +29390,40 @@ var app = (function () {
     		ipcRenderer.sendSync("setPluginActiveState", { pluginID, "state": enabled });
     	}
 
-    	function uninstall() {
-    		ipcRenderer.sendSync("uninstallPlugin", { pluginID });
+    	async function uninstall() {
+    		const promise = new Promise((resolve, reject) => {
+    				document.dispatchEvent(new CustomEvent("pushModal",
+    				{
+    						detail: {
+    							"title": "Are you sure?",
+    							"description": `Would you really like to uninstall ${data.name}?`,
+    							"actions": [
+    								{
+    									"label": "Yes",
+    									"emphasized": false,
+    									"action": () => {
+    										resolve();
+    									}
+    								},
+    								{
+    									"label": "No",
+    									"emphasized": true,
+    									"action": () => {
+    										reject();
+    									}
+    								}
+    							]
+    						}
+    					}));
+    			});
+
+    		promise.then(() => {
+    			ipcRenderer.sendSync("uninstallPlugin", { pluginID });
+    		});
+
+    		promise.catch(() => {
+    			
+    		});
     	}
 
     	let iconContainer;
@@ -29431,6 +29466,9 @@ var app = (function () {
     		uninstall,
     		iconContainer,
     		require,
+    		Promise,
+    		document,
+    		CustomEvent,
     		String
     	});
 
@@ -32033,26 +32071,324 @@ var app = (function () {
     	}
     }
 
-    /* src\App.svelte generated by Svelte v3.19.1 */
-    const file$A = "src\\App.svelte";
+    /* src\Modal.svelte generated by Svelte v3.19.1 */
+    const file$A = "src\\Modal.svelte";
 
     function get_each_context$c(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[44] = list[i];
-    	child_ctx[46] = i;
+    	child_ctx[3] = list[i];
     	return child_ctx;
     }
 
-    // (266:1) {#if settingsShown}
+    // (17:12) {#each data.actions as action}
+    function create_each_block$c(ctx) {
+    	let button;
+    	let t0_value = /*action*/ ctx[3].label + "";
+    	let t0;
+    	let t1;
+    	let button_class_value;
+    	let dispose;
+
+    	function click_handler(...args) {
+    		return /*click_handler*/ ctx[2](/*action*/ ctx[3], ...args);
+    	}
+
+    	const block = {
+    		c: function create() {
+    			button = element("button");
+    			t0 = text(t0_value);
+    			t1 = space();
+    			attr_dev(button, "class", button_class_value = "" + (null_to_empty(/*action*/ ctx[3].emphasized ? "emphasized" : "") + " svelte-j9oplw"));
+    			add_location(button, file$A, 17, 16, 343);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, button, anchor);
+    			append_dev(button, t0);
+    			append_dev(button, t1);
+    			dispose = listen_dev(button, "click", click_handler, false, false, false);
+    		},
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+    			if (dirty & /*data*/ 1 && t0_value !== (t0_value = /*action*/ ctx[3].label + "")) set_data_dev(t0, t0_value);
+
+    			if (dirty & /*data*/ 1 && button_class_value !== (button_class_value = "" + (null_to_empty(/*action*/ ctx[3].emphasized ? "emphasized" : "") + " svelte-j9oplw"))) {
+    				attr_dev(button, "class", button_class_value);
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(button);
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block$c.name,
+    		type: "each",
+    		source: "(17:12) {#each data.actions as action}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$A(ctx) {
+    	let main;
+    	let div1;
+    	let h1;
+    	let t0_value = /*data*/ ctx[0].title + "";
+    	let t0;
+    	let t1;
+    	let p;
+    	let t2_value = /*data*/ ctx[0].description + "";
+    	let t2;
+    	let t3;
+    	let div0;
+    	let each_value = /*data*/ ctx[0].actions;
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block$c(get_each_context$c(ctx, each_value, i));
+    	}
+
+    	const block = {
+    		c: function create() {
+    			main = element("main");
+    			div1 = element("div");
+    			h1 = element("h1");
+    			t0 = text(t0_value);
+    			t1 = space();
+    			p = element("p");
+    			t2 = text(t2_value);
+    			t3 = space();
+    			div0 = element("div");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			attr_dev(h1, "class", "svelte-j9oplw");
+    			add_location(h1, file$A, 11, 8, 170);
+    			attr_dev(p, "class", "svelte-j9oplw");
+    			add_location(p, file$A, 12, 8, 201);
+    			attr_dev(div0, "class", "actions svelte-j9oplw");
+    			add_location(div0, file$A, 15, 8, 260);
+    			attr_dev(div1, "class", "modal svelte-j9oplw");
+    			add_location(div1, file$A, 10, 4, 141);
+    			attr_dev(main, "class", "svelte-j9oplw");
+    			add_location(main, file$A, 9, 0, 129);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, main, anchor);
+    			append_dev(main, div1);
+    			append_dev(div1, h1);
+    			append_dev(h1, t0);
+    			append_dev(div1, t1);
+    			append_dev(div1, p);
+    			append_dev(p, t2);
+    			append_dev(div1, t3);
+    			append_dev(div1, div0);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(div0, null);
+    			}
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*data*/ 1 && t0_value !== (t0_value = /*data*/ ctx[0].title + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*data*/ 1 && t2_value !== (t2_value = /*data*/ ctx[0].description + "")) set_data_dev(t2, t2_value);
+
+    			if (dirty & /*data, pop*/ 3) {
+    				each_value = /*data*/ ctx[0].actions;
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context$c(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks[i] = create_each_block$c(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(div0, null);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+
+    				each_blocks.length = each_value.length;
+    			}
+    		},
+    		i: noop,
+    		o: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(main);
+    			destroy_each(each_blocks, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$A.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$A($$self, $$props, $$invalidate) {
+    	let { data } = $$props;
+    	let { pop } = $$props;
+    	const writable_props = ["data", "pop"];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Modal> was created with unknown prop '${key}'`);
+    	});
+
+    	const click_handler = action => {
+    		action.action();
+    		pop();
+    	};
+
+    	$$self.$set = $$props => {
+    		if ("data" in $$props) $$invalidate(0, data = $$props.data);
+    		if ("pop" in $$props) $$invalidate(1, pop = $$props.pop);
+    	};
+
+    	$$self.$capture_state = () => ({ action_destroyer, data, pop });
+
+    	$$self.$inject_state = $$props => {
+    		if ("data" in $$props) $$invalidate(0, data = $$props.data);
+    		if ("pop" in $$props) $$invalidate(1, pop = $$props.pop);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [data, pop, click_handler];
+    }
+
+    class Modal extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$A, create_fragment$A, safe_not_equal, { data: 0, pop: 1 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "Modal",
+    			options,
+    			id: create_fragment$A.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*data*/ ctx[0] === undefined && !("data" in props)) {
+    			console.warn("<Modal> was created without expected prop 'data'");
+    		}
+
+    		if (/*pop*/ ctx[1] === undefined && !("pop" in props)) {
+    			console.warn("<Modal> was created without expected prop 'pop'");
+    		}
+    	}
+
+    	get data() {
+    		throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set data(value) {
+    		throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get pop() {
+    		throw new Error("<Modal>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set pop(value) {
+    		throw new Error("<Modal>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src\App.svelte generated by Svelte v3.19.1 */
+    const file$B = "src\\App.svelte";
+
+    function get_each_context$d(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[46] = list[i];
+    	child_ctx[48] = i;
+    	return child_ctx;
+    }
+
+    // (302:1) {#if modals.length > 0}
+    function create_if_block_3$6(ctx) {
+    	let current;
+
+    	const modal = new Modal({
+    			props: {
+    				data: /*modals*/ ctx[5][0],
+    				pop: /*func*/ ctx[29]
+    			},
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			create_component(modal.$$.fragment);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(modal, target, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const modal_changes = {};
+    			if (dirty[0] & /*modals*/ 32) modal_changes.data = /*modals*/ ctx[5][0];
+    			if (dirty[0] & /*modals*/ 32) modal_changes.pop = /*func*/ ctx[29];
+    			modal.$set(modal_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(modal.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(modal.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(modal, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_3$6.name,
+    		type: "if",
+    		source: "(302:1) {#if modals.length > 0}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (312:1) {#if settingsShown}
     function create_if_block_2$7(ctx) {
     	let updating_userSettings;
     	let current;
 
     	function settings_userSettings_binding(value) {
-    		/*settings_userSettings_binding*/ ctx[29].call(null, value);
+    		/*settings_userSettings_binding*/ ctx[31].call(null, value);
     	}
 
-    	let settings_props = { closeAction: /*func*/ ctx[28] };
+    	let settings_props = { closeAction: /*func_1*/ ctx[30] };
 
     	if (/*userSettings*/ ctx[0] !== void 0) {
     		settings_props.userSettings = /*userSettings*/ ctx[0];
@@ -32071,7 +32407,7 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const settings_changes = {};
-    			if (dirty[0] & /*settingsShown, toolkitRef*/ 520) settings_changes.closeAction = /*func*/ ctx[28];
+    			if (dirty[0] & /*settingsShown, toolkitRef*/ 1032) settings_changes.closeAction = /*func_1*/ ctx[30];
 
     			if (!updating_userSettings && dirty[0] & /*userSettings*/ 1) {
     				updating_userSettings = true;
@@ -32099,35 +32435,35 @@ var app = (function () {
     		block,
     		id: create_if_block_2$7.name,
     		type: "if",
-    		source: "(266:1) {#if settingsShown}",
+    		source: "(312:1) {#if settingsShown}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (309:3) {#if debugConsoleOpen && userSettings.devModeEnabled}
+    // (355:3) {#if debugConsoleOpen && userSettings.devModeEnabled}
     function create_if_block_1$b(ctx) {
     	let updating_projectData;
     	let updating_devPluginObjects;
     	let current;
 
     	function debugconsole_projectData_binding(value) {
-    		/*debugconsole_projectData_binding*/ ctx[39].call(null, value);
+    		/*debugconsole_projectData_binding*/ ctx[41].call(null, value);
     	}
 
     	function debugconsole_devPluginObjects_binding(value) {
-    		/*debugconsole_devPluginObjects_binding*/ ctx[40].call(null, value);
+    		/*debugconsole_devPluginObjects_binding*/ ctx[42].call(null, value);
     	}
 
     	let debugconsole_props = {};
 
-    	if (/*projectData*/ ctx[6] !== void 0) {
-    		debugconsole_props.projectData = /*projectData*/ ctx[6];
+    	if (/*projectData*/ ctx[7] !== void 0) {
+    		debugconsole_props.projectData = /*projectData*/ ctx[7];
     	}
 
-    	if (/*devPluginObjects*/ ctx[7] !== void 0) {
-    		debugconsole_props.devPluginObjects = /*devPluginObjects*/ ctx[7];
+    	if (/*devPluginObjects*/ ctx[8] !== void 0) {
+    		debugconsole_props.devPluginObjects = /*devPluginObjects*/ ctx[8];
     	}
 
     	const debugconsole = new DebugConsole({
@@ -32149,15 +32485,15 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const debugconsole_changes = {};
 
-    			if (!updating_projectData && dirty[0] & /*projectData*/ 64) {
+    			if (!updating_projectData && dirty[0] & /*projectData*/ 128) {
     				updating_projectData = true;
-    				debugconsole_changes.projectData = /*projectData*/ ctx[6];
+    				debugconsole_changes.projectData = /*projectData*/ ctx[7];
     				add_flush_callback(() => updating_projectData = false);
     			}
 
-    			if (!updating_devPluginObjects && dirty[0] & /*devPluginObjects*/ 128) {
+    			if (!updating_devPluginObjects && dirty[0] & /*devPluginObjects*/ 256) {
     				updating_devPluginObjects = true;
-    				debugconsole_changes.devPluginObjects = /*devPluginObjects*/ ctx[7];
+    				debugconsole_changes.devPluginObjects = /*devPluginObjects*/ ctx[8];
     				add_flush_callback(() => updating_devPluginObjects = false);
     			}
 
@@ -32181,40 +32517,40 @@ var app = (function () {
     		block,
     		id: create_if_block_1$b.name,
     		type: "if",
-    		source: "(309:3) {#if debugConsoleOpen && userSettings.devModeEnabled}",
+    		source: "(355:3) {#if debugConsoleOpen && userSettings.devModeEnabled}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (316:2) {#if edited != null}
+    // (362:2) {#if edited != null}
     function create_if_block$d(ctx) {
     	let updating_resultWidgets;
     	let updating_invokeOutputs;
     	let current;
 
     	function nodeeditor_resultWidgets_binding(value) {
-    		/*nodeeditor_resultWidgets_binding*/ ctx[41].call(null, value);
+    		/*nodeeditor_resultWidgets_binding*/ ctx[43].call(null, value);
     	}
 
     	function nodeeditor_invokeOutputs_binding(value) {
-    		/*nodeeditor_invokeOutputs_binding*/ ctx[42].call(null, value);
+    		/*nodeeditor_invokeOutputs_binding*/ ctx[44].call(null, value);
     	}
 
     	let nodeeditor_props = {
-    		nodeData: /*projectData*/ ctx[6].objects["table"][/*edited*/ ctx[8]].nodes,
-    		tableRef: /*projectData*/ ctx[6].objects["table"][/*edited*/ ctx[8]].reference,
-    		tableData: /*projectData*/ ctx[6].objects["table"][/*edited*/ ctx[8]],
+    		nodeData: /*projectData*/ ctx[7].objects["table"][/*edited*/ ctx[9]].nodes,
+    		tableRef: /*projectData*/ ctx[7].objects["table"][/*edited*/ ctx[9]].reference,
+    		tableData: /*projectData*/ ctx[7].objects["table"][/*edited*/ ctx[9]],
     		userSettings: /*userSettings*/ ctx[0]
     	};
 
-    	if (/*projectData*/ ctx[6].objects.result !== void 0) {
-    		nodeeditor_props.resultWidgets = /*projectData*/ ctx[6].objects.result;
+    	if (/*projectData*/ ctx[7].objects.result !== void 0) {
+    		nodeeditor_props.resultWidgets = /*projectData*/ ctx[7].objects.result;
     	}
 
-    	if (/*invokeProcessCallback*/ ctx[5] !== void 0) {
-    		nodeeditor_props.invokeOutputs = /*invokeProcessCallback*/ ctx[5];
+    	if (/*invokeProcessCallback*/ ctx[6] !== void 0) {
+    		nodeeditor_props.invokeOutputs = /*invokeProcessCallback*/ ctx[6];
     	}
 
     	const nodeeditor = new NodeEditor({ props: nodeeditor_props, $$inline: true });
@@ -32231,20 +32567,20 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const nodeeditor_changes = {};
-    			if (dirty[0] & /*projectData, edited*/ 320) nodeeditor_changes.nodeData = /*projectData*/ ctx[6].objects["table"][/*edited*/ ctx[8]].nodes;
-    			if (dirty[0] & /*projectData, edited*/ 320) nodeeditor_changes.tableRef = /*projectData*/ ctx[6].objects["table"][/*edited*/ ctx[8]].reference;
-    			if (dirty[0] & /*projectData, edited*/ 320) nodeeditor_changes.tableData = /*projectData*/ ctx[6].objects["table"][/*edited*/ ctx[8]];
+    			if (dirty[0] & /*projectData, edited*/ 640) nodeeditor_changes.nodeData = /*projectData*/ ctx[7].objects["table"][/*edited*/ ctx[9]].nodes;
+    			if (dirty[0] & /*projectData, edited*/ 640) nodeeditor_changes.tableRef = /*projectData*/ ctx[7].objects["table"][/*edited*/ ctx[9]].reference;
+    			if (dirty[0] & /*projectData, edited*/ 640) nodeeditor_changes.tableData = /*projectData*/ ctx[7].objects["table"][/*edited*/ ctx[9]];
     			if (dirty[0] & /*userSettings*/ 1) nodeeditor_changes.userSettings = /*userSettings*/ ctx[0];
 
-    			if (!updating_resultWidgets && dirty[0] & /*projectData*/ 64) {
+    			if (!updating_resultWidgets && dirty[0] & /*projectData*/ 128) {
     				updating_resultWidgets = true;
-    				nodeeditor_changes.resultWidgets = /*projectData*/ ctx[6].objects.result;
+    				nodeeditor_changes.resultWidgets = /*projectData*/ ctx[7].objects.result;
     				add_flush_callback(() => updating_resultWidgets = false);
     			}
 
-    			if (!updating_invokeOutputs && dirty[0] & /*invokeProcessCallback*/ 32) {
+    			if (!updating_invokeOutputs && dirty[0] & /*invokeProcessCallback*/ 64) {
     				updating_invokeOutputs = true;
-    				nodeeditor_changes.invokeOutputs = /*invokeProcessCallback*/ ctx[5];
+    				nodeeditor_changes.invokeOutputs = /*invokeProcessCallback*/ ctx[6];
     				add_flush_callback(() => updating_invokeOutputs = false);
     			}
 
@@ -32268,26 +32604,26 @@ var app = (function () {
     		block,
     		id: create_if_block$d.name,
     		type: "if",
-    		source: "(316:2) {#if edited != null}",
+    		source: "(362:2) {#if edited != null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (331:2) {#each notifications as n, index}
-    function create_each_block$c(ctx) {
+    // (377:2) {#each notifications as n, index}
+    function create_each_block$d(ctx) {
     	let current;
 
-    	function func_3(...args) {
-    		return /*func_3*/ ctx[43](/*index*/ ctx[46], ...args);
+    	function func_4(...args) {
+    		return /*func_4*/ ctx[45](/*index*/ ctx[48], ...args);
     	}
 
     	const notificationcard = new NotificationCard({
     			props: {
-    				type: /*n*/ ctx[44].type,
-    				message: /*n*/ ctx[44].message,
-    				onClose: func_3
+    				type: /*n*/ ctx[46].type,
+    				message: /*n*/ ctx[46].message,
+    				onClose: func_4
     			},
     			$$inline: true
     		});
@@ -32303,8 +32639,8 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
     			const notificationcard_changes = {};
-    			if (dirty[0] & /*notifications*/ 16) notificationcard_changes.type = /*n*/ ctx[44].type;
-    			if (dirty[0] & /*notifications*/ 16) notificationcard_changes.message = /*n*/ ctx[44].message;
+    			if (dirty[0] & /*notifications*/ 16) notificationcard_changes.type = /*n*/ ctx[46].type;
+    			if (dirty[0] & /*notifications*/ 16) notificationcard_changes.message = /*n*/ ctx[46].message;
     			notificationcard.$set(notificationcard_changes);
     		},
     		i: function intro(local) {
@@ -32323,53 +32659,55 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block$c.name,
+    		id: create_each_block$d.name,
     		type: "each",
-    		source: "(331:2) {#each notifications as n, index}",
+    		source: "(377:2) {#each notifications as n, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    function create_fragment$A(ctx) {
+    function create_fragment$B(ctx) {
     	let main;
     	let t0;
-    	let div1;
     	let t1;
+    	let div1;
+    	let t2;
     	let div0;
     	let updating_userSettings;
-    	let t2;
+    	let t3;
     	let updating_projectData;
     	let updating_userSettings_1;
     	let updating_edited;
     	let updating_devPluginObjects;
-    	let t3;
     	let t4;
     	let t5;
+    	let t6;
     	let div2;
     	let main_class_value;
     	let current;
-    	let if_block0 = /*settingsShown*/ ctx[9] && create_if_block_2$7(ctx);
+    	let if_block0 = /*modals*/ ctx[5].length > 0 && create_if_block_3$6(ctx);
+    	let if_block1 = /*settingsShown*/ ctx[10] && create_if_block_2$7(ctx);
 
     	const topbar = new TopBar({
     			props: {
     				userSettings: /*userSettings*/ ctx[0],
-    				toggleDebugConsole: /*func_1*/ ctx[30],
-    				centerView: /*centerViewport*/ ctx[12],
-    				resetZoom: /*resetZoom*/ ctx[13],
-    				refreshDevPlugins: /*refreshDevPlugins*/ ctx[14],
-    				newFile: /*newFile*/ ctx[16],
-    				open: /*open*/ ctx[17],
-    				save: /*save*/ ctx[18],
-    				saveAs: /*saveAs*/ ctx[19],
-    				settingsAction: /*func_2*/ ctx[31]
+    				toggleDebugConsole: /*func_2*/ ctx[32],
+    				centerView: /*centerViewport*/ ctx[13],
+    				resetZoom: /*resetZoom*/ ctx[14],
+    				refreshDevPlugins: /*refreshDevPlugins*/ ctx[15],
+    				newFile: /*newFile*/ ctx[17],
+    				open: /*open*/ ctx[18],
+    				save: /*save*/ ctx[19],
+    				saveAs: /*saveAs*/ ctx[20],
+    				settingsAction: /*func_3*/ ctx[33]
     			},
     			$$inline: true
     		});
 
     	function toolkit_userSettings_binding(value) {
-    		/*toolkit_userSettings_binding*/ ctx[32].call(null, value);
+    		/*toolkit_userSettings_binding*/ ctx[34].call(null, value);
     	}
 
     	let toolkit_props = {};
@@ -32380,58 +32718,58 @@ var app = (function () {
 
     	const toolkit = new Toolkit({ props: toolkit_props, $$inline: true });
     	binding_callbacks.push(() => bind(toolkit, "userSettings", toolkit_userSettings_binding));
-    	/*toolkit_binding*/ ctx[33](toolkit);
+    	/*toolkit_binding*/ ctx[35](toolkit);
 
     	function viewport_projectData_binding(value) {
-    		/*viewport_projectData_binding*/ ctx[35].call(null, value);
+    		/*viewport_projectData_binding*/ ctx[37].call(null, value);
     	}
 
     	function viewport_userSettings_binding(value) {
-    		/*viewport_userSettings_binding*/ ctx[36].call(null, value);
+    		/*viewport_userSettings_binding*/ ctx[38].call(null, value);
     	}
 
     	function viewport_edited_binding(value) {
-    		/*viewport_edited_binding*/ ctx[37].call(null, value);
+    		/*viewport_edited_binding*/ ctx[39].call(null, value);
     	}
 
     	function viewport_devPluginObjects_binding(value) {
-    		/*viewport_devPluginObjects_binding*/ ctx[38].call(null, value);
+    		/*viewport_devPluginObjects_binding*/ ctx[40].call(null, value);
     	}
 
     	let viewport_props = {
-    		invokeTableProcess: /*invokeProcessCallback*/ ctx[5]
+    		invokeTableProcess: /*invokeProcessCallback*/ ctx[6]
     	};
 
-    	if (/*projectData*/ ctx[6] !== void 0) {
-    		viewport_props.projectData = /*projectData*/ ctx[6];
+    	if (/*projectData*/ ctx[7] !== void 0) {
+    		viewport_props.projectData = /*projectData*/ ctx[7];
     	}
 
     	if (/*userSettings*/ ctx[0] !== void 0) {
     		viewport_props.userSettings = /*userSettings*/ ctx[0];
     	}
 
-    	if (/*edited*/ ctx[8] !== void 0) {
-    		viewport_props.edited = /*edited*/ ctx[8];
+    	if (/*edited*/ ctx[9] !== void 0) {
+    		viewport_props.edited = /*edited*/ ctx[9];
     	}
 
-    	if (/*devPluginObjects*/ ctx[7] !== void 0) {
-    		viewport_props.devPluginObjects = /*devPluginObjects*/ ctx[7];
+    	if (/*devPluginObjects*/ ctx[8] !== void 0) {
+    		viewport_props.devPluginObjects = /*devPluginObjects*/ ctx[8];
     	}
 
     	const viewport = new Viewport({ props: viewport_props, $$inline: true });
-    	/*viewport_binding*/ ctx[34](viewport);
+    	/*viewport_binding*/ ctx[36](viewport);
     	binding_callbacks.push(() => bind(viewport, "projectData", viewport_projectData_binding));
     	binding_callbacks.push(() => bind(viewport, "userSettings", viewport_userSettings_binding));
     	binding_callbacks.push(() => bind(viewport, "edited", viewport_edited_binding));
     	binding_callbacks.push(() => bind(viewport, "devPluginObjects", viewport_devPluginObjects_binding));
-    	let if_block1 = /*debugConsoleOpen*/ ctx[1] && /*userSettings*/ ctx[0].devModeEnabled && create_if_block_1$b(ctx);
-    	let if_block2 = /*edited*/ ctx[8] != null && create_if_block$d(ctx);
+    	let if_block2 = /*debugConsoleOpen*/ ctx[1] && /*userSettings*/ ctx[0].devModeEnabled && create_if_block_1$b(ctx);
+    	let if_block3 = /*edited*/ ctx[9] != null && create_if_block$d(ctx);
     	let each_value = /*notifications*/ ctx[4];
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
     	for (let i = 0; i < each_value.length; i += 1) {
-    		each_blocks[i] = create_each_block$c(get_each_context$c(ctx, each_value, i));
+    		each_blocks[i] = create_each_block$d(get_each_context$d(ctx, each_value, i));
     	}
 
     	const out = i => transition_out(each_blocks[i], 1, 1, () => {
@@ -32443,18 +32781,20 @@ var app = (function () {
     			main = element("main");
     			if (if_block0) if_block0.c();
     			t0 = space();
+    			if (if_block1) if_block1.c();
+    			t1 = space();
     			div1 = element("div");
     			create_component(topbar.$$.fragment);
-    			t1 = space();
+    			t2 = space();
     			div0 = element("div");
     			create_component(toolkit.$$.fragment);
-    			t2 = space();
-    			create_component(viewport.$$.fragment);
     			t3 = space();
-    			if (if_block1) if_block1.c();
+    			create_component(viewport.$$.fragment);
     			t4 = space();
     			if (if_block2) if_block2.c();
     			t5 = space();
+    			if (if_block3) if_block3.c();
+    			t6 = space();
     			div2 = element("div");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -32462,17 +32802,17 @@ var app = (function () {
     			}
 
     			attr_dev(div0, "class", "centerRow svelte-v7hjp0");
-    			add_location(div0, file$A, 292, 2, 7371);
+    			add_location(div0, file$B, 338, 2, 8148);
     			attr_dev(div1, "class", "mainLayout svelte-v7hjp0");
-    			add_location(div1, file$A, 276, 1, 6994);
+    			add_location(div1, file$B, 322, 1, 7771);
     			attr_dev(div2, "class", "notificationsContainer svelte-v7hjp0");
-    			add_location(div2, file$A, 329, 1, 8303);
+    			add_location(div2, file$B, 375, 1, 9080);
 
-    			attr_dev(main, "class", main_class_value = "\r\n\t" + (/*userSettings*/ ctx[0].theme == 1 || /*userSettings*/ ctx[0].theme == 2 && /*ipcRenderer*/ ctx[10].sendSync("sysDarkmode")
+    			attr_dev(main, "class", main_class_value = "\r\n\t" + (/*userSettings*/ ctx[0].theme == 1 || /*userSettings*/ ctx[0].theme == 2 && /*ipcRenderer*/ ctx[11].sendSync("sysDarkmode")
     			? "darkmode"
     			: "") + "\r\n" + " svelte-v7hjp0");
 
-    			add_location(main, file$A, 259, 0, 6607);
+    			add_location(main, file$B, 294, 0, 7227);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -32481,18 +32821,20 @@ var app = (function () {
     			insert_dev(target, main, anchor);
     			if (if_block0) if_block0.m(main, null);
     			append_dev(main, t0);
+    			if (if_block1) if_block1.m(main, null);
+    			append_dev(main, t1);
     			append_dev(main, div1);
     			mount_component(topbar, div1, null);
-    			append_dev(div1, t1);
+    			append_dev(div1, t2);
     			append_dev(div1, div0);
     			mount_component(toolkit, div0, null);
-    			append_dev(div0, t2);
-    			mount_component(viewport, div0, null);
     			append_dev(div0, t3);
-    			if (if_block1) if_block1.m(div0, null);
-    			append_dev(div1, t4);
-    			if (if_block2) if_block2.m(div1, null);
-    			append_dev(main, t5);
+    			mount_component(viewport, div0, null);
+    			append_dev(div0, t4);
+    			if (if_block2) if_block2.m(div0, null);
+    			append_dev(div1, t5);
+    			if (if_block3) if_block3.m(div1, null);
+    			append_dev(main, t6);
     			append_dev(main, div2);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -32502,12 +32844,12 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (/*settingsShown*/ ctx[9]) {
+    			if (/*modals*/ ctx[5].length > 0) {
     				if (if_block0) {
     					if_block0.p(ctx, dirty);
     					transition_in(if_block0, 1);
     				} else {
-    					if_block0 = create_if_block_2$7(ctx);
+    					if_block0 = create_if_block_3$6(ctx);
     					if_block0.c();
     					transition_in(if_block0, 1);
     					if_block0.m(main, t0);
@@ -32522,58 +32864,15 @@ var app = (function () {
     				check_outros();
     			}
 
-    			const topbar_changes = {};
-    			if (dirty[0] & /*userSettings*/ 1) topbar_changes.userSettings = /*userSettings*/ ctx[0];
-    			if (dirty[0] & /*debugConsoleOpen*/ 2) topbar_changes.toggleDebugConsole = /*func_1*/ ctx[30];
-    			if (dirty[0] & /*settingsShown*/ 512) topbar_changes.settingsAction = /*func_2*/ ctx[31];
-    			topbar.$set(topbar_changes);
-    			const toolkit_changes = {};
-
-    			if (!updating_userSettings && dirty[0] & /*userSettings*/ 1) {
-    				updating_userSettings = true;
-    				toolkit_changes.userSettings = /*userSettings*/ ctx[0];
-    				add_flush_callback(() => updating_userSettings = false);
-    			}
-
-    			toolkit.$set(toolkit_changes);
-    			const viewport_changes = {};
-    			if (dirty[0] & /*invokeProcessCallback*/ 32) viewport_changes.invokeTableProcess = /*invokeProcessCallback*/ ctx[5];
-
-    			if (!updating_projectData && dirty[0] & /*projectData*/ 64) {
-    				updating_projectData = true;
-    				viewport_changes.projectData = /*projectData*/ ctx[6];
-    				add_flush_callback(() => updating_projectData = false);
-    			}
-
-    			if (!updating_userSettings_1 && dirty[0] & /*userSettings*/ 1) {
-    				updating_userSettings_1 = true;
-    				viewport_changes.userSettings = /*userSettings*/ ctx[0];
-    				add_flush_callback(() => updating_userSettings_1 = false);
-    			}
-
-    			if (!updating_edited && dirty[0] & /*edited*/ 256) {
-    				updating_edited = true;
-    				viewport_changes.edited = /*edited*/ ctx[8];
-    				add_flush_callback(() => updating_edited = false);
-    			}
-
-    			if (!updating_devPluginObjects && dirty[0] & /*devPluginObjects*/ 128) {
-    				updating_devPluginObjects = true;
-    				viewport_changes.devPluginObjects = /*devPluginObjects*/ ctx[7];
-    				add_flush_callback(() => updating_devPluginObjects = false);
-    			}
-
-    			viewport.$set(viewport_changes);
-
-    			if (/*debugConsoleOpen*/ ctx[1] && /*userSettings*/ ctx[0].devModeEnabled) {
+    			if (/*settingsShown*/ ctx[10]) {
     				if (if_block1) {
     					if_block1.p(ctx, dirty);
     					transition_in(if_block1, 1);
     				} else {
-    					if_block1 = create_if_block_1$b(ctx);
+    					if_block1 = create_if_block_2$7(ctx);
     					if_block1.c();
     					transition_in(if_block1, 1);
-    					if_block1.m(div0, null);
+    					if_block1.m(main, t1);
     				}
     			} else if (if_block1) {
     				group_outros();
@@ -32585,15 +32884,58 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (/*edited*/ ctx[8] != null) {
+    			const topbar_changes = {};
+    			if (dirty[0] & /*userSettings*/ 1) topbar_changes.userSettings = /*userSettings*/ ctx[0];
+    			if (dirty[0] & /*debugConsoleOpen*/ 2) topbar_changes.toggleDebugConsole = /*func_2*/ ctx[32];
+    			if (dirty[0] & /*settingsShown*/ 1024) topbar_changes.settingsAction = /*func_3*/ ctx[33];
+    			topbar.$set(topbar_changes);
+    			const toolkit_changes = {};
+
+    			if (!updating_userSettings && dirty[0] & /*userSettings*/ 1) {
+    				updating_userSettings = true;
+    				toolkit_changes.userSettings = /*userSettings*/ ctx[0];
+    				add_flush_callback(() => updating_userSettings = false);
+    			}
+
+    			toolkit.$set(toolkit_changes);
+    			const viewport_changes = {};
+    			if (dirty[0] & /*invokeProcessCallback*/ 64) viewport_changes.invokeTableProcess = /*invokeProcessCallback*/ ctx[6];
+
+    			if (!updating_projectData && dirty[0] & /*projectData*/ 128) {
+    				updating_projectData = true;
+    				viewport_changes.projectData = /*projectData*/ ctx[7];
+    				add_flush_callback(() => updating_projectData = false);
+    			}
+
+    			if (!updating_userSettings_1 && dirty[0] & /*userSettings*/ 1) {
+    				updating_userSettings_1 = true;
+    				viewport_changes.userSettings = /*userSettings*/ ctx[0];
+    				add_flush_callback(() => updating_userSettings_1 = false);
+    			}
+
+    			if (!updating_edited && dirty[0] & /*edited*/ 512) {
+    				updating_edited = true;
+    				viewport_changes.edited = /*edited*/ ctx[9];
+    				add_flush_callback(() => updating_edited = false);
+    			}
+
+    			if (!updating_devPluginObjects && dirty[0] & /*devPluginObjects*/ 256) {
+    				updating_devPluginObjects = true;
+    				viewport_changes.devPluginObjects = /*devPluginObjects*/ ctx[8];
+    				add_flush_callback(() => updating_devPluginObjects = false);
+    			}
+
+    			viewport.$set(viewport_changes);
+
+    			if (/*debugConsoleOpen*/ ctx[1] && /*userSettings*/ ctx[0].devModeEnabled) {
     				if (if_block2) {
     					if_block2.p(ctx, dirty);
     					transition_in(if_block2, 1);
     				} else {
-    					if_block2 = create_if_block$d(ctx);
+    					if_block2 = create_if_block_1$b(ctx);
     					if_block2.c();
     					transition_in(if_block2, 1);
-    					if_block2.m(div1, null);
+    					if_block2.m(div0, null);
     				}
     			} else if (if_block2) {
     				group_outros();
@@ -32605,19 +32947,39 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (dirty[0] & /*notifications, deleteNotification*/ 32784) {
+    			if (/*edited*/ ctx[9] != null) {
+    				if (if_block3) {
+    					if_block3.p(ctx, dirty);
+    					transition_in(if_block3, 1);
+    				} else {
+    					if_block3 = create_if_block$d(ctx);
+    					if_block3.c();
+    					transition_in(if_block3, 1);
+    					if_block3.m(div1, null);
+    				}
+    			} else if (if_block3) {
+    				group_outros();
+
+    				transition_out(if_block3, 1, 1, () => {
+    					if_block3 = null;
+    				});
+
+    				check_outros();
+    			}
+
+    			if (dirty[0] & /*notifications, deleteNotification*/ 65552) {
     				each_value = /*notifications*/ ctx[4];
     				validate_each_argument(each_value);
     				let i;
 
     				for (i = 0; i < each_value.length; i += 1) {
-    					const child_ctx = get_each_context$c(ctx, each_value, i);
+    					const child_ctx = get_each_context$d(ctx, each_value, i);
 
     					if (each_blocks[i]) {
     						each_blocks[i].p(child_ctx, dirty);
     						transition_in(each_blocks[i], 1);
     					} else {
-    						each_blocks[i] = create_each_block$c(child_ctx);
+    						each_blocks[i] = create_each_block$d(child_ctx);
     						each_blocks[i].c();
     						transition_in(each_blocks[i], 1);
     						each_blocks[i].m(div2, null);
@@ -32633,7 +32995,7 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (!current || dirty[0] & /*userSettings*/ 1 && main_class_value !== (main_class_value = "\r\n\t" + (/*userSettings*/ ctx[0].theme == 1 || /*userSettings*/ ctx[0].theme == 2 && /*ipcRenderer*/ ctx[10].sendSync("sysDarkmode")
+    			if (!current || dirty[0] & /*userSettings*/ 1 && main_class_value !== (main_class_value = "\r\n\t" + (/*userSettings*/ ctx[0].theme == 1 || /*userSettings*/ ctx[0].theme == 2 && /*ipcRenderer*/ ctx[11].sendSync("sysDarkmode")
     			? "darkmode"
     			: "") + "\r\n" + " svelte-v7hjp0")) {
     				attr_dev(main, "class", main_class_value);
@@ -32642,11 +33004,12 @@ var app = (function () {
     		i: function intro(local) {
     			if (current) return;
     			transition_in(if_block0);
+    			transition_in(if_block1);
     			transition_in(topbar.$$.fragment, local);
     			transition_in(toolkit.$$.fragment, local);
     			transition_in(viewport.$$.fragment, local);
-    			transition_in(if_block1);
     			transition_in(if_block2);
+    			transition_in(if_block3);
 
     			for (let i = 0; i < each_value.length; i += 1) {
     				transition_in(each_blocks[i]);
@@ -32656,11 +33019,12 @@ var app = (function () {
     		},
     		o: function outro(local) {
     			transition_out(if_block0);
+    			transition_out(if_block1);
     			transition_out(topbar.$$.fragment, local);
     			transition_out(toolkit.$$.fragment, local);
     			transition_out(viewport.$$.fragment, local);
-    			transition_out(if_block1);
     			transition_out(if_block2);
+    			transition_out(if_block3);
     			each_blocks = each_blocks.filter(Boolean);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -32672,20 +33036,21 @@ var app = (function () {
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(main);
     			if (if_block0) if_block0.d();
-    			destroy_component(topbar);
-    			/*toolkit_binding*/ ctx[33](null);
-    			destroy_component(toolkit);
-    			/*viewport_binding*/ ctx[34](null);
-    			destroy_component(viewport);
     			if (if_block1) if_block1.d();
+    			destroy_component(topbar);
+    			/*toolkit_binding*/ ctx[35](null);
+    			destroy_component(toolkit);
+    			/*viewport_binding*/ ctx[36](null);
+    			destroy_component(viewport);
     			if (if_block2) if_block2.d();
+    			if (if_block3) if_block3.d();
     			destroy_each(each_blocks, detaching);
     		}
     	};
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_fragment$A.name,
+    		id: create_fragment$B.name,
     		type: "component",
     		source: "",
     		ctx
@@ -32694,7 +33059,7 @@ var app = (function () {
     	return block;
     }
 
-    function instance$A($$self, $$props, $$invalidate) {
+    function instance$B($$self, $$props, $$invalidate) {
     	const fs = require("fs");
     	const path = require("path");
     	const { ipcRenderer } = require("electron");
@@ -32775,6 +33140,11 @@ var app = (function () {
 
     			$$invalidate(4, notifications = Object.assign([], notifications));
     		});
+
+    		document.addEventListener("pushModal", event => {
+    			modals.push(event.detail);
+    			$$invalidate(5, modals = [...modals]);
+    		});
     	});
 
     	// Notifications
@@ -32808,6 +33178,30 @@ var app = (function () {
 
     		$$invalidate(4, notifications = Object.assign([], notifications));
     	});
+
+    	// Modals
+    	let modals = []; /* 
+    {
+    	"title": "Are you sure about that?",
+    	"description": "Description",
+    	"actions": [
+    		{
+    			"label": "Go ahead",
+    			"action": function() {
+    				console.log("Go ahead triggered");
+    			},
+    			"emphasized": false
+    		},
+    		{
+    			"label": "Oh no",
+    			"action": function() {
+    				console.log("Oh no triggered");
+    			},
+    			"emphasized": true
+    		}
+    	]
+    }
+     */
 
     	// Table and Nodes
     	let processCallback;
@@ -32862,12 +33256,12 @@ var app = (function () {
     	}
 
     	function newFile() {
-    		$$invalidate(8, edited = null);
-    		$$invalidate(6, projectData = JSON.parse(fs.readFileSync(path.join(__dirname, "../src/config/basicTemplate.json"))));
+    		$$invalidate(9, edited = null);
+    		$$invalidate(7, projectData = JSON.parse(fs.readFileSync(path.join(__dirname, "../src/config/basicTemplate.json"))));
     	}
 
     	function open() {
-    		$$invalidate(8, edited = null);
+    		$$invalidate(9, edited = null);
     		let path = ipcRenderer.sendSync("getOpenFilePath");
     		if (!path) return;
 
@@ -32876,7 +33270,7 @@ var app = (function () {
 
     		rawData = rawData.replace("<script>", "");
     		rawData = rawData.replace("</script>", "");
-    		$$invalidate(6, projectData = JSON.parse(rawData));
+    		$$invalidate(7, projectData = JSON.parse(rawData));
     		scanForMissingPlugins();
     	}
 
@@ -32886,7 +33280,7 @@ var app = (function () {
     	});
 
     	function openInstant(path) {
-    		$$invalidate(8, edited = null);
+    		$$invalidate(9, edited = null);
     		console.log(path);
     		if (!path) return;
 
@@ -32895,7 +33289,7 @@ var app = (function () {
 
     		rawData = rawData.replace("<script>", "");
     		rawData = rawData.replace("</script>", "");
-    		$$invalidate(6, projectData = JSON.parse(rawData));
+    		$$invalidate(7, projectData = JSON.parse(rawData));
     		scanForMissingPlugins();
     	}
 
@@ -32914,7 +33308,7 @@ var app = (function () {
     	function saveAs() {
     		let path = ipcRenderer.sendSync("getSaveFilePath");
     		if (!path) return;
-    		$$invalidate(6, projectData.targetFilePath = path, projectData);
+    		$$invalidate(7, projectData.targetFilePath = path, projectData);
     		let fileContents = stringifyCircularJSON(projectData);
     		fs.writeFileSync(path, fileContents);
 
@@ -32945,10 +33339,15 @@ var app = (function () {
 
     	let settingsShown = false;
 
-    	const func = () => {
+    	const func = function () {
+    		modals.splice(0, 1);
+    		$$invalidate(5, modals = [...modals]);
+    	};
+
+    	const func_1 = () => {
     		setTimeout(
     			() => {
-    				$$invalidate(9, settingsShown = false);
+    				$$invalidate(10, settingsShown = false);
     			},
     			500
     		);
@@ -32962,12 +33361,12 @@ var app = (function () {
     		$$invalidate(0, userSettings);
     	}
 
-    	const func_1 = () => {
+    	const func_2 = () => {
     		$$invalidate(1, debugConsoleOpen = !debugConsoleOpen);
     	};
 
-    	const func_2 = () => {
-    		$$invalidate(9, settingsShown = true);
+    	const func_3 = () => {
+    		$$invalidate(10, settingsShown = true);
     	};
 
     	function toolkit_userSettings_binding(value) {
@@ -32989,7 +33388,7 @@ var app = (function () {
 
     	function viewport_projectData_binding(value) {
     		projectData = value;
-    		$$invalidate(6, projectData);
+    		$$invalidate(7, projectData);
     	}
 
     	function viewport_userSettings_binding(value) {
@@ -32999,35 +33398,35 @@ var app = (function () {
 
     	function viewport_edited_binding(value) {
     		edited = value;
-    		$$invalidate(8, edited);
+    		$$invalidate(9, edited);
     	}
 
     	function viewport_devPluginObjects_binding(value) {
     		devPluginObjects = value;
-    		$$invalidate(7, devPluginObjects);
+    		$$invalidate(8, devPluginObjects);
     	}
 
     	function debugconsole_projectData_binding(value) {
     		projectData = value;
-    		$$invalidate(6, projectData);
+    		$$invalidate(7, projectData);
     	}
 
     	function debugconsole_devPluginObjects_binding(value) {
     		devPluginObjects = value;
-    		$$invalidate(7, devPluginObjects);
+    		$$invalidate(8, devPluginObjects);
     	}
 
     	function nodeeditor_resultWidgets_binding(value) {
     		projectData.objects.result = value;
-    		$$invalidate(6, projectData);
+    		$$invalidate(7, projectData);
     	}
 
     	function nodeeditor_invokeOutputs_binding(value) {
     		invokeProcessCallback = value;
-    		$$invalidate(5, invokeProcessCallback);
+    		$$invalidate(6, invokeProcessCallback);
     	}
 
-    	const func_3 = index => {
+    	const func_4 = index => {
     		deleteNotification(index);
     	};
 
@@ -33041,6 +33440,7 @@ var app = (function () {
     		NotificationCard,
     		onDestroy,
     		onMount,
+    		Modal,
     		fs,
     		path,
     		ipcRenderer,
@@ -33055,6 +33455,7 @@ var app = (function () {
     		refreshDevPlugins,
     		notifications,
     		deleteNotification,
+    		modals,
     		processCallback,
     		invokeProcessCallback,
     		projectData,
@@ -33087,11 +33488,12 @@ var app = (function () {
     		if ("viewportRef" in $$props) $$invalidate(2, viewportRef = $$props.viewportRef);
     		if ("toolkitRef" in $$props) $$invalidate(3, toolkitRef = $$props.toolkitRef);
     		if ("notifications" in $$props) $$invalidate(4, notifications = $$props.notifications);
+    		if ("modals" in $$props) $$invalidate(5, modals = $$props.modals);
     		if ("processCallback" in $$props) processCallback = $$props.processCallback;
-    		if ("projectData" in $$props) $$invalidate(6, projectData = $$props.projectData);
-    		if ("devPluginObjects" in $$props) $$invalidate(7, devPluginObjects = $$props.devPluginObjects);
-    		if ("edited" in $$props) $$invalidate(8, edited = $$props.edited);
-    		if ("settingsShown" in $$props) $$invalidate(9, settingsShown = $$props.settingsShown);
+    		if ("projectData" in $$props) $$invalidate(7, projectData = $$props.projectData);
+    		if ("devPluginObjects" in $$props) $$invalidate(8, devPluginObjects = $$props.devPluginObjects);
+    		if ("edited" in $$props) $$invalidate(9, edited = $$props.edited);
+    		if ("settingsShown" in $$props) $$invalidate(10, settingsShown = $$props.settingsShown);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -33104,6 +33506,7 @@ var app = (function () {
     		viewportRef,
     		toolkitRef,
     		notifications,
+    		modals,
     		invokeProcessCallback,
     		projectData,
     		devPluginObjects,
@@ -33128,9 +33531,10 @@ var app = (function () {
     		openInstant,
     		stringifyCircularJSON,
     		func,
-    		settings_userSettings_binding,
     		func_1,
+    		settings_userSettings_binding,
     		func_2,
+    		func_3,
     		toolkit_userSettings_binding,
     		toolkit_binding,
     		viewport_binding,
@@ -33142,20 +33546,20 @@ var app = (function () {
     		debugconsole_devPluginObjects_binding,
     		nodeeditor_resultWidgets_binding,
     		nodeeditor_invokeOutputs_binding,
-    		func_3
+    		func_4
     	];
     }
 
     class App extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$A, create_fragment$A, safe_not_equal, {}, [-1, -1]);
+    		init(this, options, instance$B, create_fragment$B, safe_not_equal, {}, [-1, -1]);
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
     			tagName: "App",
     			options,
-    			id: create_fragment$A.name
+    			id: create_fragment$B.name
     		});
     	}
     }

@@ -7,6 +7,7 @@
     import Settings from "./Settings/Settings.svelte";
 	import NotificationCard from "./NotificationCard.svelte";
     import { onDestroy, onMount } from "svelte";
+    import Modal from "./Modal.svelte";
     
 
 	const fs = require("fs");
@@ -81,13 +82,18 @@
 					notifications.splice(notifications.indexOf(this), 1);
 					notifications = Object.assign([], notifications);
 				},
-		}, event.detail);
-			notifications.push(newObj);
-			setTimeout(function() {
-				newObj.delete();
-				notifications = Object.assign([], notifications);
+			}, event.detail);
+				notifications.push(newObj);
+				setTimeout(function() {
+					newObj.delete();
+					notifications = Object.assign([], notifications);
 			}, 10000);
 			notifications = Object.assign([], notifications);
+		});
+
+		document.addEventListener("pushModal", (event) => {
+			modals.push(event.detail);
+			modals = [...modals];
 		});
 	});
 
@@ -112,7 +118,36 @@
 			notifications = Object.assign([], notifications);
 		}, 10000);
 		notifications = Object.assign([], notifications);
-	})
+	});
+
+
+	// Modals
+	let modals = [
+		/* 
+		{
+			"title": "Are you sure about that?",
+			"description": "Description",
+			"actions": [
+				{
+					"label": "Go ahead",
+					"action": function() {
+						console.log("Go ahead triggered");
+					},
+					"emphasized": false
+				},
+				{
+					"label": "Oh no",
+					"action": function() {
+						console.log("Oh no triggered");
+					},
+					"emphasized": true
+				}
+			]
+		}
+		 */
+	];
+
+
 
 
 	// Table and Nodes
@@ -263,6 +298,17 @@
 			"darkmode" : ""
 	}
 ">
+
+	{#if modals.length > 0}
+		<Modal
+			data={modals[0]}
+			pop={function() {
+				modals.splice(0, 1);
+				modals = [...modals];
+			}}
+		/>
+	{/if}
+
 	{#if settingsShown}
 		<Settings
 			closeAction={() => {
