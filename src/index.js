@@ -1,6 +1,6 @@
 const { app, BrowserWindow, ipcMain, dialog, nativeTheme, ipcRenderer} = require('electron');
 const path = require('path');
-const fs = require("fs");
+const fs = require("fs-extra");
 
 
 // Live Reload
@@ -247,6 +247,21 @@ ipcMain.on("installPlugin", (event, data) => {
 
   mainWindow.webContents.send("refreshPlugins");
 
+  event.returnValue = null;
+});
+
+ipcMain.on("uninstallPlugin", (event, data) => {
+  if (!data.pluginID in pluginsConfig) {event.returnValue = null; return;}
+
+  const dir = path.join(app_data, ".plugins", data.pluginID);
+
+  if (!fs.existsSync(dir)) {event.returnValue = null; return;}
+  fs.removeSync(dir);
+
+  delete pluginsConfig[data.pluginID];
+  fs.writeFileSync(path.join(app_data, ".plugins", "pluginsConfig.json"), JSON.stringify(pluginsConfig))
+  
+  mainWindow.webContents.send("refreshPlugins");
   event.returnValue = null;
 });
 
