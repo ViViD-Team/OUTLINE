@@ -26,7 +26,10 @@ class AtanNodeDataOutput extends NodeOutputTether {
             return new Promise(async (resolve, reject) => {
                 let a = await this.inputs[0].getValue();
     
-                resolve(Math.atan(parseFloat(a)));
+                if (!Array.isArray(a)) resolve(Math.atan(parseFloat(a)));
+                else {
+                    resolve(a.map(item => Math.atan(parseFloat(item))));
+                }
             });
         }
     }

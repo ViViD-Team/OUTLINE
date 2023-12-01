@@ -26,7 +26,10 @@ class TanNodeDataOutput extends NodeOutputTether {
             return new Promise(async (resolve, reject) => {
                 let a = await this.inputs[0].getValue();
     
-                resolve(Math.tan(parseFloat(b)));
+                if (!Array.isArray(a)) resolve(Math.tan(parseFloat(a)));
+                else {
+                    resolve(a.map(item => Math.tan(parseFloat(item))));
+                }
             });
         }
     }

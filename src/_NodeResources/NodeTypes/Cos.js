@@ -26,7 +26,10 @@ class CosNodeDataOutput extends NodeOutputTether {
             return new Promise(async (resolve, reject) => {
                 let a = await this.inputs[0].getValue();
     
-                resolve(Math.cos(parseFloat(a)));
+                if (!Array.isArray(a)) resolve(Math.cos(parseFloat(a)));
+                else {
+                    resolve(a.map(item => Math.cos(parseFloat(item))));
+                }
             });
         }
     }

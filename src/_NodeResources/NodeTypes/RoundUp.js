@@ -26,7 +26,10 @@ class RoundUpNodeDataOutput extends NodeOutputTether {
             return new Promise(async (resolve, reject) => {
                 let a = await this.inputs[0].getValue();
     
-                resolve(Math.ceil(parseFloat(a)));
+                if (!Array.isArray(a)) resolve(Math.ceil(parseFloat(a)));
+                else {
+                    resolve(a.map(item => Math.ceil(parseFloat(item))));
+                }
             });
         }
     }

@@ -25,8 +25,12 @@ class AcosNodeDataOutput extends NodeOutputTether {
         this.process = function() {
             return new Promise(async (resolve, reject) => {
                 let a = await this.inputs[0].getValue();
+
+                if (Array.isArray(a)) {
+                    a = a.map(item => Math.acos(parseFloat(item)));
+                } else a = Math.acos(parseFloat(a));
     
-                resolve(Math.acos(parseFloat(a)));
+                resolve(a);
             });
         }
     }

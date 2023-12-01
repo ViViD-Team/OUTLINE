@@ -101,11 +101,16 @@
 
 
     export async function process() {
+        if (!nodeData.input || !(nodeData.input in context)) return;
         context[nodeData.input].process()
             .then((value) => {
                 if (!Array.isArray(value)) throw new TypeError("Received value is not a batch!");
 
                 for (let i = 0; i < value.length; i++) {
+                    if (nodeData.selectedCol > tableData.cellContents.length ||
+                        i > tableData.cellContents[nodeData.selectedCol].length
+                    ) break;
+
                     tableData.cellContents[nodeData.selectedCol][i] = value[i];
                 }
 

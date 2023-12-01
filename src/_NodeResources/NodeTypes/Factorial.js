@@ -26,7 +26,10 @@ class FactorialNodeDataOutput extends NodeOutputTether {
             return new Promise(async (resolve, reject) => {
                 let a = await this.inputs[0].getValue();
     
-                resolve(factorialize(parseFloat(a)));
+                if (!Array.isArray(a)) resolve(factorialize(parseFloat(a)));
+                else {
+                    resolve(a.map(item => factorialize(parseFloat(item))));
+                }
             });
         }
     }

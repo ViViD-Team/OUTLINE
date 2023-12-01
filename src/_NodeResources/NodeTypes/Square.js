@@ -26,7 +26,10 @@ class SquareNodeDataOutput extends NodeOutputTether {
             return new Promise(async (resolve, reject) => {
                 let a = await this.inputs[0].getValue();
     
-                resolve(Math.pow(parseFloat(a), 2));
+                if (!Array.isArray(a)) resolve(Math.pow(parseFloat(a), 2));
+                else {
+                    resolve(a.map(item => Math.pow(parseFloat(item), 2)));
+                }
             });
         }
     }

@@ -28,7 +28,24 @@ class PowerNodeDataOutput extends NodeOutputTether {
                 let a = await this.inputs[0].getValue();
                 let b = await this.inputs[1].getValue();
     
-                resolve(Math.pow(parseFloat(a), parseFloat(b)));
+                if (!Array.isArray(a) && !Array.isArray(b)) resolve(Math.pow(parseFloat(a), parseFloat(b)));
+            
+                if (Array.isArray(a) && Array.isArray(b)) {
+                    let i = 0, out = [];
+
+                    while (i < Math.max(a.length, b.length)) {
+                        if (a[i] && b[i]) out[i] = Math.pow(parseFloat(a[i] || 0), parseFloat(b[i] || 0));
+                        i++;
+                    }
+
+                    resolve(out);
+                }
+
+                if (Array.isArray(a)) {
+                    resolve(a.map(item => Math.pow(parseFloat(item), parseFloat(b))));
+                } else {
+                    resolve(b.map(item => Math.pow(parseFloat(item), parseFloat(a))));
+                }
             });
         }
     }

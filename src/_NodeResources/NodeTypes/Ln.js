@@ -26,7 +26,10 @@ class LnNodeDataOutput extends NodeOutputTether {
             return new Promise(async (resolve, reject) => {
                 let a = await this.inputs[0].getValue();
     
-                resolve(Math.log(parseFloat(a)));
+                if (!Array.isArray(a)) resolve(Math.log(parseFloat(a)));
+                else {
+                    resolve(a.map(item => Math.log(parseFloat(item))));
+                }
             });
         }
     }

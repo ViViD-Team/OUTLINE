@@ -26,7 +26,10 @@ class AsinNodeDataOutput extends NodeOutputTether {
             return new Promise(async (resolve, reject) => {
                 let a = await this.inputs[0].getValue();
     
-                resolve(Math.asin(parseFloat(a)));
+                if (!Array.isArray(a)) resolve(Math.asin(parseFloat(a)));
+                else {
+                    resolve(a.map(item => Math.asin(parseFloat(item))));
+                }
             });
         }
     }

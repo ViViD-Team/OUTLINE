@@ -26,7 +26,10 @@ class SquareRootNodeDataOutput extends NodeOutputTether {
             return new Promise(async (resolve, reject) => {
                 let a = await this.inputs[0].getValue();
     
-                resolve(Math.sqrt(parseFloat(a)));
+                if (!Array.isArray(a)) resolve(Math.sqrt(parseFloat(a)));
+                else {
+                    resolve(a.map(item => Math.sqrt(parseFloat(item))));
+                }
             });
         }
     }

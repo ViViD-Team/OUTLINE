@@ -26,7 +26,10 @@ class SinNodeDataOutput extends NodeOutputTether {
             return new Promise(async (resolve, reject) => {
                 let a = await this.inputs[0].getValue();
     
-                resolve(Math.sin(parseFloat(a)));
+                if (!Array.isArray(a)) resolve(Math.sin(parseFloat(a)));
+                else {
+                    resolve(a.map(item => Math.sin(parseFloat(item))));
+                }
             });
         }
     }

@@ -617,6 +617,12 @@
             }
         });
 
+        nodeData.batchOutput.forEach((n) => {
+            if (n.input != null) {
+                addConnection(n, n.input, 0);
+            }
+        });
+
         nodeData.result.forEach((n) => {
             if (n.input != null) {
                 addConnection(n, n.input, 0);

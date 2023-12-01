@@ -25,8 +25,12 @@ class AbsNodeDataOutput extends NodeOutputTether {
         this.process = function() {
             return new Promise(async (resolve, reject) => {
                 let a = await this.inputs[0].getValue();
+
+                if (Array.isArray(a)) {
+                    a = a.map(item => Math.abs(parseFloat(item)));
+                } else a = Math.abs(parseFloat(a));
     
-                resolve(Math.abs(parseFloat(a)));
+                resolve(a);
             });
         }
     }
