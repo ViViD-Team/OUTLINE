@@ -820,9 +820,38 @@
      * @param {Number} index The index of the widget to be deleted.
     */
     function deleteObject(type, index) {
-        projectData.objects[type].splice(index, 1);
+        function finalize() {
+            projectData.objects[type].splice(index, 1);
 
-        projectData.objects[type] = Object.assign([], projectData.objects[type]);
+            projectData.objects[type] = Object.assign([], projectData.objects[type]);
+        }
+
+        if (userSettings.show_widget_delete_modal) {
+            new Promise((resolve, reject) => {
+                document.dispatchEvent(new CustomEvent("pushModal", {
+                    detail: {
+                        "title": `Delete ${type}?`,
+                        "description": "Would you really like to proceed? This step is permanent.",
+                        "actions": [
+                            {
+                                "label": "Yes",
+                                "emphasized": false,
+                                "action": () => {
+                                    resolve();
+                                }
+                            },
+                            {
+                                "label": "No",
+                                "emphasized": true,
+                                "action": () => {
+                                    reject();
+                                }
+                            }
+                        ]
+                    }
+                }))
+            }).then(finalize);
+        } else finalize();
     }
 
     /**
@@ -833,9 +862,38 @@
      * @param {Number} index The index of the widget to be deleted.
     */
     function deletePluginObject(plugin, type, index) {
-        projectData.pluginObjects[plugin][type].splice(index, 1);
+        function finalize() {
+            projectData.pluginObjects[plugin][type].splice(index, 1);
 
-        projectData.pluginObjects[plugin][type] = Object.assign([], projectData.pluginObjects[plugin][type]);
+            projectData.pluginObjects[plugin][type] = Object.assign([], projectData.pluginObjects[plugin][type]);
+        }
+
+        if (userSettings.show_widget_delete_modal) {
+            new Promise((resolve, reject) => {
+                document.dispatchEvent(new CustomEvent("pushModal", {
+                    detail: {
+                        "title": `Delete ${type}?`,
+                        "description": "Would you really like to proceed? This step is permanent.",
+                        "actions": [
+                            {
+                                "label": "Yes",
+                                "emphasized": false,
+                                "action": () => {
+                                    resolve();
+                                }
+                            },
+                            {
+                                "label": "No",
+                                "emphasized": true,
+                                "action": () => {
+                                    reject();
+                                }
+                            }
+                        ]
+                    }
+                }))
+            }).then(finalize);
+        } else finalize();
     }
 
     /**
@@ -844,9 +902,38 @@
      * @param {Number} index The index of the widget to be deleted.
     */
     function deleteDevPluginObject(index) {
-        devPluginObjects.splice(index, 1);
+        function finalize() {
+            devPluginObjects.splice(index, 1);
 
-        devPluginObjects = [...devPluginObjects];
+            devPluginObjects = [...devPluginObjects];
+        }
+
+        if (userSettings.show_widget_delete_modal) {
+            new Promise((resolve, reject) => {
+                document.dispatchEvent(new CustomEvent("pushModal", {
+                    detail: {
+                        "title": `Delete ${devPluginObjects[index].widgetID}?`,
+                        "description": "Would you really like to proceed? This step is permanent.",
+                        "actions": [
+                            {
+                                "label": "Yes",
+                                "emphasized": false,
+                                "action": () => {
+                                    resolve();
+                                }
+                            },
+                            {
+                                "label": "No",
+                                "emphasized": true,
+                                "action": () => {
+                                    reject();
+                                }
+                            }
+                        ]
+                    }
+                }))
+            }).then(finalize);
+        } else finalize();
     }
 
     // Object Creation

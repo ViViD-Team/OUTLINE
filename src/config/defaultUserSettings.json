@@ -1,9 +1,14 @@
 {
     "theme": 2,
     "settings_theme": 0,
+
+
     "preferred_navigation_mb": 1,
+    "show_widget_delete_modal": true,
+    "show_node_delete_modal": true,
 
 
     "devModeEnabled": false,
-    "devPluginDirs": []
+    "devPluginDirs": [],
+    "show_dev_widget_modal": true
 }

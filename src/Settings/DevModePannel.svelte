@@ -106,6 +106,11 @@
                 </div>
             </div>
         </div>
+
+        <Toggle
+            label="Show Dev Widget Delete Warning"
+            bind:value={userSettings.show_dev_widget_modal}
+        />
     {/if}
 </main>
 

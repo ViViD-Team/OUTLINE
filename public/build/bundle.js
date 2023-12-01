@@ -8161,7 +8161,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (1037:12) {#each projectData.objects.header as object, index}
+    // (1124:12) {#each projectData.objects.header as object, index}
     function create_each_block_7(ctx) {
     	let updating_text;
     	let updating_sizeBounds;
@@ -8272,14 +8272,14 @@ var app = (function () {
     		block,
     		id: create_each_block_7.name,
     		type: "each",
-    		source: "(1037:12) {#each projectData.objects.header as object, index}",
+    		source: "(1124:12) {#each projectData.objects.header as object, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1061:12) {#each projectData.objects.paragraph as object, index}
+    // (1148:12) {#each projectData.objects.paragraph as object, index}
     function create_each_block_6(ctx) {
     	let updating_text;
     	let updating_sizeBounds;
@@ -8390,14 +8390,14 @@ var app = (function () {
     		block,
     		id: create_each_block_6.name,
     		type: "each",
-    		source: "(1061:12) {#each projectData.objects.paragraph as object, index}",
+    		source: "(1148:12) {#each projectData.objects.paragraph as object, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1085:12) {#each projectData.objects.table as object, index}
+    // (1172:12) {#each projectData.objects.table as object, index}
     function create_each_block_5(ctx) {
     	let updating_title;
     	let updating_sizeBounds;
@@ -8565,14 +8565,14 @@ var app = (function () {
     		block,
     		id: create_each_block_5.name,
     		type: "each",
-    		source: "(1085:12) {#each projectData.objects.table as object, index}",
+    		source: "(1172:12) {#each projectData.objects.table as object, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1120:12) {#each projectData.objects.result as object, index}
+    // (1207:12) {#each projectData.objects.result as object, index}
     function create_each_block_4(ctx) {
     	let updating_widgetData;
     	let updating_projectData;
@@ -8699,14 +8699,14 @@ var app = (function () {
     		block,
     		id: create_each_block_4.name,
     		type: "each",
-    		source: "(1120:12) {#each projectData.objects.result as object, index}",
+    		source: "(1207:12) {#each projectData.objects.result as object, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1179:24) {:else}
+    // (1266:24) {:else}
     function create_else_block$1(ctx) {
     	let current;
 
@@ -8772,14 +8772,14 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(1179:24) {:else}",
+    		source: "(1266:24) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1151:24) {#if activePlugins[plugin] != null}
+    // (1238:24) {#if activePlugins[plugin] != null}
     function create_if_block$2(ctx) {
     	let updating_posX;
     	let updating_posY;
@@ -9000,14 +9000,14 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(1151:24) {#if activePlugins[plugin] != null}",
+    		source: "(1238:24) {#if activePlugins[plugin] != null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1150:20) {#each projectData.pluginObjects[plugin][widgetType] as w, index}
+    // (1237:20) {#each projectData.pluginObjects[plugin][widgetType] as w, index}
     function create_each_block_3(ctx) {
     	let current_block_type_index;
     	let if_block;
@@ -9078,14 +9078,14 @@ var app = (function () {
     		block,
     		id: create_each_block_3.name,
     		type: "each",
-    		source: "(1150:20) {#each projectData.pluginObjects[plugin][widgetType] as w, index}",
+    		source: "(1237:20) {#each projectData.pluginObjects[plugin][widgetType] as w, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1149:16) {#each Object.keys(projectData.pluginObjects[plugin]) as widgetType}
+    // (1236:16) {#each Object.keys(projectData.pluginObjects[plugin]) as widgetType}
     function create_each_block_2$2(ctx) {
     	let each_1_anchor;
     	let current;
@@ -9174,14 +9174,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2$2.name,
     		type: "each",
-    		source: "(1149:16) {#each Object.keys(projectData.pluginObjects[plugin]) as widgetType}",
+    		source: "(1236:16) {#each Object.keys(projectData.pluginObjects[plugin]) as widgetType}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1148:12) {#each Object.keys(projectData.pluginObjects) as plugin}
+    // (1235:12) {#each Object.keys(projectData.pluginObjects) as plugin}
     function create_each_block_1$2(ctx) {
     	let each_1_anchor;
     	let current;
@@ -9270,14 +9270,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1$2.name,
     		type: "each",
-    		source: "(1148:12) {#each Object.keys(projectData.pluginObjects) as plugin}",
+    		source: "(1235:12) {#each Object.keys(projectData.pluginObjects) as plugin}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1203:12) {#each devPluginObjects as w, index}
+    // (1290:12) {#each devPluginObjects as w, index}
     function create_each_block$2(ctx) {
     	let updating_posX;
     	let updating_posY;
@@ -9496,7 +9496,7 @@ var app = (function () {
     		block,
     		id: create_each_block$2.name,
     		type: "each",
-    		source: "(1203:12) {#each devPluginObjects as w, index}",
+    		source: "(1290:12) {#each devPluginObjects as w, index}",
     		ctx
     	});
 
@@ -9631,12 +9631,12 @@ var app = (function () {
     			set_style(div0, "background-position-x", /*viewX*/ ctx[4] + /*mouseDrag*/ ctx[10].delta.x + "px");
     			set_style(div0, "background-position-y", /*viewY*/ ctx[5] + /*mouseDrag*/ ctx[10].delta.y + "px");
     			set_style(div0, "background-size", 2 * /*viewZoom*/ ctx[6] + "vh");
-    			add_location(div0, file$a, 1026, 12, 33141);
+    			add_location(div0, file$a, 1113, 12, 36694);
     			attr_dev(div1, "class", "frame neuIndentShadow svelte-d3k9sp");
     			add_render_callback(() => /*div1_elementresize_handler*/ ctx[99].call(div1));
-    			add_location(div1, file$a, 1011, 4, 32711);
+    			add_location(div1, file$a, 1098, 4, 36264);
     			attr_dev(main, "class", "svelte-d3k9sp");
-    			add_location(main, file$a, 1010, 0, 32699);
+    			add_location(main, file$a, 1097, 0, 36252);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -10669,8 +10669,38 @@ var app = (function () {
      * @param {Number} index The index of the widget to be deleted.
     */
     	function deleteObject(type, index) {
-    		projectData.objects[type].splice(index, 1);
-    		$$invalidate(0, projectData.objects[type] = Object.assign([], projectData.objects[type]), projectData);
+    		function finalize() {
+    			projectData.objects[type].splice(index, 1);
+    			$$invalidate(0, projectData.objects[type] = Object.assign([], projectData.objects[type]), projectData);
+    		}
+
+    		if (userSettings.show_widget_delete_modal) {
+    			new Promise((resolve, reject) => {
+    					document.dispatchEvent(new CustomEvent("pushModal",
+    					{
+    							detail: {
+    								"title": `Delete ${type}?`,
+    								"description": "Would you really like to proceed? This step is permanent.",
+    								"actions": [
+    									{
+    										"label": "Yes",
+    										"emphasized": false,
+    										"action": () => {
+    											resolve();
+    										}
+    									},
+    									{
+    										"label": "No",
+    										"emphasized": true,
+    										"action": () => {
+    											reject();
+    										}
+    									}
+    								]
+    							}
+    						}));
+    				}).then(finalize);
+    		} else finalize();
     	}
 
     	/**
@@ -10681,8 +10711,38 @@ var app = (function () {
      * @param {Number} index The index of the widget to be deleted.
     */
     	function deletePluginObject(plugin, type, index) {
-    		projectData.pluginObjects[plugin][type].splice(index, 1);
-    		$$invalidate(0, projectData.pluginObjects[plugin][type] = Object.assign([], projectData.pluginObjects[plugin][type]), projectData);
+    		function finalize() {
+    			projectData.pluginObjects[plugin][type].splice(index, 1);
+    			$$invalidate(0, projectData.pluginObjects[plugin][type] = Object.assign([], projectData.pluginObjects[plugin][type]), projectData);
+    		}
+
+    		if (userSettings.show_widget_delete_modal) {
+    			new Promise((resolve, reject) => {
+    					document.dispatchEvent(new CustomEvent("pushModal",
+    					{
+    							detail: {
+    								"title": `Delete ${type}?`,
+    								"description": "Would you really like to proceed? This step is permanent.",
+    								"actions": [
+    									{
+    										"label": "Yes",
+    										"emphasized": false,
+    										"action": () => {
+    											resolve();
+    										}
+    									},
+    									{
+    										"label": "No",
+    										"emphasized": true,
+    										"action": () => {
+    											reject();
+    										}
+    									}
+    								]
+    							}
+    						}));
+    				}).then(finalize);
+    		} else finalize();
     	}
 
     	/**
@@ -10691,8 +10751,38 @@ var app = (function () {
      * @param {Number} index The index of the widget to be deleted.
     */
     	function deleteDevPluginObject(index) {
-    		devPluginObjects.splice(index, 1);
-    		$$invalidate(1, devPluginObjects = [...devPluginObjects]);
+    		function finalize() {
+    			devPluginObjects.splice(index, 1);
+    			$$invalidate(1, devPluginObjects = [...devPluginObjects]);
+    		}
+
+    		if (userSettings.show_widget_delete_modal) {
+    			new Promise((resolve, reject) => {
+    					document.dispatchEvent(new CustomEvent("pushModal",
+    					{
+    							detail: {
+    								"title": `Delete ${devPluginObjects[index].widgetID}?`,
+    								"description": "Would you really like to proceed? This step is permanent.",
+    								"actions": [
+    									{
+    										"label": "Yes",
+    										"emphasized": false,
+    										"action": () => {
+    											resolve();
+    										}
+    									},
+    									{
+    										"label": "No",
+    										"emphasized": true,
+    										"action": () => {
+    											reject();
+    										}
+    									}
+    								]
+    							}
+    						}));
+    				}).then(finalize);
+    		} else finalize();
     	}
 
     	// Object Creation
@@ -11147,6 +11237,8 @@ var app = (function () {
     		document,
     		window,
     		Object,
+    		Promise,
+    		CustomEvent,
     		JSON,
     		String,
     		console
@@ -20076,7 +20168,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (897:12) {#if node}
+    // (926:12) {#if node}
     function create_if_block_11(ctx) {
     	let updating_nodeObject;
     	let current;
@@ -20164,14 +20256,14 @@ var app = (function () {
     		block,
     		id: create_if_block_11.name,
     		type: "if",
-    		source: "(897:12) {#if node}",
+    		source: "(926:12) {#if node}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (896:8) {#each nodeData.operator as node, index}
+    // (925:8) {#each nodeData.operator as node, index}
     function create_each_block_15(ctx) {
     	let if_block_anchor;
     	let current;
@@ -20227,14 +20319,14 @@ var app = (function () {
     		block,
     		id: create_each_block_15.name,
     		type: "each",
-    		source: "(896:8) {#each nodeData.operator as node, index}",
+    		source: "(925:8) {#each nodeData.operator as node, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (927:12) {#if node}
+    // (956:12) {#if node}
     function create_if_block_10(ctx) {
     	let current;
 
@@ -20309,14 +20401,14 @@ var app = (function () {
     		block,
     		id: create_if_block_10.name,
     		type: "if",
-    		source: "(927:12) {#if node}",
+    		source: "(956:12) {#if node}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (926:8) {#each nodeData.literal as node, index}
+    // (955:8) {#each nodeData.literal as node, index}
     function create_each_block_14(ctx) {
     	let if_block_anchor;
     	let current;
@@ -20372,14 +20464,14 @@ var app = (function () {
     		block,
     		id: create_each_block_14.name,
     		type: "each",
-    		source: "(926:8) {#each nodeData.literal as node, index}",
+    		source: "(955:8) {#each nodeData.literal as node, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (956:12) {#if node}
+    // (985:12) {#if node}
     function create_if_block_9$1(ctx) {
     	let current;
 
@@ -20457,14 +20549,14 @@ var app = (function () {
     		block,
     		id: create_if_block_9$1.name,
     		type: "if",
-    		source: "(956:12) {#if node}",
+    		source: "(985:12) {#if node}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (955:8) {#each nodeData.input as node, index}
+    // (984:8) {#each nodeData.input as node, index}
     function create_each_block_13(ctx) {
     	let if_block_anchor;
     	let current;
@@ -20520,14 +20612,14 @@ var app = (function () {
     		block,
     		id: create_each_block_13.name,
     		type: "each",
-    		source: "(955:8) {#each nodeData.input as node, index}",
+    		source: "(984:8) {#each nodeData.input as node, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (986:12) {#if node}
+    // (1015:12) {#if node}
     function create_if_block_8$1(ctx) {
     	let current;
 
@@ -20605,14 +20697,14 @@ var app = (function () {
     		block,
     		id: create_if_block_8$1.name,
     		type: "if",
-    		source: "(986:12) {#if node}",
+    		source: "(1015:12) {#if node}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (985:8) {#each nodeData.batchInput as node, index}
+    // (1014:8) {#each nodeData.batchInput as node, index}
     function create_each_block_12(ctx) {
     	let if_block_anchor;
     	let current;
@@ -20668,14 +20760,14 @@ var app = (function () {
     		block,
     		id: create_each_block_12.name,
     		type: "each",
-    		source: "(985:8) {#each nodeData.batchInput as node, index}",
+    		source: "(1014:8) {#each nodeData.batchInput as node, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1016:12) {#if node}
+    // (1045:12) {#if node}
     function create_if_block_7$1(ctx) {
     	let updating_process;
     	let current;
@@ -20763,14 +20855,14 @@ var app = (function () {
     		block,
     		id: create_if_block_7$1.name,
     		type: "if",
-    		source: "(1016:12) {#if node}",
+    		source: "(1045:12) {#if node}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1015:8) {#each nodeData.output as node, index}
+    // (1044:8) {#each nodeData.output as node, index}
     function create_each_block_11(ctx) {
     	let if_block_anchor;
     	let current;
@@ -20826,14 +20918,14 @@ var app = (function () {
     		block,
     		id: create_each_block_11.name,
     		type: "each",
-    		source: "(1015:8) {#each nodeData.output as node, index}",
+    		source: "(1044:8) {#each nodeData.output as node, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1045:12) {#if node}
+    // (1074:12) {#if node}
     function create_if_block_6$1(ctx) {
     	let updating_process;
     	let current;
@@ -20925,14 +21017,14 @@ var app = (function () {
     		block,
     		id: create_if_block_6$1.name,
     		type: "if",
-    		source: "(1045:12) {#if node}",
+    		source: "(1074:12) {#if node}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1044:8) {#each nodeData.batchOutput as node, index}
+    // (1073:8) {#each nodeData.batchOutput as node, index}
     function create_each_block_10(ctx) {
     	let if_block_anchor;
     	let current;
@@ -20988,14 +21080,14 @@ var app = (function () {
     		block,
     		id: create_each_block_10.name,
     		type: "each",
-    		source: "(1044:8) {#each nodeData.batchOutput as node, index}",
+    		source: "(1073:8) {#each nodeData.batchOutput as node, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1074:12) {#if node}
+    // (1103:12) {#if node}
     function create_if_block_5$1(ctx) {
     	let updating_resultWidgets;
     	let updating_process;
@@ -21097,14 +21189,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5$1.name,
     		type: "if",
-    		source: "(1074:12) {#if node}",
+    		source: "(1103:12) {#if node}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1073:8) {#each nodeData.result as node, index}
+    // (1102:8) {#each nodeData.result as node, index}
     function create_each_block_9(ctx) {
     	let if_block_anchor;
     	let current;
@@ -21160,14 +21252,14 @@ var app = (function () {
     		block,
     		id: create_each_block_9.name,
     		type: "each",
-    		source: "(1073:8) {#each nodeData.result as node, index}",
+    		source: "(1102:8) {#each nodeData.result as node, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1103:12) {#if node}
+    // (1132:12) {#if node}
     function create_if_block_4$2(ctx) {
     	let updating_sizeBounds;
     	let updating_text;
@@ -21283,14 +21375,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4$2.name,
     		type: "if",
-    		source: "(1103:12) {#if node}",
+    		source: "(1132:12) {#if node}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1102:8) {#each nodeData.annotation as node, index}
+    // (1131:8) {#each nodeData.annotation as node, index}
     function create_each_block_8(ctx) {
     	let if_block_anchor;
     	let current;
@@ -21346,14 +21438,14 @@ var app = (function () {
     		block,
     		id: create_each_block_8.name,
     		type: "each",
-    		source: "(1102:8) {#each nodeData.annotation as node, index}",
+    		source: "(1131:8) {#each nodeData.annotation as node, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1131:12) {#if node}
+    // (1160:12) {#if node}
     function create_if_block_3$2(ctx) {
     	let updating_nodeObject;
     	let current;
@@ -21443,14 +21535,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3$2.name,
     		type: "if",
-    		source: "(1131:12) {#if node}",
+    		source: "(1160:12) {#if node}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1130:8) {#each nodeData.plugin as node, index}
+    // (1159:8) {#each nodeData.plugin as node, index}
     function create_each_block_7$1(ctx) {
     	let if_block_anchor;
     	let current;
@@ -21506,14 +21598,14 @@ var app = (function () {
     		block,
     		id: create_each_block_7$1.name,
     		type: "each",
-    		source: "(1130:8) {#each nodeData.plugin as node, index}",
+    		source: "(1159:8) {#each nodeData.plugin as node, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1162:8) {#each connections as c, index}
+    // (1191:8) {#each connections as c, index}
     function create_each_block_6$1(ctx) {
     	let div;
     	let svg;
@@ -21543,20 +21635,20 @@ var app = (function () {
     			attr_dev(path_1, "stroke", path_1_stroke_value = "url(#paint0_linear_102_1243_" + /*index*/ ctx[97] + ")");
     			attr_dev(path_1, "stroke-width", ".15");
     			attr_dev(path_1, "class", "svelte-1g1nb9i");
-    			add_location(path_1, file$l, 1180, 20, 43909);
+    			add_location(path_1, file$l, 1209, 20, 45094);
     			attr_dev(stop0, "stop-color", stop0_stop_color_value = /*c*/ ctx[108].destColor);
-    			add_location(stop0, file$l, 1183, 24, 44313);
+    			add_location(stop0, file$l, 1212, 24, 45498);
     			attr_dev(stop1, "offset", "1");
     			attr_dev(stop1, "stop-color", stop1_stop_color_value = /*c*/ ctx[108].originColor);
-    			add_location(stop1, file$l, 1184, 24, 44373);
+    			add_location(stop1, file$l, 1213, 24, 45558);
     			attr_dev(linearGradient, "id", linearGradient_id_value = "paint0_linear_102_1243_" + /*index*/ ctx[97]);
     			attr_dev(linearGradient, "x1", "0");
     			attr_dev(linearGradient, "y1", "1");
     			attr_dev(linearGradient, "x2", linearGradient_x__value = Math.abs(/*c*/ ctx[108].width));
     			attr_dev(linearGradient, "y2", "1");
     			attr_dev(linearGradient, "gradientUnits", "userSpaceOnUse");
-    			add_location(linearGradient, file$l, 1182, 24, 44158);
-    			add_location(defs, file$l, 1181, 20, 44126);
+    			add_location(linearGradient, file$l, 1211, 24, 45343);
+    			add_location(defs, file$l, 1210, 20, 45311);
     			set_style(svg, "position", "absolute");
     			set_style(svg, "top", "0");
     			set_style(svg, "left", "0");
@@ -21571,7 +21663,7 @@ var app = (function () {
     			attr_dev(svg, "fill", "none");
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "class", "svelte-1g1nb9i");
-    			add_location(svg, file$l, 1174, 16, 43552);
+    			add_location(svg, file$l, 1203, 16, 44737);
     			set_style(div, "left", 2 * (/*c*/ ctx[108].posX * /*viewZoom*/ ctx[8] + (/*viewX*/ ctx[6] + /*mouseDrag*/ ctx[13].delta.x) / window.innerHeight * 50) + "vh");
     			set_style(div, "top", 2 * (/*c*/ ctx[108].posY * /*viewZoom*/ ctx[8] + (/*viewY*/ ctx[7] + /*mouseDrag*/ ctx[13].delta.y) / window.innerHeight * 50) + "vh");
     			set_style(div, "width", Math.abs(/*c*/ ctx[108].width) * /*viewZoom*/ ctx[8] * 2 + "vh");
@@ -21584,7 +21676,7 @@ var app = (function () {
     			: "0") + ") scale(" + (/*c*/ ctx[108].destX > /*c*/ ctx[108].posX ? "-" : "") + "1,  " + (/*c*/ ctx[108].destY > /*c*/ ctx[108].posY ? "-" : "") + "1)");
 
     			attr_dev(div, "class", "inputFlowContainer svelte-1g1nb9i");
-    			add_location(div, file$l, 1162, 12, 42894);
+    			add_location(div, file$l, 1191, 12, 44079);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -21651,14 +21743,14 @@ var app = (function () {
     		block,
     		id: create_each_block_6$1.name,
     		type: "each",
-    		source: "(1162:8) {#each connections as c, index}",
+    		source: "(1191:8) {#each connections as c, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1192:8) {#if simConnection.shown}
+    // (1221:8) {#if simConnection.shown}
     function create_if_block_2$2(ctx) {
     	let div;
     	let svg;
@@ -21687,20 +21779,20 @@ var app = (function () {
     			attr_dev(path_1, "stroke", "url(#paint0_linear_102_1243_SIM)");
     			attr_dev(path_1, "stroke-width", ".15");
     			attr_dev(path_1, "class", "svelte-1g1nb9i");
-    			add_location(path_1, file$l, 1211, 20, 45837);
+    			add_location(path_1, file$l, 1240, 20, 47022);
     			attr_dev(stop0, "stop-color", stop0_stop_color_value = /*simConnection*/ ctx[17].node.color);
-    			add_location(stop0, file$l, 1214, 24, 46335);
+    			add_location(stop0, file$l, 1243, 24, 47520);
     			attr_dev(stop1, "offset", "1");
     			attr_dev(stop1, "stop-color", stop1_stop_color_value = /*simConnection*/ ctx[17].node.color);
-    			add_location(stop1, file$l, 1215, 24, 46408);
+    			add_location(stop1, file$l, 1244, 24, 47593);
     			attr_dev(linearGradient, "id", "paint0_linear_102_1243_SIM");
     			attr_dev(linearGradient, "x1", "0");
     			attr_dev(linearGradient, "y1", "1");
     			attr_dev(linearGradient, "x2", linearGradient_x__value = Math.abs(/*simConnection*/ ctx[17].width));
     			attr_dev(linearGradient, "y2", "1");
     			attr_dev(linearGradient, "gradientUnits", "userSpaceOnUse");
-    			add_location(linearGradient, file$l, 1213, 24, 46172);
-    			add_location(defs, file$l, 1212, 20, 46140);
+    			add_location(linearGradient, file$l, 1242, 24, 47357);
+    			add_location(defs, file$l, 1241, 20, 47325);
     			set_style(svg, "position", "absolute");
     			set_style(svg, "top", "0");
     			set_style(svg, "left", "0");
@@ -21715,7 +21807,7 @@ var app = (function () {
     			attr_dev(svg, "fill", "none");
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "class", "svelte-1g1nb9i");
-    			add_location(svg, file$l, 1205, 16, 45432);
+    			add_location(svg, file$l, 1234, 16, 46617);
     			set_style(div, "left", 2 * (/*simConnection*/ ctx[17].posX * /*viewZoom*/ ctx[8] + (/*viewX*/ ctx[6] + /*mouseDrag*/ ctx[13].delta.x) / window.innerHeight * 50) + "vh");
     			set_style(div, "top", 2 * (/*simConnection*/ ctx[17].posY * /*viewZoom*/ ctx[8] + (/*viewY*/ ctx[7] + /*mouseDrag*/ ctx[13].delta.y) / window.innerHeight * 50) + "vh");
     			set_style(div, "width", Math.abs(/*simConnection*/ ctx[17].width) * /*viewZoom*/ ctx[8] * 2 + "vh");
@@ -21735,7 +21827,7 @@ var app = (function () {
     			: "") + "1)");
 
     			attr_dev(div, "class", "inputFlowContainer svelte-1g1nb9i");
-    			add_location(div, file$l, 1192, 12, 44604);
+    			add_location(div, file$l, 1221, 12, 45789);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -21808,14 +21900,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2$2.name,
     		type: "if",
-    		source: "(1192:8) {#if simConnection.shown}",
+    		source: "(1221:8) {#if simConnection.shown}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1303:16) {#each nodeConfig[category] as id}
+    // (1332:16) {#each nodeConfig[category] as id}
     function create_each_block_5$1(ctx) {
     	let current;
 
@@ -21859,14 +21951,14 @@ var app = (function () {
     		block,
     		id: create_each_block_5$1.name,
     		type: "each",
-    		source: "(1303:16) {#each nodeConfig[category] as id}",
+    		source: "(1332:16) {#each nodeConfig[category] as id}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1299:12) {#each nodeCategories as category, index}
+    // (1328:12) {#each nodeCategories as category, index}
     function create_each_block_4$1(ctx) {
     	let div;
     	let h2;
@@ -21903,9 +21995,9 @@ var app = (function () {
 
     			each_1_anchor = empty();
     			attr_dev(h2, "class", "svelte-1g1nb9i");
-    			add_location(h2, file$l, 1300, 20, 49625);
+    			add_location(h2, file$l, 1329, 20, 50810);
     			attr_dev(div, "class", "nodePickerGroupTitle svelte-1g1nb9i");
-    			add_location(div, file$l, 1299, 16, 49531);
+    			add_location(div, file$l, 1328, 16, 50716);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -21990,14 +22082,14 @@ var app = (function () {
     		block,
     		id: create_each_block_4$1.name,
     		type: "each",
-    		source: "(1299:12) {#each nodeCategories as category, index}",
+    		source: "(1328:12) {#each nodeCategories as category, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1311:12) {#if activePlugins && nodeCategories.length > 0}
+    // (1340:12) {#if activePlugins && nodeCategories.length > 0}
     function create_if_block_1$5(ctx) {
     	let each_1_anchor;
     	let current;
@@ -22086,14 +22178,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$5.name,
     		type: "if",
-    		source: "(1311:12) {#if activePlugins && nodeCategories.length > 0}",
+    		source: "(1340:12) {#if activePlugins && nodeCategories.length > 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1316:16) {#each plugin.nodes as node}
+    // (1345:16) {#each plugin.nodes as node}
     function create_each_block_3$1(ctx) {
     	let current;
 
@@ -22137,14 +22229,14 @@ var app = (function () {
     		block,
     		id: create_each_block_3$1.name,
     		type: "each",
-    		source: "(1316:16) {#each plugin.nodes as node}",
+    		source: "(1345:16) {#each plugin.nodes as node}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1312:12) {#each Object.values(activePlugins) as plugin, index}
+    // (1341:12) {#each Object.values(activePlugins) as plugin, index}
     function create_each_block_2$3(ctx) {
     	let div;
     	let h2;
@@ -22182,9 +22274,9 @@ var app = (function () {
     			each_1_anchor = empty();
     			set_style(h2, "color", "var(--purple)");
     			attr_dev(h2, "class", "svelte-1g1nb9i");
-    			add_location(h2, file$l, 1313, 20, 50215);
+    			add_location(h2, file$l, 1342, 20, 51400);
     			attr_dev(div, "class", "nodePickerGroupTitle svelte-1g1nb9i");
-    			add_location(div, file$l, 1312, 16, 50097);
+    			add_location(div, file$l, 1341, 16, 51282);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -22269,14 +22361,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2$3.name,
     		type: "each",
-    		source: "(1312:12) {#each Object.values(activePlugins) as plugin, index}",
+    		source: "(1341:12) {#each Object.values(activePlugins) as plugin, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1339:16) {#each nodeCategories as category, index}
+    // (1368:16) {#each nodeCategories as category, index}
     function create_each_block_1$5(ctx) {
     	let div;
     	let h2;
@@ -22294,9 +22386,9 @@ var app = (function () {
     			h2 = element("h2");
     			t = text(t_value);
     			attr_dev(h2, "class", "svelte-1g1nb9i");
-    			add_location(h2, file$l, 1340, 24, 51490);
+    			add_location(h2, file$l, 1369, 24, 52675);
     			attr_dev(div, "class", "nodePickerGroupTitle navigationLabel svelte-1g1nb9i");
-    			add_location(div, file$l, 1339, 20, 51376);
+    			add_location(div, file$l, 1368, 20, 52561);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -22318,14 +22410,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1$5.name,
     		type: "each",
-    		source: "(1339:16) {#each nodeCategories as category, index}",
+    		source: "(1368:16) {#each nodeCategories as category, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1344:16) {#if activePlugins}
+    // (1373:16) {#if activePlugins}
     function create_if_block$6(ctx) {
     	let each_1_anchor;
     	let each_value = Object.values(/*activePlugins*/ ctx[21]);
@@ -22386,14 +22478,14 @@ var app = (function () {
     		block,
     		id: create_if_block$6.name,
     		type: "if",
-    		source: "(1344:16) {#if activePlugins}",
+    		source: "(1373:16) {#if activePlugins}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1345:20) {#each Object.values(activePlugins) as plugin, index}
+    // (1374:20) {#each Object.values(activePlugins) as plugin, index}
     function create_each_block$6(ctx) {
     	let div;
     	let h2;
@@ -22414,9 +22506,9 @@ var app = (function () {
     			t1 = space();
     			set_style(h2, "color", "var(--purple)");
     			attr_dev(h2, "class", "svelte-1g1nb9i");
-    			add_location(h2, file$l, 1346, 28, 51842);
+    			add_location(h2, file$l, 1375, 28, 53027);
     			attr_dev(div, "class", "nodePickerGroupTitle navigationLabel svelte-1g1nb9i");
-    			add_location(div, file$l, 1345, 24, 51700);
+    			add_location(div, file$l, 1374, 24, 52885);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -22439,7 +22531,7 @@ var app = (function () {
     		block,
     		id: create_each_block$6.name,
     		type: "each",
-    		source: "(1345:20) {#each Object.values(activePlugins) as plugin, index}",
+    		source: "(1374:20) {#each Object.values(activePlugins) as plugin, index}",
     		ctx
     	});
 
@@ -22861,67 +22953,67 @@ var app = (function () {
     			set_style(div0, "background-position-x", /*viewX*/ ctx[6] + /*mouseDrag*/ ctx[13].delta.x + "px");
     			set_style(div0, "background-position-y", /*viewY*/ ctx[7] + /*mouseDrag*/ ctx[13].delta.y + "px");
     			set_style(div0, "background-size", 2 * /*viewZoom*/ ctx[8] + "vh");
-    			add_location(div0, file$l, 889, 8, 32769);
+    			add_location(div0, file$l, 918, 8, 33954);
     			attr_dev(path_1, "d", "M7.724 65.49C13.36 55.11 21.79 46.47 32 40.56C39.63 36.15 48.25 33.26 57.46 32.33C59.61 32.11 61.79 32 64 32H448C483.3 32 512 60.65 512 96V416C512 451.3 483.3 480 448 480H64C28.65 480 0 451.3 0 416V96C0 93.79 .112 91.61 .3306 89.46C1.204 80.85 3.784 72.75 7.724 65.49V65.49zM48 416C48 424.8 55.16 432 64 432H448C456.8 432 464 424.8 464 416V224H48V416z");
     			attr_dev(path_1, "class", "svelte-1g1nb9i");
-    			add_location(path_1, file$l, 1231, 246, 47188);
+    			add_location(path_1, file$l, 1260, 246, 48373);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 512 512");
     			attr_dev(svg, "class", "svelte-1g1nb9i");
-    			add_location(svg, file$l, 1231, 16, 46958);
+    			add_location(svg, file$l, 1260, 16, 48143);
     			attr_dev(div1, "class", "nodePickerIcon svelte-1g1nb9i");
-    			add_location(div1, file$l, 1230, 12, 46912);
+    			add_location(div1, file$l, 1259, 12, 48097);
     			attr_dev(h20, "class", "svelte-1g1nb9i");
-    			add_location(h20, file$l, 1234, 16, 47650);
+    			add_location(h20, file$l, 1263, 16, 48835);
     			attr_dev(div2, "class", "nodePickerTitle svelte-1g1nb9i");
-    			add_location(div2, file$l, 1233, 12, 47603);
+    			add_location(div2, file$l, 1262, 12, 48788);
     			attr_dev(div3, "class", "nodePickerHeader svelte-1g1nb9i");
-    			add_location(div3, file$l, 1229, 8, 46868);
+    			add_location(div3, file$l, 1258, 8, 48053);
     			set_style(h21, "color", "var(--red)");
     			attr_dev(h21, "class", "svelte-1g1nb9i");
-    			add_location(h21, file$l, 1240, 16, 47891);
+    			add_location(h21, file$l, 1269, 16, 49076);
     			attr_dev(div4, "class", "nodePickerGroupTitle svelte-1g1nb9i");
-    			add_location(div4, file$l, 1239, 12, 47809);
+    			add_location(div4, file$l, 1268, 12, 48994);
     			set_style(h22, "color", "var(--velvet)");
     			attr_dev(h22, "class", "svelte-1g1nb9i");
-    			add_location(h22, file$l, 1274, 16, 48780);
+    			add_location(h22, file$l, 1303, 16, 49965);
     			attr_dev(div5, "class", "nodePickerGroupTitle svelte-1g1nb9i");
-    			add_location(div5, file$l, 1273, 12, 48698);
+    			add_location(div5, file$l, 1302, 12, 49883);
     			set_style(h23, "color", "var(--text1)");
     			attr_dev(h23, "class", "svelte-1g1nb9i");
-    			add_location(h23, file$l, 1290, 16, 49237);
+    			add_location(h23, file$l, 1319, 16, 50422);
     			attr_dev(div6, "class", "nodePickerGroupTitle svelte-1g1nb9i");
-    			add_location(div6, file$l, 1289, 12, 49155);
+    			add_location(div6, file$l, 1318, 12, 50340);
     			attr_dev(div7, "class", "slotScrollContainer svelte-1g1nb9i");
-    			add_location(div7, file$l, 1238, 12, 47762);
+    			add_location(div7, file$l, 1267, 12, 48947);
     			attr_dev(div8, "class", "verticalSeparator svelte-1g1nb9i");
-    			add_location(div8, file$l, 1326, 12, 50646);
+    			add_location(div8, file$l, 1355, 12, 51831);
     			set_style(h24, "color", "var(--red)");
     			attr_dev(h24, "class", "svelte-1g1nb9i");
-    			add_location(h24, file$l, 1330, 20, 50849);
+    			add_location(h24, file$l, 1359, 20, 52034);
     			attr_dev(div9, "class", "nodePickerGroupTitle navigationLabel svelte-1g1nb9i");
-    			add_location(div9, file$l, 1329, 16, 50747);
+    			add_location(div9, file$l, 1358, 16, 51932);
     			set_style(h25, "color", "var(--velvet)");
     			attr_dev(h25, "class", "svelte-1g1nb9i");
-    			add_location(h25, file$l, 1333, 20, 51032);
+    			add_location(h25, file$l, 1362, 20, 52217);
     			attr_dev(div10, "class", "nodePickerGroupTitle navigationLabel svelte-1g1nb9i");
-    			add_location(div10, file$l, 1332, 16, 50930);
+    			add_location(div10, file$l, 1361, 16, 52115);
     			set_style(h26, "color", "var(--text1)");
     			attr_dev(h26, "class", "svelte-1g1nb9i");
-    			add_location(h26, file$l, 1336, 20, 51223);
+    			add_location(h26, file$l, 1365, 20, 52408);
     			attr_dev(div11, "class", "nodePickerGroupTitle navigationLabel svelte-1g1nb9i");
-    			add_location(div11, file$l, 1335, 16, 51121);
+    			add_location(div11, file$l, 1364, 16, 52306);
     			attr_dev(div12, "class", "navigationPannel svelte-1g1nb9i");
-    			add_location(div12, file$l, 1328, 12, 50699);
+    			add_location(div12, file$l, 1357, 12, 51884);
     			attr_dev(div13, "class", "nodePickerContents svelte-1g1nb9i");
-    			add_location(div13, file$l, 1237, 8, 47716);
+    			add_location(div13, file$l, 1266, 8, 48901);
     			attr_dev(div14, "class", "nodePickerFrame neuOutdentShadow svelte-1g1nb9i");
-    			add_location(div14, file$l, 1223, 4, 46617);
+    			add_location(div14, file$l, 1252, 4, 47802);
     			attr_dev(div15, "class", "frame neuIndentShadow svelte-1g1nb9i");
     			add_render_callback(() => /*div15_elementresize_handler*/ ctx[94].call(div15));
-    			add_location(div15, file$l, 875, 4, 32360);
+    			add_location(div15, file$l, 904, 4, 33545);
     			attr_dev(main, "class", "svelte-1g1nb9i");
-    			add_location(main, file$l, 874, 0, 32348);
+    			add_location(main, file$l, 903, 0, 33533);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -24282,9 +24374,39 @@ var app = (function () {
      * @param {Number} index The node's index
      */
     	function deleteNode(type, index) {
-    		nodeData[type].splice(index, 1);
-    		$$invalidate(0, nodeData[type] = Object.assign([], nodeData[type]), nodeData);
-    		recalculateConnections();
+    		function finalize() {
+    			nodeData[type].splice(index, 1);
+    			$$invalidate(0, nodeData[type] = Object.assign([], nodeData[type]), nodeData);
+    			recalculateConnections();
+    		}
+
+    		if (userSettings.show_node_delete_modal) {
+    			new Promise((resolve, reject) => {
+    					document.dispatchEvent(new CustomEvent("pushModal",
+    					{
+    							detail: {
+    								"title": `Delete ${type}?`,
+    								"description": "Would you really like to proceed? This step is permanent.",
+    								"actions": [
+    									{
+    										"label": "Yes",
+    										"emphasized": false,
+    										"action": () => {
+    											resolve();
+    										}
+    									},
+    									{
+    										"label": "No",
+    										"emphasized": true,
+    										"action": () => {
+    											reject();
+    										}
+    									}
+    								]
+    							}
+    						}));
+    				}).then(finalize);
+    		} else finalize();
     	}
 
     	let outputProcessCallbacks = [];
@@ -24685,7 +24807,9 @@ var app = (function () {
     		__dirname,
     		JSON,
     		newConnection,
-    		destData
+    		destData,
+    		Promise,
+    		CustomEvent
     	});
 
     	$$self.$inject_state = $$props => {
@@ -30069,7 +30193,7 @@ var app = (function () {
 
     function get_each_context$b(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[9] = list[i];
+    	child_ctx[10] = list[i];
     	return child_ctx;
     }
 
@@ -30139,6 +30263,9 @@ var app = (function () {
     	let div3;
     	let svg;
     	let path_1;
+    	let t5;
+    	let updating_value;
+    	let current;
     	let dispose;
     	let each_value = /*userSettings*/ ctx[0].devPluginDirs;
     	validate_each_argument(each_value);
@@ -30147,6 +30274,19 @@ var app = (function () {
     	for (let i = 0; i < each_value.length; i += 1) {
     		each_blocks[i] = create_each_block$b(get_each_context$b(ctx, each_value, i));
     	}
+
+    	function toggle_value_binding_1(value) {
+    		/*toggle_value_binding_1*/ ctx[9].call(null, value);
+    	}
+
+    	let toggle_props = { label: "Show Dev Widget Delete Warning" };
+
+    	if (/*userSettings*/ ctx[0].show_dev_widget_modal !== void 0) {
+    		toggle_props.value = /*userSettings*/ ctx[0].show_dev_widget_modal;
+    	}
+
+    	const toggle = new Toggle({ props: toggle_props, $$inline: true });
+    	binding_callbacks.push(() => bind(toggle, "value", toggle_value_binding_1));
 
     	const block = {
     		c: function create() {
@@ -30169,6 +30309,8 @@ var app = (function () {
     			div3 = element("div");
     			svg = svg_element("svg");
     			path_1 = svg_element("path");
+    			t5 = space();
+    			create_component(toggle.$$.fragment);
     			attr_dev(h1, "class", "svelte-51ymvp");
     			add_location(h1, file$x, 61, 12, 2694);
     			attr_dev(div0, "class", "hr svelte-51ymvp");
@@ -30211,6 +30353,9 @@ var app = (function () {
     			append_dev(div4, div3);
     			append_dev(div3, svg);
     			append_dev(svg, path_1);
+    			insert_dev(target, t5, anchor);
+    			mount_component(toggle, target, anchor);
+    			current = true;
     			dispose = listen_dev(div3, "click", /*addPluginDevDirectory*/ ctx[3], false, false, false);
     		},
     		p: function update(ctx, dirty) {
@@ -30237,10 +30382,31 @@ var app = (function () {
 
     				each_blocks.length = each_value.length;
     			}
+
+    			const toggle_changes = {};
+
+    			if (!updating_value && dirty & /*userSettings*/ 1) {
+    				updating_value = true;
+    				toggle_changes.value = /*userSettings*/ ctx[0].show_dev_widget_modal;
+    				add_flush_callback(() => updating_value = false);
+    			}
+
+    			toggle.$set(toggle_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(toggle.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(toggle.$$.fragment, local);
+    			current = false;
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div5);
     			destroy_each(each_blocks, detaching);
+    			if (detaching) detach_dev(t5);
+    			destroy_component(toggle, detaching);
     			dispose();
     		}
     	};
@@ -30291,7 +30457,7 @@ var app = (function () {
     // (77:24) {:then name}
     function create_then_block(ctx) {
     	let h3;
-    	let t_value = /*name*/ ctx[12] + "";
+    	let t_value = /*name*/ ctx[13] + "";
     	let t;
 
     	const block = {
@@ -30306,7 +30472,7 @@ var app = (function () {
     			append_dev(h3, t);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*userSettings*/ 1 && t_value !== (t_value = /*name*/ ctx[12] + "")) set_data_dev(t, t_value);
+    			if (dirty & /*userSettings*/ 1 && t_value !== (t_value = /*name*/ ctx[13] + "")) set_data_dev(t, t_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(h3);
@@ -30387,7 +30553,7 @@ var app = (function () {
     	let promise;
     	let t0;
     	let p;
-    	let t1_value = /*dirName*/ ctx[9] + "";
+    	let t1_value = /*dirName*/ ctx[10] + "";
     	let t1;
     	let t2;
     	let div0;
@@ -30397,7 +30563,7 @@ var app = (function () {
     	let dispose;
 
     	function func(...args) {
-    		return /*func*/ ctx[7](/*dirName*/ ctx[9], ...args);
+    		return /*func*/ ctx[7](/*dirName*/ ctx[10], ...args);
     	}
 
     	let info = {
@@ -30407,13 +30573,13 @@ var app = (function () {
     		pending: create_pending_block,
     		then: create_then_block,
     		catch: create_catch_block,
-    		value: 12
+    		value: 13
     	};
 
     	handle_promise(promise = new Promise(func), info);
 
     	function click_handler(...args) {
-    		return /*click_handler*/ ctx[8](/*dirName*/ ctx[9], ...args);
+    		return /*click_handler*/ ctx[8](/*dirName*/ ctx[10], ...args);
     	}
 
     	const block = {
@@ -30464,11 +30630,11 @@ var app = (function () {
 
     			if (dirty & /*userSettings*/ 1 && promise !== (promise = new Promise(func)) && handle_promise(promise, info)) ; else {
     				const child_ctx = ctx.slice();
-    				child_ctx[12] = info.resolved;
+    				child_ctx[13] = info.resolved;
     				info.block.p(child_ctx, dirty);
     			}
 
-    			if (dirty & /*userSettings*/ 1 && t1_value !== (t1_value = /*dirName*/ ctx[9] + "")) set_data_dev(t1, t1_value);
+    			if (dirty & /*userSettings*/ 1 && t1_value !== (t1_value = /*dirName*/ ctx[10] + "")) set_data_dev(t1, t1_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div1);
@@ -30560,23 +30726,32 @@ var app = (function () {
     			if (/*userSettings*/ ctx[0].devModeEnabled) {
     				if (if_block1) {
     					if_block1.p(ctx, dirty);
+    					transition_in(if_block1, 1);
     				} else {
     					if_block1 = create_if_block$a(ctx);
     					if_block1.c();
+    					transition_in(if_block1, 1);
     					if_block1.m(main, null);
     				}
     			} else if (if_block1) {
-    				if_block1.d(1);
-    				if_block1 = null;
+    				group_outros();
+
+    				transition_out(if_block1, 1, 1, () => {
+    					if_block1 = null;
+    				});
+
+    				check_outros();
     			}
     		},
     		i: function intro(local) {
     			if (current) return;
     			transition_in(toggle.$$.fragment, local);
+    			transition_in(if_block1);
     			current = true;
     		},
     		o: function outro(local) {
     			transition_out(toggle.$$.fragment, local);
+    			transition_out(if_block1);
     			current = false;
     		},
     		d: function destroy(detaching) {
@@ -30666,6 +30841,11 @@ var app = (function () {
     		removePluginDevDirectory(dirName);
     	};
 
+    	function toggle_value_binding_1(value) {
+    		userSettings.show_dev_widget_modal = value;
+    		$$invalidate(0, userSettings);
+    	}
+
     	$$self.$set = $$props => {
     		if ("userSettings" in $$props) $$invalidate(0, userSettings = $$props.userSettings);
     	};
@@ -30701,7 +30881,8 @@ var app = (function () {
     		ipcRenderer,
     		toggle_value_binding,
     		func,
-    		click_handler
+    		click_handler,
+    		toggle_value_binding_1
     	];
     }
 
@@ -30737,7 +30918,7 @@ var app = (function () {
     /* src\Settings\Settings.svelte generated by Svelte v3.19.1 */
     const file$y = "src\\Settings\\Settings.svelte";
 
-    // (27:4) {:else}
+    // (28:4) {:else}
     function create_else_block$4(ctx) {
     	let div;
     	let div_class_value;
@@ -30746,7 +30927,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			attr_dev(div, "class", div_class_value = "blurAgent " + (/*opened*/ ctx[1] ? "" : "deblur") + " svelte-gu5jek");
-    			add_location(div, file$y, 27, 4, 637);
+    			add_location(div, file$y, 28, 4, 691);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -30765,14 +30946,14 @@ var app = (function () {
     		block,
     		id: create_else_block$4.name,
     		type: "else",
-    		source: "(27:4) {:else}",
+    		source: "(28:4) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (25:4) {#if userSettings.settings_theme == 1}
+    // (26:4) {#if userSettings.settings_theme == 1}
     function create_if_block_4$4(ctx) {
     	let div;
     	let div_class_value;
@@ -30781,7 +30962,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			attr_dev(div, "class", div_class_value = "plainBackgroundAgent " + (/*opened*/ ctx[1] ? "" : "disappear") + " svelte-gu5jek");
-    			add_location(div, file$y, 25, 4, 550);
+    			add_location(div, file$y, 26, 4, 604);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -30800,14 +30981,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4$4.name,
     		type: "if",
-    		source: "(25:4) {#if userSettings.settings_theme == 1}",
+    		source: "(26:4) {#if userSettings.settings_theme == 1}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (36:16) <SettingsCategory                      label="Appearance"                      selected={selected == 0}                      clickAction={() => {selected = 0}}                  >
+    // (37:16) <SettingsCategory                      label="Appearance"                      selected={selected == 0}                      clickAction={() => {selected = 0}}                  >
     function create_default_slot_3$1(ctx) {
     	let svg;
     	let path;
@@ -30818,11 +30999,11 @@ var app = (function () {
     			path = svg_element("path");
     			attr_dev(path, "fill", "var(--red)");
     			attr_dev(path, "d", "M339.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L568.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S517.7-4.4 499.1 9.6L262.4 187.2c-24 18-38.2 46.1-38.4 76.1L339.3 367.1zm-19.6 25.4l-116-104.4C143.9 290.3 96 339.6 96 400c0 3.9 .2 7.8 .6 11.6C98.4 429.1 86.4 448 68.8 448H64c-17.7 0-32 14.3-32 32s14.3 32 32 32H208c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z");
-    			add_location(path, file$y, 41, 24, 1358);
+    			add_location(path, file$y, 42, 24, 1412);
     			attr_dev(svg, "height", "40%");
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 576 512");
-    			add_location(svg, file$y, 40, 20, 1089);
+    			add_location(svg, file$y, 41, 20, 1143);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -30837,14 +31018,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_3$1.name,
     		type: "slot",
-    		source: "(36:16) <SettingsCategory                      label=\\\"Appearance\\\"                      selected={selected == 0}                      clickAction={() => {selected = 0}}                  >",
+    		source: "(37:16) <SettingsCategory                      label=\\\"Appearance\\\"                      selected={selected == 0}                      clickAction={() => {selected = 0}}                  >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (46:16) <SettingsCategory                      label="Workflow"                      selected={selected == 1}                      clickAction={() => {selected = 1}}                  >
+    // (47:16) <SettingsCategory                      label="Workflow"                      selected={selected == 1}                      clickAction={() => {selected = 1}}                  >
     function create_default_slot_2$1(ctx) {
     	let svg;
     	let path;
@@ -30855,11 +31036,11 @@ var app = (function () {
     			path = svg_element("path");
     			attr_dev(path, "fill", "var(--red)");
     			attr_dev(path, "d", "M352 320c88.4 0 160-71.6 160-160c0-15.3-2.2-30.1-6.2-44.2c-3.1-10.8-16.4-13.2-24.3-5.3l-76.8 76.8c-3 3-7.1 4.7-11.3 4.7H336c-8.8 0-16-7.2-16-16V118.6c0-4.2 1.7-8.3 4.7-11.3l76.8-76.8c7.9-7.9 5.4-21.2-5.3-24.3C382.1 2.2 367.3 0 352 0C263.6 0 192 71.6 192 160c0 19.1 3.4 37.5 9.5 54.5L19.9 396.1C7.2 408.8 0 426.1 0 444.1C0 481.6 30.4 512 67.9 512c18 0 35.3-7.2 48-19.9L297.5 310.5c17 6.2 35.4 9.5 54.5 9.5zM80 408a24 24 0 1 1 0 48 24 24 0 1 1 0-48z");
-    			add_location(path, file$y, 51, 20, 2270);
+    			add_location(path, file$y, 52, 20, 2324);
     			attr_dev(svg, "height", "40%");
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 512 512");
-    			add_location(svg, file$y, 50, 16, 2005);
+    			add_location(svg, file$y, 51, 16, 2059);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -30874,14 +31055,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_2$1.name,
     		type: "slot",
-    		source: "(46:16) <SettingsCategory                      label=\\\"Workflow\\\"                      selected={selected == 1}                      clickAction={() => {selected = 1}}                  >",
+    		source: "(47:16) <SettingsCategory                      label=\\\"Workflow\\\"                      selected={selected == 1}                      clickAction={() => {selected = 1}}                  >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (56:16) <SettingsCategory                      label="Plugins"                      selected={selected == 2}                      clickAction={() => {selected = 2}}                  >
+    // (57:16) <SettingsCategory                      label="Plugins"                      selected={selected == 2}                      clickAction={() => {selected = 2}}                  >
     function create_default_slot_1$1(ctx) {
     	let svg;
     	let path;
@@ -30892,11 +31073,11 @@ var app = (function () {
     			path = svg_element("path");
     			attr_dev(path, "fill", "var(--red)");
     			attr_dev(path, "d", "M96 0C78.3 0 64 14.3 64 32v96h64V32c0-17.7-14.3-32-32-32zM288 0c-17.7 0-32 14.3-32 32v96h64V32c0-17.7-14.3-32-32-32zM32 160c-17.7 0-32 14.3-32 32s14.3 32 32 32v32c0 77.4 55 142 128 156.8V480c0 17.7 14.3 32 32 32s32-14.3 32-32V412.8C297 398 352 333.4 352 256V224c17.7 0 32-14.3 32-32s-14.3-32-32-32H32z");
-    			add_location(path, file$y, 61, 20, 3118);
+    			add_location(path, file$y, 62, 20, 3172);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "height", "40%");
     			attr_dev(svg, "viewBox", "0 0 384 512");
-    			add_location(svg, file$y, 60, 16, 3021);
+    			add_location(svg, file$y, 61, 16, 3075);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -30911,14 +31092,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1$1.name,
     		type: "slot",
-    		source: "(56:16) <SettingsCategory                      label=\\\"Plugins\\\"                      selected={selected == 2}                      clickAction={() => {selected = 2}}                  >",
+    		source: "(57:16) <SettingsCategory                      label=\\\"Plugins\\\"                      selected={selected == 2}                      clickAction={() => {selected = 2}}                  >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (66:16) <SettingsCategory                      label="Dev Mode"                      selected={selected == 3}                      clickAction={() => {selected = 3}}                  >
+    // (67:16) <SettingsCategory                      label="Dev Mode"                      selected={selected == 3}                      clickAction={() => {selected = 3}}                  >
     function create_default_slot$1(ctx) {
     	let svg;
     	let path;
@@ -30929,11 +31110,11 @@ var app = (function () {
     			path = svg_element("path");
     			attr_dev(path, "fill", "var(--red)");
     			attr_dev(path, "d", "M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z");
-    			add_location(path, file$y, 72, 20, 4012);
+    			add_location(path, file$y, 73, 20, 4066);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "height", "40%");
     			attr_dev(svg, "viewBox", "0 0 640 512");
-    			add_location(svg, file$y, 70, 16, 3724);
+    			add_location(svg, file$y, 71, 16, 3778);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -30948,14 +31129,14 @@ var app = (function () {
     		block,
     		id: create_default_slot$1.name,
     		type: "slot",
-    		source: "(66:16) <SettingsCategory                      label=\\\"Dev Mode\\\"                      selected={selected == 3}                      clickAction={() => {selected = 3}}                  >",
+    		source: "(67:16) <SettingsCategory                      label=\\\"Dev Mode\\\"                      selected={selected == 3}                      clickAction={() => {selected = 3}}                  >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (82:16) {#if selected === 0}
+    // (83:16) {#if selected === 0}
     function create_if_block_3$5(ctx) {
     	let updating_value;
     	let t;
@@ -31048,16 +31229,20 @@ var app = (function () {
     		block,
     		id: create_if_block_3$5.name,
     		type: "if",
-    		source: "(82:16) {#if selected === 0}",
+    		source: "(83:16) {#if selected === 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (96:16) {#if selected === 1}
+    // (97:16) {#if selected === 1}
     function create_if_block_2$5(ctx) {
     	let updating_value;
+    	let t0;
+    	let updating_value_1;
+    	let t1;
+    	let updating_value_2;
     	let current;
 
     	function radio_value_binding(value) {
@@ -31081,12 +31266,46 @@ var app = (function () {
     	const radio = new Radio({ props: radio_props, $$inline: true });
     	binding_callbacks.push(() => bind(radio, "value", radio_value_binding));
 
+    	function toggle0_value_binding(value) {
+    		/*toggle0_value_binding*/ ctx[12].call(null, value);
+    	}
+
+    	let toggle0_props = { label: "Show Widget Delete Warning" };
+
+    	if (/*userSettings*/ ctx[0].show_widget_delete_modal !== void 0) {
+    		toggle0_props.value = /*userSettings*/ ctx[0].show_widget_delete_modal;
+    	}
+
+    	const toggle0 = new Toggle({ props: toggle0_props, $$inline: true });
+    	binding_callbacks.push(() => bind(toggle0, "value", toggle0_value_binding));
+
+    	function toggle1_value_binding(value) {
+    		/*toggle1_value_binding*/ ctx[13].call(null, value);
+    	}
+
+    	let toggle1_props = { label: "Show Node Delete Warning" };
+
+    	if (/*userSettings*/ ctx[0].show_node_delete_modal !== void 0) {
+    		toggle1_props.value = /*userSettings*/ ctx[0].show_node_delete_modal;
+    	}
+
+    	const toggle1 = new Toggle({ props: toggle1_props, $$inline: true });
+    	binding_callbacks.push(() => bind(toggle1, "value", toggle1_value_binding));
+
     	const block = {
     		c: function create() {
     			create_component(radio.$$.fragment);
+    			t0 = space();
+    			create_component(toggle0.$$.fragment);
+    			t1 = space();
+    			create_component(toggle1.$$.fragment);
     		},
     		m: function mount(target, anchor) {
     			mount_component(radio, target, anchor);
+    			insert_dev(target, t0, anchor);
+    			mount_component(toggle0, target, anchor);
+    			insert_dev(target, t1, anchor);
+    			mount_component(toggle1, target, anchor);
     			current = true;
     		},
     		p: function update(ctx, dirty) {
@@ -31099,18 +31318,44 @@ var app = (function () {
     			}
 
     			radio.$set(radio_changes);
+    			const toggle0_changes = {};
+
+    			if (!updating_value_1 && dirty & /*userSettings*/ 1) {
+    				updating_value_1 = true;
+    				toggle0_changes.value = /*userSettings*/ ctx[0].show_widget_delete_modal;
+    				add_flush_callback(() => updating_value_1 = false);
+    			}
+
+    			toggle0.$set(toggle0_changes);
+    			const toggle1_changes = {};
+
+    			if (!updating_value_2 && dirty & /*userSettings*/ 1) {
+    				updating_value_2 = true;
+    				toggle1_changes.value = /*userSettings*/ ctx[0].show_node_delete_modal;
+    				add_flush_callback(() => updating_value_2 = false);
+    			}
+
+    			toggle1.$set(toggle1_changes);
     		},
     		i: function intro(local) {
     			if (current) return;
     			transition_in(radio.$$.fragment, local);
+    			transition_in(toggle0.$$.fragment, local);
+    			transition_in(toggle1.$$.fragment, local);
     			current = true;
     		},
     		o: function outro(local) {
     			transition_out(radio.$$.fragment, local);
+    			transition_out(toggle0.$$.fragment, local);
+    			transition_out(toggle1.$$.fragment, local);
     			current = false;
     		},
     		d: function destroy(detaching) {
     			destroy_component(radio, detaching);
+    			if (detaching) detach_dev(t0);
+    			destroy_component(toggle0, detaching);
+    			if (detaching) detach_dev(t1);
+    			destroy_component(toggle1, detaching);
     		}
     	};
 
@@ -31118,14 +31363,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2$5.name,
     		type: "if",
-    		source: "(96:16) {#if selected === 1}",
+    		source: "(97:16) {#if selected === 1}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (105:16) {#if selected === 2}
+    // (116:16) {#if selected === 2}
     function create_if_block_1$9(ctx) {
     	let current;
     	const pluginmanager = new PluginManager({ $$inline: true });
@@ -31156,14 +31401,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$9.name,
     		type: "if",
-    		source: "(105:16) {#if selected === 2}",
+    		source: "(116:16) {#if selected === 2}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (108:16) {#if selected === 3}
+    // (119:16) {#if selected === 3}
     function create_if_block$b(ctx) {
     	let current;
 
@@ -31203,7 +31448,7 @@ var app = (function () {
     		block,
     		id: create_if_block$b.name,
     		type: "if",
-    		source: "(108:16) {#if selected === 3}",
+    		source: "(119:16) {#if selected === 3}",
     		ctx
     	});
 
@@ -31333,27 +31578,27 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "Close Settings";
     			attr_dev(div0, "class", "top svelte-gu5jek");
-    			add_location(div0, file$y, 30, 8, 751);
+    			add_location(div0, file$y, 31, 8, 805);
     			attr_dev(div1, "class", "leftWing mainLayoutWing svelte-gu5jek");
-    			add_location(div1, file$y, 34, 12, 834);
+    			add_location(div1, file$y, 35, 12, 888);
     			attr_dev(div2, "class", "dashLeft dash svelte-gu5jek");
-    			add_location(div2, file$y, 78, 16, 4639);
+    			add_location(div2, file$y, 79, 16, 4693);
     			attr_dev(div3, "class", "dashRight dash svelte-gu5jek");
-    			add_location(div3, file$y, 79, 16, 4690);
+    			add_location(div3, file$y, 80, 16, 4744);
     			attr_dev(div4, "class", "center svelte-gu5jek");
-    			add_location(div4, file$y, 77, 12, 4601);
+    			add_location(div4, file$y, 78, 12, 4655);
     			attr_dev(div5, "class", "rightWing mainLayoutWing svelte-gu5jek");
-    			add_location(div5, file$y, 112, 12, 5886);
+    			add_location(div5, file$y, 123, 12, 6318);
     			attr_dev(div6, "class", "mainLayout svelte-gu5jek");
-    			add_location(div6, file$y, 33, 8, 796);
+    			add_location(div6, file$y, 34, 8, 850);
     			attr_dev(button, "class", "close svelte-gu5jek");
-    			add_location(button, file$y, 117, 12, 6006);
+    			add_location(button, file$y, 128, 12, 6438);
     			attr_dev(div7, "class", "bottom svelte-gu5jek");
-    			add_location(div7, file$y, 116, 8, 5972);
+    			add_location(div7, file$y, 127, 8, 6404);
     			attr_dev(div8, "class", "mainLayoutContainer svelte-gu5jek");
-    			add_location(div8, file$y, 29, 4, 708);
+    			add_location(div8, file$y, 30, 4, 762);
     			attr_dev(main, "class", main_class_value = "" + (null_to_empty(/*opened*/ ctx[1] ? "" : "deblur") + " svelte-gu5jek"));
-    			add_location(main, file$y, 23, 0, 461);
+    			add_location(main, file$y, 24, 0, 515);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -31412,7 +31657,7 @@ var app = (function () {
     			if (dirty & /*selected*/ 4) settingscategory0_changes.selected = /*selected*/ ctx[2] == 0;
     			if (dirty & /*selected*/ 4) settingscategory0_changes.clickAction = /*func*/ ctx[5];
 
-    			if (dirty & /*$$scope*/ 4096) {
+    			if (dirty & /*$$scope*/ 16384) {
     				settingscategory0_changes.$$scope = { dirty, ctx };
     			}
 
@@ -31421,7 +31666,7 @@ var app = (function () {
     			if (dirty & /*selected*/ 4) settingscategory1_changes.selected = /*selected*/ ctx[2] == 1;
     			if (dirty & /*selected*/ 4) settingscategory1_changes.clickAction = /*func_1*/ ctx[6];
 
-    			if (dirty & /*$$scope*/ 4096) {
+    			if (dirty & /*$$scope*/ 16384) {
     				settingscategory1_changes.$$scope = { dirty, ctx };
     			}
 
@@ -31430,7 +31675,7 @@ var app = (function () {
     			if (dirty & /*selected*/ 4) settingscategory2_changes.selected = /*selected*/ ctx[2] == 2;
     			if (dirty & /*selected*/ 4) settingscategory2_changes.clickAction = /*func_2*/ ctx[7];
 
-    			if (dirty & /*$$scope*/ 4096) {
+    			if (dirty & /*$$scope*/ 16384) {
     				settingscategory2_changes.$$scope = { dirty, ctx };
     			}
 
@@ -31439,7 +31684,7 @@ var app = (function () {
     			if (dirty & /*selected*/ 4) settingscategory3_changes.selected = /*selected*/ ctx[2] == 3;
     			if (dirty & /*selected*/ 4) settingscategory3_changes.clickAction = /*func_3*/ ctx[8];
 
-    			if (dirty & /*$$scope*/ 4096) {
+    			if (dirty & /*$$scope*/ 16384) {
     				settingscategory3_changes.$$scope = { dirty, ctx };
     			}
 
@@ -31625,6 +31870,16 @@ var app = (function () {
     		$$invalidate(0, userSettings);
     	}
 
+    	function toggle0_value_binding(value) {
+    		userSettings.show_widget_delete_modal = value;
+    		$$invalidate(0, userSettings);
+    	}
+
+    	function toggle1_value_binding(value) {
+    		userSettings.show_node_delete_modal = value;
+    		$$invalidate(0, userSettings);
+    	}
+
     	$$self.$set = $$props => {
     		if ("closeAction" in $$props) $$invalidate(4, closeAction = $$props.closeAction);
     		if ("userSettings" in $$props) $$invalidate(0, userSettings = $$props.userSettings);
@@ -31635,6 +31890,7 @@ var app = (function () {
     		Radio,
     		PluginManager,
     		DevModePannel,
+    		Toggle,
     		closeAction,
     		opened,
     		closeRoutine,
@@ -31665,7 +31921,9 @@ var app = (function () {
     		func_3,
     		radio0_value_binding,
     		radio1_value_binding,
-    		radio_value_binding
+    		radio_value_binding,
+    		toggle0_value_binding,
+    		toggle1_value_binding
     	];
     }
 

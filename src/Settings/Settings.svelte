@@ -5,6 +5,7 @@
 
     import PluginManager from "./PluginManager.svelte";
     import DevModePannel from "./DevModePannel.svelte";
+    import Toggle from "./inputTypes/Toggle.svelte";
 
     export let closeAction;
     let opened = true;
@@ -99,6 +100,16 @@
                         label="Preferred Navigation Button"
                         choices={["Left Mouse Button", "Middle Mouse Button (Wheel)", "Right Mouse Button", "Any"]}
                         bind:value={userSettings.preferred_navigation_mb}
+                    />
+
+                    <Toggle
+                        label="Show Widget Delete Warning"
+                        bind:value={userSettings.show_widget_delete_modal}
+                    />
+
+                    <Toggle
+                        label="Show Node Delete Warning"
+                        bind:value={userSettings.show_node_delete_modal}
                     />
 
                 {/if}

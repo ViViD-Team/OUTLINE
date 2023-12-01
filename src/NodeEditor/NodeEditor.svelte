@@ -725,10 +725,39 @@
      * @param {Number} index The node's index
      */
     function deleteNode(type, index) {
-        nodeData[type].splice(index, 1);
-        nodeData[type] = Object.assign([], nodeData[type]);
+        function finalize() {
+            nodeData[type].splice(index, 1);
+            nodeData[type] = Object.assign([], nodeData[type]);
 
-        recalculateConnections();
+            recalculateConnections();
+        }
+        
+        if (userSettings.show_node_delete_modal) {
+            new Promise((resolve, reject) => {
+                document.dispatchEvent(new CustomEvent("pushModal", {
+                    detail: {
+                        "title": `Delete ${type}?`,
+                        "description": "Would you really like to proceed? This step is permanent.",
+                        "actions": [
+                            {
+                                "label": "Yes",
+                                "emphasized": false,
+                                "action": () => {
+                                    resolve();
+                                }
+                            },
+                            {
+                                "label": "No",
+                                "emphasized": true,
+                                "action": () => {
+                                    reject();
+                                }
+                            }
+                        ]
+                    }
+                }))
+            }).then(finalize);
+        } else finalize();
     }
 
     let outputProcessCallbacks = [];
