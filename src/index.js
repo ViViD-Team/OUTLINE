@@ -184,11 +184,28 @@ ipcMain.on("installPlugin", (event, data) => {
     return;
   }
 
+  installPlugin(opbPath);
+
+  event.returnValue = null;
+});
+
+
+ipcMain.on("installPluginInstant", (event, data) => {
+
+  installPlugin(data);
+
+  event.returnValue = null;
+});
+
+
+function installPlugin(pluginPath) {
+
+  let opbPath = Array.isArray(pluginPath) ? pluginPath : [pluginPath];
+
   let fileContents = JSON.parse(String(fs.readFileSync(opbPath[0])));
 
   if (fs.existsSync(path.join(app_data, ".plugins", fileContents.pluginID))) {
     mainWindow.webContents.send("dispatchNotification", {"type": "error", "message": "Plugin already installed!"});
-    event.returnValue = null;
     return;
   }
 
@@ -246,9 +263,7 @@ ipcMain.on("installPlugin", (event, data) => {
   scanPlugins();
 
   mainWindow.webContents.send("refreshPlugins");
-
-  event.returnValue = null;
-});
+}
 
 ipcMain.on("uninstallPlugin", (event, data) => {
   if (!data.pluginID in pluginsConfig) {event.returnValue = null; return;}

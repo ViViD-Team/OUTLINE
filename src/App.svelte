@@ -232,10 +232,16 @@
 	}
 
 	ipcRenderer.on("openFile", (event, arg) => {
-		// TODO Differentiate between .ols and .opb
+		switch (arg.split(".").pop()) {
+			case ".ols":
+				openInstant(arg);
+				break;
 
-		openInstant(arg);
-	})
+			case ".opb":
+				ipcRenderer.sendSync("installPluginInstant", arg);
+				break;
+		}
+	});
 	function openInstant(path) {
 		edited = null;
 		console.log(path);

@@ -767,6 +767,7 @@
     }
 
     let outputProcessCallbacks = [];
+    let batchOutputProcessCallbacks = [];
     let resultProcessCallbacks = [];
 
     /**
@@ -774,6 +775,13 @@
      */
     export function invokeOutputs() {
         outputProcessCallbacks.forEach((callback) => {
+            try {
+                callback();
+            }
+            catch (err) {console.error(err);}
+        });
+
+        batchOutputProcessCallbacks.forEach((callback) => {
             try {
                 callback();
             }
@@ -1051,7 +1059,10 @@
             {#if node}
                 <OutputNode
                     onDrag={(event) => initNodeDrag(event, "output", index)}
-                    onDelete={() => {deleteNode("output", index)}}
+                    onDelete={() => {
+                        deleteNode("output", index);
+                        delete outputProcessCallbacks[index];
+                    }}
 
                     posX={node.posX}
                     posY={node.posY}
@@ -1080,7 +1091,10 @@
             {#if node}
                 <BatchOutputNode
                     onDrag={(event) => initNodeDrag(event, "batchOutput", index)}
-                    onDelete={() => {deleteNode("batchOutput", index)}}
+                    onDelete={() => {
+                        deleteNode("batchOutput", index);
+                        delete outputProcessCallbacks[index + nodeData.output.length];
+                    }}
 
                     posX={node.posX}
                     posY={node.posY}
@@ -1100,7 +1114,7 @@
                         if (removeOld) recalculateConnections();
                     }}
 
-                    bind:process={outputProcessCallbacks[index]}
+                    bind:process={batchOutputProcessCallbacks[index]}
                 />
             {/if}
         {/each}

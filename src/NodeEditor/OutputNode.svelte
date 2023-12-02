@@ -59,8 +59,6 @@
 
                 break;
         }
-
-        process();
     }
 
 
@@ -103,6 +101,10 @@
     export async function process() {
         context[nodeData.input].process()
             .then((value) => {
+                if (Array.isArray(value)) {
+			        document.dispatchEvent(new CustomEvent("notificationEvent", {detail: {"type": "error", "message": "Put nodes can only put single values. Batches are not supported."}}));
+                    return;
+                }
                 tableData.cellContents[nodeData.selectedCol][nodeData.selectedRow] = value;
                 tableData.reference.rerender();
             })

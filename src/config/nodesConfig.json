@@ -26,5 +26,9 @@
         "Acos",
         "Tan",
         "Atan"
+    ],
+    "Math - Batches": [
+        "Sum",
+        "Product"
     ]
 }

@@ -59,8 +59,6 @@
 
                 break;
         }
-
-        process();
     }
 
 
@@ -154,7 +152,7 @@
         <h1 style="
             font-size: {1.5*zoom}vh;
             margin-left: {zoom}vh;
-        ">Put</h1>
+        ">Put Batch</h1>
     </div>
     <div class="contents">
         <div class="tetherContainer" style="
@@ -208,23 +206,6 @@
                     border-radius: {.5*zoom}vh;
                 ">
             </div>
-            <div class="setting">
-                <h2 style="
-                    font-size: {zoom}vh;
-                    margin-left: {zoom}vh;
-                    margin-right: {.5*zoom}vh;
-                    color: {nodeData.color};
-                ">Row</h2>
-                <input type="number" name="row" min="0" bind:value={nodeData.selectedRow} style="
-                    width: {4*zoom}vh;
-                    height: {1.5*zoom}vh;
-                    margin-right: {zoom}vh;
-                    font-size: {zoom}vh;
-                    color: {nodeData.textcolor};
-                    border-radius: {.5*zoom}vh;
-                ">
-            </div>
-            
         </div>
         
     </div>
