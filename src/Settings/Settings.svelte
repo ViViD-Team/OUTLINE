@@ -149,7 +149,11 @@
         width: 100%;
         height: 100%;
 
+        background: #ffffff00;
+
         backdrop-filter: blur(1vh) saturate(.5);
+
+        will-change: backdrop-filter;
 
         animation: backgroundBlur .5s backwards;
     }

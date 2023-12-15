@@ -92,7 +92,7 @@
     }
 
     onMount(() => {
-        if (resultWidgets && resultWidgets[0]) nodeData.selectedResult = resultWidgets[0].title;
+        if (resultWidgets && resultWidgets[0] && !nodeData.selectedResult) nodeData.selectedResult = resultWidgets[0].title;
     });
 </script>
 

@@ -233,11 +233,11 @@
 
 	ipcRenderer.on("openFile", (event, arg) => {
 		switch (arg.split(".").pop()) {
-			case ".ols":
+			case "ols":
 				openInstant(arg);
 				break;
 
-			case ".opb":
+			case "opb":
 				ipcRenderer.sendSync("installPluginInstant", arg);
 				break;
 		}

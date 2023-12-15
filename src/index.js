@@ -1,6 +1,6 @@
 const { app, BrowserWindow, ipcMain, dialog, nativeTheme, ipcRenderer} = require('electron');
 const path = require('path');
-const fs = require("fs-extra");
+const fs = require("fs");
 
 
 // Live Reload
@@ -33,7 +33,7 @@ const createWindow = () => {
   });
 
   mainWindow.loadFile(path.join(__dirname, '../public/index.html'));
-  if (fileOpenPath /* for dev */ && fileOpenPath != ".") mainWindow.webContents.once("dom-ready", () => {
+  if (fileOpenPath && fileOpenPath != "." || true) mainWindow.webContents.once("dom-ready", () => {
     mainWindow.webContents.send("openFile", fileOpenPath)
   })
   
@@ -265,13 +265,30 @@ function installPlugin(pluginPath) {
   mainWindow.webContents.send("refreshPlugins");
 }
 
+
+function rmrf(dir) {
+  if (fs.existsSync(dir)) {
+    fs.readdirSync(dir).forEach((file, index) => {
+      const curPath = path.join(dir, file);
+      if (fs.lstatSync(curPath).isDirectory()) {
+       // recurse
+        rmrf(curPath);
+      } else {
+        // delete file
+        fs.unlinkSync(curPath);
+      }
+    });
+    fs.rmdirSync(dir);
+  }
+}
+
 ipcMain.on("uninstallPlugin", (event, data) => {
   if (!data.pluginID in pluginsConfig) {event.returnValue = null; return;}
 
   const dir = path.join(app_data, ".plugins", data.pluginID);
 
   if (!fs.existsSync(dir)) {event.returnValue = null; return;}
-  fs.removeSync(dir);
+  rmrf(dir);
 
   delete pluginsConfig[data.pluginID];
   fs.writeFileSync(path.join(app_data, ".plugins", "pluginsConfig.json"), JSON.stringify(pluginsConfig))
