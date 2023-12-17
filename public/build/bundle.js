@@ -8161,7 +8161,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (1124:12) {#each projectData.objects.header as object, index}
+    // (1126:12) {#each projectData.objects.header as object, index}
     function create_each_block_7(ctx) {
     	let updating_text;
     	let updating_sizeBounds;
@@ -8272,14 +8272,14 @@ var app = (function () {
     		block,
     		id: create_each_block_7.name,
     		type: "each",
-    		source: "(1124:12) {#each projectData.objects.header as object, index}",
+    		source: "(1126:12) {#each projectData.objects.header as object, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1148:12) {#each projectData.objects.paragraph as object, index}
+    // (1150:12) {#each projectData.objects.paragraph as object, index}
     function create_each_block_6(ctx) {
     	let updating_text;
     	let updating_sizeBounds;
@@ -8390,14 +8390,14 @@ var app = (function () {
     		block,
     		id: create_each_block_6.name,
     		type: "each",
-    		source: "(1148:12) {#each projectData.objects.paragraph as object, index}",
+    		source: "(1150:12) {#each projectData.objects.paragraph as object, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1172:12) {#each projectData.objects.table as object, index}
+    // (1174:12) {#each projectData.objects.table as object, index}
     function create_each_block_5(ctx) {
     	let updating_title;
     	let updating_sizeBounds;
@@ -8565,14 +8565,14 @@ var app = (function () {
     		block,
     		id: create_each_block_5.name,
     		type: "each",
-    		source: "(1172:12) {#each projectData.objects.table as object, index}",
+    		source: "(1174:12) {#each projectData.objects.table as object, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1207:12) {#each projectData.objects.result as object, index}
+    // (1209:12) {#each projectData.objects.result as object, index}
     function create_each_block_4(ctx) {
     	let updating_widgetData;
     	let updating_projectData;
@@ -8699,14 +8699,14 @@ var app = (function () {
     		block,
     		id: create_each_block_4.name,
     		type: "each",
-    		source: "(1207:12) {#each projectData.objects.result as object, index}",
+    		source: "(1209:12) {#each projectData.objects.result as object, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1266:24) {:else}
+    // (1268:24) {:else}
     function create_else_block$1(ctx) {
     	let current;
 
@@ -8772,14 +8772,14 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(1266:24) {:else}",
+    		source: "(1268:24) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1238:24) {#if activePlugins[plugin] != null}
+    // (1240:24) {#if activePlugins[plugin] != null}
     function create_if_block$2(ctx) {
     	let updating_posX;
     	let updating_posY;
@@ -9000,14 +9000,14 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(1238:24) {#if activePlugins[plugin] != null}",
+    		source: "(1240:24) {#if activePlugins[plugin] != null}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1237:20) {#each projectData.pluginObjects[plugin][widgetType] as w, index}
+    // (1239:20) {#each projectData.pluginObjects[plugin][widgetType] as w, index}
     function create_each_block_3(ctx) {
     	let current_block_type_index;
     	let if_block;
@@ -9078,14 +9078,14 @@ var app = (function () {
     		block,
     		id: create_each_block_3.name,
     		type: "each",
-    		source: "(1237:20) {#each projectData.pluginObjects[plugin][widgetType] as w, index}",
+    		source: "(1239:20) {#each projectData.pluginObjects[plugin][widgetType] as w, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1236:16) {#each Object.keys(projectData.pluginObjects[plugin]) as widgetType}
+    // (1238:16) {#each Object.keys(projectData.pluginObjects[plugin]) as widgetType}
     function create_each_block_2$2(ctx) {
     	let each_1_anchor;
     	let current;
@@ -9174,14 +9174,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2$2.name,
     		type: "each",
-    		source: "(1236:16) {#each Object.keys(projectData.pluginObjects[plugin]) as widgetType}",
+    		source: "(1238:16) {#each Object.keys(projectData.pluginObjects[plugin]) as widgetType}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1235:12) {#each Object.keys(projectData.pluginObjects) as plugin}
+    // (1237:12) {#each Object.keys(projectData.pluginObjects) as plugin}
     function create_each_block_1$2(ctx) {
     	let each_1_anchor;
     	let current;
@@ -9270,14 +9270,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1$2.name,
     		type: "each",
-    		source: "(1235:12) {#each Object.keys(projectData.pluginObjects) as plugin}",
+    		source: "(1237:12) {#each Object.keys(projectData.pluginObjects) as plugin}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (1290:12) {#each devPluginObjects as w, index}
+    // (1292:12) {#each devPluginObjects as w, index}
     function create_each_block$2(ctx) {
     	let updating_posX;
     	let updating_posY;
@@ -9496,7 +9496,7 @@ var app = (function () {
     		block,
     		id: create_each_block$2.name,
     		type: "each",
-    		source: "(1290:12) {#each devPluginObjects as w, index}",
+    		source: "(1292:12) {#each devPluginObjects as w, index}",
     		ctx
     	});
 
@@ -9631,12 +9631,12 @@ var app = (function () {
     			set_style(div0, "background-position-x", /*viewX*/ ctx[4] + /*mouseDrag*/ ctx[10].delta.x + "px");
     			set_style(div0, "background-position-y", /*viewY*/ ctx[5] + /*mouseDrag*/ ctx[10].delta.y + "px");
     			set_style(div0, "background-size", 2 * /*viewZoom*/ ctx[6] + "vh");
-    			add_location(div0, file$a, 1113, 12, 36694);
+    			add_location(div0, file$a, 1115, 12, 36774);
     			attr_dev(div1, "class", "frame neuIndentShadow svelte-d3k9sp");
     			add_render_callback(() => /*div1_elementresize_handler*/ ctx[99].call(div1));
-    			add_location(div1, file$a, 1098, 4, 36264);
+    			add_location(div1, file$a, 1100, 4, 36344);
     			attr_dev(main, "class", "svelte-d3k9sp");
-    			add_location(main, file$a, 1097, 0, 36252);
+    			add_location(main, file$a, 1099, 0, 36332);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -10822,6 +10822,7 @@ var app = (function () {
     		if (!(pluginID in projectData.pluginObjects)) $$invalidate(0, projectData.pluginObjects[pluginID] = {}, projectData);
 
     		if (!(widgetID in projectData.pluginObjects[pluginID])) $$invalidate(0, projectData.pluginObjects[pluginID][widgetID] = [], projectData);
+    		console.log(ipcRenderer.sendSync("getPluginMap"), pluginID);
 
     		// Fetch and clone prototype
     		const prototype = ipcRenderer.sendSync("getPluginMap")[pluginID].widgets.filter(x => x.widgetID == widgetID)[0].prototype;
@@ -11240,8 +11241,8 @@ var app = (function () {
     		Promise,
     		CustomEvent,
     		JSON,
-    		String,
-    		console
+    		console,
+    		String
     	});
 
     	$$self.$inject_state = $$props => {
@@ -26510,7 +26511,7 @@ var app = (function () {
     	const plugintoolkitwidget = new PluginToolkitWidget({
     			props: {
     				label: /*w*/ ctx[23].widgetName,
-    				objectType: `${/*p*/ ctx[20].path}:${/*w*/ ctx[23].widgetID}`,
+    				objectType: `${/*p*/ ctx[20].pluginID}:${/*w*/ ctx[23].widgetID}`,
     				svgContents: /*w*/ ctx[23].widgetIconSVG
     			},
     			$$inline: true
@@ -26527,7 +26528,7 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const plugintoolkitwidget_changes = {};
     			if (dirty & /*activePlugins*/ 4) plugintoolkitwidget_changes.label = /*w*/ ctx[23].widgetName;
-    			if (dirty & /*activePlugins*/ 4) plugintoolkitwidget_changes.objectType = `${/*p*/ ctx[20].path}:${/*w*/ ctx[23].widgetID}`;
+    			if (dirty & /*activePlugins*/ 4) plugintoolkitwidget_changes.objectType = `${/*p*/ ctx[20].pluginID}:${/*w*/ ctx[23].widgetID}`;
     			if (dirty & /*activePlugins*/ 4) plugintoolkitwidget_changes.svgContents = /*w*/ ctx[23].widgetIconSVG;
     			plugintoolkitwidget.$set(plugintoolkitwidget_changes);
     		},

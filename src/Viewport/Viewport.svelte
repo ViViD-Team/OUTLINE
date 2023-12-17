@@ -979,6 +979,8 @@
         if (!(widgetID in projectData.pluginObjects[pluginID]))
             projectData.pluginObjects[pluginID][widgetID] = [];
 
+        
+        console.log(ipcRenderer.sendSync("getPluginMap"), pluginID);
         // Fetch and clone prototype
         const prototype = ipcRenderer.sendSync("getPluginMap")[pluginID].widgets.filter(x => x.widgetID == widgetID)[0].prototype;
         const instance = JSON.parse(JSON.stringify(prototype));

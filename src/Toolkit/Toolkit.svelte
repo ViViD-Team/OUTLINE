@@ -149,7 +149,7 @@
                     {#each p.widgets as w}
                         <PluginToolkitWidget
                             label={w.widgetName}
-                            objectType={`${p.path}:${w.widgetID}`}
+                            objectType={`${p.pluginID}:${w.widgetID}`}
                             svgContents={w.widgetIconSVG}
                         />
                     {/each}
