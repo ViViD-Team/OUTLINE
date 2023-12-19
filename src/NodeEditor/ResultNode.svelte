@@ -12,6 +12,8 @@
     export let nodeData;
     export let context;
 
+    export let dragend;
+
     export let resultWidgets;
     export let connectionCallback;
 
@@ -118,6 +120,7 @@
 
             nodeData.simX = 0;
             nodeData.simY = 0;
+            dragend();
             clearDrag();
         }}"
 

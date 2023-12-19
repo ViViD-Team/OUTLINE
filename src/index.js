@@ -107,7 +107,12 @@ scanPlugins();
 function scanPlugins() {
   // Check existance of dir
   if (!fs.existsSync(path.join(app_data, ".plugins"))) {
-    fs.mkdirSync(path.join(app_data, ".plugins"));
+    try {
+      fs.mkdirSync(app_data);
+      fs.mkdirSync(path.join(app_data, ".plugins"));
+    } catch (err) {
+      console.error(err);
+    }
     pluginsConfig = {};
     return {};
   }

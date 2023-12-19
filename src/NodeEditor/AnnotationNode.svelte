@@ -17,6 +17,8 @@
     export let onDrag;
     export let onDelete;
 
+    export let dragend;
+
     function drag(event) {
         onDrag(event);
     }
@@ -61,6 +63,8 @@
 
             nodeData.simX = 0;
             nodeData.simY = 0;
+
+            dragend();
         }}"
 
         style="

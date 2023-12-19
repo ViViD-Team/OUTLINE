@@ -943,6 +943,7 @@
 
                     onDrag={(event) => initNodeDrag(event, "operator", index)}
                     onDelete={() => {deleteNode("operator", index)}}
+                    dragend={clearNodeDrag}
 
                     posX={node.posX}
                     posY={node.posY}
@@ -960,7 +961,7 @@
 
                     connectionCallback={(node, output, index, removeOld) => {
                         addConnection(node, output, index);
-                        if (removeOld) recalculateConnections();
+                        /* if (removeOld)  */recalculateConnections();
                     }}
                 />
             {/if}
@@ -971,6 +972,7 @@
                 <LiteralNode
                     onDrag={(event) => initNodeDrag(event, "literal", index)}
                     onDelete={() => {deleteNode("literal", index)}}
+                    dragend={clearNodeDrag}
 
                     onChange={invokeOutputs}
 
@@ -1000,6 +1002,7 @@
                 <InputNode
                     onDrag={(event) => initNodeDrag(event, "input", index)}
                     onDelete={() => {deleteNode("input", index)}}
+                    dragend={clearNodeDrag}
 
                     posX={node.posX}
                     posY={node.posY}
@@ -1030,6 +1033,7 @@
                 <BatchInputNode
                     onDrag={(event) => initNodeDrag(event, "batchInput", index)}
                     onDelete={() => {deleteNode("batchInput", index)}}
+                    dragend={clearNodeDrag}
 
                     posX={node.posX}
                     posY={node.posY}
@@ -1063,6 +1067,7 @@
                         deleteNode("output", index);
                         delete outputProcessCallbacks[index];
                     }}
+                    dragend={clearNodeDrag}
 
                     posX={node.posX}
                     posY={node.posY}
@@ -1079,7 +1084,7 @@
 
                     connectionCallback={(node, output, index, removeOld) => {
                         addConnection(node, output, index);
-                        if (removeOld) recalculateConnections();
+                        /* if (removeOld)  */recalculateConnections();
                     }}
 
                     bind:process={outputProcessCallbacks[index]}
@@ -1095,6 +1100,7 @@
                         deleteNode("batchOutput", index);
                         delete outputProcessCallbacks[index + nodeData.output.length];
                     }}
+                    dragend={clearNodeDrag}
 
                     posX={node.posX}
                     posY={node.posY}
@@ -1111,7 +1117,7 @@
 
                     connectionCallback={(node, output, index, removeOld) => {
                         addConnection(node, output, index);
-                        if (removeOld) recalculateConnections();
+                        /* if (removeOld)  */recalculateConnections();
                     }}
 
                     bind:process={batchOutputProcessCallbacks[index]}
@@ -1124,6 +1130,7 @@
                 <ResultNode
                     onDrag={(event) => initNodeDrag(event, "result", index)}
                     onDelete={() => {deleteNode("result", index)}}
+                    dragend={clearNodeDrag}
 
                     posX={node.posX}
                     posY={node.posY}
@@ -1140,7 +1147,7 @@
 
                     connectionCallback={(node, output, index, removeOld) => {
                         addConnection(node, output, index);
-                        if (removeOld) recalculateConnections();
+                        /* if (removeOld)  */recalculateConnections();
                     }}
 
                     bind:process={resultProcessCallbacks[index]}
@@ -1154,6 +1161,7 @@
                     onDrag={(event) => initNodeDrag(event, "annotation", index)}
                     onDelete={() => {deleteNode("annotation", index)}}
                     onResize={(event) => {initNodeResize(event, "annotation", index)}}
+                    dragend={clearNodeDrag}
 
                     posX={node.posX}
                     posY={node.posY}
@@ -1183,6 +1191,7 @@
 
                     onDrag={(event) => initNodeDrag(event, "plugin", index)}
                     onDelete={() => {deleteNode("plugin", index)}}
+                    dragend={clearNodeDrag}
 
                     posX={node.posX}
                     posY={node.posY}
@@ -1202,7 +1211,7 @@
 
                     connectionCallback={(node, output, index, removeOld) => {
                         addConnection(node, output, index);
-                        if (removeOld) recalculateConnections();
+                        /* if (removeOld)  */recalculateConnections();
                     }}
                 />
             {/if}

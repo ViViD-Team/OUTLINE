@@ -16,6 +16,8 @@
 
     export let nodeObject;
 
+    export let dragend;
+
     let renderReady = false;
     let error = false;
 
@@ -124,6 +126,8 @@
     
                 nodeData.simX = 0;
                 nodeData.simY = 0;
+
+                dragend();
                 clearDrag();
             }}"
 

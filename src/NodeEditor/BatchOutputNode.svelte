@@ -13,6 +13,7 @@
 
     export let nodeData;
     export let context;
+    export let dragend;
 
     export let tableRef;
     export let tableData;
@@ -142,6 +143,7 @@
 
             nodeData.simX = 0;
             nodeData.simY = 0;
+            dragend();
             clearDrag();
         }}"
 

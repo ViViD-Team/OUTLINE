@@ -13,6 +13,7 @@
 
     export let nodeData;
     export let context;
+    export let dragend;
 
     export let tableRef;
     export let tableData;
@@ -99,6 +100,7 @@
 
 
     export async function process() {
+        if (!nodeData.input) return;
         context[nodeData.input].process()
             .then((value) => {
                 if (Array.isArray(value)) {
@@ -135,6 +137,7 @@
 
             nodeData.simX = 0;
             nodeData.simY = 0;
+            dragend();
             clearDrag();
         }}"
 
