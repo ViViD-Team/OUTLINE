@@ -340,6 +340,8 @@
     .inputTetherCircleContainer {
         height: 100%;
 
+        flex-shrink: 0;
+
         display: grid;
         place-items: center;
     }
@@ -357,6 +359,8 @@
 
         white-space: nowrap;
         font-weight: 800;
+
+        text-align: left;
     }
 
 
@@ -367,6 +371,8 @@
 
         display: flex;
         flex-direction: column;
+
+        overflow: hidden;
     }
 
     .outputTether {
@@ -376,10 +382,14 @@
         
         display: flex;
         flex-direction: row-reverse;
+
+        overflow: hidden;
     }
 
     .outputTetherCircleContainer {
         height: 100%;
+
+        flex-shrink: 0;
 
         display: grid;
         place-items: center;

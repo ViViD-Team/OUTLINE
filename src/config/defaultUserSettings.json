@@ -1,9 +1,9 @@
 {
     "theme": 2,
-    "settings_theme": 0,
+    "settings_theme": 1,
 
 
-    "preferred_navigation_mb": 1,
+    "preferred_navigation_mb": 3,
     "show_widget_delete_modal": true,
     "show_node_delete_modal": true,
 

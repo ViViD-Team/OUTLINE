@@ -9,7 +9,7 @@ class ProductNodeData extends NodeData {
             new NodeInputTether("Batch", context)
         ];
         let outputs = [
-            new ProductNodeDataOutput("Product", inputs, outputRefs[0], context),
+            new ProductNodeDataOutput("Prod.", inputs, outputRefs[0], context),
         ];
 
         super("Product", inputs, outputs, rawNodeData);

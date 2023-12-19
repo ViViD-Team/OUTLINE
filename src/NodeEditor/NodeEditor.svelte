@@ -1260,7 +1260,7 @@
                     {simConnection.posY > simConnection.destY ? "-100%" : "0"}) scale({simConnection.destX > simConnection.posX ? "-" : ""}1,  {simConnection.destY > simConnection.posY ? "-" : ""}1);
 
 
-            " class="inputFlowContainer">
+            " class="inputFlowContainer simConnection">
                 <svg style="
                     position: absolute;
                     top: 0;
@@ -1667,5 +1667,13 @@
         pointer-events: visibleStroke;
     }
 
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+    }
 
+    .simConnection {
+        animation: fadeIn .5s; 
+    }
 </style>
