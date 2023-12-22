@@ -26468,12 +26468,12 @@ var app = (function () {
     		c: function create() {
     			svg = svg_element("svg");
     			path_1 = svg_element("path");
-    			attr_dev(path_1, "d", "M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zM336 152V256 360c0 13.3-10.7 24-24 24s-24-10.7-24-24V280H160l0 80c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-208c0-13.3 10.7-24 24-24s24 10.7 24 24v80H288V152c0-13.3 10.7-24 24-24s24 10.7 24 24z");
-    			add_location(path_1, file$q, 125, 24, 6107);
+    			attr_dev(path_1, "d", "M352 64c0-17.7-14.3-32-32-32H128c-17.7 0-32 14.3-32 32s14.3 32 32 32H320c17.7 0 32-14.3 32-32zm96 128c0-17.7-14.3-32-32-32H32c-17.7 0-32 14.3-32 32s14.3 32 32 32H416c17.7 0 32-14.3 32-32zM0 448c0 17.7 14.3 32 32 32H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H32c-17.7 0-32 14.3-32 32zM352 320c0-17.7-14.3-32-32-32H128c-17.7 0-32 14.3-32 32s14.3 32 32 32H320c17.7 0 32-14.3 32-32z");
+    			add_location(path_1, file$q, 124, 229, 6228);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 448 512");
     			attr_dev(svg, "class", "svelte-1qmj3si");
-    			add_location(svg, file$q, 124, 20, 6019);
+    			add_location(svg, file$q, 124, 16, 6015);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -26495,7 +26495,7 @@ var app = (function () {
     	return block;
     }
 
-    // (131:12) {#if category == 1}
+    // (129:12) {#if category == 1}
     function create_if_block_4$3(ctx) {
     	let t;
     	let current;
@@ -26554,14 +26554,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4$3.name,
     		type: "if",
-    		source: "(131:12) {#if category == 1}",
+    		source: "(129:12) {#if category == 1}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (132:16) <ToolkitWidget                      label="Smart Table"                      objectType="table"                  >
+    // (130:16) <ToolkitWidget                      label="Smart Table"                      objectType="table"                  >
     function create_default_slot_3(ctx) {
     	let svg;
     	let path_1;
@@ -26571,11 +26571,11 @@ var app = (function () {
     			svg = svg_element("svg");
     			path_1 = svg_element("path");
     			attr_dev(path_1, "d", "M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm88 64v64H64V96h88zm56 0h88v64H208V96zm240 0v64H360V96h88zM64 224h88v64H64V224zm232 0v64H208V224h88zm64 0h88v64H360V224zM152 352v64H64V352h88zm56 0h88v64H208V352zm240 0v64H360V352h88z");
-    			add_location(path_1, file$q, 135, 246, 6908);
+    			add_location(path_1, file$q, 133, 246, 7089);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 512 512");
     			attr_dev(svg, "class", "svelte-1qmj3si");
-    			add_location(svg, file$q, 135, 16, 6678);
+    			add_location(svg, file$q, 133, 16, 6859);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -26590,14 +26590,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_3.name,
     		type: "slot",
-    		source: "(132:16) <ToolkitWidget                      label=\\\"Smart Table\\\"                      objectType=\\\"table\\\"                  >",
+    		source: "(130:16) <ToolkitWidget                      label=\\\"Smart Table\\\"                      objectType=\\\"table\\\"                  >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (139:16) <ToolkitWidget                      label="Result"                      objectType="result"                  >
+    // (137:16) <ToolkitWidget                      label="Result"                      objectType="result"                  >
     function create_default_slot_2(ctx) {
     	let svg;
     	let path_1;
@@ -26607,11 +26607,11 @@ var app = (function () {
     			svg = svg_element("svg");
     			path_1 = svg_element("path");
     			attr_dev(path_1, "d", "M342.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 178.7l-57.4-57.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l80 80c12.5 12.5 32.8 12.5 45.3 0l160-160zm96 128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 402.7 54.6 297.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l256-256z");
-    			add_location(path_1, file$q, 142, 247, 7626);
+    			add_location(path_1, file$q, 140, 247, 7807);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 448 512");
     			attr_dev(svg, "class", "svelte-1qmj3si");
-    			add_location(svg, file$q, 142, 16, 7395);
+    			add_location(svg, file$q, 140, 16, 7576);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -26626,14 +26626,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_2.name,
     		type: "slot",
-    		source: "(139:16) <ToolkitWidget                      label=\\\"Result\\\"                      objectType=\\\"result\\\"                  >",
+    		source: "(137:16) <ToolkitWidget                      label=\\\"Result\\\"                      objectType=\\\"result\\\"                  >",
     		ctx
     	});
 
     	return block;
     }
 
-    // (148:16) {#if category == index + 2}
+    // (146:16) {#if category == index + 2}
     function create_if_block_3$3(ctx) {
     	let each_1_anchor;
     	let current;
@@ -26722,14 +26722,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3$3.name,
     		type: "if",
-    		source: "(148:16) {#if category == index + 2}",
+    		source: "(146:16) {#if category == index + 2}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (149:20) {#each p.widgets as w}
+    // (147:20) {#each p.widgets as w}
     function create_each_block_5$2(ctx) {
     	let current;
 
@@ -26775,14 +26775,14 @@ var app = (function () {
     		block,
     		id: create_each_block_5$2.name,
     		type: "each",
-    		source: "(149:20) {#each p.widgets as w}",
+    		source: "(147:20) {#each p.widgets as w}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (147:12) {#each activePlugins as p, index}
+    // (145:12) {#each activePlugins as p, index}
     function create_each_block_4$2(ctx) {
     	let if_block_anchor;
     	let current;
@@ -26838,14 +26838,14 @@ var app = (function () {
     		block,
     		id: create_each_block_4$2.name,
     		type: "each",
-    		source: "(147:12) {#each activePlugins as p, index}",
+    		source: "(145:12) {#each activePlugins as p, index}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (160:16) {#if category == index + 2 + activePlugins.length}
+    // (158:16) {#if category == index + 2 + activePlugins.length}
     function create_if_block_2$3(ctx) {
     	let each_1_anchor;
     	let current;
@@ -26934,14 +26934,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2$3.name,
     		type: "if",
-    		source: "(160:16) {#if category == index + 2 + activePlugins.length}",
+    		source: "(158:16) {#if category == index + 2 + activePlugins.length}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (161:20) {#each p.widgets as w}
+    // (159:20) {#each p.widgets as w}
     function create_each_block_3$2(ctx) {
     	let current;
 
@@ -26987,14 +26987,14 @@ var app = (function () {
     		block,
     		id: create_each_block_3$2.name,
     		type: "each",
-    		source: "(161:20) {#each p.widgets as w}",
+    		source: "(159:20) {#each p.widgets as w}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (159:12) {#each devPlugins as p, index}
+    // (157:12) {#each devPlugins as p, index}
     function create_each_block_2$4(ctx) {
     	let if_block_anchor;
     	let current;
@@ -27050,7 +27050,7 @@ var app = (function () {
     		block,
     		id: create_each_block_2$4.name,
     		type: "each",
-    		source: "(159:12) {#each devPlugins as p, index}",
+    		source: "(157:12) {#each devPlugins as p, index}",
     		ctx
     	});
 
