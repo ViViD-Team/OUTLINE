@@ -174,6 +174,9 @@
     function edit() {
         onEdit();
     }
+
+
+    let dragOverCell = null;
 </script>
 
 
@@ -351,16 +354,13 @@
                                 class="
                                     tableCell
                                     neuIndentShadowNarrow
+                                    {dragOverCell && dragOverCell[0] == indexX && dragOverCell[1] == indexY ? 'tableCellFocused' : ''}
                                 "
                                 on:dragenter={(event) => {
-                                    if (event.dataTransfer.getData("command") == "createNode" && ["input", "output"].includes(event.dataTransfer.getData("nodeType"))) {
-                                        event.preventDefault();
-                                        event.stopPropagation();
-                                        //TODO: Animation
-                                    }
+                                    dragOverCell = [indexX, indexY];
                                 }}
-                                on:dragleave={() => {
-                                    //TODO: Stop Animation
+                                on:dragleave={(event) => {
+                                    if (event.fromElement.nodeName == "DIV") dragOverCell = null;
                                 }}
                                 on:drop={(event) => {
                                     if (event.dataTransfer.getData("command") == "createNode" && ["input", "output"].includes(event.dataTransfer.getData("nodeType"))) {
@@ -374,6 +374,7 @@
                                             "ioType": event.dataTransfer.getData("nodeType")
                                         }}));
                                     }
+                                    dragOverCell = null;
                                 }}
                                 style="
                                 height: {3*zoom}vh;
@@ -394,6 +395,8 @@
                                                 if (active) active.blur();
                                             }
                                         }}
+
+                                        
 
                                         on:blur={() => {onInput()}}
 
@@ -658,6 +661,10 @@
 
         display: grid;
         place-items: center;
+
+        transition:
+            transform .5s cubic-bezier(0, 0, 0, .9),
+            background-color .5s cubic-bezier(0, 0, 0, .9);
     }
 
     .tableCell p {
@@ -679,6 +686,13 @@
     .tableCell .cellLabelContainer svg {
         width: 100%;
         fill: var(--blue);
+    }
+
+    .tableCellFocused {
+        box-shadow:
+            inset 0 0 0 .2vh var(--red),
+            0 0 1vh 0 var(--red);
+        transform: scale(.9);
     }
 
     h1 {

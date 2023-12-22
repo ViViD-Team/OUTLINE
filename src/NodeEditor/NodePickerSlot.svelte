@@ -8,6 +8,8 @@
         event.dataTransfer.setData("command", "createNode");
         event.dataTransfer.setData("nodeID", id);
         event.dataTransfer.setData("nodeType", type);
+
+        event.dataTransfer.setDragImage(event.target, -30, 0);
     }
 
     function parse(string) {
