@@ -1,5 +1,5 @@
 <script>
-    import { onMount } from "svelte";
+    import { onMount, onDestroy } from "svelte";
 
     const { ipcRenderer } = require("electron");
 
@@ -518,15 +518,6 @@
     // Generate Connection Display Objects
     let connections = [];
 
-
-    onMount(() => {
-        console.log(resultWidgets);
-
-        recalculateConnections();
-
-        constructNodePicker();
-    });
-
     let nodeConfig = {};
     let nodeCategories = [];
 
@@ -540,6 +531,7 @@
             nodeCategories = Object.keys(nodeConfig);
         });
     }
+    let lockNodePicker = false;
 
     /**
      * Holds information about the simulated connection appearing
@@ -906,9 +898,53 @@
         activePlugins = buffer;
     }
     onMount(() => {
+        console.log(resultWidgets);
+
+        recalculateConnections();
+
+        constructNodePicker();
+
         pluginPath = ipcRenderer.sendSync("getSaveLocation");
         getActivatedPlugins();
+
+        document.addEventListener("createNode", remoteNodeCreationCallback);
     });
+    onDestroy(() => {
+        document.removeEventListener("createNode", remoteNodeCreationCallback);
+    })
+
+    function remoteNodeCreationCallback(event) {
+        console.log("Creating node from remote call...");
+
+        let {batch, column, row, ioType} = event.detail;
+        let isInput = ["input", "batchInput"].includes(ioType);
+
+        let newObj = {
+            "posX": Math.round((-viewX + viewportWidth / 3) / (window.innerHeight / 100 * 2 * viewZoom)),
+            "posY": Math.round((-viewY + viewportHeight / 2) / (window.innerHeight / 100 * 2 * viewZoom) - 2),
+            "simX": 0,
+            "simY": 0,
+            "width": 6,
+            "color": "var(--red)",
+            "textcolor": "var(--text1)",
+            "selectedCol": column,
+        };
+
+        if (isInput) {
+            newObj.outputID = getNewId();
+        } else {
+            newObj.input = null;
+            newObj.color = "var(--purple)";
+        }
+
+        if (batch === false) newObj.selectedRow = row;
+
+        const targetIndex = batch ?
+            `batch${isInput ? "Input" : "Output"}` :
+            `${isInput ? "input" : "output"}`;
+
+        nodeData[targetIndex] = [...nodeData[targetIndex], newObj];
+    }
     ipcRenderer.on("refreshPlugins", getActivatedPlugins);
 
 </script>
@@ -1279,7 +1315,7 @@
         {/if}
     </div>
 
-    <div class="nodePickerFrame neuOutdentShadow"
+    <div class="nodePickerFrame neuOutdentShadow {lockNodePicker ? 'locked' : ''}"
         on:mousedown={(event) => {event.stopPropagation();}}
         on:mousewheel={/* Disable Node Editor Scroll on Hover*/
             (event) => {event.stopPropagation();}
@@ -1291,6 +1327,14 @@
             </div>
             <div class="nodePickerTitle">
                 <h2>Node Picker</h2>
+            </div>
+            <div class="nodePickerLockLayout">
+                <div
+                    class="nodePickerLock"
+                    on:click={() => {lockNodePicker = !lockNodePicker}}
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M32 32C32 14.3 46.3 0 64 0H320c17.7 0 32 14.3 32 32s-14.3 32-32 32H290.5l11.4 148.2c36.7 19.9 65.7 53.2 79.5 94.7l1 3c3.3 9.8 1.6 20.5-4.4 28.8s-15.7 13.3-26 13.3H32c-10.3 0-19.9-4.9-26-13.3s-7.7-19.1-4.4-28.8l1-3c13.8-41.5 42.8-74.8 79.5-94.7L93.5 64H64C46.3 64 32 49.7 32 32zM160 384h64v96c0 17.7-14.3 32-32 32s-32-14.3-32-32V384z"/></svg>
+                </div>
             </div>
         </div>
         <div class="nodePickerContents">
@@ -1488,7 +1532,7 @@
         }
     }
 
-    .nodePickerFrame:hover {
+    .nodePickerFrame:hover, .nodePickerFrame.locked {
         width: 36vh;
         height: calc(100% - 4vh);
     }
@@ -1500,7 +1544,7 @@
         flex: 1;
 
         display: flex;
-        
+        align-items: center;
     }
 
     .nodePickerHeader .nodePickerIcon {
@@ -1513,7 +1557,8 @@
         place-items: center;
     }
 
-    .nodePickerFrame:hover .nodePickerIcon {
+    .nodePickerFrame:hover .nodePickerIcon,
+    .nodePickerFrame.locked .nodePickerIcon {
         margin-left: 2vh;
     }
 
@@ -1549,13 +1594,85 @@
         transition: opacity .5s cubic-bezier(0, 0, 0, .9);
     }
 
-    .nodePickerFrame:hover .nodePickerTitle h2 {
+    .nodePickerFrame:hover .nodePickerTitle h2,
+    .nodePickerFrame.locked .nodePickerTitle h2 {
         opacity: 1;
     }
 
-    .nodePickerFrame:hover .nodePickerTitle {
-        flex: 4;
+    .nodePickerFrame:hover .nodePickerTitle,
+    .nodePickerFrame.locked .nodePickerTitle {
+        flex: 7;
     }
+
+    .nodePickerLockLayout {
+        height: 100%;
+        flex: 0;
+
+        opacity: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        overflow: hidden;
+
+        transition:
+            flex .5s cubic-bezier(0, 0, 0, .9),
+            margin-right .5s cubic-bezier(0, 0, 0, .9),
+            opacity .5s cubic-bezier(0, 0, 0, .9);
+    }
+
+    .nodePickerFrame:hover .nodePickerLockLayout,
+    .nodePickerFrame.locked .nodePickerLockLayout {
+        opacity: 1;
+        flex: 1;
+        margin-right: 2vh;
+    }
+
+    .nodePickerLock {
+        cursor: pointer;
+
+        width: 2vh;
+        height: 2vh;
+
+        border-radius: .25vh;
+
+        background-color: transparent;
+
+        display: grid;
+        place-items: center;
+
+        transition:
+            background-color .25s cubic-bezier(0, 0, 0, .9),
+            transform .5s cubic-bezier(0, 0, 0, .9);
+    }
+
+    .nodePickerLock:hover {
+        transform: translateY(-.2vh);
+    }
+
+    .nodePickerFrame.locked .nodePickerLock {
+        background-color: var(--blue);
+    }
+
+
+    .nodePickerLock svg {
+        height: 80%;
+
+        fill: var(--text1);
+        opacity: .5;
+
+        transition:
+            fill .25s cubic-bezier(0, 0, 0, .9),
+            opacity .25s cubic-bezier(0, 0, 0, .9);
+    }
+
+    .nodePickerFrame.locked .nodePickerLock svg {
+        fill: var(--mainbg);
+        opacity: 1;
+    }
+
+
 
     .nodePickerContents {
         width: 100%;
@@ -1573,7 +1690,8 @@
         transition: flex .5s cubic-bezier(0, 0, 0, .9), opacity .1s;
     }
 
-    .nodePickerFrame:hover .nodePickerContents {
+    .nodePickerFrame:hover .nodePickerContents,
+    .nodePickerFrame.locked .nodePickerContents {
         flex: 5;
 
         opacity: 1;

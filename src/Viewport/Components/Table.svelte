@@ -262,9 +262,36 @@
 
             {#if cellContents}
                 {#each cellContents as x, indexX}
-                    <div class="tableGridColumn" style="
-                        width: {10*zoom}vh;
-                    ">
+                    <div
+                        dropzone="link"
+                        class="tableGridColumn"
+                        on:dragenter={(event) => {
+                            if (event.dataTransfer.getData("command") == "createNode" && ["batchInput", "batchOutput"].includes(event.dataTransfer.getData("nodeType"))) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                                //TODO: Animation
+                            }
+                        }}
+                        on:dragleave={() => {
+                            //TODO: Stop Animation
+                        }}
+                        on:drop={(event) => {
+                            if (event.dataTransfer.getData("command") == "createNode" && ["batchInput", "batchOutput"].includes(event.dataTransfer.getData("nodeType"))) {
+                                event.preventDefault();
+                                event.stopPropagation();
+
+                                document.dispatchEvent(new CustomEvent("createNode", {detail: {
+                                    "batch": true,
+                                    "column": indexX,
+                                    "row": null,
+                                    "ioType": event.dataTransfer.getData("nodeType")
+                                }}));
+                            }
+                        }}
+                        style="
+                            width: {10*zoom}vh;
+                        "
+                    >
                     <div
                         class="columnIndicator" style="
                         border-top-left-radius: {.5*zoom}vh;
@@ -319,59 +346,68 @@
                     </div>
 
                         {#each x as y, indexY}
-                            {#if scanLocked(indexX, indexY)}
-                                <div class="tableCell neuIndentShadowNarrow" style="
-                                    height: {3*zoom}vh;
+                            <div
+                                dropzone="link"
+                                class="
+                                    tableCell
+                                    neuIndentShadowNarrow
+                                "
+                                on:dragenter={(event) => {
+                                    if (event.dataTransfer.getData("command") == "createNode" && ["input", "output"].includes(event.dataTransfer.getData("nodeType"))) {
+                                        event.preventDefault();
+                                        event.stopPropagation();
+                                        //TODO: Animation
+                                    }
+                                }}
+                                on:dragleave={() => {
+                                    //TODO: Stop Animation
+                                }}
+                                on:drop={(event) => {
+                                    if (event.dataTransfer.getData("command") == "createNode" && ["input", "output"].includes(event.dataTransfer.getData("nodeType"))) {
+                                        event.preventDefault();
+                                        event.stopPropagation();
 
-                                    margin: {.2*zoom}vh 0 {.2*zoom}vh 0;
+                                        document.dispatchEvent(new CustomEvent("createNode", {detail: {
+                                            "batch": false,
+                                            "column": indexX,
+                                            "row": indexY,
+                                            "ioType": event.dataTransfer.getData("nodeType")
+                                        }}));
+                                    }
+                                }}
+                                style="
+                                height: {3*zoom}vh;
 
-                                    border-radius: {.5*zoom}vh;
-                                ">
-                                    <p style="font-size: {1.3 * zoom}vh">{cellContents[indexX][indexY]}</p>
-                                    <div class="cellLabelContainer" style="
-                                        width: {1.2*zoom}vh;
-                                        height: {1.2*zoom}vh;
-                                    ">
-                                        <svg viewBox="0 0 1 1" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M1 1H0L1 0V1Z"/>
-                                        </svg> 
-                                    </div>
-                                </div>
-                            {:else}
-                                <div class="tableCell neuIndentShadowNarrow" style="
-                                    height: {3*zoom}vh;
+                                margin: {.2*zoom}vh 0 {.2*zoom}vh 0;
 
-                                    margin: {.2*zoom}vh 0 {.2*zoom}vh 0;
+                                border-radius: {.5*zoom}vh;
+                            ">
+                                {#if editmode}
+                                    <p
+                                        contenteditable="plaintext-only"
+                                        bind:textContent={cellContents[indexX][indexY]}
+                                        on:keypress={(event) => {
+                                            // Prevent Multiline
+                                            if (event.key == "Enter") {
+                                                event.preventDefault();
+                                                let active = document.activeElement;
+                                                if (active) active.blur();
+                                            }
+                                        }}
 
-                                    border-radius: {.5*zoom}vh;
-                                ">
-                                    {#if editmode}
-                                        <p
-                                            contenteditable="plaintext-only"
-                                            bind:textContent={cellContents[indexX][indexY]}
-                                            on:keypress={(event) => {
-                                                // Prevent Multiline
-                                                if (event.key == "Enter") {
-                                                    event.preventDefault();
-                                                    let active = document.activeElement;
-                                                    if (active) active.blur();
-                                                }
-                                            }}
+                                        on:blur={() => {onInput()}}
 
-                                            on:blur={() => {onInput()}}
-
-                                            style="font-size: {1.3*zoom}vh">
-                                            {cellContents[indexX][indexY]}
-                                            
-                                        </p>
-                                    {:else}
-                                        <p
-                                            style="font-size: {1.3*zoom}vh">
-                                            {cellContents[indexX][indexY]}
-                                        </p>
-                                    {/if}
-                                </div>
-                            {/if}
+                                        style="font-size: {1.3*zoom}vh">
+                                        {cellContents[indexX][indexY]}
+                                        
+                                    </p>
+                                {:else}
+                                    <p
+                                        style="font-size: {1.3*zoom}vh">
+                                        {cellContents[indexX][indexY]}
+                                    </p>
+                                {/if}
+                            </div>
                         {/each}
                     </div>
                 {/each}
