@@ -27,10 +27,13 @@ const createWindow = () => {
     minHeight: 150,
     minWidth: 200,
     webPreferences: {
+      devTools: true,
       nodeIntegration: true,
       nodeIntegrationInWorker: true,
     }
   });
+
+  mainWindow.setMenu(null);
 
   mainWindow.loadFile(path.join(__dirname, '../public/index.html'));
   if (fileOpenPath && fileOpenPath != "." || true) mainWindow.webContents.once("dom-ready", () => {
@@ -85,6 +88,12 @@ ipcMain.on("sysDarkmode", (event, data) => {
 ipcMain.on("getSaveLocation", (event, data) => {
   event.returnValue = app_data;
 });
+
+
+ipcMain.on("openDevTools", (event, data) => {
+  mainWindow.openDevTools();
+  event.returnValue = null;
+})
 
 
 //* Plugin Loading

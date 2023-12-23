@@ -4,6 +4,7 @@
 
     const { ipcRenderer } = require("electron");
 
+    import Button from "./inputTypes/Button.svelte";
     import Toggle from "./inputTypes/Toggle.svelte";
 
     export let userSettings;
@@ -110,6 +111,13 @@
         <Toggle
             label="Show Dev Widget Delete Warning"
             bind:value={userSettings.show_dev_widget_modal}
+        />
+
+        <Button
+            label="Open Devtools"
+            onPress={() => {
+                ipcRenderer.sendSync("openDevTools");
+            }}
         />
     {/if}
 </main>
